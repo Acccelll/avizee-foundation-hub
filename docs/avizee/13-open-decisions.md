@@ -31,11 +31,11 @@ Somente decisões **não resolvidas**. Decisões aprovadas não são reabertas a
 ## Bloqueios de material
 | ID | Pendência | Impacto |
 |---|---|---|
-| O-21 | Reenvio de `catalogo.pdf` | Bloqueia a auditoria do catálogo (Etapa 1) |
-| O-22 | Reenvio de `avizee.pdf` e assets de logotipo/símbolo/grafismos | Bloqueia o design system e o placeholder oficial |
-| O-23 | Reenvio de `Mercado Livre.zip` | Bloqueia a classificação de imagens |
-| O-24 | Reenvio dos arquivos Montserrat | Define self-host vs. CDN |
-| O-25 | Reenvio do código-fonte do site atual | Bloqueia o inventário de URLs e o plano de 301 |
+| O-21 | Reenvio de `catalogo.pdf` | **ATIVO** — bloqueia a auditoria do catálogo (Etapa 1) |
+| O-22 | Assets **vetoriais** do logotipo (SVG/AI/EPS) — o manual em PDF foi recebido, os vetores não | **ATIVO** — bloqueia aplicação do logotipo em qualidade de produção e o placeholder oficial |
+| O-23 | ~~Reenvio de `Mercado Livre.zip`~~ | **RESOLVIDO 2026-07-31** — 110 imagens inventariadas em `17-image-inventory.md` |
+| O-24 | Arquivos Montserrat recebidos (OTF/TTF, sem itálico, sem WOFF2). Definir: converter para WOFF2 e self-hospedar, ou usar CDN | Pendente — afeta performance e consistência tipográfica |
+| O-25 | Reenvio do código-fonte do site atual | **ATIVO** — bloqueia o inventário de URLs e o plano de 301 |
 
 ## Recomendações do Lovable — Status: PENDENTE_DE_APROVAÇÃO
 Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
@@ -49,3 +49,8 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 | L-05 | Definir campo de "confiabilidade do dado técnico" por SKU | Operacionaliza a regra I-2 (rascunho vs. publicado) |
 | L-06 | Definir o tratamento público do segmento Suinocultura ("sob consulta"): página informativa sem catálogo, ou ausência total na v1 | D-003 define o status, mas não a superfície pública |
 | L-07 | Definir se os códigos atuais (AG/AR/AZ) serão mantidos como códigos públicos | Impacta SEO, busca por código e reconhecimento pelo comprador |
+| L-08 | Definir se **Montserrat Alternates** (recebida no pacote) tem algum uso aprovado, ou se fica proibida | O pacote traz 11 pesos da variante decorativa; sem regra, ela acaba sendo usada por engano |
+| L-09 | Resolver DIV-06: o "grafismo em V" é um elemento novo a criar, ou a menção se referia ao símbolo galo+engrenagem do manual? | Impacta diretamente o design system e todo o vocabulário gráfico do site |
+| L-10 | Definir a política para os ~11 códigos com marca de terceiro visível: nova fotografia, placeholder oficial, ou remoção do item da v1 | Hoje esses SKUs não podem ser publicados com imagem (R-05) e não há caminho definido |
+| L-11 | Confirmar se os dois conjuntos de imagens (PNG raiz vs. JPG `A/`) são versões do mesmo acervo e qual prevalece | 30+ códigos existem nos dois; sem regra, o risco é publicar a versão pior |
+

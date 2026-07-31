@@ -17,13 +17,18 @@ Status possíveis: `ANALISADO` · `PARCIAL` · `NÃO_RECEBIDO` · `PENDENTE`
 
 `TECHNICAL_INFERENCE` — Raciocínio: a Etapa 0 exige apenas *constituição de contexto*, e todas as
 decisões normativas vieram do próprio prompt (S-08), que tem precedência máxima. Portanto a Etapa 0
-pode ser concluída. Porém, as seguintes atividades **ficam bloqueadas** até o recebimento dos arquivos:
+está concluída. Com o recebimento de S-04, S-05 e S-06 em 2026-07-31, restam bloqueadas:
 
-1. Auditoria detalhada do catálogo (famílias reais, códigos, variações, medidas) — depende de S-03.
-2. Classificação de cada imagem nos 8 estados — depende de S-05 e S-07.
-3. Mapeamento de URLs atuais para plano de redirecionamento 301 — depende de S-02.
-4. Verificação de construção do logotipo, versões e grafismos — depende de S-04 e S-07.
-5. Empacotamento tipográfico self-hosted — depende de S-06.
+1. Auditoria detalhada do catálogo (famílias reais, códigos, variações, medidas) — depende de S-03. **Bloqueado**
+2. Cálculo de cobertura de imagem por SKU — depende de S-03. **Bloqueado**
+3. Mapeamento de URLs atuais para plano de redirecionamento 301 — depende de S-02. **Bloqueado**
+4. Aplicação do logotipo em qualidade de produção — depende de S-07 (vetores). **Bloqueado**
+5. Empacotamento tipográfico WOFF2 — S-06 recebido em OTF/TTF; conversão pendente de aprovação (O-24).
+
+Concluídos com o material recebido: verificação da paleta, do logotipo e das versões de aplicação
+(S-04, ver `10-brand-guidelines.md`); inventário e triagem do acervo de imagens
+(S-05, ver `17-image-inventory.md`); levantamento dos pesos tipográficos disponíveis (S-06).
+
 
 ## Divergências registradas (não reconciliadas)
 

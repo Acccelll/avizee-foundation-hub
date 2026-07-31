@@ -33,6 +33,7 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `14-glossary.md` | Glossário de termos do projeto |
 | `15-acceptance-criteria.md` | Critérios de aceite da Etapa 0 e adiante |
 | `16-change-log.md` | Histórico de mudanças |
+| `17-image-inventory.md` | Inventário e triagem das 110 imagens de produto |
 
 ## Etiquetas de origem (rastreabilidade)
 
@@ -55,6 +56,8 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 **Etapa 0 — Constituição do Projeto**: documentação criada. Nenhuma implementação, nenhum
 layout alterado, nenhum banco de dados criado.
 
-**Bloqueio de auditoria**: os anexos `catalogo.pdf`, `avizee.pdf`, `Mercado Livre.zip`,
-`Montserrat-*.zip` e o código-fonte do site atual **não estavam disponíveis** no ambiente do
-projeto nesta etapa. Ver `03-source-inventory.md`.
+**Materiais recebidos e analisados** (2026-07-31): manual de branding (`avizee.pdf`),
+acervo de imagens (`Mercado Livre.zip`, 110 arquivos) e pacote tipográfico (`Montserrat.zip`).
+
+**Bloqueios ativos**: `catalogo.pdf`, os **assets vetoriais do logotipo** (SVG/AI/EPS) e o
+código-fonte do site atual ainda não foram recebidos. Ver `03-source-inventory.md` e O-21/O-22/O-25.

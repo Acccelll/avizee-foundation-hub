@@ -13,21 +13,24 @@ Status possíveis: `ANALISADO` · `PARCIAL` · `NÃO_RECEBIDO` · `PENDENTE`
 | S-07 | Logotipo vetorial (`COLORIDO`: SVG, PDF, PNG 3726×1129, JPG) | Assets | Identidade visual | Lockup **horizontal** (viewBox 893.96 × 270.87); símbolo em `#690500`, wordmark em `#b2592c` — paleta confirmada no vetor | Alta — arquivo oficial | Só a versão **colorida** foi recebida: faltam monocromática, negativa (sobre preto/vinho), símbolo isolado e favicon; sem ícones do sistema | **ANALISADO** (2026-08-01) |
 | S-08 | Prompt da Etapa 0 (este documento de decisões) | Decisão do usuário | Base normativa do projeto | 30 decisões aprovadas, 13 regras não negociáveis, taxonomia inicial, política de imagens, estratégia de conteúdo | **Máxima** (topo da precedência) | — | ANALISADO |
 
-## Impacto do material não recebido
+## Estado das fontes
 
-`TECHNICAL_INFERENCE` — Raciocínio: a Etapa 0 exige apenas *constituição de contexto*, e todas as
-decisões normativas vieram do próprio prompt (S-08), que tem precedência máxima. Portanto a Etapa 0
-está concluída. Com o recebimento de S-04, S-05 e S-06 em 2026-07-31, restam bloqueadas:
+`TECHNICAL_INFERENCE` — Raciocínio: com o recebimento de S-02, S-03 e S-07 em 2026-08-01,
+**todas as oito fontes previstas foram recebidas e analisadas**. Não há mais bloqueio de material.
 
-1. Auditoria detalhada do catálogo (famílias reais, códigos, variações, medidas) — depende de S-03. **Bloqueado**
-2. Cálculo de cobertura de imagem por SKU — depende de S-03. **Bloqueado**
-3. Mapeamento de URLs atuais para plano de redirecionamento 301 — depende de S-02. **Bloqueado**
-4. Aplicação do logotipo em qualidade de produção — depende de S-07 (vetores). **Bloqueado**
-5. Empacotamento tipográfico WOFF2 — S-06 recebido em OTF/TTF; conversão pendente de aprovação (O-24).
+Concluídos: verificação da paleta, do logotipo e das versões de aplicação (S-04, ver
+`10-brand-guidelines.md`); inventário e triagem do acervo de imagens (S-05, ver
+`17-image-inventory.md`); levantamento dos pesos tipográficos (S-06); **auditoria do catálogo**
+(S-03, ver `18-catalog-audit.md`); **inventário de URLs e plano de 301** (S-02, ver
+`19-url-inventory.md`); **logotipo vetorial** disponível em `src/assets/brand/`.
 
-Concluídos com o material recebido: verificação da paleta, do logotipo e das versões de aplicação
-(S-04, ver `10-brand-guidelines.md`); inventário e triagem do acervo de imagens
-(S-05, ver `17-image-inventory.md`); levantamento dos pesos tipográficos disponíveis (S-06).
+Pendências remanescentes (decisão, não material):
+
+1. Empacotamento tipográfico WOFF2 — S-06 recebido em OTF/TTF; conversão pendente de aprovação (O-24).
+2. Versões complementares do logotipo (mono, negativa, símbolo isolado, favicon) — O-26.
+3. Divergências de catálogo DIV-10 a DIV-16 e a decisão L-12 (grupo "SOCOREX" sob R-05).
+
+
 
 
 ## Divergências registradas (não reconciliadas)

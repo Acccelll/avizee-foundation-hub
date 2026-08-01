@@ -1,0 +1,18 @@
+mig_id,url_atual,status_atual,destino,http,risco_seo,observacao
+MIG-01,/,ativa,/,200,BAIXO,conteudo novo mesma URL
+MIG-02,/index.php,ativa,/,301,BAIXO,regra ja existente no htaccess
+MIG-03,/produtos,ativa,/produtos,200,MEDIO,estrutura totalmente nova
+MIG-04,/produtos.php,ativa,/produtos,301,BAIXO,
+MIG-05,/produtos.html,inexistente,/produtos,301,NENHUM,regra defensiva
+MIG-06,/sobre,ativa,/sobre,200,BAIXO,
+MIG-07,/sobre.php,ativa,/sobre,301,BAIXO,
+MIG-08,/contato,ativa,/contato,200,BAIXO,
+MIG-09,/contato.php,ativa,/contato,301,BAIXO,
+MIG-10,/blog,ativa,/conteudos,301,BAIXO,D-024 sem artigo real
+MIG-11,/blog.php,ativa,/conteudos,301,BAIXO,salto unico
+MIG-12,/assets/docs/catalogo.pdf,ativa,/produtos,301,MEDIO,D-038 PDF aposentado
+MIG-13,/send_email.php,endpoint,,410,NENHUM,nunca redirecionar POST
+MIG-14,/assets/img/products/{codigo}.jpg,ativa,novo caminho de midia,301,BAIXO,apenas imagens aprovadas D-050
+MIG-15,/assets/css|js|vendor,ativa,,410,NENHUM,stack antiga descontinuada
+MIG-16,robots.txt,inexistente,criar,200,NENHUM,publicar no lancamento
+MIG-17,sitemap.xml,inexistente,criar,200,NENHUM,publicar no lancamento

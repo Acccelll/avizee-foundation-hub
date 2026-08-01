@@ -1,0 +1,15 @@
+rel_id,origem,bloco,destino_tipo,regra_de_selecao,estado
+PR-01,menu,Produtos,categoria,painel de 6 categorias,CONFIRMADA
+PR-02,home,Categorias principais,categoria,6 cards fixos,CONFIRMADA
+PR-03,categoria,Familias,familia,todas as familias publicadas da categoria,CONFIRMADA
+PR-04,categoria,Solucoes relacionadas,solucao,curadoria manual,RECOMENDADA
+PR-05,solucao,Categorias e familias,familia,curadoria manual,RECOMENDADA
+PR-06,familia,Voce tambem pode precisar,familia,complemento funcional declarado,RECOMENDADA
+PR-07,familia,Conteudos recomendados,artigo,artigo que cita a familia,RECOMENDADA
+PR-08,artigo,Produtos citados,familia,familias mencionadas no texto,RECOMENDADA
+PR-09,artigo,Artigos relacionados,artigo,curadoria manual,RECOMENDADA
+PR-10,cotacao,Continue sua cotacao,categoria,ultima categoria visitada,CONFIRMADA
+PR-11,busca vazia,Nao encontrou o que procura,contato,consulta assistida D-040,CONFIRMADA
+PR-12,institucional,Fale conosco,contato,link direto,CONFIRMADA
+PR-13,rodape,Produtos,categoria,6 categorias,CONFIRMADA
+PR-14,404,Recuperacao,busca,busca e categorias,CONFIRMADA

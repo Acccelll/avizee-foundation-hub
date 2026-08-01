@@ -29,3 +29,14 @@ aplicativo móvel nativo.
 banco de dados · migrações · publicação de páginas · redesenho de layout · escolha definitiva de
 arquitetura técnica · protótipos finais · auditoria detalhada/migração do catálogo além do
 necessário para constituir contexto.
+
+## Fora do escopo desta Etapa 2
+`USER_DECISION` — implementação de páginas · componentes · banco de dados · importação de
+produtos · normalização definitiva do catálogo · design system · protótipos finais ·
+redirecionamentos reais · publicação de sitemap · escolha de framework ou hospedagem ·
+alteração do site atual.
+
+## Priorização da v1 (Etapa 2)
+A classificação `ESSENCIAL_V1` / `IMPORTANTE_V1` / `PODE_ENTRAR_V1` / `EVOLUÇÃO` /
+`NÃO_RECOMENDADO` está em `57-v1-scope-prioritization.md`, com status
+**PENDENTE_DE_APROVAÇÃO**. Nenhum item do escopo obrigatório foi reduzido.

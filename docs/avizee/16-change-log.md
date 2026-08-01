@@ -182,3 +182,43 @@ encerradas); RK-15 reforçado com o protocolo de encerramento de Q-01; RK-18 vin
 as recomendações L-01 a L-07.
 
 **Nenhum código funcional, nenhuma alteração visual e nenhuma migração foram executados.**
+
+## 2026-08-01 — Etapa 2: Arquitetura de Informação, Sitemap e Jornadas
+
+**Origem**: `LOVABLE_RECOMMENDATION`. **Status global**: `PENDENTE_DE_APROVAÇÃO`.
+
+**Numeração**: a etapa foi solicitada como documentos 36 a 54, números já ocupados pela Etapa 1.
+Para não sobrescrever registro histórico, a Etapa 2 ocupa **41 a 59**. Mapa de equivalência no
+`README.md`.
+
+**Documentos criados** (19): `41-stage-02-information-architecture-plan.md` ·
+`42-public-sitemap-proposal.md` · `43-admin-information-architecture.md` ·
+`44-navigation-model.md` · `45-url-architecture.md` · `46-url-migration-map.md` ·
+`47-page-type-definitions.md` · `48-product-discovery-architecture.md` ·
+`49-search-and-filter-architecture.md` · `50-quotation-journey.md` ·
+`51-content-hub-architecture.md` · `52-product-content-relationship-model.md` ·
+`53-user-journeys.md` · `54-mobile-navigation-requirements.md` ·
+`55-indexation-and-canonical-strategy.md` · `56-page-objective-matrix.md` ·
+`57-v1-scope-prioritization.md` · `58-stage-02-decisions-for-approval.md` ·
+`59-stage-02-executive-report.md`.
+
+**Dados criados** (7): `data/sitemap.csv` (28 nós) · `data/pages-proposed.csv` (24 páginas ×
+20 colunas) · `data/url-migrations.csv` (17) · `data/user-journeys.csv` (9) ·
+`data/page-relationships.csv` (14) · `data/product-content-relations.csv` (20) ·
+`data/stage-02-decisions.csv` (18).
+
+**Documentos atualizados**: `01-approved-decisions.md` (nota de que nada foi aprovado) ·
+`04-traceability-matrix.md` (T-17 a T-24) · `07-product-taxonomy.md` ·
+`08-content-strategy.md` · `11-scope-and-out-of-scope.md` · `12-risk-register.md`
+(RK-19 a RK-22) · `13-open-decisions.md` · `14-glossary.md` · `README.md`.
+
+**Escolhas estruturais propostas**: família como página canônica do produto (sem URL por
+variação) · categoria organiza por tipo e solução por problema · página só indexa com conteúdo
+próprio · segmento como filtro e selo, sem hub · busca global sem marca de terceiro ·
+cotação persistida antes de qualquer envio.
+
+**Bloqueio para a Etapa 3**: DEP-01 — a classificação família → categoria → aplicação não existe
+em nenhuma fonte e precisa ser executada antes do design system.
+
+**Nenhuma decisão foi aprovada. Nenhum código, rota, componente, banco de dados, importação,
+redirecionamento real ou alteração de layout foi produzido nesta etapa.**

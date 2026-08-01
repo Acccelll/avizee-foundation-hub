@@ -56,3 +56,15 @@ promocional · afirmar parceria ou representação sem autorização.
 
 Adicionalmente, nenhum artigo pode citar preço (R-04), prometer prazo/frete (R-11) ou nomear
 marca de terceiro (R-05), inclusive em imagens, legendas e textos alternativos.
+
+## Etapa 2 — arquitetura editorial proposta
+`LOVABLE_RECOMMENDATION` — Status: **PENDENTE_DE_APROVAÇÃO**. Detalhe em
+`51-content-hub-architecture.md`.
+
+Das 7 categorias aprovadas, a proposta publica **3 principais** (Guias e boas práticas ·
+Vacinação e aplicação · Equipamentos e manutenção) e **1 condicional** (Incubação e manejo).
+"Curiosidades da avicultura" vira tag; "Notícias e mercado" fica como evolução;
+"Produtos e aplicações" não vira categoria — vira o bloco "Produtos citados" dentro do artigo.
+Nenhuma categoria aprovada foi eliminada: as demais seguem no modelo, ocultas até terem conteúdo.
+Regra proposta: categoria editorial só é listada e indexada com **≥ 2 artigos** (DEC-18).
+Autores, tags públicas e central de materiais ficam como `EVOLUÇÃO`.

@@ -21,3 +21,17 @@
 | **Rascunho** | Registro não visível publicamente, por falta de imagem e de dados confiáveis, ou por decisão editorial. |
 | **Publicado** | Registro visível publicamente, aderente a todas as regras não negociáveis. |
 | **PENDENTE_DE_APROVAÇÃO** | Status obrigatório de toda recomendação do Lovable até aprovação explícita do usuário. |
+
+## Termos incorporados na Etapa 2
+`LOVABLE_RECOMMENDATION` — Status: **PENDENTE_DE_APROVAÇÃO**
+
+| Termo | Definição |
+|---|---|
+| **Página canônica do produto** | A página de **família**. Variação de medida não tem URL própria (`45` §4). |
+| **Porta de entrada** | Caminho pelo qual o visitante chega ao produto: código, nome, aplicação, categoria ou conteúdo. |
+| **Filtro contextual** | Filtro que só existe dentro de uma família ou categoria (medida, capacidade, rosca). |
+| **Estado da relação** | `CONFIRMADA` · `PROVISÓRIA` · `RECOMENDADA` · `NÃO_CONFIRMADA`. Só `CONFIRMADA` é renderizada. |
+| **Consulta assistida** | Fluxo para quem não encontrou o item: descrição, foto ou WhatsApp, gerando oportunidade sem SKU. |
+| **DADO_PENDENTE** | Marcação de campo cujo valor real ainda não foi confirmado pelo usuário. Nunca é preenchido por inferência. |
+| **Conteúdo mínimo publicável** | Conjunto de campos sem o qual uma página não é indexada (`55`). |
+| **Protocolo de cotação** | Identificador gerado no envio da solicitação, apresentado em `/cotacao/enviada`. |

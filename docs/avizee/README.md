@@ -61,7 +61,39 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `37-migration-readiness.md` | Semáforo de prontidão para migração |
 | `38-stage-01-open-questions.md` | 15 perguntas abertas |
 | `39-stage-01-executive-report.md` | Relatório executivo e critérios de aceite |
+| `40-stage-01-answers.md` | Respostas Q-01 a Q-15 e decisões D-039 a D-051 |
 | `data/*.csv` | Dados tabulares da auditoria (fontes, arquivos, páginas, produtos, imagens, relações, duplicidades, divergências, achados) |
+
+### Etapa 2 — Arquitetura de Informação (documentos 41 a 59) — `PENDENTE_DE_APROVAÇÃO`
+
+> **Mapa de numeração**: a Etapa 2 foi solicitada como documentos 36 a 54, mas esses números já
+> pertencem à Etapa 1. Equivalência: 36→41 · 37→42 · 38→43 · 39→44 · 40→45 · 41→46 · 42→47 ·
+> 43→48 · 44→49 · 45→50 · 46→51 · 47→52 · 48→53 · 49→54 · 50→55 · 51→56 · 52→57 · 53→58 · 54→59.
+
+| Arquivo | Conteúdo |
+|---|---|
+| `41-stage-02-information-architecture-plan.md` | Plano, princípios e modelo conceitual |
+| `42-public-sitemap-proposal.md` | Sitemap público e classificação das páginas |
+| `43-admin-information-architecture.md` | Painel administrativo conceitual |
+| `44-navigation-model.md` | Menu desktop, mobile, rodapé, breadcrumbs e links internos |
+| `45-url-architecture.md` | Esquema de URLs, slugs, variações e parâmetros |
+| `46-url-migration-map.md` | Mapa de 301/410 do site atual |
+| `47-page-type-definitions.md` | 17 tipos de página e requisitos de acessibilidade |
+| `48-product-discovery-architecture.md` | Segmentos, soluções, categorias e famílias |
+| `49-search-and-filter-architecture.md` | Busca, sinônimos, estados e classificação de filtros |
+| `50-quotation-journey.md` | Lista de cotação, estados, campos e WhatsApp |
+| `51-content-hub-architecture.md` | Central de Conteúdos e modelo de artigo |
+| `52-product-content-relationship-model.md` | Grafo produto × conteúdo × solução |
+| `53-user-journeys.md` | 9 jornadas mapeadas |
+| `54-mobile-navigation-requirements.md` | Requisitos arquiteturais de mobile |
+| `55-indexation-and-canonical-strategy.md` | Indexação, canônicas e dados estruturados |
+| `56-page-objective-matrix.md` | Matriz página × objetivo (24 páginas) |
+| `57-v1-scope-prioritization.md` | Priorização da v1 e dependências DEP-01 a DEP-08 |
+| `58-stage-02-decisions-for-approval.md` | DEC-01 a DEC-18 |
+| `59-stage-02-executive-report.md` | Relatório executivo da Etapa 2 |
+| `data/sitemap.csv`, `pages-proposed.csv`, `url-migrations.csv`, `user-journeys.csv`, `page-relationships.csv`, `product-content-relations.csv`, `stage-02-decisions.csv` | Dados tabulares da arquitetura |
+
+
 
 ## Etiquetas de origem (rastreabilidade)
 
@@ -95,10 +127,20 @@ layout alterado, nenhum banco de dados criado.
 **Respostas da Etapa 1** (2026-08-01): Q-01 a Q-15 respondidas em `40-stage-01-answers.md`,
 gerando as decisões **D-039 a D-051**. O-24 e O-26 encerradas.
 
-**Pendências que bloqueiam a Etapa 2**:
+**Etapa 2 — Arquitetura de Informação**: concluída em 2026-08-01 como **proposta**. 19 documentos
+(41 a 59) e 7 CSVs. **Nenhuma decisão aprovada**: DEC-01 a DEC-18 aguardam manifestação em
+`58-stage-02-decisions-for-approval.md`. Nenhum código, layout, rota, banco ou redirecionamento
+foi criado.
+
+**Bloqueio para a Etapa 3**: **DEP-01** — a classificação família → categoria → aplicação não
+existe em nenhuma fonte e precisa ser executada antes do design system.
+
+**Pendências ainda abertas**:
 - **O-27 / RK-15 / Q-01** — revogação e rotação das credenciais SMTP e reCAPTCHA (não confirmada)
 - **Q-02** — origem e direito de uso do acervo de imagens
 - **Q-03** — medidas de **AG005** e **AG022** e o código correto da 2ª linha `AG016`
 - **Q-08** — confirmação dos dados de contato
 - **Q-13** — razão social, CNPJ, canal de privacidade e prazo de retenção
 - **L-01 a L-07** — recomendações ainda sem aprovação
+- **DEC-01 a DEC-18** — decisões da Etapa 2
+

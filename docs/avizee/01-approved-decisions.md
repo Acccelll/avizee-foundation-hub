@@ -56,3 +56,12 @@ Toda alteração aqui deve ser registrada em `16-change-log.md`.
 | D-049 | **EmbedSocial não faz parte da v1.** O **Google Maps** fica só na página Contato e carrega **apenas após interação**, com link externo alternativo. (resolve Q-15) | USER_DECISION | 2026-08-01 |
 | D-050 | **Direito de uso condicional das imagens**: publicar somente imagem própria, contratada com direitos ou autorizada pelo fornecedor. Marketplace/anúncio sem autorização, origem desconhecida ou marca visível → `PENDENTE_DIREITO_DE_USO` + placeholder. A imagem bloqueada não bloqueia o produto. (responde Q-02, sujeito à confirmação da origem) | USER_DECISION | 2026-08-01 |
 | D-051 | Divergências de medida: **`AG019 = 12 × 10`** (DIV-0103 encerrada como falso positivo) e **`AG016 = 06 × 10`** confirmado, com a linha `10 × 10` bloqueada até informação do código correto — sem criar código por inferência. **AG005 e AG022 permanecem em rascunho** até decisão. (resolve Q-03 parcialmente) | USER_DECISION | 2026-08-01 |
+
+## Etapa 2 — nenhuma decisão aprovada
+
+A Etapa 2 (arquitetura de informação) **não gerou decisão aprovada**. Todas as 18 propostas
+estão em `58-stage-02-decisions-for-approval.md` com status `PENDENTE_DE_APROVAÇÃO`
+(DEC-01 a DEC-18). Este registro existe para deixar explícito que nada da Etapa 2 foi assumido
+como aprovado. Duas propostas **alteram material já aprovado** e só podem ser aplicadas com
+manifestação explícita: **DEC-05** (categoria "Linhas complementares", altera
+`07-product-taxonomy.md`) e **DEC-18** (categorias editoriais, altera `08-content-strategy.md`).

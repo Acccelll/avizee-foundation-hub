@@ -1,0 +1,19 @@
+dec_id,tema,alternativas,recomendacao,impacto,riscos,dependencias,status
+DEC-01,Sitemap publico definitivo,A proposto|B com segmentos|C reduzido,A,define toda a Etapa 3,B cria paginas vazias|C perde Central de Conteudos,DEP-01|DEP-02,PENDENTE_DE_APROVACAO
+DEC-02,Menu principal,A 5 itens sem Inicio|B com Inicio|C Solucoes dentro de Produtos,A,navegacao global,habito do usuario com Inicio,-,PENDENTE_DE_APROVACAO
+DEC-03,Mega menu,A painel de categorias|B mega menu com familias|C menu simples,A,manutencao e mobile,B exige nomes de familia normalizados,DEP-01,PENDENTE_DE_APROVACAO
+DEC-04,Estrutura de URLs (L-04),A categoria na URL|B familia direta,A,SEO e breadcrumb,recategorizar exige 301,DEP-01,PENDENTE_DE_APROVACAO
+DEC-05,Categoria Linhas complementares,A manter|B virar filtro de segmento,B,altera taxonomia aprovada,retrabalho de classificacao,DEP-01,PENDENTE_DE_APROVACAO
+DEC-06,Paginas de SKU,A nenhuma|B por excecao|C uma por SKU,B,volume de URLs,C gera 174 paginas finas,DEP-01,PENDENTE_DE_APROVACAO
+DEC-07,Paginas de solucao,A tres|B quatro|C nenhuma,A com B condicional,trafego e curadoria,solucao sem conteudo vira pagina fina,DEP-02,PENDENTE_DE_APROVACAO
+DEC-08,Marca de terceiro na busca,A nao indexar nem sinonimo|B sinonimo interno que redireciona,A,descoberta por marca,B contraria R-05 e RK-01,-,PENDENTE_DE_APROVACAO
+DEC-09,Paginas de segmento,A nenhuma na v1|B bovinocultura na v1|C hub de segmentos,A,percepcao dos complementares,paginas vazias,DEP-01,PENDENTE_DE_APROVACAO
+DEC-10,Escopo da busca,A global|B so produtos,A,descoberta,ruido editorial nos resultados,-,PENDENTE_DE_APROVACAO
+DEC-11,Lista inteira por WhatsApp,A registrar antes de abrir|B abrir sem registrar|C nao oferecer,A,perda de lead,B contraria RK-07 e D-044,DEP-06,PENDENTE_DE_APROVACAO
+DEC-12,Campos da cotacao,conjunto minimo proposto,aprovar minimo,LGPD e taxa de conversao,campo extra vira passivo,DEP-05,PENDENTE_DE_APROVACAO
+DEC-13,Persistencia da lista,A local 30 dias|B sessao|C conta,A,continuidade da jornada,C exige autenticacao fora de escopo,-,PENDENTE_DE_APROVACAO
+DEC-14,Paginas legais,privacidade|cookies|termos,as tres,conformidade,texto juridico ausente,DEP-05,PENDENTE_DE_APROVACAO
+DEC-15,Dados estruturados de produto,A sem Product/Offer|B Product sem preco,A,rich results,B reforca percepcao de e-commerce,-,PENDENTE_DE_APROVACAO
+DEC-16,Autores tags materiais glossario FAQ,evolucao|tags internas|FAQ em bloco,proposta de 42 e 51,escopo editorial,paginas finas,DEP-02,PENDENTE_DE_APROVACAO
+DEC-17,Estrutura do painel,agrupamento de 43,aprovar agrupamento,operacao interna,papeis ainda indefinidos,O-08|O-09,PENDENTE_DE_APROVACAO
+DEC-18,Categorias editoriais da v1,7 aprovadas vs 3+1 publicadas,3 principais e 1 condicional,ajusta 08-content-strategy,categoria vazia,DEP-02,PENDENTE_DE_APROVACAO

@@ -1,0 +1,29 @@
+node_id,url,nivel,tipo,rotulo,pai,classificacao,indexacao,observacao
+SM-01,/,1,institucional,Inicio,,OBRIGATORIA_V1,INDEXAR,
+SM-02,/produtos,1,catalogo,Produtos,SM-01,OBRIGATORIA_V1,INDEXAR,
+SM-03,/produtos/{categoria},2,categoria,Categoria de produto,SM-02,OBRIGATORIA_V1,INDEXAR_QUANDO_HOUVER_CONTEUDO,6 categorias
+SM-04,/produtos/{categoria}/{familia},3,familia,Familia,SM-03,OBRIGATORIA_V1,INDEXAR,pagina canonica do produto
+SM-05,/produtos/{categoria}/{familia}/{sku},4,sku,Variacao,SM-04,DECISAO_NECESSARIA,DECISAO_NECESSARIA,somente por excecao DEC-06
+SM-06,/solucoes,1,hub,Solucoes,SM-01,RECOMENDADA_V1,INDEXAR_QUANDO_HOUVER_CONTEUDO,
+SM-07,/solucoes/{slug},2,solucao,Solucao,SM-06,RECOMENDADA_V1,INDEXAR_QUANDO_HOUVER_CONTEUDO,3 a 4 na v1
+SM-08,/conteudos,1,hub,Central de Conteudos,SM-01,OBRIGATORIA_V1,INDEXAR,
+SM-09,/conteudos/{categoria-editorial},2,categoria_editorial,Categoria editorial,SM-08,OBRIGATORIA_V1,INDEXAR_QUANDO_HOUVER_CONTEUDO,minimo 2 artigos
+SM-10,/conteudos/{artigo},2,artigo,Artigo,SM-08,OBRIGATORIA_V1,INDEXAR,
+SM-11,/conteudos/autores/{slug},3,autor,Autor,SM-08,EVOLUCAO,NAO_INDEXAR,
+SM-12,/busca,1,utilitaria,Busca,SM-01,RECOMENDADA_V1,NAO_INDEXAR,
+SM-13,/cotacao,1,transacional,Lista de cotacao,SM-01,OBRIGATORIA_V1,NAO_INDEXAR,
+SM-14,/cotacao/enviada,2,transacional,Cotacao enviada,SM-13,OBRIGATORIA_V1,NAO_INDEXAR,protocolo
+SM-15,/sobre,1,institucional,Sobre,SM-01,OBRIGATORIA_V1,INDEXAR,
+SM-16,/contato,1,institucional,Contato,SM-01,OBRIGATORIA_V1,INDEXAR,
+SM-17,/politica-de-privacidade,1,legal,Politica de Privacidade,SM-01,OBRIGATORIA_V1,INDEXAR,depende de Q-13
+SM-18,/politica-de-cookies,1,legal,Politica de Cookies,SM-01,RECOMENDADA_V1,INDEXAR,depende de Q-13
+SM-19,/termos-de-uso,1,legal,Termos de Uso,SM-01,RECOMENDADA_V1,INDEXAR,depende de Q-13
+SM-20,404,1,utilitaria,Pagina nao encontrada,SM-01,OBRIGATORIA_V1,NAO_INDEXAR,status 404 real
+SM-21,/bovinocultura,1,segmento,Bovinocultura,SM-01,EVOLUCAO,INDEXAR_QUANDO_HOUVER_CONTEUDO,9 SKUs BV
+SM-22,/suinocultura,1,segmento,Suinocultura,SM-01,NAO_RECOMENDADA,NAO_INDEXAR,sob consulta D-003
+SM-23,/segmentos,1,hub,Segmentos,SM-01,NAO_RECOMENDADA,NAO_INDEXAR,catalogo paralelo
+SM-24,/perguntas-frequentes,1,institucional,Perguntas frequentes,SM-01,DECISAO_NECESSARIA,DECISAO_NECESSARIA,alternativa: bloco em /cotacao
+SM-25,/materiais,1,hub,Central de materiais,SM-01,EVOLUCAO,DECISAO_NECESSARIA,sem material publicavel
+SM-26,/glossario,1,conteudo,Glossario,SM-01,EVOLUCAO,DECISAO_NECESSARIA,depende de dado tecnico
+SM-27,/conteudos/busca,2,utilitaria,Busca editorial,SM-08,NAO_RECOMENDADA,NAO_INDEXAR,usar busca global
+SM-28,/conteudos/tags/{slug},3,tag,Tag publica,SM-08,NAO_RECOMENDADA,NAO_INDEXAR,tags internas na v1

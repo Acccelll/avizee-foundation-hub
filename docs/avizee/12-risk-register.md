@@ -22,3 +22,12 @@ Escala: Probabilidade / Impacto — Baixa · Média · Alta
 | RK-15 | **Credencial SMTP e chave secreta do reCAPTCHA expostas em texto claro** no código-fonte atual (`send_email.php`) e trafegada por canal comum | Alta | Alto | Revogar imediatamente a senha de aplicativo e regerar o par de chaves do reCAPTCHA na conta Google (O-27); na v1 usar segredo de servidor, nunca literal em código; nenhum segredo em repositório | **Ativo — ação do usuário** (Q-01 NÃO CONFIRMADO: credenciais consideradas comprometidas; encerramento exige data, responsável, segredo substituído e prova de uso via cofre/variável de ambiente) |
 | RK-16 | **Grupo e nomes de produto contendo marca de terceiro** ("SOCOREX" como grupo inteiro, 15 SKUs) | Alta | Alto | Decisão L-12 antes da modelagem; separar nome público (funcional) de campo interno de busca | **Ativo** |
 | RK-17 | **Colisão de códigos** entre os dois catálogos (AG016, AG022, PE/VR duplicados) usados como chave única | Alta | Alto | Resolver DIV-10 a DIV-16 (L-13) antes de criar o modelo de dados | **Ativo** |
+
+## Riscos identificados na Etapa 2
+
+| ID | Risco | Prob. | Impacto | Mitigação prevista | Status |
+|---|---|---|---|---|---|
+| RK-19 | **Páginas de família nascerem finas** por ausência de dado técnico (desdobramento de RK-18 no SEO) | Alta | Alto | Conteúdo mínimo publicável por tipo de página; `noindex` até cumprir o critério (`55`) | Aberto |
+| RK-20 | **Página de solução virar cópia da página de categoria**, gerando conteúdo duplicado | Média | Médio | Solução lista famílias, não as reproduz; canônica única por família; breadcrumb sempre pela categoria | Aberto |
+| RK-21 | **Comprador que só conhece a marca não encontrar o item** — efeito colateral legítimo de R-05 | Alta | Médio | Dicionário de sinônimos funcionais; estado de busca com sugestão; consulta assistida (DEC-08) | Aberto |
+| RK-22 | **`/produtos` mudar de conteúdo mantendo a URL**, com oscilação de posição | Média | Médio | Monitoramento no Search Console após o lançamento (O-16) | Aberto |

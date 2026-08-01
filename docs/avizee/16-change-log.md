@@ -106,3 +106,23 @@ layout alterado, nenhum asset copiado para o projeto.
 **Notas**: nenhuma decisão aprovada foi alterada. Nenhum código funcional implementado, nenhum
 layout alterado. Únicos arquivos fora de `/docs`: os assets do logotipo guardados em
 `src/assets/brand/` (não referenciados por nenhuma tela).
+
+
+## 2026-08-01 — Encerramento das recomendações L-08 a L-15
+
+**Origem**: `USER_DECISION` — decisões finais informadas pelo usuário.
+
+**Documentos alterados**:
+- `01-approved-decisions.md` — **D-031 a D-038** criadas
+- `13-open-decisions.md` — L-08 a L-15 marcadas como RESOLVIDAS com o D correspondente
+- `03-source-inventory.md` — DIV-06 e DIV-17 resolvidas; DIV-10 a DIV-16 com tratamento definido
+- `10-brand-guidelines.md` — Montserrat Alternates proibida; DIV-06 encerrada
+- `18-catalog-audit.md` — impacto de R-05 e divergências com tratamento aprovado
+- `19-url-inventory.md` — `/assets/docs/catalogo.pdf` passa a 301 para `/produtos`
+
+**Efeitos**:
+- D-016 fica **superada** na parte "grafismos inspirados na letra V" (D-032).
+- A modelagem do catálogo está **destravada**: chave UUID, código como atributo.
+
+**Permanecem abertas**: L-01 a L-07, O-01 a O-20, O-24 (WOFF2), O-26 (versões do logotipo),
+O-27 (credencial SMTP exposta).

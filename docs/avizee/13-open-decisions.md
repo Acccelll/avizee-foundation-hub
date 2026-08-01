@@ -34,10 +34,11 @@ Somente decisões **não resolvidas**. Decisões aprovadas não são reabertas a
 | O-21 | ~~Reenvio de `catalogo.pdf`~~ | **RESOLVIDO 2026-08-01** — dois catálogos recebidos (10 e 11 páginas); auditoria em `18-catalog-audit.md` |
 | O-22 | ~~Assets vetoriais do logotipo~~ | **RESOLVIDO 2026-08-01** — SVG/PDF/PNG/JPG da versão colorida recebidos e guardados em `src/assets/brand/` |
 | O-23 | ~~Reenvio de `Mercado Livre.zip`~~ | **RESOLVIDO 2026-07-31** — 110 imagens inventariadas em `17-image-inventory.md` |
-| O-24 | Arquivos Montserrat recebidos (OTF/TTF, sem itálico, sem WOFF2). Definir: converter para WOFF2 e self-hospedar, ou usar CDN | Pendente — afeta performance e consistência tipográfica |
+| O-24 | ~~Montserrat: WOFF2 e self-host~~ | **RESOLVIDO 2026-08-01 → D-046** (Q-12) — conversão para WOFF2, self-host, subset seguro, preload dos pesos críticos; licença OFL preservada |
 | O-25 | ~~Reenvio do código-fonte do site atual~~ | **RESOLVIDO 2026-08-01** — inventário de URLs e plano de 301 em `19-url-inventory.md` |
-| O-26 | Versões complementares do logotipo: monocromática, negativa (sobre preto/vinho), símbolo isolado e favicon | **ATIVO** — só a versão colorida foi recebida; sem elas o cabeçalho escuro, o favicon e o placeholder oficial ficam sem asset correto |
-| O-27 | Revogar a credencial SMTP exposta em `send_email.php` e definir o provedor de e-mail da v1 | **ATIVO** — ver RK-15; ação de segurança imediata do lado do usuário |
+| O-26 | ~~Versões complementares do logotipo~~ | **RESOLVIDO 2026-08-01 → D-045** (Q-11) — usar apenas as versões existentes no branding; derivados web como cópia fiel; pacote vetorial original vira pendência não bloqueante |
+| O-27 | Revogar a credencial SMTP exposta em `send_email.php` e definir o provedor de e-mail da v1 | **ATIVO** — ver RK-15 e Q-01 (`40-stage-01-answers.md`); credenciais tratadas como comprometidas até prova de revogação |
+
 
 
 ## Recomendações do Lovable — Status: PENDENTE_DE_APROVAÇÃO
@@ -64,7 +65,9 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 > Textos normativos completos de L-08 a L-15 em `20-resolved-recommendations.md`.
 
 ## Recomendações ainda em aberto
-L-01 a L-07 permanecem PENDENTE_DE_APROVAÇÃO. As decisões operacionais O-01 a O-20, além de
-O-24 (WOFF2), O-26 (versões do logotipo) e O-27 (credencial SMTP), continuam ativas.
+L-01 a L-07 permanecem PENDENTE_DE_APROVAÇÃO. As decisões operacionais O-01 a O-20 continuam
+ativas, assim como **O-27** (credencial SMTP). **O-24 e O-26 foram encerradas em 2026-08-01**
+pelas respostas Q-12 (D-046) e Q-11 (D-045) — ver `40-stage-01-answers.md`.
+
 
 

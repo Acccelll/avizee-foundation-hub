@@ -159,3 +159,26 @@ terceiro no nome; 10 divergências de alta severidade; **duas credenciais em tex
 quantificados; RK-07 e RK-11 confirmados; RK-06 mantido reduzido. Criado **RK-18**.
 
 **Nenhum código funcional, nenhuma alteração visual e nenhuma migração foram executados.**
+
+## 2026-08-01 — Respostas da Etapa 1 (Q-01 a Q-15)
+
+**Origem**: `USER_DECISION`.
+
+**Documento criado**: `40-stage-01-answers.md`, com o texto normativo das 15 respostas.
+
+**Decisões aprovadas**: **D-039** (família BI: catálogo prevalece) · **D-040** (BI999 vira CTA de
+consulta) · **D-041** (completude progressiva) · **D-042** (segmento/aplicação herdados da família;
+PE e VR subdivididas) · **D-043** (backlog editorial) · **D-044** (Lista de Cotação principal,
+WhatsApp secundário) · **D-045** (usar as versões de logo existentes — encerra **O-26**) ·
+**D-046** (WOFF2 + self-host da Montserrat convencional — encerra **O-24**) · **D-047** (base legal:
+procedimentos preliminares a contrato) · **D-048** (quarentena das 6 imagens sem código) ·
+**D-049** (EmbedSocial removido; Maps por interação) · **D-050** (direito de uso condicional das
+imagens) · **D-051** (AG019 = 12 × 10; AG016 = 06 × 10 com a 2ª linha bloqueada).
+
+**Riscos atualizados**: RK-02 mitigado por política; RK-03 reduzido (8 das 10 divergências
+encerradas); RK-15 reforçado com o protocolo de encerramento de Q-01; RK-18 vinculado a D-041.
+
+**Permanecem abertas**: Q-01, Q-02, parte da Q-03 (AG005 e AG022), Q-08, os dados legais da Q-13 e
+as recomendações L-01 a L-07.
+
+**Nenhum código funcional, nenhuma alteração visual e nenhuma migração foram executados.**

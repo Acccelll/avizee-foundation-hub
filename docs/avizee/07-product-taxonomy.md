@@ -106,3 +106,17 @@ como categoria oficial sem essa validação.
 /cotacao
 ```
 Slugs sempre neutros e sem marcas de terceiros (R-05).
+
+## Etapa 2 — proposta de aplicação da taxonomia
+`LOVABLE_RECOMMENDATION` — Status: **PENDENTE_DE_APROVAÇÃO**. Detalhe em
+`48-product-discovery-architecture.md` e `45-url-architecture.md`.
+
+- Segmento **não** vira menu nem hub: é filtro, selo e campo do produto (DEC-09).
+- Das 17 aplicações, **3 a 4** ganham página indexável; as demais permanecem como filtro,
+  sinônimo de busca ou tópico editorial (DEC-07).
+- "Linhas complementares" é proposta para virar **filtro de segmento**, com os itens `BV`
+  distribuídos nas categorias funcionais (DEC-05) — altera a lista de 6 categorias e por isso
+  depende de aprovação.
+- A **família** é a unidade canônica de página; variação de medida não gera URL (DEC-06).
+- A classificação família → categoria → aplicação **não existe em nenhuma fonte** e é a
+  dependência DEP-01 da Etapa 3.

@@ -18,3 +18,16 @@
 | T-14 | DIV-05 | Plano de redirecionamento 301 e preservação de SEO na migração | CURRENT_SITE | Site atual em `.html` | SEO | Etapa de migração | Bloqueado por S-02 |
 | T-15 | S-03 ausente | Auditoria detalhada do catálogo | CATALOG | `03-source-inventory.md` | Catálogo completo | Etapa 1 | **Bloqueado** |
 | T-16 | S-05/S-07 ausentes | Classificação de imagens nos 8 estados | IMAGE_ASSET | `03-source-inventory.md` | Publicação de produtos | Etapa 3 | **Bloqueado** |
+
+## Etapa 2 — arquitetura de informação
+
+| ID | Origem | Requisito derivado | Tipo | Onde impacta | Etapa | Status |
+|---|---|---|---|---|---|---|
+| T-17 | D-018/D-019/D-020 · DEC-01/DEC-04 | Sitemap público e esquema de URLs com a família como página canônica | LOVABLE_RECOMMENDATION | Rotas, SEO, navegação | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+| T-18 | R-05 · RK-01 · DEC-08 | Busca pública sem marca de terceiro, com dicionário de sinônimos funcionais | LOVABLE_RECOMMENDATION | Busca, indexação | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+| T-19 | D-044 · L-03 · RK-07 · DEC-11/DEC-12 | Cotação persistida antes do envio, com protocolo visível e WhatsApp secundário | LOVABLE_RECOMMENDATION | Fluxo de cotação | Etapa 5 | **PENDENTE_DE_APROVAÇÃO** |
+| T-20 | RK-08 | DTO público explícito por tipo de página e teste de payload | LOVABLE_RECOMMENDATION | Modelo de dados, API | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+| T-21 | D-042 · RK-18 | Classificação família → categoria → aplicação (DEP-01) antes do catálogo navegável | USER_DECISION | Catálogo, filtros, soluções | **Pré-requisito da Etapa 3** | **Bloqueante** |
+| T-22 | D-050 · Q-02 | Placeholder como caminho padrão de imagem, sem bloquear busca nem cotação | USER_DECISION | Catálogo, mídia | Etapa 4 | Documentado |
+| T-23 | D-038 · DIV-05 | Mapa de 301 do site atual, incluindo o PDF aposentado | USER_DECISION | Migração, SEO | Etapa de migração | **PENDENTE_DE_APROVAÇÃO** |
+| T-24 | D-024 · DEC-18 | Central de Conteúdos com 3 categorias principais e relação artigo ↔ família | LOVABLE_RECOMMENDATION | Módulo de conteúdo | Etapa 7 | **PENDENTE_DE_APROVAÇÃO** |

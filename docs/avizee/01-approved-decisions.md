@@ -65,3 +65,17 @@ estão em `58-stage-02-decisions-for-approval.md` com status `PENDENTE_DE_APROVA
 como aprovado. Duas propostas **alteram material já aprovado** e só podem ser aplicadas com
 manifestação explícita: **DEC-05** (categoria "Linhas complementares", altera
 `07-product-taxonomy.md`) e **DEC-18** (categorias editoriais, altera `08-content-strategy.md`).
+
+## Etapa 2.1 — DEC-05 e DEC-18 encerradas como NÃO APLICADAS
+
+| Proposta | Decisão do usuário | Data | Efeito |
+|---|---|---|---|
+| DEC-05 | **Rejeitada.** "Linhas complementares" **permanece categoria aprovada**; não vira filtro de segmento. | 2026-08-01 | `07-product-taxonomy.md` mantém as 6 categorias; CAT-06 recebe 4 famílias e 9 SKUs |
+| DEC-18 | **Rejeitada.** As **7 categorias editoriais aprovadas permanecem**; nenhuma redução a 3 + 1 transversal. | 2026-08-01 | `08-content-strategy.md` mantido íntegro |
+
+O usuário também confirmou o **bloqueio da Etapa 3** até existir matriz aprovada de
+família → categoria → aplicação → segmento. A Etapa 2.1 produziu essa matriz como **proposta**
+(`62` a `72`); ela **não** está aprovada e não consta como decisão aqui.
+
+A Etapa 2.1 **não gerou nenhuma decisão aprovada de classificação**. As 14 propostas estão em
+`71-taxonomy-decisions-for-approval.md` (DECT-01 a DECT-14), todas `PENDENTE_DE_APROVAÇÃO`.

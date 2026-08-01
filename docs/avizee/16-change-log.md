@@ -222,3 +222,35 @@ em nenhuma fonte e precisa ser executada antes do design system.
 
 **Nenhuma decisão foi aprovada. Nenhum código, rota, componente, banco de dados, importação,
 redirecionamento real ou alteração de layout foi produzido nesta etapa.**
+
+---
+
+## 2026-08-01 — Etapa 2.1: Consolidação taxonômica e resolução do DEP-01
+
+**Decisões do usuário registradas**: **DEC-05 rejeitada** — "Linhas complementares" permanece
+categoria aprovada. **DEC-18 rejeitada** — as 7 categorias editoriais permanecem. Confirmado o
+bloqueio da Etapa 3 até existir matriz aprovada de família → categoria → aplicação → segmento.
+
+**Documentos criados**: `60-stage-02-1-taxonomy-resolution-plan.md` ·
+`61-approved-category-baseline.md` · `62-family-taxonomy-proposal.md` ·
+`63-sku-family-mapping.md` · `64-family-application-matrix.md` · `65-family-segment-matrix.md` ·
+`66-family-editorial-relations.md` · `67-taxonomy-evidence-register.md` ·
+`68-taxonomy-conflicts.md` · `69-taxonomy-coverage-report.md` ·
+`70-stage-03-readiness-by-family.md` · `71-taxonomy-decisions-for-approval.md` ·
+`72-stage-02-1-executive-report.md`.
+
+**Dados criados**: `families-taxonomy.csv` (43) · `sku-family-mapping.csv` (174) ·
+`family-applications.csv` (108) · `family-segments.csv` (43) ·
+`family-editorial-relations.csv` (123) · `taxonomy-evidence.csv` (43) ·
+`taxonomy-conflicts.csv` (83) · `stage-03-readiness.csv` (43) · `taxonomy-decisions.csv` (14).
+
+**Documentos atualizados**: `01-approved-decisions.md` · `04-traceability-matrix.md` (T-25 a T-30
+e correção de T-24) · `07-product-taxonomy.md` · `12-risk-register.md` (RK-23 a RK-26) ·
+`13-open-decisions.md` · `14-glossary.md` · `57-v1-scope-prioritization.md` · `README.md`.
+
+**Resultado**: 174 SKUs → 43 famílias, 100% associados; 140 SKUs (80,5%) com categoria,
+aplicação e segmento; 31 famílias `READY_FOR_STAGE_3`; 83 conflitos registrados no nível do SKU;
+34 SKUs sem nome em nenhuma fonte (DECT-08 / RK-23 / DEP-09).
+
+**Nenhuma decisão foi aprovada. Nenhum código, componente, rota, banco de dados, design system,
+token, importação de produto ou alteração de layout foi produzido nesta etapa.**

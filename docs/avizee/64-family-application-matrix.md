@@ -1,6 +1,6 @@
 # 64 — Matriz Família → Aplicação
 
-Dados: **`data/family-applications.csv`** — 129 relações (43 principais + 86 secundárias).
+Dados: **`data/family-applications.csv`** — 108 relações (43 principais + 65 secundárias).
 
 ## 1. Regra
 

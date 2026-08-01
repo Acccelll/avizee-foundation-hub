@@ -1,6 +1,6 @@
 # 66 — Relações Família ↔ Categorias Editoriais
 
-Dados: **`data/family-editorial-relations.csv`** — 122 relações.
+Dados: **`data/family-editorial-relations.csv`** — 123 relações.
 
 > As **7 categorias editoriais aprovadas permanecem intactas** (DEC-18 NÃO_APLICADA). Este
 > documento apenas **relaciona** famílias e aplicações a elas. Nenhum artigo foi criado.

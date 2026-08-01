@@ -20,13 +20,13 @@
 
 | Categoria | Famílias | SKUs | Famílias publicáveis na v1 |
 |---|---|---|---|
-| CAT-01 Vacinação e aplicação | 13 | 55 | 10 |
+| CAT-01 Vacinação e aplicação | 13 | 55 | 9 |
 | CAT-02 Pulverização e sistemas de fluido | 8 | 40 | 2 |
 | CAT-03 Pesagem, medição e controle | 9 | 22 | 9 |
 | CAT-04 Peças, reposição e automação | 2 | 31 | 1 |
 | CAT-05 Manejo, alimentação e biossegurança | 7 | 17 | 7 |
 | CAT-06 **Linhas complementares** | 4 | 9 | 3 |
-| **Total** | **43** | **174** | **32** |
+| **Total** | **43** | **174** | **31** |
 
 Nenhuma categoria aprovada ficou vazia. "Linhas complementares" foi preservada com conteúdo real.
 
@@ -51,14 +51,14 @@ Nenhuma categoria aprovada ficou vazia. "Linhas complementares" foi preservada c
 
 | Prontidão | Famílias | SKUs |
 |---|---|---|
-| READY_FOR_STAGE_3 | 25 | 62 |
-| READY_WITH_PENDING_CONTENT | 6 | 30 |
+| READY_FOR_STAGE_3 | 25 | 70 |
+| READY_WITH_PENDING_CONTENT | 6 | 27 |
 | BLOCKED_BY_CODE | 1 | 3 |
 | BLOCKED_BY_IDENTITY | 4 | 19 |
-| BLOCKED_BY_MISSING_DATA | 7 | 60 |
+| BLOCKED_BY_MISSING_DATA | 7 | 55 |
 
 **31 de 43 famílias (72%)** têm taxonomia suficiente para orientar a Etapa 3. Elas cobrem
-92 SKUs, o suficiente para desenhar todos os tipos de página de catálogo sem hipóteses.
+97 SKUs, o suficiente para desenhar todos os tipos de página de catálogo sem hipóteses.
 
 ## 6. Cobertura de evidência
 

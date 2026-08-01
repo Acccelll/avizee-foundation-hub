@@ -1,0 +1,15 @@
+decision_id,titulo,contexto,alternativas,recomendacao,impacto,riscos,dependencias,status
+DECT-01,Aprovar o conjunto das 43 familias propostas,62,A: conjunto|B: bloco a bloco|C: reagrupar por prefixo,B,libera toda a Etapa 3,C reintroduz DEP-01,DEP-01,PENDENTE_DE_APROVACAO
+DECT-02,Desmembramento do prefixo AG em 4 familias,62 Bloco A,A: 4 familias|B: 2|C: 1,A,paginas de agulha,C gera pagina com 26 variacoes e filtros incompativeis,,PENDENTE_DE_APROVACAO
+DECT-03,Desmembramento do prefixo VR em 8 familias e 4 categorias,62,A: desmembrar|B: manter unido,A,distribui 13 SKUs em 4 categorias,B cria familia sem sentido funcional,,PENDENTE_DE_APROVACAO
+DECT-04,Categoria de FAM-013 Equipos para aplicacao,62 Bloco A,A: CAT-01|B: CAT-05,A,2 SKUs,fonte nao resolve,,PENDENTE_DE_APROVACAO
+DECT-05,Categoria das familias de conexao FAM-016 a FAM-019,62 Bloco B,A: CAT-02|B: CAT-04|C: dividir por uso real,C com A provisorio,22 SKUs,A pode misturar ar comprimido com pulverizacao,DECT-08,PENDENTE_DE_APROVACAO
+DECT-06,FAM-025 Balancas de precisao de bolso,62 Bloco C,A: familia propria|B: fundir em FAM-024|C: excluir da v1,A,1 SKU,B cria nome que mente sobre o item,,PENDENTE_DE_APROVACAO
+DECT-07,Desmembramento de FAM-026 Termometros,62 Bloco C,A: familia unica com filtro|B: 3 familias por uso,A,4 SKUs,B gera paginas finas RK-19,,PENDENTE_DE_APROVACAO
+DECT-08,"Destravamento dos 34 SKUs sem nome (PE, CN, BO)",62 Bloco D / 69 s9,A: AviZee fornece codigo x nome|B: excluir da v1|C: classificar por prefixo,A com B de contingencia,unica dependencia para 100% de cobertura,C viola a regra de evidencia,fonte externa,PENDENTE_DE_APROVACAO
+DECT-09,Categoria de FAM-035 Niples para bebedouro,62 Bloco E,A: CAT-05|B: CAT-04,A,1 SKU,jornada de compra compartilhada,,PENDENTE_DE_APROVACAO
+DECT-10,Liberacao parcial da Etapa 3 com 31 familias,70 s7,A: liberar com 31|B: aguardar 100%|C: liberar tudo,A,encerra DEP-01 parcialmente,B trava o projeto em DECT-08; C reintroduz DEP-01,DECT-01,PENDENTE_DE_APROVACAO
+DECT-11,Nomes publicos funcionais dos 16 SKUs com marca de terceiro,68 s5,A: aplicar tabela de 20-resolved item a item|B: publicar so a familia,A,19 SKUs em 4 familias,R-05 / D-035,20-resolved-recommendations,PENDENTE_DE_APROVACAO
+DECT-12,Paginas de solucao por aplicacao,64 s5,A: 3 paginas|B: 6|C: nenhuma,A,SOL-01 SOL-02 SOL-03,B cria paginas com 2 familias,DEC-07,PENDENTE_DE_APROVACAO
+DECT-13,Regra de coexistencia entre CAT-06 e filtro de segmento,65 s4,A: aprovar as 6 regras|B: rever,A,define navegacao das linhas complementares,DEC-05 permanece NAO_APLICADA,,PENDENTE_DE_APROVACAO
+DECT-14,FAM-032 fora do catalogo da v1,62 Bloco D,A: manter fora ate DECT-08|B: publicar como pecas sob consulta,A,28 SKUs,B cria 28 registros sem conteudo minimo publicavel,DECT-08,PENDENTE_DE_APROVACAO

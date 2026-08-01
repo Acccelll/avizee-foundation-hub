@@ -20,6 +20,7 @@ import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
+import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
@@ -82,6 +83,11 @@ const AdminProtectedRoute = AdminProtectedRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAcessoNegadoRoute = AdminAcessoNegadoRouteImport.update({
+  id: '/admin/acesso-negado',
+  path: '/admin/acesso-negado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
   path: '/admin/login',
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin': typeof AdminProtectedRouteWithChildren
+  '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByTo {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -163,6 +171,7 @@ export interface FileRoutesById {
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
+  '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -184,6 +193,7 @@ export interface FileRouteTypes {
     | '/solucoes'
     | '/termos-de-uso'
     | '/admin'
+    | '/admin/acesso-negado'
     | '/admin/login'
     | '/api/auth/login'
     | '/api/auth/logout'
@@ -202,6 +212,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/admin/acesso-negado'
     | '/admin/login'
     | '/api/auth/login'
     | '/api/auth/logout'
@@ -221,6 +232,7 @@ export interface FileRouteTypes {
     | '/solucoes'
     | '/termos-de-uso'
     | '/admin/_protected'
+    | '/admin/acesso-negado'
     | '/admin/login'
     | '/api/auth/login'
     | '/api/auth/logout'
@@ -241,6 +253,7 @@ export interface RootRouteChildren {
   SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
+  AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
@@ -327,6 +340,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/acesso-negado': {
+      id: '/admin/acesso-negado'
+      path: '/admin/acesso-negado'
+      fullPath: '/admin/acesso-negado'
+      preLoaderRoute: typeof AdminAcessoNegadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/admin/login'
@@ -396,6 +416,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
+  AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,

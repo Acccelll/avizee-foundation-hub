@@ -65,7 +65,9 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 > Textos normativos completos de L-08 a L-15 em `20-resolved-recommendations.md`.
 
 ## Recomendações ainda em aberto
-L-01 a L-07 permanecem PENDENTE_DE_APROVAÇÃO. As decisões operacionais O-01 a O-20, além de
-O-24 (WOFF2), O-26 (versões do logotipo) e O-27 (credencial SMTP), continuam ativas.
+L-01 a L-07 permanecem PENDENTE_DE_APROVAÇÃO. As decisões operacionais O-01 a O-20 continuam
+ativas, assim como **O-27** (credencial SMTP). **O-24 e O-26 foram encerradas em 2026-08-01**
+pelas respostas Q-12 (D-046) e Q-11 (D-045) — ver `40-stage-01-answers.md`.
+
 
 

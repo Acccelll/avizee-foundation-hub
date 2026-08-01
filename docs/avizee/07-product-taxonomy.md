@@ -114,9 +114,28 @@ Slugs sempre neutros e sem marcas de terceiros (R-05).
 - Segmento **não** vira menu nem hub: é filtro, selo e campo do produto (DEC-09).
 - Das 17 aplicações, **3 a 4** ganham página indexável; as demais permanecem como filtro,
   sinônimo de busca ou tópico editorial (DEC-07).
-- "Linhas complementares" é proposta para virar **filtro de segmento**, com os itens `BV`
-  distribuídos nas categorias funcionais (DEC-05) — altera a lista de 6 categorias e por isso
-  depende de aprovação.
 - A **família** é a unidade canônica de página; variação de medida não gera URL (DEC-06).
-- A classificação família → categoria → aplicação **não existe em nenhuma fonte** e é a
-  dependência DEP-01 da Etapa 3.
+- ~~DEC-05 (converter "Linhas complementares" em filtro)~~ — **REJEITADA pelo usuário em
+  2026-08-01**. A categoria permanece na lista de 6. Os itens `BV` continuam sob ela.
+
+## Etapa 2.1 — as 6 categorias permanecem, agora com famílias
+
+`USER_DECISION` (lista de categorias) + `LOVABLE_RECOMMENDATION` (famílias, **PENDENTE_DE_APROVAÇÃO**).
+
+A lista de 6 categorias **não foi alterada**. A Etapa 2.1 apenas a preencheu com 43 famílias
+estruturais, resolvendo o bloqueio DEP-01 como proposta. Detalhe em
+`62-family-taxonomy-proposal.md`.
+
+| Categoria | Famílias | SKUs |
+|---|---|---|
+| CAT-01 Vacinação e aplicação | 13 | 44 |
+| CAT-02 Pulverização e sistemas de fluido | 8 | 46 |
+| CAT-03 Pesagem, medição e controle | 9 | 26 |
+| CAT-04 Peças, reposição e automação | 2 | 31 |
+| CAT-05 Manejo, alimentação e biossegurança | 7 | 18 |
+| CAT-06 Linhas complementares | 4 | 9 |
+
+A classificação família → categoria → aplicação → segmento existe agora como **proposta** e
+cobre 100% dos SKUs em associação e 80,5% em classificação completa. DEP-01 só é encerrado
+com a aprovação de DECT-01 e DECT-10 (`71-taxonomy-decisions-for-approval.md`).
+

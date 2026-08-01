@@ -293,6 +293,7 @@ define arquitetura, contratos, modelo de dados, segurança, dependências e plan
 A construção dos componentes ocorre em etapa posterior à aprovação da arquitetura técnica.
 
 
-Todos os componentes listados são propostas conceituais `PENDENTE_DE_APROVAÇÃO` (R-10). A
+O inventário está **aprovado como referência** (DES-08 / D-059); os componentes em si permanecem
+especificações conceituais, não implementadas (R-10). A
 implementação em código segue este inventário apenas após aprovação explícita; nenhum componente
 aqui descrito autoriza, por si, alteração em `src/`.

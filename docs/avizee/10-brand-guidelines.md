@@ -57,7 +57,7 @@ Observações `TECHNICAL_INFERENCE`:
   design system não deve prever estilo itálico real, sob risco de o navegador sintetizar a inclinação.
 - **Não há WOFF/WOFF2**. Raciocínio: OTF/TTF são pesados para web; a conversão é necessária
   antes de qualquer uso em produção (decisão O-24).
-- **Montserrat Alternates é uma família distinta**, não um peso. Seu uso não foi aprovado.
+- **Montserrat Alternates é proibida na v1** (D-031). Família distinta, não um peso; nenhum uso aprovado.
   Ver L-08 em `13-open-decisions.md`.
 
 ## Elementos oficiais
@@ -90,6 +90,6 @@ Montserrat Alternates no lugar de Montserrat sem aprovação.
   Ver O-22 em `13-open-decisions.md`.
 - O manual **não define**: área de respiro, tamanho mínimo, versão horizontal, versão
   monocromática em preto sobre branco, nem grade de construção.
-- **DIV-06**: o prompt cita "grafismos inspirados na letra V"; o manual oficial apresenta como
-  grafismo o símbolo galo+engrenagem, sem elemento em "V". Divergência registrada, não reconciliada
+- **DIV-06 — RESOLVIDA (D-032)**: nenhum grafismo novo será criado. O vocabulário gráfico usa
+  apenas o **padrão secundário oficial**, sempre aplicado **separado do símbolo** galo+engrenagem
   (ver `03-source-inventory.md`).

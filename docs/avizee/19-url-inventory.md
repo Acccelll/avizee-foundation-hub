@@ -23,7 +23,7 @@ Origem: `CURRENT_SITE` — código-fonte recebido em 2026-08-01 (S-02).
 | `/contato` | `contato.php` | Formulário | `/contato` |
 | `/blog` | `blog.php` | Blog | `/conteudos` (Central de Conteúdos, D-024) — **301** |
 | `/produtos.php`, `/index.php`, etc. | — | Variantes com extensão | 301 para a versão sem `.php` |
-| `/assets/docs/catalogo.pdf` | PDF | Catálogo em PDF, exibido por `pdf-viewer.js` | Manter URL viva ou 301 para `/catalogo` |
+| `/assets/docs/catalogo.pdf` | PDF | Catálogo em PDF, exibido por `pdf-viewer.js` | **301 para `/produtos`** (D-038 — PDF aposentado) |
 | `/assets/img/products/<codigo>.jpg` | 72 imagens | Imagens de produto | Manter ou 301 para os novos caminhos |
 | `/send_email.php` | endpoint POST | Envio do formulário | Substituído por server function — **410/301** |
 
@@ -55,7 +55,7 @@ Não há `robots.txt` nem `sitemap.xml` no pacote recebido.
 1. `/blog` e `/blog.php` → `/conteudos` (301)
 2. Qualquer `/<rota>.php` → `/<rota>` (301) — mantém o comportamento atual do `.htaccess`
 3. `/produtos` → mantida (mesma URL, novo conteúdo)
-4. `/assets/docs/catalogo.pdf` → manter servindo o arquivo (é link direto, provavelmente indexado)
+4. `/assets/docs/catalogo.pdf` → **301 para `/produtos`** (D-038: PDF aposentado em favor do catálogo navegável)
 5. `/send_email.php` → 410 Gone
 6. Publicar `robots.txt` + `sitemap.xml` no lançamento
 

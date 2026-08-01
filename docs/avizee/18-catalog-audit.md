@@ -76,7 +76,7 @@ Isso indica duas numerações convivendo — ver DIV-13.
 
 ## Impacto crítico da regra R-05 (marcas de terceiros)
 
-`CATALOG` — **Risco alto, exige decisão antes de qualquer implementação.**
+`CATALOG` — Tratamento definido em **D-035** (renomear por função; marca só em campo interno).
 
 | Onde | Ocorrência | Alcance |
 |---|---|---|
@@ -91,7 +91,8 @@ Isso indica duas numerações convivendo — ver DIV-13.
 (nome, slug, alt, SEO, dados estruturados, WhatsApp, nome de arquivo). Um grupo inteiro chamado
 "SOCOREX" é, hoje, a maior violação estrutural do catálogo. Não existe caminho automático:
 renomear muda o reconhecimento do comprador (que busca pela marca), e manter viola a regra.
-Registrado como **L-12** em `13-open-decisions.md`.
+**Resolvido 2026-08-01 — D-035**: renomear por função (ex.: "seringa automática 0,5 ml"); a marca
+original vive apenas em campo interno (D-012). O grupo "SOCOREX" deixa de existir como nome público.
 
 Nota: "AVIZEE" é marca **própria** e permanece permitida (DIV-03).
 
@@ -112,5 +113,7 @@ a regra de prioridade entre eles continua PENDENTE_DE_APROVAÇÃO (L-11).
 
 ## Estado
 
-Auditoria **executada** (2026-08-01). Bloqueio O-21 encerrado. As divergências DIV-10 a DIV-16 e a
-decisão L-12 precisam ser resolvidas **antes** da modelagem do catálogo.
+Auditoria **executada** (2026-08-01). Bloqueio O-21 encerrado. DIV-10 a DIV-16 e L-12 foram
+resolvidas em 2026-08-01 (**D-035** e **D-036**): a modelagem usa UUID como chave, o código do
+fabricante é atributo, e cada conflito bloqueia somente o registro afetado (rascunho). Os 55 SKUs
+complementares entram na v1 quando os dados forem confiáveis (**D-037**).

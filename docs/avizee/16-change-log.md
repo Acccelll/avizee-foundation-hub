@@ -68,3 +68,41 @@ Formato: data · etapa · alteração · documentos afetados · origem.
 
 **Notas**: nenhuma decisão aprovada foi alterada. Nenhum código funcional implementado, nenhum
 layout alterado, nenhum asset copiado para o projeto.
+
+---
+
+## 2026-08-01 — Recebimento das fontes finais: catálogo, logotipo vetorial e código-fonte
+
+**Alteração**: análise dos três últimos anexos pendentes e encerramento de todos os bloqueios de material.
+
+**Origem**: `CATALOG`, `BRANDING`, `CURRENT_SITE`.
+
+**Fontes analisadas**:
+- Logotipo vetorial (SVG/PDF/PNG/JPG, versão colorida) → S-07 passa a `ANALISADO`
+- Código-fonte do site atual (ZIP, 174 arquivos, PHP + cPanel) → S-02 passa a `ANALISADO`
+- Catálogo em PDF, 11 páginas (complementar) + `catalogo.pdf` de 10 páginas dentro do site → S-03 passa a `ANALISADO`
+
+**Documentos alterados**:
+- `18-catalog-audit.md` — **criado**: auditoria completa do catálogo
+- `19-url-inventory.md` — **criado**: URLs, SEO atual e plano de 301
+- `03-source-inventory.md` — S-02/S-03/S-07 atualizados; seção de bloqueios substituída por "Estado das fontes"; DIV-05 e DIV-08 resolvidas; DIV-10 a DIV-17 adicionadas
+- `13-open-decisions.md` — O-21/O-22/O-25 **resolvidos**; O-26 e O-27 criados; L-12 a L-15 adicionadas
+- `12-risk-register.md` — RK-03/RK-06/RK-13 atualizados; RK-15, RK-16 e RK-17 criados
+- `17-image-inventory.md` — terceiro acervo (72 JPG do site) e cobertura real registrados
+- `README.md` — índice e estado atual atualizados
+
+**Achados relevantes**:
+- O catálogo real tem **~172 SKUs**, não 117: o PDF de 11 páginas traz **55 códigos exclusivos**
+  (conexões CN, peças PE, bombas BO, bateria BT) que não estão no site nem no CSV.
+- **Violação estrutural de R-05**: o grupo inteiro **"SOCOREX"** (15 SKUs) e os nomes `BV005`,
+  `LM001`, `LM002` carregam marca de terceiro. Registrado como L-12 / RK-16.
+- **Colisões de código** entre as fontes (AG016 duplicado, AG022 conflitante, PE006/VR010,
+  PE075/VR011, PE076/VR012, PE079/VR013). Registrado como L-13 / RK-17.
+- O site atual **não tem páginas de produto** nem banco de dados: PHP lendo um CSV, 5 URLs
+  públicas. O risco de perda de SEO cai substancialmente.
+- **Credencial SMTP em texto claro** no código-fonte recebido — RK-15 / O-27, ação imediata.
+- Logotipo vetorial confirma a paleta: símbolo `#690500`, wordmark `#b2592c`; lockup horizontal.
+
+**Notas**: nenhuma decisão aprovada foi alterada. Nenhum código funcional implementado, nenhum
+layout alterado. Únicos arquivos fora de `/docs`: os assets do logotipo guardados em
+`src/assets/brand/` (não referenciados por nenhuma tela).

@@ -33,7 +33,9 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `14-glossary.md` | Glossário de termos do projeto |
 | `15-acceptance-criteria.md` | Critérios de aceite da Etapa 0 e adiante |
 | `16-change-log.md` | Histórico de mudanças |
-| `17-image-inventory.md` | Inventário e triagem das 110 imagens de produto |
+| `17-image-inventory.md` | Inventário e triagem das imagens de produto (3 acervos) |
+| `18-catalog-audit.md` | Auditoria do catálogo: ~172 SKUs, divergências e cobertura |
+| `19-url-inventory.md` | URLs do site atual, SEO e plano de redirecionamento 301 |
 
 ## Etiquetas de origem (rastreabilidade)
 
@@ -56,8 +58,13 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 **Etapa 0 — Constituição do Projeto**: documentação criada. Nenhuma implementação, nenhum
 layout alterado, nenhum banco de dados criado.
 
-**Materiais recebidos e analisados** (2026-07-31): manual de branding (`avizee.pdf`),
-acervo de imagens (`Mercado Livre.zip`, 110 arquivos) e pacote tipográfico (`Montserrat.zip`).
+**Materiais recebidos e analisados**: manual de branding, acervo de imagens e tipografia
+(2026-07-31); **catálogo em PDF, logotipo vetorial e código-fonte do site atual** (2026-08-01).
+**Todas as 8 fontes previstas foram analisadas — não há mais bloqueio de material.**
 
-**Bloqueios ativos**: `catalogo.pdf`, os **assets vetoriais do logotipo** (SVG/AI/EPS) e o
-código-fonte do site atual ainda não foram recebidos. Ver `03-source-inventory.md` e O-21/O-22/O-25.
+**Pendências que bloqueiam a Etapa 1** (decisão, não material):
+- **L-12** — tratamento do grupo "SOCOREX" e demais nomes com marca de terceiro (R-05)
+- **L-13** — divergências de código DIV-10 a DIV-16 (chave única do catálogo)
+- **L-14** — entrada ou não dos 55 SKUs do catálogo complementar
+- **O-26** — versões complementares do logotipo (mono, negativa, símbolo, favicon)
+- **O-27 / RK-15** — revogar a credencial SMTP exposta no código-fonte atual

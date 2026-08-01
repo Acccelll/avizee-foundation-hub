@@ -92,10 +92,13 @@ layout alterado, nenhum banco de dados criado.
 **Resultado da Etapa 1**: 174 SKUs consolidados, 188 imagens inventariadas (nenhuma aprovada),
 10 divergências de alta severidade e 27 achados registrados. Ver `39-stage-01-executive-report.md`.
 
+**Respostas da Etapa 1** (2026-08-01): Q-01 a Q-15 respondidas em `40-stage-01-answers.md`,
+gerando as decisões **D-039 a D-051**. O-24 e O-26 encerradas.
+
 **Pendências que bloqueiam a Etapa 2**:
-- **O-27 / RK-15** — revogar a credencial SMTP **e** a chave do reCAPTCHA expostas (ação imediata)
-- Direito de uso das 188 imagens (Q-02)
-- Dados técnicos e segmento por SKU (Q-06, Q-07)
-- As 10 divergências de catálogo (Q-03, Q-04, Q-05)
-- **O-26** — versões complementares do logotipo · **O-24** — conversão WOFF2
-- Demais perguntas em `38-stage-01-open-questions.md`
+- **O-27 / RK-15 / Q-01** — revogação e rotação das credenciais SMTP e reCAPTCHA (não confirmada)
+- **Q-02** — origem e direito de uso do acervo de imagens
+- **Q-03** — medidas de **AG005** e **AG022** e o código correto da 2ª linha `AG016`
+- **Q-08** — confirmação dos dados de contato
+- **Q-13** — razão social, CNPJ, canal de privacidade e prazo de retenção
+- **L-01 a L-07** — recomendações ainda sem aprovação

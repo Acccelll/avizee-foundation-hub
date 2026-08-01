@@ -36,6 +36,7 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `17-image-inventory.md` | Inventário e triagem das imagens de produto (3 acervos) |
 | `18-catalog-audit.md` | Auditoria do catálogo: ~172 SKUs, divergências e cobertura |
 | `19-url-inventory.md` | URLs do site atual, SEO e plano de redirecionamento 301 |
+| `20-resolved-recommendations.md` | Textos normativos de L-08 a L-15 (D-031 a D-038) — encerram a Etapa 0 |
 
 ## Etiquetas de origem (rastreabilidade)
 

@@ -1,17 +1,22 @@
 # 71 — Decisões Taxonômicas para Aprovação
 
-Dados: **`data/taxonomy-decisions.csv`**. Todas com status **PENDENTE_DE_APROVAÇÃO**.
-Nenhuma foi executada.
+Dados: **`data/taxonomy-decisions.csv`**. Salvo indicação em contrário, todas com status
+**PENDENTE_DE_APROVAÇÃO** e não executadas.
+
+**Atualização 2026-08-01**: DECT-01 e DECT-10 foram respondidas pelo usuário. Ver
+`73-stage-03-start-blocker.md` §7 e as decisões D-052 a D-055 em `01-approved-decisions.md`.
 
 ---
 
-### DECT-01 — Aprovar o conjunto das 43 famílias propostas
-**Contexto**: `62-family-taxonomy-proposal.md`. 174 SKUs → 43 famílias em 6 categorias aprovadas.
-**Alternativas**: (A) aprovar o conjunto e tratar exceções pontualmente; (B) aprovar bloco a bloco
-(A a F); (C) rejeitar e reagrupar por prefixo.
-**Recomendação**: B — aprovação por bloco mantém o processo revisável.
-**Riscos**: C reintroduz o erro que esta etapa existe para evitar.
-**Impacto**: libera o desmembramento base para toda a Etapa 3.
+### DECT-01 — Aprovar o conjunto das 43 famílias propostas — **APROVADA PARCIALMENTE**
+**Status**: `APROVADA_PARCIALMENTE_31_FAMILIAS_97_SKUS` (2026-08-01, `USER_DECISION`).
+**Decisão**: aprovadas **31 famílias / 97 SKUs**, com nome funcional, associação de SKUs,
+categoria pública, segmento, aplicação principal e aplicações secundárias confirmadas. As
+**12 famílias restantes** (FAM-003, 010, 011, 012, 016 a 021, 032, 041) seguem pendentes.
+**As 43 famílias não foram aprovadas em bloco.** Lista nominal em `73` §7.1.
+**Contexto original**: `62-family-taxonomy-proposal.md`. 174 SKUs → 43 famílias em 6 categorias.
+**Impacto**: libera o desmembramento base para a Etapa 3 dentro do escopo aprovado.
+
 
 ### DECT-02 — Desmembramento do prefixo `AG` em 4 famílias
 **Contexto**: 26 SKUs `AG` → descartáveis, inox, quadradas, para aplicador.

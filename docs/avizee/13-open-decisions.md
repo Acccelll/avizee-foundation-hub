@@ -94,3 +94,9 @@ voltam à pauta.
 
 **DEP-01 — estado**: resolvido como **proposta** para 43 famílias (100% dos SKUs associados) e
 suficiente para 31 famílias / 97 SKUs. Encerramento formal depende de DECT-01 e DECT-10.
+
+## Bloqueio de início da Etapa 3
+
+Registrado em `73-stage-03-blocked.md` (2026-08-01). Desbloqueio mínimo: **DECT-01** (aprovar as
+43 famílias) + **DECT-10** (liberar a Etapa 3 com as 31 famílias prontas), mais a aprovação da
+renumeração dos documentos da Etapa 3 para `74`–`94`.

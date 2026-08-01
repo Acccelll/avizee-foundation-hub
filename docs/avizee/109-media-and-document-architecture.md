@@ -45,3 +45,22 @@ publicação, produto/família relacionados. Documento sem direito confirmado pe
 
 Exclusão lógica por padrão. Exclusão física apenas por ADMINISTRADOR, com registro de
 auditoria, após verificação de que nenhum registro publicado referencia o ativo.
+
+
+## Atualização 2026-08-01 — DT-12 aprovada e DT-13 condicionada
+
+**Storage (DT-12, aprovada)**: privado por padrão — área privada de origem, de quarentena e de
+documentos comprobatórios; área pública **somente** para derivados aprovados; URLs temporárias
+para ativos privados; políticas de acesso; validação de MIME; limite de tamanho; nomes internos
+seguros; metadados e direitos de uso. Mover ou copiar arquivo para a área pública exige
+aprovação. **Nome de pasta não é controle de segurança.**
+
+**Processamento de imagens (DT-13, condicionada a prova técnica)**: derivados gerados no upload;
+transformação pública sob demanda **não** é a arquitetura principal. WASM é a **primeira
+alternativa a validar**, não obrigação. A prova técnica mede compatibilidade com o runtime,
+memória, tempo, qualidade, formatos, tamanho, concorrência, falha, custo e comportamento em
+arquivos grandes. Derivados: thumbnail, card, galeria, WebP e fallback quando necessário.
+Se os critérios não forem atendidos, **interromper** e apresentar alternativas (pré-processamento
+no cliente, função dedicada compatível, serviço gerenciado, processamento assíncrono).
+**Proibido** mudar automaticamente para transformação sob demanda e **proibido** remover marcas
+por processamento automático.

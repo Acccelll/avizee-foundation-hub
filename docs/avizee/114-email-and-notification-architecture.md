@@ -42,3 +42,12 @@ necessidade de bounce/analytics justificar. Em qualquer caso, o outbox mantém a
 
 Em desenvolvimento e homologação, envio real desabilitado: mensagens gravadas no outbox com
 destino redirecionado para caixa de teste ou marcadas `SIMULATED`.
+
+
+## Atualização 2026-08-01 — DT-11 aprovada em princípio
+
+Interface desacoplada `EmailProvider` obrigatória. Requisitos: SPF, DKIM, DMARC, remetente no
+domínio da AviZee, reply-to adequado, templates versionados, retry, logs sanitizados, tratamento
+de bounce quando suportado, métricas de entrega e nenhum segredo no código.
+**As credenciais SMTP antigas não serão utilizadas.** Enquanto DEP-T1 estiver aberta, vale o
+provider nulo ou de desenvolvimento, sem envio externo.

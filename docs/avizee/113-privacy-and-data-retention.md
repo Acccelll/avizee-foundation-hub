@@ -51,3 +51,13 @@ histórica (integridade do catálogo e de cotações) · exclusão manual · ano
 
 Textos jurídicos (Política de Privacidade, Termos, Cookies) não podem ser finalizados sem os
 dados legais da empresa e revisão apropriada — DEP-T5.
+
+
+## Atualização 2026-08-01 — DT-16 aprovada condicionalmente
+
+Aprovado o **princípio** de política finita e configurável. **Prazos definitivos não aprovados**
+(DEP-T5, pendente de validação operacional e jurídica). Grupos separados: cotações, contatos,
+consentimentos, logs, auditoria, arquivos de importação, backups, imagens rejeitadas, documentos
+de direito e contas administrativas. Cada grupo declara finalidade, base legal, prazo, evento
+inicial, destino após o prazo, anonimização ou exclusão, exceções e responsável.
+**A exclusão automática em produção fica bloqueada até a definição dos prazos.**

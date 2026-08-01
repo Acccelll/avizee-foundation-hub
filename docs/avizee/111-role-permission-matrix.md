@@ -27,3 +27,13 @@ Detalhe por ação em `architecture/permissions.csv`. Princípio: menor privilé
 
 Regras: nenhum papel acumula publicação de conteúdo e gestão de usuários exceto ADMIN;
 AUTOR nunca publica; AUDITOR nunca escreve; COMERCIAL não altera catálogo nem conteúdo.
+
+
+## Atualização 2026-08-01 — DT-15 aprovada
+
+Sete papéis confirmados (ADMINISTRADOR, GESTOR_DE_CATÁLOGO, EDITOR, AUTOR, REVISOR_TÉCNICO,
+COMERCIAL, AUDITOR). **Permissões granulares são a fonte de autorização**; papéis são conjuntos
+iniciais. Ocultar botão não substitui autorização no backend. Menor privilégio; segregação entre
+edição, aprovação e publicação; alterações de papel auditadas; nenhum papel criado
+automaticamente com acesso total; service role nunca representa usuário administrativo.
+**A matriz detalhada será validada antes da criação dos usuários reais.**

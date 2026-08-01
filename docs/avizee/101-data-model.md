@@ -87,3 +87,12 @@ canonical, og_image_id, noindex) · `redirects` · `publication_history`.
 - Unicidade: `products.slug`, `product_families.slug`, `articles.slug`, `quotations.protocolo`,
   `product_codes(code, type)` com detecção de conflito.
 - Índices: FKs, `status`, `published_at`, `slug`, GIN em `tsvector` e `pg_trgm`.
+
+
+## Atualização 2026-08-01 — condições aprovadas em DT-02
+
+RLS habilitada em toda tabela exposta, com política **deny-by-default**; migrations versionadas;
+constraints, chaves estrangeiras e índices no banco; auditoria; separação física entre dados
+públicos e administrativos; service role restrita ao backend e **nunca** enviada ao navegador;
+testes automatizados das políticas. **RLS não substitui a autorização nas funções de servidor.**
+SKU permanece atributo — **não** é chave primária (D-034).

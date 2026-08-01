@@ -76,3 +76,18 @@ artigo ↔ família"**.
 A matriz requisito → decisão → entidade → componente → API → página → teste → risco →
 incremento está em `127-technical-traceability-matrix.md`, complementada por
 `architecture/technical-decisions.csv` e `architecture/risk-controls.csv`.
+
+
+## Atualização 2026-08-01 — aprovação das DT com ajustes
+
+| Decisão | Origem | Documento afetado | Evidência |
+|---|---|---|---|
+| DT-01 aprovada condicionalmente | §1 da decisão do cliente | `architecture/stack-verification.md` | Verificação objetiva da stack: TanStack Start confirmado |
+| DT-02, DT-05, DT-06, DT-07, DT-08, DT-09, DT-12, DT-14, DT-15, DT-17, DT-20, DT-21 aprovadas | §§2–21 | `101`, `105`, `106`, `107`, `109`, `110`, `111`, `115`, `124` | Condições registradas em cada documento |
+| DT-03, DT-04 aprovadas com ajuste | §§3–4 | `098`, `100` | Matriz de renderização por tipo de página; separação server functions × server routes |
+| DT-10 aprovada com controles | §10 | `108` | Schema versionado, allowlist, sanitização |
+| DT-11 aprovada em princípio | §11 | `114` | Interface `EmailProvider`; fornecedor pendente (DEP-T1) |
+| DT-13 aprovada condicionada a prova técnica | §13 | `109` | Prova técnica de WASM obrigatória antes da adoção |
+| DT-16 aprovada condicionalmente | §16 | `113` | Prazos pendentes (DEP-T5); exclusão automática bloqueada |
+| DT-18 aprovada com alteração estrutural | §18 | `118` | Homologação em instância de backend separada |
+| DT-19 aprovada com complemento | §19 | `120` | Backup do storage separado do backup do banco |

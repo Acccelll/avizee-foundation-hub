@@ -82,3 +82,17 @@ responsável e status, registrados em `128-stage-04-risks.md` e
 Destaques: **RK-42** (credenciais antigas ainda válidas) permanece **Aberto e crítico** —
 só encerra com evidência de revogação (Q-01/O-27). **RK-41** (backup não testado) e
 **RK-49** (`pg_cron` não confirmado no plano) bloqueiam critérios do Incremento 1 e 8.
+
+
+## Atualização 2026-08-01 — riscos decorrentes da aprovação das DT
+
+| ID | Risco | Origem | Tratamento |
+|---|---|---|---|
+| RK-51 | Homologação sem instância de backend separada leva ao uso indevido da base de produção como preview | DT-18 com alteração estrutural | Proibição expressa; se a separação exigir projeto/instância adicional, documentar custo, sincronização de migrations e procedimento de promoção antes de criar o ambiente |
+| RK-52 | Backup do banco tratado como cobertura total, deixando objetos de storage sem proteção | DT-19 com complemento | Inventário de arquivos, backup de públicos, privados, metadados e documentos; teste de restauração e validação de correspondência banco × arquivo |
+| RK-53 | Processamento WASM de imagens não atender ao runtime, memória, tempo ou qualidade | DT-13 condicionada | Prova técnica com critérios medidos; em caso de falha, interromper e apresentar alternativas — proibida a mudança automática para transformação sob demanda |
+| RK-54 | Publicação no painel não refletida no site por dependência de novo deploy | DT-04 com ajuste | Invalidação explícita de cache em publicação, despublicação, mudança de slug, metadados, família, produto e artigo |
+| RK-55 | Operação privilegiada executada sem AAL2 | DT-14 | Verificação de AAL no servidor para usuários, permissões, publicação, importação, rollback, aprovação de imagem, resolução de conflito, configuração e documentos sensíveis |
+
+RK-33 (dependência do ambiente Lovable) permanece **aceito como risco controlado** por decisão
+expressa em DT-01.

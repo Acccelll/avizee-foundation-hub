@@ -45,3 +45,16 @@
 Ver `architecture/api-contracts-provisional.csv`. Regra transversal: nenhuma resposta pública
 inclui `internal_brand`, `supplier`, `original_code`, `cost`, notas administrativas ou aliases
 internos — nem como campo nulo.
+
+
+## Atualização 2026-08-01 — ajustes aprovados
+
+- **Backend (DT-03, com ajuste)**: `createServerFn` **apenas** para chamadas internas tipadas;
+  **server routes** para todo endpoint HTTP externo, webhook ou consumidor externo.
+  `api/public/*` é contrato público controlado; `api/admin/*` (ou equivalente) é contrato
+  administrativo protegido. Toda função privada valida autenticação, papel, permissão e contexto
+  **no servidor**; proteção de rota no frontend não é barreira de segurança. Proibido enviar
+  objetos completos do banco ao frontend para ocultar campos apenas na interface.
+- **Renderização (DT-04, com ajuste)**: sem regra global única; vale a matriz por tipo de página
+  em `100`.
+- **Stack (DT-01)**: confirmada por evidência; alternativas descartadas.

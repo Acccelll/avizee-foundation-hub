@@ -39,3 +39,12 @@ Numéricos usam faixa; enums usam múltipla escolha; texto não é filtrável.
 Criar/alterar definição é ação auditada, restrita a ADMINISTRADOR e GESTOR_DE_CATÁLOGO.
 Unidade nunca é texto livre — vem de tabela `units`. Alteração de `value_type` de uma
 definição em uso exige migração explícita com relatório de impacto.
+
+
+## Atualização 2026-08-01 — DT-05 aprovada
+
+Modelo híbrido confirmado: dicionário, definições tipadas, valores por família, valores por SKU,
+unidades controladas, herança, sobrescrita explícita, marcação de uso futuro em filtro e
+validação. Proibidos JSON inteiramente livre, tabela larga, EAV sem tipagem e especificações
+arbitrárias. **Alterar uma definição já utilizada exige apresentar o impacto antes da
+confirmação.**

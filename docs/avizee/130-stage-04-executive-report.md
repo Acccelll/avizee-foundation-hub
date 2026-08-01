@@ -69,3 +69,19 @@ registrada e as áreas dependentes permanecem bloqueadas.
 DEP-T1 provedor de e-mail (O-05/O-06) · DEP-T2 `pg_cron` no plano · DEP-T3 política de buckets
 públicos · **DEP-T4 evidência de revogação das credenciais antigas (Q-01/O-27, RK-42)** ·
 DEP-T5 dados legais para textos LGPD · DECT pendentes da taxonomia (12 famílias, 34 SKUs).
+
+
+## Atualização 2026-08-01 — resultado da aprovação
+
+**ETAPA 4 APROVADA COM AJUSTES.** Estados finais: aprovadas DT-02, DT-05, DT-06, DT-07, DT-08,
+DT-09, DT-12, DT-14, DT-15, DT-17, DT-20, DT-21; aprovadas com ajuste DT-03 e DT-04; aprovada com
+controles DT-10; aprovada em princípio DT-11; aprovadas condicionalmente DT-01 e DT-16; aprovada
+condicionada a prova técnica DT-13; aprovada com alteração estrutural DT-18; aprovada com
+complemento DT-19.
+
+Condição de DT-01 satisfeita: `architecture/stack-verification.md` confirma TanStack Start com
+SSR nativo. Permanecem abertas DEP-T1, DEP-T3 e DEP-T5 — não bloqueiam a fundação técnica com
+providers de desenvolvimento, mas bloqueiam a ativação em produção.
+
+**ETAPA 5 LIBERADA CONDICIONALMENTE À VERIFICAÇÃO DA STACK** (verificação concluída). A liberação
+não autoriza alteração do layout aprovado, ativação de produção nem de serviços reais.

@@ -336,3 +336,19 @@ backend, nenhum formulário ativo, nenhum produto importado, nenhuma alteração
 - **Nada implementado**: `src/` intocado, nenhuma tabela criada, nenhum produto importado,
   nenhuma rota publicada, nenhum domínio, nenhum segredo armazenado, nenhum e-mail ou cotação
   enviada, nenhum serviço externo ativado, nenhum layout alterado.
+
+
+## 2026-08-01 — Etapa 4 aprovada com ajustes; Etapa 5 liberada condicionalmente
+
+- **Verificação de stack (DT-01)** executada e registrada em
+  `architecture/stack-verification.md`: TanStack Start com SSR nativo confirmado; nenhuma
+  migração ou recriação de projeto.
+- **DT-01 a DT-21 deliberadas**: estados finais em `129` e em
+  `architecture/technical-decisions.csv`.
+- **Atualizados**: `01`, `04`, `12`, `13`, `16`, `95`, `96`, `97`, `98`, `100`, `101`, `105`,
+  `106`, `107`, `108`, `109`, `110`, `111`, `113`, `114`, `115`, `118`, `120`, `124`, `129`,
+  `130`, `README.md`, `architecture/technical-decisions.csv`.
+- **Registrados D-063 a D-065** em `01-approved-decisions.md`.
+- **Novos riscos** RK-51 a RK-55 em `12-risk-register.md`.
+- **Pendências mantidas**: DEP-T1, DEP-T3, DEP-T5.
+- **Nada ativado**: nenhuma produção, nenhum serviço externo real, nenhum layout alterado.

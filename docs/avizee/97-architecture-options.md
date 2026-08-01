@@ -69,3 +69,11 @@ Três alternativas tecnicamente viáveis. Nenhuma aprovada — DT-01.
 internos (requisito R-05), custo proporcional a ~170 SKUs, operação por equipe pequena e
 reversibilidade preservada (dados em Postgres padrão, exportáveis).
 Status: `PENDENTE_DE_APROVAÇÃO` (DT-01).
+
+
+## Atualização 2026-08-01 — decisão do cliente
+
+A Alternativa A (TanStack Start + Lovable Cloud) foi **aprovada condicionalmente** e a condição
+foi satisfeita: o repositório já é TanStack Start (`architecture/stack-verification.md`).
+As alternativas B (CMS headless) e C (backend separado) ficam **descartadas para a v1** e não
+podem ser adotadas silenciosamente.

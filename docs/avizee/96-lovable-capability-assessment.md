@@ -63,3 +63,11 @@
 DEP-T1 provedor de e-mail (O-05/O-06) · DEP-T2 disponibilidade de `pg_cron` no plano contratado ·
 DEP-T3 política de buckets públicos do workspace · DEP-T4 evidência de revogação das credenciais
 antigas (Q-01/O-27) · DEP-T5 dados legais da empresa para textos LGPD.
+
+
+## Atualização 2026-08-01 — verificação objetiva exigida por DT-01
+
+A avaliação de capacidades passa a ter como base a verificação factual do repositório registrada
+em `architecture/stack-verification.md`: TanStack Start com SSR nativo, Vite, roteamento por
+arquivos e runtime Worker. Lovable Cloud ainda não ativado. O processamento de imagens permanece
+sujeito à prova técnica exigida por DT-13.

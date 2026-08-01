@@ -1,0 +1,44 @@
+family_id,nome_familia_provisorio,segmento_principal,segmentos_secundarios,categoria_aprovada,destaque_na_home,aparece_no_filtro_de_segmento,tipo_de_evidencia,base_da_heranca,nivel_de_confianca,status
+FAM-001,Agulhas descartáveis,Avicultura,,Vacinação e aplicação,SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-002,Agulhas inox reutilizáveis,Avicultura,,Vacinação e aplicação,SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-003,Agulhas quadradas,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,MEDIA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-004,Agulhas para aplicador de vacina,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-005,Seringas automáticas de fluxo contínuo,Avicultura,,Vacinação e aplicação,SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-006,Seringas automáticas duplas,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-007,Vacinadoras com porta-frasco,Avicultura,,Vacinação e aplicação,SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-008,Kits de reparo para seringas automáticas,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-009,Seringas descartáveis,Avicultura,,Vacinação e aplicação,SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-010,Seringas automáticas de precisão (linha importada),Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-011,Cilindros graduados para seringas automáticas,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-012,Componentes e reposição para seringas automáticas,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,MEDIA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-013,Equipos para aplicação e infusão,Avicultura,,Vacinação e aplicação,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,MEDIA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-014,Bicos pulverizadores,Avicultura,,Pulverização e sistemas de fluido,SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,MEDIA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-015,Tubulações e mangueiras,Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-016,Conexões em L,Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-017,Conexões retas e passa-muros,Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-018,Conexões em T,Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-019,Conexões não identificadas,Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-020,Sistemas de pulverização (carrinho e galpão),Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-021,Bombas,Avicultura,,Pulverização e sistemas de fluido,NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-022,Balanças suspensas e dinamômetros para aves,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-023,Balanças eletrônicas para aves,Avicultura,,"Pesagem, medição e controle",SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-024,Balanças para ovos,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-025,Balanças de precisão de bolso,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-026,Termômetros,Avicultura,,"Pesagem, medição e controle",SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-027,Medidores e testes de qualidade da água,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-028,Testes de qualidade do ambiente,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-029,Equipamentos para ovoscopia,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,MEDIA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-030,Câmeras termográficas,Avicultura,,"Pesagem, medição e controle",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,MEDIA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-031,Lâminas para debicagem,Avicultura,,"Peças, reposição e automação",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-032,Peças e componentes — não identificados,Avicultura,,"Peças, reposição e automação",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,BAIXA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-033,Bebedouros pendulares para aves,Avicultura,,"Manejo, alimentação e biossegurança",SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-034,Comedouros para aves,Avicultura,,"Manejo, alimentação e biossegurança",SIM,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-035,Niples para bebedouro,Avicultura,,"Manejo, alimentação e biossegurança",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-036,Armadilhas para roedores,Avicultura,,"Manejo, alimentação e biossegurança",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-037,Adesivos e colas para captura,Avicultura,,"Manejo, alimentação e biossegurança",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-038,Contadores manuais para aves,Avicultura,,"Manejo, alimentação e biossegurança",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-039,Consumíveis de assepsia e apoio,Avicultura,,"Manejo, alimentação e biossegurança",NAO,SIM,SOURCE_DERIVED,D-042 heranca de segmento,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-040,Conjunto para aplicação de tuberculina,Bovinocultura,,Linhas complementares,NAO,SIM,SOURCE_EXPLICIT,categoria_original=BOVINOCULTURA,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-041,Monitores e analisadores portáteis,Bovinocultura,,Linhas complementares,NAO,SIM,SOURCE_EXPLICIT,categoria_original=BOVINOCULTURA,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-042,Seringas para insulina,Bovinocultura,,Linhas complementares,NAO,SIM,SOURCE_EXPLICIT,categoria_original=BOVINOCULTURA,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO
+FAM-043,Imãs intra-ruminais,Bovinocultura,,Linhas complementares,NAO,SIM,SOURCE_EXPLICIT,categoria_original=BOVINOCULTURA,ALTA,PROPOSTA_PENDENTE_DE_APROVAÇÃO

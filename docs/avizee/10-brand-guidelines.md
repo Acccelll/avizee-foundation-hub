@@ -93,3 +93,17 @@ Montserrat Alternates no lugar de Montserrat sem aprovação.
 - **DIV-06 — RESOLVIDA (D-032)**: nenhum grafismo novo será criado. O vocabulário gráfico usa
   apenas o **padrão secundário oficial**, sempre aplicado **separado do símbolo** galo+engrenagem
   (ver `03-source-inventory.md`).
+
+
+## Cores funcionais fora da marca (D-056) — limite normativo
+
+A paleta AviZee continua sendo **quatro cores**: Preto `#151514`, Vinho `#690500`,
+Terracota `#b2592c`, Creme `#fffaed`.
+
+O verde funcional `#1f6b3c` (sucesso) e o azul funcional `#12557e` (informação), aprovados em
+DES-02/D-056, **não integram a marca**. Eles existem apenas como sinalização de interface e são
+proibidos em: banner institucional, hero, capa editorial, peça promocional, CTA, ênfase
+institucional, grafismo e qualquer uso decorativo. Nunca substituem vinho ou terracota.
+
+Tipografia: **Montserrat convencional é a única família da v1** (D-057). Nenhuma família
+monoespaçada é carregada, inclusive para códigos de SKU. Montserrat Alternates permanece proibida.

@@ -12,4 +12,4 @@ Sobre,/sobre,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Institucional,Sem promessa co
 Contato,/contato,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Institucional,O-05 e O-06 abertas
 Paginas legais,/privacidade e /termos,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,LGPD,Texto final depende de revisao juridica
 404,/404,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Generico,Nao expor registro bloqueado
-Painel administrativo,/admin/*,APROVADA,SIM,Catalogo, familias, SKUs, bloqueios, imagens, pendencias, conteudos, cotacoes, importacoes, SEO, usuarios, logs,Usuarios e permissoes conceituais ate O-08 e O-09
+Painel administrativo,/admin/*,APROVADA,SIM,"Catalogo, familias, SKUs, bloqueios, imagens, pendencias, conteudos, cotacoes, importacoes, SEO, usuarios, logs",Usuarios e permissoes conceituais ate O-08 e O-09

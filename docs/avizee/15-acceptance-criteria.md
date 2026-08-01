@@ -37,3 +37,39 @@ Critérios e situação em `39-stage-01-executive-report.md` (15 critérios, tod
 5. Paleta oficial e Montserrat como únicas fontes de estilo.
 6. Avicultura com destaque superior aos segmentos complementares.
 7. Toda decisão nova registrada em `01` e em `16`.
+
+## Etapa 1 — Auditoria e Inventário: **CONCLUÍDA** (2026-08-01)
+
+| Critério | Status |
+|---|---|
+| Todas as fontes auditadas (9) | Atendido |
+| Matriz provisória de produtos (174 SKUs) | Atendido — `26` e `data/products-provisional.csv` |
+| Inventário de imagens (188) com status | Atendido — `27` e `data/images.csv` |
+| Duplicidades e divergências sem reconciliação silenciosa | Atendido — `36` |
+| Achados de segurança, SEO, acessibilidade e performance | Atendido — `33` a `35`, `31` |
+| Perguntas abertas registradas e respondidas | Atendido — `38` e `40` (D-039 a D-051) |
+| Nenhuma implementação, layout ou banco de dados | Atendido |
+
+## Etapa 2 — Arquitetura de Informação: **CONCLUÍDA COMO PROPOSTA** (2026-08-01)
+
+| Critério de aceite | Status |
+|---|---|
+| Documentação anterior consultada | Atendido — `41` §1 |
+| Sitemap público completo | Atendido — `42`, `data/sitemap.csv` |
+| Arquitetura administrativa conceitual | Atendido — `43` |
+| Menu desktop e mobile como proposta | Atendido — `44` §1 e §2 |
+| Rodapé estruturado, com `DADO_PENDENTE` | Atendido — `44` §3 |
+| Tipos de página definidos | Atendido — `47` (PT-01 a PT-17) |
+| Jornadas principais mapeadas | Atendido — `53` (J-1 a J-9) |
+| Fluxo de cotação mapeado | Atendido — `50` |
+| Busca especificada | Atendido — `49` |
+| Filtros classificados | Atendido — `49` §5 e §6 |
+| Produtos, soluções e conteúdos relacionados | Atendido — `52` |
+| URLs propostas | Atendido — `45` |
+| Redirecionamentos mapeados | Atendido — `46`, `data/url-migrations.csv` |
+| Estratégia de indexação documentada | Atendido — `55` |
+| V1 priorizada | Atendido — `57` |
+| Decisões pendentes separadas | Atendido — `58` (DEC-01 a DEC-18) |
+| Recomendações não aplicadas | Atendido |
+| Nenhum layout, código, produto importado ou normalização definitiva | Atendido |
+| Documentação permanente atualizada | Atendido — 10 documentos |

@@ -1,17 +1,22 @@
 # 71 — Decisões Taxonômicas para Aprovação
 
-Dados: **`data/taxonomy-decisions.csv`**. Todas com status **PENDENTE_DE_APROVAÇÃO**.
-Nenhuma foi executada.
+Dados: **`data/taxonomy-decisions.csv`**. Salvo indicação em contrário, todas com status
+**PENDENTE_DE_APROVAÇÃO** e não executadas.
+
+**Atualização 2026-08-01**: DECT-01 e DECT-10 foram respondidas pelo usuário. Ver
+`73-stage-03-start-blocker.md` §7 e as decisões D-052 a D-055 em `01-approved-decisions.md`.
 
 ---
 
-### DECT-01 — Aprovar o conjunto das 43 famílias propostas
-**Contexto**: `62-family-taxonomy-proposal.md`. 174 SKUs → 43 famílias em 6 categorias aprovadas.
-**Alternativas**: (A) aprovar o conjunto e tratar exceções pontualmente; (B) aprovar bloco a bloco
-(A a F); (C) rejeitar e reagrupar por prefixo.
-**Recomendação**: B — aprovação por bloco mantém o processo revisável.
-**Riscos**: C reintroduz o erro que esta etapa existe para evitar.
-**Impacto**: libera o desmembramento base para toda a Etapa 3.
+### DECT-01 — Aprovar o conjunto das 43 famílias propostas — **APROVADA PARCIALMENTE**
+**Status**: `APROVADA_PARCIALMENTE_31_FAMILIAS_97_SKUS` (2026-08-01, `USER_DECISION`).
+**Decisão**: aprovadas **31 famílias / 97 SKUs**, com nome funcional, associação de SKUs,
+categoria pública, segmento, aplicação principal e aplicações secundárias confirmadas. As
+**12 famílias restantes** (FAM-003, 010, 011, 012, 016 a 021, 032, 041) seguem pendentes.
+**As 43 famílias não foram aprovadas em bloco.** Lista nominal em `73` §7.1.
+**Contexto original**: `62-family-taxonomy-proposal.md`. 174 SKUs → 43 famílias em 6 categorias.
+**Impacto**: libera o desmembramento base para a Etapa 3 dentro do escopo aprovado.
+
 
 ### DECT-02 — Desmembramento do prefixo `AG` em 4 famílias
 **Contexto**: 26 SKUs `AG` → descartáveis, inox, quadradas, para aplicador.
@@ -57,12 +62,14 @@ comprimido dentro da linha de pulverização. **Dependências**: DECT-08.
 **Alternativas**: (A) CAT-05 junto de bebedouros; (B) CAT-04 como peça de reposição.
 **Recomendação**: A, pela jornada de compra compartilhada.
 
-### DECT-10 — Liberação parcial da Etapa 3 com 31 famílias
-**Contexto**: `70` §7.
-**Alternativas**: (A) liberar a Etapa 3 com as 31 famílias prontas, mantendo 12 em fila;
-(B) aguardar 100% de cobertura; (C) liberar tudo, com dados hipotéticos.
-**Recomendação**: A. **Riscos**: B trava o projeto indefinidamente em DECT-08, que depende de
-material externo; C reintroduz DEP-01. **Requer aprovação expressa** (§23).
+### DECT-10 — Liberação parcial da Etapa 3 com 31 famílias — **APROVADA COM ESCOPO CONTROLADO**
+**Status**: `APROVADA_COM_ESCOPO_CONTROLADO` (2026-08-01, `USER_DECISION`).
+**Decisão**: a Etapa 3 está liberada para criar o design system e todos os tipos de página,
+usando como conteúdo real apenas as 31 famílias, os 97 SKUs, as 6 categorias públicas, as 7
+categorias editoriais, as aplicações aprovadas e as imagens aprovadas ou o placeholder oficial.
+Estados genéricos de conteúdo bloqueado são permitidos desde que não revelem produtos pendentes.
+**Contexto**: `70` §7. **Detalhe integral**: `73-stage-03-start-blocker.md` §7.2.
+
 
 ### DECT-11 — Nomes públicos funcionais dos 16 SKUs com marca de terceiro
 **Contexto**: FAM-010, FAM-011, FAM-012, FAM-041. Os nomes de **família** já são neutros; falta o

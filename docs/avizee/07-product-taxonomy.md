@@ -139,3 +139,15 @@ A classificação família → categoria → aplicação → segmento existe ago
 cobre 100% dos SKUs em associação e 80,5% em classificação completa. DEP-01 só é encerrado
 com a aprovação de DECT-01 e DECT-10 (`71-taxonomy-decisions-for-approval.md`).
 
+
+## Estado de aprovação — 2026-08-01
+
+`USER_DECISION` (D-052). A classificação está **aprovada parcialmente**:
+
+- **31 famílias / 97 SKUs aprovados** — nome funcional, SKUs, categoria, segmento e aplicações.
+- **12 famílias / 77 SKUs pendentes** — FAM-003, 010, 011, 012, 016, 017, 018, 019, 020, 021,
+  032, 041.
+
+A lista nominal está em `73-stage-03-start-blocker.md` §7.1 e o status por família em
+`data/stage-03-readiness.csv` (coluna `status_aprovacao`). As 6 categorias públicas permanecem
+inalteradas e DEC-05 continua **NÃO APLICADA**.

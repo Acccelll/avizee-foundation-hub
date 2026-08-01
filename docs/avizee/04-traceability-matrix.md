@@ -46,3 +46,14 @@
 **Correção de T-24**: a redação anterior citava "3 categorias" por antecipar DEC-18. Com DEC-18
 rejeitada, T-24 passa a ler **"Central de Conteúdos com as 7 categorias aprovadas e relação
 artigo ↔ família"**.
+
+## Etapa 3 — rastreabilidade
+
+| ID | Origem | Requisito derivado | Tipo | Onde impacta | Etapa | Status |
+|---|---|---|---|---|---|---|
+| T-31 | D-052 (DECT-01 parcial) | Taxonomia estável de 31 famílias / 97 SKUs como única base de conteúdo real dos protótipos | USER_DECISION | Catálogo, protótipos | Etapa 3 | **Aprovado** |
+| T-32 | D-053 (DECT-10 controlado) | Design system completo e todos os tipos de página, sem taxonomia provisória | USER_DECISION | Interface | Etapa 3 | **Aprovado** |
+| T-33 | D-054 | Fila de normalização para 34 + 16 SKUs e 7 conflitos, sem exclusão definitiva | USER_DECISION | Painel administrativo | Etapas 3 e 4 | **Aprovado** |
+| T-34 | D-055 | Numeração `74`–`94` (Etapa 3) e `95`–`130` (Etapa 4) | USER_DECISION | Documentação | Todas | **Aprovado** |
+| T-35 | L-01 · `76`/`78` | Cores funcionais derivadas da paleta oficial | LOVABLE_RECOMMENDATION | Formulários, estados | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+| T-36 | `82`/`83` | Inventário de componentes e estados de conteúdo bloqueado que não revelam produtos pendentes | LOVABLE_RECOMMENDATION | Design system | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |

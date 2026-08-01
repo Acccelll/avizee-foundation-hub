@@ -1,0 +1,17 @@
+decision_id,titulo,documento,alternativas,recomendacao,impacto,riscos,dependencias,status
+DES-01,Conjunto de tokens de design,76,A: aprovar conjunto|B: so tokens de marca|C: valores ad hoc,A,base de todo o design system,C reintroduz cor fora da marca,,PENDENTE_DE_APROVACAO
+DES-02,Cores funcionais derivadas da paleta (L-01),76 s4 / 78,A: derivar da paleta|B: 2 cores fora da paleta|C: sem cor de feedback,A,estados de formulario e mensagens,erro e marca compartilham o Vinho,L-01,PENDENTE_DE_APROVACAO
+DES-03,Sistema tipografico,77,A: aprovar escala|B: reduzir pesos,A,legibilidade e performance,pesos demais penalizam carregamento,D-046,PENDENTE_DE_APROVACAO
+DES-04,Sistema de cor contraste e combinacoes proibidas,78,A: aprovar,A,conformidade WCAG AA,combinacao fora da tabela vira defeito,,PENDENTE_DE_APROVACAO
+DES-05,Grid espacamento e layout,79,A: aprovar,A,consistencia de layout,,,PENDENTE_DE_APROVACAO
+DES-06,Iconografia e linguagem grafica,80,A: lucide-react|B: conjunto ilustrado proprio,A,icones de interface,B exige producao e manutencao,D-032,PENDENTE_DE_APROVACAO
+DES-07,Especificacao de imagem e placeholder,81,A: aprovar,A,percepcao de completude do catalogo,placeholder visivel em parte relevante do catalogo,D-041 D-050,PENDENTE_DE_APROVACAO
+DES-08,Inventario de componentes,82,A: aprovar,A,escopo de construcao da Etapa 4,,,PENDENTE_DE_APROVACAO
+DES-09,Estados de componente e conteudo bloqueado,83,A: aprovar,A,fila de normalizacao visivel sem vazar dado,RK-28 vazamento de codigo ou nome bloqueado,D-053 D-054,PENDENTE_DE_APROVACAO
+DES-10,Wireframes e prototipos das paginas publicas,84 / 85,A: aprovar por tipo de pagina|B: aprovar em bloco,A,todas as paginas publicas,B mascara erro individual,D-052,PENDENTE_DE_APROVACAO
+DES-11,Prototipos da interface administrativa,86,A: conjunto|B: reduzir a catalogo e cotacoes,A,painel v1,papeis e permissoes indefinidos,O-08 O-09,PENDENTE_DE_APROVACAO
+DES-12,Comportamento responsivo,87,A: aprovar,A,uso em campo e no celular,tabela de variacoes em tela pequena,,PENDENTE_DE_APROVACAO
+DES-13,Acessibilidade WCAG 2.1 AA obrigatoria,88,A: AA obrigatorio|B: AA nao bloqueante,A,conformidade e alcance,B repete a divida do site atual,34,PENDENTE_DE_APROVACAO
+DES-14,Diretrizes de microcopy,89,A: aprovar,A,voz da interface e textos proibidos,,O-10,PENDENTE_DE_APROVACAO
+DES-15,Checklist de qualidade visual como criterio de aceite,91,A: aprovar,A,governanca visual,sem isso a revisao vira informal,,PENDENTE_DE_APROVACAO
+DES-16,Aplicacao dos tokens em src/styles.css na Etapa 4,76,A: aprovar a regra agora|B: decidir na Etapa 4,A,implementacao futura,aprovar nao inicia a Etapa 4,,PENDENTE_DE_APROVACAO

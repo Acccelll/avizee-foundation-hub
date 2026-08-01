@@ -1,44 +1,44 @@
-family_id,nome_familia_provisorio,categoria_aprovada,quantidade_de_skus,skus_bloqueados,tem_nome_funcional,tem_categoria,tem_aplicacao,tem_segmento,tem_atributos,politica_de_imagem,skus_com_imagem,nivel_de_confianca,readiness,bloqueio,acao_para_liberar
-FAM-001,Agulhas descartáveis,Vacinação e aplicação,10,AG005,SIM,SIM,SIM,SIM,SIM,placeholder D-033,6,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-002,Agulhas inox reutilizáveis,Vacinação e aplicação,12,AG016|AG019|AG022,SIM,SIM,SIM,SIM,SIM,placeholder D-033,2,ALTA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta
-FAM-003,Agulhas quadradas,Vacinação e aplicação,3,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,1,MEDIA,BLOCKED_BY_CODE,BLOCKED_BY_CODE,resolver identidade de codigo
-FAM-004,Agulhas para aplicador de vacina,Vacinação e aplicação,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-005,Seringas automáticas de fluxo contínuo,Vacinação e aplicação,2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-006,Seringas automáticas duplas,Vacinação e aplicação,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-007,Vacinadoras com porta-frasco,Vacinação e aplicação,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-008,Kits de reparo para seringas automáticas,Vacinação e aplicação,2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-009,Seringas descartáveis,Vacinação e aplicação,5,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-010,Seringas automáticas de precisão (linha importada),Vacinação e aplicação,4,SR003|SR005|SR006|SR012,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035)
-FAM-011,Cilindros graduados para seringas automáticas,Vacinação e aplicação,3,SR001|SR008|SR009,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035)
-FAM-012,Componentes e reposição para seringas automáticas,Vacinação e aplicação,9,SR002|SR004|SR007|SR010|SR011|SR025|SR026|SR027,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),9,MEDIA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035)
-FAM-013,Equipos para aplicação e infusão,Vacinação e aplicação,2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta
-FAM-014,Bicos pulverizadores,Pulverização e sistemas de fluido,8,BI002|BI003|BI004|BI005|BI006|BI999,SIM,SIM,SIM,SIM,SIM,placeholder D-033,2,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta
-FAM-015,Tubulações e mangueiras,Pulverização e sistemas de fluido,5,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),5,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-016,Conexões em L,Pulverização e sistemas de fluido,9,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-017,Conexões retas e passa-muros,Pulverização e sistemas de fluido,9,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-018,Conexões em T,Pulverização e sistemas de fluido,1,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-019,Conexões não identificadas,Pulverização e sistemas de fluido,3,,NAO,SIM,NAO,SIM,NAO,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-020,Sistemas de pulverização (carrinho e galpão),Pulverização e sistemas de fluido,2,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-021,Bombas,Pulverização e sistemas de fluido,3,,NAO,SIM,NAO,SIM,NAO,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-022,Balanças suspensas e dinamômetros para aves,"Pesagem, medição e controle",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-023,Balanças eletrônicas para aves,"Pesagem, medição e controle",5,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),5,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-024,Balanças para ovos,"Pesagem, medição e controle",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-025,Balanças de precisão de bolso,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-026,Termômetros,"Pesagem, medição e controle",4,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-027,Medidores e testes de qualidade da água,"Pesagem, medição e controle",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-028,Testes de qualidade do ambiente,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-029,Equipamentos para ovoscopia,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta
-FAM-030,Câmeras termográficas,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta
-FAM-031,Lâminas para debicagem,"Peças, reposição e automação",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta
-FAM-032,Peças e componentes — não identificados,"Peças, reposição e automação",28,,NAO,SIM,NAO,SIM,SIM,placeholder D-033,4,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte
-FAM-033,Bebedouros pendulares para aves,"Manejo, alimentação e biossegurança",4,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-034,Comedouros para aves,"Manejo, alimentação e biossegurança",4,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-035,Niples para bebedouro,"Manejo, alimentação e biossegurança",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-036,Armadilhas para roedores,"Manejo, alimentação e biossegurança",2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-037,Adesivos e colas para captura,"Manejo, alimentação e biossegurança",2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-038,Contadores manuais para aves,"Manejo, alimentação e biossegurança",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-039,Consumíveis de assepsia e apoio,"Manejo, alimentação e biossegurança",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-040,Conjunto para aplicação de tuberculina,Linhas complementares,4,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-041,Monitores e analisadores portáteis,Linhas complementares,3,BV005,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035)
-FAM-042,Seringas para insulina,Linhas complementares,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
-FAM-043,Imãs intra-ruminais,Linhas complementares,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta
+family_id,nome_familia_provisorio,categoria_aprovada,quantidade_de_skus,skus_bloqueados,tem_nome_funcional,tem_categoria,tem_aplicacao,tem_segmento,tem_atributos,politica_de_imagem,skus_com_imagem,nivel_de_confianca,readiness,bloqueio,acao_para_liberar,status_aprovacao
+FAM-001,Agulhas descartáveis,Vacinação e aplicação,10,AG005,SIM,SIM,SIM,SIM,SIM,placeholder D-033,6,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-002,Agulhas inox reutilizáveis,Vacinação e aplicação,12,AG016|AG019|AG022,SIM,SIM,SIM,SIM,SIM,placeholder D-033,2,ALTA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-003,Agulhas quadradas,Vacinação e aplicação,3,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,1,MEDIA,BLOCKED_BY_CODE,BLOCKED_BY_CODE,resolver identidade de codigo,PENDENTE_DE_APROVACAO
+FAM-004,Agulhas para aplicador de vacina,Vacinação e aplicação,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-005,Seringas automáticas de fluxo contínuo,Vacinação e aplicação,2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-006,Seringas automáticas duplas,Vacinação e aplicação,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-007,Vacinadoras com porta-frasco,Vacinação e aplicação,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-008,Kits de reparo para seringas automáticas,Vacinação e aplicação,2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-009,Seringas descartáveis,Vacinação e aplicação,5,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-010,Seringas automáticas de precisão (linha importada),Vacinação e aplicação,4,SR003|SR005|SR006|SR012,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035),PENDENTE_DE_APROVACAO
+FAM-011,Cilindros graduados para seringas automáticas,Vacinação e aplicação,3,SR001|SR008|SR009,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035),PENDENTE_DE_APROVACAO
+FAM-012,Componentes e reposição para seringas automáticas,Vacinação e aplicação,9,SR002|SR004|SR007|SR010|SR011|SR025|SR026|SR027,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),9,MEDIA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035),PENDENTE_DE_APROVACAO
+FAM-013,Equipos para aplicação e infusão,Vacinação e aplicação,2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-014,Bicos pulverizadores,Pulverização e sistemas de fluido,8,BI002|BI003|BI004|BI005|BI006|BI999,SIM,SIM,SIM,SIM,SIM,placeholder D-033,2,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-015,Tubulações e mangueiras,Pulverização e sistemas de fluido,5,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),5,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-016,Conexões em L,Pulverização e sistemas de fluido,9,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-017,Conexões retas e passa-muros,Pulverização e sistemas de fluido,9,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-018,Conexões em T,Pulverização e sistemas de fluido,1,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-019,Conexões não identificadas,Pulverização e sistemas de fluido,3,,NAO,SIM,NAO,SIM,NAO,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-020,Sistemas de pulverização (carrinho e galpão),Pulverização e sistemas de fluido,2,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-021,Bombas,Pulverização e sistemas de fluido,3,,NAO,SIM,NAO,SIM,NAO,placeholder D-033,0,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-022,Balanças suspensas e dinamômetros para aves,"Pesagem, medição e controle",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-023,Balanças eletrônicas para aves,"Pesagem, medição e controle",5,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),5,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-024,Balanças para ovos,"Pesagem, medição e controle",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-025,Balanças de precisão de bolso,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-026,Termômetros,"Pesagem, medição e controle",4,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-027,Medidores e testes de qualidade da água,"Pesagem, medição e controle",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-028,Testes de qualidade do ambiente,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-029,Equipamentos para ovoscopia,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-030,Câmeras termográficas,"Pesagem, medição e controle",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,MEDIA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-031,Lâminas para debicagem,"Peças, reposição e automação",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_WITH_PENDING_CONTENT,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-032,Peças e componentes — não identificados,"Peças, reposição e automação",28,,NAO,SIM,NAO,SIM,SIM,placeholder D-033,4,BAIXA,BLOCKED_BY_MISSING_DATA,BLOCKED_BY_MISSING_DATA,obter nome/funcao na fonte,PENDENTE_DE_APROVACAO
+FAM-033,Bebedouros pendulares para aves,"Manejo, alimentação e biossegurança",4,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-034,Comedouros para aves,"Manejo, alimentação e biossegurança",4,,SIM,SIM,SIM,SIM,SIM,placeholder D-033,1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-035,Niples para bebedouro,"Manejo, alimentação e biossegurança",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-036,Armadilhas para roedores,"Manejo, alimentação e biossegurança",2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-037,Adesivos e colas para captura,"Manejo, alimentação e biossegurança",2,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),2,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-038,Contadores manuais para aves,"Manejo, alimentação e biossegurança",1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-039,Consumíveis de assepsia e apoio,"Manejo, alimentação e biossegurança",3,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-040,Conjunto para aplicação de tuberculina,Linhas complementares,4,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),4,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-041,Monitores e analisadores portáteis,Linhas complementares,3,BV005,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),3,ALTA,BLOCKED_BY_IDENTITY,BLOCKED_BY_IDENTITY,aprovar renomeacao funcional (R-05/D-035),PENDENTE_DE_APROVACAO
+FAM-042,Seringas para insulina,Linhas complementares,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL
+FAM-043,Imãs intra-ruminais,Linhas complementares,1,,SIM,SIM,SIM,SIM,SIM,imagem por SKU (quarentena),1,ALTA,READY_FOR_STAGE_3,,aprovar classificacao proposta,APROVADA_DECT-01_PARCIAL

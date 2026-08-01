@@ -95,8 +95,21 @@ voltam à pauta.
 **DEP-01 — estado**: resolvido como **proposta** para 43 famílias (100% dos SKUs associados) e
 suficiente para 31 famílias / 97 SKUs. Encerramento formal depende de DECT-01 e DECT-10.
 
-## Bloqueio de início da Etapa 3
+## Bloqueio de início da Etapa 3 — **ENCERRADO em 2026-08-01**
 
-Registrado em `73-stage-03-blocked.md` (2026-08-01). Desbloqueio mínimo: **DECT-01** (aprovar as
-43 famílias) + **DECT-10** (liberar a Etapa 3 com as 31 famílias prontas), mais a aprovação da
-renumeração dos documentos da Etapa 3 para `74`–`94`.
+Registrado em `73-stage-03-start-blocker.md`. Encerrado por decisão do usuário:
+**DECT-01 aprovada parcialmente** (31 famílias / 97 SKUs), **DECT-10 aprovada com escopo
+controlado** e renumeração aprovada (Etapa 3 = `74`–`94`; Etapa 4 = `95`–`130`).
+Decisões D-052 a D-055 em `01-approved-decisions.md`.
+
+**Continuam abertas** as demais decisões taxonômicas: **DECT-02 a DECT-09 e DECT-11 a DECT-14**,
+além dos 7 casos individuais de `71`. B-02 (34 SKUs sem identidade) e B-03 (16 SKUs sem nome
+público) estão **contidos, não encerrados** — os registros permanecem em fila de normalização
+(D-054), sem publicação.
+
+## Decisões abertas da Etapa 3
+
+As propostas visuais da Etapa 3 (documentos `74`–`94`) estão consolidadas em
+`93-stage-03-decisions-for-approval.md`, todas `PENDENTE_DE_APROVAÇÃO`. A recomendação **L-01**
+(cores funcionais) é endereçada por `76-design-tokens.md` e `78-color-and-contrast.md` e
+permanece sem aprovação.

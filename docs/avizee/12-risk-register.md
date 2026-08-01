@@ -47,3 +47,17 @@ segmento propostos. O risco concentra-se nos 34 SKUs de RK-23.
 
 **RK-16 — atualização**: permanece **Ativo**. Os nomes de **família** já são neutros
 (FAM-010 a FAM-012, FAM-041); falta o nome público por SKU (DECT-11).
+
+## Riscos da Etapa 3
+
+| ID | Risco | Prob. | Impacto | Mitigação | Status |
+|---|---|---|---|---|---|
+| RK-27 | Protótipo com dado provisório ser confundido com conteúdo aprovado | Média | Alto | Rota `/prototipo` não indexável, marcação explícita de conteúdo provisório, uso restrito às 31 famílias (D-053) | Aberto |
+| RK-28 | Estados genéricos de "SKU bloqueado" revelarem indiretamente produtos pendentes | Baixa | Alto | `83` proíbe exibir código, nome ou imagem do registro bloqueado; o estado é genérico e sem identificador | Mitigado por especificação |
+| RK-29 | Cores funcionais improvisadas fora da paleta oficial | Média | Médio | L-01 endereçada por `76`/`78` com proposta derivada da paleta, `PENDENTE_DE_APROVAÇÃO`; nenhum valor aplicado sem aprovação | Aberto |
+| RK-30 | Design system precisar de retrabalho quando as 12 famílias pendentes entrarem | Baixa | Médio | Componentes desenhados por tipo de dado, não por família; as 31 famílias já exercitam todos os tipos de página | Mitigado |
+
+**RK-25 — atualização**: **mitigado**. A aprovação em bloco das 43 famílias não ocorreu; D-052
+aprovou apenas as 31 prontas.
+**RK-26 — atualização**: **encerrado**. DECT-10 liberou a Etapa 3 sem aguardar 100% de cobertura.
+**RK-23 e RK-16**: permanecem **Ativos** — B-02 e B-03 estão contidos, não encerrados.

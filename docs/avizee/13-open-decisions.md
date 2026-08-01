@@ -31,11 +31,14 @@ Somente decisões **não resolvidas**. Decisões aprovadas não são reabertas a
 ## Bloqueios de material
 | ID | Pendência | Impacto |
 |---|---|---|
-| O-21 | Reenvio de `catalogo.pdf` | **ATIVO** — bloqueia a auditoria do catálogo (Etapa 1) |
-| O-22 | Assets **vetoriais** do logotipo (SVG/AI/EPS) — o manual em PDF foi recebido, os vetores não | **ATIVO** — bloqueia aplicação do logotipo em qualidade de produção e o placeholder oficial |
+| O-21 | ~~Reenvio de `catalogo.pdf`~~ | **RESOLVIDO 2026-08-01** — dois catálogos recebidos (10 e 11 páginas); auditoria em `18-catalog-audit.md` |
+| O-22 | ~~Assets vetoriais do logotipo~~ | **RESOLVIDO 2026-08-01** — SVG/PDF/PNG/JPG da versão colorida recebidos e guardados em `src/assets/brand/` |
 | O-23 | ~~Reenvio de `Mercado Livre.zip`~~ | **RESOLVIDO 2026-07-31** — 110 imagens inventariadas em `17-image-inventory.md` |
 | O-24 | Arquivos Montserrat recebidos (OTF/TTF, sem itálico, sem WOFF2). Definir: converter para WOFF2 e self-hospedar, ou usar CDN | Pendente — afeta performance e consistência tipográfica |
-| O-25 | Reenvio do código-fonte do site atual | **ATIVO** — bloqueia o inventário de URLs e o plano de 301 |
+| O-25 | ~~Reenvio do código-fonte do site atual~~ | **RESOLVIDO 2026-08-01** — inventário de URLs e plano de 301 em `19-url-inventory.md` |
+| O-26 | Versões complementares do logotipo: monocromática, negativa (sobre preto/vinho), símbolo isolado e favicon | **ATIVO** — só a versão colorida foi recebida; sem elas o cabeçalho escuro, o favicon e o placeholder oficial ficam sem asset correto |
+| O-27 | Revogar a credencial SMTP exposta em `send_email.php` e definir o provedor de e-mail da v1 | **ATIVO** — ver RK-15; ação de segurança imediata do lado do usuário |
+
 
 ## Recomendações do Lovable — Status: PENDENTE_DE_APROVAÇÃO
 Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
@@ -52,5 +55,9 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 | L-08 | Definir se **Montserrat Alternates** (recebida no pacote) tem algum uso aprovado, ou se fica proibida | O pacote traz 11 pesos da variante decorativa; sem regra, ela acaba sendo usada por engano |
 | L-09 | Resolver DIV-06: o "grafismo em V" é um elemento novo a criar, ou a menção se referia ao símbolo galo+engrenagem do manual? | Impacta diretamente o design system e todo o vocabulário gráfico do site |
 | L-10 | Definir a política para os ~11 códigos com marca de terceiro visível: nova fotografia, placeholder oficial, ou remoção do item da v1 | Hoje esses SKUs não podem ser publicados com imagem (R-05) e não há caminho definido |
-| L-11 | Confirmar se os dois conjuntos de imagens (PNG raiz vs. JPG `A/`) são versões do mesmo acervo e qual prevalece | 30+ códigos existem nos dois; sem regra, o risco é publicar a versão pior |
+| L-11 | Confirmar se os dois conjuntos de imagens (PNG raiz vs. JPG `A/`) são versões do mesmo acervo e qual prevalece | 30+ códigos existem nos dois; sem regra, o risco é publicar a versão pior. Agora há um **terceiro** conjunto: as 72 JPG do site atual |
+| L-12 | **Definir o tratamento público do grupo "SOCOREX" (15 SKUs) e dos nomes com marca de terceiro (`BV005`, `LM001`, `LM002`, códigos de bico)** | Maior violação estrutural de R-05. Opções: renomear por função ("seringa automática 0,5 ml"), manter a marca apenas em campo interno de busca, ou remover os itens da v1 |
+| L-13 | Resolver as divergências de código DIV-10 a DIV-16 (AG016 duplicado, AG022 conflitante, PE/VR duplicados, AG025 vs. AG026, nomes de balança) | Bloqueia a modelagem do catálogo: código é chave única (RK-04) |
+| L-14 | Decidir se os 55 SKUs exclusivos do catálogo complementar (conexões, peças, bombas, bateria) entram na v1 | Aumenta o catálogo de 117 para ~172 SKUs e cria 4 famílias novas sem nenhuma imagem no site |
+| L-15 | Definir o destino do PDF do catálogo (`/assets/docs/catalogo.pdf`), hoje indexável e desatualizado | Manter, substituir por versão nova ou aposentar em favor do catálogo navegável |
 

@@ -57,3 +57,15 @@ artigo ↔ família"**.
 | T-34 | D-055 | Numeração `74`–`94` (Etapa 3) e `95`–`130` (Etapa 4) | USER_DECISION | Documentação | Todas | **Aprovado** |
 | T-35 | L-01 · `76`/`78` | Cores funcionais derivadas da paleta oficial | LOVABLE_RECOMMENDATION | Formulários, estados | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
 | T-36 | `82`/`83` | Inventário de componentes e estados de conteúdo bloqueado que não revelam produtos pendentes | LOVABLE_RECOMMENDATION | Design system | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+
+
+## Rastreabilidade da aprovação da Etapa 3 (2026-08-01)
+
+| Decisão | Origem | Documentos afetados | Verificação |
+|---|---|---|---|
+| D-056 (DES-02, encerra L-01) | Usuário | `76` §4 e §4.1 · `78` §5 e §10 · `10` · `88` · `design/tokens.json` · `design/color-contrast-matrix.csv` | Matriz de contraste com razões calculadas; restrições de uso normativas |
+| D-057 (DES-03) | Usuário | `77` §5 · `76` §5 · `design/tokens.json` | Nenhuma família adicional declarada em nenhum token |
+| D-058 (DES-13) | Usuário | `88` · `91` · `15` · `82` · `94` | Meta WCAG 2.2 AA em todos os documentos de aceite |
+| D-059 (DES-08) | Usuário | `82` §9 · `93` | Redação de escopo corrigida |
+| D-060 (demais DES) | Usuário | `93` quadro de vereditos · `data/stage-03-decisions.csv` | Status por decisão |
+| D-061 (liberação da Etapa 4) | Usuário | `93` · `94` · `README.md` | Lista explícita do que não está autorizado |

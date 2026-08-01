@@ -1,0 +1,17 @@
+foreground_token,foreground_hex,background_token,background_hex,ratio,wcag_22_aa_text,wcag_22_aa_large,wcag_22_aa_ui,uso_permitido
+--avizee-black,#151514,--avizee-cream,#fffaed,17.53,PASS,PASS,PASS,Texto de qualquer tamanho sobre fundo base
+--avizee-wine,#690500,--avizee-cream,#fffaed,12.42,PASS,PASS,PASS,Texto e enfase institucional sobre fundo base
+--avizee-cream,#fffaed,--avizee-black,#151514,17.53,PASS,PASS,PASS,Texto sobre fundo institucional escuro
+--avizee-cream,#fffaed,--avizee-wine,#690500,12.42,PASS,PASS,PASS,Texto sobre superficie vinho
+--color-feedback-success,#1f6b3c,--avizee-cream,#fffaed,6.24,PASS,PASS,PASS,Texto e icone de sucesso sobre fundo base
+--color-feedback-success,#1f6b3c,--color-feedback-success-bg,#e8f3ec,5.72,PASS,PASS,PASS,Texto e icone dentro do bloco de sucesso
+--avizee-black,#151514,--color-feedback-success-bg,#e8f3ec,16.06,PASS,PASS,PASS,Corpo da mensagem de sucesso
+--avizee-cream,#fffaed,--color-feedback-success,#1f6b3c,6.24,PASS,PASS,PASS,Texto sobre selo solido de sucesso
+--color-feedback-info,#12557e,--avizee-cream,#fffaed,7.67,PASS,PASS,PASS,Texto e icone de informacao sobre fundo base
+--color-feedback-info,#12557e,--color-feedback-info-bg,#eaf2f8,7.06,PASS,PASS,PASS,Texto e icone dentro do bloco informativo
+--avizee-black,#151514,--color-feedback-info-bg,#eaf2f8,16.15,PASS,PASS,PASS,Corpo da mensagem informativa
+--avizee-cream,#fffaed,--color-feedback-info,#12557e,7.67,PASS,PASS,PASS,Texto sobre selo solido de informacao
+--color-feedback-error,#690500,--avizee-cream,#fffaed,12.42,PASS,PASS,PASS,Mensagem de erro sobre fundo base
+--color-feedback-warning,#b2592c,--avizee-cream,#fffaed,4.60,PASS,PASS,PASS,Texto de aviso sobre fundo base; nunca na mesma area visual de CTA terracota
+--color-feedback-success,#1f6b3c,--color-bg-inverse,#151514,2.81,FAIL,FAIL,FAIL,PROIBIDO - verde funcional sobre fundo escuro
+--color-feedback-info,#12557e,--color-bg-inverse,#151514,2.29,FAIL,FAIL,FAIL,PROIBIDO - azul funcional sobre fundo escuro

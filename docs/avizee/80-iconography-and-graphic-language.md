@@ -1,6 +1,6 @@
 # 80 — Iconografia e Linguagem Gráfica
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Documento normativo derivado de `10-brand-guidelines.md`
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Documento normativo derivado de `10-brand-guidelines.md`
 (paleta, logotipo, tipografia) e `02-non-negotiable-rules.md` (R-06, R-07). Nenhum ícone,
 símbolo ou grafismo novo é criado por este documento: apenas se organiza o uso do que já é
 oficial ou de bibliotecas neutras de terceiros aprovadas para uso técnico (não de marca).

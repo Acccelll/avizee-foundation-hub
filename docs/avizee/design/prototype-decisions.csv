@@ -1,0 +1,15 @@
+page_type,rota_prevista,status_aprovacao,revisao_visual_obrigatoria,escopo_de_conteudo,observacao
+Home,/,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,31 familias / 97 SKUs aprovados,Lista de Cotacao como conversao principal; WhatsApp secundario
+Produtos,/produtos,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,6 categorias publicas,Sem preco; sem marca de terceiro
+Categoria,/produtos/{categoria},APROVADA_PARA_ARQUITETURA_TECNICA,SIM,6 categorias publicas,12 familias pendentes nao aparecem como conteudo real
+Solucao,/solucoes/{aplicacao},APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Aplicacoes aprovadas,Depende de DEC-07 / DECT-12
+Familia,/produtos/{categoria}/{familia},APROVADA_PARA_ARQUITETURA_TECNICA,SIM,31 familias aprovadas,Tabela de variacoes exige tratamento mobile proprio (DES-12)
+Produto individual,/produtos/{categoria}/{familia}/{sku},APROVADA_PARA_ARQUITETURA_TECNICA,SIM,97 SKUs aprovados,Somente quando aplicavel
+Lista de Cotacao,/cotacao,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Conversao principal,Sem envio real de formulario nesta fase
+Central de Conteudos,/conteudos,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,7 categorias editoriais,Nenhuma reducao de categorias (DEC-18 rejeitada)
+Artigo,/conteudos/{slug},APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Conteudo com fonte confiavel,Conteudo sem fonte nao e inventado
+Sobre,/sobre,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Institucional,Sem promessa comercial nao confirmada
+Contato,/contato,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Institucional,O-05 e O-06 abertas
+Paginas legais,/privacidade e /termos,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,LGPD,Texto final depende de revisao juridica
+404,/404,APROVADA_PARA_ARQUITETURA_TECNICA,SIM,Generico,Nao expor registro bloqueado
+Painel administrativo,/admin/*,APROVADA,SIM,"Catalogo, familias, SKUs, bloqueios, imagens, pendencias, conteudos, cotacoes, importacoes, SEO, usuarios, logs",Usuarios e permissoes conceituais ate O-08 e O-09

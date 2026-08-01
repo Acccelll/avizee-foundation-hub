@@ -61,3 +61,13 @@ segmento propostos. O risco concentra-se nos 34 SKUs de RK-23.
 aprovou apenas as 31 prontas.
 **RK-26 — atualização**: **encerrado**. DECT-10 liberou a Etapa 3 sem aguardar 100% de cobertura.
 **RK-23 e RK-16**: permanecem **Ativos** — B-02 e B-03 estão contidos, não encerrados.
+
+
+## Atualização 2026-08-01 — aprovação da Etapa 3
+
+| ID | Risco | Estado |
+|---|---|---|
+| RK-29 | Cor funcional improvisada fora da paleta | **Mitigado** — D-056 fixa verde `#1f6b3c` e azul `#12557e` com valores exatos e uso restrito; escolha ad hoc na implementação é defeito |
+| RK-31 | Verde/azul funcionais vazarem para peça institucional ou promocional, diluindo a marca | **Aberto — controlado** por `10-brand-guidelines.md` e `76` §4.1; verificado no checklist de `91` |
+| RK-32 | Implementação alterar silenciosamente estrutura ou aparência aprovada | **Aberto — controlado** por DES-10: revisão visual obrigatória por tipo de página antes da implementação |
+| RK-28 | Estado de "item em revisão" vazar registro bloqueado | **Controle reforçado** — proibido expor código conflitante, nome interno, marca de terceiro, motivo administrativo, fornecedor, referência original ou identidade não validada |

@@ -1,6 +1,6 @@
 # 81 — Especificação de Imagem e Placeholder
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Detalha em nível de implementação as regras de
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Detalha em nível de implementação as regras de
 `09-image-policy.md`, os tipos de página de `47-page-type-definitions.md` e as regras não
 negociáveis R-05 e R-09 de `02-non-negotiable-rules.md`. Aplica-se apenas às 31 famílias e
 97 SKUs aprovados; nenhuma imagem de família ou SKU fora do escopo aprovado é referenciada.

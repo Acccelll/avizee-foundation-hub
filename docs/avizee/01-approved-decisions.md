@@ -92,3 +92,20 @@ A Etapa 2.1 **não gerou nenhuma decisão aprovada de classificação**. As 14 p
 **Limite expresso**: D-052 e D-053 liberam o trabalho. Não aprovam antecipadamente tokens,
 componentes, wireframes, protótipos nem direção visual — todos dependem de aprovação ao fim da
 Etapa 3. A Etapa 4 não é iniciada automaticamente.
+
+
+## Etapa 3 — aprovação das decisões DES em 2026-08-01
+
+**ETAPA 3 APROVADA COM AJUSTES. ETAPA 4 LIBERADA EXCLUSIVAMENTE PARA PLANEJAMENTO TÉCNICO.**
+
+| ID | Decisão | Origem | Data |
+|---|---|---|---|
+| D-056 | **DES-02 aprovada com alteração — cores funcionais restritas** (encerra **L-01**): erro = Vinho `#690500` quando contraste e contexto forem adequados; aviso = Terracota `#b2592c`; **sucesso = verde funcional `#1f6b3c`**; **informação = azul funcional `#12557e`**. Preto **não** é cor de sucesso e terracota **não** cobre aviso e informação ao mesmo tempo. Verde e azul **não integram a paleta da marca**, não aparecem em banner institucional, não são promocionais, não substituem vinho/terracota em CTA, não são decoração e ficam restritos a feedback, alerta, estado e indicador funcional, com tokens semânticos próprios e contraste validado | USER_DECISION | 2026-08-01 |
+| D-057 | **DES-03 aprovada com alteração — SKU em Montserrat**: proibida a introdução de segunda família monoespaçada. Código de SKU em Montserrat 500/600, espaçamento controlado, `font-variant-numeric: tabular-nums` quando suportado, diferenciação por peso, tamanho, fundo ou borda. Alternates permanece proibida (D-031) | USER_DECISION | 2026-08-01 |
+| D-058 | **DES-13 aprovada com correção — WCAG 2.2 AA obrigatória**, sem regressão para 2.1. Acessibilidade é gate de qualidade, não objetivo opcional | USER_DECISION | 2026-08-01 |
+| D-059 | **DES-08 aprovada com correção de escopo**: `82-component-inventory.md` é **inventário de referência para a arquitetura técnica e para a futura etapa de implementação**. A Etapa 4 **não constrói componentes**; define arquitetura, contratos, modelo de dados, segurança, dependências e plano de implementação | USER_DECISION | 2026-08-01 |
+| D-060 | **DES-01, DES-05, DES-07, DES-09, DES-11, DES-12, DES-14 e DES-15 aprovadas**; **DES-04** aprovada com ajuste decorrente de D-056; **DES-06** aprovada conceitualmente (Lucide como referência; instalar `lucide-react` só após validação técnica na Etapa 4); **DES-10** aprovada para arquitetura técnica com **revisão visual obrigatória por tipo de página** antes da implementação; **DES-16** aprovada com ajuste técnico (o caminho físico da fonte única de tokens é definido na Etapa 4) | USER_DECISION | 2026-08-01 |
+| D-061 | **Etapa 4 liberada exclusivamente para planejamento e arquitetura técnica** (documentos `95`–`130`). **Não autoriza**: implementação produtiva, alteração do site atual, aplicação de tokens no código, codificação de componentes, criação de rotas, publicação de páginas, conexão com banco de produção, envio real de formulários ou cotações, criação de banco de produção e ativação de serviços externos | USER_DECISION | 2026-08-01 |
+
+**Limite expresso**: a aprovação considera os princípios resumidos em `93`. Ela **não valida
+silenciosamente** valores HSL, cálculos de contraste ou detalhes visuais não apresentados no chat.

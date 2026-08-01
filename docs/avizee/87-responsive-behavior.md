@@ -1,6 +1,6 @@
 # 87 — Comportamento Responsivo
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Este documento é proposta de comportamento responsivo do site
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Este documento é proposta de comportamento responsivo do site
 institucional e catálogo B2B da AviZee. Não altera código em `src/`; nenhuma implementação é
 autorizada a partir deste documento isoladamente. Baseia-se nos wireframes de
 `84-public-page-wireframes.md`, no inventário de `82-component-inventory.md`, nos estados de

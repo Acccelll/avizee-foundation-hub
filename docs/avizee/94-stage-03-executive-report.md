@@ -1,6 +1,13 @@
 # 94 — Etapa 3: Relatório Executivo
 
-**Data**: 2026-08-01 · **Status**: **CONCLUÍDA como proposta** · **Nada implementado**
+**Data**: 2026-08-01 · **Status**: **ETAPA 3 APROVADA COM AJUSTES** · **Nada implementado**
+
+**ETAPA 4 LIBERADA EXCLUSIVAMENTE PARA PLANEJAMENTO TÉCNICO** (documentos `95`–`130`).
+Vereditos DES-01 a DES-16 e condicionantes em `93-stage-03-decisions-for-approval.md`.
+Correções aplicadas na aprovação: cores funcionais de sucesso (verde `#1f6b3c`) e informação
+(azul `#12557e`) restritas a feedback; SKU permanece em Montserrat, sem fonte monoespaçada;
+acessibilidade obrigatória em **WCAG 2.2 AA**; a Etapa 4 é de arquitetura técnica e **não**
+constrói componentes.
 
 ---
 
@@ -45,7 +52,7 @@ qualquer marca de terceiro. B-02 e B-03 seguem **contidos, não encerrados**.
    (D-054) sem revelar nem simular os registros pendentes (`83`).
 6. **Conversão é a Lista de Cotação.** Nenhum preço, carrinho ou checkout aparece em nenhuma
    tela; o WhatsApp permanece secundário (`85`, `89`).
-7. **WCAG 2.1 AA como obrigação**, corrigindo os achados de `34` — foco visível, contraste,
+7. **WCAG 2.2 AA como obrigação**, corrigindo os achados de `34` — foco visível, contraste,
    navegação por teclado, formulários rotulados e tabela de variações acessível (`88`).
 
 ## 4. Riscos registrados
@@ -54,7 +61,7 @@ qualquer marca de terceiro. B-02 e B-03 seguem **contidos, não encerrados**.
 |---|---|---|
 | RK-27 | Protótipo confundido com conteúdo aprovado | Aberto — mitigado por marcação explícita e rota não indexável |
 | RK-28 | Estado de "item em revisão" vazar produto pendente | Mitigado por especificação em `83` |
-| RK-29 | Cor funcional improvisada fora da paleta | Aberto até DES-02 |
+| RK-29 | Cor funcional improvisada fora da paleta | **Mitigado** — DES-02/D-056 fixa verde `#1f6b3c` e azul `#12557e` com uso restrito; valores ad hoc proibidos |
 | RK-30 | Retrabalho quando as 12 famílias entrarem | Mitigado — componentes desenhados por tipo de dado |
 
 RK-25 mitigado e RK-26 encerrado pela forma da aprovação parcial. RK-16 e RK-23 seguem ativos.
@@ -73,13 +80,14 @@ codificado, nenhuma rota, nenhum formulário funcional, nenhum banco de dados, n
 importado, nenhum redirecionamento, nenhuma publicação. O site atual permanece exatamente como
 está.
 
-## 7. O que depende de aprovação
+## 7. Situação das decisões
 
-**16 decisões DES-01 a DES-16**, todas `PENDENTE_DE_APROVAÇÃO`, em
-`93-stage-03-decisions-for-approval.md` e `data/stage-03-decisions.csv`.
+**16 decisões DES-01 a DES-16 aprovadas** em 2026-08-01, quatro com alteração (DES-02, DES-03,
+DES-08, DES-13) e três com condicionante de escopo (DES-06, DES-10, DES-16). Vereditos completos
+em `93-stage-03-decisions-for-approval.md` e `data/stage-03-decisions.csv`.
 
-Caminho mínimo: manifestar-se sobre **DES-01** (tokens), **DES-02** (cores funcionais) e
-**DES-10** (protótipos públicos, preferencialmente por tipo de página).
+Condicionante permanente: **revisão visual por tipo de página** antes de qualquer implementação
+visual produtiva; nenhuma mudança estrutural ou visual pode ser feita silenciosamente.
 
 ## 8. Pendências herdadas que continuam abertas
 
@@ -89,5 +97,6 @@ DECT-02 a DECT-09 e DECT-11 a DECT-14 · DEP-09.
 
 ## 9. Próximo passo
 
-A **Etapa 4 não foi iniciada** e não será iniciada automaticamente (D-055). Seu intervalo
-documental está reservado em `95`–`130`. Ela depende da aprovação das decisões desta etapa.
+A **Etapa 4 está liberada exclusivamente para planejamento e arquitetura técnica**, documentos
+`95`–`130`. Ela não aplica tokens, não codifica componentes, não cria rotas, não cria banco de
+produção, não ativa serviços externos, não publica páginas e não altera o site atual.

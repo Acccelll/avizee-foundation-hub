@@ -1,6 +1,6 @@
 # 78 — Sistema de Cor e Contraste
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Este documento detalha o uso da cor a partir dos tokens já
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Este documento detalha o uso da cor a partir dos tokens já
 definidos em `76-design-tokens.md` (camadas primitiva e semântica) e aplica P-06 e P-09
 (`75-design-principles.md`): acessibilidade AA é piso, e nenhum grafismo ou cor nova é criado.
 Nenhum HEX, HSL ou nome de token diverge do que já está registrado em `76-design-tokens.md`; este
@@ -97,34 +97,30 @@ por isso `--color-focus-ring` é vinho sobre fundo claro e passa a `--avizee-ter
 `--color-bg-inverse`, garantindo contraste mínimo de 3:1 do anel contra o fundo em ambos os casos
 (critério AA para indicadores não textuais, 1.4.11).
 
-## 5. Cores funcionais propostas — resposta a L-01
+## 5. Cores funcionais aprovadas — encerra L-01 (DES-02 / D-056)
 
-`34-accessibility-findings.md` e `76-design-tokens.md` (seção 4) registram que nenhuma cor
-funcional foi aprovada (recomendação L-01, `PENDENTE_DE_APROVAÇÃO`). Este documento não aprova a
-tabela abaixo — apenas a organiza para decisão, com a razão de cada escolha e a mitigação de risco
-de uma paleta de quatro cores para comunicar quatro estados funcionais distintos.
+Decisão do usuário em 2026-08-01: preto **não** é cor de sucesso e terracota **não** cobre aviso e
+informação ao mesmo tempo. Ficam aprovadas duas cores funcionais externas à paleta institucional,
+com uso restrito a feedback, alerta, estado e indicador funcional.
 
-| Estado | Token proposto | Cor base | Justificativa | Mitigação obrigatória |
+| Estado | Token | Valor | Justificativa | Mitigação obrigatória |
 |---|---|---|---|---|
-| Erro | `--color-feedback-error` | `--avizee-wine` | Único tom "sério"/escuro fora do preto na paleta; associação natural a alerta crítico | Sempre acompanhado de ícone de erro e texto explícito (nunca só a borda vermelha do campo) |
-| Aviso | `--color-feedback-warning` | `--avizee-terracotta` | Já é a cor de ação primária; reuso deliberado exige que aviso nunca compartilhe tela com um CTA terracota ativo, para não gerar ambiguidade | Rótulo textual "Atenção" sempre visível; nunca usado simultaneamente ao botão de ação primária na mesma área visual |
-| Sucesso | `--color-feedback-success` | `--avizee-black` | Não há verde na paleta; preto comunica "confirmado/consolidado" por peso visual, não por associação cromática universal | Sempre acompanhado de ícone de confirmação (check) e texto; nunca depende da cor para significar "certo" |
-| Informação | `--color-feedback-info` | `--avizee-terracotta` a 60% de luminosidade | Variação clara de terracota que não colide com o botão de ação primária (mais clara, menor saturação percebida) | Uso restrito a blocos informativos não acionáveis (nota de rodapé de tabela, aviso de imagem ilustrativa) |
+| Erro | `--color-feedback-error` | `#690500` (Vinho da marca) | Tom sério da paleta, usado quando contraste e contexto forem adequados | Ícone de erro + texto explícito; nunca só borda colorida |
+| Aviso | `--color-feedback-warning` | `#b2592c` (Terracota da marca) | Cor de atenção da marca | Rótulo "Atenção" visível; nunca na mesma área visual de um CTA terracota ativo |
+| Sucesso | `--color-feedback-success` | `#1f6b3c` (verde funcional) | Confirmação positiva precisa ser distinta de texto, superfície escura e neutralidade — papéis que o preto já exerce | Ícone de confirmação + texto; verde nunca fora de feedback |
+| Informação | `--color-feedback-info` | `#12557e` (azul funcional) | Informação neutra precisa ser distinguível de aviso; variações de terracota ficariam visualmente próximas | Bloco informativo não acionável; azul nunca fora de feedback |
 
-Consequência direta de ter só quatro cores: **erro reaproveita vinho** e **aviso reaproveita
-terracota**, a mesma cor da ação primária de cotação. Isso é um risco de ambiguidade reconhecido —
-por isso a mitigação de "aviso" acima proíbe a cor de aviso na mesma área visual de um botão
-"Adicionar à lista de cotação". Esta tensão é o motivo principal pelo qual a tabela permanece
-`PENDENTE_DE_APROVAÇÃO`: a aprovação precisa decidir explicitamente se esse risco é aceitável ou
-se justifica abrir exceção controlada de paleta (fora do escopo desta etapa).
+O verde e o azul **não passam a integrar a paleta da marca**, não aparecem em banner
+institucional, não são cores promocionais, não substituem vinho ou terracota em CTA e não são
+usados como decoração. As restrições completas estão em `76-design-tokens.md` §4.1.
 
-Regra que vale independentemente da aprovação da tabela: nenhum estado funcional é implementado
-antes de decisão expressa sobre L-01. Até lá, mensagens de erro, sucesso e aviso no protótipo
-usam apenas texto, ícone e `--color-text-primary`/`--color-bg-surface`, sem cor de estado dedicada.
+Regra permanente: nenhum estado funcional depende exclusivamente da cor (P-06). Toda mensagem
+carrega ícone, texto e título ou rótulo.
 
-## 6. Tabela de razões de contraste (WCAG 2.1 AA)
+## 6. Tabela de razões de contraste (WCAG 2.2 AA)
 
-Valores calculados pela fórmula de luminância relativa do WCAG 2.1, a partir dos HEX/HSL oficiais
+Valores calculados pela fórmula de luminância relativa do WCAG 2.2 (idêntica à de 2.1), a partir
+dos HEX/HSL oficiais
 de `76-design-tokens.md`. Critério AA: **4.5:1** para texto normal, **3:1** para texto grande
 (≥ 24px regular ou ≥ 19px bold) e para componentes de interface/gráficos (1.4.11).
 
@@ -247,3 +243,23 @@ Não aprova as cores funcionais da seção 5 (L-01 permanece aberta). Não defin
 10). Não altera `src/styles.css` nem qualquer token de `76-design-tokens.md`. Toda razão de
 contraste aqui apresentada é calculada a partir dos valores HEX/HSL já registrados como propostos
 — não constitui aprovação de paleta, apenas evidência técnica para a decisão de aprovação.
+
+## 10. Contraste das cores funcionais aprovadas (WCAG 2.2 AA)
+
+| Primeiro plano | Fundo | Razão | Uso permitido |
+|---|---|---|---|
+| `--color-feedback-success` `#1f6b3c` | `--avizee-cream` `#fffaed` | 6,24:1 | Texto e ícone de sucesso sobre fundo base |
+| `--color-feedback-success` `#1f6b3c` | `--color-feedback-success-bg` `#e8f3ec` | 5,72:1 | Texto e ícone dentro do bloco de sucesso |
+| `--avizee-black` `#151514` | `--color-feedback-success-bg` `#e8f3ec` | 16,06:1 | Corpo da mensagem de sucesso |
+| `--avizee-cream` `#fffaed` | `--color-feedback-success` `#1f6b3c` | 6,24:1 | Texto sobre selo sólido de sucesso |
+| `--color-feedback-info` `#12557e` | `--avizee-cream` `#fffaed` | 7,67:1 | Texto e ícone de informação sobre fundo base |
+| `--color-feedback-info` `#12557e` | `--color-feedback-info-bg` `#eaf2f8` | 7,06:1 | Texto e ícone dentro do bloco informativo |
+| `--avizee-black` `#151514` | `--color-feedback-info-bg` `#eaf2f8` | 16,15:1 | Corpo da mensagem informativa |
+| `--avizee-cream` `#fffaed` | `--color-feedback-info` `#12557e` | 7,67:1 | Texto sobre selo sólido de informação |
+
+Combinações proibidas: verde e azul funcionais **sobre `--color-bg-inverse`** (2,81:1 e 2,29:1 —
+abaixo do piso de 3:1 para elementos não textuais). Em fundo escuro, o feedback usa apenas
+`--color-text-inverse` com ícone e rótulo textual.
+
+Qualquer combinação que não alcance o contraste mínimo aplicável é tratada como **defeito**, não
+como escolha estética. Tema escuro permanece fora da v1.

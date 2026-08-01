@@ -101,7 +101,7 @@ de estado normal do sistema.
 
 ## P-06 — Acessibilidade AA é piso, não meta
 
-**Enunciado**: WCAG 2.1 AA é o requisito mínimo de qualquer tela entregue, não um objetivo a
+**Enunciado**: WCAG 2.2 AA é o requisito mínimo de qualquer tela entregue, não um objetivo a
 alcançar depois.
 
 **Motivo**: usuário em campo, com luva, sol direto, tela suja ou baixa visão não é exceção — é

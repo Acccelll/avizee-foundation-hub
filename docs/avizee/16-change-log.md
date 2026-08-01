@@ -300,3 +300,21 @@ site atual, decisões e relatório executivo).
 
 **Todo o resultado é PROPOSTA, com status `PENDENTE_DE_APROVAÇÃO`.** Nada publicado, nenhum
 backend, nenhum formulário ativo, nenhum produto importado, nenhuma alteração no site atual.
+
+
+## 2026-08-01 — Etapa 3 aprovada com ajustes; Etapa 4 liberada para planejamento técnico
+
+- **DES-01 a DES-16 aprovadas**, com quatro correções do usuário:
+  1. sucesso e informação **não** usam preto e terracota — passam a verde funcional `#1f6b3c` e
+     azul funcional `#12557e`, externos à marca e restritos a feedback (**D-056**, encerra L-01);
+  2. **nenhuma segunda família monoespaçada** para SKU — Montserrat 500/600 com
+     `tabular-nums` (**D-057**);
+  3. acessibilidade permanece em **WCAG 2.2 AA**, sem regressão para 2.1 (**D-058**);
+  4. a Etapa 4 é de **arquitetura técnica**, não de construção de componentes (**D-059**).
+- **D-060** consolida os demais vereditos; **D-061** libera a Etapa 4 apenas para planejamento.
+- Atualizados: `01`, `04`, `10`, `12`, `13`, `15`, `76`, `77`, `78`, `82`, `88`, `93`, `94`,
+  `README.md`, `data/stage-03-decisions.csv`.
+- Criados: `design/tokens.json`, `design/color-contrast-matrix.csv`,
+  `design/prototype-decisions.csv`.
+- **Nada implementado**: `src/` intocado, nenhum token aplicado, nenhum componente codificado,
+  nenhuma rota criada, nenhum banco de produção, nenhum serviço externo ativado.

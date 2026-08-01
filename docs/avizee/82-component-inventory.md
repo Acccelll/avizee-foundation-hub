@@ -1,6 +1,6 @@
 # 82 — Inventário de Componentes
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Inventário conceitual do design system do AviZee, derivado de
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Inventário conceitual do design system do AviZee, derivado de
 `10-brand-guidelines.md`, `47-page-type-definitions.md`, `49-search-and-filter-architecture.md`
 e `50-quotation-journey.md`. Este documento não implementa componentes em `src/`; descreve
 função, props conceituais, variantes, uso e restrições para orientar implementação futura sob
@@ -287,6 +287,13 @@ Regras: WhatsApp sempre secundário à Lista de Cotação (`50` §5).
 
 ## 9. Status e uso
 
-Todos os componentes listados são propostas conceituais `PENDENTE_DE_APROVAÇÃO` (R-10). A
+**Escopo (DES-08 / D-059)**: este inventário é o **inventário de referência para a arquitetura
+técnica e para a futura etapa de implementação**. Não é escopo de construção da Etapa 4 — a Etapa 4
+define arquitetura, contratos, modelo de dados, segurança, dependências e plano de implementação.
+A construção dos componentes ocorre em etapa posterior à aprovação da arquitetura técnica.
+
+
+O inventário está **aprovado como referência** (DES-08 / D-059); os componentes em si permanecem
+especificações conceituais, não implementadas (R-10). A
 implementação em código segue este inventário apenas após aprovação explícita; nenhum componente
 aqui descrito autoriza, por si, alteração em `src/`.

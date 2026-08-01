@@ -1,6 +1,6 @@
 # 76 — Tokens de Design
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Fonte normativa: `10-brand-guidelines.md` (paleta e tipografia),
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Fonte normativa: `10-brand-guidelines.md` (paleta e tipografia),
 `02-non-negotiable-rules.md` (R-06, R-07), `13-open-decisions.md` (L-01, cores funcionais
 pendentes). Nenhum valor aqui existe em `src/` hoje; esta é a proposta de tokenização a ser
 avaliada antes de qualquer implementação.
@@ -62,24 +62,39 @@ gradações de preto/creme, permitidas por não introduzirem matiz estranho à p
 | `--color-emphasis-institutional` | `--avizee-wine` | Ênfase institucional, símbolo, títulos de destaque |
 | `--color-focus-ring` | `--avizee-wine` | Anel de foco visível em todo elemento interativo |
 
-## 4. Cores funcionais — `PENDENTE_DE_APROVAÇÃO` (L-01)
+## 4. Cores funcionais — `APROVADA_COM_ALTERAÇÃO` (DES-02, encerra L-01)
 
-Nenhuma cor de erro, sucesso, aviso ou informação foi aprovada. A proposta abaixo deriva
-estritamente da paleta oficial, sem introduzir matiz novo, e existe apenas como ponto de partida
-para aprovação — **não deve ser implementada em `src/` antes de decisão expressa**.
+Decisão do usuário em 2026-08-01 (D-056): **preto não é cor de sucesso** e terracota **não** serve
+simultaneamente a aviso e informação. Ficam aprovadas duas cores funcionais **externas à paleta
+institucional** — um verde e um azul discretos — com aplicação estritamente controlada.
 
-| Token proposto | Derivação | HSL proposto | Status |
-|---|---|---|---|
-| `--color-feedback-error` | `--avizee-wine`, mesma cor institucional reaproveitada | `2.9 100% 20.6%` | `PENDENTE_DE_APROVAÇÃO` |
-| `--color-feedback-error-bg` | `--avizee-wine` a 8% de opacidade sobre creme | `2.9 60% 94%` | `PENDENTE_DE_APROVAÇÃO` |
-| `--color-feedback-success` | `--avizee-black`, sem matiz de "verde" (fora da paleta) | `60 2.4% 8%` | `PENDENTE_DE_APROVAÇÃO` |
-| `--color-feedback-warning` | `--avizee-terracotta` | `20.1 60.4% 43.5%` | `PENDENTE_DE_APROVAÇÃO` |
-| `--color-feedback-info` | `--avizee-terracotta` a 60% de luminosidade | `20.1 45% 65%` | `PENDENTE_DE_APROVAÇÃO` |
+| Token | Papel | HEX | HSL | Status |
+|---|---|---|---|---|
+| `--color-feedback-error` | Erro | `#690500` (`--avizee-wine`) | `2.9 100% 20.6%` | `APROVADO` |
+| `--color-feedback-error-bg` | Fundo de erro | `#f7e9e6` | `9 40% 94%` | `APROVADO` |
+| `--color-feedback-warning` | Aviso | `#b2592c` (`--avizee-terracotta`) | `20.1 60.4% 43.5%` | `APROVADO` |
+| `--color-feedback-warning-bg` | Fundo de aviso | `#f9ece3` | `24 60% 93%` | `APROVADO` |
+| `--color-feedback-success` | Sucesso (verde funcional) | `#1f6b3c` | `142.9 55.1% 27.1%` | `APROVADO` |
+| `--color-feedback-success-bg` | Fundo de sucesso | `#e8f3ec` | `141.8 31.4% 93.1%` | `APROVADO` |
+| `--color-feedback-info` | Informação (azul funcional) | `#12557e` | `202.8 75% 28.2%` | `APROVADO` |
+| `--color-feedback-info-bg` | Fundo de informação | `#eaf2f8` | `205.7 50% 94.5%` | `APROVADO` |
 
-Observação normativa: reaproveitar vinho para erro e terracota para aviso é a única forma de
-comunicar estado sem sair da paleta de 4 cores; nenhum estado pode depender só da cor (P-06) —
-todo estado funcional carrega texto e ícone, nunca cor isolada. Esta tabela não autoriza uso;
-autoriza apenas a discussão de aprovação.
+### 4.1 Restrições de uso do verde e do azul (normativas)
+
+O verde `#1f6b3c` e o azul `#12557e`:
+
+1. **não integram a paleta da marca** e não podem ser citados como cores AviZee;
+2. não aparecem em banner institucional, hero, capa editorial ou peça promocional;
+3. não substituem vinho ou terracota em CTA, botão primário ou ênfase institucional;
+4. não são usados como decoração, fundo de seção, ilustração ou grafismo;
+5. ficam restritos a feedback, alerta, estado e indicador funcional de interface;
+6. possuem tokens semânticos próprios e nunca são escritos literalmente em componente;
+7. atendem aos critérios de contraste da matriz de `78` §6 e de
+   `design/color-contrast-matrix.csv`.
+
+Nenhum estado depende só de cor (P-06): toda mensagem funcional carrega **ícone + texto + título
+ou rótulo** e uma indicação que não seja cromática. Valores exatos não podem ser escolhidos ad hoc
+na implementação: são os desta tabela.
 
 ## 5. Tipografia — tokens
 
@@ -187,12 +202,16 @@ existe só para comunicar mudança de estado, nunca como efeito.
 
 Detalhamento de grid em `79-grid-spacing-and-layout.md`.
 
-## 13. Bloco de referência CSS (proposta para `src/styles.css`)
+## 13. Bloco de referência CSS (formato, não caminho definitivo)
 
-Bloco preparado no formato HSL exigido pela convenção do arquivo atual (`--variável: H S% L%`,
-consumida via `hsl(var(--variável))`). Este bloco é **proposta**; a adoção depende de aprovação e
-de reconciliação com as variáveis já existentes no arquivo (`--background`, `--foreground` etc.),
-que devem passar a apontar para os tokens semânticos abaixo em vez de valores neutros genéricos.
+**DES-16 / D-060**: a regra de fonte única de tokens está aprovada, mas `src/styles.css`
+**não** é caminho técnico definitivo. A Etapa 4 confirmará se a fonte única será `src/styles.css`,
+um arquivo de tokens, uma configuração de tema, CSS variables geradas ou outra estrutura
+compatível com a stack. O bloco abaixo demonstra apenas o **formato** HSL
+(`--variável: H S% L%`, consumida via `hsl(var(--variável))`).
+
+Ativos oficiais imutáveis e aprovados, como o SVG do logotipo, podem conter internamente as cores
+oficiais.
 
 ```css
 :root {
@@ -307,6 +326,7 @@ que devem passar a apontar para os tokens semânticos abaixo em vez de valores n
 
 ## 14. O que este documento não faz
 
-Não altera `src/styles.css`. Não define modo escuro (ver `78-color-and-contrast-system.md`,
-seção 7). Não aprova cores funcionais. A adoção efetiva depende de aprovação e de tarefa de
-implementação específica, fora desta etapa documental.
+Não altera `src/styles.css` nem qualquer arquivo de `src/`. Não define modo escuro (ver
+`78-color-and-contrast-system.md`, seção 7). Não define o caminho físico da fonte única de tokens
+— isso é tarefa da Etapa 4 (DES-16). A aplicação efetiva dos tokens depende de tarefa de
+implementação específica, ainda não autorizada.

@@ -1,6 +1,6 @@
 # 77 — Sistema Tipográfico
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Fonte: `10-brand-guidelines.md`, D-031, D-046 (self-host WOFF2).
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Fonte: `10-brand-guidelines.md`, D-031, D-046 (self-host WOFF2).
 
 ## 1. Família e pesos permitidos
 
@@ -57,7 +57,13 @@ Razão 1.25 (terça maior), base 16px, arredondada a valores práticos.
   largura da coluna.
 - Título (H1 a H4): sem limite de measure aplicado; a quebra é natural pelo container.
 
-## 5. Tratamento do código de SKU
+## 5. Tratamento do código de SKU — **sem segunda família tipográfica** (DES-03 / D-057)
+
+Decisão do usuário em 2026-08-01: **não** será introduzida família monoespaçada para códigos de
+SKU. Montserrat convencional permanece a única família da v1; nenhuma fonte adicional é carregada
+apenas para códigos, e Montserrat Alternates continua proibida (D-031). A diferenciação do código
+é obtida por **peso, tamanho, espaçamento, fundo ou borda**, nunca por outra família.
+
 
 O código AviZee é o dado mais consultado por comprador recorrente (P-02). Regras:
 

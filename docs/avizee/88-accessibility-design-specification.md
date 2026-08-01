@@ -2,7 +2,7 @@
 
 Status: `PENDENTE_DE_APROVAÇÃO`. Base normativa: `02-non-negotiable-rules.md`,
 `34-accessibility-findings.md`, `75-design-principles.md` (P-06, P-08), `10-brand-guidelines.md`,
-`47-page-type-definitions.md`. Meta de aceite: **WCAG 2.1 nível AA** em todas as páginas públicas
+`47-page-type-definitions.md`. Meta de aceite: **WCAG 2.2 nível AA** em todas as páginas públicas
 e em toda tela de protótipo (`85`, `86`) desta etapa.
 
 Este documento não substitui auditoria em navegador real com leitor de tela — nenhuma foi

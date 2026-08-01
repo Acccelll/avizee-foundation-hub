@@ -94,7 +94,7 @@ nova submissão.
 | 5.8 | Nenhuma informação de estado é comunicada apenas por cor (ex. erro, item indisponível) | [ ] |
 
 **Regra de reprovação**: qualquer "Não" neste bloco reprova a tela — contraste é critério de
-aceite obrigatório (meta WCAG 2.1 AA, `88`).
+aceite obrigatório (meta WCAG 2.2 AA, `88`).
 
 ## 6. Acessibilidade estrutural e de interação
 

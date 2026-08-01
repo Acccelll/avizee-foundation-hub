@@ -243,3 +243,23 @@ Não aprova as cores funcionais da seção 5 (L-01 permanece aberta). Não defin
 10). Não altera `src/styles.css` nem qualquer token de `76-design-tokens.md`. Toda razão de
 contraste aqui apresentada é calculada a partir dos valores HEX/HSL já registrados como propostos
 — não constitui aprovação de paleta, apenas evidência técnica para a decisão de aprovação.
+
+## 10. Contraste das cores funcionais aprovadas (WCAG 2.2 AA)
+
+| Primeiro plano | Fundo | Razão | Uso permitido |
+|---|---|---|---|
+| `--color-feedback-success` `#1f6b3c` | `--avizee-cream` `#fffaed` | 6,24:1 | Texto e ícone de sucesso sobre fundo base |
+| `--color-feedback-success` `#1f6b3c` | `--color-feedback-success-bg` `#e8f3ec` | 5,72:1 | Texto e ícone dentro do bloco de sucesso |
+| `--avizee-black` `#151514` | `--color-feedback-success-bg` `#e8f3ec` | 16,06:1 | Corpo da mensagem de sucesso |
+| `--avizee-cream` `#fffaed` | `--color-feedback-success` `#1f6b3c` | 6,24:1 | Texto sobre selo sólido de sucesso |
+| `--color-feedback-info` `#12557e` | `--avizee-cream` `#fffaed` | 7,67:1 | Texto e ícone de informação sobre fundo base |
+| `--color-feedback-info` `#12557e` | `--color-feedback-info-bg` `#eaf2f8` | 7,06:1 | Texto e ícone dentro do bloco informativo |
+| `--avizee-black` `#151514` | `--color-feedback-info-bg` `#eaf2f8` | 16,15:1 | Corpo da mensagem informativa |
+| `--avizee-cream` `#fffaed` | `--color-feedback-info` `#12557e` | 7,67:1 | Texto sobre selo sólido de informação |
+
+Combinações proibidas: verde e azul funcionais **sobre `--color-bg-inverse`** (2,81:1 e 2,29:1 —
+abaixo do piso de 3:1 para elementos não textuais). Em fundo escuro, o feedback usa apenas
+`--color-text-inverse` com ícone e rótulo textual.
+
+Qualquer combinação que não alcance o contraste mínimo aplicável é tratada como **defeito**, não
+como escolha estética. Tema escuro permanece fora da v1.

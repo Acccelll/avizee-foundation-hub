@@ -45,7 +45,7 @@ qualquer marca de terceiro. B-02 e B-03 seguem **contidos, não encerrados**.
    (D-054) sem revelar nem simular os registros pendentes (`83`).
 6. **Conversão é a Lista de Cotação.** Nenhum preço, carrinho ou checkout aparece em nenhuma
    tela; o WhatsApp permanece secundário (`85`, `89`).
-7. **WCAG 2.1 AA como obrigação**, corrigindo os achados de `34` — foco visível, contraste,
+7. **WCAG 2.2 AA como obrigação**, corrigindo os achados de `34` — foco visível, contraste,
    navegação por teclado, formulários rotulados e tabela de variações acessível (`88`).
 
 ## 4. Riscos registrados

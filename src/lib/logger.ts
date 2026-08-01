@@ -26,7 +26,7 @@ const PARTIAL_KEYS = ["email", "phone", "telefone", "cnpj", "document"];
 
 function maskEmail(value: string) {
   const [user, domain] = value.split("@");
-  if (!domain) return "***";
+  if (!user || !domain) return "***";
   return `${user.slice(0, 1)}***@${domain}`;
 }
 

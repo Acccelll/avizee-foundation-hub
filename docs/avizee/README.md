@@ -110,6 +110,7 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `70-stage-03-readiness-by-family.md` | Prontidão por família |
 | `71-taxonomy-decisions-for-approval.md` | DECT-01 a DECT-14 |
 | `72-stage-02-1-executive-report.md` | Relatório executivo da Etapa 2.1 |
+| `73-stage-03-blocked.md` | **Registro do bloqueio de início da Etapa 3** e proposta de renumeração `74`–`94` |
 | `data/families-taxonomy.csv`, `sku-family-mapping.csv`, `family-applications.csv`, `family-segments.csv`, `family-editorial-relations.csv`, `taxonomy-evidence.csv`, `taxonomy-conflicts.csv`, `stage-03-readiness.csv`, `taxonomy-decisions.csv` | Dados da consolidação |
 
 
@@ -170,4 +171,6 @@ nome de produto em nenhuma das 8 fontes e não podem ser classificados sem uma l
 - **DEC-01 a DEC-18** — decisões da Etapa 2 (DEC-05 e DEC-18 encerradas como rejeitadas)
 - **DECT-01 a DECT-14** — decisões da Etapa 2.1
 - **DEP-09** — lista código × nome × função dos 34 SKUs órfãos
+
+**Etapa 3 — não iniciada.** Interrompida na pré-condição em 2026-08-01. Ver `73-stage-03-blocked.md`.
 

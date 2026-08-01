@@ -254,3 +254,21 @@ aplicação e segmento; 31 famílias `READY_FOR_STAGE_3`; 83 conflitos registrad
 
 **Nenhuma decisão foi aprovada. Nenhum código, componente, rota, banco de dados, design system,
 token, importação de produto ou alteração de layout foi produzido nesta etapa.**
+
+---
+
+## 2026-08-01 — Etapa 3 solicitada e **interrompida na pré-condição**
+
+Solicitação da Etapa 3 (design system, arquitetura de interface e protótipos). Execução
+**interrompida** conforme §1.6 e §2 do próprio prompt: a Etapa 2.1 não está aprovada
+(DECT-01 a DECT-14 seguem `PENDENTE_DE_APROVAÇÃO`).
+
+Registro em `73-stage-03-blocked.md`: bloqueios B-01 (taxonomia não aprovada), B-02 (34 SKUs sem
+nome), B-03 (16 SKUs sem nome público funcional) e o conflito de numeração — os intervalos
+`55`–`67` e `68`–`88` citados no prompt já estão ocupados; proposta de a Etapa 3 usar `74`–`94`.
+
+Corrigido defeito de dados em `data/taxonomy-decisions.csv` (campo `riscos` de DECT-08 sem aspas
+deslocava as colunas seguintes).
+
+**Nenhum documento da Etapa 3 foi criado. Nenhum token, componente, wireframe ou protótipo foi
+produzido. `src/` permanece intocado.**

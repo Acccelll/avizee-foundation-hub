@@ -1,0 +1,18 @@
+rota,tipo,renderizacao,protecao,indexavel_em_producao,estado
+/,publica,estatica,nenhuma,sim,provisoria
+/produtos,publica,estatica,nenhuma,sim,placeholder
+/solucoes,publica,estatica,nenhuma,sim,placeholder
+/conteudos,publica,estatica,nenhuma,sim,placeholder
+/sobre,publica,estatica,nenhuma,sim,institucional
+/contato,publica,estatica,nenhuma,sim,institucional sem envio
+/cotacao,publica,estatica,nenhuma,nao,placeholder
+/politica-de-privacidade,publica,estatica,nenhuma,sim,legal
+/termos-de-uso,publica,estatica,nenhuma,sim,legal
+/robots.txt,tecnica,servidor,nenhuma,nao,gerado por ambiente
+/admin/login,administrativa,cliente,nenhuma,nao,funcional
+/admin/acesso-negado,administrativa,cliente,nenhuma,nao,funcional
+/admin,administrativa,cliente sem SSR,sessao + admin.access,nao,funcional
+/api/auth/login,api,servidor,rate limit,nao,funcional
+/api/auth/logout,api,servidor,nenhuma,nao,funcional
+/api/auth/session,api,servidor,cookie assinado,nao,funcional
+/api/public/health,api publica,servidor,nenhuma,nao,funcional

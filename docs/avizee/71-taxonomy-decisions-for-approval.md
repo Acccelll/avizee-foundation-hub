@@ -62,12 +62,14 @@ comprimido dentro da linha de pulverização. **Dependências**: DECT-08.
 **Alternativas**: (A) CAT-05 junto de bebedouros; (B) CAT-04 como peça de reposição.
 **Recomendação**: A, pela jornada de compra compartilhada.
 
-### DECT-10 — Liberação parcial da Etapa 3 com 31 famílias
-**Contexto**: `70` §7.
-**Alternativas**: (A) liberar a Etapa 3 com as 31 famílias prontas, mantendo 12 em fila;
-(B) aguardar 100% de cobertura; (C) liberar tudo, com dados hipotéticos.
-**Recomendação**: A. **Riscos**: B trava o projeto indefinidamente em DECT-08, que depende de
-material externo; C reintroduz DEP-01. **Requer aprovação expressa** (§23).
+### DECT-10 — Liberação parcial da Etapa 3 com 31 famílias — **APROVADA COM ESCOPO CONTROLADO**
+**Status**: `APROVADA_COM_ESCOPO_CONTROLADO` (2026-08-01, `USER_DECISION`).
+**Decisão**: a Etapa 3 está liberada para criar o design system e todos os tipos de página,
+usando como conteúdo real apenas as 31 famílias, os 97 SKUs, as 6 categorias públicas, as 7
+categorias editoriais, as aplicações aprovadas e as imagens aprovadas ou o placeholder oficial.
+Estados genéricos de conteúdo bloqueado são permitidos desde que não revelem produtos pendentes.
+**Contexto**: `70` §7. **Detalhe integral**: `73-stage-03-start-blocker.md` §7.2.
+
 
 ### DECT-11 — Nomes públicos funcionais dos 16 SKUs com marca de terceiro
 **Contexto**: FAM-010, FAM-011, FAM-012, FAM-041. Os nomes de **família** já são neutros; falta o

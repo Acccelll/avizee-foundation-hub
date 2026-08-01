@@ -1,0 +1,21 @@
+rel_id,origem_tipo,origem,destino_tipo,destino,relacao,estado,evidencia,dependencia
+REL-01,categoria,vacinacao-e-aplicacao,solucao,vacinacao,apoia,RECOMENDADA,densidade de catalogo AG SR SE,DEP-01
+REL-02,categoria,pulverizacao-e-sistemas-de-fluido,solucao,pulverizacao,apoia,RECOMENDADA,familias BI BO TB CN,DEP-01
+REL-03,categoria,pesagem-medicao-e-controle,solucao,pesagem-e-medicao,apoia,RECOMENDADA,familias BA TE,DEP-01
+REL-04,familia,AG-agulhas,aplicacao,vacinacao,usada_em,PROVISORIA,inferida do nome do grupo,DEP-01
+REL-05,familia,SR-seringas-repetidoras,aplicacao,vacinacao,usada_em,PROVISORIA,grupo interno de marca renomeado D-035,DEP-01
+REL-06,familia,BI-bicos,aplicacao,pulverizacao,usada_em,PROVISORIA,especificacao do catalogo D-039,DEP-01
+REL-07,familia,BA-balancas,aplicacao,pesagem,usada_em,PROVISORIA,,DEP-01
+REL-08,familia,TE-termometros,aplicacao,controle-de-temperatura,usada_em,PROVISORIA,,DEP-01
+REL-09,familia,CN-conexoes,aplicacao,manutencao,usada_em,NAO_CONFIRMADA,22 SKUs sem categoria nem atributo,DEP-01
+REL-10,familia,PE-pecas,aplicacao,reposicao,usada_em,NAO_CONFIRMADA,28 SKUs heterogeneos a subdividir D-042,DEP-01
+REL-11,familia,VR-diversos,aplicacao,,usada_em,NAO_CONFIRMADA,13 SKUs heterogeneos a subdividir D-042,DEP-01
+REL-12,familia,BV-bovinocultura,segmento,bovinocultura,pertence_a,PROVISORIA,9 SKUs,DEP-01
+REL-13,artigo,como-escolher-agulha-para-vacinacao,familia,AG-agulhas,cita,RECOMENDADA,pauta em backlog D-043,DEP-02
+REL-14,artigo,boas-praticas-de-pesagem,familia,BA-balancas,cita,RECOMENDADA,pauta em backlog D-043,DEP-02
+REL-15,artigo,manutencao-de-bicos-pulverizadores,familia,BI-bicos,cita,RECOMENDADA,pauta em backlog,DEP-02
+REL-16,familia,AG-agulhas,familia,SR-seringas-repetidoras,complementa,RECOMENDADA,complemento funcional declarado,DEP-01
+REL-17,familia,BI-bicos,familia,CN-conexoes,complementa,NAO_CONFIRMADA,exige confirmacao de compatibilidade,DEP-01
+REL-18,familia,BB-bebedouros,aplicacao,hidratacao,usada_em,PROVISORIA,,DEP-01
+REL-19,familia,CO-comedouros,aplicacao,alimentacao,usada_em,PROVISORIA,,DEP-01
+REL-20,familia,AR-armadilhas,aplicacao,biosseguranca,usada_em,PROVISORIA,,DEP-01

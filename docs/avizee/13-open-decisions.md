@@ -153,3 +153,20 @@ apenas como proposta (DT dependente do Incremento 1).
 
 **Permanecem abertas sem alteração**: DECT-11, DECT-08/DEP-09, DECT-02 a DECT-09,
 DECT-12/DEC-07, O-08 e O-09 (usuários reais e atribuição de papéis), O-10.
+
+
+## Atualização 2026-08-01 — deliberação das DT
+
+**Encerradas**: DT-01 a DT-21 deixam de ser pendências e passam aos estados finais de `129`.
+
+**Permanecem abertas**:
+
+- **DEP-T1** — fornecedor de e-mail, domínio remetente, endereço remetente e destinatários das
+  cotações;
+- **DEP-T3** — confirmação operacional da estrutura de storage, custos, processamento de imagens
+  e estratégia de backup dos arquivos;
+- **DEP-T5** — prazos definitivos de retenção, com revisão operacional e jurídica.
+
+Essas dependências **não impedem** a fundação técnica com contratos e providers de
+desenvolvimento, mas **bloqueiam a ativação em produção**. DEP-T2 e DEP-T4 seguem sem alteração.
+Nova obrigação derivada de DT-13: prova técnica de processamento de imagem antes da adoção.

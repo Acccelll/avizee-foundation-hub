@@ -253,3 +253,14 @@ Artefatos de design: `design/tokens.json` · `design/color-contrast-matrix.csv` 
 | `129-stage-04-decisions-for-approval.md` | DT-01 a DT-21 |
 | `130-stage-04-executive-report.md` | Relatório executivo |
 | `architecture/*.csv` | Entidades, campos, permissões, APIs, serviços, eventos, ambientes, incrementos, decisões, riscos |
+
+
+## Atualização 2026-08-01
+
+- `architecture/stack-verification.md` — evidência da verificação de stack exigida por DT-01
+  (TanStack Start confirmado).
+- **Etapa 4 aprovada com ajustes**: estados finais de DT-01 a DT-21 em `129` e em
+  `architecture/technical-decisions.csv`.
+- **Etapa 5 liberada condicionalmente à verificação da stack** (condição atendida), sem
+  autorização para alterar o layout aprovado nem ativar produção ou serviços reais.
+- Pendências mantidas: **DEP-T1**, **DEP-T3**, **DEP-T5**.

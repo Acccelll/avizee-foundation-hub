@@ -30,3 +30,33 @@ Versão tabular em `architecture/technical-decisions.csv`.
 **Nenhuma recomendação acima pode ser tratada como aprovada.** A implementação depende de
 aprovação expressa item a item; aprovação parcial mantém as demais pendentes e impede iniciar
 áreas dependentes.
+
+
+## Resultado da deliberação — 2026-08-01
+
+As decisões deixam de estar pendentes. Estados finais registrados também em
+`architecture/technical-decisions.csv`:
+
+| ID | Status final | Condição / ajuste |
+|---|---|---|
+| DT-01 | APROVADA_CONDICIONALMENTE | Verificação da stack executada e registrada em `architecture/stack-verification.md`: TanStack Start confirmado; proibida migração artesanal ou troca de stack |
+| DT-02 | APROVADA | RLS deny-by-default, migrations versionadas, constraints, FKs, índices, auditoria, service role só no backend, testes de política; SKU não é PK |
+| DT-03 | APROVADA_COM_AJUSTE | `createServerFn` interno; server routes para endpoints externos; `api/public` e `api/admin` como contratos explícitos |
+| DT-04 | APROVADA_COM_AJUSTE | Matriz por tipo de página + invalidação explícita (`100`) |
+| DT-05 | APROVADA | Impacto obrigatório ao alterar definição em uso |
+| DT-06 | APROVADA | Prioridade de ranking e exclusão de campos internos do índice |
+| DT-07 | APROVADA | Transação única + outbox; falha de e-mail não invalida cotação |
+| DT-08 | APROVADA | `wa.me` secundário, após o registro, só com dado público |
+| DT-09 | APROVADA | Painel próprio, sem page builder livre |
+| DT-10 | APROVADA_COM_CONTROLES | Schema versionado, allowlist, sanitização, sem HTML arbitrário |
+| DT-11 | APROVADA_EM_PRINCÍPIO | `EmailProvider` desacoplado; fornecedor pendente (DEP-T1); provider nulo até lá |
+| DT-12 | APROVADA | Privado por padrão; público só para derivados aprovados |
+| DT-13 | APROVADA_CONDICIONADA_A_PROVA_TÉCNICA | WASM é primeira alternativa a validar, não obrigação |
+| DT-14 | APROVADA | MFA TOTP e AAL2 em operações privilegiadas antes de produção |
+| DT-15 | APROVADA | Permissões granulares como fonte de autorização |
+| DT-16 | APROVADA_CONDICIONALMENTE | Princípio aprovado; prazos pendentes (DEP-T5); exclusão automática bloqueada |
+| DT-17 | APROVADA | Somente e-mail e Google Maps sob interação; EmbedSocial fora da v1 |
+| DT-18 | APROVADA_COM_ALTERAÇÃO_ESTRUTURAL | Homologação em instância separada; proibido usar produção como preview |
+| DT-19 | APROVADA_COM_COMPLEMENTO | Backup do storage separado do backup do banco |
+| DT-20 | APROVADA | Sem ativação imediata; consentimento; `AnalyticsProvider` |
+| DT-21 | APROVADA | 10 gates e aprovação manual; sem produção contínua |

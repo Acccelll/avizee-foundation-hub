@@ -41,3 +41,18 @@ existe hoje — RK aberto.
 
 Responsável técnico designado pela AviZee (a definir). Verificação mensal do sucesso dos
 backups registrada em checklist de manutenção (`126`).
+
+
+## Atualização 2026-08-01 — DT-19 aprovada com complemento
+
+Aprovados: backup/snapshot diário do banco, exportação lógica semanal, cópia fora do ambiente
+principal, teste de restauração trimestral, registro de evidência e definição de RPO e RTO.
+
+**Complemento obrigatório — o backup do banco não cobre os objetos de storage.** Implementar
+também: inventário de arquivos; backup dos arquivos públicos; backup dos arquivos privados;
+backup dos metadados; backup dos documentos; teste de restauração do storage; validação de
+correspondência banco × arquivo.
+
+Escopo total do backup: banco, autenticação aplicável, storage, configurações documentadas,
+migrations e segredos por procedimento seguro (**nunca** exportados em texto aberto).
+“Backup executado” não conta sem teste de restauração. Risco associado: RK-52.

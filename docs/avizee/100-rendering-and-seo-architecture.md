@@ -63,3 +63,20 @@ Nunca emitir `price`, `priceCurrency`, `availability` ou marca interna em JSON-L
 
 Tabela `redirects` (origem, destino, tipo, ativo, motivo, criado_em) lida por middleware.
 Mapa mínimo herdado da Etapa 2 em `46-url-migration-map.md`; nada aplicado nesta etapa.
+
+
+## Atualização 2026-08-01 — DT-04 aprovada com ajuste: matriz por tipo de página
+
+Não vale regra global única de SSG nem de cache.
+
+| Modo | Tipos de página |
+|---|---|
+| SSG / estático | Páginas legais estáveis; institucionais que raramente mudam; páginas técnicas sem dependência de dado administrativo; arquivos estruturais estáveis |
+| SSR com cache e invalidação | Home; categorias; soluções; famílias; produtos; Central de Conteúdos; categorias editoriais; artigos publicados |
+| SSR sem cache compartilhado (ou cache privado) | Prévias administrativas; páginas autenticadas; painel; conteúdo dependente de usuário; fila de normalização; importações; cotações |
+| CSR (apenas interação) | Filtros; seleção de SKU; Lista de Cotação; estados locais; componentes administrativos interativos |
+
+**Catálogo e artigos não podem depender de novo deploy** para refletir uma publicação feita no
+painel. Invalidação explícita obrigatória após: publicação, despublicação, alteração de slug,
+alteração de metadados, alteração de família, alteração de produto e atualização de artigo.
+Proibido cachear resposta administrativa ou dado pessoal em cache público.

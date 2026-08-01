@@ -120,3 +120,14 @@ silenciosamente** valores HSL, cálculos de contraste ou detalhes visuais não a
 **As 21 decisões técnicas DT-01 a DT-21 (`129-stage-04-decisions-for-approval.md`) NÃO são
 decisões aprovadas.** Estão todas em `PENDENTE_DE_APROVAÇÃO` e não podem ser tratadas como
 aprovadas nem aplicadas antes de aprovação expressa item a item.
+
+
+## Etapa 4 — deliberação das DT em 2026-08-01
+
+**ETAPA 4 APROVADA COM AJUSTES. ETAPA 5 LIBERADA CONDICIONALMENTE À VERIFICAÇÃO DA STACK.**
+
+| ID | Decisão | Origem | Data |
+|---|---|---|---|
+| D-063 | **DT-01 a DT-21 deliberadas** com os estados finais registrados em `129-stage-04-decisions-for-approval.md`: aprovadas (DT-02, DT-05, DT-06, DT-07, DT-08, DT-09, DT-12, DT-14, DT-15, DT-17, DT-20, DT-21); com ajuste (DT-03, DT-04); com controles (DT-10); em princípio (DT-11); condicionalmente (DT-01, DT-16); condicionada a prova técnica (DT-13); com alteração estrutural (DT-18); com complemento (DT-19). A aprovação **não autoriza** aplicação silenciosa de alternativas, serviços ou dependências não confirmados | USER_DECISION | 2026-08-01 |
+| D-064 | **Verificação de stack (condição de DT-01) concluída**: o repositório é TanStack Start (`@tanstack/react-start`, roteamento por arquivos, SSR nativo, build Vite oficial), conforme `architecture/stack-verification.md`. Mantida a stack; proibida migração artesanal, recriação silenciosa do projeto ou substituição sem aprovação. Dependência do ambiente aceita como risco controlado | USER_DECISION | 2026-08-01 |
+| D-065 | **Etapa 5 liberada condicionalmente**, atendidas as seis condições da §23: verificação da stack, atualização dos documentos técnicos, arquitetura de ambientes corrigida (homologação separada), backup de storage registrado, manutenção de DEP-T1/DEP-T3/DEP-T5 e confirmação de que a Etapa 5 **não ativa produção nem serviços reais**. A liberação **não autoriza alteração do layout aprovado** | USER_DECISION | 2026-08-01 |

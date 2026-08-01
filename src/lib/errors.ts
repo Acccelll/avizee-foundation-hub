@@ -42,7 +42,7 @@ export class AppError extends Error {
   readonly code: AppErrorCode;
   readonly status: number;
   readonly occurrenceId: string;
-  readonly internal?: Record<string, unknown>;
+  readonly internal?: Record<string, unknown> | undefined;
 
   constructor(code: AppErrorCode, internal?: Record<string, unknown>) {
     super(PUBLIC_MESSAGE[code]);

@@ -187,3 +187,12 @@ Etapa 2.1 = `60`–`72` · bloqueio da Etapa 3 = `73` · **Etapa 3 = `74`–`94`
 públicas, as 7 categorias editoriais e imagens aprovadas ou o placeholder oficial. As 12 famílias
 pendentes e os 34 + 16 SKUs sem identidade permanecem em fila de normalização.
 
+
+## Etapa 3 — Design System, Interface e Protótipos (documentos `74`–`94`)
+
+Concluída em 2026-08-01 como **proposta**. 21 documentos e `data/stage-03-decisions.csv`.
+**16 decisões DES-01 a DES-16 aguardam aprovação** em `93-stage-03-decisions-for-approval.md`;
+o resumo está em `94-stage-03-executive-report.md`. Nada foi implementado — `src/` intocado.
+
+Caminho mínimo de aprovação: **DES-01** (tokens), **DES-02** (cores funcionais, encerra L-01) e
+**DES-10** (protótipos públicos). A **Etapa 4 (`95`–`130`) não foi iniciada**.

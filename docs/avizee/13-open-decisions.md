@@ -61,6 +61,8 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 | L-14 | ~~55 SKUs complementares na v1~~ | **RESOLVIDA 2026-08-01 → D-037** (entram quando os dados forem confiáveis) |
 | L-15 | ~~Destino do PDF do catálogo~~ | **RESOLVIDA 2026-08-01 → D-038** (aposentar; 301 para `/produtos`) |
 
+> Textos normativos completos de L-08 a L-15 em `20-resolved-recommendations.md`.
+
 ## Recomendações ainda em aberto
 L-01 a L-07 permanecem PENDENTE_DE_APROVAÇÃO. As decisões operacionais O-01 a O-20, além de
 O-24 (WOFF2), O-26 (versões do logotipo) e O-27 (credencial SMTP), continuam ativas.

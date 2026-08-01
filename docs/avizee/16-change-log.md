@@ -126,3 +126,9 @@ layout alterado. Únicos arquivos fora de `/docs`: os assets do logotipo guardad
 
 **Permanecem abertas**: L-01 a L-07, O-01 a O-20, O-24 (WOFF2), O-26 (versões do logotipo),
 O-27 (credencial SMTP exposta).
+
+**Complemento (mesmo dia)**: criado `20-resolved-recommendations.md` com os textos normativos
+integrais de L-08 a L-15, incluindo a tabela de normalização de nomes públicos (SOCOREX, LM001–LM003),
+a ordem de prioridade para nova fotografia, os 8 critérios de seleção de imagem, os campos
+obrigatórios do registro de produto (`id`/`sku_publico`/`codigo_original`/`fonte_codigo`/
+`aliases_internos`/`status_validacao`) e o tratamento do PDF aposentado. Índice do `README.md` atualizado.

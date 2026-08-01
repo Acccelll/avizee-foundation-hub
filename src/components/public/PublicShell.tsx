@@ -126,7 +126,11 @@ export function PublicShell({
         </div>
 
         {open && (
-          <nav id="menu-mobile" aria-label="Navegação mobile" className="border-t border-border-subtle md:hidden">
+          <nav
+            id="menu-mobile"
+            aria-label="Navegação mobile"
+            className="border-t border-border-subtle md:hidden"
+          >
             <ul className="container-avizee flex flex-col py-2">
               {[...NAV, { to: "/cotacao", label: "Lista de cotação" } as const].map((item) => (
                 <li key={item.to}>
@@ -159,7 +163,9 @@ export function PublicShell({
             </p>
           </div>
           <nav aria-label="Navegação do rodapé">
-            <p className="text-[14px] font-semibold uppercase tracking-wide opacity-70">Navegação</p>
+            <p className="text-[14px] font-semibold uppercase tracking-wide opacity-70">
+              Navegação
+            </p>
             <ul className="mt-3 space-y-2 text-[15px]">
               {NAV.map((item) => (
                 <li key={item.to}>

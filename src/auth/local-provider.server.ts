@@ -50,7 +50,13 @@ function constantTimeEquals(a: string, b: string) {
 }
 
 function toSessionUser(u: SeedUser): SessionUser {
-  return { id: u.id, name: u.name, email: u.email, roles: u.roles, permissions: permissionsFor(u.roles) };
+  return {
+    id: u.id,
+    name: u.name,
+    email: u.email,
+    roles: u.roles,
+    permissions: permissionsFor(u.roles),
+  };
 }
 
 export const localAuthProvider: AuthProvider = {

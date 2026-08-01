@@ -23,7 +23,11 @@ export const devEmailProvider: EmailProvider = {
     if (APP_ENV === "production") {
       throw new Error("Provedor de e-mail de desenvolvimento não pode operar em produção.");
     }
-    logger.info("email.simulated", { to: message.to, subject: message.subject, template: message.template });
+    logger.info("email.simulated", {
+      to: message.to,
+      subject: message.subject,
+      template: message.template,
+    });
     return { queued: true, providerMessageId: null };
   },
 };
@@ -32,8 +36,17 @@ export const devEmailProvider: EmailProvider = {
 export const localStorageProvider: StorageProvider = {
   name: "local-private",
   async put(input) {
-    logger.info("storage.put.simulated", { key: input.key, contentType: input.contentType, size: input.size });
-    return { key: input.key, visibility: "private", contentType: input.contentType, size: input.size };
+    logger.info("storage.put.simulated", {
+      key: input.key,
+      contentType: input.contentType,
+      size: input.size,
+    });
+    return {
+      key: input.key,
+      visibility: "private",
+      contentType: input.contentType,
+      size: input.size,
+    };
   },
   async urlFor(object) {
     return object.visibility === "public" ? `/media/${object.key}` : null;

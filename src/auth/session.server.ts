@@ -14,7 +14,9 @@ export const SESSION_COOKIE = "avizee_admin_session";
 type Payload = { sub: string; exp: number; jti: string };
 
 function sign(data: string) {
-  return createHmac("sha256", getServerConfig().AUTH_SESSION_SECRET).update(data).digest("base64url");
+  return createHmac("sha256", getServerConfig().AUTH_SESSION_SECRET)
+    .update(data)
+    .digest("base64url");
 }
 
 export function createSessionCookie(userId: string) {

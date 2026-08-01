@@ -1,144 +1,276 @@
 @import "tailwindcss" source(none);
 @source "../src";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@import "@fontsource-variable/montserrat/wght.css";
 
 /*
- * Design system definition.
+ * AviZee — fonte única dos valores visuais (Etapa 5 / DES-16).
+ * Origem normativa: docs/avizee/76-design-tokens.md e docs/avizee/design/tokens.json.
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * REGRAS:
+ * - Proibido literal de cor em componentes quando existe token.
+ * - Verde e azul são cores FUNCIONAIS (D-056): só feedback/estado.
+ * - Tipografia: Montserrat convencional. Alternates proibida (D-031/D-057).
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* ---- brand ---- */
+  --color-brand-black: hsl(60 2.4% 8%);
+  --color-brand-wine: hsl(2.9 100% 20.6%);
+  --color-brand-terracotta: hsl(20.1 60.4% 43.5%);
+  --color-brand-cream: hsl(43.3 100% 96.5%);
+
+  /* ---- surface ---- */
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--bg-surface);
+  --color-surface-alt: var(--bg-surface-alt);
+  --color-inverse: var(--bg-inverse);
+  --color-inverse-foreground: var(--text-inverse);
+  --color-card: var(--bg-surface);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--bg-surface);
+  --color-popover-foreground: var(--text-primary);
+  --color-muted: var(--bg-surface-alt);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--bg-surface-alt);
+  --color-accent-foreground: var(--text-primary);
+  --color-secondary: var(--bg-surface-alt);
+  --color-secondary-foreground: var(--text-primary);
+
+  /* ---- text ---- */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+
+  /* ---- border ---- */
+  --color-border: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+  --color-input: var(--border-default);
+
+  /* ---- interaction ---- */
+  --color-primary: var(--action-primary);
+  --color-primary-foreground: var(--action-primary-text);
+  --color-emphasis: var(--emphasis-institutional);
+  --color-ring: var(--focus-ring);
+
+  /* ---- feedback (D-056) ---- */
+  --color-error: var(--feedback-error);
+  --color-error-bg: var(--feedback-error-bg);
+  --color-warning: var(--feedback-warning);
+  --color-warning-bg: var(--feedback-warning-bg);
+  --color-success: var(--feedback-success);
+  --color-success-bg: var(--feedback-success-bg);
+  --color-info: var(--feedback-info);
+  --color-info-bg: var(--feedback-info-bg);
+  --color-destructive: var(--feedback-error);
+  --color-destructive-foreground: var(--text-inverse);
+
+  /* ---- typography ---- */
+  --font-sans: "Montserrat Variable", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --text-display: 48px;
+  --text-h1: 36px;
+  --text-h2: 28px;
+  --text-h3: 22px;
+  --text-h4: 18px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-body-sm: 14px;
+  --text-caption: 12px;
+  --text-sku: 14px;
+
+  /* ---- spacing ---- */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* ---- radius ---- */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* ---- shadow ---- */
+  --shadow-sm: 0 1px 2px hsl(60 2% 8% / 0.06);
+  --shadow-md: 0 4px 12px hsl(60 2% 8% / 0.1);
+  --shadow-lg: 0 12px 32px hsl(60 2% 8% / 0.14);
+
+  /* ---- breakpoints ---- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* ---- motion ---- */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  /* primitivos */
+  --avizee-black: hsl(60 2.4% 8%);
+  --avizee-wine: hsl(2.9 100% 20.6%);
+  --avizee-terracotta: hsl(20.1 60.4% 43.5%);
+  --avizee-cream: hsl(43.3 100% 96.5%);
+  --neutral-800: hsl(60 2% 20%);
+  --neutral-600: hsl(60 2% 38%);
+  --neutral-400: hsl(60 2% 58%);
+  --neutral-200: hsl(48 15% 88%);
+  --neutral-100: hsl(45 40% 93%);
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* semânticos */
+  --bg-base: var(--avizee-cream);
+  --bg-inverse: var(--avizee-black);
+  --bg-surface: var(--neutral-100);
+  --bg-surface-alt: var(--neutral-200);
+  --text-primary: var(--avizee-black);
+  --text-inverse: var(--avizee-cream);
+  --text-secondary: var(--neutral-800);
+  --text-muted: var(--neutral-600);
+  --border-default: var(--neutral-400);
+  --border-subtle: var(--neutral-200);
+  --action-primary: var(--avizee-terracotta);
+  --action-primary-text: var(--avizee-cream);
+  --emphasis-institutional: var(--avizee-wine);
+  --focus-ring: var(--avizee-wine);
+
+  /* feedback */
+  --feedback-error: hsl(2.9 100% 20.6%);
+  --feedback-error-bg: hsl(9 40% 94%);
+  --feedback-warning: hsl(20.1 60.4% 43.5%);
+  --feedback-warning-bg: hsl(24 60% 93%);
+  --feedback-success: hsl(142.9 55.1% 27.1%);
+  --feedback-success-bg: hsl(141.8 31.4% 93.1%);
+  --feedback-info: hsl(202.8 75% 28.2%);
+  --feedback-info-bg: hsl(205.7 50% 94.5%);
+
+  /* z-index */
+  --z-header: 50;
+  --z-drawer: 60;
+  --z-modal: 70;
+  --z-toast: 80;
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--border-default);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    font-synthesis-weight: none;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--avizee-terracotta);
+    color: var(--avizee-cream);
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Código de SKU — Montserrat, sem família monoespaçada (D-057). */
+@utility sku {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-sku);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@utility container-avizee {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: var(--spacing-4);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--spacing-6);
+  }
+}
+
+@utility skip-link {
+  position: absolute;
+  left: var(--spacing-4);
+  top: -100px;
+  z-index: 100;
+  background: var(--avizee-black);
+  color: var(--avizee-cream);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+
+  &:focus {
+    top: var(--spacing-4);
   }
 }

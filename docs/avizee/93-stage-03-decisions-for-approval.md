@@ -112,7 +112,7 @@ código de SKU **em Montserrat** (sem família monoespaçada adicional) e self-h
 ### DES-04 — Sistema de cor, contraste e combinações proibidas
 **Documento**: `78-color-and-contrast-system.md`.
 **Proposta**: papéis semânticos por cor, superfícies, estados interativos, tabela de contraste
-WCAG 2.1 AA e lista explícita de combinações proibidas. Tema escuro fora da v1.
+WCAG 2.2 AA e lista explícita de combinações proibidas. Tema escuro fora da v1.
 **Recomendação**: aprovar. **Impacto**: qualquer combinação fora da tabela passa a ser defeito.
 
 ### DES-05 — Grid, espaçamento e layout
@@ -172,7 +172,7 @@ aceite por breakpoint.
 **Recomendação**: aprovar. **Impacto**: a tabela de variações de SKU é o ponto crítico em telas
 pequenas e concentra o risco de usabilidade.
 
-### DES-13 — Especificação de acessibilidade WCAG 2.1 AA
+### DES-13 — Especificação de acessibilidade WCAG 2.2 AA (corrigida de 2.1)
 **Documento**: `88-accessibility-design-specification.md`.
 **Proposta**: adotar AA como meta obrigatória e não como aspiração, com checklist por
 componente, corrigindo os achados de `34-accessibility-findings.md`.
@@ -214,7 +214,14 @@ fonte de valores; nenhuma cor literal em componente.
 | Papéis e permissões do painel | Decisão operacional | O-08, O-09 |
 | Tema escuro | Fora da v1 | `78` |
 
-## Caminho mínimo de aprovação
+## Liberação da Etapa 4
 
-Para liberar a Etapa 4 basta manifestação sobre **DES-01**, **DES-02** e **DES-10**. As demais
-podem ser respondidas em paralelo, pois detalham o sistema sem alterar sua base.
+Com DES-01, DES-02 e DES-10 aprovadas, a **Etapa 4 (`95`–`130`) está liberada exclusivamente para
+planejamento e arquitetura técnica**: avaliação das capacidades do Lovable, comparação de
+arquiteturas, modelagem de dados, classificação de campos públicos e privados, segurança,
+autenticação, permissões, storage, busca, cotação, CMS, SEO técnico, ambientes, backup,
+monitoramento, testes, CI/CD e plano de implementação.
+
+A Etapa 4 **não** está autorizada a aplicar tokens no código, codificar componentes, criar banco
+de produção, ativar serviços externos, publicar páginas, alterar o site atual ou iniciar a
+implementação produtiva.

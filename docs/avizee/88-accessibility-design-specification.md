@@ -223,5 +223,10 @@ para implementação. Cada linha responde sim/não; qualquer "não" bloqueia apr
   antes da aprovação final de produção.
 - Contraste calculado matematicamente, não medido por ferramenta em navegador sobre a
   renderização final; reconfirmação obrigatória em `src/` antes do lançamento.
-- Cores funcionais de erro/sucesso/aviso (L-01, `74`) ainda não aprovadas; qualquer par usado
-  nesta especificação para exemplificar mensagens é hipotético e depende de aprovação separada.
+- Cores funcionais **aprovadas** em 2026-08-01 (DES-02 / D-056): erro Vinho, aviso Terracota,
+  sucesso verde funcional `#1f6b3c`, informação azul funcional `#12557e`. Os pares e razões de
+  contraste constam de `78` §10 e de `design/color-contrast-matrix.csv`. L-01 está encerrada.
+- Meta obrigatória: **WCAG 2.2 AA** (DES-13 / D-058), gate de qualidade e não objetivo opcional.
+  Os critérios adicionais de 2.2 aplicáveis — foco não obscurecido (2.4.11), aparência do foco
+  (2.4.13), arrastar como alternativa (2.5.7), tamanho mínimo de alvo 24×24 (2.5.8), autenticação
+  acessível (3.3.8) e entrada redundante (3.3.7) — integram o checklist por componente.

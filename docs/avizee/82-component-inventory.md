@@ -287,6 +287,12 @@ Regras: WhatsApp sempre secundário à Lista de Cotação (`50` §5).
 
 ## 9. Status e uso
 
+**Escopo (DES-08 / D-059)**: este inventário é o **inventário de referência para a arquitetura
+técnica e para a futura etapa de implementação**. Não é escopo de construção da Etapa 4 — a Etapa 4
+define arquitetura, contratos, modelo de dados, segurança, dependências e plano de implementação.
+A construção dos componentes ocorre em etapa posterior à aprovação da arquitetura técnica.
+
+
 Todos os componentes listados são propostas conceituais `PENDENTE_DE_APROVAÇÃO` (R-10). A
 implementação em código segue este inventário apenas após aprovação explícita; nenhum componente
 aqui descrito autoriza, por si, alteração em `src/`.

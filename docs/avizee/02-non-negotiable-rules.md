@@ -57,3 +57,15 @@ publicar recomendação técnica não revisada ou afirmar parceria/representaç�
 ## R-13 — Rastreabilidade
 `USER_DECISION` Toda informação documentada carrega etiqueta de origem. Decisões aprovadas e
 recomendações nunca são misturadas no mesmo bloco.
+
+
+## Reforço técnico da Etapa 4
+
+| Regra | Controle técnico obrigatório |
+|---|---|
+| R-04 — sem e-commerce | O modelo de dados **não possui** coluna de preço, desconto, frete, total ou estoque. Ausência estrutural, não condicional |
+| R-05 — nenhuma marca de terceiro pública | Campos `internal_brand`, `supplier`, `original_code`, `internal_notes`, aliases internos e `marca_detectada` são ADMIN_ONLY e **fisicamente ausentes** das views públicas, do índice de busca, do sitemap, do JSON-LD, dos metadados e das mensagens de WhatsApp. Suite de testes R-05 é gate bloqueante de release |
+| R-07 — imagens | Imagem reprovada permanece em bucket privado e é inalcançável pelo frontend; ausência de imagem usa placeholder e nunca bloqueia produto com dados confiáveis |
+| D-034 — identidade | SKU nunca é chave primária; UUID imutável |
+| D-058 — acessibilidade | WCAG 2.2 AA é gate de release |
+| Segredos | Nenhum segredo no repositório, no banco comum, no bundle, em log ou em documentação |

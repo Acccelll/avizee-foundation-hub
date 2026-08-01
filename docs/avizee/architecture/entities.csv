@@ -1,0 +1,57 @@
+entity,grupo,finalidade,pk,chaves_naturais,soft_delete,auditada,exposicao_publica
+users,identidade,contas administrativas,uuid,email,nao,sim,nenhuma
+roles,identidade,papeis do sistema,uuid,code,nao,sim,nenhuma
+permissions,identidade,acoes permitidas,uuid,code,nao,sim,nenhuma
+role_permissions,identidade,vinculo papel-permissao,uuid,"role_id,permission_id",nao,sim,nenhuma
+user_roles,identidade,papel do usuario (tabela separada),uuid,"user_id,role_id",nao,sim,nenhuma
+audit_logs,governanca,trilha de auditoria,uuid,-,nao,-,nenhuma
+settings,governanca,configuracoes,uuid,chave,nao,sim,parcial (chaves publicas)
+segments,taxonomia,segmentos de mercado,uuid,slug,sim,sim,view publica
+applications,taxonomia,aplicacoes/solucoes,uuid,slug,sim,sim,view publica
+solutions,taxonomia,paginas de solucao,uuid,slug,sim,sim,view publica
+product_categories,taxonomia,6 categorias publicas,uuid,slug,sim,sim,view publica
+product_subcategories,taxonomia,subcategoria funcional,uuid,slug,sim,sim,view publica
+product_families,catalogo,familia de produtos,uuid,slug,sim,sim,view publica
+family_applications,catalogo,aplicacoes da familia,uuid,"family_id,application_id",nao,sim,view publica
+family_segments,catalogo,segmentos da familia,uuid,"family_id,segment_id",nao,sim,view publica
+products,catalogo,SKU/variacao,uuid,slug,sim,sim,view publica
+product_codes,catalogo,codigos e aliases,uuid,"code,type",nao,sim,somente PUBLIC_SKU validado
+product_code_conflicts,catalogo,conflitos de codigo,uuid,-,nao,sim,nenhuma
+product_applications,catalogo,aplicacoes do SKU,uuid,-,nao,sim,view publica
+product_segments,catalogo,segmentos do SKU,uuid,-,nao,sim,view publica
+specification_definitions,catalogo,dicionario de especificacoes,uuid,code,sim,sim,view publica (is_public)
+specification_scopes,catalogo,escopo por categoria/familia,uuid,-,nao,sim,nenhuma
+product_specifications,catalogo,valores por SKU,uuid,-,nao,sim,view publica
+family_specifications,catalogo,valores comuns,uuid,-,nao,sim,view publica
+related_products,catalogo,relacionados,uuid,-,nao,sim,view publica
+media_assets,midia,ativos de imagem,uuid,hash,sim,sim,somente aprovados
+media_variants,midia,derivados webp/thumb,uuid,-,sim,sim,somente aprovados
+image_review_events,midia,historico de revisao,uuid,-,nao,sim,nenhuma
+product_images,midia,vinculo produto/familia-imagem,uuid,-,nao,sim,view publica
+documents,midia,documentos,uuid,slug,sim,sim,somente com direito
+product_documents,midia,vinculo produto-documento,uuid,-,nao,sim,view publica
+articles,conteudo,artigos,uuid,slug,sim,sim,view publica
+article_revisions,conteudo,historico editorial,uuid,-,nao,sim,nenhuma
+editorial_categories,conteudo,7 categorias editoriais,uuid,slug,sim,sim,view publica
+article_categories,conteudo,vinculo,uuid,-,nao,sim,view publica
+article_products,conteudo,artigo-produto,uuid,-,nao,sim,view publica
+article_families,conteudo,artigo-familia,uuid,-,nao,sim,view publica
+article_solutions,conteudo,artigo-solucao,uuid,-,nao,sim,view publica
+authors,conteudo,autores,uuid,slug,sim,sim,view publica (nome e bio)
+article_sources,conteudo,fontes citadas,uuid,-,nao,sim,view publica
+article_social,conteudo,textos sociais armazenados,uuid,-,nao,sim,nenhuma
+quotations,cotacao,solicitacao de cotacao,uuid,protocolo,nao,sim,nenhuma
+quotation_items,cotacao,itens com snapshot,uuid,-,nao,sim,nenhuma
+quotation_events,cotacao,historico de status,uuid,-,nao,sim,nenhuma
+quotation_sources,cotacao,origem/UTM,uuid,-,nao,sim,nenhuma
+contacts,cotacao,mensagens de contato,uuid,-,nao,sim,nenhuma
+page_content,institucional,blocos editaveis,uuid,"page_key,block_key",nao,sim,view publica
+seo_metadata,seo,metadados por entidade,uuid,"entity,entity_id",nao,sim,derivado publico
+redirects,seo,redirecionamentos 301,uuid,origem,nao,sim,comportamento publico
+publication_history,governanca,historico de publicacao,uuid,-,nao,-,nenhuma
+import_jobs,operacao,lotes de importacao,uuid,hash,nao,sim,nenhuma
+import_errors,operacao,erros de importacao,uuid,-,nao,-,nenhuma
+outbox_messages,operacao,fila de mensagens/jobs,uuid,-,nao,-,nenhuma
+consent_records,privacidade,consentimentos versionados,uuid,-,nao,sim,nenhuma
+privacy_requests,privacidade,solicitacoes do titular,uuid,-,nao,sim,nenhuma
+search_index,busca,indice publico,uuid,"entity_type,entity_id",nao,-,derivado publico

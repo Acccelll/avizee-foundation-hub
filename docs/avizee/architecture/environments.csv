@@ -1,0 +1,5 @@
+ambiente,finalidade,url,banco,storage,segredos,usuarios,indexacao,email,dados,acesso,logs,backup
+desenvolvimento,construcao,localhost,dev,dev,dev,dev,bloqueada,simulado,sinteticos,equipe tecnica,descartaveis,nao
+preview,revisao por alteracao,preview do projeto,dev,dev,dev,dev,noindex + Disallow,simulado,sinteticos,equipe + aprovador,curtos,nao
+homologacao,aceite antes de producao,projeto/branch dedicado,homologacao,homologacao,homologacao,teste,noindex + Disallow + acesso protegido,caixa de teste,anonimizados,equipe + AviZee,30 dias,sim
+producao,site publico,dominio oficial,producao,producao,producao,reais,permitida,real,reais,restrito por papel,30 dias + auditoria 12 meses,sim

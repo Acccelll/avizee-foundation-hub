@@ -109,3 +109,14 @@ Etapa 3. A Etapa 4 não é iniciada automaticamente.
 
 **Limite expresso**: a aprovação considera os princípios resumidos em `93`. Ela **não valida
 silenciosamente** valores HSL, cálculos de contraste ou detalhes visuais não apresentados no chat.
+
+
+## Etapa 4 — registro em 2026-08-01 (planejamento técnico)
+
+| ID | Decisão | Origem | Data |
+|---|---|---|---|
+| D-062 | **Etapa 4 executada como planejamento e arquitetura técnica**, produzindo os documentos `95`–`130` e os estruturados em `docs/avizee/architecture/`. Nenhuma implementação produtiva, nenhum banco criado, nenhum serviço ativado, nenhum layout alterado | USER_DECISION (D-061) | 2026-08-01 |
+
+**As 21 decisões técnicas DT-01 a DT-21 (`129-stage-04-decisions-for-approval.md`) NÃO são
+decisões aprovadas.** Estão todas em `PENDENTE_DE_APROVAÇÃO` e não podem ser tratadas como
+aprovadas nem aplicadas antes de aprovação expressa item a item.

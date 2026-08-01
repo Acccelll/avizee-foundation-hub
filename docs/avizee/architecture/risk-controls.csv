@@ -1,0 +1,19 @@
+risco,descricao,probabilidade,impacto,prevencao,deteccao,resposta,responsavel,status
+RK-33,vazamento de marca interna,media,alto,views publicas sem a coluna + serializer allowlist,suite R-05 no CI,bloquear release e corrigir,tecnico,aberto controlado
+RK-34,limitacao de SEO,baixa,alto,estrategia de renderizacao definida,auditoria de HTML,ajustar rota,tecnico,controlado
+RK-35,importacao incorreta,media,alto,dry run + rollback,relatorio de importacao,rollback,catalogo,aberto
+RK-36,conflito de SKU publicado,media,alto,status BLOCKED_BY_CODE,teste de integracao,despublicar,catalogo,aberto
+RK-37,imagem sem direito publicada,media,alto,rights_status obrigatorio,revisao + E2E 10,remover e reprovar,conteudo,aberto
+RK-38,falha de cotacao,baixa,alto,transacao + idempotencia,alerta de erro,reprocessar,tecnico,controlado
+RK-39,falha de email,media,medio,outbox com retry,alerta de fila,reenvio manual,tecnico,controlado
+RK-40,dependencia externa indisponivel,media,medio,degradacao graciosa,health check,fallback,tecnico,aberto
+RK-41,perda de dados sem backup testado,baixa,alto,backup + teste trimestral,checklist mensal,restaurar,tecnico,aberto
+RK-42,credenciais antigas ativas,alta,alto,revogacao e rotacao,evidencia documental,revogar,AviZee,aberto
+RK-43,publicacao indevida de rascunho,media,medio,gate de publicacao,teste de SEO,despublicar,editorial,controlado
+RK-44,conteudo tecnico sem revisao,media,medio,TECHNICAL_REVIEW obrigatorio,fluxo do CMS,despublicar,editorial,controlado
+RK-45,dado pessoal em log ou analytics,media,alto,proibicao + redaction,revisao de codigo,purgar,tecnico,controlado
+RK-46,baixa performance mobile,media,medio,orcamento + paginacao,Lighthouse CI,otimizar,tecnico,controlado
+RK-47,falha no agendamento,media,baixo,pg_cron + fallback manual,alerta de job,publicar manualmente,editorial,controlado
+RK-48,redirecionamento incorreto,media,medio,validacao de cadeia,monitor de 404,corrigir tabela,tecnico,controlado
+RK-49,pg_cron indisponivel,media,medio,verificar antes do incremento 1,teste de ambiente,worker alternativo,tecnico,aberto
+RK-50,processamento de imagem inviavel,media,medio,pre-processar no upload,teste de upload,transformacao do storage,tecnico,aberto

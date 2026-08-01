@@ -49,3 +49,19 @@
 | **Herança taxonômica** | O SKU herda categoria, aplicação e segmento da família; só declara o que o diferencia. |
 | **Bloqueio de registro** | Conflito trava o SKU afetado, nunca a família inteira (D-036). |
 | **READY_FOR_STAGE_3** | Família com taxonomia suficiente para orientar o design system, mesmo sem fotografia ou descrição extensa. |
+
+
+## Termos técnicos incorporados na Etapa 4
+
+| Termo | Definição |
+|---|---|
+| View pública | Visão do banco contendo apenas campos PUBLIC/DERIVED_PUBLIC; única superfície lida por usuário anônimo |
+| RLS | Row Level Security — controle de acesso por linha no Postgres |
+| Outbox | Tabela de mensagens/jobs pendentes processada por worker, garantindo que falhas externas não afetem a transação principal |
+| Idempotência | Reenvio da mesma solicitação produz o mesmo resultado (mesmo protocolo) |
+| Snapshot de item | Cópia do nome, SKU e variação no momento da cotação, preservando o histórico |
+| Dry run | Execução simulada da importação, com relatório e sem gravar |
+| Dead letter | Mensagem que esgotou as tentativas e requer intervenção |
+| Gate | Verificação bloqueante antes de avançar de etapa ou publicar |
+| ADMIN_ONLY | Classificação de campo interno, nunca exposto publicamente |
+| Placeholder oficial | Imagem padrão aprovada usada quando não há foto autorizada |

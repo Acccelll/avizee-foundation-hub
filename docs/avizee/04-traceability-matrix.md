@@ -69,3 +69,10 @@ artigo ↔ família"**.
 | D-059 (DES-08) | Usuário | `82` §9 · `93` | Redação de escopo corrigida |
 | D-060 (demais DES) | Usuário | `93` quadro de vereditos · `data/stage-03-decisions.csv` | Status por decisão |
 | D-061 (liberação da Etapa 4) | Usuário | `93` · `94` · `README.md` | Lista explícita do que não está autorizado |
+
+
+## Etapa 4 — rastreabilidade técnica
+
+A matriz requisito → decisão → entidade → componente → API → página → teste → risco →
+incremento está em `127-technical-traceability-matrix.md`, complementada por
+`architecture/technical-decisions.csv` e `architecture/risk-controls.csv`.

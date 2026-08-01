@@ -71,3 +71,14 @@ aprovou apenas as 31 prontas.
 | RK-31 | Verde/azul funcionais vazarem para peça institucional ou promocional, diluindo a marca | **Aberto — controlado** por `10-brand-guidelines.md` e `76` §4.1; verificado no checklist de `91` |
 | RK-32 | Implementação alterar silenciosamente estrutura ou aparência aprovada | **Aberto — controlado** por DES-10: revisão visual obrigatória por tipo de página antes da implementação |
 | RK-28 | Estado de "item em revisão" vazar registro bloqueado | **Controle reforçado** — proibido expor código conflitante, nome interno, marca de terceiro, motivo administrativo, fornecedor, referência original ou identidade não validada |
+
+
+## Atualização 2026-08-01 — Etapa 4 (riscos técnicos)
+
+Novos riscos **RK-33 a RK-50**, com probabilidade, impacto, prevenção, detecção, resposta,
+responsável e status, registrados em `128-stage-04-risks.md` e
+`architecture/risk-controls.csv`.
+
+Destaques: **RK-42** (credenciais antigas ainda válidas) permanece **Aberto e crítico** —
+só encerra com evidência de revogação (Q-01/O-27). **RK-41** (backup não testado) e
+**RK-49** (`pg_cron` não confirmado no plano) bloqueiam critérios do Incremento 1 e 8.

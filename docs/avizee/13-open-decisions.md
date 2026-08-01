@@ -132,3 +132,24 @@ permanece sem aprovação.
 
 **Aberto na Etapa 4 (não é pendência de design)**: caminho físico da fonte única de tokens
 (DES-16) e validação técnica da dependência `lucide-react` (DES-06).
+
+
+## Atualização 2026-08-01 — Etapa 4
+
+**Novas pendências técnicas** (todas `PENDENTE_DE_APROVAÇÃO`): DT-01 a DT-21 em
+`129-stage-04-decisions-for-approval.md`.
+
+**Dependências abertas**:
+
+- DEP-T1 — provedor de e-mail e destino das cotações (absorve O-05 e O-06);
+- DEP-T2 — disponibilidade de `pg_cron` no plano contratado;
+- DEP-T3 — política de buckets públicos do workspace;
+- DEP-T4 — evidência de revogação das credenciais antigas (Q-01 / O-27 / RK-42);
+- DEP-T5 — dados legais da empresa para os textos de privacidade e cookies.
+
+**Encerradas nesta etapa**: DES-16 — a fonte única de tokens é definida no Incremento 1
+como camada de tema da aplicação; DES-06 — `lucide-react` avaliado em `125` e aprovado
+apenas como proposta (DT dependente do Incremento 1).
+
+**Permanecem abertas sem alteração**: DECT-11, DECT-08/DEP-09, DECT-02 a DECT-09,
+DECT-12/DEC-07, O-08 e O-09 (usuários reais e atribuição de papéis), O-10.

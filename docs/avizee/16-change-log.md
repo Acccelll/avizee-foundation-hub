@@ -318,3 +318,21 @@ backend, nenhum formulário ativo, nenhum produto importado, nenhuma alteração
   `design/prototype-decisions.csv`.
 - **Nada implementado**: `src/` intocado, nenhum token aplicado, nenhum componente codificado,
   nenhuma rota criada, nenhum banco de produção, nenhum serviço externo ativado.
+
+
+## 2026-08-01 — Etapa 4: arquitetura técnica, modelagem, segurança e plano de implementação
+
+- **Criados 36 documentos**: `95-stage-04-technical-architecture-plan.md` a
+  `130-stage-04-executive-report.md` (numeração D-055, deslocamento +6 sobre os `89`–`124`
+  do prompt).
+- **Criada a pasta `architecture/`** com `entities.csv`, `fields-classification.csv`,
+  `permissions.csv`, `api-contracts-provisional.csv`, `external-services.csv`, `events.csv`,
+  `environments.csv`, `implementation-increments.csv`, `technical-decisions.csv`,
+  `risk-controls.csv`.
+- **Atualizados**: `01`, `02`, `04`, `11`, `12`, `13`, `14`, `15`, `16`, `README.md`.
+- **Registrado D-062** (execução da Etapa 4 como planejamento).
+- **21 decisões técnicas DT-01 a DT-21** apresentadas em `PENDENTE_DE_APROVAÇÃO`.
+- **18 riscos técnicos** RK-33 a RK-50 registrados.
+- **Nada implementado**: `src/` intocado, nenhuma tabela criada, nenhum produto importado,
+  nenhuma rota publicada, nenhum domínio, nenhum segredo armazenado, nenhum e-mail ou cotação
+  enviada, nenhum serviço externo ativado, nenhum layout alterado.

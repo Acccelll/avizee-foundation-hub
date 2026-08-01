@@ -87,3 +87,40 @@ Critérios e situação em `39-stage-01-executive-report.md` (15 critérios, tod
 5. **Protótipos**: cada tipo de página passa por revisão visual antes da implementação produtiva.
 6. **Checklist**: evidência verificável, não confirmação declaratória; dispensa de item crítico
    exige justificativa, registro, aprovação e plano de correção.
+
+
+## Etapa 4 — Critérios de Aceite
+
+| # | Critério | Situação |
+|---|---|---|
+| 1 | Etapa 3 aprovada | Atendido — D-056 a D-061 |
+| 2 | Design aprovado preservado | Atendido — nenhuma alteração de token, cor, tipografia, componente, protótipo ou jornada |
+| 3 | Capacidades do Lovable verificadas | Atendido — `96` com matriz necessidade → capacidade |
+| 4 | Alternativas comparadas | Atendido — `97`, três alternativas |
+| 5 | Arquitetura recomendada apresentada | Atendido — `98`, `99` |
+| 6 | Modelo de dados completo | Atendido — `101`, `102`, `architecture/entities.csv` |
+| 7 | SKU não é chave primária | Atendido — UUID; SKU como código com histórico |
+| 8 | Campos públicos e privados classificados | Atendido — `103`, `fields-classification.csv` |
+| 9 | Marcas internas protegidas | Atendido — controle estrutural + suite de testes R-05 |
+| 10 | Catálogo modelado | Atendido — `104` |
+| 11 | Especificações dinâmicas modeladas | Atendido — `105`, modelo híbrido |
+| 12 | Busca especificada | Atendido — `106` |
+| 13 | Cotação especificada | Atendido — `107` |
+| 14 | Central de Conteúdos especificada | Atendido — `108` |
+| 15 | Imagens e documentos especificados | Atendido — `109` |
+| 16 | Autenticação e permissões planejadas | Atendido — `110`, `111` |
+| 17 | Segurança documentada | Atendido — `112` |
+| 18 | Privacidade e retenção documentadas | Atendido com ressalva — depende de DEP-T5 |
+| 19 | Ambientes definidos | Atendido — `118` |
+| 20 | Backup definido | Atendido — `120`; teste ainda não executado (RK-41) |
+| 21 | Monitoramento definido | Atendido — `121` |
+| 22 | Testes definidos | Atendido — `123`, 15 fluxos E2E |
+| 23 | CI/CD definido | Atendido — `124` |
+| 24 | Importação e migração planejadas | Atendido — `122` |
+| 25 | Plano incremental completo | Atendido — `126`, 8 incrementos com gate |
+| 26 | Riscos atualizados | Atendido — `128`, RK-33 a RK-50 |
+| 27 | Decisões pendentes separadas | Atendido — `129`, DT-01 a DT-21 |
+| 28 | Nenhum código produtivo implementado | Atendido — `src/` intocado |
+| 29 | Nenhum banco produtivo criado | Atendido |
+| 30 | Nenhuma integração real ativada | Atendido |
+| 31 | Nenhum layout aprovado alterado | Atendido |

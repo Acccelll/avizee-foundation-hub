@@ -1,0 +1,22 @@
+id,tema,recomendacao,alternativas,justificativa,impacto,riscos,custo_recorrente,reversibilidade,dependencias,status
+DT-01,stack,TanStack Start + Lovable Cloud,CMS headless / backend separado,compatibilidade e controle de R-05,estrutural,dependencia do ambiente,baixo,alta,-,PENDENTE_DE_APROVACAO
+DT-02,banco,PostgreSQL gerenciado com RLS,-,integridade e full-text,estrutural,configuracao de RLS,incluido,alta,DT-01,PENDENTE_DE_APROVACAO
+DT-03,backend,createServerFn + api/public,API separada,menor superficie,medio,-,-,alta,DT-01,PENDENTE_DE_APROVACAO
+DT-04,renderizacao,SSG + SSR cacheado,SSG total / CSR,SEO e frescor,alto,cache mal ajustado,-,alta,DT-01,PENDENTE_DE_APROVACAO
+DT-05,especificacoes,hibrido dicionario+valores tipados,EAV / JSON livre / tabela larga,tipagem e filtro,alto,complexidade de UI,-,media,DT-02,PENDENTE_DE_APROVACAO
+DT-06,busca,Postgres tsvector+pg_trgm,motor dedicado,volume nao justifica externo,medio,ranking limitado,nenhum,alta,DT-02,PENDENTE_DE_APROVACAO
+DT-07,cotacao,banco como fonte + outbox,email direto,nenhum lead perdido,alto,-,-,alta,"DT-02,DT-11",PENDENTE_DE_APROVACAO
+DT-08,whatsapp,link wa.me apos o registro,so antes / API oficial,preserva a lista de cotacao,medio,mensagem manual,nenhum,alta,DT-07,PENDENTE_DE_APROVACAO
+DT-09,cms,painel proprio,CMS headless,governanca de marca,alto,esforco,nenhum,media,DT-01,PENDENTE_DE_APROVACAO
+DT-10,editor,JSON em blocos sanitizado,rich text HTML / markdown,seguranca e consistencia,medio,curva de uso,possivel licenca,media,DT-09,PENDENTE_DE_APROVACAO
+DT-11,email,gerenciado com dominio proprio,SMTP proprio / provedor dedicado,entregabilidade,medio,bounce limitado,baixo/medio,alta,DEP-T1,PENDENTE_DE_APROVACAO
+DT-12,storage,private por padrao + public so aprovados,bucket unico,privacidade fisica,alto,-,baixo,alta,DEP-T3,PENDENTE_DE_APROVACAO
+DT-13,imagens,derivados no upload via WASM,transformacao sob demanda,runtime sem binarios nativos,medio,compatibilidade,nenhum,media,DT-12,PENDENTE_DE_APROVACAO
+DT-14,autenticacao,auth nativa + MFA admin,provedor externo,simplicidade,medio,-,incluido,alta,DT-01,PENDENTE_DE_APROVACAO
+DT-15,papeis,7 papeis com menor privilegio,modelo simplificado,segregacao de funcoes,medio,gestao,-,alta,DT-14,PENDENTE_DE_APROVACAO
+DT-16,retencao,politica do doc 113,retencao indefinida,LGPD,medio,aprovacao juridica,-,alta,DEP-T5,PENDENTE_DE_APROVACAO
+DT-17,servicos externos,email + Maps sob interacao,mais integracoes,privacidade e performance,medio,-,baixo,alta,-,PENDENTE_DE_APROVACAO
+DT-18,ambientes,dev/preview/homologacao/producao,sem homologacao,aceite seguro,medio,custo extra,baixo,alta,-,PENDENTE_DE_APROVACAO
+DT-19,backup,snapshot diario + export semanal + teste trimestral,so snapshot,backup nao testado nao conta,medio,operacao,baixo,alta,-,PENDENTE_DE_APROVACAO
+DT-20,analytics,eventos do doc 115 com consentimento,ativar imediatamente,LGPD,baixo,-,baixo,alta,-,PENDENTE_DE_APROVACAO
+DT-21,deploy,preview automatico + producao com aprovacao,deploy continuo,controle de qualidade,medio,cadencia,-,alta,DT-01,PENDENTE_DE_APROVACAO

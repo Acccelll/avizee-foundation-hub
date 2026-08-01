@@ -32,8 +32,8 @@ export function ModulePlaceholder({
         <div>
           <p className="text-[15px] font-semibold text-info">Módulo em construção</p>
           <p className="mt-1 text-[15px] text-text-secondary">
-            Esta é uma página estrutural da fundação técnica. O módulo completo será implementado
-            na {stage}. Nenhum produto, artigo ou dado comercial é exibido aqui.
+            Esta é uma página estrutural da fundação técnica. O módulo completo será implementado na{" "}
+            {stage}. Nenhum produto, artigo ou dado comercial é exibido aqui.
           </p>
         </div>
       </div>

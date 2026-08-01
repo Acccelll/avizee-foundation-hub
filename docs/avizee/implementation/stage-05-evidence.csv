@@ -1,0 +1,18 @@
+evidencia,metodo,resultado,documento
+type checking,bunx tsgo --noEmit,sem erro,154
+lint e formatacao,bunx eslint .,0 erros e 6 avisos em primitivos de UI,154
+rotas publicas respondem,requisicao HTTP por rota,todas 200,154
+robots fora de producao,GET /robots.txt,Disallow: / ,154
+sessao sem cookie,GET /api/auth/session,{"authenticated":false},154
+credencial invalida,POST /api/auth/login,401 sem enumeracao,154
+gate administrativo,acesso a /admin sem sessao,redireciona para /admin/login,154
+gate de permissao,sessao sem admin.access,redireciona para /admin/acesso-negado,154
+segredo fraco em ambiente serio,APP_ENV=staging sem AUTH_SESSION_SECRET,falha ao iniciar,147
+redacao de log,inspecao de logger.ts,senha/token/cookie redigidos e email mascarado,145
+adaptador de email em producao,inspecao de adapters.server.ts,lanca excecao,144
+captcha simulado,inspecao de adapters.server.ts,reprova por padrao,144
+banco ativado,ativacao do Cloud,instancia disponivel sem tabelas,151
+testes automatizados,nao executado,INEXISTENTE,155
+auditoria persistida,nao executado,INEXISTENTE,155
+medicao de performance,nao executado,INEXISTENTE,155
+auditoria de acessibilidade automatizada,nao executado,INEXISTENTE,155

@@ -37,7 +37,9 @@ export function getServerConfig(): ServerConfig {
 
   if (!cfg.AUTH_SESSION_SECRET) {
     if (isProdLike) {
-      throw new Error("Configuração ausente: AUTH_SESSION_SECRET é obrigatória fora de desenvolvimento/preview.");
+      throw new Error(
+        "Configuração ausente: AUTH_SESSION_SECRET é obrigatória fora de desenvolvimento/preview.",
+      );
     }
     cfg.AUTH_SESSION_SECRET = DEV_ONLY_SESSION_SECRET;
   }

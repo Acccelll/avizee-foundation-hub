@@ -16,7 +16,10 @@ function Denied() {
         <p className="mt-3 text-[16px] text-text-secondary">
           Sua conta não possui permissão para acessar o painel administrativo.
         </p>
-        <Link to="/" className="mt-6 inline-flex h-11 items-center rounded-[8px] bg-primary px-5 font-semibold text-primary-foreground">
+        <Link
+          to="/"
+          className="mt-6 inline-flex h-11 items-center rounded-[8px] bg-primary px-5 font-semibold text-primary-foreground"
+        >
           Voltar ao site
         </Link>
       </div>

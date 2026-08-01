@@ -12,9 +12,7 @@ export const Route = createFileRoute("/robots.txt")({
       GET: async () => {
         const { APP_ENV } = getServerConfig();
         const body =
-          APP_ENV === "production"
-            ? "User-agent: *\nAllow: /\n"
-            : "User-agent: *\nDisallow: /\n";
+          APP_ENV === "production" ? "User-agent: *\nAllow: /\n" : "User-agent: *\nDisallow: /\n";
         return new Response(body, {
           headers: {
             "content-type": "text/plain; charset=utf-8",

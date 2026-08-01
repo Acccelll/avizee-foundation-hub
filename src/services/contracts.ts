@@ -26,7 +26,12 @@ export interface StoredObject {
 export interface StorageProvider {
   readonly name: string;
   /** Upload sempre nasce privado (política de mídia da Etapa 4). */
-  put(input: { key: string; contentType: string; size: number; visibility?: "private" }): Promise<StoredObject>;
+  put(input: {
+    key: string;
+    contentType: string;
+    size: number;
+    visibility?: "private";
+  }): Promise<StoredObject>;
   urlFor(object: StoredObject): Promise<string | null>;
 }
 

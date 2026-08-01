@@ -1,0 +1,45 @@
+arquivo,tipo,finalidade,etapa
+src/styles.css,estilo,tokens e tipografia (fonte unica dos valores visuais),5
+src/routes/__root.tsx,rota,documento raiz e shell publico,5
+src/routes/index.tsx,rota,home institucional provisoria,5
+src/routes/produtos.tsx,rota,placeholder de modulo,5
+src/routes/solucoes.tsx,rota,placeholder de modulo,5
+src/routes/conteudos.tsx,rota,placeholder de modulo,5
+src/routes/sobre.tsx,rota,institucional,5
+src/routes/contato.tsx,rota,institucional sem envio real,5
+src/routes/cotacao.tsx,rota,placeholder de modulo,5
+src/routes/politica-de-privacidade.tsx,rota,legal,5
+src/routes/termos-de-uso.tsx,rota,legal,5
+src/routes/robots[.]txt.ts,rota,robots gerado por ambiente,5
+src/routes/admin/login.tsx,rota,login administrativo,5
+src/routes/admin/acesso-negado.tsx,rota,negacao de acesso,5
+src/routes/admin/_protected.tsx,rota,gate de sessao e permissao,5
+src/routes/admin/_protected/index.tsx,rota,painel administrativo,5
+src/routes/api/auth/login.ts,api,autenticacao com rate limit,5
+src/routes/api/auth/logout.ts,api,encerramento de sessao,5
+src/routes/api/auth/session.ts,api,estado da sessao,5
+src/routes/api/public/health.ts,api,disponibilidade sem dado interno,5
+src/components/public/PublicShell.tsx,componente,shell publico,5
+src/components/public/ModulePlaceholder.tsx,componente,sinalizacao honesta de modulo ausente,5
+src/components/admin/AdminShell.tsx,componente,shell administrativo,5
+src/auth/contract.ts,dominio,contrato de autenticacao,5
+src/auth/local-provider.server.ts,dominio,provedor local temporario,5
+src/auth/session.server.ts,dominio,cookie de sessao assinado,5
+src/permissions/model.ts,dominio,papeis e permissoes,5
+src/services/contracts.ts,dominio,contratos de servico externo,5
+src/services/adapters.server.ts,dominio,adaptadores simulados identificados,5
+src/lib/env.ts,infra,ambiente seguro para o cliente,5
+src/lib/env.server.ts,infra,configuracao de servidor com validacao fail-fast,5
+src/lib/logger.ts,infra,log estruturado com redacao,5
+src/lib/errors.ts,infra,erros padronizados,5
+src/lib/error-page.ts,infra,pagina de erro neutra,5
+src/lib/audit.server.ts,infra,forma do registro de auditoria,5
+src/seo/meta.ts,infra,metadados e controle de indexacao,5
+src/start.ts,infra,middlewares globais (erro, CSRF, bearer),5
+src/assets/brand/avizee-logo-colorido.svg,ativo,logotipo oficial vetorial,5
+src/integrations/supabase/client.ts,gerado,cliente de navegador,5
+src/integrations/supabase/client.server.ts,gerado,cliente administrativo de servidor,5
+src/integrations/supabase/auth-middleware.ts,gerado,middleware de autenticacao de servidor,5
+src/integrations/supabase/auth-attacher.ts,gerado,anexo de token no cliente,5
+src/integrations/supabase/types.ts,gerado,tipos do banco (vazio: sem tabelas),5
+public/robots.txt,removido,substituido por rota dinamica,5

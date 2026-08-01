@@ -1,0 +1,10 @@
+id,requisito,limitacao,impacto,alternativa,risco,bloqueante_etapa_6,plano
+DV-05-01,autenticacao administrativa real,DT-14 indefinida e banco inexistente,sem gestao de usuarios/reset/MFA,provedor local sintetico atras de contrato estavel,medio,sim,migrar para provedor gerenciado com user_roles em tabela separada
+DV-05-02,tipografia completa,acervo Montserrat sem italico,sem italico no projeto,enfase por peso,baixo,nao,obter eixo italico ou confirmar ausencia
+DV-05-03,rate limiting confiavel,contador em memoria,limite diluido entre instancias,limite por instancia,medio,nao,mover contador para store compartilhado
+DV-05-04,instancias separadas por ambiente,nao provisionadas,homologacao inviavel,apenas desenvolvimento,alto,nao,provisionar antes de homologacao
+DV-05-05,revogacao de sessao,sem persistencia no momento,logout nao invalida outros dispositivos,expiracao por TTL,medio,nao,tabela de sessoes revogadas por jti
+DV-05-06,trilha de auditoria consultavel,banco inexistente,sem consulta/retencao/imutabilidade,log estruturado com a forma final,alto,sim,persistir em audit_logs na primeira migration
+DV-05-07,cabecalhos HTTP de seguranca,dependem da camada de publicacao,CSP e HSTS ausentes,nenhuma,medio,nao,definir e verificar antes de producao
+DV-05-08,orcamento de performance,sem instrumentacao,conformidade nao verificavel,baseline estrutural,medio,nao,instrumentar medicao sintetica e de campo
+DV-05-09,testes automatizados,suite inexistente,regressao nao detectavel,verificacao manual reproduzivel,alto,sim,criar suite priorizando nao vazamento e permissoes

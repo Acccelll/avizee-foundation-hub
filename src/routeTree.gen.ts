@@ -18,6 +18,7 @@ import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +65,11 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   path: '/termos-de-uso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
+  id: '/api/auth/login',
+  path: '/api/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/api/auth/login'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/api/auth/login'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/api/auth/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   SobreRoute: typeof SobreRoute
   SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
+  ApiAuthLoginRoute: typeof ApiAuthLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUsoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/auth/login': {
+      id: '/api/auth/login'
+      path: '/api/auth/login'
+      fullPath: '/api/auth/login'
+      preLoaderRoute: typeof ApiAuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   SobreRoute: SobreRoute,
   SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
+  ApiAuthLoginRoute: ApiAuthLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

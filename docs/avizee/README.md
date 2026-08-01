@@ -127,10 +127,20 @@ layout alterado, nenhum banco de dados criado.
 **Respostas da Etapa 1** (2026-08-01): Q-01 a Q-15 respondidas em `40-stage-01-answers.md`,
 gerando as decisões **D-039 a D-051**. O-24 e O-26 encerradas.
 
-**Pendências que bloqueiam a Etapa 2**:
+**Etapa 2 — Arquitetura de Informação**: concluída em 2026-08-01 como **proposta**. 19 documentos
+(41 a 59) e 7 CSVs. **Nenhuma decisão aprovada**: DEC-01 a DEC-18 aguardam manifestação em
+`58-stage-02-decisions-for-approval.md`. Nenhum código, layout, rota, banco ou redirecionamento
+foi criado.
+
+**Bloqueio para a Etapa 3**: **DEP-01** — a classificação família → categoria → aplicação não
+existe em nenhuma fonte e precisa ser executada antes do design system.
+
+**Pendências ainda abertas**:
 - **O-27 / RK-15 / Q-01** — revogação e rotação das credenciais SMTP e reCAPTCHA (não confirmada)
 - **Q-02** — origem e direito de uso do acervo de imagens
 - **Q-03** — medidas de **AG005** e **AG022** e o código correto da 2ª linha `AG016`
 - **Q-08** — confirmação dos dados de contato
 - **Q-13** — razão social, CNPJ, canal de privacidade e prazo de retenção
 - **L-01 a L-07** — recomendações ainda sem aprovação
+- **DEC-01 a DEC-18** — decisões da Etapa 2
+

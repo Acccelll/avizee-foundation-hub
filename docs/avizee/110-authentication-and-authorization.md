@@ -35,3 +35,14 @@ anônima e não cria conta.
 Rotas administrativas sob `_authenticated`, `noindex`, sem SSR de dado sensível para usuário
 anônimo. Funções de servidor administrativas usam middleware de autenticação; funções públicas
 são explicitamente marcadas como públicas e revisadas.
+
+
+## 5. Atualização 2026-08-01 — DT-14 aprovada
+
+Autenticação nativa do Lovable Cloud, com **MFA TOTP obrigatório para funções administrativas
+privilegiadas antes da produção**. Implementar autenticação, recuperação segura, sessão,
+expiração, revogação, logs, limitação de tentativas, proteção contra enumeração, MFA e
+**verificação de AAL**, exigindo **AAL2** em: usuários, permissões, publicação, importação,
+rollback, aprovação de imagem, resolução de conflito, configuração e acesso a documentos
+sensíveis. A interface de MFA cobre inscrição, desafio, recuperação operacional e perda do
+dispositivo.

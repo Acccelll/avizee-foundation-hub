@@ -38,3 +38,11 @@
 
 Cotações por período, itens por cotação, famílias mais cotadas, taxa de conversão de
 visita → cotação (quando analytics for ativado), buscas sem resultado.
+
+
+## Atualização 2026-08-01 — DT-20 aprovada
+
+Eventos aprovados, **sem ativação imediata** e condicionados a consentimento quando aplicável.
+Proibida coleta de nome, e-mail, telefone, CNPJ e conteúdo de mensagem. Eventos desacoplados do
+fornecedor por `AnalyticsProvider`; preview sem analytics real; UTMs controladas; política de
+privacidade atualizada; modo de desenvolvimento verificável.

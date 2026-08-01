@@ -45,3 +45,18 @@ imagem aprovada), `noindex` opcional. Alteração de slug cria redirect 301 auto
 Nenhuma marca de terceiro no corpo público; nenhum preço; fontes obrigatórias em conteúdo
 técnico; revisão técnica obrigatória para as categorias "Vacinação e aplicação",
 "Equipamentos e manutenção" e "Incubação e manejo".
+
+
+## Atualização 2026-08-01 — DT-09 e DT-10 aprovadas
+
+O painel **não é page builder livre**: a estrutura visual aprovada permanece protegida e a edição
+se limita aos conteúdos e blocos previstos.
+
+Editor com controles obrigatórios: schema versionado, allowlist de tipos de bloco, validação no
+servidor, sanitização, **nenhum HTML arbitrário**, migração entre versões do schema, prévia
+segura, histórico de revisões, renderizador público separado do editor, fallback para bloco
+desconhecido e bloqueio de scripts, iframes e atributos não autorizados.
+
+Blocos iniciais: heading, parágrafo, lista, tabela, imagem, legenda, chamada, citação curta,
+fonte, CTA, produto relacionado, artigo relacionado. Biblioteca comercial exige licença e custo
+aprovados antes da instalação.

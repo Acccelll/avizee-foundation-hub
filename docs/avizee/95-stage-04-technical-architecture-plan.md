@@ -65,3 +65,14 @@ DT-01 a DT-21 para aprovação (`129`) → relatório executivo (`130`).
 Estruturados: `architecture/entities.csv`, `fields-classification.csv`, `permissions.csv`,
 `api-contracts-provisional.csv`, `external-services.csv`, `events.csv`, `environments.csv`,
 `implementation-increments.csv`, `technical-decisions.csv`, `risk-controls.csv`.
+
+
+## 7. Situação após a decisão do cliente (2026-08-01)
+
+**ETAPA 4 APROVADA COM AJUSTES.** As 21 decisões deixam de estar pendentes e passam aos estados
+registrados em `129`. As condições, ajustes e complementos foram incorporados aos documentos
+`96`–`130`. Permanecem abertas apenas DEP-T1, DEP-T3 e DEP-T5.
+
+**ETAPA 5 LIBERADA CONDICIONALMENTE À VERIFICAÇÃO DA STACK** — verificação executada e registrada
+em `architecture/stack-verification.md` (TanStack Start confirmado). A liberação **não** autoriza
+alteração do layout aprovado, ativação de produção nem de serviços reais.

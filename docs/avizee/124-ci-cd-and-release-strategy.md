@@ -32,3 +32,12 @@ integridade. Segredos por ambiente, nunca no repositório. Logs de deploy retido
 
 Código revisado, testes passando, acessibilidade verificada, SEO da rota conferido, tokens
 aprovados respeitados, documentação atualizada em `/docs/avizee/` e gate aprovado.
+
+
+## Atualização 2026-08-01 — DT-21 aprovada
+
+Deploy de produção exige, nesta ordem: 1) lint; 2) type checking; 3) testes; 4) build;
+5) migrations validadas; 6) teste de RLS; 7) teste de não vazamento (R-05); 8) acessibilidade
+crítica; 9) segurança; 10) **aprovação manual**. Preview automático por alteração; homologação
+antes de produção; rollback e changelog obrigatórios.
+**Proibida produção contínua automática a cada alteração.**

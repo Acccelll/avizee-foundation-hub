@@ -53,3 +53,17 @@ Rótulos públicos em português conforme `102`.
 | Produto com conflito de código | Não pode ser adicionado; CTA para cotação livre com descrição |
 | Envio duplicado | Idempotência devolve o mesmo protocolo |
 | Sessão/lista expirada | `localStorage` com TTL de 30 dias; expirada, lista é limpa com aviso |
+
+
+## Atualização 2026-08-01 — DT-07 e DT-08 aprovadas
+
+A mesma transação registra cotação, itens, protocolo, origem, consentimentos e o evento de
+outbox. Somente após o commit são tentados e-mail interno, e-mail de confirmação e demais
+notificações. **Falha de e-mail nunca apaga nem invalida cotação registrada.** Obrigatórios
+idempotência, retry, limite de tentativas, dead-letter, auditoria, monitoramento e
+reprocessamento administrativo. Proibido enviar e-mail como única ação do formulário.
+
+**WhatsApp**: `wa.me` como canal secundário, preferencialmente após o registro — registrar,
+apresentar protocolo, oferecer continuidade. A mensagem pode conter protocolo, família, SKU
+validado, variação, quantidade e URL pública; nunca marca interna, fornecedor, custo, observação
+administrativa ou dado técnico não confirmado. API oficial permanece evolução futura.

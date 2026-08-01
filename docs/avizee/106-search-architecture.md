@@ -50,3 +50,15 @@ código antigo e marca — nunca compartilha índice, rota, cache ou serializer 
 ## 5. Página de busca e SEO
 
 `/busca?q=` é `noindex,follow`, sem canonical para si e sem link em sitemap.
+
+
+## Atualização 2026-08-01 — DT-06 aprovada
+
+Confirmados `tsvector`, índice GIN, pesos por campo, `unaccent`, `pg_trgm`, busca exata por SKU,
+busca parcial, tolerância controlada a erro, ranking e filtros estruturados.
+
+Ordem de prioridade: 1) SKU exato; 2) código ou alias público validado; 3) nome da família;
+4) nome público do produto; 5) medida ou capacidade; 6) aplicação; 7) categoria; 8) descrição.
+
+**Fora do índice público**: marca, fabricante, fornecedor, custo, nome original privado,
+observação administrativa e referência interna. Motor externo só mediante métricas reais.

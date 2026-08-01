@@ -1,6 +1,6 @@
 # 83 — Estados e Comportamentos dos Componentes
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Complementa `82-component-inventory.md`, detalhando estados de
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Complementa `82-component-inventory.md`, detalhando estados de
 interação e estados de conteúdo, conforme `47-page-type-definitions.md` (acessibilidade),
 `49-search-and-filter-architecture.md` (estados de busca) e `50-quotation-journey.md` (estados
 de cotação). Nenhum estado descrito aqui revela ou simula produto pendente.

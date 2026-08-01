@@ -1,6 +1,6 @@
 # 78 — Sistema de Cor e Contraste
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Este documento detalha o uso da cor a partir dos tokens já
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Este documento detalha o uso da cor a partir dos tokens já
 definidos em `76-design-tokens.md` (camadas primitiva e semântica) e aplica P-06 e P-09
 (`75-design-principles.md`): acessibilidade AA é piso, e nenhum grafismo ou cor nova é criado.
 Nenhum HEX, HSL ou nome de token diverge do que já está registrado em `76-design-tokens.md`; este

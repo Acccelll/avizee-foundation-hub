@@ -1,6 +1,6 @@
 # 82 — Inventário de Componentes
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Inventário conceitual do design system do AviZee, derivado de
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Inventário conceitual do design system do AviZee, derivado de
 `10-brand-guidelines.md`, `47-page-type-definitions.md`, `49-search-and-filter-architecture.md`
 e `50-quotation-journey.md`. Este documento não implementa componentes em `src/`; descreve
 função, props conceituais, variantes, uso e restrições para orientar implementação futura sob

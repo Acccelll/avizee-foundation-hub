@@ -1,6 +1,6 @@
 # 76 — Tokens de Design
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Fonte normativa: `10-brand-guidelines.md` (paleta e tipografia),
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Fonte normativa: `10-brand-guidelines.md` (paleta e tipografia),
 `02-non-negotiable-rules.md` (R-06, R-07), `13-open-decisions.md` (L-01, cores funcionais
 pendentes). Nenhum valor aqui existe em `src/` hoje; esta é a proposta de tokenização a ser
 avaliada antes de qualquer implementação.

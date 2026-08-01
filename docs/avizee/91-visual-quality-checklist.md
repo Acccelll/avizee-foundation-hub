@@ -1,6 +1,6 @@
 # 91 — Checklist de Qualidade Visual e Conformidade
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Base normativa: `10-brand-guidelines.md`,
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Base normativa: `10-brand-guidelines.md`,
 `85-public-page-prototypes.md`, `88-accessibility-design-specification.md`,
 `50-quotation-journey.md`, `84-public-page-wireframes.md`. Uso obrigatório: nenhuma tela desta
 etapa (ou de etapa futura de implementação) é aprovada sem passar por este checklist. Cada item

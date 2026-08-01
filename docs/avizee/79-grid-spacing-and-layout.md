@@ -1,6 +1,6 @@
 # 79 — Grid, Espaçamento e Layout
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Consolida os tokens de breakpoint, container e espaçamento já
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Consolida os tokens de breakpoint, container e espaçamento já
 definidos em `76-design-tokens.md` (seções 6 e 12) em um sistema de grid e regras de layout,
 alinhado a P-01, P-07 e P-08 de `75-design-principles.md`. Nenhum valor de breakpoint, container
 ou espaçamento aqui diverge do que já está tokenizado em `76-design-tokens.md`.

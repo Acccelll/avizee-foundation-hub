@@ -1,6 +1,6 @@
 # 89 — Diretrizes de Microcopy e Conteúdo de Interface
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Base: `05-business-positioning.md`, `02-non-negotiable-rules.md`,
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Base: `05-business-positioning.md`, `02-non-negotiable-rules.md`,
 `50-quotation-journey.md`, `75-design-principles.md`.
 
 ## 1. Voz e tom

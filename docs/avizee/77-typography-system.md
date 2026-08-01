@@ -1,6 +1,6 @@
 # 77 — Sistema Tipográfico
 
-Status: `PENDENTE_DE_APROVAÇÃO`. Fonte: `10-brand-guidelines.md`, D-031, D-046 (self-host WOFF2).
+Status: `APROVADO` (Etapa 3 aprovada com ajustes em 2026-08-01; ver `93`). Aprovação conceitual — não autoriza implementação. Fonte: `10-brand-guidelines.md`, D-031, D-046 (self-host WOFF2).
 
 ## 1. Família e pesos permitidos
 

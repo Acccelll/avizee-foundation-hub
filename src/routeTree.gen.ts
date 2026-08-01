@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ConteudosRouteImport } from './routes/conteudos'
 import { Route as CotacaoRouteImport } from './routes/cotacao'
+import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
@@ -37,6 +38,11 @@ const CotacaoRoute = CotacaoRouteImport.update({
   path: '/cotacao',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
+  id: '/politica-de-privacidade',
+  path: '/politica-de-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProdutosRoute = ProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/produtos': typeof ProdutosRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/produtos': typeof ProdutosRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/produtos': typeof ProdutosRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/conteudos'
     | '/cotacao'
+    | '/politica-de-privacidade'
     | '/produtos'
     | '/sobre'
     | '/solucoes'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/conteudos'
     | '/cotacao'
+    | '/politica-de-privacidade'
     | '/produtos'
     | '/sobre'
     | '/solucoes'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/conteudos'
     | '/cotacao'
+    | '/politica-de-privacidade'
     | '/produtos'
     | '/sobre'
     | '/solucoes'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   ConteudosRoute: typeof ConteudosRoute
   CotacaoRoute: typeof CotacaoRoute
+  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProdutosRoute: typeof ProdutosRoute
   SobreRoute: typeof SobreRoute
   SolucoesRoute: typeof SolucoesRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CotacaoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/politica-de-privacidade': {
+      id: '/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/produtos': {
       id: '/produtos'
       path: '/produtos'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   ConteudosRoute: ConteudosRoute,
   CotacaoRoute: CotacaoRoute,
+  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProdutosRoute: ProdutosRoute,
   SobreRoute: SobreRoute,
   SolucoesRoute: SolucoesRoute,

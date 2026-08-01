@@ -82,3 +82,28 @@ recorte e fundo mais limpos, exceto quando a versão `A/` mostrar o produto corr
 ## Cobertura
 `IMAGE_ASSET` — não é possível calcular a cobertura do catálogo (quantos SKUs têm imagem) porque
 `catalogo.pdf` ainda **não foi recebido**. Ver O-21 em `13-open-decisions.md`.
+
+> **Atualizado 2026-08-01**: catálogo recebido — cobertura calculada em `18-catalog-audit.md` e na
+> seção abaixo.
+
+---
+
+## Terceiro acervo: imagens do site atual (2026-08-01)
+
+`IMAGE_ASSET` — o código-fonte recebido (S-02) traz **72 JPG** em `assets/img/products/`,
+nomeadas em **minúsculas** (`ag001.jpg`, `sr029.jpg`…), uma por código.
+
+**Prefixos**: AG(4) AR(4) AZ(6) BA(7) BB(2) BI(2) BV(9) CO(1) LM(3) SE(1) SR(12) TB(3) TE(4) VR(13)
+
+| Comparação | Resultado |
+|---|---|
+| Cobertura sobre os 117 SKUs do CSV | **~62%** |
+| Cobertura sobre o universo consolidado (~172 SKUs) | **~42%** |
+| Famílias sem nenhuma imagem no site | `CN` (conexões), `PE` (peças), `BO` (bombas), `BT` (bateria) — as 55 do catálogo complementar |
+
+`TECHNICAL_INFERENCE` — Raciocínio: o acervo "Mercado Livre" cobre parte das lacunas (tem `PE`,
+`SE`, `BB`, `CO`), mas **nenhum dos três acervos cobre `CN`, `BO` e `BT`**. Se L-14 aprovar a
+entrada dos 55 SKUs complementares, esses itens entram obrigatoriamente com placeholder (regra I-1).
+
+Passam a existir **três** conjuntos concorrentes para o mesmo código (PNG raiz · JPG `A/` · JPG do
+site). A regra de prioridade (L-11) precisa cobrir os três.

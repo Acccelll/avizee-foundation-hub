@@ -20,6 +20,7 @@ import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
@@ -81,6 +82,11 @@ const AdminProtectedRoute = AdminProtectedRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin': typeof AdminProtectedRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/session': typeof ApiAuthSessionRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/admin/login': typeof AdminLoginRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/session': typeof ApiAuthSessionRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/session': typeof ApiAuthSessionRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/solucoes'
     | '/termos-de-uso'
     | '/admin'
+    | '/admin/login'
     | '/api/auth/login'
     | '/api/auth/logout'
     | '/api/auth/session'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/admin/login'
     | '/api/auth/login'
     | '/api/auth/logout'
     | '/api/auth/session'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/solucoes'
     | '/termos-de-uso'
     | '/admin/_protected'
+    | '/admin/login'
     | '/api/auth/login'
     | '/api/auth/logout'
     | '/api/auth/session'
@@ -229,6 +241,7 @@ export interface RootRouteChildren {
   SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
+  AdminLoginRoute: typeof AdminLoginRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthSessionRoute: typeof ApiAuthSessionRoute
@@ -314,6 +327,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/_protected/': {
       id: '/admin/_protected/'
       path: '/'
@@ -376,6 +396,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
+  AdminLoginRoute: AdminLoginRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthSessionRoute: ApiAuthSessionRoute,

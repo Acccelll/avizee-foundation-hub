@@ -172,5 +172,18 @@ nome de produto em nenhuma das 8 fontes e não podem ser classificados sem uma l
 - **DECT-01 a DECT-14** — decisões da Etapa 2.1
 - **DEP-09** — lista código × nome × função dos 34 SKUs órfãos
 
-**Etapa 3 — não iniciada.** Interrompida na pré-condição em 2026-08-01. Ver `73-stage-03-blocked.md`.
+**Etapa 3 — liberada e executada como proposta em 2026-08-01.** O bloqueio de início está
+registrado e encerrado em `73-stage-03-start-blocker.md`: **DECT-01 aprovada parcialmente**
+(31 famílias / 97 SKUs) e **DECT-10 aprovada com escopo controlado** (D-052 a D-055). Documentos
+**`74` a `94`** (design system, tokens, tipografia, cor, grid, iconografia, imagem, componentes,
+estados, wireframes, protótipos, responsividade, acessibilidade, microcopy, validação de
+jornadas, checklist, comparação, decisões e relatório). Tudo `PENDENTE_DE_APROVAÇÃO`.
+
+**Mapa de numeração**: Etapa 0 = `00`–`20` · Etapa 1 = `21`–`40` · Etapa 2 = `41`–`59` ·
+Etapa 2.1 = `60`–`72` · bloqueio da Etapa 3 = `73` · **Etapa 3 = `74`–`94`** ·
+**Etapa 4 = `95`–`130`** (reservado, não iniciada).
+
+**Escopo de conteúdo real** (D-053): apenas as 31 famílias e 97 SKUs aprovados, as 6 categorias
+públicas, as 7 categorias editoriais e imagens aprovadas ou o placeholder oficial. As 12 famílias
+pendentes e os 34 + 16 SKUs sem identidade permanecem em fila de normalização.
 

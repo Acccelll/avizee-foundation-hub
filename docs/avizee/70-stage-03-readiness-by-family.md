@@ -79,3 +79,10 @@ faltantes, o que a política de completude progressiva (D-041) já cobre.
 Portanto, a recomendação é: **DEP-01 pode ser encerrado com a aprovação das 31 famílias prontas**,
 mantendo as 12 restantes em fila. Isso não é decisão automática — depende da aprovação expressa
 prevista em §23 e registrada como **DECT-10**.
+
+## Atualização 2026-08-01 — status de aprovação
+
+As famílias classificadas aqui como prontas foram **aprovadas** por D-052 (DECT-01 parcial):
+**31 famílias / 97 SKUs**. As 12 restantes permanecem `PENDENTE_DE_APROVAÇÃO` e em fila de
+normalização (D-054). `data/stage-03-readiness.csv` ganhou a coluna `status_aprovacao`.
+Lista nominal em `73-stage-03-start-blocker.md` §7.1.

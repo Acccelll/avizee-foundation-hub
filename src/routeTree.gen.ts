@@ -20,6 +20,7 @@ import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
+import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthSessionRouteImport } from './routes/api/auth/session'
@@ -80,6 +81,11 @@ const AdminProtectedRoute = AdminProtectedRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
 const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
   id: '/api/auth/login',
   path: '/api/auth/login',
@@ -112,11 +118,12 @@ export interface FileRoutesByFullPath {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
-  '/admin': typeof AdminProtectedRoute
+  '/admin': typeof AdminProtectedRouteWithChildren
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/session': typeof ApiAuthSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/admin/': typeof AdminProtectedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -129,11 +136,11 @@ export interface FileRoutesByTo {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
-  '/admin': typeof AdminProtectedRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/session': typeof ApiAuthSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/admin': typeof AdminProtectedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -147,11 +154,12 @@ export interface FileRoutesById {
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
-  '/admin/_protected': typeof AdminProtectedRoute
+  '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/session': typeof ApiAuthSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/admin/_protected/': typeof AdminProtectedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -171,6 +179,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/session'
     | '/api/public/health'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -183,11 +192,11 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
-    | '/admin'
     | '/api/auth/login'
     | '/api/auth/logout'
     | '/api/auth/session'
     | '/api/public/health'
+    | '/admin'
   id:
     | '__root__'
     | '/'
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/session'
     | '/api/public/health'
+    | '/admin/_protected/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -218,7 +228,7 @@ export interface RootRouteChildren {
   SobreRoute: typeof SobreRoute
   SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
-  AdminProtectedRoute: typeof AdminProtectedRoute
+  AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthSessionRoute: typeof ApiAuthSessionRoute
@@ -304,6 +314,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/_protected/': {
+      id: '/admin/_protected/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminProtectedIndexRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/api/auth/login': {
       id: '/api/auth/login'
       path: '/api/auth/login'
@@ -335,6 +352,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminProtectedRouteChildren {
+  AdminProtectedIndexRoute: typeof AdminProtectedIndexRoute
+}
+
+const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
+  AdminProtectedIndexRoute: AdminProtectedIndexRoute,
+}
+
+const AdminProtectedRouteWithChildren = AdminProtectedRoute._addFileChildren(
+  AdminProtectedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
@@ -346,7 +375,7 @@ const rootRouteChildren: RootRouteChildren = {
   SobreRoute: SobreRoute,
   SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
-  AdminProtectedRoute: AdminProtectedRoute,
+  AdminProtectedRoute: AdminProtectedRouteWithChildren,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthSessionRoute: ApiAuthSessionRoute,

@@ -71,3 +71,12 @@ pelas respostas Q-12 (D-046) e Q-11 (D-045) — ver `40-stage-01-answers.md`.
 
 
 
+
+## Decisões abertas da Etapa 2
+
+DEC-01 a DEC-18, todas `PENDENTE_DE_APROVAÇÃO`, em `58-stage-02-decisions-for-approval.md`
+e `data/stage-02-decisions.csv`. A recomendação **L-04** (esquema de URLs) é endereçada pela
+proposta DEC-04 e permanece sem aprovação até que DEC-04 seja aprovada.
+
+Dependências abertas que condicionam a Etapa 3: DEP-01 (classificação de famílias) ·
+DEP-02 (textos de categoria e solução) · DEP-03 a DEP-08 em `57-v1-scope-prioritization.md`.

@@ -1,12 +1,86 @@
-# 93 — Decisões da Etapa 3 para Aprovação
+# 93 — Decisões da Etapa 3
 
-Todas com status **`PENDENTE_DE_APROVAÇÃO`**. Nenhuma foi executada: `src/` permanece intocado,
-nenhum token foi aplicado, nenhum componente foi codificado, nenhuma rota foi criada.
+# ETAPA 3 APROVADA COM AJUSTES
+# ETAPA 4 LIBERADA EXCLUSIVAMENTE PARA PLANEJAMENTO TÉCNICO
 
-A liberação da Etapa 3 (D-052 e D-053) autorizou **produzir** estas propostas. Ela **não** as
-aprova antecipadamente.
+**Veredito do usuário em 2026-08-01.** DES-01 a DES-16 foram analisadas e aprovadas com as
+correções, limites e condicionantes abaixo. Nada foi executado: `src/` permanece intocado, nenhum
+token aplicado, nenhum componente codificado, nenhuma rota criada.
+
+A aprovação **não autoriza**: implementação produtiva · alteração do site atual · aplicação de
+tokens no código · codificação de componentes · criação de rotas · publicação de páginas ·
+conexão com banco de produção · envio real de formulários ou cotações.
+
+A aprovação considera os princípios resumidos neste documento; **não valida silenciosamente**
+valores HSL, cálculos de contraste ou detalhes visuais não apresentados no chat.
+
+## Quadro de vereditos
+
+| ID | Status final |
+|---|---|
+| DES-01 | **APROVADA** |
+| DES-02 | **APROVADA_COM_ALTERAÇÃO — CORES FUNCIONAIS RESTRITAS** |
+| DES-03 | **APROVADA_COM_ALTERAÇÃO — SKU EM MONTSERRAT** |
+| DES-04 | **APROVADA_COM_AJUSTE_DECORRENTE** (incorpora DES-02) |
+| DES-05 | **APROVADA** |
+| DES-06 | **APROVADA_CONCEITUALMENTE** — dependência `lucide-react` validada na Etapa 4 |
+| DES-07 | **APROVADA** |
+| DES-08 | **APROVADA_COM_CORREÇÃO_DE_ESCOPO** — inventário de referência, não escopo de construção |
+| DES-09 | **APROVADA** |
+| DES-10 | **APROVADA_PARA_ARQUITETURA_TÉCNICA_COM_REVISÃO_VISUAL_POSTERIOR** |
+| DES-11 | **APROVADA** |
+| DES-12 | **APROVADA** |
+| DES-13 | **APROVADA — WCAG 2.2 AA OBRIGATÓRIA** |
+| DES-14 | **APROVADA** |
+| DES-15 | **APROVADA** |
+| DES-16 | **APROVADA_COM_AJUSTE_TÉCNICO** — caminho físico da fonte única definido na Etapa 4 |
+
+### Condicionantes registradas
+
+- **DES-01**: valores de marca rastreáveis à paleta; valores funcionais com finalidade
+  documentada; nenhuma cor nova informal; nenhuma paleta paralela por componente; nenhum valor
+  literal espalhado; HSL exatos no inventário e na matriz de contraste; aprovação conceitual não
+  substitui a validação matemática do contraste.
+- **DES-02**: erro = Vinho quando contraste e contexto forem adequados; aviso = Terracota;
+  sucesso = verde funcional `#1f6b3c`; informação = azul funcional `#12557e`. Verde e azul não
+  integram a marca, ficam restritos a feedback/alerta/estado/indicador, têm tokens próprios e
+  atendem à matriz de contraste. Toda mensagem exige ícone, texto, título ou rótulo e indicação
+  não cromática. **Encerra L-01.**
+- **DES-03**: nenhuma família monoespaçada adicional; SKU em Montserrat 500/600 com espaçamento
+  controlado e `font-variant-numeric: tabular-nums` quando suportado; Alternates proibida.
+- **DES-04**: atualizado para refletir DES-02; qualquer combinação abaixo do contraste mínimo é
+  defeito; tema escuro fora da v1.
+- **DES-05**: o grid não altera a hierarquia aprovada dos protótipos; densidade maior no painel
+  admin preservando legibilidade.
+- **DES-06**: Lucide é referência e recomendação principal; a instalação de `lucide-react` só é
+  decidida na Etapa 4 (compatibilidade, tamanho, tree shaking, licença, manutenção, bundle).
+- **DES-08**: a Etapa 4 **não** constrói componentes; define arquitetura, contratos, modelo de
+  dados, segurança, dependências e plano de implementação.
+- **DES-09**: estados de registro bloqueado sempre genéricos; proibido expor código conflitante,
+  nome interno, marca de terceiro, motivo administrativo, fornecedor, referência original ou
+  identidade não validada (controle de RK-28).
+- **DES-10**: só 31 famílias e 97 SKUs aprovados; sem marcas internas, sem preços, sem suposição
+  de funcionamento produtivo; 6 categorias públicas e 7 editoriais preservadas; Lista de Cotação
+  como conversão principal e WhatsApp secundário. Revisão visual obrigatória por tipo de página
+  (Home, Produtos, Categoria, Solução, Família, Produto, Lista de Cotação, Central de Conteúdos,
+  Artigo, Sobre, Contato, legais, 404) antes de qualquer implementação visual produtiva.
+- **DES-11**: fila de normalização com superfície própria; usuários e permissões permanecem
+  conceituais até O-08 e O-09.
+- **DES-12**: a tabela de variações exige tratamento próprio em telas pequenas; rolagem
+  horizontal isolada não é aceitável; preservar SKU, medida, capacidade, quantidade, seleção e
+  acesso à cotação.
+- **DES-13**: WCAG **2.2** AA obrigatória, como gate de qualidade.
+- **DES-14**: mantidos proibidos preço, desconto, pronta-entrega, entrega imediata, prazo ou
+  estoque garantido, melhor preço, oferta, promoção e marca de terceiro; O-10 segue aberta.
+- **DES-15**: o checklist produz evidência verificável; item crítico só é dispensado com
+  justificativa, registro, aprovação e plano de correção.
+- **DES-16**: componentes consomem variáveis/tema/tokens semânticos; `src/styles.css` não é
+  caminho definitivo antes da Etapa 4; ativos oficiais imutáveis (SVG do logotipo) podem conter
+  as cores oficiais internamente.
 
 ---
+
+## Propostas originais (registro histórico)
 
 ### DES-01 — Conjunto de tokens de design
 **Documento**: `76-design-tokens.md`.
@@ -24,15 +98,14 @@ sem introduzir verde. Nenhuma cor nova entra na marca.
 **Alternativas**: (A) aprovar a derivação proposta; (B) autorizar duas cores funcionais fora da
 paleta (verde e azul) restritas a mensagens de sistema; (C) não usar cor de feedback, apenas
 ícone e texto.
-**Recomendação**: A, reforçada pela regra de nunca usar cor como único portador de informação.
-**Riscos**: A faz "erro" e "marca" compartilharem o Vinho — o usuário precisa aceitar
-expressamente esse risco de leitura; B viola a paleta aprovada; C reduz a legibilidade de
-formulário longo. **Depende de decisão expressa.**
+**Recomendação**: A. **Decisão final**: **alternativa B**, na forma restrita descrita acima —
+sucesso verde `#1f6b3c` e informação azul `#12557e`, fora da paleta institucional e limitados a
+feedback funcional.
 
 ### DES-03 — Sistema tipográfico
 **Documento**: `77-typography-system.md`.
-**Proposta**: escala tipográfica, pesos utilizados, entrelinhas, tratamento monoespaçado do
-código de SKU e self-host WOFF2 com preload dos pesos críticos (D-046).
+**Proposta**: escala tipográfica, pesos utilizados, entrelinhas, tratamento tipográfico do
+código de SKU **em Montserrat** (sem família monoespaçada adicional) e self-host WOFF2 com preload dos pesos críticos (D-046).
 **Alternativas**: (A) aprovar a escala; (B) reduzir o número de pesos carregados.
 **Recomendação**: A. **Riscos**: pesos demais penalizam a performance — `77` já limita o conjunto.
 
@@ -67,7 +140,8 @@ sua qualidade determina a percepção de completude.
 **Documento**: `82-component-inventory.md`.
 **Proposta**: catálogo de componentes do design system (navegação, busca, filtro, card de
 produto, tabela de variações, lista de cotação, formulário, blocos institucionais e editoriais).
-**Recomendação**: aprovar o inventário como escopo de construção da Etapa 4.
+**Recomendação**: aprovar o inventário como **inventário de referência para a arquitetura
+técnica e para a futura etapa de implementação**.
 
 ### DES-09 — Estados de componente, incluindo conteúdo bloqueado
 **Documento**: `83-component-states-and-behaviors.md`.

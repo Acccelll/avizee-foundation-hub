@@ -202,12 +202,16 @@ existe só para comunicar mudança de estado, nunca como efeito.
 
 Detalhamento de grid em `79-grid-spacing-and-layout.md`.
 
-## 13. Bloco de referência CSS (proposta para `src/styles.css`)
+## 13. Bloco de referência CSS (formato, não caminho definitivo)
 
-Bloco preparado no formato HSL exigido pela convenção do arquivo atual (`--variável: H S% L%`,
-consumida via `hsl(var(--variável))`). Este bloco é **proposta**; a adoção depende de aprovação e
-de reconciliação com as variáveis já existentes no arquivo (`--background`, `--foreground` etc.),
-que devem passar a apontar para os tokens semânticos abaixo em vez de valores neutros genéricos.
+**DES-16 / D-060**: a regra de fonte única de tokens está aprovada, mas `src/styles.css`
+**não** é caminho técnico definitivo. A Etapa 4 confirmará se a fonte única será `src/styles.css`,
+um arquivo de tokens, uma configuração de tema, CSS variables geradas ou outra estrutura
+compatível com a stack. O bloco abaixo demonstra apenas o **formato** HSL
+(`--variável: H S% L%`, consumida via `hsl(var(--variável))`).
+
+Ativos oficiais imutáveis e aprovados, como o SVG do logotipo, podem conter internamente as cores
+oficiais.
 
 ```css
 :root {
@@ -322,6 +326,7 @@ que devem passar a apontar para os tokens semânticos abaixo em vez de valores n
 
 ## 14. O que este documento não faz
 
-Não altera `src/styles.css`. Não define modo escuro (ver `78-color-and-contrast-system.md`,
-seção 7). Não aprova cores funcionais. A adoção efetiva depende de aprovação e de tarefa de
-implementação específica, fora desta etapa documental.
+Não altera `src/styles.css` nem qualquer arquivo de `src/`. Não define modo escuro (ver
+`78-color-and-contrast-system.md`, seção 7). Não define o caminho físico da fonte única de tokens
+— isso é tarefa da Etapa 4 (DES-16). A aplicação efetiva dos tokens depende de tarefa de
+implementação específica, ainda não autorizada.

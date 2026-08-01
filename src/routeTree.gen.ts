@@ -15,6 +15,7 @@ import { Route as ConteudosRouteImport } from './routes/conteudos'
 import { Route as CotacaoRouteImport } from './routes/cotacao'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ProdutosRouteImport } from './routes/produtos'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
@@ -51,6 +52,11 @@ const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
 const ProdutosRoute = ProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SobreRoute = SobreRouteImport.update({
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/produtos': typeof ProdutosRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/produtos': typeof ProdutosRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/produtos': typeof ProdutosRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/produtos'
+    | '/robots.txt'
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
@@ -159,6 +169,7 @@ export interface FileRouteTypes {
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/produtos'
+    | '/robots.txt'
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
@@ -174,6 +185,7 @@ export interface FileRouteTypes {
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/produtos'
+    | '/robots.txt'
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
@@ -190,6 +202,7 @@ export interface RootRouteChildren {
   CotacaoRoute: typeof CotacaoRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProdutosRoute: typeof ProdutosRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SobreRoute: typeof SobreRoute
   SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
@@ -241,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/produtos'
       fullPath: '/produtos'
       preLoaderRoute: typeof ProdutosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sobre': {
@@ -302,6 +322,7 @@ const rootRouteChildren: RootRouteChildren = {
   CotacaoRoute: CotacaoRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProdutosRoute: ProdutosRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SobreRoute: SobreRoute,
   SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,

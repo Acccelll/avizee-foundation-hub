@@ -6,7 +6,7 @@ import { getServerConfig } from "@/lib/env.server";
  * robots.txt por ambiente (§16/§30). Somente produção é indexável.
  * Nenhum sitemap é publicado nesta etapa.
  */
-export const Route = createFileRoute("/robots[.]txt")({
+export const Route = createFileRoute("/robots.txt")({
   server: {
     handlers: {
       GET: async () => {

@@ -190,9 +190,20 @@ pendentes e os 34 + 16 SKUs sem identidade permanecem em fila de normalização.
 
 ## Etapa 3 — Design System, Interface e Protótipos (documentos `74`–`94`)
 
-Concluída em 2026-08-01 como **proposta**. 21 documentos e `data/stage-03-decisions.csv`.
-**16 decisões DES-01 a DES-16 aguardam aprovação** em `93-stage-03-decisions-for-approval.md`;
-o resumo está em `94-stage-03-executive-report.md`. Nada foi implementado — `src/` intocado.
+**ETAPA 3 APROVADA COM AJUSTES em 2026-08-01.** 21 documentos, `data/stage-03-decisions.csv` e
+os artefatos de `design/`. As **16 decisões DES-01 a DES-16 estão aprovadas**, quatro com
+alteração: cores funcionais de sucesso e informação passam a verde `#1f6b3c` e azul `#12557e`
+restritos a feedback (D-056, encerra L-01); SKU permanece em Montserrat, sem família
+monoespaçada (D-057); acessibilidade obrigatória em **WCAG 2.2 AA** (D-058); e a Etapa 4 é de
+arquitetura técnica, **não** de construção de componentes (D-059).
 
-Caminho mínimo de aprovação: **DES-01** (tokens), **DES-02** (cores funcionais, encerra L-01) e
-**DES-10** (protótipos públicos). A **Etapa 4 (`95`–`130`) não foi iniciada**.
+**ETAPA 4 LIBERADA EXCLUSIVAMENTE PARA PLANEJAMENTO TÉCNICO** (`95`–`130`, D-061). Ela **não**
+autoriza implementação produtiva, alteração do site atual, aplicação de tokens no código,
+codificação de componentes, criação de rotas, publicação de páginas, conexão com banco de
+produção nem envio real de formulários ou cotações. Nada foi implementado — `src/` intocado.
+
+Antes de qualquer implementação visual produtiva, os protótipos passam por **revisão visual por
+tipo de página** (DES-10).
+
+Artefatos de design: `design/tokens.json` · `design/color-contrast-matrix.csv` ·
+`design/prototype-decisions.csv`.

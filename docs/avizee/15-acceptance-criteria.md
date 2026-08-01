@@ -73,3 +73,17 @@ Critérios e situação em `39-stage-01-executive-report.md` (15 critérios, tod
 | Recomendações não aplicadas | Atendido |
 | Nenhum layout, código, produto importado ou normalização definitiva | Atendido |
 | Documentação permanente atualizada | Atendido — 10 documentos |
+
+
+## Critérios adicionais após a aprovação da Etapa 3 (2026-08-01)
+
+1. **Acessibilidade**: WCAG **2.2 AA** obrigatória como gate de qualidade; nenhuma tela é aceita
+   sem os critérios de 2.2 aplicáveis (2.4.11, 2.4.13, 2.5.7, 2.5.8, 3.3.7, 3.3.8).
+2. **Cor funcional**: apenas os quatro tokens de feedback aprovados; verde e azul somente em
+   feedback, alerta, estado e indicador. Qualquer par abaixo do contraste mínimo é defeito.
+3. **Tipografia**: uma única família (Montserrat). Carregar segunda família, inclusive
+   monoespaçada, reprova a entrega.
+4. **Tokens**: nenhuma cor institucional ou funcional literal em componente quando houver token.
+5. **Protótipos**: cada tipo de página passa por revisão visual antes da implementação produtiva.
+6. **Checklist**: evidência verificável, não confirmação declaratória; dispensa de item crítico
+   exige justificativa, registro, aprovação e plano de correção.

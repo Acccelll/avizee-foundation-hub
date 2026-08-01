@@ -46,7 +46,7 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 
 | ID | Recomendação | Justificativa |
 |---|---|---|
-| L-01 | Definir cores funcionais (erro/sucesso/aviso/informação) derivadas da paleta oficial | A paleta aprovada tem 4 cores e não cobre estados de formulário; sem isso a UI improvisará cores fora da marca |
+| ~~L-01~~ | **ENCERRADA em 2026-08-01 (DES-02 / D-056)** — cores funcionais restritas definidas | A paleta aprovada tem 4 cores e não cobre estados de formulário; sem isso a UI improvisará cores fora da marca |
 | L-02 | Adotar um dicionário versionado de marcas proibidas + verificação automatizada antes de publicar | R-05 é a regra de maior risco (RK-01) e depende hoje de revisão humana |
 | L-03 | Persistir a cotação no banco **antes** de disparar o e-mail | Evita perda silenciosa de lead (RK-07) |
 | L-04 | Padronizar o esquema de URLs proposto em `07-product-taxonomy.md` | Necessário antes de qualquer trabalho de SEO |
@@ -113,3 +113,22 @@ As propostas visuais da Etapa 3 (documentos `74`–`94`) estão consolidadas em
 `93-stage-03-decisions-for-approval.md`, todas `PENDENTE_DE_APROVAÇÃO`. A recomendação **L-01**
 (cores funcionais) é endereçada por `76-design-tokens.md` e `78-color-and-contrast.md` e
 permanece sem aprovação.
+
+
+## Atualização 2026-08-01 — aprovação da Etapa 3
+
+**Encerrada**: **L-01** (cores funcionais), por DES-02 / D-056.
+
+**Permanecem abertos, sem alteração e sem preenchimento por inferência**:
+
+- DECT-11 — nomes públicos dos 16 SKUs;
+- DECT-08 / DEP-09 — identidade dos 34 SKUs;
+- DECT-02 a DECT-09 — famílias pendentes;
+- DECT-12 / DEC-07 — páginas de solução por aplicação;
+- O-10 — prazo comercial;
+- O-05 e O-06 — provedor de e-mail e destino das cotações;
+- O-08 e O-09 — usuários, papéis e permissões;
+- tema escuro — fora da v1.
+
+**Aberto na Etapa 4 (não é pendência de design)**: caminho físico da fonte única de tokens
+(DES-16) e validação técnica da dependência `lucide-react` (DES-06).

@@ -40,3 +40,15 @@ alteração do site atual.
 A classificação `ESSENCIAL_V1` / `IMPORTANTE_V1` / `PODE_ENTRAR_V1` / `EVOLUÇÃO` /
 `NÃO_RECOMENDADO` está em `57-v1-scope-prioritization.md`, com status
 **PENDENTE_DE_APROVAÇÃO**. Nenhum item do escopo obrigatório foi reduzido.
+
+
+## Atualização da Etapa 4 — escopo técnico
+
+**Dentro do escopo da v1 (planejado, não implementado)**: catálogo público, busca em Postgres,
+lista de cotação, painel administrativo, Central de Conteúdos, mídia com revisão, autenticação
+administrativa, SEO técnico, redirecionamentos, importação auditada, backup e monitoramento.
+
+**Fora do escopo da v1**: e-commerce em qualquer forma, cadastro público de cliente, portal do
+cliente, API oficial do WhatsApp, publicação automática em Instagram e LinkedIn, EmbedSocial,
+motor de busca dedicado, CDN com transformação de imagem sob demanda, tema escuro,
+multi-idioma, ativação de analytics sem consentimento e republicação do catálogo PDF antigo.

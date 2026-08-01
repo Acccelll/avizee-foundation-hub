@@ -207,3 +207,49 @@ tipo de página** (DES-10).
 
 Artefatos de design: `design/tokens.json` · `design/color-contrast-matrix.csv` ·
 `design/prototype-decisions.csv`.
+
+
+## Etapa 4 — Arquitetura Técnica (`95`–`130`)
+
+> A Etapa 4 é **planejamento técnico**. Todas as suas recomendações estão em
+> `PENDENTE_DE_APROVAÇÃO` (DT-01 a DT-21 em `129`). Nada foi implementado.
+
+| Arquivo | Conteúdo |
+|---|---|
+| `95-stage-04-technical-architecture-plan.md` | Plano, pré-condições e limites da etapa |
+| `96-lovable-capability-assessment.md` | Capacidades reais e limitações do ambiente |
+| `97-architecture-options.md` | Três alternativas comparadas |
+| `98-recommended-system-architecture.md` | Arquitetura recomendada |
+| `99-system-context-and-component-diagrams.md` | Diagramas de contexto e fluxos |
+| `100-rendering-and-seo-architecture.md` | SSR/SSG, metadados, JSON-LD, sitemap, redirects |
+| `101-data-model.md` | Modelo lógico e relacional |
+| `102-data-dictionary.md` | Convenções, enums, campos sensíveis |
+| `103-public-private-data-classification.md` | Matriz de exposição e garantia estrutural |
+| `104-product-catalog-data-model.md` | Catálogo, estados e herança |
+| `105-dynamic-specification-model.md` | Especificações dinâmicas (modelo híbrido) |
+| `106-search-architecture.md` | Busca pública e administrativa |
+| `107-quotation-technical-flow.md` | Lista de cotação, protocolo, falhas |
+| `108-content-management-architecture.md` | Central de Conteúdos e agendamento |
+| `109-media-and-document-architecture.md` | Buckets, revisão, documentos |
+| `110-authentication-and-authorization.md` | Autenticação administrativa |
+| `111-role-permission-matrix.md` | 7 papéis e matriz de permissões |
+| `112-security-architecture.md` | Ameaças, controles, cabeçalhos, testes R-05 |
+| `113-privacy-and-data-retention.md` | LGPD, bases legais, retenção |
+| `114-email-and-notification-architecture.md` | Outbox, mensagens, alternativas |
+| `115-analytics-event-specification.md` | 14 eventos, dados proibidos |
+| `116-performance-architecture.md` | Metas, fontes, imagens, orçamento |
+| `117-accessibility-technical-requirements.md` | WCAG 2.2 AA em requisitos técnicos |
+| `118-environment-strategy.md` | Dev, preview, homologação, produção |
+| `119-database-migration-strategy.md` | Banco, migrations, integridade |
+| `120-backup-and-disaster-recovery.md` | Backup, RPO/RTO, testes |
+| `121-logging-monitoring-and-alerting.md` | Logs, alertas, fila assíncrona |
+| `122-import-and-content-migration-strategy.md` | Importação, migração, redirects |
+| `123-testing-strategy.md` | Camadas de teste e 15 fluxos E2E |
+| `124-ci-cd-and-release-strategy.md` | Pipeline, gates, branches, deploy |
+| `125-dependency-governance.md` | Critérios e inventário de dependências |
+| `126-implementation-roadmap.md` | 8 incrementos com gate |
+| `127-technical-traceability-matrix.md` | Rastreabilidade técnica |
+| `128-stage-04-risks.md` | RK-33 a RK-50 |
+| `129-stage-04-decisions-for-approval.md` | DT-01 a DT-21 |
+| `130-stage-04-executive-report.md` | Relatório executivo |
+| `architecture/*.csv` | Entidades, campos, permissões, APIs, serviços, eventos, ambientes, incrementos, decisões, riscos |

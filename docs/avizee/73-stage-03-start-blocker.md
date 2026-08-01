@@ -101,3 +101,126 @@ em paralelo, pois afetam famílias específicas, não o sistema visual.
 
 Alternativa: autorizar expressamente o desenho sobre taxonomia provisória — o que contraria §1.7
 deste mesmo prompt e é **não recomendado**.
+
+---
+
+# 7. DECISÃO DO USUÁRIO — 2026-08-01 · Etapa 3 liberada com escopo controlado
+
+`USER_DECISION`. O diagnóstico deste documento foi **aceito**: a interrupção da Etapa 3 foi
+correta. O desbloqueio veio por **aprovação parcial e expressamente delimitada**, não por
+aprovação em bloco.
+
+| Item | Estado após a decisão |
+|---|---|
+| **B-01** taxonomia não aprovada | **RESOLVIDO para o escopo aprovado** (31 famílias / 97 SKUs) |
+| **B-02** 34 SKUs sem identidade | **CONTIDO, não encerrado** — fora da v1 e fora dos protótipos |
+| **B-03** 16 SKUs sem nome público | **CONTIDO, não encerrado** — fora dos dados reais dos protótipos |
+| **DECT-01** | **APROVADA_PARCIALMENTE — 31 FAMÍLIAS / 97 SKUs** |
+| **DECT-10** | **APROVADA_COM_ESCOPO_CONTROLADO** |
+| Renumeração | **APROVADA** — Etapa 3 = `74`–`94`; Etapa 4 = `95`–`130` |
+| Etapa 3 | **LIBERADA** apenas para o escopo definido |
+
+## 7.1 O que DECT-01 aprovou
+
+Para cada uma das **31 famílias prontas**: nome funcional, associação dos SKUs, categoria
+pública, segmento, aplicação principal, aplicações secundárias confirmadas, relação
+família → categoria → aplicação e enquadramento nas 6 categorias públicas aprovadas.
+
+As **43 famílias NÃO** foram aprovadas integralmente. As 12 restantes seguem
+`PENDENTE_DE_APROVAÇÃO`.
+
+### 31 famílias aprovadas (97 SKUs)
+
+| Família | Nome | Categoria | SKUs |
+|---|---|---|---|
+| FAM-001 | Agulhas descartáveis | Vacinação e aplicação | 10 |
+| FAM-002 | Agulhas inox reutilizáveis | Vacinação e aplicação | 12 |
+| FAM-004 | Agulhas para aplicador de vacina | Vacinação e aplicação | 1 |
+| FAM-005 | Seringas automáticas de fluxo contínuo | Vacinação e aplicação | 2 |
+| FAM-006 | Seringas automáticas duplas | Vacinação e aplicação | 1 |
+| FAM-007 | Vacinadoras com porta-frasco | Vacinação e aplicação | 1 |
+| FAM-008 | Kits de reparo para seringas automáticas | Vacinação e aplicação | 2 |
+| FAM-009 | Seringas descartáveis | Vacinação e aplicação | 5 |
+| FAM-013 | Equipos para aplicação e infusão | Vacinação e aplicação | 2 |
+| FAM-014 | Bicos pulverizadores | Pulverização e sistemas de fluido | 8 |
+| FAM-015 | Tubulações e mangueiras | Pulverização e sistemas de fluido | 5 |
+| FAM-022 | Balanças suspensas e dinamômetros para aves | Pesagem, medição e controle | 3 |
+| FAM-023 | Balanças eletrônicas para aves | Pesagem, medição e controle | 5 |
+| FAM-024 | Balanças para ovos | Pesagem, medição e controle | 3 |
+| FAM-025 | Balanças de precisão de bolso | Pesagem, medição e controle | 1 |
+| FAM-026 | Termômetros | Pesagem, medição e controle | 4 |
+| FAM-027 | Medidores e testes de qualidade da água | Pesagem, medição e controle | 3 |
+| FAM-028 | Testes de qualidade do ambiente | Pesagem, medição e controle | 1 |
+| FAM-029 | Equipamentos para ovoscopia | Pesagem, medição e controle | 1 |
+| FAM-030 | Câmeras termográficas | Pesagem, medição e controle | 1 |
+| FAM-031 | Lâminas para debicagem | Peças, reposição e automação | 3 |
+| FAM-033 | Bebedouros pendulares para aves | Manejo, alimentação e biossegurança | 4 |
+| FAM-034 | Comedouros para aves | Manejo, alimentação e biossegurança | 4 |
+| FAM-035 | Niples para bebedouro | Manejo, alimentação e biossegurança | 1 |
+| FAM-036 | Armadilhas para roedores | Manejo, alimentação e biossegurança | 2 |
+| FAM-037 | Adesivos e colas para captura | Manejo, alimentação e biossegurança | 2 |
+| FAM-038 | Contadores manuais para aves | Manejo, alimentação e biossegurança | 1 |
+| FAM-039 | Consumíveis de assepsia e apoio | Manejo, alimentação e biossegurança | 3 |
+| FAM-040 | Conjunto para aplicação de tuberculina | Linhas complementares | 4 |
+| FAM-042 | Seringas para insulina | Linhas complementares | 1 |
+| FAM-043 | Imãs intra-ruminais | Linhas complementares | 1 |
+
+Onze destas famílias contêm SKUs individualmente bloqueados (AG005, AG016, AG019, AG022,
+BI002–BI006, BI999). A **família** está aprovada; o **SKU bloqueado** continua fora — D-036.
+
+### 12 famílias que permanecem `PENDENTE_DE_APROVAÇÃO`
+
+| Família | Nome | Motivo |
+|---|---|---|
+| FAM-003 | Agulhas quadradas | BLOCKED_BY_CODE |
+| FAM-010 | Seringas automáticas de precisão (linha importada) | BLOCKED_BY_IDENTITY (R-05) |
+| FAM-011 | Cilindros graduados para seringas automáticas | BLOCKED_BY_IDENTITY (R-05) |
+| FAM-012 | Componentes e reposição para seringas automáticas | BLOCKED_BY_IDENTITY (R-05) |
+| FAM-016 | Conexões em L | BLOCKED_BY_MISSING_DATA |
+| FAM-017 | Conexões retas e passa-muros | BLOCKED_BY_MISSING_DATA |
+| FAM-018 | Conexões em T | BLOCKED_BY_MISSING_DATA |
+| FAM-019 | Conexões não identificadas | BLOCKED_BY_MISSING_DATA |
+| FAM-020 | Sistemas de pulverização (carrinho e galpão) | BLOCKED_BY_MISSING_DATA |
+| FAM-021 | Bombas | BLOCKED_BY_MISSING_DATA |
+| FAM-032 | Peças e componentes — não identificados | BLOCKED_BY_MISSING_DATA (28 `PE`) |
+| FAM-041 | Monitores e analisadores portáteis | BLOCKED_BY_IDENTITY (R-05) |
+
+Nada disso foi excluído: permanece em **fila de normalização**, sem publicação e sem uso como
+dado real.
+
+## 7.2 O que DECT-10 liberou
+
+A Etapa 3 pode criar o design system completo e todos os tipos de página aprovados, usando como
+conteúdo real **apenas**: as 31 famílias, os 97 SKUs, as 6 categorias públicas, as 7 categorias
+editoriais, as aplicações aprovadas dessas famílias, imagens aprovadas (por SKU ou por família)
+e o placeholder oficial.
+
+**Proibido nos protótipos, como conteúdo real**: códigos sem identidade, nomes com marca de
+terceiro, famílias pendentes, SKUs conflitantes, especificações inferidas, marcas internas,
+dados administrativos.
+
+Os componentes **podem** prever estados genéricos — item em revisão, produto indisponível,
+produto sem imagem, item não encontrado, SKU bloqueado, conteúdo pendente — desde que **não
+revelem nem simulem** os produtos pendentes.
+
+## 7.3 DEC-05 e DEC-18 — mantidas como NÃO APLICADAS
+
+"Linhas complementares" continua categoria pública; as 7 categorias editoriais continuam
+íntegras. Reconfirmado nesta decisão.
+
+## 7.4 Numeração aprovada
+
+- `73-stage-03-start-blocker.md` — este documento (renomeado de `73-stage-03-blocked.md`).
+- **Etapa 3**: `74` a `94`, conforme a tabela de §4.
+- **Etapa 4**: `95` a `130` — deslocamento de **+6** sobre os `89`–`124` previstos no prompt da
+  Etapa 4. Exemplos: `89-stage-04-technical-architecture-plan.md` → **`95`**;
+  `90-lovable-capability-assessment.md` → **`96`**; `123-stage-04-decisions-for-approval.md` →
+  **`129`**; `124-stage-04-executive-report.md` → **`130`**. A Etapa 4 **não** é executada agora;
+  o registro existe apenas para impedir conflito futuro.
+- `docs/avizee/design/` mantém os nomes originais.
+
+## 7.5 Limites da liberação
+
+A liberação **não** aprova antecipadamente tokens, componentes, wireframes, protótipos, direção
+visual ou novas decisões de interface. Todo resultado visual da Etapa 3 depende de aprovação
+posterior. **Não avançar para a Etapa 4** ao concluir a Etapa 3.

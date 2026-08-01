@@ -35,3 +35,17 @@
 | **DADO_PENDENTE** | Marcação de campo cujo valor real ainda não foi confirmado pelo usuário. Nunca é preenchido por inferência. |
 | **Conteúdo mínimo publicável** | Conjunto de campos sem o qual uma página não é indexada (`55`). |
 | **Protocolo de cotação** | Identificador gerado no envio da solicitação, apresentado em `/cotacao/enviada`. |
+
+## Termos incorporados na Etapa 2.1
+`LOVABLE_RECOMMENDATION` — Status: **PENDENTE_DE_APROVAÇÃO**
+
+| Termo | Definição |
+|---|---|
+| **Família estrutural** | Agrupamento de SKUs que compartilham função, forma de uso e conjunto de atributos. É a unidade de classificação e a página canônica do produto. |
+| **Família órfã** | Família criada apenas para abrigar códigos sem nome em nenhuma fonte (FAM-019, FAM-021, FAM-032). Não é candidata a publicação. |
+| **Aplicação principal** | A única aplicação que define a razão de existir da família. Toda família publicável tem exatamente uma. |
+| **Aplicação secundária** | Uso adicional legítimo; alimenta filtro e busca, nunca a URL canônica. |
+| **Classe de evidência** | `SOURCE_EXPLICIT` · `SOURCE_IMPLICIT` · `INFERENCE_HIGH` · `INFERENCE_MEDIUM` · `INFERENCE_LOW`. Determina se a classificação pode ser publicada. |
+| **Herança taxonômica** | O SKU herda categoria, aplicação e segmento da família; só declara o que o diferencia. |
+| **Bloqueio de registro** | Conflito trava o SKU afetado, nunca a família inteira (D-036). |
+| **READY_FOR_STAGE_3** | Família com taxonomia suficiente para orientar o design system, mesmo sem fotografia ou descrição extensa. |

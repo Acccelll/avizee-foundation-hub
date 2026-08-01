@@ -1,0 +1,84 @@
+conflict_id,alvo,tipo_de_alvo,family_id,tipo_de_conflito,descricao,impacto,bloqueia_familia,severidade,resolucao_proposta,status,decisao_necessaria
+TXC-001,AG005,SKU,FAM-001,DIVERGENCIA_DE_FONTE,divergencia DIV-0101,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-002,AG016,SKU,FAM-002,DIVERGENCIA_DE_FONTE,divergencia DIV-0102,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-003,AG019,SKU,FAM-002,DIVERGENCIA_DE_FONTE,divergencia DIV-0103,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-004,AG022,SKU,FAM-002,DIVERGENCIA_DE_FONTE,divergencia DIV-0104,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-005,AG026,SKU,FAM-003,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-006,SR003,SKU,FAM-010,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-007,SR005,SKU,FAM-010,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-008,SR006,SKU,FAM-010,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-009,SR012,SKU,FAM-010,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-010,SR001,SKU,FAM-011,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-011,SR008,SKU,FAM-011,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-012,SR009,SKU,FAM-011,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-013,SR002,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-014,SR004,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-015,SR007,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-016,SR010,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-017,SR011,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-018,SR025,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-019,SR026,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-020,SR027,SKU,FAM-012,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM
+TXC-021,SR029,SKU,FAM-012,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-022,BI002,SKU,FAM-014,DIVERGENCIA_DE_FONTE,divergencia DIV-0105,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-023,BI003,SKU,FAM-014,DIVERGENCIA_DE_FONTE,divergencia DIV-0106,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-024,BI004,SKU,FAM-014,DIVERGENCIA_DE_FONTE,divergencia DIV-0107,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-025,BI005,SKU,FAM-014,DIVERGENCIA_DE_FONTE,divergencia DIV-0108,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-026,BI006,SKU,FAM-014,DIVERGENCIA_DE_FONTE,divergencia DIV-0109,bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-027,BI999,SKU,FAM-014,DIVERGENCIA_DE_FONTE,divergencia DIV-0110; nao e SKU: item 'DIVERSOS - CONSULTAR' vira CTA (D-040),bloqueia apenas este registro (D-036),NAO,ALTO,confirmar medida/nome na fonte,ABERTO,SIM
+TXC-028,CN001,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-029,CN002,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-030,CN003,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-031,CN004,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-032,CN005,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-033,CN006,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-034,CN007,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-035,CN008,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-036,CN019,SKU,FAM-016,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-037,CN009,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-038,CN010,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-039,CN011,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-040,CN013,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-041,CN016,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-042,CN017,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-043,CN018,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-044,CN020,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-045,CN021,SKU,FAM-017,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-046,CN015,SKU,FAM-018,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-047,CN012,SKU,FAM-019,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-048,CN014,SKU,FAM-019,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-049,CN026,SKU,FAM-019,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-050,BT001,SKU,FAM-020,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-051,BT002,SKU,FAM-020,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-052,BO001,SKU,FAM-021,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-053,BO002,SKU,FAM-021,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-054,BO003,SKU,FAM-021,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-055,PE004,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-056,PE006,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-057,PE007,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-058,PE008,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-059,PE009,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-060,PE010,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-061,PE013,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-062,PE016,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-063,PE028,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-064,PE029,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-065,PE030,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-066,PE031,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-067,PE037,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-068,PE039,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-069,PE041,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-070,PE045,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-071,PE047,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-072,PE048,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-073,PE062,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-074,PE063,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-075,PE064,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-076,PE065,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-077,PE066,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-078,PE075,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-079,PE076,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-080,PE077,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-081,PE078,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-082,PE079,SKU,FAM-032,DADO_AUSENTE,sem nome em qualquer fonte,bloqueia apenas este registro (D-036),NAO,MEDIO,obter nome e funcao junto a AviZee,ABERTO,SIM
+TXC-083,BV005,SKU,FAM-041,MARCA_DE_TERCEIRO,marca de terceiro no nome (R-05),bloqueia apenas este registro (D-036),NAO,ALTO,"renomear por funcao, marca so em campo interno (D-035)",ABERTO,SIM

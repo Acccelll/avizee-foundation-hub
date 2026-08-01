@@ -31,3 +31,19 @@ Escala: Probabilidade / Impacto — Baixa · Média · Alta
 | RK-20 | **Página de solução virar cópia da página de categoria**, gerando conteúdo duplicado | Média | Médio | Solução lista famílias, não as reproduz; canônica única por família; breadcrumb sempre pela categoria | Aberto |
 | RK-21 | **Comprador que só conhece a marca não encontrar o item** — efeito colateral legítimo de R-05 | Alta | Médio | Dicionário de sinônimos funcionais; estado de busca com sugestão; consulta assistida (DEC-08) | Aberto |
 | RK-22 | **`/produtos` mudar de conteúdo mantendo a URL**, com oscilação de posição | Média | Médio | Monitoramento no Search Console após o lançamento (O-16) | Aberto |
+
+## Riscos identificados na Etapa 2.1
+
+| ID | Risco | Prob. | Impacto | Mitigação prevista | Status |
+|---|---|---|---|---|---|
+| RK-23 | **34 SKUs sem nome de produto em nenhuma das 8 fontes** (`PE`×28, `CN`×3, `BO`×3) — impedem qualquer classificação legítima | Alta | Alto | DECT-08: obter lista código × nome × função com a AviZee; contingência é excluir da v1 (DECT-14). Classificação por prefixo **rejeitada** | **Ativo — depende do usuário** |
+| RK-24 | **Famílias de conexão classificadas por inferência** (FAM-016 a FAM-019, 22 SKUs): podem pertencer a ar comprimido, não a pulverização | Média | Médio | Marcadas `INFERENCE_MEDIUM`; DECT-05 propõe divisão por uso real quando conhecido | Aberto |
+| RK-25 | **Aprovação em bloco das 43 famílias mascarar erro individual** de classificação | Média | Médio | Aprovação por blocos A–F (DECT-01 alternativa B) e lista dos 7 casos que exigem decisão individual (`71`) | Aberto |
+| RK-26 | **Etapa 3 travar indefinidamente** aguardando 100% de cobertura taxonômica que depende de material externo | Alta | Alto | DECT-10: liberação parcial com as 31 famílias prontas, que já exercitam todos os tipos de página | Aberto |
+
+**RK-18 — atualização**: permanece **Ativo**, mas com abrangência reduzida. A ausência de dado
+técnico deixou de ser universal: 140 dos 174 SKUs (80,5%) agora têm categoria, aplicação e
+segmento propostos. O risco concentra-se nos 34 SKUs de RK-23.
+
+**RK-16 — atualização**: permanece **Ativo**. Os nomes de **família** já são neutros
+(FAM-010 a FAM-012, FAM-041); falta o nome público por SKU (DECT-11).

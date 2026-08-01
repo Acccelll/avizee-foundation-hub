@@ -31,3 +31,18 @@
 | T-22 | D-050 · Q-02 | Placeholder como caminho padrão de imagem, sem bloquear busca nem cotação | USER_DECISION | Catálogo, mídia | Etapa 4 | Documentado |
 | T-23 | D-038 · DIV-05 | Mapa de 301 do site atual, incluindo o PDF aposentado | USER_DECISION | Migração, SEO | Etapa de migração | **PENDENTE_DE_APROVAÇÃO** |
 | T-24 | D-024 · DEC-18 | Central de Conteúdos com 3 categorias principais e relação artigo ↔ família | LOVABLE_RECOMMENDATION | Módulo de conteúdo | Etapa 7 | **PENDENTE_DE_APROVAÇÃO** |
+
+## Etapa 2.1 — consolidação taxonômica
+
+| ID | Origem | Requisito derivado | Tipo | Onde impacta | Etapa | Status |
+|---|---|---|---|---|---|---|
+| T-25 | T-21 · DEP-01 · DECT-01 | Matriz família → categoria → aplicação → segmento para 43 famílias | LOVABLE_RECOMMENDATION | Catálogo, filtros, soluções, design system | **Pré-requisito da Etapa 3** | **PENDENTE_DE_APROVAÇÃO** |
+| T-26 | R-AG-1 a R-AG-4 · DECT-02/DECT-03 | Desmembramento dos prefixos `AG` e `VR` em famílias funcionais | LOVABLE_RECOMMENDATION | Páginas de família, filtros | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+| T-27 | DECT-08 | Lista código × nome × função dos 34 SKUs órfãos (`PE`, `CN`, `BO`) | USER_DECISION | Catálogo | Bloqueante para 100% de cobertura | **Bloqueado — depende do usuário** |
+| T-28 | R-05 · D-035 · DECT-11 | Nome público funcional item a item dos 16 SKUs com marca de terceiro | USER_DECISION | Catálogo, busca, indexação | Etapa 3 | **Bloqueado — depende do usuário** |
+| T-29 | DEC-05 rejeitada · DECT-13 | Regras de coexistência entre CAT-06 e o atributo de segmento | LOVABLE_RECOMMENDATION | Navegação, indexação | Etapa 3 | **PENDENTE_DE_APROVAÇÃO** |
+| T-30 | DEC-18 rejeitada · `66` | 123 relações família ↔ categoria editorial sobre as 7 categorias mantidas | LOVABLE_RECOMMENDATION | Central de Conteúdos | Etapa 7 | **PENDENTE_DE_APROVAÇÃO** |
+
+**Correção de T-24**: a redação anterior citava "3 categorias" por antecipar DEC-18. Com DEC-18
+rejeitada, T-24 passa a ler **"Central de Conteúdos com as 7 categorias aprovadas e relação
+artigo ↔ família"**.

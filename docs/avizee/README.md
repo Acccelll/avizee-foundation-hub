@@ -93,6 +93,24 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `59-stage-02-executive-report.md` | Relatório executivo da Etapa 2 |
 | `data/sitemap.csv`, `pages-proposed.csv`, `url-migrations.csv`, `user-journeys.csv`, `page-relationships.csv`, `product-content-relations.csv`, `stage-02-decisions.csv` | Dados tabulares da arquitetura |
 
+### Etapa 2.1 — Consolidação Taxonômica (documentos 60 a 72) — `PENDENTE_DE_APROVAÇÃO`
+
+| Arquivo | Conteúdo |
+|---|---|
+| `60-stage-02-1-taxonomy-resolution-plan.md` | Plano, método e regras de evidência |
+| `61-approved-category-baseline.md` | Baseline aprovado; registro de DEC-05 e DEC-18 rejeitadas |
+| `62-family-taxonomy-proposal.md` | 43 famílias em 6 blocos de aprovação |
+| `63-sku-family-mapping.md` | 174 SKUs → família, com variação e bloqueios |
+| `64-family-application-matrix.md` | Aplicação principal e secundárias |
+| `65-family-segment-matrix.md` | Segmento por família e coexistência com CAT-06 |
+| `66-family-editorial-relations.md` | 123 relações com as 7 categorias editoriais |
+| `67-taxonomy-evidence-register.md` | Evidência citada por família |
+| `68-taxonomy-conflicts.md` | 83 conflitos, todos no nível do SKU |
+| `69-taxonomy-coverage-report.md` | Cobertura e lacunas |
+| `70-stage-03-readiness-by-family.md` | Prontidão por família |
+| `71-taxonomy-decisions-for-approval.md` | DECT-01 a DECT-14 |
+| `72-stage-02-1-executive-report.md` | Relatório executivo da Etapa 2.1 |
+| `data/families-taxonomy.csv`, `sku-family-mapping.csv`, `family-applications.csv`, `family-segments.csv`, `family-editorial-relations.csv`, `taxonomy-evidence.csv`, `taxonomy-conflicts.csv`, `stage-03-readiness.csv`, `taxonomy-decisions.csv` | Dados da consolidação |
 
 
 ## Etiquetas de origem (rastreabilidade)
@@ -132,8 +150,15 @@ gerando as decisões **D-039 a D-051**. O-24 e O-26 encerradas.
 `58-stage-02-decisions-for-approval.md`. Nenhum código, layout, rota, banco ou redirecionamento
 foi criado.
 
-**Bloqueio para a Etapa 3**: **DEP-01** — a classificação família → categoria → aplicação não
-existe em nenhuma fonte e precisa ser executada antes do design system.
+**Etapa 2.1 — Consolidação Taxonômica**: concluída em 2026-08-01 como **proposta**. 13 documentos
+(60 a 72) e 9 CSVs. **DEC-05 e DEC-18 foram rejeitadas pelo usuário** — "Linhas complementares"
+segue como categoria e as 7 categorias editoriais seguem íntegras. 174 SKUs organizados em
+**43 famílias**; 31 famílias (97 SKUs) prontas para a Etapa 3. DECT-01 a DECT-14 aguardam
+manifestação em `71-taxonomy-decisions-for-approval.md`.
+
+**Bloqueio para a Etapa 3**: **DEP-01** resolvido como proposta — encerramento formal depende de
+DECT-01 e DECT-10. Novo bloqueio **DEP-09 / DECT-08**: 34 SKUs (`PE`×28, `CN`×3, `BO`×3) não têm
+nome de produto em nenhuma das 8 fontes e não podem ser classificados sem uma lista da AviZee.
 
 **Pendências ainda abertas**:
 - **O-27 / RK-15 / Q-01** — revogação e rotação das credenciais SMTP e reCAPTCHA (não confirmada)
@@ -142,5 +167,7 @@ existe em nenhuma fonte e precisa ser executada antes do design system.
 - **Q-08** — confirmação dos dados de contato
 - **Q-13** — razão social, CNPJ, canal de privacidade e prazo de retenção
 - **L-01 a L-07** — recomendações ainda sem aprovação
-- **DEC-01 a DEC-18** — decisões da Etapa 2
+- **DEC-01 a DEC-18** — decisões da Etapa 2 (DEC-05 e DEC-18 encerradas como rejeitadas)
+- **DECT-01 a DECT-14** — decisões da Etapa 2.1
+- **DEP-09** — lista código × nome × função dos 34 SKUs órfãos
 

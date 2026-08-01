@@ -40,3 +40,17 @@ URL por variação de medida · Qualquer superfície com preço, carrinho ou che
 | DEP-06 | Provedor de e-mail e destinatário (O-05, O-06) | Envio da cotação |
 | DEP-07 | Rotação das credenciais (Q-01, O-27) | Lançamento seguro |
 | DEP-08 | Aprovação de L-01 a L-07 | Cores funcionais, dicionário de marcas, URLs |
+
+## Atualização após a Etapa 2.1
+
+**DEP-01** deixa de ser um bloqueio sem caminho: existe matriz proposta para 43 famílias, com
+31 delas (97 SKUs) prontas para orientar o design system. O encerramento formal depende de
+DECT-01 e DECT-10 em `71-taxonomy-decisions-for-approval.md`.
+
+**Nova dependência — DEP-09**: lista código × nome × função dos **34 SKUs órfãos**
+(`PE`×28, `CN`×3, `BO`×3). Bloqueia FAM-019, FAM-021 e FAM-032 e é a única barreira para
+100% de cobertura taxonômica. Ver DECT-08 e RK-23.
+
+**Ajuste de escopo**: "Linhas complementares" **permanece categoria da v1** (DEC-05 rejeitada),
+com 4 famílias e 9 SKUs. A Central de Conteúdos mantém as **7 categorias editoriais**
+(DEC-18 rejeitada).

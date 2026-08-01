@@ -80,3 +80,17 @@ proposta DEC-04 e permanece sem aprovação até que DEC-04 seja aprovada.
 
 Dependências abertas que condicionam a Etapa 3: DEP-01 (classificação de famílias) ·
 DEP-02 (textos de categoria e solução) · DEP-03 a DEP-08 em `57-v1-scope-prioritization.md`.
+
+## Decisões abertas da Etapa 2.1
+
+**DECT-01 a DECT-14**, todas `PENDENTE_DE_APROVAÇÃO`, em
+`71-taxonomy-decisions-for-approval.md` e `data/taxonomy-decisions.csv`.
+
+Críticas: **DECT-08** (nome e função dos 34 códigos órfãos — depende de material que só a AviZee
+tem) e **DECT-10** (liberar a Etapa 3 com as 31 famílias prontas).
+
+**Encerradas nesta etapa**: DEC-05 e DEC-18, ambas **rejeitadas** pelo usuário em 2026-08-01. Não
+voltam à pauta.
+
+**DEP-01 — estado**: resolvido como **proposta** para 43 famílias (100% dos SKUs associados) e
+suficiente para 31 famílias / 97 SKUs. Encerramento formal depende de DECT-01 e DECT-10.

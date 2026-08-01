@@ -52,12 +52,17 @@ Nenhuma destas é decisão. Nenhuma será executada sem aprovação explícita.
 | L-05 | Definir campo de "confiabilidade do dado técnico" por SKU | Operacionaliza a regra I-2 (rascunho vs. publicado) |
 | L-06 | Definir o tratamento público do segmento Suinocultura ("sob consulta"): página informativa sem catálogo, ou ausência total na v1 | D-003 define o status, mas não a superfície pública |
 | L-07 | Definir se os códigos atuais (AG/AR/AZ) serão mantidos como códigos públicos | Impacta SEO, busca por código e reconhecimento pelo comprador |
-| L-08 | Definir se **Montserrat Alternates** (recebida no pacote) tem algum uso aprovado, ou se fica proibida | O pacote traz 11 pesos da variante decorativa; sem regra, ela acaba sendo usada por engano |
-| L-09 | Resolver DIV-06: o "grafismo em V" é um elemento novo a criar, ou a menção se referia ao símbolo galo+engrenagem do manual? | Impacta diretamente o design system e todo o vocabulário gráfico do site |
-| L-10 | Definir a política para os ~11 códigos com marca de terceiro visível: nova fotografia, placeholder oficial, ou remoção do item da v1 | Hoje esses SKUs não podem ser publicados com imagem (R-05) e não há caminho definido |
-| L-11 | Confirmar se os dois conjuntos de imagens (PNG raiz vs. JPG `A/`) são versões do mesmo acervo e qual prevalece | 30+ códigos existem nos dois; sem regra, o risco é publicar a versão pior. Agora há um **terceiro** conjunto: as 72 JPG do site atual |
-| L-12 | **Definir o tratamento público do grupo "SOCOREX" (15 SKUs) e dos nomes com marca de terceiro (`BV005`, `LM001`, `LM002`, códigos de bico)** | Maior violação estrutural de R-05. Opções: renomear por função ("seringa automática 0,5 ml"), manter a marca apenas em campo interno de busca, ou remover os itens da v1 |
-| L-13 | Resolver as divergências de código DIV-10 a DIV-16 (AG016 duplicado, AG022 conflitante, PE/VR duplicados, AG025 vs. AG026, nomes de balança) | Bloqueia a modelagem do catálogo: código é chave única (RK-04) |
-| L-14 | Decidir se os 55 SKUs exclusivos do catálogo complementar (conexões, peças, bombas, bateria) entram na v1 | Aumenta o catálogo de 117 para ~172 SKUs e cria 4 famílias novas sem nenhuma imagem no site |
-| L-15 | Definir o destino do PDF do catálogo (`/assets/docs/catalogo.pdf`), hoje indexável e desatualizado | Manter, substituir por versão nova ou aposentar em favor do catálogo navegável |
+| L-08 | ~~Montserrat Alternates~~ | **RESOLVIDA 2026-08-01 → D-031** (proibida na v1) |
+| L-09 | ~~Grafismo em "V" (DIV-06)~~ | **RESOLVIDA 2026-08-01 → D-032** (nenhum grafismo novo; padrão secundário oficial separado do símbolo) |
+| L-10 | ~~Imagens com marca de terceiro visível~~ | **RESOLVIDA 2026-08-01 → D-033** (placeholder + pendência de nova foto) |
+| L-11 | ~~Prioridade entre acervos de imagem~~ | **RESOLVIDA 2026-08-01 → D-034** (seleção por SKU/família) |
+| L-12 | ~~Grupo "SOCOREX" e nomes com marca~~ | **RESOLVIDA 2026-08-01 → D-035** (renomear por função; marca só em campo interno) |
+| L-13 | ~~Colisões de código DIV-10 a DIV-16~~ | **RESOLVIDA 2026-08-01 → D-036** (UUID como chave; conflito bloqueia só o registro) |
+| L-14 | ~~55 SKUs complementares na v1~~ | **RESOLVIDA 2026-08-01 → D-037** (entram quando os dados forem confiáveis) |
+| L-15 | ~~Destino do PDF do catálogo~~ | **RESOLVIDA 2026-08-01 → D-038** (aposentar; 301 para `/produtos`) |
+
+## Recomendações ainda em aberto
+L-01 a L-07 permanecem PENDENTE_DE_APROVAÇÃO. As decisões operacionais O-01 a O-20, além de
+O-24 (WOFF2), O-26 (versões do logotipo) e O-27 (credencial SMTP), continuam ativas.
+
 

@@ -1,0 +1,7 @@
+servico,finalidade,dados_enviados,cookies,base_legal,dependencia,custo,alternativa,indisponibilidade,impacto,status
+Provedor de e-mail,notificacao e confirmacao de cotacao,"nome,email,protocolo,itens",nao,execucao de procedimento preliminar,alta,baixo/medio,SMTP seguro,outbox retem e alerta,cotacao registrada segue valida,PENDENTE_DE_APROVACAO (DT-11)
+Google Maps,localizacao na pagina de contato,"IP e user-agent apos clique",sim (apos clique),consentimento por interacao,baixa,gratuito ate limite,link externo / imagem estatica,bloco estatico permanece,nenhum impacto funcional,APROVADO (D-051) - carregar so apos interacao
+WhatsApp (wa.me),continuidade do atendimento,"texto da mensagem gerada pelo usuario",nao,interesse do titular,baixa,nenhum,telefone e protocolo em texto,exibe numero copiavel,nenhum,APROVADO como canal secundario
+EmbedSocial,prova social,-,-,-,-,-,-,-,-,FORA DA V1 (D-051)
+Monitoramento externo,health check,"URL publica",nao,legitimo interesse,media,baixo,checagem manual,sem alerta automatico,deteccao tardia,PENDENTE_DE_APROVACAO
+Analytics,metricas de uso,eventos sem dado pessoal,sim,consentimento,baixa,baixo,metricas no banco,sem dados de uso,nenhum impacto funcional,NAO ATIVADO NA V1

@@ -1,0 +1,15 @@
+evento,parametros_permitidos,parametros_proibidos,consentimento,observacao
+search_performed,"query_length,results_count,has_results",termo bruto se contiver dado pessoal,sim,curadoria de termos fica no banco
+filter_applied,"filter_key,filter_value_code,results_count",-,sim,-
+product_family_viewed,"family_slug,category_slug",-,sim,-
+sku_selected,"product_slug,family_slug",-,sim,-
+quotation_item_added,"product_slug,family_slug,item_count",-,sim,-
+quotation_item_removed,"product_slug,item_count",-,sim,-
+quotation_started,"item_count,entry_page",-,sim,-
+quotation_submitted,"item_count,has_observation,uf","nome,email,telefone,empresa,CNPJ,protocolo,observacao",sim,protocolo permanece so no banco
+quotation_error,"error_code,step",mensagem bruta do servidor,sim,-
+whatsapp_clicked,context,numero de telefone,sim,-
+article_viewed,"article_slug,editorial_category",-,sim,-
+article_product_clicked,"article_slug,product_slug",-,sim,-
+document_downloaded,document_slug,-,sim,-
+product_not_found_requested,query_length,termo bruto,sim,-

@@ -1,0 +1,22 @@
+id,tipo,nome,metodo,autenticacao,entrada,saida,campos_proibidos,observacao
+API-01,server_fn,listPublicCategories,GET,publica,-,"categorias (slug,nome,contagem)",ADMIN_ONLY,view publica
+API-02,server_fn,listPublicFamilies,GET,publica,"categoria,aplicacao,segmento,pagina","familias publicadas + imagem aprovada",ADMIN_ONLY,paginado 24
+API-03,server_fn,getPublicFamily,GET,publica,slug,"familia, SKUs publicados, specs publicas, relacionados",ADMIN_ONLY,404 se nao publicado
+API-04,server_fn,getPublicProduct,GET,publica,slug,"SKU, specs, imagem, familia, documentos",ADMIN_ONLY,sem preco
+API-05,server_fn,publicSearch,GET,publica,"q,filtros,pagina","resultados ranqueados",ADMIN_ONLY,indice publico apenas
+API-06,server_fn,searchSuggest,GET,publica,q,"ate 8 sugestoes",ADMIN_ONLY,debounce 250ms
+API-07,server_fn,submitQuotation,POST,publica com protecoes,"dados + itens + consentimentos + client_request_id","protocolo",preco/total,idempotente e rate limited
+API-08,server_fn,submitContact,POST,publica com protecoes,"nome,email,mensagem,consentimento","ok",-,honeypot + rate limit
+API-09,server_fn,listPublicArticles,GET,publica,"categoria,pagina","artigos publicados",rascunhos,-
+API-10,server_fn,getPublicArticle,GET,publica,slug,"artigo + relacionados publicados",rascunhos,404 se agendado
+API-11,route,GET /sitemap.xml,GET,publica,-,XML,rascunhos e filtros,somente PUBLISHED
+API-12,route,GET /robots.txt,GET,publica,-,texto,-,Disallow em nao producao
+API-13,route,POST /api/public/cron/publish-scheduled,POST,HMAC,assinatura,resumo,-,pg_cron
+API-14,route,POST /api/public/cron/process-outbox,POST,HMAC,assinatura,resumo,-,pg_cron
+API-15,route,POST /api/public/webhooks/email,POST,assinatura do provedor,evento,ok,-,bounce/entrega
+API-16,server_fn,adminListProducts,GET,autenticada,"filtros incluindo codigo interno","produtos com campos admin",-,requer papel catalogo
+API-17,server_fn,adminUpsertProduct,POST,autenticada,payload validado,produto,-,auditado
+API-18,server_fn,adminReviewMedia,POST,autenticada,"asset_id,decisao,motivo",asset,-,move para bucket publico
+API-19,server_fn,adminRunImport,POST,autenticada,"arquivo,dry_run",relatorio,-,dry run obrigatorio antes
+API-20,server_fn,adminUpdateQuotation,POST,autenticada,"quotation_id,status,nota",evento,-,papel comercial
+API-21,server_fn,adminPublishArticle,POST,autenticada,"article_id,quando",artigo,-,papel editor

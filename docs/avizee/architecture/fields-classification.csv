@@ -1,0 +1,47 @@
+entidade,campo,classificacao,api_publica,api_admin,indexavel,exportavel,logavel,retencao,observacao
+products,id,PUBLIC,sim,sim,nao,sim,sim,permanente,uuid imutavel
+products,public_name,PUBLIC,sim,sim,sim,sim,sim,permanente,sem marca de terceiro
+products,public_sku,PUBLIC,sim,sim,sim,sim,sim,permanente,somente se validado
+products,slug,PUBLIC,sim,sim,sim,sim,sim,permanente,unico
+products,variation_label,PUBLIC,sim,sim,sim,sim,sim,permanente,-
+products,status,DERIVED_PUBLIC,parcial,sim,nao,sim,sim,permanente,publico so sabe se esta publicado
+products,internal_brand,ADMIN_ONLY,nao,sim,nao,restrito,nao,permanente,R-05
+products,supplier,ADMIN_ONLY,nao,sim,nao,restrito,nao,permanente,R-05
+products,original_code,ADMIN_ONLY,nao,sim,nao,restrito,nao,permanente,R-05
+products,internal_notes,ADMIN_ONLY,nao,sim,nao,nao,nao,permanente,-
+product_codes,code,PUBLIC quando type=PUBLIC_SKU,parcial,sim,parcial,sim,sim,permanente,demais tipos ADMIN_ONLY
+product_codes,type,ADMIN_ONLY,nao,sim,nao,restrito,nao,permanente,-
+product_families,public_name,PUBLIC,sim,sim,sim,sim,sim,permanente,-
+product_families,internal_notes,ADMIN_ONLY,nao,sim,nao,nao,nao,permanente,-
+specification_definitions,label,PUBLIC,sim,sim,sim,sim,sim,permanente,-
+product_specifications,value_num,PUBLIC,sim,sim,sim,sim,sim,permanente,se definicao is_public
+media_assets,alt_text,PUBLIC,sim,sim,sim,sim,sim,permanente,obrigatorio para publicar
+media_assets,public_path,PUBLIC,sim,sim,sim,sim,sim,permanente,so aprovados
+media_assets,private_path,ADMIN_ONLY,nao,sim,nao,nao,nao,ver 113,-
+media_assets,marca_detectada,ADMIN_ONLY,nao,sim,nao,nao,nao,permanente,R-05
+media_assets,rights_status,ADMIN_ONLY,nao,sim,nao,restrito,sim,permanente,-
+documents,titulo_publico,PUBLIC,sim,sim,sim,sim,sim,permanente,-
+documents,direito_publicacao,ADMIN_ONLY,nao,sim,nao,restrito,sim,permanente,-
+articles,titulo,PUBLIC,sim,sim,sim,sim,sim,permanente,-
+articles,corpo,PUBLIC,sim,sim,sim,sim,nao,permanente,JSON sanitizado
+articles,status,DERIVED_PUBLIC,parcial,sim,nao,sim,sim,permanente,-
+article_social,legenda_instagram,INTERNAL_OPERATIONAL,nao,sim,nao,restrito,nao,permanente,nao publica automaticamente
+quotations,protocolo,PUBLIC ao titular,restrito,sim,nao,sim,sim,ver 113,-
+quotations,empresa,SENSITIVE,nao,sim,nao,restrito,nao,24 meses,-
+quotations,contato,SENSITIVE,nao,sim,nao,restrito,nao,24 meses,-
+quotations,email,SENSITIVE,nao,sim,nao,restrito,nao,24 meses,-
+quotations,telefone,SENSITIVE,nao,sim,nao,restrito,nao,24 meses,-
+quotations,cidade,SENSITIVE,nao,sim,nao,restrito,nao,24 meses,-
+quotations,uf,DERIVED_PUBLIC,nao,sim,nao,sim,sim,24 meses,pode ir agregado a analytics
+quotations,ip_hash,SENSITIVE,nao,restrito,nao,nao,nao,90 dias,antiabuso
+quotation_items,snapshot_nome,INTERNAL_OPERATIONAL,nao,sim,nao,sim,sim,24 meses,preserva historico
+quotation_items,observacao,SENSITIVE,nao,sim,nao,restrito,nao,24 meses,nunca em analytics
+consent_records,texto_versao,INTERNAL_OPERATIONAL,nao,sim,nao,sim,sim,5 anos,-
+audit_logs,diff,INTERNAL_OPERATIONAL,nao,restrito,nao,nao,-,12 meses,campos sensiveis redigidos
+audit_logs,ip,SENSITIVE,nao,restrito,nao,nao,-,12 meses,-
+settings,smtp_credentials,SECRET,nao,nao,nao,nao,nao,secrets manager,nunca no banco
+settings,api_keys,SECRET,nao,nao,nao,nao,nao,secrets manager,nunca no bundle
+page_content,valor,PUBLIC,sim,sim,sim,sim,sim,permanente,dentro de blocos previstos
+seo_metadata,title,PUBLIC,sim,sim,sim,sim,sim,permanente,-
+redirects,origem,PUBLIC (comportamento),sim,sim,nao,sim,sim,permanente,-
+import_jobs,arquivo_hash,INTERNAL_OPERATIONAL,nao,sim,nao,sim,sim,12 meses,-

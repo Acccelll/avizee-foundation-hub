@@ -1,0 +1,6 @@
+dup_id,tipo,itens,evidencia,severidade,recomendacao
+DUP-0001,IMAGEM,BA005.jpg | BA006.jpg | BA010.jpg | BA013.jpg,md5 identico,MEDIO,usar como evidencia de agrupamento por familia (D-019)
+DUP-0002,IMAGEM,SR005.jpg | SR006.jpg,md5 identico,MEDIO,usar como evidencia de agrupamento por familia (D-019)
+DUP-0003,IMAGEM,SR008.jpg | SR009.jpg,md5 identico,MEDIO,usar como evidencia de agrupamento por familia (D-019)
+DUP-0004,IMAGEM,TB004.jpg | TB005.jpg,md5 identico,MEDIO,usar como evidencia de agrupamento por familia (D-019)
+DUP-0005,CODIGO_CATALOGO,AG016,2 ocorrencias no catalogo complementar,ALTO,bloquear registro ate resolucao (D-036)

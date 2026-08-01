@@ -1,0 +1,28 @@
+finding_id,categoria,descricao,evidencia,severidade,impacto_na_v1,acao_recomendada,status
+F-01,SEGURANCA,Credencial SMTP (usuario e senha de aplicativo Gmail) em texto claro no codigo,send_email.php linhas 82-85,CRITICA,nenhuma se revogada,revogar a senha de aplicativo e usar segredo de servidor na v1,ABERTO
+F-02,SEGURANCA,Chave secreta do reCAPTCHA literal no codigo,send_email.php linha 24,ALTA,nenhuma,gerar novo par de chaves e guardar como segredo,ABERTO
+F-03,SEGURANCA,display_errors ligado em producao,send_email.php linhas 3-4,MEDIA,vazamento de caminho e stack trace,desligar; log server-side na v1,ABERTO
+F-04,SEGURANCA,Remetente do formulario usa conta Gmail de terceiro (acelerador.to@gmail.com),send_email.php linha 98,MEDIA,entregabilidade e confianca,remetente em dominio proprio com SPF/DKIM,ABERTO
+F-05,SEGURANCA,Sem rate limit no endpoint de envio,send_email.php,MEDIA,spam de leads,rate limit + validacao server-side na v1,ABERTO
+F-06,SEO,og:image aponta para arquivo inexistente,includes/head-meta.php linha 7,ALTA,preview social quebrado,gerar imagem social real na v1,ABERTO
+F-07,SEO,Canonical e twitter:card ausentes em todas as paginas,includes/head-meta.php,ALTA,indexacao,definir head() por rota,ABERTO
+F-08,SEO,og:url fixo na home para todas as paginas,includes/head-meta.php linha 8,MEDIA,compartilhamento incorreto,url por rota,ABERTO
+F-09,SEO,Sem robots.txt e sem sitemap.xml no pacote,raiz do projeto,MEDIA,rastreamento,publicar ambos no lancamento,ABERTO
+F-10,SEO,Nenhuma pagina de produto individual; catalogo inteiro em /produtos,produtos.php,ALTA,zero long tail de SKU,criar rotas de familia/SKU na v1,ABERTO
+F-11,SEO,Sem dados estruturados (JSON-LD),todas as paginas,MEDIA,rich results,Organization + ItemList (sem preco - R-04),ABERTO
+F-12,SEO,Meta description identica em varias paginas e conflitante com D-001 (peso igual a suinocultura),head-meta.php,MEDIA,canibalizacao,description unica por rota,ABERTO
+F-13,ESTRUTURA,index.php emite <meta> antes do <!DOCTYPE> e header.php abre um segundo <html>/<head> com <title>AviZee,index.php linha 32; includes/header.php linhas 2-6,ALTA,HTML invalido e titulo duplicado,estrutura de documento unica na v1,ABERTO
+F-14,ACESSIBILIDADE,Links Detalhes e artigos do blog com href=#,index.php produtos.php blog.php,ALTA,navegacao por teclado sem destino,links reais na v1,ABERTO
+F-15,ACESSIBILIDADE,Contraste e foco visivel nao verificaveis sem auditoria em navegador,assets/css/style.css,MEDIA,WCAG AA,verificar na Etapa de UI,ABERTO
+F-16,ACESSIBILIDADE,Modal de produto sem gestao documentada de foco e Esc,index.php linhas 205-214,MEDIA,uso por teclado,componente acessivel na v1,ABERTO
+F-17,ACESSIBILIDADE,Imagem do modal com alt vazio preenchido por script,index.php linha 209,BAIXA,leitor de tela,alt derivado do nome do produto,ABERTO
+F-18,PERFORMANCE,Fontes Montserrat via Google Fonts CDN (3 pesos),head de cada pagina,MEDIA,terceiro no caminho critico,self-host WOFF2 (O-24),ABERTO
+F-19,PERFORMANCE,CSS inline extenso repetido por pagina,contato.php blog.php header.php,MEDIA,peso de HTML,design system unico na v1,ABERTO
+F-20,PERFORMANCE,Imagens de produto so em JPG/PNG sem AVIF/WebP nem srcset,assets/img/products,MEDIA,LCP,pipeline de imagem responsiva,ABERTO
+F-21,PERFORMANCE,CSV lido e agrupado em runtime a cada requisicao,includes/produtos-data.php,MEDIA,TTFB,dados em banco na v1,ABERTO
+F-22,PERFORMANCE,Terceiros carregados sem necessidade (embedsocial + iframe Google Maps + recaptcha),blog.php contato.php,MEDIA,peso e privacidade,carregar sob interacao,ABERTO
+F-23,CONFORMIDADE,Copy atual promete Entrega Rapida e Logistica agil (viola R-11),index.php sobre.php,ALTA,risco comercial,remover promessa de prazo/frete,ABERTO
+F-24,CONFORMIDADE,Conversao atual e WhatsApp direto por produto e nao Lista de Cotacao,index.php produtos.php,ALTA,contraria D-007,implementar Lista de Cotacao na v1,ABERTO
+F-25,CONFORMIDADE,16 SKUs publicos carregam marca de terceiro no nome,products-provisional.csv,ALTA,viola R-05,renomear por funcao (D-035),ABERTO
+F-26,LGPD,Sem politica de privacidade e sem consentimento no formulario,contato.php,ALTA,LGPD,politica + base legal + retencao na v1,ABERTO
+F-27,DADOS,6 imagens do acervo sem codigo de produto identificavel,images.csv,BAIXA,catalogo,triagem manual,ABERTO

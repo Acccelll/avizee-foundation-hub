@@ -1,0 +1,10 @@
+source_id,fonte,tipo,localizacao,itens,confiabilidade,limitacoes,status
+S-01,Site publico avizee.com.br,Site,https://avizee.com.br/,5 paginas publicas,MEDIA,reflete conteudo anterior as decisoes D-001..D-038,ANALISADO
+S-02,Codigo-fonte do site atual,Repositorio PHP,upload zip -> 174 arquivos,117 SKUs em assets/data/produtos.csv + 72 imagens,ALTA,sem banco de dados; credencial SMTP em texto claro,ANALISADO
+S-03a,Catalogo publicado,PDF 10 paginas,upload,116 codigos,ALTA,sem dados tecnicos descritivos,ANALISADO
+S-03b,Catalogo complementar,PDF 11 paginas,upload,106 codigos (50 exclusivos),ALTA,divergencias internas de codigo e medida,ANALISADO
+S-04,Proposta de branding AviZee V.01,PDF 10 paginas,upload,paleta + logotipo + aplicacoes,ALTA,sem area de respiro/tamanho minimo/versao horizontal,ANALISADO
+S-05,Acervo Mercado Livre,ZIP de imagens,upload,110 arquivos (60 PNG + 50 JPG),ALTA como acervo,marca de terceiro visivel em parte dos itens,ANALISADO
+S-06,Pacote tipografico Montserrat,ZIP de fontes,upload,11 pesos OTF + 2 TTF + 9 pesos Alternates,ALTA,sem italicos; sem WOFF2; sem arquivo de licenca,ANALISADO
+S-07,Logotipo vetorial COLORIDO,SVG/PDF/PNG/JPG,upload,4 arquivos lockup horizontal,ALTA,somente versao colorida,ANALISADO
+S-08,Decisoes do usuario (Etapas 0 e 1),Decisao,docs/avizee/,38 decisoes + 13 regras,MAXIMA,-,ANALISADO

@@ -1,0 +1,8 @@
+page_id,url,arquivo,titulo_atual,h1_atual,meta_description,secoes,funcao,destino_v1,acao
+PG-01,/,index.php,Home - AviZee,Solucoes Integradas para Avicultura e Suinocultura,Solucoes em equipamentos para avicultura e suinocultura,"hero; diferenciais; produtos em destaque (carrossel); modal de produto; depoimentos/embed social; CTA WhatsApp",captacao,/ ,REESCREVER
+PG-02,/produtos,produtos.php,Produtos - AviZee,Produtos,herdada do include,"filtros; listagem completa do CSV; agrupamento por nome; modal; CTA WhatsApp",catalogo,/produtos,RECONSTRUIR
+PG-03,/sobre,sobre.php,Sobre - AviZee,Sobre a AviZee,herdada do include,"quem somos; diferenciais; historia; missao/visao/valores; CTA",institucional,/sobre,REESCREVER
+PG-04,/contato,contato.php,Contato - AviZee,Contato,Entre em contato com a AviZee para solucoes em avicultura e suinocultura,"dados de contato; mapa embed; formulario com honeypot e recaptcha",conversao,/contato,RECONSTRUIR
+PG-05,/blog,blog.php,Blog - AviZee,Blog AviZee,Artigos e materias sobre avicultura e suinocultura,3 cards de artigo com link href=#,conteudo,/conteudos,301 + RECONSTRUIR
+PG-06,/send_email.php,send_email.php,-,-,-,endpoint POST PHPMailer,backend,server function,DESATIVAR (410)
+PG-07,/assets/docs/catalogo.pdf,catalogo.pdf,-,-,-,PDF exibido por pdf-viewer.js,catalogo,/produtos,301 (D-038)

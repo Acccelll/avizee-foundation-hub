@@ -132,3 +132,30 @@ integrais de L-08 a L-15, incluindo a tabela de normalização de nomes público
 a ordem de prioridade para nova fotografia, os 8 critérios de seleção de imagem, os campos
 obrigatórios do registro de produto (`id`/`sku_publico`/`codigo_original`/`fonte_codigo`/
 `aliases_internos`/`status_validacao`) e o tratamento do PDF aposentado. Índice do `README.md` atualizado.
+
+## 2026-08-01 — Etapa 1: Auditoria dos Materiais e Inventário Geral
+
+**Origem**: `USER_DECISION` (prompt da Etapa 1) + `TECHNICAL_INFERENCE`.
+
+**Documentos criados** (faixa 21–39, para não colidir com os documentos 00–20 da Etapa 0):
+`21-stage-01-audit-plan.md`, `22-current-site-inventory.md`, `23-codebase-inventory.md`,
+`24-page-and-content-inventory.md`, `25-product-source-inventory.md`,
+`26-provisional-product-matrix.md`, `27-image-inventory.md`, `28-product-image-matrix.md`,
+`29-brand-asset-inventory.md`, `30-font-inventory.md`, `31-seo-inventory.md`,
+`32-functional-inventory.md`, `33-security-findings.md`, `34-accessibility-findings.md`,
+`35-performance-findings.md`, `36-duplicates-and-divergences.md`, `37-migration-readiness.md`,
+`38-stage-01-open-questions.md`, `39-stage-01-executive-report.md`.
+
+**Dados criados** em `docs/avizee/data/`: `sources.csv` (9), `files.csv` (174), `pages.csv` (7),
+`products-provisional.csv` (174), `images.csv` (188), `product-image-relations.csv` (261),
+`duplicates.csv` (5), `divergences.csv` (10), `findings.csv` (27).
+
+**Principais achados**: universo de 174 SKUs (50 exclusivos do catálogo complementar);
+188 imagens, **nenhuma** com direito de uso confirmado; 80 SKUs sem imagem; 16 SKUs com marca de
+terceiro no nome; 10 divergências de alta severidade; **duas credenciais em texto claro**
+(SMTP e reCAPTCHA); blog sem nenhum artigo real; nenhuma fonte com dado técnico por SKU.
+
+**Efeitos no registro de riscos**: RK-15 ampliado (inclui reCAPTCHA); RK-01, RK-02, RK-03 e RK-05
+quantificados; RK-07 e RK-11 confirmados; RK-06 mantido reduzido. Criado **RK-18**.
+
+**Nenhum código funcional, nenhuma alteração visual e nenhuma migração foram executados.**

@@ -79,3 +79,16 @@ família → categoria → aplicação → segmento. A Etapa 2.1 produziu essa m
 
 A Etapa 2.1 **não gerou nenhuma decisão aprovada de classificação**. As 14 propostas estão em
 `71-taxonomy-decisions-for-approval.md` (DECT-01 a DECT-14), todas `PENDENTE_DE_APROVAÇÃO`.
+
+## Etapa 3 — decisões aprovadas em 2026-08-01 (liberação controlada)
+
+| ID | Decisão | Origem | Data |
+|---|---|---|---|
+| D-052 | **DECT-01 aprovada parcialmente**: ficam aprovadas as **31 famílias prontas / 97 SKUs** — nome funcional, associação de SKUs, categoria pública, segmento, aplicação principal, aplicações secundárias confirmadas e a relação família → categoria → aplicação, dentro das 6 categorias públicas. As **12 famílias restantes** (FAM-003, 010, 011, 012, 016 a 021, 032, 041) permanecem `PENDENTE_DE_APROVAÇÃO`. **Não registrar as 43 famílias como aprovadas.** Lista nominal em `73-stage-03-start-blocker.md` §7.1 | USER_DECISION | 2026-08-01 |
+| D-053 | **DECT-10 aprovada com escopo controlado**: a Etapa 3 está liberada para criar o design system e todos os tipos de página, usando como **conteúdo real** apenas as 31 famílias, os 97 SKUs, as 6 categorias públicas, as 7 categorias editoriais, as aplicações aprovadas e as imagens aprovadas ou o placeholder oficial. Proibido usar taxonomia provisória como conteúdo real | USER_DECISION | 2026-08-01 |
+| D-054 | **Fila de normalização**: os 34 SKUs sem identidade (`PE`×28, `CN`×3, `BO`×3), os 16 SKUs sem nome público funcional, os 7 conflitos individuais e todo registro `BLOCKED`/`UNCLASSIFIED` **não são excluídos** — permanecem em fila, sem publicação e sem uso como dado real. B-02 e B-03 seguem **contidos, não encerrados** | USER_DECISION | 2026-08-01 |
+| D-055 | **Numeração documental**: Etapa 3 ocupa `74`–`94`; Etapa 4 ocupa `95`–`130` (deslocamento de +6 sobre os `89`–`124` do prompt original); `73-stage-03-start-blocker.md` é o registro do bloqueio; `docs/avizee/design/` mantém os nomes originais | USER_DECISION | 2026-08-01 |
+
+**Limite expresso**: D-052 e D-053 liberam o trabalho. Não aprovam antecipadamente tokens,
+componentes, wireframes, protótipos nem direção visual — todos dependem de aprovação ao fim da
+Etapa 3. A Etapa 4 não é iniciada automaticamente.

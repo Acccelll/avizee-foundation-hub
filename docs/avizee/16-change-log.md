@@ -272,3 +272,31 @@ deslocava as colunas seguintes).
 
 **Nenhum documento da Etapa 3 foi criado. Nenhum token, componente, wireframe ou protótipo foi
 produzido. `src/` permanece intocado.**
+
+---
+
+## 2026-08-01 — Etapa 3 **liberada** com escopo controlado
+
+`USER_DECISION`. O diagnóstico de `73` foi aceito e o bloqueio foi resolvido por aprovação
+parcial, não por aprovação em bloco:
+
+- **DECT-01 → APROVADA_PARCIALMENTE** — 31 famílias / 97 SKUs. As 12 famílias restantes seguem
+  pendentes. As 43 famílias **não** foram aprovadas integralmente.
+- **DECT-10 → APROVADA_COM_ESCOPO_CONTROLADO** — protótipos só com dados reais aprovados.
+- **B-01 resolvido** para o escopo aprovado; **B-02 e B-03 contidos**, não encerrados.
+- **Renumeração aprovada**: Etapa 3 = `74`–`94`; **Etapa 4 = `95`–`130`** (+6 sobre `89`–`124`).
+- `73-stage-03-blocked.md` renomeado para **`73-stage-03-start-blocker.md`**, com a decisão
+  registrada em §7.
+- Decisões **D-052 a D-055** registradas em `01-approved-decisions.md`.
+- `data/taxonomy-decisions.csv` e `data/stage-03-readiness.csv` atualizados com o novo status.
+- DEC-05 e DEC-18 reconfirmadas como **NÃO APLICADAS**.
+
+## 2026-08-01 — Etapa 3 executada como proposta
+
+Criados os documentos `74` a `94` (design system, tokens, tipografia, cor, grid, iconografia,
+imagem, componentes, estados, wireframes, protótipos públicos e administrativos,
+responsividade, acessibilidade, microcopy, validação de jornadas, checklist, comparação com o
+site atual, decisões e relatório executivo).
+
+**Todo o resultado é PROPOSTA, com status `PENDENTE_DE_APROVAÇÃO`.** Nada publicado, nenhum
+backend, nenhum formulário ativo, nenhum produto importado, nenhuma alteração no site atual.

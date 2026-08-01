@@ -25,6 +25,10 @@
 **Conclusão**: Etapa 0 concluída, condicionada ao reconhecimento pelo usuário de que os itens
 O-21…O-25 (`13-open-decisions.md`) permanecem bloqueando a Etapa 1.
 
+## Etapa 1 — Auditoria e Inventário
+
+Critérios e situação em `39-stage-01-executive-report.md` (15 critérios, todos atendidos).
+
 ## Critérios permanentes (todas as etapas seguintes)
 1. Nenhuma marca de terceiro em qualquer superfície pública.
 2. Nenhum preço, valor ou faixa em qualquer superfície pública.

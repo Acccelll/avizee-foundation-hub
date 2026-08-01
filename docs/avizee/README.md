@@ -38,6 +38,31 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 | `19-url-inventory.md` | URLs do site atual, SEO e plano de redirecionamento 301 |
 | `20-resolved-recommendations.md` | Textos normativos de L-08 a L-15 (D-031 a D-038) — encerram a Etapa 0 |
 
+### Etapa 1 — Auditoria e Inventário (documentos 21 a 39)
+
+| Arquivo | Conteúdo |
+|---|---|
+| `21-stage-01-audit-plan.md` | Plano, método e regras da auditoria |
+| `22-current-site-inventory.md` | Site publicado: stack, páginas, terceiros, contatos |
+| `23-codebase-inventory.md` | Código-fonte e reaproveitamento |
+| `24-page-and-content-inventory.md` | Páginas, seções e textos atuais |
+| `25-product-source-inventory.md` | Fontes de produto e cobertura cruzada |
+| `26-provisional-product-matrix.md` | Matriz provisória de 174 SKUs |
+| `27-image-inventory.md` | 188 imagens, status e duplicidades |
+| `28-product-image-matrix.md` | Relação produto × imagem |
+| `29-brand-asset-inventory.md` | Logotipo, paleta e lacunas de asset |
+| `30-font-inventory.md` | Pesos, formatos e licença da tipografia |
+| `31-seo-inventory.md` | SEO atual e oportunidades |
+| `32-functional-inventory.md` | O que existe e o que não existe |
+| `33-security-findings.md` | Achados de segurança |
+| `34-accessibility-findings.md` | Achados de acessibilidade |
+| `35-performance-findings.md` | Achados de performance |
+| `36-duplicates-and-divergences.md` | Duplicidades e divergências não reconciliadas |
+| `37-migration-readiness.md` | Semáforo de prontidão para migração |
+| `38-stage-01-open-questions.md` | 15 perguntas abertas |
+| `39-stage-01-executive-report.md` | Relatório executivo e critérios de aceite |
+| `data/*.csv` | Dados tabulares da auditoria (fontes, arquivos, páginas, produtos, imagens, relações, duplicidades, divergências, achados) |
+
 ## Etiquetas de origem (rastreabilidade)
 
 `USER_DECISION` · `BRANDING` · `CATALOG` · `CURRENT_SITE` · `IMAGE_ASSET` · `TECHNICAL_INFERENCE` · `LOVABLE_RECOMMENDATION`
@@ -56,16 +81,21 @@ Fonte única de verdade do novo site institucional e catálogo B2B da AviZee.
 
 ## Estado atual
 
-**Etapa 0 — Constituição do Projeto**: documentação criada. Nenhuma implementação, nenhum
+**Etapa 0 — Constituição do Projeto**: concluída.
+**Etapa 1 — Auditoria e Inventário**: concluída em 2026-08-01. Nenhuma implementação, nenhum
 layout alterado, nenhum banco de dados criado.
 
 **Materiais recebidos e analisados**: manual de branding, acervo de imagens e tipografia
 (2026-07-31); **catálogo em PDF, logotipo vetorial e código-fonte do site atual** (2026-08-01).
 **Todas as 8 fontes previstas foram analisadas — não há mais bloqueio de material.**
 
-**Pendências que bloqueiam a Etapa 1** (decisão, não material):
-- **L-12** — tratamento do grupo "SOCOREX" e demais nomes com marca de terceiro (R-05)
-- **L-13** — divergências de código DIV-10 a DIV-16 (chave única do catálogo)
-- **L-14** — entrada ou não dos 55 SKUs do catálogo complementar
-- **O-26** — versões complementares do logotipo (mono, negativa, símbolo, favicon)
-- **O-27 / RK-15** — revogar a credencial SMTP exposta no código-fonte atual
+**Resultado da Etapa 1**: 174 SKUs consolidados, 188 imagens inventariadas (nenhuma aprovada),
+10 divergências de alta severidade e 27 achados registrados. Ver `39-stage-01-executive-report.md`.
+
+**Pendências que bloqueiam a Etapa 2**:
+- **O-27 / RK-15** — revogar a credencial SMTP **e** a chave do reCAPTCHA expostas (ação imediata)
+- Direito de uso das 188 imagens (Q-02)
+- Dados técnicos e segmento por SKU (Q-06, Q-07)
+- As 10 divergências de catálogo (Q-03, Q-04, Q-05)
+- **O-26** — versões complementares do logotipo · **O-24** — conversão WOFF2
+- Demais perguntas em `38-stage-01-open-questions.md`

@@ -24,6 +24,8 @@ import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-neg
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
+import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
+import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -100,6 +102,18 @@ const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   path: '/api/public/health',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProtectedCatalogoFamiliasRoute =
+  AdminProtectedCatalogoFamiliasRouteImport.update({
+    id: '/catalogo/familias',
+    path: '/catalogo/familias',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoSkusRoute =
+  AdminProtectedCatalogoSkusRouteImport.update({
+    id: '/catalogo/skus',
+    path: '/catalogo/skus',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -117,6 +131,8 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/': typeof AdminProtectedIndexRoute
+  '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
+  '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -133,6 +149,8 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin': typeof AdminProtectedIndexRoute
+  '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
+  '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -151,6 +169,8 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
+  '/admin/_protected/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
+  '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -170,6 +190,8 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/api/public/health'
     | '/admin/'
+    | '/admin/catalogo/familias'
+    | '/admin/catalogo/skus'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -186,6 +208,8 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/api/public/health'
     | '/admin'
+    | '/admin/catalogo/familias'
+    | '/admin/catalogo/skus'
   id:
     | '__root__'
     | '/'
@@ -203,6 +227,8 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/api/public/health'
     | '/admin/_protected/'
+    | '/admin/_protected/catalogo/familias'
+    | '/admin/_protected/catalogo/skus'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -329,15 +355,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicHealthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/_protected/catalogo/familias': {
+      id: '/admin/_protected/catalogo/familias'
+      path: '/catalogo/familias'
+      fullPath: '/admin/catalogo/familias'
+      preLoaderRoute: typeof AdminProtectedCatalogoFamiliasRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/catalogo/skus': {
+      id: '/admin/_protected/catalogo/skus'
+      path: '/catalogo/skus'
+      fullPath: '/admin/catalogo/skus'
+      preLoaderRoute: typeof AdminProtectedCatalogoSkusRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
   }
 }
 
 interface AdminProtectedRouteChildren {
   AdminProtectedIndexRoute: typeof AdminProtectedIndexRoute
+  AdminProtectedCatalogoFamiliasRoute: typeof AdminProtectedCatalogoFamiliasRoute
+  AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
 }
 
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedIndexRoute: AdminProtectedIndexRoute,
+  AdminProtectedCatalogoFamiliasRoute: AdminProtectedCatalogoFamiliasRoute,
+  AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
 }
 
 const AdminProtectedRouteWithChildren = AdminProtectedRoute._addFileChildren(

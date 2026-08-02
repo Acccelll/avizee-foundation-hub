@@ -244,7 +244,7 @@ describe("revisão de imagem", () => {
   }
 
   it("aprova imagem própria, com origem, alt e correspondência", async () => {
-    const auth = await authorize(authContext(gestor), "media.review");
+    const auth = await authorize(authContext(gestor), "media.approve");
     const id = await createAsset({});
     await expect(
       reviewMedia(auth, { id, toStatus: "APROVADA", matchesProduct: true }),
@@ -258,7 +258,7 @@ describe("revisão de imagem", () => {
   });
 
   it("recusa aprovação sem direito confirmado", async () => {
-    const auth = await authorize(authContext(gestor), "media.review");
+    const auth = await authorize(authContext(gestor), "media.approve");
     const id = await createAsset({ rights_status: "RIGHTS_UNCONFIRMED" });
     await expect(
       reviewMedia(auth, { id, toStatus: "APROVADA", matchesProduct: true }),
@@ -266,7 +266,7 @@ describe("revisão de imagem", () => {
   });
 
   it("recusa aprovação com marca visível", async () => {
-    const auth = await authorize(authContext(gestor), "media.review");
+    const auth = await authorize(authContext(gestor), "media.approve");
     const id = await createAsset({ detected_brand: "walmur" });
     await expect(
       reviewMedia(auth, { id, toStatus: "APROVADA", matchesProduct: true }),
@@ -274,7 +274,7 @@ describe("revisão de imagem", () => {
   });
 
   it("recusa aprovação sem texto alternativo", async () => {
-    const auth = await authorize(authContext(gestor), "media.review");
+    const auth = await authorize(authContext(gestor), "media.approve");
     const id = await createAsset({ alt_text: null });
     await expect(
       reviewMedia(auth, { id, toStatus: "APROVADA", matchesProduct: true }),
@@ -282,7 +282,7 @@ describe("revisão de imagem", () => {
   });
 
   it("reprovação mantém a imagem em quarentena e gera evento", async () => {
-    const auth = await authorize(authContext(gestor), "media.review");
+    const auth = await authorize(authContext(gestor), "media.approve");
     const id = await createAsset({});
     await reviewMedia(auth, {
       id,

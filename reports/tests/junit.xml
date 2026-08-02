@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="17" failures="0" errors="0" time="20.689794378">
-    <testsuite name="tests/security/rls-and-exposure.test.ts" timestamp="2026-08-02T03:49:38.598Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="17" failures="0" errors="0" skipped="0" time="20.689794378">
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; nenhuma tabela de catálogo responde ao cliente anônimo" time="2.574652232">
+<testsuites name="vitest tests" tests="15" failures="1" errors="0" time="0.670904989">
+    <testsuite name="tests/e2e/http-surfaces.test.ts" timestamp="2026-08-02T03:50:46.650Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="15" failures="1" errors="0" skipped="0" time="0.670904989">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="saúde e indexação &gt; health responde sem revelar detalhes internos" time="0.112537543">
+            <failure message="expected &apos;not_configured&apos; to be &apos;ok&apos; // Object.is equality" type="AssertionError">
+AssertionError: expected &apos;not_configured&apos; to be &apos;ok&apos; // Object.is equality
+
+Expected: &quot;ok&quot;
+Received: &quot;not_configured&quot;
+
+ ❯ tests/e2e/http-surfaces.test.ts:34:68
+            </failure>
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; auditoria não é legível sem autenticação" time="0.175906151">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="saúde e indexação &gt; robots bloqueia indexação enquanto o site não é público" time="0.006435706">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; cliente anônimo não escreve" time="0.180505585">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; / responde 200 com título próprio" time="0.027432882">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário autenticado sem papel não lê o catálogo" time="1.754557209">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /produtos responde 200 com título próprio" time="0.056482644">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; comercial lê catálogo mas não camada interna" time="1.076059368">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /solucoes responde 200 com título próprio" time="0.041278664">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; gestor de catálogo lê a camada interna" time="0.168111852">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /conteudos responde 200 com título próprio" time="0.034562785">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; nenhum papel escreve diretamente pelo Data API" time="2.804304251">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /sobre responde 200 com título próprio" time="0.031345811">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário só enxerga os próprios papéis" time="0.167088255">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /contato responde 200 com título próprio" time="0.039118661">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; perfil alheio não é legível" time="0.174596325">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /cotacao responde 200 com título próprio" time="0.044651758">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; apenas ADMINISTRADOR e AUDITOR leem audit_logs" time="0.336656951">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /politica-de-privacidade responde 200 com título próprio" time="0.039622048">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; auditoria é imutável para usuários autenticados" time="0.951015579">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /termos-de-uso responde 200 com título próprio" time="0.031840507">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; e-mail do ator é mascarado no registro" time="0.197442344">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; nenhuma rota pública expõe marca de terceiro ou segredo" time="0.157408735">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a visão pública do produto não carrega nenhum campo interno" time="0.205075813">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; página inexistente não vaza stack trace" time="0.009465654">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhum SKU publicado carrega marca de terceiro no nome público" time="0.194032365">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="painel administrativo &gt; a área protegida não entrega conteúdo administrativo sem sessão" time="0.013777166">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhuma família publicada carrega marca de terceiro" time="0.206839432">
-        </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; o esquema gerado não declara nenhuma coluna de preço ou custo (R-04)" time="0.005969746">
-        </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a verificação de papel no banco responde corretamente" time="0.206256648">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="painel administrativo &gt; a tela de login existe e não é indexável" time="0.021632619">
         </testcase>
     </testsuite>
 </testsuites>

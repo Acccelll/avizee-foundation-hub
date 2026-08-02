@@ -115,7 +115,7 @@ describe("simulação obrigatória", () => {
 
     const { job, rows } = await getImportJob(auth, dry.jobId);
     expect(job["mode"]).toBe("DRY_RUN");
-    expect(job["status"]).toBe("SIMULATED");
+    expect(job["status"]).toBe("DRY_RUN_COMPLETE");
     expect(rows).toHaveLength(2);
   });
 

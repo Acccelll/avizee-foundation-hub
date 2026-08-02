@@ -17,6 +17,19 @@ import {
 } from "@/content/institutional";
 import { buildMeta } from "@/seo/meta";
 
+interface HomeCategory {
+  slug: string;
+  name: string;
+  description: string | null;
+  familyCount: number;
+}
+
+interface HomeApplication {
+  slug: string;
+  name: string;
+  count: number;
+}
+
 const DIFF_ICON = { variedade: Boxes, agilidade: Zap, consultivo: Headset } as const;
 
 export const Route = createFileRoute("/")({
@@ -106,7 +119,7 @@ function Home() {
           Nossas categorias
         </h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => (
+          {(categories as HomeCategory[]).map((category) => (
             <li key={category.slug}>
               <Link
                 to="/produtos/$categorySlug"
@@ -138,7 +151,7 @@ function Home() {
             Encontre o que costuma ser necessário em cada aplicação da produção avícola.
           </p>
           <ul className="mt-6 flex flex-wrap gap-3">
-            {applications.map((application) => (
+            {(applications as HomeApplication[]).map((application) => (
               <li key={application.slug}>
                 <Link
                   to="/produtos"

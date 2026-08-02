@@ -5,12 +5,12 @@
  * A leitura acontece como o próprio usuário (RLS aplica-se);
  * a escrita usa o cliente de serviço apenas DEPOIS da verificação de permissão.
  */
-import type { SupabaseClient } from "@supabase/supabase-js";
-
 import { loadRoles, requirePermission } from "@/auth/authorize.server";
 import type { Permission, Role } from "@/permissions/model";
 
-export type AnyClient = SupabaseClient<never, never, never>;
+import type { AnyClient } from "@/lib/supabase-types";
+
+export type { AnyClient };
 
 export interface AuthContext {
   supabase: AnyClient;

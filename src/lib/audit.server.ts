@@ -4,6 +4,7 @@
  * Nunca grava segredo, arquivo completo ou documento de direitos em texto aberto.
  */
 import { logger } from "@/lib/logger";
+import type { AuditWriter } from "@/lib/supabase-types";
 import type { SessionUser } from "@/auth/contract";
 
 export type AuditAction =
@@ -76,12 +77,8 @@ export function maskEmail(email?: string | null): string | null {
   return `${user.slice(0, 2)}***@${domain}`;
 }
 
-type Writer = {
-  from: (table: string) => { insert: (rows: unknown) => Promise<{ error: unknown }> };
-};
-
 /** Persiste a entrada. `client` deve ser um cliente com permissão de escrita. */
-export async function audit(client: Writer, entry: AuditEntry): Promise<void> {
+export async function audit(client: AuditWriter, entry: AuditEntry): Promise<void> {
   const row = {
     actor_id: entry.actorId,
     actor_email_masked: maskEmail(entry.actorEmail),

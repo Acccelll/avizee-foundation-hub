@@ -114,7 +114,7 @@ export async function upsertFamily(
   input: Row & { id?: string | null },
 ): Promise<{ id: string }> {
   const problems = assertNoBrandInPublicFields(input);
-  if (problems.length > 0) throw new AppError("VALIDATION", { problems });
+  if (problems.length > 0) throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
 
   const { id, ...values } = input;
   let before: Row | null = null;
@@ -133,7 +133,7 @@ export async function upsertFamily(
         .insert({ ...payload, created_by: auth.userId })
         .select("id")
         .single();
-  const saved = unwrap(result) as { id: string };
+  const saved = unwrap(result) as unknown as { id: string };
 
   await audit(auth.admin, {
     actorId: auth.userId,
@@ -223,7 +223,7 @@ export async function upsertProduct(
   input: Row & { id?: string | null },
 ): Promise<{ id: string }> {
   const problems = assertNoBrandInPublicFields(input);
-  if (problems.length > 0) throw new AppError("VALIDATION", { problems });
+  if (problems.length > 0) throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
 
   const { id, ...values } = input;
   let before: Row | null = null;
@@ -240,7 +240,7 @@ export async function upsertProduct(
         .insert({ ...payload, created_by: auth.userId })
         .select("id")
         .single();
-  const saved = unwrap(result) as { id: string };
+  const saved = unwrap(result) as unknown as { id: string };
 
   const changed = diffFields(before, values);
   await audit(auth.admin, {
@@ -296,17 +296,13 @@ export async function changeStatus(
   const nextPublication = input.publicationStatus ?? current.publication_status;
 
   if (input.reviewStatus && !canTransitionReview(current.review_status, input.reviewStatus)) {
-    throw new AppError("VALIDATION", {
-      message: `Transição de revisão não permitida: ${current.review_status} → ${input.reviewStatus}`,
-    });
+    throw new AppError("VALIDATION_ERROR", undefined, `Transição de revisão não permitida: ${current.review_status} → ${input.reviewStatus}`);
   }
   if (
     input.publicationStatus &&
     !canTransitionPublication(current.publication_status, input.publicationStatus, nextReview)
   ) {
-    throw new AppError("VALIDATION", {
-      message: `Transição de publicação não permitida: ${current.publication_status} → ${input.publicationStatus}`,
-    });
+    throw new AppError("VALIDATION_ERROR", undefined, `Transição de publicação não permitida: ${current.publication_status} → ${input.publicationStatus}`);
   }
 
   unwrap(
@@ -388,8 +384,8 @@ export async function reviewMedia(
       detectedBrand: asset["detected_brand"] as string | null,
       matchesProduct: input.matchesProduct ?? false,
     });
-    if (!verdict.ok) throw new AppError("VALIDATION", { message: `Aprovação negada: ${verdict.reason}` });
-    if (!asset["alt_text"]) throw new AppError("VALIDATION", { message: "Texto alternativo obrigatório" });
+    if (!verdict.ok) throw new AppError("VALIDATION_ERROR", undefined, `Aprovação negada: ${verdict.reason}`);
+    if (!asset["alt_text"]) throw new AppError("VALIDATION_ERROR", undefined, "Texto alternativo obrigatório");
   }
 
   unwrap(

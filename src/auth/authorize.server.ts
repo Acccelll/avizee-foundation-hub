@@ -2,13 +2,11 @@
  * Autorização de servidor (§37 da Etapa 6).
  * Nenhuma ação administrativa confia no frontend: papéis vêm sempre do banco.
  */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { AnyClient } from "@/lib/supabase-types";
 
 import { AppError } from "@/lib/errors";
 import { hasPermission, isRole, permissionsFor, type Permission, type Role } from "@/permissions/model";
 import type { SessionUser } from "./contract";
-
-type AnyClient = SupabaseClient<never, never, never>;
 
 /** Lê papéis do usuário autenticado (RLS permite ler os próprios papéis). */
 export async function loadRoles(supabase: AnyClient, userId: string): Promise<Role[]> {

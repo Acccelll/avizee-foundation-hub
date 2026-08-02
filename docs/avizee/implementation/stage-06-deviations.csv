@@ -1,0 +1,8 @@
+id,desvio,impacto,encaminhamento
+DV-06-01,11 nomes publicos repetidos em 29 SKUs,impeditivo para publicacao individual,resolucao administrativa
+DV-06-02,97 linhas soft-deleted residuais do teste de rollback,contagem bruta 194,aceito como historico
+DV-06-03,axe-core nao executado no catalogo,risco de regressao,Etapa 7
+DV-06-04,Lighthouse nao executado,sem linha de base publica,Etapa 7
+DV-06-05,nenhuma imagem aprovada vinculada,catalogo com placeholder,depende de Q-02
+DV-06-06,77 SKUs e 12 familias fora do canonico,escopo aprovado,fila de normalizacao
+DV-06-07,descricao publica vazia em 97 SKUs,conteudo pendente,redacao editorial

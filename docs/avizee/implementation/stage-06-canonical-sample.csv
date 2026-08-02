@@ -1,0 +1,13 @@
+categoria,familia,sku,nome_publico,variacao,review_status,publication_status
+"Vacinação e aplicação","Agulhas descartáveis","AG001","Agulhas descartáveis 13 X 45","13 X 45","UNDER_REVIEW","NOT_PUBLISHED"
+"Vacinação e aplicação","Agulhas descartáveis","AG002","Agulhas descartáveis 25 X 10","25 X 10","UNDER_REVIEW","NOT_PUBLISHED"
+"Manejo, alimentação e biossegurança","Armadilhas para roedores","AR001","Armadilhas para roedores","","UNDER_REVIEW","NOT_PUBLISHED"
+"Manejo, alimentação e biossegurança","Adesivos e colas para captura","AR002","Adesivos e colas para captura","","UNDER_REVIEW","NOT_PUBLISHED"
+"Pesagem, medição e controle","Balanças suspensas e dinamômetros para aves","BA003","Balanças suspensas e dinamômetros para aves 40 KG","40 KG","UNDER_REVIEW","NOT_PUBLISHED"
+"Pesagem, medição e controle","Balanças suspensas e dinamômetros para aves","BA004","Balanças suspensas e dinamômetros para aves 50 KG","50 KG","UNDER_REVIEW","NOT_PUBLISHED"
+"Pulverização e sistemas de fluido","Bicos pulverizadores","BI001","Bicos pulverizadores","","UNDER_REVIEW","NOT_PUBLISHED"
+"Pulverização e sistemas de fluido","Bicos pulverizadores","BI002","Bicos pulverizadores VERDE LEQUE 80015 BD","VERDE LEQUE 80015 BD","UNDER_REVIEW","NOT_PUBLISHED"
+"Linhas complementares","Conjunto para aplicação de tuberculina","BV001","Conjunto para aplicação de tuberculina","","UNDER_REVIEW","NOT_PUBLISHED"
+"Linhas complementares","Conjunto para aplicação de tuberculina","BV002","Conjunto para aplicação de tuberculina","","UNDER_REVIEW","NOT_PUBLISHED"
+"Peças, reposição e automação","Lâminas para debicagem","LM001","Lâminas para debicagem","","UNDER_REVIEW","NOT_PUBLISHED"
+"Peças, reposição e automação","Lâminas para debicagem","LM002","Lâminas para debicagem","","UNDER_REVIEW","NOT_PUBLISHED"

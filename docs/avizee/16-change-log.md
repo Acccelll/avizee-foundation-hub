@@ -352,3 +352,7 @@ backend, nenhum formulário ativo, nenhum produto importado, nenhuma alteração
 - **Novos riscos** RK-51 a RK-55 em `12-risk-register.md`.
 - **Pendências mantidas**: DEP-T1, DEP-T3, DEP-T5.
 - **Nada ativado**: nenhuma produção, nenhum serviço externo real, nenhum layout alterado.
+
+## Etapa 6.1 — 2026-08-02
+
+Suite automatizada com 174 testes aprovados (DV-05-09 encerrado com evidencia). Lote canonico de 31 familias e 97 SKUs simulado, importado, reconciliado, provado idempotente e revertido com rollback, em ambiente nao produtivo. Verificacao de nao vazamento sem ocorrencias. Documentos 157 a 187 e arquivos stage-06-*.csv criados. Sete desvios registrados (DV-06-01 a DV-06-07), nenhum bloqueante.

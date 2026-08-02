@@ -1,0 +1,11 @@
+bloco,arquivo,testes,resultado
+unitario,tests/unit/import-schema.test.ts,25,aprovado
+unitario,tests/unit/serializer.test.ts,25,aprovado
+unitario,tests/unit/import-plan.test.ts,14,aprovado
+unitario,tests/unit/state-machine.test.ts,16,aprovado
+unitario,tests/unit/permissions-audit.test.ts,15,aprovado
+unitario,tests/unit/brand-terms.test.ts,12,aprovado
+integracao,tests/integration/catalog-admin.test.ts,25,aprovado
+integracao,tests/integration/import-pipeline.test.ts,10,aprovado
+seguranca,tests/security/rls-and-exposure.test.ts,17,aprovado
+http,tests/e2e/http-surfaces.test.ts,15,aprovado

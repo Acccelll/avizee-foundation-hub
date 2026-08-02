@@ -1,0 +1,7 @@
+etapa,job_id,assinatura,criacoes,atualizacoes,inalterados,bloqueios,erros
+dry_run_inicial,0c16d863-25b7-4cfc-bb10-553f1ea94dcb,v1-97-5769d7b7,97,0,0,0,0
+execucao_inicial,3afdc4ce-3647-4922-a376-4a19d77d0e5a,v1-97-5769d7b7,97,0,0,0,0
+dry_run_idempotencia,8dba1537-e7e0-48f8-b61a-2ee3bd43dbf5,v1-97-8420882c,0,0,97,0,0
+rollback,3afdc4ce-3647-4922-a376-4a19d77d0e5a,-,0,0,0,0,0
+dry_run_restauracao,bc9640ab-a5cd-4148-8fcb-df6319774cef,v1-97-5769d7b7,97,0,0,0,0
+execucao_restauracao,fd5e66c3-3bad-48d0-9a38-a745b2480cb1,v1-97-5769d7b7,97,0,0,0,0

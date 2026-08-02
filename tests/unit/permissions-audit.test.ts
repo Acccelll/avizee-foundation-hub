@@ -13,10 +13,11 @@ import {
 import { diffFields, maskEmail, redactValues } from "@/lib/audit.server";
 
 describe("modelo de permissões", () => {
-  it("declara 21 permissões finas", () => {
-    expect(PERMISSIONS).toHaveLength(21);
-    expect(new Set(PERMISSIONS).size).toBe(21);
+  it("declara 25 permissões finas (21 do catálogo + 4 da cotação/outbox)", () => {
+    expect(PERMISSIONS).toHaveLength(25);
+    expect(new Set(PERMISSIONS).size).toBe(25);
   });
+
 
   it("declara os 7 papéis aprovados", () => {
     expect(ROLES).toHaveLength(7);

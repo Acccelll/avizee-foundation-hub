@@ -151,6 +151,7 @@ export function planSignature(plan: ImportPlan): string {
     .map((i) => `${i.line}|${i.sku}|${i.operation}|${i.changedFields.slice().sort().join(",")}`)
     .join("\n");
   let hash = 5381;
-  for (let i = 0; i < payload.length; i += 1) hash = ((hash << 5) + hash + payload.charCodeAt(i)) >>> 0;
+  for (let i = 0; i < payload.length; i += 1)
+    hash = ((hash << 5) + hash + payload.charCodeAt(i)) >>> 0;
   return `v1-${plan.items.length}-${hash.toString(16)}`;
 }

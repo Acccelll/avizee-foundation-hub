@@ -54,7 +54,9 @@ function AuditPage() {
               <td className="px-3 py-2 tabular-nums">
                 {new Date(String(row["occurred_at"])).toLocaleString("pt-BR")}
               </td>
-              <td className="px-3 py-2">{row["actor_email_masked"] ?? row["actor_id"] ?? "sistema"}</td>
+              <td className="px-3 py-2">
+                {row["actor_email_masked"] ?? row["actor_id"] ?? "sistema"}
+              </td>
               <td className="px-3 py-2">{row["action"]}</td>
               <td className="px-3 py-2">
                 {row["entity"]}

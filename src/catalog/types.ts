@@ -69,7 +69,13 @@ export const BLOCKED_REVIEW_STATUSES: ReviewStatus[] = [
 
 /** Transições de revisão permitidas (§40). Nada fora deste mapa é aceito. */
 export const REVIEW_TRANSITIONS: Record<ReviewStatus, ReviewStatus[]> = {
-  DRAFT: ["UNDER_REVIEW", "BLOCKED_BY_CODE", "BLOCKED_BY_IDENTITY", "BLOCKED_BY_BRAND", "BLOCKED_BY_RIGHTS"],
+  DRAFT: [
+    "UNDER_REVIEW",
+    "BLOCKED_BY_CODE",
+    "BLOCKED_BY_IDENTITY",
+    "BLOCKED_BY_BRAND",
+    "BLOCKED_BY_RIGHTS",
+  ],
   UNDER_REVIEW: [
     "DRAFT",
     "READY_TO_PUBLISH",
@@ -120,6 +126,7 @@ export function canApproveImage(input: {
   if (!PUBLISHABLE_RIGHTS.includes(input.rightsStatus))
     return { ok: false, reason: "direito de uso não confirmado" };
   if (input.detectedBrand) return { ok: false, reason: "marca visível incompatível" };
-  if (!input.matchesProduct) return { ok: false, reason: "correspondência com o produto não confirmada" };
+  if (!input.matchesProduct)
+    return { ok: false, reason: "correspondência com o produto não confirmada" };
   return { ok: true };
 }

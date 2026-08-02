@@ -118,7 +118,11 @@ function NormalizationPage() {
                     className={secondaryButtonClass}
                     onClick={() =>
                       mutation.mutate({
-                        data: { id: String(row["id"]), status: "RESOLVED", decision: "Normalizado" },
+                        data: {
+                          id: String(row["id"]),
+                          status: "RESOLVED",
+                          decision: "Normalizado",
+                        },
                       })
                     }
                   >

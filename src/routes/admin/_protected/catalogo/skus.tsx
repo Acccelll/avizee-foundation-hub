@@ -16,7 +16,8 @@ import {
 import { REVIEW_STATUSES } from "@/catalog/types";
 
 export const Route = createFileRoute("/admin/_protected/catalogo/skus")({
-  head: () => buildMeta({ title: "SKUs", description: "Gestão administrativa de SKUs e variações." }),
+  head: () =>
+    buildMeta({ title: "SKUs", description: "Gestão administrativa de SKUs e variações." }),
   component: SkusPage,
 });
 

@@ -17,7 +17,9 @@ export function PageHeader({
     <header className="mb-6 flex flex-wrap items-start justify-between gap-4">
       <div>
         <h1 className="text-[26px] font-extrabold">{title}</h1>
-        {description && <p className="mt-2 max-w-2xl text-[15px] text-text-secondary">{description}</p>}
+        {description && (
+          <p className="mt-2 max-w-2xl text-[15px] text-text-secondary">{description}</p>
+        )}
       </div>
       {actions && <div className="flex gap-2">{actions}</div>}
     </header>

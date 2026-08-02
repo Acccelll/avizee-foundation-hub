@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Execução da importação controlada (§26–§34 da Etapa 6).
  * Regra central: nenhuma execução ocorre sem simulação prévia bem-sucedida
@@ -38,19 +37,20 @@ async function loadContext(auth: Authorized) {
     familyBySlug.set(row.slug, row.id);
   }
 
-  const existing = ((products.data ?? []) as Record<string, unknown>[]).map<ExistingProduct>((row) => ({
-    id: String(row["id"]),
-    public_sku: String(row["public_sku"] ?? ""),
-    public_name: String(row["public_name"] ?? ""),
-    family_slug:
-      (row["product_families"] as { slug?: string } | null)?.slug ?? null,
-    variation_label: (row["variation_label"] as string) ?? null,
-    measure: (row["measure"] as string) ?? null,
-    capacity: (row["capacity"] as string) ?? null,
-    unit: (row["unit"] as string) ?? null,
-    public_description: (row["public_description"] as string) ?? null,
-    is_on_request: Boolean(row["is_on_request"]),
-  }));
+  const existing = ((products.data ?? []) as Record<string, unknown>[]).map<ExistingProduct>(
+    (row) => ({
+      id: String(row["id"]),
+      public_sku: String(row["public_sku"] ?? ""),
+      public_name: String(row["public_name"] ?? ""),
+      family_slug: (row["product_families"] as { slug?: string } | null)?.slug ?? null,
+      variation_label: (row["variation_label"] as string) ?? null,
+      measure: (row["measure"] as string) ?? null,
+      capacity: (row["capacity"] as string) ?? null,
+      unit: (row["unit"] as string) ?? null,
+      public_description: (row["public_description"] as string) ?? null,
+      is_on_request: Boolean(row["is_on_request"]),
+    }),
+  );
 
   return { familyBySlug, existing };
 }
@@ -66,7 +66,12 @@ export interface DryRunResult {
 /** Simulação obrigatória: valida, planeja e registra o job sem alterar o catálogo. */
 export async function runDryRun(
   auth: Authorized,
-  input: { filename: string; content: string; schemaVersion: string; allowedSkus?: string[] | null | undefined },
+  input: {
+    filename: string;
+    content: string;
+    schemaVersion: string;
+    allowedSkus?: string[] | null | undefined;
+  },
 ): Promise<DryRunResult> {
   if (input.schemaVersion !== IMPORT_SCHEMA_VERSION) {
     throw new AppError(
@@ -79,7 +84,11 @@ export async function runDryRun(
   const parsed = parseDelimited(input.content);
   const headerErrors = validateHeader(parsed.header);
   if (headerErrors.length > 0) {
-    throw new AppError("VALIDATION_ERROR", { headerErrors }, headerErrors.map((e) => e.message).join("; "));
+    throw new AppError(
+      "VALIDATION_ERROR",
+      { headerErrors },
+      headerErrors.map((e) => e.message).join("; "),
+    );
   }
 
   const { valid, errors } = validateRows(parsed.rows);
@@ -158,7 +167,12 @@ export async function runDryRun(
 /** Execução: só prossegue com a mesma assinatura da simulação (§28). */
 export async function runExecute(
   auth: Authorized,
-  input: { dryRunJobId: string; signature: string; content: string; allowedSkus?: string[] | null | undefined },
+  input: {
+    dryRunJobId: string;
+    signature: string;
+    content: string;
+    allowedSkus?: string[] | null | undefined;
+  },
 ) {
   const job = (
     await auth.admin.from("import_jobs").select("*").eq("id", input.dryRunJobId).maybeSingle()
@@ -169,7 +183,11 @@ export async function runExecute(
   }
   const storedSignature = (job["summary"] as { signature?: string } | null)?.signature;
   if (storedSignature !== input.signature) {
-    throw new AppError("CONFLICT", undefined, "O arquivo mudou desde a simulação. Refaça a simulação.");
+    throw new AppError(
+      "CONFLICT",
+      undefined,
+      "O arquivo mudou desde a simulação. Refaça a simulação.",
+    );
   }
   if ((await sha256(input.content)) !== job["file_hash"]) {
     throw new AppError("CONFLICT", undefined, "Conteúdo divergente da simulação confirmada.");
@@ -323,9 +341,8 @@ export async function runExecute(
 
 /** Rollback do lote (§30): reverte pelo registro linha a linha do próprio job. */
 export async function runRollback(auth: Authorized, jobId: string) {
-  const job = (await auth.admin.from("import_jobs").select("*").eq("id", jobId).maybeSingle()).data as
-    | Record<string, unknown>
-    | null;
+  const job = (await auth.admin.from("import_jobs").select("*").eq("id", jobId).maybeSingle())
+    .data as Record<string, unknown> | null;
   if (!job) throw new AppError("NOT_FOUND", { entity: "import_jobs" });
   if (job["mode"] !== "EXECUTE" || job["status"] !== "COMPLETED") {
     throw new AppError("CONFLICT", undefined, "Somente uma execução concluída pode ser revertida.");
@@ -334,9 +351,8 @@ export async function runRollback(auth: Authorized, jobId: string) {
     throw new AppError("CONFLICT", undefined, "Este lote já foi revertido.");
   }
 
-  const rows = ((
-    await auth.admin.from("import_job_rows").select("*").eq("import_job_id", jobId)
-  ).data ?? []) as Record<string, unknown>[];
+  const rows = ((await auth.admin.from("import_job_rows").select("*").eq("import_job_id", jobId))
+    .data ?? []) as Record<string, unknown>[];
 
   let reverted = 0;
   for (const row of rows) {

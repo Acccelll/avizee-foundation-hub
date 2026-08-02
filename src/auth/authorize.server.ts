@@ -5,19 +5,20 @@
 import type { AnyClient } from "@/lib/supabase-types";
 
 import { AppError } from "@/lib/errors";
-import { hasPermission, isRole, permissionsFor, type Permission, type Role } from "@/permissions/model";
+import {
+  hasPermission,
+  isRole,
+  permissionsFor,
+  type Permission,
+  type Role,
+} from "@/permissions/model";
 import type { SessionUser } from "./contract";
 
 /** Lê papéis do usuário autenticado (RLS permite ler os próprios papéis). */
 export async function loadRoles(supabase: AnyClient, userId: string): Promise<Role[]> {
-  const { data, error } = await supabase
-    .from("user_roles")
-    .select("role")
-    .eq("user_id", userId);
+  const { data, error } = await supabase.from("user_roles").select("role").eq("user_id", userId);
   if (error) throw new AppError("SERVICE_UNAVAILABLE", { cause: error.message });
-  return (data ?? [])
-    .map((row: { role: string }) => row.role)
-    .filter(isRole);
+  return (data ?? []).map((row: { role: string }) => row.role).filter(isRole);
 }
 
 export async function loadSessionUser(

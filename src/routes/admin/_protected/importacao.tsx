@@ -152,15 +152,19 @@ function ImportPage() {
           <h2 className="text-[20px] font-bold">2. Resultado da simulação</h2>
           <p className="mt-2 text-[14px] text-text-secondary">
             {simulation.summary.total} linhas · {simulation.summary.create} novas ·{" "}
-            {simulation.summary.update} atualizações · {simulation.summary.unchanged} sem alteração ·{" "}
-            {simulation.summary.blocked} bloqueadas · {simulation.errors.length} erros de validação.
+            {simulation.summary.update} atualizações · {simulation.summary.unchanged} sem alteração
+            · {simulation.summary.blocked} bloqueadas · {simulation.errors.length} erros de
+            validação.
           </p>
 
           {simulation.errors.length > 0 && (
             <div className="mt-4">
               <Table head={["Linha", "Coluna", "Erro"]}>
                 {simulation.errors.slice(0, 100).map((error) => (
-                  <tr key={`${error.line}-${error.column}-${error.message}`} className="border-t border-border">
+                  <tr
+                    key={`${error.line}-${error.column}-${error.message}`}
+                    className="border-t border-border"
+                  >
                     <td className="px-3 py-2 tabular-nums">{error.line}</td>
                     <td className="px-3 py-2">{error.column ?? "—"}</td>
                     <td className="px-3 py-2">{error.message}</td>

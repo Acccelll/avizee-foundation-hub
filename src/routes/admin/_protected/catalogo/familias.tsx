@@ -71,7 +71,11 @@ function FamiliesPage() {
         </label>
         <label className="block">
           <span className="text-[13px] font-semibold">Categoria</span>
-          <select className={inputClass} value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
+          <select
+            className={inputClass}
+            value={categoryId}
+            onChange={(e) => setCategoryId(e.target.value)}
+          >
             <option value="">Todas</option>
             {taxonomy.data?.categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -82,7 +86,11 @@ function FamiliesPage() {
         </label>
         <label className="block">
           <span className="text-[13px] font-semibold">Revisão</span>
-          <select className={inputClass} value={reviewStatus} onChange={(e) => setReviewStatus(e.target.value)}>
+          <select
+            className={inputClass}
+            value={reviewStatus}
+            onChange={(e) => setReviewStatus(e.target.value)}
+          >
             <option value="">Todos</option>
             {REVIEW_STATUSES.map((status) => (
               <option key={status}>{status}</option>

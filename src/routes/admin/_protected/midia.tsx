@@ -19,7 +19,8 @@ import {
 import { IMAGE_STATUSES } from "@/catalog/types";
 
 export const Route = createFileRoute("/admin/_protected/midia")({
-  head: () => buildMeta({ title: "Imagens", description: "Curadoria e direitos de uso de imagens." }),
+  head: () =>
+    buildMeta({ title: "Imagens", description: "Curadoria e direitos de uso de imagens." }),
   component: MediaPage,
 });
 
@@ -54,7 +55,8 @@ function MediaPage() {
 
       <div className="mb-4">
         <Callout tone="info" title="Ausência de imagem não bloqueia o produto">
-          Registros sem imagem aprovada usam o placeholder oficial e entram no relatório de pendências.
+          Registros sem imagem aprovada usam o placeholder oficial e entram no relatório de
+          pendências.
         </Callout>
       </div>
 

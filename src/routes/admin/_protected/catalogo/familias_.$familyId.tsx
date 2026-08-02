@@ -111,16 +111,34 @@ function FamilyDetail() {
           }}
         >
           <Field label="Nome público" hint="Nunca pode conter marca de terceiro.">
-            <input name="public_name" defaultValue={family?.["public_name"] ?? ""} className={inputClass} required />
+            <input
+              name="public_name"
+              defaultValue={family?.["public_name"] ?? ""}
+              className={inputClass}
+              required
+            />
           </Field>
           <Field label="Nome interno" hint="Uso administrativo. Pode registrar a origem.">
-            <input name="admin_name" defaultValue={family?.["admin_name"] ?? ""} className={inputClass} />
+            <input
+              name="admin_name"
+              defaultValue={family?.["admin_name"] ?? ""}
+              className={inputClass}
+            />
           </Field>
           <Field label="Slug">
-            <input name="slug" defaultValue={family?.["slug"] ?? ""} className={inputClass} required />
+            <input
+              name="slug"
+              defaultValue={family?.["slug"] ?? ""}
+              className={inputClass}
+              required
+            />
           </Field>
           <Field label="Categoria">
-            <select name="category_id" defaultValue={family?.["category_id"] ?? ""} className={inputClass}>
+            <select
+              name="category_id"
+              defaultValue={family?.["category_id"] ?? ""}
+              className={inputClass}
+            >
               <option value="">Sem categoria</option>
               {taxonomy.data?.categories.map((category) => (
                 <option key={category.id} value={category.id}>
@@ -130,7 +148,11 @@ function FamilyDetail() {
             </select>
           </Field>
           <Field label="Resumo público">
-            <textarea name="summary" defaultValue={family?.["summary"] ?? ""} className="min-h-20 w-full rounded-[8px] border border-border bg-background p-3 text-[14px]" />
+            <textarea
+              name="summary"
+              defaultValue={family?.["summary"] ?? ""}
+              className="min-h-20 w-full rounded-[8px] border border-border bg-background p-3 text-[14px]"
+            />
           </Field>
           <Field label="Descrição pública">
             <textarea
@@ -160,7 +182,9 @@ function FamilyDetail() {
             <StatusBadge value={family?.["publication_status"]} />
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
-            {((REVIEW_TRANSITIONS as Record<string, string[]>)[family?.["review_status"] ] ?? []).map((next: string) => (
+            {(
+              (REVIEW_TRANSITIONS as Record<string, string[]>)[family?.["review_status"]] ?? []
+            ).map((next: string) => (
               <button
                 key={next}
                 type="button"
@@ -174,14 +198,22 @@ function FamilyDetail() {
                 Revisão → {next}
               </button>
             ))}
-            {((PUBLICATION_TRANSITIONS as Record<string, string[]>)[family?.["publication_status"] ] ?? []).map((next: string) => (
+            {(
+              (PUBLICATION_TRANSITIONS as Record<string, string[]>)[
+                family?.["publication_status"]
+              ] ?? []
+            ).map((next: string) => (
               <button
                 key={next}
                 type="button"
                 className={secondaryButtonClass}
                 onClick={() =>
                   statusMutation.mutate({
-                    data: { entity: "product_families", id: familyId, publicationStatus: next as never },
+                    data: {
+                      entity: "product_families",
+                      id: familyId,
+                      publicationStatus: next as never,
+                    },
                   })
                 }
               >

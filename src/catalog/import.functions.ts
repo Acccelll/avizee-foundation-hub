@@ -40,7 +40,9 @@ export const simulateImport = createServerFn({ method: "POST" })
       })
       .parse(input),
   )
-  .handler(async ({ context, data }) => runDryRun(await authorize(context, "import.execute"), data));
+  .handler(async ({ context, data }) =>
+    runDryRun(await authorize(context, "import.execute"), data),
+  );
 
 export const executeImport = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
@@ -54,7 +56,9 @@ export const executeImport = createServerFn({ method: "POST" })
       })
       .parse(input),
   )
-  .handler(async ({ context, data }) => runExecute(await authorize(context, "import.execute"), data));
+  .handler(async ({ context, data }) =>
+    runExecute(await authorize(context, "import.execute"), data),
+  );
 
 export const rollbackImport = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])

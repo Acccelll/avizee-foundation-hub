@@ -89,21 +89,27 @@ function ProductDetail() {
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <StatusBadge value={product?.["review_status"]} />
           <StatusBadge value={product?.["publication_status"]} />
-          {((REVIEW_TRANSITIONS as Record<string, string[]>)[product?.["review_status"] ] ?? []).map((next: string) => (
-            <button
-              key={next}
-              type="button"
-              className={secondaryButtonClass}
-              onClick={() =>
-                statusMutation.mutate({
-                  data: { entity: "products", id: productId, reviewStatus: next as never },
-                })
-              }
-            >
-              Revisão → {next}
-            </button>
-          ))}
-          {((PUBLICATION_TRANSITIONS as Record<string, string[]>)[product?.["publication_status"] ] ?? []).map((next: string) => (
+          {((REVIEW_TRANSITIONS as Record<string, string[]>)[product?.["review_status"]] ?? []).map(
+            (next: string) => (
+              <button
+                key={next}
+                type="button"
+                className={secondaryButtonClass}
+                onClick={() =>
+                  statusMutation.mutate({
+                    data: { entity: "products", id: productId, reviewStatus: next as never },
+                  })
+                }
+              >
+                Revisão → {next}
+              </button>
+            ),
+          )}
+          {(
+            (PUBLICATION_TRANSITIONS as Record<string, string[]>)[
+              product?.["publication_status"]
+            ] ?? []
+          ).map((next: string) => (
             <button
               key={next}
               type="button"
@@ -170,22 +176,44 @@ function ProductDetail() {
             {tab === "Identidade" ? (
               <>
                 <Field label="SKU público">
-                  <input name="public_sku" defaultValue={product["public_sku"] ?? ""} className={inputClass} required />
+                  <input
+                    name="public_sku"
+                    defaultValue={product["public_sku"] ?? ""}
+                    className={inputClass}
+                    required
+                  />
                 </Field>
                 <Field label="Nome público" hint="Marca de terceiro é recusada automaticamente.">
-                  <input name="public_name" defaultValue={product["public_name"] ?? ""} className={inputClass} required />
+                  <input
+                    name="public_name"
+                    defaultValue={product["public_name"] ?? ""}
+                    className={inputClass}
+                    required
+                  />
                 </Field>
                 <Field label="Slug">
                   <input name="slug" defaultValue={product["slug"] ?? ""} className={inputClass} />
                 </Field>
                 <Field label="Variação">
-                  <input name="variation_label" defaultValue={product["variation_label"] ?? ""} className={inputClass} />
+                  <input
+                    name="variation_label"
+                    defaultValue={product["variation_label"] ?? ""}
+                    className={inputClass}
+                  />
                 </Field>
                 <Field label="Medida">
-                  <input name="measure" defaultValue={product["measure"] ?? ""} className={inputClass} />
+                  <input
+                    name="measure"
+                    defaultValue={product["measure"] ?? ""}
+                    className={inputClass}
+                  />
                 </Field>
                 <Field label="Capacidade">
-                  <input name="capacity" defaultValue={product["capacity"] ?? ""} className={inputClass} />
+                  <input
+                    name="capacity"
+                    defaultValue={product["capacity"] ?? ""}
+                    className={inputClass}
+                  />
                 </Field>
                 <Field label="Unidade">
                   <input name="unit" defaultValue={product["unit"] ?? ""} className={inputClass} />
@@ -198,7 +226,11 @@ function ProductDetail() {
                   />
                 </Field>
                 <label className="flex items-center gap-2">
-                  <input type="checkbox" name="is_on_request" defaultChecked={Boolean(product["is_on_request"])} />
+                  <input
+                    type="checkbox"
+                    name="is_on_request"
+                    defaultChecked={Boolean(product["is_on_request"])}
+                  />
                   <span className="text-[14px] font-semibold">Produto sob consulta</span>
                 </label>
               </>
@@ -209,7 +241,11 @@ function ProductDetail() {
                 </Callout>
                 <div />
                 <Field label="Marca (interna)">
-                  <input name="internal_brand" defaultValue={product["internal_brand"] ?? ""} className={inputClass} />
+                  <input
+                    name="internal_brand"
+                    defaultValue={product["internal_brand"] ?? ""}
+                    className={inputClass}
+                  />
                 </Field>
                 <Field label="Fabricante (interno)">
                   <input
@@ -267,11 +303,15 @@ function ProductDetail() {
           <Table head={["Definição", "Valor", "Pública", "Sobrescrita"]}>
             {query.data?.specifications.map((spec) => (
               <tr key={spec["id"]} className="border-t border-border">
-                <td className="px-3 py-2">{spec["specification_definitions"]?.label ?? spec["definition_id"]}</td>
+                <td className="px-3 py-2">
+                  {spec["specification_definitions"]?.label ?? spec["definition_id"]}
+                </td>
                 <td className="px-3 py-2">
                   {spec["value_text"] ?? spec["value_num"] ?? String(spec["value_bool"] ?? "—")}
                 </td>
-                <td className="px-3 py-2">{spec["specification_definitions"]?.is_public ? "sim" : "não"}</td>
+                <td className="px-3 py-2">
+                  {spec["specification_definitions"]?.is_public ? "sim" : "não"}
+                </td>
                 <td className="px-3 py-2">{spec["is_override"] ? "sim" : "herdada"}</td>
               </tr>
             ))}
@@ -310,7 +350,9 @@ function ProductDetail() {
                     .map((spec) => ({
                       code: spec["specification_definitions"]?.code ?? "",
                       label: spec["specification_definitions"]?.label ?? "",
-                      value: String(spec["value_text"] ?? spec["value_num"] ?? spec["value_bool"] ?? ""),
+                      value: String(
+                        spec["value_text"] ?? spec["value_num"] ?? spec["value_bool"] ?? "",
+                      ),
                       unit: null,
                     })),
                 }),

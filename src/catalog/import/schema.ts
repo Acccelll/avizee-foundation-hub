@@ -130,9 +130,7 @@ export interface ValidationOutcome {
 export function validateHeader(header: string[]): RowError[] {
   const missing = IMPORT_COLUMNS.filter(
     (column) => !header.includes(column) && column !== "categoria_slug",
-  ).filter((column) =>
-    ["sku_publico", "nome_publico", "familia_slug"].includes(column),
-  );
+  ).filter((column) => ["sku_publico", "nome_publico", "familia_slug"].includes(column));
   return missing.map((column) => ({
     line: 1,
     column,

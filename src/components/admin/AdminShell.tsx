@@ -19,11 +19,31 @@ const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: "Catálogo",
     items: [
-      { label: "Famílias", to: "/admin/catalogo/familias", permission: "catalog.read", enabled: true },
+      {
+        label: "Famílias",
+        to: "/admin/catalogo/familias",
+        permission: "catalog.read",
+        enabled: true,
+      },
       { label: "SKUs", to: "/admin/catalogo/skus", permission: "catalog.read", enabled: true },
-      { label: "Taxonomia", to: "/admin/catalogo/taxonomia", permission: "catalog.read", enabled: true },
-      { label: "Conflitos de código", to: "/admin/conflitos", permission: "catalog.read", enabled: true },
-      { label: "Fila de normalização", to: "/admin/normalizacao", permission: "catalog.read", enabled: true },
+      {
+        label: "Taxonomia",
+        to: "/admin/catalogo/taxonomia",
+        permission: "catalog.read",
+        enabled: true,
+      },
+      {
+        label: "Conflitos de código",
+        to: "/admin/conflitos",
+        permission: "catalog.read",
+        enabled: true,
+      },
+      {
+        label: "Fila de normalização",
+        to: "/admin/normalizacao",
+        permission: "catalog.read",
+        enabled: true,
+      },
     ],
   },
   {
@@ -91,14 +111,17 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
               <ul className="space-y-1 text-[15px]">
                 {group.items.map((item) => {
                   const allowed =
-                    item.enabled && (!item.permission || user.permissions.includes(item.permission));
+                    item.enabled &&
+                    (!item.permission || user.permissions.includes(item.permission));
                   return (
                     <li key={item.label}>
                       {allowed ? (
                         <Link
                           to={item.to}
                           className="block rounded-[8px] px-3 py-2 hover:bg-surface-alt"
-                          activeProps={{ className: "block rounded-[8px] px-3 py-2 bg-surface-alt font-semibold" }}
+                          activeProps={{
+                            className: "block rounded-[8px] px-3 py-2 bg-surface-alt font-semibold",
+                          }}
                         >
                           {item.label}
                         </Link>

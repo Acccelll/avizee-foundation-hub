@@ -25,10 +25,7 @@ export interface Authorized extends AuthContext {
   admin: AnyClient;
 }
 
-export async function authorize(
-  context: unknown,
-  permission: Permission,
-): Promise<Authorized> {
+export async function authorize(context: unknown, permission: Permission): Promise<Authorized> {
   const ctx = context as AuthContext;
   const roles = await loadRoles(ctx.supabase, ctx.userId);
   requirePermission(roles, permission);

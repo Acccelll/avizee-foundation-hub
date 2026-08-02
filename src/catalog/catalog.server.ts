@@ -73,7 +73,12 @@ export async function listFamilies(auth: Authorized, filters: FamilyFilters) {
     .order("public_name")
     .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
   if (result.error) throw new AppError("SERVICE_UNAVAILABLE", { cause: result.error.message });
-  return { rows: (result.data ?? []) as Row[], total: result.count ?? 0, page, pageSize: PAGE_SIZE };
+  return {
+    rows: (result.data ?? []) as Row[],
+    total: result.count ?? 0,
+    page,
+    pageSize: PAGE_SIZE,
+  };
 }
 
 export async function getFamily(auth: Authorized, id: string) {
@@ -115,7 +120,8 @@ export async function upsertFamily(
   input: Row & { id?: string | null | undefined },
 ): Promise<{ id: string }> {
   const problems = assertNoBrandInPublicFields(input);
-  if (problems.length > 0) throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
+  if (problems.length > 0)
+    throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
 
   const { id, ...values } = input;
   let before: Row | null = null;
@@ -179,7 +185,12 @@ export async function listProducts(auth: Authorized, filters: ProductFilters) {
     .order("public_sku")
     .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
   if (result.error) throw new AppError("SERVICE_UNAVAILABLE", { cause: result.error.message });
-  return { rows: (result.data ?? []) as Row[], total: result.count ?? 0, page, pageSize: PAGE_SIZE };
+  return {
+    rows: (result.data ?? []) as Row[],
+    total: result.count ?? 0,
+    page,
+    pageSize: PAGE_SIZE,
+  };
 }
 
 export async function getProduct(auth: Authorized, id: string) {
@@ -200,7 +211,9 @@ export async function getProduct(auth: Authorized, id: string) {
       .eq("product_id", id),
     auth.admin
       .from("product_images")
-      .select("*, media_assets(id, alt_text, review_status, rights_status, public_path, internal_title)")
+      .select(
+        "*, media_assets(id, alt_text, review_status, rights_status, public_path, internal_title)",
+      )
       .eq("product_id", id)
       .order("sort_order"),
     auth.admin.from("product_applications").select("*").eq("product_id", id),
@@ -224,12 +237,15 @@ export async function upsertProduct(
   input: Row & { id?: string | null | undefined },
 ): Promise<{ id: string }> {
   const problems = assertNoBrandInPublicFields(input);
-  if (problems.length > 0) throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
+  if (problems.length > 0)
+    throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
 
   const { id, ...values } = input;
   let before: Row | null = null;
   if (id) {
-    before = unwrap(await auth.admin.from("products").select("*").eq("id", id).maybeSingle()) as Row | null;
+    before = unwrap(
+      await auth.admin.from("products").select("*").eq("id", id).maybeSingle(),
+    ) as Row | null;
     if (!before) throw new AppError("NOT_FOUND", { entity: "products" });
   }
 
@@ -297,13 +313,21 @@ export async function changeStatus(
   const nextPublication = input.publicationStatus ?? current.publication_status;
 
   if (input.reviewStatus && !canTransitionReview(current.review_status, input.reviewStatus)) {
-    throw new AppError("VALIDATION_ERROR", undefined, `Transição de revisão não permitida: ${current.review_status} → ${input.reviewStatus}`);
+    throw new AppError(
+      "VALIDATION_ERROR",
+      undefined,
+      `Transição de revisão não permitida: ${current.review_status} → ${input.reviewStatus}`,
+    );
   }
   if (
     input.publicationStatus &&
     !canTransitionPublication(current.publication_status, input.publicationStatus, nextReview)
   ) {
-    throw new AppError("VALIDATION_ERROR", undefined, `Transição de publicação não permitida: ${current.publication_status} → ${input.publicationStatus}`);
+    throw new AppError(
+      "VALIDATION_ERROR",
+      undefined,
+      `Transição de publicação não permitida: ${current.publication_status} → ${input.publicationStatus}`,
+    );
   }
 
   unwrap(
@@ -356,22 +380,39 @@ export async function changeStatus(
 
 export async function listMedia(
   auth: Authorized,
-  filters: { reviewStatus?: string | null | undefined; search?: string | null | undefined; page?: number | undefined },
+  filters: {
+    reviewStatus?: string | null | undefined;
+    search?: string | null | undefined;
+    page?: number | undefined;
+  },
 ) {
   const page = Math.max(1, filters.page ?? 1);
-  let query = auth.admin.from("media_assets").select("*", { count: "exact" }).is("deleted_at", null);
+  let query = auth.admin
+    .from("media_assets")
+    .select("*", { count: "exact" })
+    .is("deleted_at", null);
   if (filters.reviewStatus) query = query.eq("review_status", filters.reviewStatus);
   if (filters.search) query = query.ilike("internal_title", `%${filters.search}%`);
   const result = await query
     .order("created_at", { ascending: false })
     .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
   if (result.error) throw new AppError("SERVICE_UNAVAILABLE", { cause: result.error.message });
-  return { rows: (result.data ?? []) as Row[], total: result.count ?? 0, page, pageSize: PAGE_SIZE };
+  return {
+    rows: (result.data ?? []) as Row[],
+    total: result.count ?? 0,
+    page,
+    pageSize: PAGE_SIZE,
+  };
 }
 
 export async function reviewMedia(
   auth: Authorized,
-  input: { id: string; toStatus: string; reason?: string | null | undefined; matchesProduct?: boolean | undefined },
+  input: {
+    id: string;
+    toStatus: string;
+    reason?: string | null | undefined;
+    matchesProduct?: boolean | undefined;
+  },
 ) {
   const asset = unwrap(
     await auth.admin.from("media_assets").select("*").eq("id", input.id).maybeSingle(),
@@ -385,8 +426,10 @@ export async function reviewMedia(
       detectedBrand: asset["detected_brand"] as string | null,
       matchesProduct: input.matchesProduct ?? false,
     });
-    if (!verdict.ok) throw new AppError("VALIDATION_ERROR", undefined, `Aprovação negada: ${verdict.reason}`);
-    if (!asset["alt_text"]) throw new AppError("VALIDATION_ERROR", undefined, "Texto alternativo obrigatório");
+    if (!verdict.ok)
+      throw new AppError("VALIDATION_ERROR", undefined, `Aprovação negada: ${verdict.reason}`);
+    if (!asset["alt_text"])
+      throw new AppError("VALIDATION_ERROR", undefined, "Texto alternativo obrigatório");
   }
 
   unwrap(
@@ -431,7 +474,11 @@ export async function reviewMedia(
 
 export async function listNormalizationTasks(
   auth: Authorized,
-  filters: { status?: string | null | undefined; reason?: string | null | undefined; page?: number | undefined },
+  filters: {
+    status?: string | null | undefined;
+    reason?: string | null | undefined;
+    page?: number | undefined;
+  },
 ) {
   const page = Math.max(1, filters.page ?? 1);
   let query = auth.admin.from("normalization_tasks").select("*", { count: "exact" });
@@ -441,12 +488,22 @@ export async function listNormalizationTasks(
     .order("created_at", { ascending: false })
     .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
   if (result.error) throw new AppError("SERVICE_UNAVAILABLE", { cause: result.error.message });
-  return { rows: (result.data ?? []) as Row[], total: result.count ?? 0, page, pageSize: PAGE_SIZE };
+  return {
+    rows: (result.data ?? []) as Row[],
+    total: result.count ?? 0,
+    page,
+    pageSize: PAGE_SIZE,
+  };
 }
 
 export async function updateNormalizationTask(
   auth: Authorized,
-  input: { id: string; status?: string | undefined; decision?: string | null | undefined; comment?: string | null | undefined },
+  input: {
+    id: string;
+    status?: string | undefined;
+    decision?: string | null | undefined;
+    comment?: string | null | undefined;
+  },
 ) {
   const before = unwrap(
     await auth.admin.from("normalization_tasks").select("*").eq("id", input.id).maybeSingle(),
@@ -485,7 +542,10 @@ export async function updateNormalizationTask(
 }
 
 export async function listConflicts(auth: Authorized, status?: string | null) {
-  let query = auth.admin.from("code_conflicts").select("*").order("created_at", { ascending: false });
+  let query = auth.admin
+    .from("code_conflicts")
+    .select("*")
+    .order("created_at", { ascending: false });
   if (status) query = query.eq("status", status);
   return (unwrap(await query) ?? []) as Row[];
 }
@@ -528,7 +588,11 @@ export async function resolveConflict(
 
 export async function listAuditLogs(
   auth: Authorized,
-  filters: { entity?: string | null | undefined; action?: string | null | undefined; page?: number | undefined },
+  filters: {
+    entity?: string | null | undefined;
+    action?: string | null | undefined;
+    page?: number | undefined;
+  },
 ) {
   const page = Math.max(1, filters.page ?? 1);
   let query = auth.admin.from("audit_logs").select("*", { count: "exact" });
@@ -538,7 +602,12 @@ export async function listAuditLogs(
     .order("occurred_at", { ascending: false })
     .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1);
   if (result.error) throw new AppError("SERVICE_UNAVAILABLE", { cause: result.error.message });
-  return { rows: (result.data ?? []) as Row[], total: result.count ?? 0, page, pageSize: PAGE_SIZE };
+  return {
+    rows: (result.data ?? []) as Row[],
+    total: result.count ?? 0,
+    page,
+    pageSize: PAGE_SIZE,
+  };
 }
 
 export async function catalogDashboard(auth: Authorized) {

@@ -1,203 +1,115 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="21" failures="18" errors="0" time="11.773297926">
-    <testsuite name="tests/integration/catalog-admin.test.ts" timestamp="2026-08-02T03:42:11.412Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="21" failures="18" errors="0" skipped="0" time="11.773297926">
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; concede escrita ao gestor de catálogo" time="0.249697688">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:57:18
+<testsuites name="vitest tests" tests="21" failures="5" errors="0" time="18.5843185">
+    <testsuite name="tests/integration/catalog-admin.test.ts" timestamp="2026-08-02T03:43:07.634Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="21" failures="5" errors="0" skipped="0" time="18.5843185">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; concede escrita ao gestor de catálogo" time="0.225288522">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega escrita ao auditor mesmo se o frontend pedir" time="0.207890541">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega importação ao auditor" time="0.170938002">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; permite leitura de auditoria ao auditor" time="0.177127959">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; papéis vêm do banco, não do contexto informado" time="0.194467427">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria família com auditoria" time="0.803416258">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:42:54.328Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;product_families&quot;,&quot;entity_id&quot;:&quot;f4fe91fa-89ae-4be3-a4b0-ed96dae8cfd8&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;,&quot;admin_name&quot;,&quot;slug&quot;,&quot;summary&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Família de integração&quot;,&quot;admin_name&quot;:&quot;Família de integração (teste)&quot;,&quot;slug&quot;:&quot;zzt-familia-integracao-1785642168995&quot;,&quot;summary&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:42:54.328Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;549f61e2-4a29-472a-8b96-fe4c9cedbcb8&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
+            </system-out>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega escrita ao auditor mesmo se o frontend pedir" time="0.216589839">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; recusa nome público com marca de terceiro (R-05)" time="0.175421573">
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega importação ao auditor" time="0.179575355">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; permite leitura de auditoria ao auditor" time="0.173645158">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:73:18
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria SKU vinculado à família" time="1.565295435">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:42:55.318Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;family_id&quot;,&quot;public_sku&quot;,&quot;public_name&quot;,&quot;public_description&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;family_id&quot;:&quot;f4fe91fa-89ae-4be3-a4b0-ed96dae8cfd8&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:42:55.318Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;ca0a3d89-c853-4b71-9151-07b1856c7893&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; papéis vêm do banco, não do contexto informado" time="0.16878193">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria família com auditoria" time="0.180013964">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:85:18
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:42:55.523Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:null},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:42:55.523Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;74702926-5fa6-4cac-aff9-2da60be8923c&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
+            </system-out>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; recusa nome público com marca de terceiro (R-05)" time="0.171157568">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:104:18
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; registra mudança de nome em evento próprio de auditoria" time="1.21730704">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:42:57.078Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.update&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;family_id&quot;:&quot;f4fe91fa-89ae-4be3-a4b0-ed96dae8cfd8&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;slug&quot;:null,&quot;variation_label&quot;:null,&quot;measure&quot;:null,&quot;capacity&quot;:null,&quot;unit&quot;:null,&quot;internal_original_name&quot;:null,&quot;internal_brand&quot;:null,&quot;internal_manufacturer&quot;:null,&quot;internal_supplier_reference&quot;:null,&quot;internal_notes&quot;:null,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;,&quot;is_on_request&quot;:false,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;,&quot;source&quot;:null,&quot;sort_order&quot;:0,&quot;created_by&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;updated_by&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;created_at&quot;:&quot;2026-08-02T03:42:55.237043+00:00&quot;,&quot;updated_at&quot;:&quot;2026-08-02T03:42:55.113+00:00&quot;,&quot;deleted_at&quot;:null},&quot;new_values&quot;:{&quot;family_id&quot;:&quot;f4fe91fa-89ae-4be3-a4b0-ed96dae8cfd8&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:42:57.078Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;5c2ed7ea-cb87-4f6c-a82c-334559b39f92&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria SKU vinculado à família" time="0.166769433">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:115:18
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:42:57.280Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:42:57.280Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;a49b943e-d7ab-4c94-ab29-a1d03c21c7f5&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
+            </system-out>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; registra mudança de nome em evento próprio de auditoria" time="0.180241205">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:130:18
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; lista o SKU pela família e pela busca" time="0.609029833">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; expõe o SKU na visão da família" time="0.731992049">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; retorna NOT_FOUND para SKU inexistente" time="0.389124569">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa publicar SKU que não está apto" time="0.407245385">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa transição de revisão inválida" time="0.391901947">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; percorre DRAFT → UNDER_REVIEW → READY_TO_PUBLISH → PUBLISHED" time="3.010738753">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:01.070Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:01.070Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;40b6e3ef-0295-4bee-819c-3bbc12df3940&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; lista o SKU pela família e pela busca" time="0.172004733">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:146:18
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:01.939Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:01.939Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;1826eedc-ccf3-4e0a-9cf4-aee090e82661&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; expõe o SKU na visão da família" time="0.168433687">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:154:18
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:02.809Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;854bf5cc-5fac-48b4-aa5d-40d912d347cf&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.publish&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;0d5301dd-69cb-41c6-98a0-d21ea1a811e1&quot;,&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;teste de integração&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:02.809Z&quot;}
 
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;1df34036-17a1-48dc-9f2d-cf181dfdb859&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
+            </system-out>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; retorna NOT_FOUND para SKU inexistente" time="0.178139923">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:160:18
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;5abd6853-f18b-4c4f-9b7f-fef5d4aeef5b&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; grava auditoria de publicação" time="0.218222128">
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa publicar SKU que não está apto" time="0.172691897">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:169:18
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;e32d9de9-3ed1-4cd6-b055-cd592ea60aaf&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa transição de revisão inválida" time="0.168473928">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:180:18
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;368007ac-7bef-4b02-bb80-4e08b0f79dce&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; percorre DRAFT → UNDER_REVIEW → READY_TO_PUBLISH → PUBLISHED" time="0.179463008">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
- ❯ tests/integration/catalog-admin.test.ts:191:18
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;aeddc49c-792b-4c76-b675-9f3ef945951e&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; grava auditoria de publicação" time="0.212469653">
-            <failure message="expected 0 to be greater than 0" type="AssertionError">
-AssertionError: expected 0 to be greater than 0
- ❯ tests/integration/catalog-admin.test.ts:219:33
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; aprova imagem própria, com origem, alt e correspondência" time="0.179653415">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; aprova imagem própria, com origem, alt e correspondência" time="0.19100798">
+            <failure message="Você não tem permissão para acessar este recurso." type="AppError">
+AppError: Você não tem permissão para acessar este recurso.
+ ❯ requirePermission src/auth/authorize.server.ts:42:11
+ ❯ authorize src/catalog/guard.server.ts:31:3
  ❯ tests/integration/catalog-admin.test.ts:247:18
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;efa1948b-0970-4202-a074-1443c255b94a&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+Serialized Error: { code: &apos;FORBIDDEN&apos;, status: 403, occurrenceId: &apos;e9d1d618-9578-4789-916e-761950c6e31d&apos;, internal: { permission: &apos;media.review&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
             </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem direito confirmado" time="0.170357564">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem direito confirmado" time="0.181133716">
+            <failure message="Você não tem permissão para acessar este recurso." type="AppError">
+AppError: Você não tem permissão para acessar este recurso.
+ ❯ requirePermission src/auth/authorize.server.ts:42:11
+ ❯ authorize src/catalog/guard.server.ts:31:3
  ❯ tests/integration/catalog-admin.test.ts:261:18
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;749920e3-6f11-44ec-8fc7-04b080813de7&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+Serialized Error: { code: &apos;FORBIDDEN&apos;, status: 403, occurrenceId: &apos;6a1c076f-b042-433e-9699-81ac4260ab64&apos;, internal: { permission: &apos;media.review&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
             </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação com marca visível" time="0.17936227">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação com marca visível" time="0.174257623">
+            <failure message="Você não tem permissão para acessar este recurso." type="AppError">
+AppError: Você não tem permissão para acessar este recurso.
+ ❯ requirePermission src/auth/authorize.server.ts:42:11
+ ❯ authorize src/catalog/guard.server.ts:31:3
  ❯ tests/integration/catalog-admin.test.ts:269:18
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;b80155c3-1c0f-49dc-84b9-cae5efc6b749&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+Serialized Error: { code: &apos;FORBIDDEN&apos;, status: 403, occurrenceId: &apos;3ed4eaa6-010b-4aec-9abb-7e55f1f83878&apos;, internal: { permission: &apos;media.review&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
             </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem texto alternativo" time="0.175291247">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem texto alternativo" time="0.173766771">
+            <failure message="Você não tem permissão para acessar este recurso." type="AppError">
+AppError: Você não tem permissão para acessar este recurso.
+ ❯ requirePermission src/auth/authorize.server.ts:42:11
+ ❯ authorize src/catalog/guard.server.ts:31:3
  ❯ tests/integration/catalog-admin.test.ts:277:18
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;e5f138c1-6d03-4c26-8b9f-88ed0cdf0687&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+Serialized Error: { code: &apos;FORBIDDEN&apos;, status: 403, occurrenceId: &apos;10d11feb-e8aa-45d6-9261-52dd5fb5d97a&apos;, internal: { permission: &apos;media.review&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
             </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; reprovação mantém a imagem em quarentena e gera evento" time="0.169674257">
-            <failure message="Serviço temporariamente indisponível." type="AppError">
-AppError: Serviço temporariamente indisponível.
- ❯ loadRoles src/auth/authorize.server.ts:20:20
- ❯ authorize src/catalog/guard.server.ts:30:17
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; reprovação mantém a imagem em quarentena e gera evento" time="0.168160233">
+            <failure message="Você não tem permissão para acessar este recurso." type="AppError">
+AppError: Você não tem permissão para acessar este recurso.
+ ❯ requirePermission src/auth/authorize.server.ts:42:11
+ ❯ authorize src/catalog/guard.server.ts:31:3
  ❯ tests/integration/catalog-admin.test.ts:285:18
 
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;a60f30dc-3ba9-4897-8aa0-97e71e7f1eca&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+Serialized Error: { code: &apos;FORBIDDEN&apos;, status: 403, occurrenceId: &apos;16734fa2-4505-4972-955b-3d873a79fe67&apos;, internal: { permission: &apos;media.review&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
             </failure>
         </testcase>
     </testsuite>

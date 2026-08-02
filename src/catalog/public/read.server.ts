@@ -389,9 +389,7 @@ export async function reconcileProducts(productIds: string[]): Promise<Reconcile
     await db()
       .from("public_families")
       .select("id, slug, public_name, category_slug, category_name")
-      .in("family_id" in (products[0] ?? {}) ? "id" : "id", [
-        ...new Set(products.map((p) => p.family_id).filter(Boolean)),
-      ]),
+      .in("id", [...new Set(products.map((p) => p.family_id).filter(Boolean))]),
   );
   const familyById = new Map(families.map((f) => [f.id, f]));
 

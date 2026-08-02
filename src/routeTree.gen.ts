@@ -23,10 +23,18 @@ import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
-import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
-import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
-import { Route as ApiAuthSessionRouteImport } from './routes/api/auth/session'
+import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
+import { Route as AdminProtectedConflitosRouteImport } from './routes/admin/_protected/conflitos'
+import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_protected/importacao'
+import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
+import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
+import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
+import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
+import { Route as AdminProtectedCatalogoTaxonomiaRouteImport } from './routes/admin/_protected/catalogo/taxonomia'
+import { Route as AdminProtectedImportacaoJobIdRouteImport } from './routes/admin/_protected/importacao_.$jobId'
+import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
+import { Route as AdminProtectedCatalogoSkusProductIdRouteImport } from './routes/admin/_protected/catalogo/skus_.$productId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -98,26 +106,74 @@ const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminProtectedRoute,
 } as any)
-const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
-  id: '/api/auth/login',
-  path: '/api/auth/login',
-  getParentRoute: () => rootRouteImport,
+const AdminProtectedAuditoriaRoute = AdminProtectedAuditoriaRouteImport.update({
+  id: '/auditoria',
+  path: '/auditoria',
+  getParentRoute: () => AdminProtectedRoute,
 } as any)
-const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
-  id: '/api/auth/logout',
-  path: '/api/auth/logout',
-  getParentRoute: () => rootRouteImport,
+const AdminProtectedConflitosRoute = AdminProtectedConflitosRouteImport.update({
+  id: '/conflitos',
+  path: '/conflitos',
+  getParentRoute: () => AdminProtectedRoute,
 } as any)
-const ApiAuthSessionRoute = ApiAuthSessionRouteImport.update({
-  id: '/api/auth/session',
-  path: '/api/auth/session',
-  getParentRoute: () => rootRouteImport,
+const AdminProtectedImportacaoRoute =
+  AdminProtectedImportacaoRouteImport.update({
+    id: '/importacao',
+    path: '/importacao',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedMidiaRoute = AdminProtectedMidiaRouteImport.update({
+  id: '/midia',
+  path: '/midia',
+  getParentRoute: () => AdminProtectedRoute,
 } as any)
+const AdminProtectedNormalizacaoRoute =
+  AdminProtectedNormalizacaoRouteImport.update({
+    id: '/normalizacao',
+    path: '/normalizacao',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   id: '/api/public/health',
   path: '/api/public/health',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminProtectedCatalogoFamiliasRoute =
+  AdminProtectedCatalogoFamiliasRouteImport.update({
+    id: '/catalogo/familias',
+    path: '/catalogo/familias',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoSkusRoute =
+  AdminProtectedCatalogoSkusRouteImport.update({
+    id: '/catalogo/skus',
+    path: '/catalogo/skus',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoTaxonomiaRoute =
+  AdminProtectedCatalogoTaxonomiaRouteImport.update({
+    id: '/catalogo/taxonomia',
+    path: '/catalogo/taxonomia',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedImportacaoJobIdRoute =
+  AdminProtectedImportacaoJobIdRouteImport.update({
+    id: '/importacao_/$jobId',
+    path: '/importacao/$jobId',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoFamiliasFamilyIdRoute =
+  AdminProtectedCatalogoFamiliasFamilyIdRouteImport.update({
+    id: '/catalogo/familias_/$familyId',
+    path: '/catalogo/familias/$familyId',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoSkusProductIdRoute =
+  AdminProtectedCatalogoSkusProductIdRouteImport.update({
+    id: '/catalogo/skus_/$productId',
+    path: '/catalogo/skus/$productId',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -133,11 +189,19 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
-  '/api/auth/login': typeof ApiAuthLoginRoute
-  '/api/auth/logout': typeof ApiAuthLogoutRoute
-  '/api/auth/session': typeof ApiAuthSessionRoute
+  '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
+  '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/importacao': typeof AdminProtectedImportacaoRoute
+  '/admin/midia': typeof AdminProtectedMidiaRoute
+  '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/': typeof AdminProtectedIndexRoute
+  '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
+  '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
+  '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -152,11 +216,19 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
-  '/api/auth/login': typeof ApiAuthLoginRoute
-  '/api/auth/logout': typeof ApiAuthLogoutRoute
-  '/api/auth/session': typeof ApiAuthSessionRoute
+  '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
+  '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/importacao': typeof AdminProtectedImportacaoRoute
+  '/admin/midia': typeof AdminProtectedMidiaRoute
+  '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin': typeof AdminProtectedIndexRoute
+  '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
+  '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
+  '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -173,11 +245,19 @@ export interface FileRoutesById {
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
-  '/api/auth/login': typeof ApiAuthLoginRoute
-  '/api/auth/logout': typeof ApiAuthLogoutRoute
-  '/api/auth/session': typeof ApiAuthSessionRoute
+  '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
+  '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/_protected/importacao': typeof AdminProtectedImportacaoRoute
+  '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
+  '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
+  '/admin/_protected/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
+  '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/_protected/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/_protected/importacao_/$jobId': typeof AdminProtectedImportacaoJobIdRoute
+  '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  '/admin/_protected/catalogo/skus_/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -195,11 +275,19 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
-    | '/api/auth/login'
-    | '/api/auth/logout'
-    | '/api/auth/session'
+    | '/admin/auditoria'
+    | '/admin/conflitos'
+    | '/admin/importacao'
+    | '/admin/midia'
+    | '/admin/normalizacao'
     | '/api/public/health'
     | '/admin/'
+    | '/admin/catalogo/familias'
+    | '/admin/catalogo/skus'
+    | '/admin/catalogo/taxonomia'
+    | '/admin/importacao/$jobId'
+    | '/admin/catalogo/familias/$familyId'
+    | '/admin/catalogo/skus/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -214,11 +302,19 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/admin/acesso-negado'
     | '/admin/login'
-    | '/api/auth/login'
-    | '/api/auth/logout'
-    | '/api/auth/session'
+    | '/admin/auditoria'
+    | '/admin/conflitos'
+    | '/admin/importacao'
+    | '/admin/midia'
+    | '/admin/normalizacao'
     | '/api/public/health'
     | '/admin'
+    | '/admin/catalogo/familias'
+    | '/admin/catalogo/skus'
+    | '/admin/catalogo/taxonomia'
+    | '/admin/importacao/$jobId'
+    | '/admin/catalogo/familias/$familyId'
+    | '/admin/catalogo/skus/$productId'
   id:
     | '__root__'
     | '/'
@@ -234,11 +330,19 @@ export interface FileRouteTypes {
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
-    | '/api/auth/login'
-    | '/api/auth/logout'
-    | '/api/auth/session'
+    | '/admin/_protected/auditoria'
+    | '/admin/_protected/conflitos'
+    | '/admin/_protected/importacao'
+    | '/admin/_protected/midia'
+    | '/admin/_protected/normalizacao'
     | '/api/public/health'
     | '/admin/_protected/'
+    | '/admin/_protected/catalogo/familias'
+    | '/admin/_protected/catalogo/skus'
+    | '/admin/_protected/catalogo/taxonomia'
+    | '/admin/_protected/importacao_/$jobId'
+    | '/admin/_protected/catalogo/familias_/$familyId'
+    | '/admin/_protected/catalogo/skus_/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -255,9 +359,6 @@ export interface RootRouteChildren {
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
-  ApiAuthLoginRoute: typeof ApiAuthLoginRoute
-  ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
-  ApiAuthSessionRoute: typeof ApiAuthSessionRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
 }
 
@@ -361,26 +462,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedIndexRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
-    '/api/auth/login': {
-      id: '/api/auth/login'
-      path: '/api/auth/login'
-      fullPath: '/api/auth/login'
-      preLoaderRoute: typeof ApiAuthLoginRouteImport
-      parentRoute: typeof rootRouteImport
+    '/admin/_protected/auditoria': {
+      id: '/admin/_protected/auditoria'
+      path: '/auditoria'
+      fullPath: '/admin/auditoria'
+      preLoaderRoute: typeof AdminProtectedAuditoriaRouteImport
+      parentRoute: typeof AdminProtectedRoute
     }
-    '/api/auth/logout': {
-      id: '/api/auth/logout'
-      path: '/api/auth/logout'
-      fullPath: '/api/auth/logout'
-      preLoaderRoute: typeof ApiAuthLogoutRouteImport
-      parentRoute: typeof rootRouteImport
+    '/admin/_protected/conflitos': {
+      id: '/admin/_protected/conflitos'
+      path: '/conflitos'
+      fullPath: '/admin/conflitos'
+      preLoaderRoute: typeof AdminProtectedConflitosRouteImport
+      parentRoute: typeof AdminProtectedRoute
     }
-    '/api/auth/session': {
-      id: '/api/auth/session'
-      path: '/api/auth/session'
-      fullPath: '/api/auth/session'
-      preLoaderRoute: typeof ApiAuthSessionRouteImport
-      parentRoute: typeof rootRouteImport
+    '/admin/_protected/importacao': {
+      id: '/admin/_protected/importacao'
+      path: '/importacao'
+      fullPath: '/admin/importacao'
+      preLoaderRoute: typeof AdminProtectedImportacaoRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/midia': {
+      id: '/admin/_protected/midia'
+      path: '/midia'
+      fullPath: '/admin/midia'
+      preLoaderRoute: typeof AdminProtectedMidiaRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/normalizacao': {
+      id: '/admin/_protected/normalizacao'
+      path: '/normalizacao'
+      fullPath: '/admin/normalizacao'
+      preLoaderRoute: typeof AdminProtectedNormalizacaoRouteImport
+      parentRoute: typeof AdminProtectedRoute
     }
     '/api/public/health': {
       id: '/api/public/health'
@@ -389,15 +504,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicHealthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/_protected/catalogo/familias': {
+      id: '/admin/_protected/catalogo/familias'
+      path: '/catalogo/familias'
+      fullPath: '/admin/catalogo/familias'
+      preLoaderRoute: typeof AdminProtectedCatalogoFamiliasRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/catalogo/skus': {
+      id: '/admin/_protected/catalogo/skus'
+      path: '/catalogo/skus'
+      fullPath: '/admin/catalogo/skus'
+      preLoaderRoute: typeof AdminProtectedCatalogoSkusRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/catalogo/taxonomia': {
+      id: '/admin/_protected/catalogo/taxonomia'
+      path: '/catalogo/taxonomia'
+      fullPath: '/admin/catalogo/taxonomia'
+      preLoaderRoute: typeof AdminProtectedCatalogoTaxonomiaRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/importacao_/$jobId': {
+      id: '/admin/_protected/importacao_/$jobId'
+      path: '/importacao/$jobId'
+      fullPath: '/admin/importacao/$jobId'
+      preLoaderRoute: typeof AdminProtectedImportacaoJobIdRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/catalogo/familias_/$familyId': {
+      id: '/admin/_protected/catalogo/familias_/$familyId'
+      path: '/catalogo/familias/$familyId'
+      fullPath: '/admin/catalogo/familias/$familyId'
+      preLoaderRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/catalogo/skus_/$productId': {
+      id: '/admin/_protected/catalogo/skus_/$productId'
+      path: '/catalogo/skus/$productId'
+      fullPath: '/admin/catalogo/skus/$productId'
+      preLoaderRoute: typeof AdminProtectedCatalogoSkusProductIdRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
   }
 }
 
 interface AdminProtectedRouteChildren {
+  AdminProtectedAuditoriaRoute: typeof AdminProtectedAuditoriaRoute
+  AdminProtectedConflitosRoute: typeof AdminProtectedConflitosRoute
+  AdminProtectedImportacaoRoute: typeof AdminProtectedImportacaoRoute
+  AdminProtectedMidiaRoute: typeof AdminProtectedMidiaRoute
+  AdminProtectedNormalizacaoRoute: typeof AdminProtectedNormalizacaoRoute
   AdminProtectedIndexRoute: typeof AdminProtectedIndexRoute
+  AdminProtectedCatalogoFamiliasRoute: typeof AdminProtectedCatalogoFamiliasRoute
+  AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
+  AdminProtectedCatalogoTaxonomiaRoute: typeof AdminProtectedCatalogoTaxonomiaRoute
+  AdminProtectedImportacaoJobIdRoute: typeof AdminProtectedImportacaoJobIdRoute
+  AdminProtectedCatalogoFamiliasFamilyIdRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  AdminProtectedCatalogoSkusProductIdRoute: typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
+  AdminProtectedAuditoriaRoute: AdminProtectedAuditoriaRoute,
+  AdminProtectedConflitosRoute: AdminProtectedConflitosRoute,
+  AdminProtectedImportacaoRoute: AdminProtectedImportacaoRoute,
+  AdminProtectedMidiaRoute: AdminProtectedMidiaRoute,
+  AdminProtectedNormalizacaoRoute: AdminProtectedNormalizacaoRoute,
   AdminProtectedIndexRoute: AdminProtectedIndexRoute,
+  AdminProtectedCatalogoFamiliasRoute: AdminProtectedCatalogoFamiliasRoute,
+  AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
+  AdminProtectedCatalogoTaxonomiaRoute: AdminProtectedCatalogoTaxonomiaRoute,
+  AdminProtectedImportacaoJobIdRoute: AdminProtectedImportacaoJobIdRoute,
+  AdminProtectedCatalogoFamiliasFamilyIdRoute:
+    AdminProtectedCatalogoFamiliasFamilyIdRoute,
+  AdminProtectedCatalogoSkusProductIdRoute:
+    AdminProtectedCatalogoSkusProductIdRoute,
 }
 
 const AdminProtectedRouteWithChildren = AdminProtectedRoute._addFileChildren(
@@ -418,9 +599,6 @@ const rootRouteChildren: RootRouteChildren = {
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
-  ApiAuthLoginRoute: ApiAuthLoginRoute,
-  ApiAuthLogoutRoute: ApiAuthLogoutRoute,
-  ApiAuthSessionRoute: ApiAuthSessionRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
 }
 export const routeTree = rootRouteImport

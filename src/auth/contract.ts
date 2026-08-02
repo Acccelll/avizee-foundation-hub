@@ -1,9 +1,7 @@
 /**
- * Contrato de autenticação (§20 da Etapa 5).
- *
- * ADAPTADOR LOCAL: DT-02 (banco) e DT-14 (provedor de autenticação) seguem
- * PENDENTE_DE_APROVAÇÃO. Esta fundação define o contrato estável e um provedor
- * local seguro; a troca pelo provedor aprovado não altera o consumo.
+ * Contrato de sessão administrativa.
+ * Etapa 6: o provedor sintético (DV-05-01) foi substituído pelo provedor
+ * gerenciado real; o contrato consumido pela interface permanece o mesmo.
  */
 import type { Role, Permission } from "@/permissions/model";
 
@@ -16,14 +14,4 @@ export interface SessionUser {
   permissions: Permission[];
 }
 
-export interface AuthResult {
-  ok: boolean;
-  user?: SessionUser;
-}
-
-export interface AuthProvider {
-  readonly name: string;
-  /** Nunca revela se o e-mail existe: falha sempre genérica. */
-  verifyCredentials(email: string, password: string): Promise<AuthResult>;
-  findById(id: string): Promise<SessionUser | null>;
-}
+export type AdminSession = { authenticated: false } | { authenticated: true; user: SessionUser };

@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { buildMeta } from "@/seo/meta";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/admin/login")({
   ssr: false,
@@ -19,14 +20,12 @@ function Login() {
     setPending(true);
     setError(null);
     const form = new FormData(event.currentTarget);
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      credentials: "same-origin",
-      body: JSON.stringify({ email: form.get("email"), password: form.get("password") }),
+    const { error: authError } = await supabase.auth.signInWithPassword({
+      email: String(form.get("email") ?? ""),
+      password: String(form.get("password") ?? ""),
     });
     setPending(false);
-    if (!res.ok) {
+    if (authError) {
       // Mensagem genérica: não revela se o e-mail existe.
       setError("Credenciais inválidas ou acesso temporariamente bloqueado.");
       return;

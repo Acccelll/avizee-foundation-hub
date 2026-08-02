@@ -43,19 +43,30 @@ export class AppError extends Error {
   readonly status: number;
   readonly occurrenceId: string;
   readonly internal?: Record<string, unknown> | undefined;
+  /**
+   * Detalhe acionável para o operador autenticado (ex.: transição não permitida).
+   * Nunca contém SQL, caminho, stack ou segredo — apenas regra de negócio.
+   */
+  readonly detail?: string | undefined;
 
-  constructor(code: AppErrorCode, internal?: Record<string, unknown>) {
+  constructor(code: AppErrorCode, internal?: Record<string, unknown>, detail?: string) {
     super(PUBLIC_MESSAGE[code]);
     this.name = "AppError";
     this.code = code;
     this.status = STATUS[code];
     this.occurrenceId = crypto.randomUUID();
     this.internal = internal;
+    this.detail = detail;
   }
 
   /** Corpo público: código + mensagem genérica + id de ocorrência. */
   toPublicJSON() {
-    return { error: this.code, message: this.message, occurrenceId: this.occurrenceId };
+    return {
+      error: this.code,
+      message: this.message,
+      detail: this.detail,
+      occurrenceId: this.occurrenceId,
+    };
   }
 
   toResponse() {

@@ -1,47 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="10" failures="2" errors="0" time="0.024759553">
-    <testsuite name="tests/unit/institutional-content.test.ts" timestamp="2026-08-02T23:33:57.593Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="10" failures="2" errors="0" skipped="0" time="0.024759553">
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não usa vocabulário de e-commerce nem promessa logística" time="0.0129724">
-            <failure message="termo proibido presente: preço: expected true to be false // Object.is equality" type="AssertionError">
-AssertionError: termo proibido presente: preço: expected true to be false // Object.is equality
-
-- Expected
-+ Received
-
-- false
-+ true
-
- ❯ tests/unit/institutional-content.test.ts:52:75
-            </failure>
+<testsuites name="vitest tests" tests="10" failures="0" errors="0" time="0.019483915">
+    <testsuite name="tests/unit/institutional-content.test.ts" timestamp="2026-08-02T23:34:09.497Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="10" failures="0" errors="0" skipped="0" time="0.019483915">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não usa vocabulário de e-commerce nem promessa logística" time="0.004849824">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não publica prazo comercial (O-10 em aberto)" time="0.000548323">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não publica prazo comercial (O-10 em aberto)" time="0.000873655">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não contém número institucional, ano de fundação ou certificação não comprovada" time="0.000209663">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não contém número institucional, ano de fundação ou certificação não comprovada" time="0.000347793">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém o posicionamento aprovado sem ampliar o escopo" time="0.000638701">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém o posicionamento aprovado sem ampliar o escopo" time="0.00055435">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; usa exatamente os três diferenciais aprovados" time="0.00033058">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; usa exatamente os três diferenciais aprovados" time="0.0014428">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; descreve a cotação em três passos, sem pedido confirmado" time="0.002394564">
-            <failure message="expected true to be false // Object.is equality" type="AssertionError">
-AssertionError: expected true to be false // Object.is equality
-
-- Expected
-+ Received
-
-- false
-+ true
-
- ❯ tests/unit/institutional-content.test.ts:82:52
-            </failure>
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; descreve a cotação em três passos, sem pedido confirmado" time="0.003981075">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; usa apenas CTAs aprovados" time="0.000702551">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; usa apenas CTAs aprovados" time="0.000407917">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não publica dado de contato ou dado legal não confirmado" time="0.001476326">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não publica dado de contato ou dado legal não confirmado" time="0.00055874">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém desativado tudo que depende de decisão aberta" time="0.002301738">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém desativado tudo que depende de decisão aberta" time="0.000576547">
         </testcase>
-        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém as páginas legais como rascunho sem vigência" time="0.001369543">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém as páginas legais como rascunho sem vigência" time="0.000412251">
         </testcase>
     </testsuite>
 </testsuites>

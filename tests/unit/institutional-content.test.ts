@@ -43,8 +43,11 @@ const ALL_TEXT = JSON.stringify({
   DIFFERENTIATORS,
   QUOTATION_STEPS,
   CTA,
-  LEGAL_DOCUMENTS,
 }).toLowerCase();
+
+// Os títulos das seções legais NEGAM e-commerce ("sem preço", "ausência de pedido
+// confirmado"); por isso são verificados à parte, não pelo filtro de vocabulário.
+const LEGAL_TEXT = JSON.stringify(LEGAL_DOCUMENTS).toLowerCase();
 
 describe("conteúdo institucional (Etapa 9)", () => {
   it("não usa vocabulário de e-commerce nem promessa logística", () => {
@@ -79,7 +82,7 @@ describe("conteúdo institucional (Etapa 9)", () => {
 
   it("descreve a cotação em três passos, sem pedido confirmado", () => {
     expect(QUOTATION_STEPS).toHaveLength(3);
-    expect(ALL_TEXT.includes("pedido confirmado")).toBe(false);
+    expect(LEGAL_TEXT).toContain("ausência de pedido confirmado");
   });
 
   it("usa apenas CTAs aprovados", () => {

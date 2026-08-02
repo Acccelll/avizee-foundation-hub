@@ -119,7 +119,7 @@ function Cotacoes() {
 
       <QueryState isLoading={query.isLoading} error={query.error}>
         <Table head={["Protocolo", "Empresa", "Situação", "Itens", "Recebida em", ""]}>
-          {(query.data?.items ?? []).map((row) => (
+          {((query.data?.items ?? []) as QuotationRow[]).map((row) => (
             <tr key={row.id} className="border-t border-border">
               <td className="px-4 py-3 font-semibold tabular-nums">{row.protocol}</td>
               <td className="px-4 py-3">
@@ -157,9 +157,11 @@ function Cotacoes() {
         </Table>
         <Pagination
           page={query.data?.page ?? 1}
-          pageCount={query.data?.pageCount ?? 1}
+          total={query.data?.total ?? 0}
+          pageSize={query.data?.pageSize ?? 20}
           onChange={setPage}
         />
+
       </QueryState>
     </div>
   );

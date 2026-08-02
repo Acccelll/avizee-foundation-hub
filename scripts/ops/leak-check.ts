@@ -6,7 +6,7 @@
 import { createClient } from "@supabase/supabase-js";
 
 import { checkBrandTerms } from "@/catalog/brand-terms";
-import { serializePublicProduct, serializePublicFamily } from "@/catalog/serializer";
+import { toPublicProduct, findLeakedFields, PUBLIC_FAMILY_FIELDS } from "@/catalog/serializer";
 
 const INTERNAL_KEYS = [
   "internal_brand",
@@ -35,8 +35,9 @@ const findings: { entidade: string; id: string; problema: string }[] = [];
 
 const { data: products } = await service.from("products").select("*").is("deleted_at", null);
 for (const row of products ?? []) {
-  const publicJson = JSON.stringify(serializePublicProduct(row as never));
-  for (const key of INTERNAL_KEYS) {
+  const view = toPublicProduct({ product: row as never });
+  const publicJson = JSON.stringify(view);
+  for (const key of [...INTERNAL_KEYS, ...findLeakedFields(view)]) {
     if (publicJson.includes(`"${key}"`)) {
       findings.push({ entidade: "product", id: row["public_sku"], problema: `campo ${key}` });
     }
@@ -58,8 +59,11 @@ const { data: families } = await service
   .select("*")
   .is("deleted_at", null);
 for (const row of families ?? []) {
-  const publicJson = JSON.stringify(serializePublicFamily(row as never));
-  for (const key of INTERNAL_KEYS) {
+  const view = Object.fromEntries(
+    PUBLIC_FAMILY_FIELDS.map((f) => [f, (row as Record<string, unknown>)[f] ?? null]),
+  );
+  const publicJson = JSON.stringify(view);
+  for (const key of [...INTERNAL_KEYS, ...findLeakedFields(view)]) {
     if (publicJson.includes(`"${key}"`)) {
       findings.push({ entidade: "family", id: row["slug"], problema: `campo ${key}` });
     }

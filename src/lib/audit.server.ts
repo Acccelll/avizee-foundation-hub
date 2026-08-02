@@ -33,7 +33,13 @@ export type AuditAction =
   | "normalization.update"
   | "import.dry_run"
   | "import.execute"
-  | "import.rollback";
+  | "import.rollback"
+  | "quotation.status.change"
+  | "quotation.assign"
+  | "quotation.note.add"
+  | "quotation.export"
+  | "outbox.requeue"
+  | "outbox.run";
 
 export interface AuditEntry {
   actorId: string | null;

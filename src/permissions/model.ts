@@ -38,6 +38,10 @@ export const PERMISSIONS = [
   "content.write",
   "content.publish",
   "quotation.read",
+  "quotation.write",
+  "quotation.assign",
+  "quotation.export",
+  "outbox.manage",
   // Governança
   "settings.write",
   "users.manage",
@@ -76,8 +80,22 @@ export const ROLE_PERMISSIONS: Record<Role, readonly Permission[]> = {
   ],
   AUTOR: ["admin.access", "content.read", "content.write", "media.read"],
   REVISOR_TECNICO: ["admin.access", "catalog.read", "content.read", "media.read"],
-  COMERCIAL: ["admin.access", "quotation.read", "catalog.read"],
-  AUDITOR: ["admin.access", "audit.read", "catalog.read", "content.read", "media.read"],
+  COMERCIAL: [
+    "admin.access",
+    "quotation.read",
+    "quotation.write",
+    "quotation.assign",
+    "quotation.export",
+    "catalog.read",
+  ],
+  AUDITOR: [
+    "admin.access",
+    "audit.read",
+    "catalog.read",
+    "content.read",
+    "media.read",
+    "quotation.read",
+  ],
 };
 
 export function permissionsFor(roles: readonly Role[]): Permission[] {

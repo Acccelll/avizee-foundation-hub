@@ -1,229 +1,204 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="107" failures="0" errors="0" time="0.119458296">
-    <testsuite name="tests/unit/brand-terms.test.ts" timestamp="2026-08-02T03:40:28.810Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="12" failures="0" errors="0" skipped="0" time="0.011481168">
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo exato" time="0.002555953">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; é insensível a caixa" time="0.001400755">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; ignora acentuação" time="0.000304385">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo separado por hífen ou espaço" time="0.000329538">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta em texto longo e múltiplos termos" time="0.001196171">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não gera falso positivo em coincidência parcial" time="0.000547475">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não detecta plural colado (limitação conhecida, exige revisão humana)" time="0.000270986">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; trata valor nulo ou vazio como limpo" time="0.000277118">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; cobre toda a lista de termos" time="0.001324932">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; acusa marca em campo público" time="0.000638794">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; permite marca em campo interno" time="0.00030388">
-        </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; ignora campos não textuais" time="0.000129289">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/import-plan.test.ts" timestamp="2026-08-02T03:40:28.818Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="14" failures="0" errors="0" skipped="0" time="0.033170681">
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica criação" time="0.010008362">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica registro sem alteração" time="0.002096489">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica atualização e lista os campos alterados" time="0.002181163">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia família inexistente" time="0.00170575">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia marca de terceiro em nome público" time="0.000834738">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia SKU fora do escopo aprovado" time="0.001020715">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; registra aviso quando há marca em campo interno, sem bloquear" time="0.000611222">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; totaliza corretamente um plano misto" time="0.000891098">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; é determinística para o mesmo arquivo" time="0.001728545">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o conteúdo muda" time="0.001876181">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando a ordem das linhas muda (assinatura amarra linha e operação)" time="0.001841212">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o estado do catálogo muda" time="0.000913545">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; difere entre lotes diferentes" time="0.001168769">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; carrega prefixo de versão e cardinalidade" time="0.00085483">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/import-schema.test.ts" timestamp="2026-08-02T03:40:28.824Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="25" failures="0" errors="0" skipped="0" time="0.024000503">
-        <testcase classname="tests/unit/import-schema.test.ts" name="versão do contrato &gt; expõe versão semântica estável" time="0.003110006">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; aceita cabeçalho completo" time="0.001217014">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa cabeçalho sem coluna obrigatória" time="0.000691639">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa arquivo vazio" time="0.002329952">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; ignora coluna desconhecida sem quebrar as obrigatórias" time="0.000233074">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; valida linha correta" time="0.003906128">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU vazio e nome curto na mesma linha (múltiplos erros)" time="0.002426114">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa família ausente" time="0.000561351">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU duplicado no arquivo" time="0.001172717">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; normaliza booleano sob_consulta" time="0.000461442">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; converte campo vazio em nulo, não em string vazia" time="0.000291046">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa nome público acima do limite" time="0.002198126">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; respeita aspas duplas e vírgulas internas" time="0.000307263">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; remove BOM e linhas em branco" time="0.00027012">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=1+1&quot;" time="0.000138543">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;+1+1&quot;" time="0.00010637">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;-1+1&quot;" time="0.000077141">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;@SUM(A1)&quot;" time="0.000079169">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\t=cmd&quot;" time="0.000072426">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\r=cmd&quot;" time="0.000074211">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;   =HYPERLINK(\&quot;http://x\&quot;)&quot;" time="0.000070306">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=cmd|&apos;/c calc&apos;!A1&quot;" time="0.000077118">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; não altera valor legítimo" time="0.000097086">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza também no parser, célula a célula" time="0.000131281">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza no cabeçalho" time="0.00008584">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T03:40:28.832Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="15" failures="0" errors="0" skipped="0" time="0.022274987">
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 21 permissões finas" time="0.002712938">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.000649255">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.003500018">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.003001593">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.000742935">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.000580856">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.000389672">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000326932">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.001188022">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.002031486">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.001663526">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.000343151">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000181938">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.001035931">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.00096076">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/serializer.test.ts" timestamp="2026-08-02T03:40:28.836Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="25" failures="0" errors="0" skipped="0" time="0.012774505">
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; expõe exatamente os campos permitidos do produto" time="0.003692586">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_brand" time="0.00043996">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_manufacturer" time="0.000159653">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_supplier_reference" time="0.00011439">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_original_name" time="0.000290821">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_notes" time="0.000203247">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe admin_name" time="0.000296341">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe cost" time="0.000138972">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source" time="0.000423421">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source_record" time="0.000248408">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe rights_document_path" time="0.000199572">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe detected_brand" time="0.000085587">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe audit_log" time="0.000085563">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe conflict_details" time="0.000064423">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe review_status" time="0.000058752">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe created_by" time="0.000058635">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe updated_by" time="0.000061084">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não deixa vazar objeto relacionado inteiro" time="0.000594626">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não contém termos internos no payload serializado" time="0.000354007">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; aplica placeholder quando não há imagem aprovada" time="0.0001255">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; marca imagem real como não-placeholder" time="0.001067485">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; não encontra vazamento na visão pública" time="0.000350692">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; encontra vazamento recursivamente" time="0.00030501">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; percorre arrays aninhados" time="0.000357113">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; tolera valores primitivos e nulos" time="0.000407768">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/state-machine.test.ts" timestamp="2026-08-02T03:40:28.850Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="16" failures="0" errors="0" skipped="0" time="0.015756452">
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; aceita todas as transições declaradas" time="0.004170396">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; recusa todas as transições não declaradas" time="0.001206709">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite pular de DRAFT direto para READY_TO_PUBLISH" time="0.000186564">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite sair de bloqueio direto para apto a publicar" time="0.000203068">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; aceita as transições declaradas quando o registro está apto" time="0.001118539">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro bloqueado" time="0.000877625">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro apenas em revisão" time="0.000336315">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; arquivamento é terminal" time="0.000722408">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; não permite republicar diretamente de PUBLISHED" time="0.000612149">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; aprova imagem própria, sem marca e correspondente" time="0.000267398">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem direito confirmado" time="0.000700654">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem origem registrada" time="0.000112818">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa com marca visível detectada" time="0.000098564">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa quando não corresponde ao produto" time="0.000251416">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; apenas papéis com catalog.publish podem publicar" time="0.000269843">
-        </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; nenhum papel além de ADMINISTRADOR gerencia usuários" time="0.00119648">
+<testsuites name="vitest tests" tests="21" failures="18" errors="0" time="11.773297926">
+    <testsuite name="tests/integration/catalog-admin.test.ts" timestamp="2026-08-02T03:42:11.412Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="21" failures="18" errors="0" skipped="0" time="11.773297926">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; concede escrita ao gestor de catálogo" time="0.249697688">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:57:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;549f61e2-4a29-472a-8b96-fe4c9cedbcb8&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega escrita ao auditor mesmo se o frontend pedir" time="0.216589839">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega importação ao auditor" time="0.179575355">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; permite leitura de auditoria ao auditor" time="0.173645158">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:73:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;ca0a3d89-c853-4b71-9151-07b1856c7893&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; papéis vêm do banco, não do contexto informado" time="0.16878193">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria família com auditoria" time="0.180013964">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:85:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;74702926-5fa6-4cac-aff9-2da60be8923c&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; recusa nome público com marca de terceiro (R-05)" time="0.171157568">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:104:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;5c2ed7ea-cb87-4f6c-a82c-334559b39f92&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria SKU vinculado à família" time="0.166769433">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:115:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;a49b943e-d7ab-4c94-ab29-a1d03c21c7f5&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; registra mudança de nome em evento próprio de auditoria" time="0.180241205">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:130:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;40b6e3ef-0295-4bee-819c-3bbc12df3940&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; lista o SKU pela família e pela busca" time="0.172004733">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:146:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;1826eedc-ccf3-4e0a-9cf4-aee090e82661&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; expõe o SKU na visão da família" time="0.168433687">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:154:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;1df34036-17a1-48dc-9f2d-cf181dfdb859&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; retorna NOT_FOUND para SKU inexistente" time="0.178139923">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:160:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;5abd6853-f18b-4c4f-9b7f-fef5d4aeef5b&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa publicar SKU que não está apto" time="0.172691897">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:169:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;e32d9de9-3ed1-4cd6-b055-cd592ea60aaf&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa transição de revisão inválida" time="0.168473928">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:180:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;368007ac-7bef-4b02-bb80-4e08b0f79dce&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; percorre DRAFT → UNDER_REVIEW → READY_TO_PUBLISH → PUBLISHED" time="0.179463008">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:191:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;aeddc49c-792b-4c76-b675-9f3ef945951e&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; grava auditoria de publicação" time="0.212469653">
+            <failure message="expected 0 to be greater than 0" type="AssertionError">
+AssertionError: expected 0 to be greater than 0
+ ❯ tests/integration/catalog-admin.test.ts:219:33
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; aprova imagem própria, com origem, alt e correspondência" time="0.179653415">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:247:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;efa1948b-0970-4202-a074-1443c255b94a&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem direito confirmado" time="0.170357564">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:261:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;749920e3-6f11-44ec-8fc7-04b080813de7&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação com marca visível" time="0.17936227">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:269:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;b80155c3-1c0f-49dc-84b9-cae5efc6b749&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem texto alternativo" time="0.175291247">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:277:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;e5f138c1-6d03-4c26-8b9f-88ed0cdf0687&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; reprovação mantém a imagem em quarentena e gera evento" time="0.169674257">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ loadRoles src/auth/authorize.server.ts:20:20
+ ❯ authorize src/catalog/guard.server.ts:30:17
+ ❯ tests/integration/catalog-admin.test.ts:285:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;a60f30dc-3ba9-4897-8aa0-97e71e7f1eca&apos;, internal: { cause: &apos;permission denied for function has_role&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
         </testcase>
     </testsuite>
 </testsuites>

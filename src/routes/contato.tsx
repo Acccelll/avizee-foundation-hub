@@ -1,15 +1,39 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { ModulePlaceholder } from "@/components/public/ModulePlaceholder";
 import { PublicShell } from "@/components/public/PublicShell";
+import { PendingDataList, PendingNotice } from "@/components/public/PendingData";
+import {
+  CONTACT_FIELDS,
+  CONTACT_FORM_APPROVED,
+  CTA,
+  MAP_APPROVED,
+  NATIONAL_COVERAGE,
+} from "@/content/institutional";
 import { buildMeta } from "@/seo/meta";
 
 export const Route = createFileRoute("/contato")({
   head: () =>
     buildMeta({
       title: "Contato",
-      description: "Canais de contato da AviZee para atendimento técnico e comercial B2B.",
-      provisional: true,
+      description:
+        "Fale com a equipe AviZee para atendimento técnico e comercial B2B em avicultura. Monte sua lista de cotação e receba o retorno da equipe.",
+      canonical: "/contato",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contato — AviZee",
+          inLanguage: "pt-BR",
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Início", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Contato", item: "/contato" },
+          ],
+        },
+      ],
     }),
   component: Contato,
 });
@@ -17,11 +41,75 @@ export const Route = createFileRoute("/contato")({
 function Contato() {
   return (
     <PublicShell breadcrumb={[{ label: "Contato" }]}>
-      <ModulePlaceholder
-        title="Contato"
-        stage="Etapa 8"
-        description="O formulário de contato e o mapa só serão ativados após aprovação dos provedores de e-mail e mapa. Nenhum envio real ocorre nesta fundação."
-      />
+      <div className="container-avizee">
+        <header className="max-w-3xl">
+          <h1 className="text-[36px] font-extrabold md:text-[44px]">Fale com a AviZee</h1>
+          <p className="mt-5 text-[18px] text-text-secondary">
+            O caminho mais rápido para um retorno técnico é montar a lista de cotação com os itens
+            de interesse: a equipe recebe as referências exatas e responde com as condições.
+          </p>
+        </header>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          <section aria-labelledby="canais" className="space-y-6">
+            <h2 id="canais" className="text-[24px] font-bold">
+              Canais de atendimento
+            </h2>
+            <PendingDataList title="Dados de contato" fields={CONTACT_FIELDS} />
+            <PendingNotice>
+              Telefone, WhatsApp, e-mail, endereço e horário só serão publicados após a confirmação
+              formal desses dados (decisão Q-08). Nenhum valor provisório é exibido.
+            </PendingNotice>
+            {!MAP_APPROVED && (
+              <PendingNotice>
+                O mapa depende do endereço confirmado e só será carregado após ação explícita da
+                pessoa usuária. Nenhum serviço externo é chamado nesta página.
+              </PendingNotice>
+            )}
+          </section>
+
+          <section aria-labelledby="atendimento-contato" className="space-y-6">
+            <h2 id="atendimento-contato" className="text-[24px] font-bold">
+              Como falar com a equipe agora
+            </h2>
+            <div className="rounded-[12px] border border-border bg-surface p-6">
+              <p className="text-[16px] text-text-secondary">
+                Monte a lista de cotação com as famílias e variações desejadas. Ao enviar, você
+                recebe um protocolo e a equipe confirma especificações e condições no retorno.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  to="/cotacao"
+                  className="inline-flex h-12 items-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90"
+                >
+                  {CTA.quote}
+                </Link>
+                <Link
+                  to="/produtos"
+                  className="inline-flex h-12 items-center rounded-[8px] border border-border px-6 font-semibold hover:bg-background"
+                >
+                  {CTA.catalog}
+                </Link>
+              </div>
+            </div>
+
+            {!CONTACT_FORM_APPROVED && (
+              <PendingNotice>
+                O formulário geral de contato ainda não foi ativado: finalidade, campos, destino,
+                retenção e provedor de e-mail dependem das decisões Q-13 e DEP-T1. Até lá, a lista
+                de cotação é o canal registrado de solicitação.
+              </PendingNotice>
+            )}
+
+            <div className="rounded-[12px] border border-border p-6">
+              <h3 className="text-[18px] font-semibold">{NATIONAL_COVERAGE.title}</h3>
+              <p className="mt-2 text-[15px] text-text-secondary">
+                {NATIONAL_COVERAGE.description}
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
     </PublicShell>
   );
 }

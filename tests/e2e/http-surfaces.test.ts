@@ -84,3 +84,60 @@ describe("painel administrativo", () => {
     expect(body).toMatch(/noindex/i);
   });
 });
+
+/** Etapa 9 — camada institucional pública. */
+describe("páginas institucionais", () => {
+  const ECOMMERCE = [
+    "comprar agora",
+    "adicionar ao carrinho",
+    "finalizar compra",
+    "ver ofertas",
+    "pronta-entrega",
+    "frete grátis",
+    "r$&nbsp;",
+  ];
+
+  it("Home entrega os blocos aprovados na ordem do wireframe", async () => {
+    const { body } = await get("/");
+    for (const heading of [
+      "Nossas categorias",
+      "Soluções por necessidade",
+      "Por que a AviZee",
+      "Como funciona a cotação",
+      "Atendimento em todo o Brasil",
+      "Pronto para montar sua cotação?",
+    ]) {
+      expect(body, `bloco ausente: ${heading}`).toContain(heading);
+    }
+  });
+
+  it("Home, Sobre, Soluções e Contato não usam vocabulário de e-commerce", async () => {
+    for (const path of ["/", "/sobre", "/solucoes", "/contato"]) {
+      const lower = (await get(path)).body.toLowerCase();
+      for (const term of ECOMMERCE) {
+        expect(lower, `${path} contém "${term}"`).not.toContain(term);
+      }
+    }
+  });
+
+  it("Contato não publica dado não confirmado nem carrega mapa", async () => {
+    const { body } = await get("/contato");
+    expect(body).toContain("informação em confirmação");
+    expect(body).not.toMatch(/google\.com\/maps|maps\.googleapis|embedsocial/i);
+    expect(body).not.toMatch(/\(\d{2}\)\s?\d{4,5}-\d{4}/);
+    expect(body).not.toMatch(/wa\.me\/\d/);
+  });
+
+  it("páginas legais em rascunho não são indexáveis", async () => {
+    for (const path of ["/politica-de-privacidade", "/termos-de-uso"]) {
+      const { body } = await get(path);
+      expect(body).toContain("RASCUNHO");
+      expect(body).toMatch(/name="robots" content="noindex/);
+    }
+  });
+
+  it("Sobre não publica missão, visão, valores nem história não aprovada", async () => {
+    const { body } = await get("/sobre");
+    expect(body).not.toMatch(/Nossa missão|Nossa visão|Fundada em|desde 19|desde 20/i);
+  });
+});

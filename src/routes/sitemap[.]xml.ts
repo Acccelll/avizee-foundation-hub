@@ -37,11 +37,9 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/produtos", changefreq: "weekly", priority: "0.9" },
           { path: "/solucoes", changefreq: "monthly", priority: "0.6" },
-          { path: "/conteudos", changefreq: "weekly", priority: "0.6" },
           { path: "/sobre", changefreq: "monthly", priority: "0.5" },
           { path: "/contato", changefreq: "monthly", priority: "0.5" },
-          { path: "/politica-de-privacidade", changefreq: "monthly", priority: "0.2" },
-          { path: "/termos-de-uso", changefreq: "monthly", priority: "0.2" },
+          // Páginas legais em RASCUNHO (Q-13) ficam fora do sitemap até a publicação.
           ...categories.map((slug) => ({
             path: `/produtos/${slug}`,
             changefreq: "weekly" as const,

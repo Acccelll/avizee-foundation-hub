@@ -1,0 +1,16 @@
+arquivo,tipo,descricao
+src/content/institutional.ts,novo,fonte única de conteúdo institucional aprovado e campos pendentes
+src/components/public/PendingData.tsx,novo,componentes acessíveis de dado pendente
+src/routes/index.tsx,alterado,Home PT-01 conectada ao catálogo real
+src/routes/sobre.tsx,alterado,página Sobre PT-14
+src/routes/solucoes.tsx,alterado,listagem de soluções PT-04
+src/routes/contato.tsx,alterado,página Contato PT-15 sem dado inventado
+src/routes/politica-de-privacidade.tsx,alterado,rascunho estruturado noindex
+src/routes/termos-de-uso.tsx,alterado,rascunho estruturado noindex
+src/routes/sitemap[.]xml.ts,alterado,remoção das páginas legais em rascunho
+tests/unit/institutional-content.test.ts,novo,10 testes de vocabulário e conteúdo aprovado
+tests/e2e/http-surfaces.test.ts,alterado,5 testes de superfície institucional
+docs/avizee/256-stage-09-institutional-pages-plan.md,novo,plano e escopo da Etapa 9
+docs/avizee/257-stage-09-pending-data-treatment.md,novo,tratamento dos dados pendentes
+docs/avizee/258-stage-09-accessibility-and-seo-validation.md,novo,validação WCAG 2.2 AA e SEO
+docs/avizee/259-stage-09-executive-report.md,novo,relatório executivo da Etapa 9

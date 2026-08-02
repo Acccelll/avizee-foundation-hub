@@ -1,83 +1,141 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="14" failures="3" errors="0" time="19.133691183">
-    <testsuite name="tests/integration/import-pipeline.test.ts" timestamp="2026-08-02T03:45:49.206Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="14" failures="3" errors="0" skipped="0" time="19.133691183">
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="permissão da importação &gt; auditor não pode simular nem executar" time="0.385579706">
+<testsuites name="vitest tests" tests="35" failures="1" errors="0" time="40.512124245">
+    <testsuite name="tests/integration/catalog-admin.test.ts" timestamp="2026-08-02T03:46:52.537Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="21" failures="0" errors="0" skipped="0" time="20.875061688">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; concede escrita ao gestor de catálogo" time="0.207461612">
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa versão de contrato divergente" time="0.223052862">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega escrita ao auditor mesmo se o frontend pedir" time="0.201350992">
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa cabeçalho fora do contrato" time="0.167045764">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega importação ao auditor" time="0.167119014">
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; simula sem alterar o catálogo e registra o job" time="1.595936429">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; permite leitura de auditoria ao auditor" time="0.173429857">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; papéis vêm do banco, não do contexto informado" time="0.16888753">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria família com auditoria" time="0.768052202">
             <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:45:35.984Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b01ac4c8-7dfd-4775-b1e6-078f87b4e826&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;395434d3-3b23-4a53-8dd3-85997365089d&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-simulacao.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-67b5f765&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:45:35.984Z&quot;}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:35.878Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;product_families&quot;,&quot;entity_id&quot;:&quot;25c4ff04-bee2-48d8-8a2c-021f93b106d9&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;,&quot;admin_name&quot;,&quot;slug&quot;,&quot;summary&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Família de integração&quot;,&quot;admin_name&quot;:&quot;Família de integração (teste)&quot;,&quot;slug&quot;:&quot;zzt-familia-integracao-1785642391631&quot;,&quot;summary&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:46:35.878Z&quot;}
 
             </system-out>
-            <failure message="expected &apos;v1-2-67b5f765&apos; to match /^v1:/" type="AssertionError">
-AssertionError: expected &apos;v1-2-67b5f765&apos; to match /^v1:/
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; recusa nome público com marca de terceiro (R-05)" time="0.167067605">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria SKU vinculado à família" time="1.586522286">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:36.862Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;family_id&quot;,&quot;public_sku&quot;,&quot;public_name&quot;,&quot;public_description&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;family_id&quot;:&quot;25c4ff04-bee2-48d8-8a2c-021f93b106d9&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:46:36.862Z&quot;}
 
-- Expected:
-/^v1:/
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:37.055Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:null},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:46:37.055Z&quot;}
 
-+ Received:
-&quot;v1-2-67b5f765&quot;
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; registra mudança de nome em evento próprio de auditoria" time="1.163333643">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:38.599Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.update&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;family_id&quot;:&quot;25c4ff04-bee2-48d8-8a2c-021f93b106d9&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;slug&quot;:null,&quot;variation_label&quot;:null,&quot;measure&quot;:null,&quot;capacity&quot;:null,&quot;unit&quot;:null,&quot;internal_original_name&quot;:null,&quot;internal_brand&quot;:null,&quot;internal_manufacturer&quot;:null,&quot;internal_supplier_reference&quot;:null,&quot;internal_notes&quot;:null,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;,&quot;is_on_request&quot;:false,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;,&quot;source&quot;:null,&quot;sort_order&quot;:0,&quot;created_by&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;updated_by&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;created_at&quot;:&quot;2026-08-02T03:46:36.781547+00:00&quot;,&quot;updated_at&quot;:&quot;2026-08-02T03:46:36.632+00:00&quot;,&quot;deleted_at&quot;:null},&quot;new_values&quot;:{&quot;family_id&quot;:&quot;25c4ff04-bee2-48d8-8a2c-021f93b106d9&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:46:38.599Z&quot;}
 
- ❯ tests/integration/import-pipeline.test.ts:108:27
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:38.809Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:46:38.809Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; lista o SKU pela família e pela busca" time="0.662912852">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; expõe o SKU na visão da família" time="0.662096665">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; retorna NOT_FOUND para SKU inexistente" time="0.365701289">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa publicar SKU que não está apto" time="0.38420235">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa transição de revisão inválida" time="0.375821634">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; percorre DRAFT → UNDER_REVIEW → READY_TO_PUBLISH → PUBLISHED" time="2.794821215">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:42.416Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:42.416Z&quot;}
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:43.231Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:43.230Z&quot;}
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:44.037Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.publish&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;124a4ee4-595c-46fc-848a-a64261154e8f&quot;,&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;teste de integração&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:44.037Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; grava auditoria de publicação" time="0.197796433">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; aprova imagem própria, com origem, alt e correspondência" time="1.393676816">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:45.616Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;media.status.change&quot;,&quot;entity&quot;:&quot;media_assets&quot;,&quot;entity_id&quot;:&quot;414e28e0-872e-47af-8fa3-8a2e58e1c045&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_IDENTIFICACAO&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;APROVADA&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:45.616Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem direito confirmado" time="0.575695122">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação com marca visível" time="0.576097124">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem texto alternativo" time="0.568329517">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; reprovação mantém a imagem em quarentena e gera evento" time="1.581231891">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:48.725Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b636493c-2fb9-43a4-9b8d-93726f371f5e&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;media.status.change&quot;,&quot;entity&quot;:&quot;media_assets&quot;,&quot;entity_id&quot;:&quot;8d6daa5d-fbc4-4dcf-9f2d-e99ad4b7ccb3&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_IDENTIFICACAO&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_MARCA_VISIVEL&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;marca aparente&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:48.725Z&quot;}
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/import-pipeline.test.ts" timestamp="2026-08-02T03:46:52.549Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="14" failures="1" errors="0" skipped="0" time="19.637062557">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="permissão da importação &gt; auditor não pode simular nem executar" time="0.398630384">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa versão de contrato divergente" time="0.20814126">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa cabeçalho fora do contrato" time="0.164797222">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; simula sem alterar o catálogo e registra o job" time="2.220025524">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:16.532Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;8748714d-67e1-463a-a5a6-e54d088c3c15&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;a9986002-e766-421d-b718-b1261c497c84&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-simulacao.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-67b5f765&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:16.531Z&quot;}
+
+            </system-out>
+            <failure message="expected &apos;DRY_RUN_COMPLETE&apos; to be &apos;SIMULATED&apos; // Object.is equality" type="AssertionError">
+AssertionError: expected &apos;DRY_RUN_COMPLETE&apos; to be &apos;SIMULATED&apos; // Object.is equality
+
+Expected: &quot;SIMULATED&quot;
+Received: &quot;DRY_RUN_COMPLETE&quot;
+
+ ❯ tests/integration/import-pipeline.test.ts:118:27
             </failure>
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; registra erros de linha inválida sem abortar o lote" time="1.659981699">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; registra erros de linha inválida sem abortar o lote" time="2.223598369">
             <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:45:37.235Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b01ac4c8-7dfd-4775-b1e6-078f87b4e826&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;af26333e-72f5-4989-8348-9c540b2bb532&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-invalida.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:1,&quot;create&quot;:1,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-1-5213086f&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:45:37.235Z&quot;}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:19.310Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;8748714d-67e1-463a-a5a6-e54d088c3c15&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;c19671db-1e27-44f4-b928-192c17e21e20&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-invalida.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:1,&quot;create&quot;:1,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-1-5213086f&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:19.310Z&quot;}
 
             </system-out>
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; bloqueia linha fora do escopo aprovado, sem descartar" time="1.033105139">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; bloqueia linha fora do escopo aprovado, sem descartar" time="1.000375066">
             <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:45:38.691Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b01ac4c8-7dfd-4775-b1e6-078f87b4e826&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;2fbdfe1c-c30c-4f12-865d-8b7fd14cd875&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-escopo.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:1,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:1,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-f7745498&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:45:38.691Z&quot;}
-
-            </system-out>
-            <failure message="expected undefined to be &apos;BLOCK&apos; // Object.is equality" type="AssertionError">
-AssertionError: expected undefined to be &apos;BLOCK&apos; // Object.is equality
-
-- Expected:
-&quot;BLOCK&quot;
-
-+ Received:
-undefined
-
- ❯ tests/integration/import-pipeline.test.ts:144:34
-            </failure>
-        </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com assinatura divergente" time="1.235190028">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:45:39.724Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b01ac4c8-7dfd-4775-b1e6-078f87b4e826&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;50870f76-9a52-468e-be7a-057d62ff7e5d&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-execucao.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-67b5f765&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:45:39.724Z&quot;}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:20.721Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;8748714d-67e1-463a-a5a6-e54d088c3c15&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;db1cf9a4-e534-482b-aaf6-533cbc876eef&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-escopo.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:1,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:1,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-f7745498&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:20.721Z&quot;}
 
             </system-out>
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com conteúdo diferente do simulado" time="0.385221229">
-        </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; executa e cria os SKUs em revisão, nunca publicados direto" time="2.2550541">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com assinatura divergente" time="1.207120551">
             <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:45:42.369Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b01ac4c8-7dfd-4775-b1e6-078f87b4e826&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.execute&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;e55fe203-8888-4d4c-b202-945ff589a611&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;dryRunJobId&quot;:&quot;50870f76-9a52-468e-be7a-057d62ff7e5d&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0}},&quot;occurredAt&quot;:&quot;2026-08-02T03:45:42.369Z&quot;}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:21.736Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;8748714d-67e1-463a-a5a6-e54d088c3c15&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;9c502b66-2c9b-4442-ac5f-18fb7a4ce015&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-execucao.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-67b5f765&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:21.736Z&quot;}
 
             </system-out>
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; guarda o código de origem como código interno não público" time="0.217326055">
-            <failure message="Cannot read properties of null (reading &apos;id&apos;)" type="TypeError">
-TypeError: Cannot read properties of null (reading &apos;id&apos;)
- ❯ tests/integration/import-pipeline.test.ts:207:58
-            </failure>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com conteúdo diferente do simulado" time="0.391393968">
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; registra auditoria de simulação e de execução" time="0.202141571">
-        </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reexecutar a mesma simulação" time="0.614001498">
-        </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; reverte o lote por soft delete e marca o job" time="1.831608875">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; executa e cria os SKUs em revisão, nunca publicados direto" time="2.200468822">
             <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:45:45.033Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;b01ac4c8-7dfd-4775-b1e6-078f87b4e826&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.rollback&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;e55fe203-8888-4d4c-b202-945ff589a611&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;reverted&quot;:2},&quot;occurredAt&quot;:&quot;2026-08-02T03:45:45.033Z&quot;}
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:24.321Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;8748714d-67e1-463a-a5a6-e54d088c3c15&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.execute&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;94697189-acd9-4d82-abe2-7cf74a645973&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;dryRunJobId&quot;:&quot;9c502b66-2c9b-4442-ac5f-18fb7a4ce015&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0}},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:24.321Z&quot;}
 
             </system-out>
         </testcase>
-        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reverter duas vezes" time="0.398536702">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; guarda o código de origem como código interno não público" time="0.408146656">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; registra auditoria de simulação e de execução" time="0.204774363">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reexecutar a mesma simulação" time="0.59120842">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; reverte o lote por soft delete e marca o job" time="1.799851005">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:46:27.130Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;8748714d-67e1-463a-a5a6-e54d088c3c15&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.rollback&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;94697189-acd9-4d82-abe2-7cf74a645973&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;reverted&quot;:2},&quot;occurredAt&quot;:&quot;2026-08-02T03:46:27.130Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reverter duas vezes" time="0.392209914">
         </testcase>
     </testsuite>
 </testsuites>

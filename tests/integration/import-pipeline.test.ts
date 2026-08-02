@@ -105,7 +105,7 @@ describe("simulação obrigatória", () => {
 
     expect(dry.plan.summary.create).toBe(2);
     expect(dry.errors).toHaveLength(0);
-    expect(dry.signature).toMatch(/^v1:/);
+    expect(dry.signature).toMatch(/^v1-/);
 
     const depois = await adminClient()
       .from("products")
@@ -140,7 +140,7 @@ describe("simulação obrigatória", () => {
       allowedSkus: [skuA],
     });
     expect(dry.plan.summary.blocked).toBe(1);
-    const bloqueada = dry.plan.items.find((i) => i.sku === skuB);
+    const bloqueada = dry.plan.items.find((i) => i.sku === skuB.toUpperCase());
     expect(bloqueada?.operation).toBe("BLOCK");
     expect(dry.plan.items).toHaveLength(2);
   });
@@ -162,7 +162,7 @@ describe("execução amarrada à simulação", () => {
     signature = dry.signature;
 
     await expect(
-      runExecute(auth, { dryRunJobId, signature: "v1:falsa", content: csv(linhaA, linhaB) }),
+      runExecute(auth, { dryRunJobId, signature: "v1-0-falsa", content: csv(linhaA, linhaB) }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
@@ -199,7 +199,7 @@ describe("execução amarrada à simulação", () => {
     const produto = await adminClient()
       .from("products")
       .select("id")
-      .eq("public_sku", skuA)
+      .eq("public_sku", skuA.toUpperCase())
       .single();
     const { data } = await adminClient()
       .from("product_codes")

@@ -233,7 +233,7 @@ function ImportPage() {
                     >
                       Detalhes
                     </Link>
-                    {job["mode"] === "EXECUTE" && job["status"] === "COMPLETED" && (
+                    {job["mode"] === "EXECUTE" && job["status"] === "EXECUTED" && (
                       <button
                         type="button"
                         className={secondaryButtonClass}

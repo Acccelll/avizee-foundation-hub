@@ -1,49 +1,484 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="22" failures="0" errors="0" time="4.911407735">
-    <testsuite name="tests/integration/public-catalog.test.ts" timestamp="2026-08-02T05:06:45.933Z" hostname="sandbox-pool-5f9b7fc875-xdvhq" tests="22" failures="0" errors="0" skipped="0" time="4.911407735">
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de products" time="0.283647875">
+<testsuites name="vitest tests" tests="196" failures="1" errors="0" time="80.094646102">
+    <testsuite name="tests/e2e/http-surfaces.test.ts" timestamp="2026-08-02T23:14:08.809Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="15" failures="0" errors="0" skipped="0" time="2.639383124">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="saúde e indexação &gt; health responde sem revelar detalhes internos" time="0.778237507">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de product_families" time="0.203506593">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="saúde e indexação &gt; robots bloqueia indexação enquanto o site não é público" time="0.006767535">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de source_records" time="0.180205588">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; / responde 200 com título próprio" time="0.018907422">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de import_jobs" time="0.188031303">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /produtos responde 200 com título próprio" time="0.784237397">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de audit_logs" time="0.207544265">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /solucoes responde 200 com título próprio" time="0.060757836">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de media_assets" time="0.184940139">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /conteudos responde 200 com título próprio" time="0.034912559">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de user_roles" time="0.178689486">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /sobre responde 200 com título próprio" time="0.034655245">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de profiles" time="0.172119698">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /contato responde 200 com título próprio" time="0.040604676">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; expõe as 31 famílias e os 97 SKUs aprovados" time="0.380315252">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /cotacao responde 200 com título próprio" time="0.191209808">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; não expõe nenhum campo proibido" time="0.182166074">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /politica-de-privacidade responde 200 com título próprio" time="0.024270034">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; toda família pública tem categoria, slug e ao menos uma variação" time="0.18603385">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; /termos-de-uso responde 200 com título próprio" time="0.040165379">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; categorias públicas somam as 31 famílias" time="0.184943558">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; nenhuma rota pública expõe marca de terceiro ou segredo" time="0.584281031">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; prioriza correspondência exata de SKU" time="0.218288096">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="rotas públicas &gt; página inexistente não vaza stack trace" time="0.012173925">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; trata separadores e caixa no código (bi-999 = BI999)" time="0.200701059">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="painel administrativo &gt; a área protegida não entrega conteúdo administrativo sem sessão" time="0.011743975">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; ignora acento no termo" time="0.402830794">
+        <testcase classname="tests/e2e/http-surfaces.test.ts" name="painel administrativo &gt; a tela de login existe e não é indexável" time="0.012743027">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; tolera erro leve de digitação no termo" time="0.198765314">
+    </testsuite>
+    <testsuite name="tests/integration/catalog-admin.test.ts" timestamp="2026-08-02T23:14:08.814Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="21" failures="0" errors="0" skipped="0" time="26.407329812">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; concede escrita ao gestor de catálogo" time="0.272956762">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; não retorna nada para consulta com marca de terceiro" time="0.190206212">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega escrita ao auditor mesmo se o frontend pedir" time="0.245808731">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; aplica filtro de categoria e devolve o total correto" time="0.188310144">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega importação ao auditor" time="0.184474673">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; pagina sem repetir famílias" time="0.376862392">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; permite leitura de auditoria ao auditor" time="0.216010457">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; nenhum resultado da busca carrega campo interno" time="0.203684627">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; papéis vêm do banco, não do contexto informado" time="0.185981207">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="autocomplete público &gt; sugere SKU por prefixo" time="0.195097743">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria família com auditoria" time="0.920131587">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:12:52.392Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;product_families&quot;,&quot;entity_id&quot;:&quot;3d99837b-a35a-4d02-b2fe-3928ce3e683f&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;,&quot;admin_name&quot;,&quot;slug&quot;,&quot;summary&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Família de integração&quot;,&quot;admin_name&quot;:&quot;Família de integração (teste)&quot;,&quot;slug&quot;:&quot;zzt-familia-integracao-1785712365555&quot;,&quot;summary&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T23:12:52.392Z&quot;}
+
+            </system-out>
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="autocomplete público &gt; sugere família por termo parcial" time="0.196525733">
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; recusa nome público com marca de terceiro (R-05)" time="0.214975969">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria SKU vinculado à família" time="1.758853397">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:12:53.504Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;family_id&quot;,&quot;public_sku&quot;,&quot;public_name&quot;,&quot;public_description&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;family_id&quot;:&quot;3d99837b-a35a-4d02-b2fe-3928ce3e683f&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T23:12:53.504Z&quot;}
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:12:53.714Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:null},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T23:12:53.711Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; registra mudança de nome em evento próprio de auditoria" time="1.346086802">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:12:55.522Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.update&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;family_id&quot;:&quot;3d99837b-a35a-4d02-b2fe-3928ce3e683f&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;slug&quot;:null,&quot;variation_label&quot;:null,&quot;measure&quot;:null,&quot;capacity&quot;:null,&quot;unit&quot;:null,&quot;internal_original_name&quot;:null,&quot;internal_brand&quot;:null,&quot;internal_manufacturer&quot;:null,&quot;internal_supplier_reference&quot;:null,&quot;internal_notes&quot;:null,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;,&quot;is_on_request&quot;:false,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;,&quot;source&quot;:null,&quot;sort_order&quot;:0,&quot;created_by&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;updated_by&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;created_at&quot;:&quot;2026-08-02T23:12:53.394186+00:00&quot;,&quot;updated_at&quot;:&quot;2026-08-02T23:12:53.256+00:00&quot;,&quot;deleted_at&quot;:null},&quot;new_values&quot;:{&quot;family_id&quot;:&quot;3d99837b-a35a-4d02-b2fe-3928ce3e683f&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T23:12:55.522Z&quot;}
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:12:55.729Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T23:12:55.729Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; lista o SKU pela família e pela busca" time="0.701622649">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; expõe o SKU na visão da família" time="0.969243703">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; retorna NOT_FOUND para SKU inexistente" time="0.427702738">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa publicar SKU que não está apto" time="0.41802206">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa transição de revisão inválida" time="0.426869543">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; percorre DRAFT → UNDER_REVIEW → READY_TO_PUBLISH → PUBLISHED" time="3.143252203">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:00.010Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:00.010Z&quot;}
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:00.912Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:00.912Z&quot;}
+
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:01.825Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.publish&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;a202dc8f-f0e4-415a-b4df-11d715c76e81&quot;,&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;teste de integração&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:01.825Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; grava auditoria de publicação" time="0.241314542">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; aprova imagem própria, com origem, alt e correspondência" time="1.557342907">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:03.619Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;media.status.change&quot;,&quot;entity&quot;:&quot;media_assets&quot;,&quot;entity_id&quot;:&quot;847cb92a-8b80-408d-904a-94cadbbc643e&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_IDENTIFICACAO&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;APROVADA&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:03.619Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem direito confirmado" time="0.666938306">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação com marca visível" time="0.66550836">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem texto alternativo" time="0.670636015">
+        </testcase>
+        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; reprovação mantém a imagem em quarentena e gera evento" time="2.261430682">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:07.617Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;5a497baf-6b02-422c-b11d-39f89e625b72&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;media.status.change&quot;,&quot;entity&quot;:&quot;media_assets&quot;,&quot;entity_id&quot;:&quot;31ff37dd-5ac5-410b-bd89-5bcb7cb7ae13&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_IDENTIFICACAO&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_MARCA_VISIVEL&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;marca aparente&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:07.617Z&quot;}
+
+            </system-out>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/import-pipeline.test.ts" timestamp="2026-08-02T23:14:08.829Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="14" failures="0" errors="0" skipped="0" time="22.942458841">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="permissão da importação &gt; auditor não pode simular nem executar" time="0.390490967">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa versão de contrato divergente" time="0.207137357">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa cabeçalho fora do contrato" time="0.177689378">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; simula sem alterar o catálogo e registra o job" time="3.177954171">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:41.574Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;c31b42dc-a928-4e64-b067-f6b9612e93e9&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;2db2941b-f217-4329-810b-70a92b45c303&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-simulacao.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-67b5f765&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:41.574Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; registra erros de linha inválida sem abortar o lote" time="2.447834395">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:44.946Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;c31b42dc-a928-4e64-b067-f6b9612e93e9&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;c34b33b5-c46b-469d-80d8-0e33aff5a648&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-invalida.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:1,&quot;create&quot;:1,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-1-5213086f&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:44.945Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; bloqueia linha fora do escopo aprovado, sem descartar" time="1.137322847">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:46.528Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;c31b42dc-a928-4e64-b067-f6b9612e93e9&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;0a2be0be-3132-45ec-8fd4-c4cef1cab494&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-escopo.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:1,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:1,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-f7745498&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:46.528Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com assinatura divergente" time="1.346600064">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:47.705Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;c31b42dc-a928-4e64-b067-f6b9612e93e9&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.dry_run&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;74510ac2-7261-410b-a702-d5bc9d2f6e02&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;filename&quot;:&quot;zzt-execucao.csv&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0},&quot;signature&quot;:&quot;v1-2-67b5f765&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:47.705Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com conteúdo diferente do simulado" time="0.448748885">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; executa e cria os SKUs em revisão, nunca publicados direto" time="2.468051294">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:50.556Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;c31b42dc-a928-4e64-b067-f6b9612e93e9&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.execute&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;5e204b22-db08-4d12-9cfc-b3c962ad0ba7&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;dryRunJobId&quot;:&quot;74510ac2-7261-410b-a702-d5bc9d2f6e02&quot;,&quot;summary&quot;:{&quot;total&quot;:2,&quot;create&quot;:2,&quot;update&quot;:0,&quot;unchanged&quot;:0,&quot;blocked&quot;:0,&quot;warnings&quot;:0}},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:50.556Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; guarda o código de origem como código interno não público" time="0.409438689">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; registra auditoria de simulação e de execução" time="0.263219236">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reexecutar a mesma simulação" time="0.644244961">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; reverte o lote por soft delete e marca o job" time="1.978837713">
+            <system-out>
+{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T23:13:53.680Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;c31b42dc-a928-4e64-b067-f6b9612e93e9&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;import.rollback&quot;,&quot;entity&quot;:&quot;import_jobs&quot;,&quot;entity_id&quot;:&quot;5e204b22-db08-4d12-9cfc-b3c962ad0ba7&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:null,&quot;new_values&quot;:null,&quot;context&quot;:{&quot;reverted&quot;:2},&quot;occurredAt&quot;:&quot;2026-08-02T23:13:53.680Z&quot;}
+
+            </system-out>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reverter duas vezes" time="0.433022779">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/public-catalog.test.ts" timestamp="2026-08-02T23:14:08.834Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="22" failures="0" errors="0" skipped="0" time="5.171695011">
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de products" time="0.285529082">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de product_families" time="0.228074266">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de source_records" time="0.206709848">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de import_jobs" time="0.187955243">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de audit_logs" time="0.176666137">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de media_assets" time="0.185420136">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de user_roles" time="0.180341018">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de profiles" time="0.184501124">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; expõe as 31 famílias e os 97 SKUs aprovados" time="0.42802955">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; não expõe nenhum campo proibido" time="0.186529835">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; toda família pública tem categoria, slug e ao menos uma variação" time="0.181925374">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; categorias públicas somam as 31 famílias" time="0.213649888">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; prioriza correspondência exata de SKU" time="0.264247938">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; trata separadores e caixa no código (bi-999 = BI999)" time="0.215944698">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; ignora acento no termo" time="0.445100316">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; tolera erro leve de digitação no termo" time="0.200960435">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; não retorna nada para consulta com marca de terceiro" time="0.218462039">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; aplica filtro de categoria e devolve o total correto" time="0.192588556">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; pagina sem repetir famílias" time="0.379311303">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; nenhum resultado da busca carrega campo interno" time="0.226605193">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="autocomplete público &gt; sugere SKU por prefixo" time="0.18889774">
+        </testcase>
+        <testcase classname="tests/integration/public-catalog.test.ts" name="autocomplete público &gt; sugere família por termo parcial" time="0.185883796">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/security/rls-and-exposure.test.ts" timestamp="2026-08-02T23:14:08.842Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="17" failures="0" errors="0" skipped="0" time="22.822860068">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; nenhuma tabela de catálogo responde ao cliente anônimo" time="2.745634194">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; auditoria não é legível sem autenticação" time="0.174324739">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; cliente anônimo não escreve" time="0.20135109">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário autenticado sem papel não lê o catálogo" time="1.921313988">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; comercial lê catálogo mas não camada interna" time="1.171322729">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; gestor de catálogo lê a camada interna" time="0.176774298">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; nenhum papel escreve diretamente pelo Data API" time="2.949178409">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário só enxerga os próprios papéis" time="0.188283636">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; perfil alheio não é legível" time="0.184230035">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; apenas ADMINISTRADOR e AUDITOR leem audit_logs" time="0.400363338">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; auditoria é imutável para usuários autenticados" time="0.995470164">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; e-mail do ator é mascarado no registro" time="0.205750374">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a visão pública do produto não carrega nenhum campo interno" time="0.213847368">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhum SKU publicado carrega marca de terceiro no nome público" time="0.24845764">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhuma família publicada carrega marca de terceiro" time="0.224460622">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; o esquema gerado não declara nenhuma coluna de preço ou custo (R-04)" time="0.002186667">
+        </testcase>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a verificação de papel no banco responde corretamente" time="0.20714129">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/brand-terms.test.ts" timestamp="2026-08-02T23:14:08.850Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="12" failures="0" errors="0" skipped="0" time="0.014859957">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo exato" time="0.002707985">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; é insensível a caixa" time="0.002195032">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; ignora acentuação" time="0.000649331">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo separado por hífen ou espaço" time="0.001008084">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta em texto longo e múltiplos termos" time="0.0012913">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não gera falso positivo em coincidência parcial" time="0.000458392">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não detecta plural colado (limitação conhecida, exige revisão humana)" time="0.000219194">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; trata valor nulo ou vazio como limpo" time="0.000218828">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; cobre toda a lista de termos" time="0.0011032">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; acusa marca em campo público" time="0.001237977">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; permite marca em campo interno" time="0.00081377">
+        </testcase>
+        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; ignora campos não textuais" time="0.00023548">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/import-plan.test.ts" timestamp="2026-08-02T23:14:08.853Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="14" failures="0" errors="0" skipped="0" time="0.020825914">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica criação" time="0.007571531">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica registro sem alteração" time="0.000982">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica atualização e lista os campos alterados" time="0.00133668">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia família inexistente" time="0.001047582">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia marca de terceiro em nome público" time="0.000521111">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia SKU fora do escopo aprovado" time="0.000409885">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; registra aviso quando há marca em campo interno, sem bloquear" time="0.000506386">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; totaliza corretamente um plano misto" time="0.002136893">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; é determinística para o mesmo arquivo" time="0.001221346">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o conteúdo muda" time="0.00072228">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando a ordem das linhas muda (assinatura amarra linha e operação)" time="0.000640562">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o estado do catálogo muda" time="0.000379437">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; difere entre lotes diferentes" time="0.000425261">
+        </testcase>
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; carrega prefixo de versão e cardinalidade" time="0.000330695">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/import-schema.test.ts" timestamp="2026-08-02T23:14:08.857Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="25" failures="0" errors="0" skipped="0" time="0.019562244">
+        <testcase classname="tests/unit/import-schema.test.ts" name="versão do contrato &gt; expõe versão semântica estável" time="0.001700947">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; aceita cabeçalho completo" time="0.001282616">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa cabeçalho sem coluna obrigatória" time="0.00031688">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa arquivo vazio" time="0.002707306">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; ignora coluna desconhecida sem quebrar as obrigatórias" time="0.000238471">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; valida linha correta" time="0.004621621">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU vazio e nome curto na mesma linha (múltiplos erros)" time="0.001213809">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa família ausente" time="0.000743314">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU duplicado no arquivo" time="0.00110561">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; normaliza booleano sob_consulta" time="0.000428927">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; converte campo vazio em nulo, não em string vazia" time="0.000426455">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa nome público acima do limite" time="0.000633322">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; respeita aspas duplas e vírgulas internas" time="0.000297146">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; remove BOM e linhas em branco" time="0.000273637">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=1+1&quot;" time="0.000244217">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;+1+1&quot;" time="0.000088955">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;-1+1&quot;" time="0.000076016">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;@SUM(A1)&quot;" time="0.000115044">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\t=cmd&quot;" time="0.000078264">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\r=cmd&quot;" time="0.00007519">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;   =HYPERLINK(\&quot;http://x\&quot;)&quot;" time="0.000084744">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=cmd|&apos;/c calc&apos;!A1&quot;" time="0.000068605">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; não altera valor legítimo" time="0.000095777">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza também no parser, célula a célula" time="0.0001669">
+        </testcase>
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza no cabeçalho" time="0.000097914">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T23:14:08.864Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="15" failures="1" errors="0" skipped="0" time="0.034664316">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 21 permissões finas" time="0.013860813">
+            <failure message="expected [ &apos;admin.access&apos;, …(24) ] to have a length of 21 but got 25" type="AssertionError">
+AssertionError: expected [ &apos;admin.access&apos;, …(24) ] to have a length of 21 but got 25
+
+- Expected
++ Received
+
+- 21
++ 25
+
+ ❯ tests/unit/permissions-audit.test.ts:17:25
+            </failure>
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.00079293">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.007377781">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.001046546">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.00274003">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.000578313">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.000318147">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000326233">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.000789812">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.001315163">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.001625692">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.000690548">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000307969">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.000223851">
+        </testcase>
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.000321942">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/serializer.test.ts" timestamp="2026-08-02T23:14:08.869Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="25" failures="0" errors="0" skipped="0" time="0.009501075">
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; expõe exatamente os campos permitidos do produto" time="0.002807655">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_brand" time="0.000430229">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_manufacturer" time="0.000166714">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_supplier_reference" time="0.000113568">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_original_name" time="0.000125439">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_notes" time="0.000119472">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe admin_name" time="0.00021664">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe cost" time="0.00012609">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source" time="0.000413518">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source_record" time="0.000223943">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe rights_document_path" time="0.000190769">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe detected_brand" time="0.000088254">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe audit_log" time="0.000065164">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe conflict_details" time="0.0000633">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe review_status" time="0.000058854">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe created_by" time="0.000083271">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe updated_by" time="0.000072579">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não deixa vazar objeto relacionado inteiro" time="0.000189067">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não contém termos internos no payload serializado" time="0.000197404">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; aplica placeholder quando não há imagem aprovada" time="0.000083799">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; marca imagem real como não-placeholder" time="0.000648744">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; não encontra vazamento na visão pública" time="0.000263726">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; encontra vazamento recursivamente" time="0.00020674">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; percorre arrays aninhados" time="0.000186569">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; tolera valores primitivos e nulos" time="0.000173771">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/state-machine.test.ts" timestamp="2026-08-02T23:14:08.875Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="16" failures="0" errors="0" skipped="0" time="0.01150574">
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; aceita todas as transições declaradas" time="0.002454472">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; recusa todas as transições não declaradas" time="0.000869015">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite pular de DRAFT direto para READY_TO_PUBLISH" time="0.000163628">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite sair de bloqueio direto para apto a publicar" time="0.000215393">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; aceita as transições declaradas quando o registro está apto" time="0.000322987">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro bloqueado" time="0.000214006">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro apenas em revisão" time="0.000283429">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; arquivamento é terminal" time="0.000710861">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; não permite republicar diretamente de PUBLISHED" time="0.000683348">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; aprova imagem própria, sem marca e correspondente" time="0.000287157">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem direito confirmado" time="0.000875362">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem origem registrada" time="0.00014371">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa com marca visível detectada" time="0.000087491">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa quando não corresponde ao produto" time="0.00007808">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; apenas papéis com catalog.publish podem publicar" time="0.000242841">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; nenhum papel além de ADMINISTRADOR gerencia usuários" time="0.001236875">
         </testcase>
     </testsuite>
 </testsuites>

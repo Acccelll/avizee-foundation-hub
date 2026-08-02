@@ -355,3 +355,58 @@ export async function publicSitemapEntries() {
     })),
   };
 }
+
+export interface ReconciledProduct {
+  productId: string;
+  familyId: string | null;
+  sku: string;
+  name: string;
+  variation: string | null;
+  familyName: string | null;
+  familySlug: string | null;
+  categoryName: string | null;
+  categorySlug: string | null;
+}
+
+/**
+ * Reconciliação da Lista de Cotação (Etapa 8): confirma, contra as views
+ * públicas, quais produtos ainda estão publicados e devolve o snapshot
+ * oficial de nome/SKU/variação. Nunca lê tabela administrativa.
+ */
+export async function reconcileProducts(productIds: string[]): Promise<ReconciledProduct[]> {
+  const ids = [...new Set(productIds)].slice(0, 50);
+  if (ids.length === 0) return [];
+
+  const products = unwrap<any[]>(
+    await db()
+      .from("public_products")
+      .select("id, family_id, public_sku, public_name, variation_label")
+      .in("id", ids),
+  );
+  if (products.length === 0) return [];
+
+  const families = unwrap<any[]>(
+    await db()
+      .from("public_families")
+      .select("id, slug, public_name, category_slug, category_name")
+      .in("id", [...new Set(products.map((p) => p.family_id).filter(Boolean))]),
+  );
+  const familyById = new Map(families.map((f) => [f.id, f]));
+
+  return guard(
+    products.map((p) => {
+      const family = familyById.get(p.family_id);
+      return {
+        productId: p.id as string,
+        familyId: (p.family_id ?? null) as string | null,
+        sku: p.public_sku as string,
+        name: p.public_name as string,
+        variation: (p.variation_label ?? null) as string | null,
+        familyName: (family?.public_name ?? null) as string | null,
+        familySlug: (family?.slug ?? null) as string | null,
+        categoryName: (family?.category_name ?? null) as string | null,
+        categorySlug: (family?.category_slug ?? null) as string | null,
+      };
+    }),
+  );
+}

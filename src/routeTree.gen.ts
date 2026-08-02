@@ -27,10 +27,12 @@ import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
 import { Route as AdminProtectedConflitosRouteImport } from './routes/admin/_protected/conflitos'
+import { Route as AdminProtectedCotacoesRouteImport } from './routes/admin/_protected/cotacoes'
 import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_protected/importacao'
 import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
 import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
+import { Route as ApiPublicOutboxWorkerRouteImport } from './routes/api/public/outbox-worker'
 import { Route as ProdutosCategorySlugIndexRouteImport } from './routes/produtos/$categorySlug/index'
 import { Route as ProdutosCategorySlugFamilySlugRouteImport } from './routes/produtos/$categorySlug/$familySlug'
 import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
@@ -130,6 +132,11 @@ const AdminProtectedConflitosRoute = AdminProtectedConflitosRouteImport.update({
   path: '/conflitos',
   getParentRoute: () => AdminProtectedRoute,
 } as any)
+const AdminProtectedCotacoesRoute = AdminProtectedCotacoesRouteImport.update({
+  id: '/cotacoes',
+  path: '/cotacoes',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
 const AdminProtectedImportacaoRoute =
   AdminProtectedImportacaoRouteImport.update({
     id: '/importacao',
@@ -150,6 +157,11 @@ const AdminProtectedNormalizacaoRoute =
 const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   id: '/api/public/health',
   path: '/api/public/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicOutboxWorkerRoute = ApiPublicOutboxWorkerRouteImport.update({
+  id: '/api/public/outbox-worker',
+  path: '/api/public/outbox-worker',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProdutosCategorySlugIndexRoute =
@@ -219,10 +231,12 @@ export interface FileRoutesByFullPath {
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin/': typeof AdminProtectedIndexRoute
   '/produtos/$categorySlug/': typeof ProdutosCategorySlugIndexRoute
@@ -250,10 +264,12 @@ export interface FileRoutesByTo {
   '/produtos': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin': typeof AdminProtectedIndexRoute
   '/produtos/$categorySlug': typeof ProdutosCategorySlugIndexRoute
@@ -283,10 +299,12 @@ export interface FileRoutesById {
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/_protected/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/_protected/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
   '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
   '/produtos/$categorySlug/': typeof ProdutosCategorySlugIndexRoute
@@ -317,10 +335,12 @@ export interface FileRouteTypes {
     | '/produtos/'
     | '/admin/auditoria'
     | '/admin/conflitos'
+    | '/admin/cotacoes'
     | '/admin/importacao'
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/public/health'
+    | '/api/public/outbox-worker'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin/'
     | '/produtos/$categorySlug/'
@@ -348,10 +368,12 @@ export interface FileRouteTypes {
     | '/produtos'
     | '/admin/auditoria'
     | '/admin/conflitos'
+    | '/admin/cotacoes'
     | '/admin/importacao'
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/public/health'
+    | '/api/public/outbox-worker'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin'
     | '/produtos/$categorySlug'
@@ -380,10 +402,12 @@ export interface FileRouteTypes {
     | '/produtos/'
     | '/admin/_protected/auditoria'
     | '/admin/_protected/conflitos'
+    | '/admin/_protected/cotacoes'
     | '/admin/_protected/importacao'
     | '/admin/_protected/midia'
     | '/admin/_protected/normalizacao'
     | '/api/public/health'
+    | '/api/public/outbox-worker'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin/_protected/'
     | '/produtos/$categorySlug/'
@@ -412,6 +436,7 @@ export interface RootRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
+  ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
   ProdutosCategorySlugFamilySlugRoute: typeof ProdutosCategorySlugFamilySlugRoute
   ProdutosCategorySlugIndexRoute: typeof ProdutosCategorySlugIndexRoute
 }
@@ -544,6 +569,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedConflitosRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/cotacoes': {
+      id: '/admin/_protected/cotacoes'
+      path: '/cotacoes'
+      fullPath: '/admin/cotacoes'
+      preLoaderRoute: typeof AdminProtectedCotacoesRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/admin/_protected/importacao': {
       id: '/admin/_protected/importacao'
       path: '/importacao'
@@ -570,6 +602,13 @@ declare module '@tanstack/react-router' {
       path: '/api/public/health'
       fullPath: '/api/public/health'
       preLoaderRoute: typeof ApiPublicHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/outbox-worker': {
+      id: '/api/public/outbox-worker'
+      path: '/api/public/outbox-worker'
+      fullPath: '/api/public/outbox-worker'
+      preLoaderRoute: typeof ApiPublicOutboxWorkerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produtos/$categorySlug/': {
@@ -634,6 +673,7 @@ declare module '@tanstack/react-router' {
 interface AdminProtectedRouteChildren {
   AdminProtectedAuditoriaRoute: typeof AdminProtectedAuditoriaRoute
   AdminProtectedConflitosRoute: typeof AdminProtectedConflitosRoute
+  AdminProtectedCotacoesRoute: typeof AdminProtectedCotacoesRoute
   AdminProtectedImportacaoRoute: typeof AdminProtectedImportacaoRoute
   AdminProtectedMidiaRoute: typeof AdminProtectedMidiaRoute
   AdminProtectedNormalizacaoRoute: typeof AdminProtectedNormalizacaoRoute
@@ -649,6 +689,7 @@ interface AdminProtectedRouteChildren {
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedAuditoriaRoute: AdminProtectedAuditoriaRoute,
   AdminProtectedConflitosRoute: AdminProtectedConflitosRoute,
+  AdminProtectedCotacoesRoute: AdminProtectedCotacoesRoute,
   AdminProtectedImportacaoRoute: AdminProtectedImportacaoRoute,
   AdminProtectedMidiaRoute: AdminProtectedMidiaRoute,
   AdminProtectedNormalizacaoRoute: AdminProtectedNormalizacaoRoute,
@@ -684,6 +725,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
+  ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,
   ProdutosCategorySlugFamilySlugRoute: ProdutosCategorySlugFamilySlugRoute,
   ProdutosCategorySlugIndexRoute: ProdutosCategorySlugIndexRoute,
 }

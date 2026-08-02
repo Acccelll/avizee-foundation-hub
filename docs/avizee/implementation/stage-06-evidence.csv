@@ -1,0 +1,11 @@
+evidencia,metodo,resultado,documento
+suite automatizada,bunx vitest run,174 testes aprovados,184
+type checking,bunx tsgo --noEmit,sem erro,184
+lint,bunx eslint .,sem erro,184
+dry run canonico,scripts/ops/canonical-import.ts dry-run,97 criacoes 0 erros,175
+importacao canonica,scripts/ops/canonical-import.ts execute,97 SKUs criados,176
+idempotencia,segunda simulacao do mesmo arquivo,97 inalterados,177
+rollback,scripts/ops/canonical-import.ts rollback,97 revertidos por soft delete,177
+nao vazamento,scripts/ops/leak-check.ts,0 ocorrencias em 97 produtos e 31 familias,179
+reconciliacao,consulta agregada por categoria,31 familias e 97 SKUs,176
+amostragem,duas amostras por categoria,12 registros conferidos,176

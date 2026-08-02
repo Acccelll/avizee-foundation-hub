@@ -12,16 +12,25 @@ export const Route = createFileRoute("/api/public/health")({
       GET: async () => {
         try {
           const cfg = getServerConfig();
+          const url = process.env["SUPABASE_URL"];
+          const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+          let database = "not_configured";
+          if (url && key) {
+            try {
+              const probe = await fetch(`${url}/auth/v1/health`, {
+                headers: { apikey: key },
+                signal: AbortSignal.timeout(3000),
+              });
+              database = probe.ok ? "ok" : "degraded";
+            } catch {
+              database = "degraded";
+            }
+          }
           return Response.json({
-            status: "ok",
+            status: database === "degraded" ? "degraded" : "ok",
             environment: cfg.APP_ENV,
-            version: process.env["APP_VERSION"] ?? "0.5.0",
-            checks: {
-              application: "ok",
-              configuration: "ok",
-              // DT-02 pendente: banco ainda não provisionado nesta etapa.
-              database: "not_configured",
-            },
+            version: process.env["APP_VERSION"] ?? "0.6.0",
+            checks: { application: "ok", configuration: "ok", database },
           });
         } catch {
           return Response.json({ status: "degraded" }, { status: 503 });

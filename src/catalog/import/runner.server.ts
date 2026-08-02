@@ -109,7 +109,7 @@ export async function runDryRun(
       schema_version: input.schemaVersion,
       entity: "products",
       mode: "DRY_RUN",
-      status: "SIMULATED",
+      status: "DRY_RUN_COMPLETE",
       target_layer: "CANONICAL",
       total_rows: parsed.rows.length,
       valid_rows: valid.length,
@@ -178,7 +178,7 @@ export async function runExecute(
     await auth.admin.from("import_jobs").select("*").eq("id", input.dryRunJobId).maybeSingle()
   ).data as Record<string, unknown> | null;
   if (!job) throw new AppError("NOT_FOUND", { entity: "import_jobs" });
-  if (job["mode"] !== "DRY_RUN" || job["status"] !== "SIMULATED") {
+  if (job["mode"] !== "DRY_RUN" || job["status"] !== "DRY_RUN_COMPLETE") {
     throw new AppError("CONFLICT", undefined, "A simulação informada não está apta a execução.");
   }
   const storedSignature = (job["summary"] as { signature?: string } | null)?.signature;
@@ -214,7 +214,7 @@ export async function runExecute(
       schema_version: job["schema_version"],
       entity: "products",
       mode: "EXECUTE",
-      status: "RUNNING",
+      status: "EXECUTING",
       target_layer: "CANONICAL",
       total_rows: plan.summary.total,
       valid_rows: valid.length,
@@ -240,7 +240,7 @@ export async function runExecute(
     if (item.operation === "BLOCK") {
       // Nunca descartado: vira tarefa de normalização (§25).
       await auth.admin.from("normalization_tasks").insert({
-        reason: "REVISAO_DE_NOME",
+        reason: "NAME_REVIEW",
         title: `Linha bloqueada na importação: ${item.sku}`,
         description: item.blockReason,
         origin: `import:${jobId}`,
@@ -324,7 +324,7 @@ export async function runExecute(
 
   await auth.admin
     .from("import_jobs")
-    .update({ status: "COMPLETED", updated_at: new Date().toISOString() })
+    .update({ status: "EXECUTED", updated_at: new Date().toISOString() })
     .eq("id", jobId);
 
   await audit(auth.admin, {
@@ -344,7 +344,7 @@ export async function runRollback(auth: Authorized, jobId: string) {
   const job = (await auth.admin.from("import_jobs").select("*").eq("id", jobId).maybeSingle())
     .data as Record<string, unknown> | null;
   if (!job) throw new AppError("NOT_FOUND", { entity: "import_jobs" });
-  if (job["mode"] !== "EXECUTE" || job["status"] !== "COMPLETED") {
+  if (job["mode"] !== "EXECUTE" || job["status"] !== "EXECUTED") {
     throw new AppError("CONFLICT", undefined, "Somente uma execução concluída pode ser revertida.");
   }
   if (job["rolled_back_at"]) {

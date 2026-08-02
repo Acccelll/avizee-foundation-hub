@@ -54,6 +54,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
     group: "Operações",
     items: [
       { label: "Importação", to: "/admin/importacao", permission: "import.execute", enabled: true },
+      { label: "Cotações", to: "/admin/cotacoes", permission: "quotation.read", enabled: true },
       { label: "Auditoria", to: "/admin/auditoria", permission: "audit.read", enabled: true },
     ],
   },
@@ -61,7 +62,6 @@ const NAV: { group: string; items: NavItem[] }[] = [
     group: "Em breve",
     items: [
       { label: "Conteúdos", to: "/admin", enabled: false },
-      { label: "Cotações", to: "/admin", enabled: false },
       { label: "Configurações", to: "/admin", enabled: false },
     ],
   },

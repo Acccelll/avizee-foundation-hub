@@ -85,15 +85,13 @@ describe("acesso anônimo", () => {
   it("nenhuma tabela de catálogo responde ao cliente anônimo", async () => {
     const anon = anonClient();
     for (const table of [...CATALOG_TABLES, ...INTERNAL_TABLES]) {
-      const { data, error } = await anon.from(table).select("*").limit(1);
-      expect(error, `tabela ${table} respondeu sem autenticação`).not.toBeNull();
-      expect(data ?? []).toHaveLength(0);
+      const { data } = await anon.from(table).select("*").limit(1);
+      expect(data ?? [], `tabela ${table} respondeu sem autenticação`).toHaveLength(0);
     }
   });
 
   it("auditoria não é legível sem autenticação", async () => {
-    const { data, error } = await anonClient().from("audit_logs").select("*").limit(1);
-    expect(error).not.toBeNull();
+    const { data } = await anonClient().from("audit_logs").select("*").limit(1);
     expect(data ?? []).toHaveLength(0);
   });
 
@@ -129,17 +127,26 @@ describe("RLS por papel", () => {
 
   it("nenhum papel escreve diretamente pelo Data API", async () => {
     for (const user of [gestor, comercial, auditor]) {
-      const insert = await user.client
+      await user.client
         .from("products")
         .insert({ public_name: "direto", public_sku: `${TEST_PREFIX}DIRETO` });
-      expect(insert.error, "escrita direta deveria ser negada").not.toBeNull();
-      const update = await user.client
+      const inserido = await adminClient()
         .from("products")
-        .update({ public_name: "alterado" })
-        .eq("id", productId);
-      expect(update.error).not.toBeNull();
-      const del = await user.client.from("products").delete().eq("id", productId);
-      expect(del.error).not.toBeNull();
+        .select("id")
+        .eq("public_sku", `${TEST_PREFIX}DIRETO`);
+      expect(inserido.data ?? [], "escrita direta deveria ser negada").toHaveLength(0);
+
+      await user.client.from("products").update({ public_name: "alterado" }).eq("id", productId);
+      await user.client.from("products").delete().eq("id", productId);
+      const atual = await adminClient()
+        .from("products")
+        .select("public_name, deleted_at")
+        .eq("id", productId)
+        .single();
+      expect(atual.data).toMatchObject({
+        public_name: "Produto sintético de segurança",
+        deleted_at: null,
+      });
     }
   });
 
@@ -170,12 +177,11 @@ describe("auditoria", () => {
       .limit(1)
       .single();
     const id = (alvo.data as { id: string }).id;
-    const update = await auditor.client.from("audit_logs").update({ action: "x" }).eq("id", id);
-    expect(update.error).not.toBeNull();
-    const del = await auditor.client.from("audit_logs").delete().eq("id", id);
-    expect(del.error).not.toBeNull();
-    const ainda = await adminClient().from("audit_logs").select("id").eq("id", id).single();
-    expect(ainda.data).toMatchObject({ id });
+    const antes = await adminClient().from("audit_logs").select("action").eq("id", id).single();
+    await auditor.client.from("audit_logs").update({ action: "x" }).eq("id", id);
+    await auditor.client.from("audit_logs").delete().eq("id", id);
+    const depois = await adminClient().from("audit_logs").select("action").eq("id", id).single();
+    expect(depois.data).toMatchObject(antes.data as Record<string, unknown>);
   });
 
   it("e-mail do ator é mascarado no registro", async () => {

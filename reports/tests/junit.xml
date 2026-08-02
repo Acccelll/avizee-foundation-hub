@@ -1,55 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="17" failures="4" errors="0" time="16.19275151">
-    <testsuite name="tests/security/rls-and-exposure.test.ts" timestamp="2026-08-02T03:48:58.670Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="17" failures="4" errors="0" skipped="0" time="16.19275151">
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; nenhuma tabela de catálogo responde ao cliente anônimo" time="0.188661439">
-            <failure message="tabela products respondeu sem autenticação: expected null not to be null" type="AssertionError">
-AssertionError: tabela products respondeu sem autenticação: expected null not to be null
- ❯ tests/security/rls-and-exposure.test.ts:89:71
-            </failure>
+<testsuites name="vitest tests" tests="17" failures="0" errors="0" time="20.689794378">
+    <testsuite name="tests/security/rls-and-exposure.test.ts" timestamp="2026-08-02T03:49:38.598Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="17" failures="0" errors="0" skipped="0" time="20.689794378">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; nenhuma tabela de catálogo responde ao cliente anônimo" time="2.574652232">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; auditoria não é legível sem autenticação" time="0.18078849">
-            <failure message="expected null not to be null" type="AssertionError">
-AssertionError: expected null not to be null
- ❯ tests/security/rls-and-exposure.test.ts:96:23
-            </failure>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; auditoria não é legível sem autenticação" time="0.175906151">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; cliente anônimo não escreve" time="0.173492647">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="acesso anônimo &gt; cliente anônimo não escreve" time="0.180505585">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário autenticado sem papel não lê o catálogo" time="1.75372743">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário autenticado sem papel não lê o catálogo" time="1.754557209">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; comercial lê catálogo mas não camada interna" time="1.06718629">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; comercial lê catálogo mas não camada interna" time="1.076059368">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; gestor de catálogo lê a camada interna" time="0.178665638">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; gestor de catálogo lê a camada interna" time="0.168111852">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; nenhum papel escreve diretamente pelo Data API" time="0.336366362">
-            <failure message="expected null not to be null" type="AssertionError">
-AssertionError: expected null not to be null
- ❯ tests/security/rls-and-exposure.test.ts:140:32
-            </failure>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; nenhum papel escreve diretamente pelo Data API" time="2.804304251">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário só enxerga os próprios papéis" time="0.215262328">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; usuário só enxerga os próprios papéis" time="0.167088255">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; perfil alheio não é legível" time="0.184117453">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="RLS por papel &gt; perfil alheio não é legível" time="0.174596325">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; apenas ADMINISTRADOR e AUDITOR leem audit_logs" time="0.364955795">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; apenas ADMINISTRADOR e AUDITOR leem audit_logs" time="0.336656951">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; auditoria é imutável para usuários autenticados" time="0.398471662">
-            <failure message="expected null not to be null" type="AssertionError">
-AssertionError: expected null not to be null
- ❯ tests/security/rls-and-exposure.test.ts:174:30
-            </failure>
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; auditoria é imutável para usuários autenticados" time="0.951015579">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; e-mail do ator é mascarado no registro" time="0.198849414">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="auditoria &gt; e-mail do ator é mascarado no registro" time="0.197442344">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a visão pública do produto não carrega nenhum campo interno" time="0.211650262">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a visão pública do produto não carrega nenhum campo interno" time="0.205075813">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhum SKU publicado carrega marca de terceiro no nome público" time="0.199278684">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhum SKU publicado carrega marca de terceiro no nome público" time="0.194032365">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhuma família publicada carrega marca de terceiro" time="0.195885211">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; nenhuma família publicada carrega marca de terceiro" time="0.206839432">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; o esquema gerado não declara nenhuma coluna de preço ou custo (R-04)" time="0.002944599">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; o esquema gerado não declara nenhuma coluna de preço ou custo (R-04)" time="0.005969746">
         </testcase>
-        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a verificação de papel no banco responde corretamente" time="0.209295911">
+        <testcase classname="tests/security/rls-and-exposure.test.ts" name="não vazamento (R-04 / R-05) &gt; a verificação de papel no banco responde corretamente" time="0.206256648">
         </testcase>
     </testsuite>
 </testsuites>

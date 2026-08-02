@@ -1,49 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="22" failures="0" errors="0" time="4.911407735">
-    <testsuite name="tests/integration/public-catalog.test.ts" timestamp="2026-08-02T05:06:45.933Z" hostname="sandbox-pool-5f9b7fc875-xdvhq" tests="22" failures="0" errors="0" skipped="0" time="4.911407735">
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de products" time="0.283647875">
+<testsuites name="vitest tests" tests="15" failures="0" errors="0" time="0.015140994">
+    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T23:14:24.092Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="15" failures="0" errors="0" skipped="0" time="0.015140994">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 25 permissões finas (21 do catálogo + 4 da cotação/outbox)" time="0.002454317">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de product_families" time="0.203506593">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.000647572">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de source_records" time="0.180205588">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.002847465">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de import_jobs" time="0.188031303">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.000937501">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de audit_logs" time="0.207544265">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.000747684">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de media_assets" time="0.184940139">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.00051678">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de user_roles" time="0.178689486">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.00041298">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="isolamento do papel anônimo &gt; bloqueia leitura anônima de profiles" time="0.172119698">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000325201">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; expõe as 31 famílias e os 97 SKUs aprovados" time="0.380315252">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.00187968">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; não expõe nenhum campo proibido" time="0.182166074">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.000615222">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; toda família pública tem categoria, slug e ao menos uma variação" time="0.18603385">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.00090484">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="views públicas &gt; categorias públicas somam as 31 famílias" time="0.184943558">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.000182791">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; prioriza correspondência exata de SKU" time="0.218288096">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000156873">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; trata separadores e caixa no código (bi-999 = BI999)" time="0.200701059">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.000214107">
         </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; ignora acento no termo" time="0.402830794">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; tolera erro leve de digitação no termo" time="0.198765314">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; não retorna nada para consulta com marca de terceiro" time="0.190206212">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; aplica filtro de categoria e devolve o total correto" time="0.188310144">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; pagina sem repetir famílias" time="0.376862392">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="busca pública &gt; nenhum resultado da busca carrega campo interno" time="0.203684627">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="autocomplete público &gt; sugere SKU por prefixo" time="0.195097743">
-        </testcase>
-        <testcase classname="tests/integration/public-catalog.test.ts" name="autocomplete público &gt; sugere família por termo parcial" time="0.196525733">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.000233525">
         </testcase>
     </testsuite>
 </testsuites>

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/api/public/health")({
           let database = "not_configured";
           if (url && key) {
             try {
-              const probe = await fetch(`${url}/rest/v1/`, {
+              const probe = await fetch(`${url}/auth/v1/health`, {
                 headers: { apikey: key },
                 signal: AbortSignal.timeout(3000),
               });

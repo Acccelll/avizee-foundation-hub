@@ -152,6 +152,13 @@ export type Database = {
             referencedRelation: "products"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "code_conflicts_canonical_product_id_fkey"
+            columns: ["canonical_product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
         ]
       }
       documents: {
@@ -260,6 +267,20 @@ export type Database = {
             referencedRelation: "product_families"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "family_applications_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_applications_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
         ]
       }
       family_segments: {
@@ -291,6 +312,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "product_families"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_segments_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_segments_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
           },
           {
             foreignKeyName: "family_segments_segment_id_fkey"
@@ -327,6 +362,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "product_families"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_solutions_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_solutions_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
           },
           {
             foreignKeyName: "family_solutions_solution_id_fkey"
@@ -397,6 +446,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "product_families"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_specifications_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "family_specifications_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
           },
           {
             foreignKeyName: "family_specifications_unit_id_fkey"
@@ -846,6 +909,20 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "normalization_tasks_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "normalization_tasks_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "normalization_tasks_media_asset_id_fkey"
             columns: ["media_asset_id"]
             isOneToOne: false
@@ -857,6 +934,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "normalization_tasks_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
           {
@@ -905,10 +989,31 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "placeholder_usage_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "placeholder_usage_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "placeholder_usage_product_id_fkey"
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "placeholder_usage_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
         ]
@@ -954,6 +1059,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_applications_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
         ]
@@ -1039,6 +1151,13 @@ export type Database = {
             referencedRelation: "products"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "product_codes_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
         ]
       }
       product_documents: {
@@ -1082,10 +1201,31 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "product_documents_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_documents_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "product_documents_product_id_fkey"
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_documents_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
         ]
@@ -1163,6 +1303,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "product_families_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "public_categories"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "product_families_subcategory_id_fkey"
             columns: ["subcategory_id"]
             isOneToOne: false
@@ -1208,6 +1355,20 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "product_images_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_images_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "product_images_media_asset_id_fkey"
             columns: ["media_asset_id"]
             isOneToOne: false
@@ -1219,6 +1380,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
         ]
@@ -1257,6 +1425,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_segments_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
           {
@@ -1333,6 +1508,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "product_specifications_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "product_specifications_unit_id_fkey"
             columns: ["unit_id"]
             isOneToOne: false
@@ -1387,6 +1569,13 @@ export type Database = {
             columns: ["category_id"]
             isOneToOne: false
             referencedRelation: "product_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_subcategories_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "public_categories"
             referencedColumns: ["id"]
           },
         ]
@@ -1480,6 +1669,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "product_families"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "products_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "products_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
           },
         ]
       }
@@ -1601,10 +1804,31 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "related_products_source_family_id_fkey"
+            columns: ["source_family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "related_products_source_family_id_fkey"
+            columns: ["source_family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "related_products_source_product_id_fkey"
             columns: ["source_product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "related_products_source_product_id_fkey"
+            columns: ["source_product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
           {
@@ -1615,10 +1839,31 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "related_products_target_family_id_fkey"
+            columns: ["target_family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "related_products_target_family_id_fkey"
+            columns: ["target_family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "related_products_target_product_id_fkey"
             columns: ["target_product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "related_products_target_product_id_fkey"
+            columns: ["target_product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
         ]
@@ -1788,10 +2033,31 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "source_records_canonical_family_id_fkey"
+            columns: ["canonical_family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "source_records_canonical_family_id_fkey"
+            columns: ["canonical_family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
             foreignKeyName: "source_records_canonical_product_id_fkey"
             columns: ["canonical_product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "source_records_canonical_product_id_fkey"
+            columns: ["canonical_product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
             referencedColumns: ["id"]
           },
           {
@@ -1902,6 +2168,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "specification_scopes_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "public_categories"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "specification_scopes_definition_id_fkey"
             columns: ["definition_id"]
             isOneToOne: false
@@ -1914,6 +2187,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "product_families"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "specification_scopes_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "specification_scopes_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
           },
         ]
       }
@@ -1964,9 +2251,239 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_categories: {
+        Row: {
+          description: string | null
+          family_count: number | null
+          id: string | null
+          name: string | null
+          product_count: number | null
+          slug: string | null
+          sort_order: number | null
+        }
+        Insert: {
+          description?: string | null
+          family_count?: never
+          id?: string | null
+          name?: string | null
+          product_count?: never
+          slug?: string | null
+          sort_order?: number | null
+        }
+        Update: {
+          description?: string | null
+          family_count?: never
+          id?: string | null
+          name?: string | null
+          product_count?: never
+          slug?: string | null
+          sort_order?: number | null
+        }
+        Relationships: []
+      }
+      public_documents: {
+        Row: {
+          byte_size: number | null
+          document_date: string | null
+          document_type: string | null
+          family_id: string | null
+          id: string | null
+          language: string | null
+          mime_type: string | null
+          product_id: string | null
+          slug: string | null
+          sort_order: number | null
+          title: string | null
+          url: string | null
+          version: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_documents_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "product_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_documents_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_documents_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
+            foreignKeyName: "product_documents_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_documents_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      public_families: {
+        Row: {
+          application_slugs: string[] | null
+          applications: string[] | null
+          category_name: string | null
+          category_slug: string | null
+          id: string | null
+          primary_application: string | null
+          public_description: string | null
+          public_name: string | null
+          segment_slugs: string[] | null
+          segments: string[] | null
+          slug: string | null
+          sort_order: number | null
+          summary: string | null
+          variation_count: number | null
+        }
+        Relationships: []
+      }
+      public_media: {
+        Row: {
+          alt_text: string | null
+          family_id: string | null
+          height: number | null
+          id: string | null
+          product_id: string | null
+          role: string | null
+          sort_order: number | null
+          url: string | null
+          width: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_images_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "product_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_images_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_images_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      public_products: {
+        Row: {
+          capacity: string | null
+          category_name: string | null
+          category_slug: string | null
+          family_id: string | null
+          family_name: string | null
+          family_slug: string | null
+          id: string | null
+          is_on_request: boolean | null
+          measure: string | null
+          public_description: string | null
+          public_name: string | null
+          public_sku: string | null
+          slug: string | null
+          sort_order: number | null
+          unit: string | null
+          variation_label: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "product_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "products_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "products_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+        ]
+      }
+      public_search_index: {
+        Row: {
+          application_slugs: string[] | null
+          applications: string[] | null
+          category_name: string | null
+          category_slug: string | null
+          family_id: string | null
+          family_slug: string | null
+          name_norm: string | null
+          public_name: string | null
+          segment_slugs: string[] | null
+          segments: string[] | null
+          skus: string[] | null
+          sort_order: number | null
+          summary: string | null
+          tsv: unknown
+          variation_count: number | null
+        }
+        Relationships: []
+      }
+      public_specifications: {
+        Row: {
+          code: string | null
+          display_order: number | null
+          family_id: string | null
+          label: string | null
+          product_id: string | null
+          unit: string | null
+          value: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      avz_norm_code: { Args: { t: string }; Returns: string }
+      avz_norm_text: { Args: { t: string }; Returns: string }
+      avz_unaccent: { Args: { t: string }; Returns: string }
       can_read_catalog: { Args: { _user_id: string }; Returns: boolean }
       can_read_internal: { Args: { _user_id: string }; Returns: boolean }
       has_any_role: {
@@ -1982,6 +2499,44 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      public_autocomplete: {
+        Args: { p_limit?: number; q: string }
+        Returns: {
+          family_slug: string
+          kind: string
+          label: string
+          sku: string
+          sublabel: string
+        }[]
+      }
+      refresh_public_search_index: { Args: never; Returns: undefined }
+      search_public_catalog: {
+        Args: {
+          p_application?: string
+          p_category?: string
+          p_family?: string
+          p_limit?: number
+          p_offset?: number
+          p_segment?: string
+          p_sort?: string
+          q?: string
+        }
+        Returns: {
+          applications: string[]
+          category_name: string
+          category_slug: string
+          family_id: string
+          family_slug: string
+          matched_sku: string
+          public_name: string
+          rank: number
+          segments: string[]
+          skus: string[]
+          summary: string
+          total_count: number
+          variation_count: number
+        }[]
       }
     }
     Enums: {

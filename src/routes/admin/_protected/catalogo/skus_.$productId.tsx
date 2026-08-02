@@ -89,7 +89,7 @@ function ProductDetail() {
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <StatusBadge value={product?.["review_status"]} />
           <StatusBadge value={product?.["publication_status"]} />
-          {(REVIEW_TRANSITIONS[product?.["review_status"] as never] ?? []).map((next: string) => (
+          {((REVIEW_TRANSITIONS as Record<string, string[]>)[product?.["review_status"] ] ?? []).map((next: string) => (
             <button
               key={next}
               type="button"
@@ -103,7 +103,7 @@ function ProductDetail() {
               Revisão → {next}
             </button>
           ))}
-          {(PUBLICATION_TRANSITIONS[product?.["publication_status"] as never] ?? []).map((next: string) => (
+          {((PUBLICATION_TRANSITIONS as Record<string, string[]>)[product?.["publication_status"] ] ?? []).map((next: string) => (
             <button
               key={next}
               type="button"

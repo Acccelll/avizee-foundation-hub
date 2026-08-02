@@ -26,6 +26,8 @@ import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protect
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
 import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
+import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
+import { Route as AdminProtectedCatalogoSkusProductIdRouteImport } from './routes/admin/_protected/catalogo/skus_.$productId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -114,6 +116,18 @@ const AdminProtectedCatalogoSkusRoute =
     path: '/catalogo/skus',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
+const AdminProtectedCatalogoFamiliasFamilyIdRoute =
+  AdminProtectedCatalogoFamiliasFamilyIdRouteImport.update({
+    id: '/catalogo/familias_/$familyId',
+    path: '/catalogo/familias/$familyId',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoSkusProductIdRoute =
+  AdminProtectedCatalogoSkusProductIdRouteImport.update({
+    id: '/catalogo/skus_/$productId',
+    path: '/catalogo/skus/$productId',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -133,6 +147,8 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminProtectedIndexRoute
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -151,6 +167,8 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminProtectedIndexRoute
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -171,6 +189,8 @@ export interface FileRoutesById {
   '/admin/_protected/': typeof AdminProtectedIndexRoute
   '/admin/_protected/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  '/admin/_protected/catalogo/skus_/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -192,6 +212,8 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
+    | '/admin/catalogo/familias/$familyId'
+    | '/admin/catalogo/skus/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -210,6 +232,8 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
+    | '/admin/catalogo/familias/$familyId'
+    | '/admin/catalogo/skus/$productId'
   id:
     | '__root__'
     | '/'
@@ -229,6 +253,8 @@ export interface FileRouteTypes {
     | '/admin/_protected/'
     | '/admin/_protected/catalogo/familias'
     | '/admin/_protected/catalogo/skus'
+    | '/admin/_protected/catalogo/familias_/$familyId'
+    | '/admin/_protected/catalogo/skus_/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -369,6 +395,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedCatalogoSkusRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/catalogo/familias_/$familyId': {
+      id: '/admin/_protected/catalogo/familias_/$familyId'
+      path: '/catalogo/familias/$familyId'
+      fullPath: '/admin/catalogo/familias/$familyId'
+      preLoaderRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/catalogo/skus_/$productId': {
+      id: '/admin/_protected/catalogo/skus_/$productId'
+      path: '/catalogo/skus/$productId'
+      fullPath: '/admin/catalogo/skus/$productId'
+      preLoaderRoute: typeof AdminProtectedCatalogoSkusProductIdRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
   }
 }
 
@@ -376,12 +416,18 @@ interface AdminProtectedRouteChildren {
   AdminProtectedIndexRoute: typeof AdminProtectedIndexRoute
   AdminProtectedCatalogoFamiliasRoute: typeof AdminProtectedCatalogoFamiliasRoute
   AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
+  AdminProtectedCatalogoFamiliasFamilyIdRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
+  AdminProtectedCatalogoSkusProductIdRoute: typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedIndexRoute: AdminProtectedIndexRoute,
   AdminProtectedCatalogoFamiliasRoute: AdminProtectedCatalogoFamiliasRoute,
   AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
+  AdminProtectedCatalogoFamiliasFamilyIdRoute:
+    AdminProtectedCatalogoFamiliasFamilyIdRoute,
+  AdminProtectedCatalogoSkusProductIdRoute:
+    AdminProtectedCatalogoSkusProductIdRoute,
 }
 
 const AdminProtectedRouteWithChildren = AdminProtectedRoute._addFileChildren(

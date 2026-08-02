@@ -160,7 +160,7 @@ function FamilyDetail() {
             <StatusBadge value={family?.["publication_status"]} />
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
-            {(REVIEW_TRANSITIONS[family?.["review_status"] as never] ?? []).map((next: string) => (
+            {((REVIEW_TRANSITIONS as Record<string, string[]>)[family?.["review_status"] ] ?? []).map((next: string) => (
               <button
                 key={next}
                 type="button"
@@ -174,7 +174,7 @@ function FamilyDetail() {
                 Revisão → {next}
               </button>
             ))}
-            {(PUBLICATION_TRANSITIONS[family?.["publication_status"] as never] ?? []).map((next: string) => (
+            {((PUBLICATION_TRANSITIONS as Record<string, string[]>)[family?.["publication_status"] ] ?? []).map((next: string) => (
               <button
                 key={next}
                 type="button"

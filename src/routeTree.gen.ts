@@ -23,9 +23,14 @@ import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
+import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
+import { Route as AdminProtectedConflitosRouteImport } from './routes/admin/_protected/conflitos'
+import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
+import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
 import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
+import { Route as AdminProtectedCatalogoTaxonomiaRouteImport } from './routes/admin/_protected/catalogo/taxonomia'
 import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
 import { Route as AdminProtectedCatalogoSkusProductIdRouteImport } from './routes/admin/_protected/catalogo/skus_.$productId'
 
@@ -99,6 +104,27 @@ const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminProtectedRoute,
 } as any)
+const AdminProtectedAuditoriaRoute = AdminProtectedAuditoriaRouteImport.update({
+  id: '/auditoria',
+  path: '/auditoria',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedConflitosRoute = AdminProtectedConflitosRouteImport.update({
+  id: '/conflitos',
+  path: '/conflitos',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedMidiaRoute = AdminProtectedMidiaRouteImport.update({
+  id: '/midia',
+  path: '/midia',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedNormalizacaoRoute =
+  AdminProtectedNormalizacaoRouteImport.update({
+    id: '/normalizacao',
+    path: '/normalizacao',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   id: '/api/public/health',
   path: '/api/public/health',
@@ -114,6 +140,12 @@ const AdminProtectedCatalogoSkusRoute =
   AdminProtectedCatalogoSkusRouteImport.update({
     id: '/catalogo/skus',
     path: '/catalogo/skus',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedCatalogoTaxonomiaRoute =
+  AdminProtectedCatalogoTaxonomiaRouteImport.update({
+    id: '/catalogo/taxonomia',
+    path: '/catalogo/taxonomia',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
 const AdminProtectedCatalogoFamiliasFamilyIdRoute =
@@ -143,10 +175,15 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
+  '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/midia': typeof AdminProtectedMidiaRoute
+  '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/': typeof AdminProtectedIndexRoute
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
@@ -163,10 +200,15 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
+  '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/midia': typeof AdminProtectedMidiaRoute
+  '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin': typeof AdminProtectedIndexRoute
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
@@ -185,10 +227,15 @@ export interface FileRoutesById {
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
+  '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
+  '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
   '/admin/_protected/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
+  '/admin/_protected/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
   '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   '/admin/_protected/catalogo/skus_/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
@@ -208,10 +255,15 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/admin/auditoria'
+    | '/admin/conflitos'
+    | '/admin/midia'
+    | '/admin/normalizacao'
     | '/api/public/health'
     | '/admin/'
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
+    | '/admin/catalogo/taxonomia'
     | '/admin/catalogo/familias/$familyId'
     | '/admin/catalogo/skus/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -228,10 +280,15 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/admin/auditoria'
+    | '/admin/conflitos'
+    | '/admin/midia'
+    | '/admin/normalizacao'
     | '/api/public/health'
     | '/admin'
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
+    | '/admin/catalogo/taxonomia'
     | '/admin/catalogo/familias/$familyId'
     | '/admin/catalogo/skus/$productId'
   id:
@@ -249,10 +306,15 @@ export interface FileRouteTypes {
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/admin/_protected/auditoria'
+    | '/admin/_protected/conflitos'
+    | '/admin/_protected/midia'
+    | '/admin/_protected/normalizacao'
     | '/api/public/health'
     | '/admin/_protected/'
     | '/admin/_protected/catalogo/familias'
     | '/admin/_protected/catalogo/skus'
+    | '/admin/_protected/catalogo/taxonomia'
     | '/admin/_protected/catalogo/familias_/$familyId'
     | '/admin/_protected/catalogo/skus_/$productId'
   fileRoutesById: FileRoutesById
@@ -374,6 +436,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedIndexRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/auditoria': {
+      id: '/admin/_protected/auditoria'
+      path: '/auditoria'
+      fullPath: '/admin/auditoria'
+      preLoaderRoute: typeof AdminProtectedAuditoriaRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/conflitos': {
+      id: '/admin/_protected/conflitos'
+      path: '/conflitos'
+      fullPath: '/admin/conflitos'
+      preLoaderRoute: typeof AdminProtectedConflitosRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/midia': {
+      id: '/admin/_protected/midia'
+      path: '/midia'
+      fullPath: '/admin/midia'
+      preLoaderRoute: typeof AdminProtectedMidiaRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/normalizacao': {
+      id: '/admin/_protected/normalizacao'
+      path: '/normalizacao'
+      fullPath: '/admin/normalizacao'
+      preLoaderRoute: typeof AdminProtectedNormalizacaoRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/api/public/health': {
       id: '/api/public/health'
       path: '/api/public/health'
@@ -395,6 +485,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedCatalogoSkusRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/catalogo/taxonomia': {
+      id: '/admin/_protected/catalogo/taxonomia'
+      path: '/catalogo/taxonomia'
+      fullPath: '/admin/catalogo/taxonomia'
+      preLoaderRoute: typeof AdminProtectedCatalogoTaxonomiaRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/admin/_protected/catalogo/familias_/$familyId': {
       id: '/admin/_protected/catalogo/familias_/$familyId'
       path: '/catalogo/familias/$familyId'
@@ -413,17 +510,27 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminProtectedRouteChildren {
+  AdminProtectedAuditoriaRoute: typeof AdminProtectedAuditoriaRoute
+  AdminProtectedConflitosRoute: typeof AdminProtectedConflitosRoute
+  AdminProtectedMidiaRoute: typeof AdminProtectedMidiaRoute
+  AdminProtectedNormalizacaoRoute: typeof AdminProtectedNormalizacaoRoute
   AdminProtectedIndexRoute: typeof AdminProtectedIndexRoute
   AdminProtectedCatalogoFamiliasRoute: typeof AdminProtectedCatalogoFamiliasRoute
   AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
+  AdminProtectedCatalogoTaxonomiaRoute: typeof AdminProtectedCatalogoTaxonomiaRoute
   AdminProtectedCatalogoFamiliasFamilyIdRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   AdminProtectedCatalogoSkusProductIdRoute: typeof AdminProtectedCatalogoSkusProductIdRoute
 }
 
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
+  AdminProtectedAuditoriaRoute: AdminProtectedAuditoriaRoute,
+  AdminProtectedConflitosRoute: AdminProtectedConflitosRoute,
+  AdminProtectedMidiaRoute: AdminProtectedMidiaRoute,
+  AdminProtectedNormalizacaoRoute: AdminProtectedNormalizacaoRoute,
   AdminProtectedIndexRoute: AdminProtectedIndexRoute,
   AdminProtectedCatalogoFamiliasRoute: AdminProtectedCatalogoFamiliasRoute,
   AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
+  AdminProtectedCatalogoTaxonomiaRoute: AdminProtectedCatalogoTaxonomiaRoute,
   AdminProtectedCatalogoFamiliasFamilyIdRoute:
     AdminProtectedCatalogoFamiliasFamilyIdRoute,
   AdminProtectedCatalogoSkusProductIdRoute:

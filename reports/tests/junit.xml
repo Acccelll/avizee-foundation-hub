@@ -1,79 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="21" failures="0" errors="0" time="22.653427716">
-    <testsuite name="tests/integration/catalog-admin.test.ts" timestamp="2026-08-02T03:44:03.850Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="21" failures="0" errors="0" skipped="0" time="22.653427716">
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; concede escrita ao gestor de catálogo" time="0.213604205">
+<testsuites name="vitest tests" tests="14" failures="8" errors="0" time="11.883139385">
+    <testsuite name="tests/integration/import-pipeline.test.ts" timestamp="2026-08-02T03:45:02.349Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="14" failures="8" errors="0" skipped="0" time="11.883139385">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="permissão da importação &gt; auditor não pode simular nem executar" time="0.386656408">
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega escrita ao auditor mesmo se o frontend pedir" time="0.206009308">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa versão de contrato divergente" time="0.229873225">
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; nega importação ao auditor" time="0.18199993">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; recusa cabeçalho fora do contrato" time="0.164706079">
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; permite leitura de auditoria ao auditor" time="0.175854186">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="autorização de servidor &gt; papéis vêm do banco, não do contexto informado" time="0.177849084">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria família com auditoria" time="0.836521774">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:46.446Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;product_families&quot;,&quot;entity_id&quot;:&quot;ed8b6715-8623-42b9-9b25-9d6099ef35ee&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;,&quot;admin_name&quot;,&quot;slug&quot;,&quot;summary&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Família de integração&quot;,&quot;admin_name&quot;:&quot;Família de integração (teste)&quot;,&quot;slug&quot;:&quot;zzt-familia-integracao-1785642221161&quot;,&quot;summary&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:43:46.445Z&quot;}
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; simula sem alterar o catálogo e registra o job" time="0.889879474">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ runDryRun src/catalog/import/runner.server.ts:126:20
+ ❯ tests/integration/import-pipeline.test.ts:100:17
 
-            </system-out>
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;50e5351f-c1e8-4887-8223-0cbec3dc4799&apos;, internal: { cause: &apos;invalid input value for enum import_job_status: &quot;SIMULATED&quot;&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; recusa nome público com marca de terceiro (R-05)" time="0.180955173">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; cria SKU vinculado à família" time="1.6000031">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:47.465Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.create&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;family_id&quot;,&quot;public_sku&quot;,&quot;public_name&quot;,&quot;public_description&quot;],&quot;previous_values&quot;:null,&quot;new_values&quot;:{&quot;family_id&quot;:&quot;ed8b6715-8623-42b9-9b25-9d6099ef35ee&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:43:47.465Z&quot;}
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; registra erros de linha inválida sem abortar o lote" time="0.615346131">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ runDryRun src/catalog/import/runner.server.ts:126:20
+ ❯ tests/integration/import-pipeline.test.ts:124:17
 
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:47.672Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:null},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:43:47.672Z&quot;}
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;083efbbf-a2d6-49d6-bde5-eff1855ad93b&apos;, internal: { cause: &apos;invalid input value for enum import_job_status: &quot;SIMULATED&quot;&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="simulação obrigatória &gt; bloqueia linha fora do escopo aprovado, sem descartar" time="0.633250533">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ runDryRun src/catalog/import/runner.server.ts:126:20
+ ❯ tests/integration/import-pipeline.test.ts:136:17
 
-            </system-out>
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;90455dfe-8e47-43cb-834f-8b2a2e32b670&apos;, internal: { cause: &apos;invalid input value for enum import_job_status: &quot;SIMULATED&quot;&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; registra mudança de nome em evento próprio de auditoria" time="1.209863651">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:49.263Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.update&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;public_name&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;family_id&quot;:&quot;ed8b6715-8623-42b9-9b25-9d6099ef35ee&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético de integração&quot;,&quot;slug&quot;:null,&quot;variation_label&quot;:null,&quot;measure&quot;:null,&quot;capacity&quot;:null,&quot;unit&quot;:null,&quot;internal_original_name&quot;:null,&quot;internal_brand&quot;:null,&quot;internal_manufacturer&quot;:null,&quot;internal_supplier_reference&quot;:null,&quot;internal_notes&quot;:null,&quot;public_description&quot;:&quot;Registro sintético da suíte automatizada.&quot;,&quot;is_on_request&quot;:false,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;,&quot;source&quot;:null,&quot;sort_order&quot;:0,&quot;created_by&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;updated_by&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;created_at&quot;:&quot;2026-08-02T03:43:47.386035+00:00&quot;,&quot;updated_at&quot;:&quot;2026-08-02T03:43:47.261+00:00&quot;,&quot;deleted_at&quot;:null},&quot;new_values&quot;:{&quot;family_id&quot;:&quot;ed8b6715-8623-42b9-9b25-9d6099ef35ee&quot;,&quot;public_sku&quot;:&quot;zzt-SKU1&quot;,&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:43:49.263Z&quot;}
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com assinatura divergente" time="0.603963164">
+            <failure message="Serviço temporariamente indisponível." type="AppError">
+AppError: Serviço temporariamente indisponível.
+ ❯ runDryRun src/catalog/import/runner.server.ts:126:20
+ ❯ tests/integration/import-pipeline.test.ts:156:17
 
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:49.470Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:null,&quot;action&quot;:&quot;catalog.name.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético de integração&quot;},&quot;new_values&quot;:{&quot;public_name&quot;:&quot;Produto sintético renomeado&quot;},&quot;context&quot;:null,&quot;occurredAt&quot;:&quot;2026-08-02T03:43:49.470Z&quot;}
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;SERVICE_UNAVAILABLE&apos;, status: 503, occurrenceId: &apos;a8fdba94-5ff0-41e0-9943-1bdf849c304c&apos;, internal: { cause: &apos;invalid input value for enum import_job_status: &quot;SIMULATED&quot;&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa executar com conteúdo diferente do simulado" time="0.405334207">
+        </testcase>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; executa e cria os SKUs em revisão, nunca publicados direto" time="0.37242401">
+            <failure message="Recurso não encontrado." type="AppError">
+AppError: Recurso não encontrado.
+ ❯ runExecute src/catalog/import/runner.server.ts:180:19
+ ❯ tests/integration/import-pipeline.test.ts:178:20
 
-            </system-out>
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;NOT_FOUND&apos;, status: 404, occurrenceId: &apos;a878055b-b40b-4b34-a192-a474fcfb7fba&apos;, internal: { entity: &apos;import_jobs&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; lista o SKU pela família e pela busca" time="0.60165096">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; guarda o código de origem como código interno não público" time="0.218523069">
+            <failure message="Cannot read properties of null (reading &apos;id&apos;)" type="TypeError">
+TypeError: Cannot read properties of null (reading &apos;id&apos;)
+ ❯ tests/integration/import-pipeline.test.ts:207:58
+            </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; expõe o SKU na visão da família" time="0.639778676">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; registra auditoria de simulação e de execução" time="0.206514903">
+            <failure message="expected [] to include &apos;import.dry_run&apos;" type="AssertionError">
+AssertionError: expected [] to include &apos;import.dry_run&apos;
+ ❯ tests/integration/import-pipeline.test.ts:217:19
+            </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="CRUD de família e SKU &gt; retorna NOT_FOUND para SKU inexistente" time="0.370836624">
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reexecutar a mesma simulação" time="0.401490208">
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa publicar SKU que não está apto" time="0.402811072">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; recusa transição de revisão inválida" time="0.378281">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; percorre DRAFT → UNDER_REVIEW → READY_TO_PUBLISH → PUBLISHED" time="2.840745683">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:53.075Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;review_status&quot;:&quot;DRAFT&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:53.075Z&quot;}
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; reverte o lote por soft delete e marca o job" time="0.373838059">
+            <failure message="Recurso não encontrado." type="AppError">
+AppError: Recurso não encontrado.
+ ❯ runRollback src/catalog/import/runner.server.ts:346:19
+ ❯ tests/integration/import-pipeline.test.ts:230:20
 
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:53.887Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.status.change&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;review_status&quot;:&quot;UNDER_REVIEW&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:53.887Z&quot;}
-
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:54.707Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;catalog.publish&quot;,&quot;entity&quot;:&quot;products&quot;,&quot;entity_id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:[&quot;review_status&quot;,&quot;publication_status&quot;],&quot;previous_values&quot;:{&quot;id&quot;:&quot;16ae38dd-b4c3-454b-a0e4-7867ad35c6f0&quot;,&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;NOT_PUBLISHED&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;READY_TO_PUBLISH&quot;,&quot;publication_status&quot;:&quot;PUBLISHED&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;teste de integração&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:54.706Z&quot;}
-
-            </system-out>
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;NOT_FOUND&apos;, status: 404, occurrenceId: &apos;e1f9ba19-28f5-44b5-a0bd-f92e0fbce34a&apos;, internal: { entity: &apos;import_jobs&apos; }, detail: undefined, toPublicJSON: &apos;Function&lt;toPublicJSON&gt;&apos;, toResponse: &apos;Function&lt;toResponse&gt;&apos; }
+            </failure>
         </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="máquina de estados persistida &gt; grava auditoria de publicação" time="0.204006941">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; aprova imagem própria, com origem, alt e correspondência" time="1.427516002">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:56.347Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;media.status.change&quot;,&quot;entity&quot;:&quot;media_assets&quot;,&quot;entity_id&quot;:&quot;9a069884-7b98-42a4-b846-2d5d94fde1a2&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_IDENTIFICACAO&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;APROVADA&quot;},&quot;context&quot;:{&quot;reason&quot;:null},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:56.347Z&quot;}
-
-            </system-out>
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem direito confirmado" time="0.60278617">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação com marca visível" time="0.592659135">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; recusa aprovação sem texto alternativo" time="0.576308909">
-        </testcase>
-        <testcase classname="tests/integration/catalog-admin.test.ts" name="revisão de imagem &gt; reprovação mantém a imagem em quarentena e gera evento" time="2.003816342">
-            <system-out>
-{&quot;level&quot;:&quot;info&quot;,&quot;ts&quot;:&quot;2026-08-02T03:43:59.914Z&quot;,&quot;event&quot;:&quot;audit&quot;,&quot;env&quot;:&quot;development&quot;,&quot;actor_id&quot;:&quot;6ddd43de-c6a6-40a3-b7c4-9f1b895afcfe&quot;,&quot;actor_email_masked&quot;:&quot;z***@teste.avizee.invalid&quot;,&quot;action&quot;:&quot;media.status.change&quot;,&quot;entity&quot;:&quot;media_assets&quot;,&quot;entity_id&quot;:&quot;4d46fb36-ebcb-4f57-869b-21d936a7aa55&quot;,&quot;result&quot;:&quot;success&quot;,&quot;origin&quot;:null,&quot;changed_fields&quot;:null,&quot;previous_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_IDENTIFICACAO&quot;},&quot;new_values&quot;:{&quot;review_status&quot;:&quot;PENDENTE_MARCA_VISIVEL&quot;},&quot;context&quot;:{&quot;reason&quot;:&quot;marca aparente&quot;},&quot;occurredAt&quot;:&quot;2026-08-02T03:43:59.913Z&quot;}
-
-            </system-out>
+        <testcase classname="tests/integration/import-pipeline.test.ts" name="execução amarrada à simulação &gt; recusa reverter duas vezes" time="0.402780265">
         </testcase>
     </testsuite>
 </testsuites>

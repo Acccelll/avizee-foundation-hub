@@ -1,0 +1,13 @@
+campo,decisao,pagina,tratamento,bloqueia_publicacao
+Telefone,Q-08,/contato,informação em confirmação,nao
+WhatsApp,Q-08,/contato,bloco desativado,nao
+E-mail,Q-08,/contato,informação em confirmação,nao
+Endereço,Q-08,/contato,sem endereço e sem mapa,nao
+Horário de atendimento,Q-08,/contato,informação em confirmação,nao
+Razão social,Q-13,/termos-de-uso;/politica-de-privacidade,informação em confirmação,sim
+CNPJ,Q-13,/termos-de-uso;/politica-de-privacidade,informação em confirmação,sim
+Controlador LGPD,Q-13,/politica-de-privacidade,informação em confirmação,sim
+Canal do titular LGPD,Q-13,/politica-de-privacidade,informação em confirmação,sim
+Prazo de resposta comercial,O-10,/;/contato;/cotacao,nenhuma promessa exibida,nao
+Missão visão e valores,sem texto aprovado,/sobre,bloco oculto,nao
+Páginas de detalhe de solução,DEC-07/DECT-12,/solucoes,aviso de pendência,nao

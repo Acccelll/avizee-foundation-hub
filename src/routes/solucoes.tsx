@@ -15,7 +15,7 @@ interface Application {
 export const Route = createFileRoute("/solucoes")({
   loader: async () => {
     const facets = await fetchFacets();
-    return { applications: facets.applications as Application[] };
+    return { applications: facets.applications as unknown as Application[] };
   },
   head: () =>
     buildMeta({
@@ -56,7 +56,7 @@ function Solucoes() {
             Aplicações atendidas
           </h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {applications.map((application) => (
+            {(applications as Application[]).map((application) => (
               <li key={application.slug}>
                 <Link
                   to="/produtos"

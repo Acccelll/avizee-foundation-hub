@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="6" failures="6" errors="0" time="0">
+    <testsuite name="tests/unit/brand-terms.test.ts" timestamp="2026-08-02T03:40:08.979Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="tests/unit/brand-terms.test.ts" time="0">
+            <failure message="Cannot find package &apos;@/catalog/brand-terms&apos; imported from /dev-server/tests/unit/brand-terms.test.ts" type="Error">
+Error: Cannot find package &apos;@/catalog/brand-terms&apos; imported from /dev-server/tests/unit/brand-terms.test.ts
+ ❯ tests/unit/brand-terms.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;ERR_MODULE_NOT_FOUND&apos; }
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/import-plan.test.ts" timestamp="2026-08-02T03:40:08.984Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="tests/unit/import-plan.test.ts" name="tests/unit/import-plan.test.ts" time="0">
+            <failure message="Cannot find package &apos;@/catalog/import/plan&apos; imported from /dev-server/tests/unit/import-plan.test.ts" type="Error">
+Error: Cannot find package &apos;@/catalog/import/plan&apos; imported from /dev-server/tests/unit/import-plan.test.ts
+ ❯ tests/unit/import-plan.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;ERR_MODULE_NOT_FOUND&apos; }
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/import-schema.test.ts" timestamp="2026-08-02T03:40:08.986Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="tests/unit/import-schema.test.ts" name="tests/unit/import-schema.test.ts" time="0">
+            <failure message="Cannot find package &apos;@/catalog/import/schema&apos; imported from /dev-server/tests/unit/import-schema.test.ts" type="Error">
+Error: Cannot find package &apos;@/catalog/import/schema&apos; imported from /dev-server/tests/unit/import-schema.test.ts
+ ❯ tests/unit/import-schema.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;ERR_MODULE_NOT_FOUND&apos; }
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T03:40:08.987Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="tests/unit/permissions-audit.test.ts" time="0">
+            <failure message="Cannot find package &apos;@/permissions/model&apos; imported from /dev-server/tests/unit/permissions-audit.test.ts" type="Error">
+Error: Cannot find package &apos;@/permissions/model&apos; imported from /dev-server/tests/unit/permissions-audit.test.ts
+ ❯ tests/unit/permissions-audit.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;ERR_MODULE_NOT_FOUND&apos; }
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/serializer.test.ts" timestamp="2026-08-02T03:40:08.991Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="tests/unit/serializer.test.ts" name="tests/unit/serializer.test.ts" time="0">
+            <failure message="Cannot find package &apos;@/catalog/serializer&apos; imported from /dev-server/tests/unit/serializer.test.ts" type="Error">
+Error: Cannot find package &apos;@/catalog/serializer&apos; imported from /dev-server/tests/unit/serializer.test.ts
+ ❯ tests/unit/serializer.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;ERR_MODULE_NOT_FOUND&apos; }
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/state-machine.test.ts" timestamp="2026-08-02T03:40:08.992Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="1" failures="1" errors="0" skipped="0" time="0">
+        <testcase classname="tests/unit/state-machine.test.ts" name="tests/unit/state-machine.test.ts" time="0">
+            <failure message="Cannot find package &apos;@/catalog/types&apos; imported from /dev-server/tests/unit/state-machine.test.ts" type="Error">
+Error: Cannot find package &apos;@/catalog/types&apos; imported from /dev-server/tests/unit/state-machine.test.ts
+ ❯ tests/unit/state-machine.test.ts:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: &apos;ERR_MODULE_NOT_FOUND&apos; }
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

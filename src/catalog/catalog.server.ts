@@ -14,7 +14,8 @@ import {
 } from "@/catalog/types";
 import type { Authorized } from "@/catalog/guard.server";
 
-type Row = Record<string, unknown>;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type Row = Record<string, any>;
 
 function unwrap<T>(result: { data: T | null; error: { message: string } | null }): T {
   if (result.error) throw new AppError("SERVICE_UNAVAILABLE", { cause: result.error.message });
@@ -47,11 +48,11 @@ export async function listTaxonomy(auth: Authorized) {
 /* ------------------------------------------------------------------ */
 
 export interface FamilyFilters {
-  search?: string | null;
-  categoryId?: string | null;
-  reviewStatus?: string | null;
-  publicationStatus?: string | null;
-  page?: number;
+  search?: string | null | undefined;
+  categoryId?: string | null | undefined;
+  reviewStatus?: string | null | undefined;
+  publicationStatus?: string | null | undefined;
+  page?: number | undefined;
 }
 
 const PAGE_SIZE = 25;
@@ -111,7 +112,7 @@ export async function getFamily(auth: Authorized, id: string) {
 
 export async function upsertFamily(
   auth: Authorized,
-  input: Row & { id?: string | null },
+  input: Row & { id?: string | null | undefined },
 ): Promise<{ id: string }> {
   const problems = assertNoBrandInPublicFields(input);
   if (problems.length > 0) throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
@@ -153,9 +154,9 @@ export async function upsertFamily(
 /* ------------------------------------------------------------------ */
 
 export interface ProductFilters extends FamilyFilters {
-  familyId?: string | null;
-  withoutImage?: boolean;
-  blockedOnly?: boolean;
+  familyId?: string | null | undefined;
+  withoutImage?: boolean | undefined;
+  blockedOnly?: boolean | undefined;
 }
 
 export async function listProducts(auth: Authorized, filters: ProductFilters) {
@@ -220,7 +221,7 @@ export async function getProduct(auth: Authorized, id: string) {
 
 export async function upsertProduct(
   auth: Authorized,
-  input: Row & { id?: string | null },
+  input: Row & { id?: string | null | undefined },
 ): Promise<{ id: string }> {
   const problems = assertNoBrandInPublicFields(input);
   if (problems.length > 0) throw new AppError("VALIDATION_ERROR", { problems }, problems.join("; "));
@@ -278,9 +279,9 @@ export async function changeStatus(
   input: {
     entity: EntityTable;
     id: string;
-    reviewStatus?: ReviewStatus;
-    publicationStatus?: PublicationStatus;
-    reason?: string | null;
+    reviewStatus?: ReviewStatus | undefined;
+    publicationStatus?: PublicationStatus | undefined;
+    reason?: string | null | undefined;
   },
 ) {
   const current = unwrap(
@@ -355,7 +356,7 @@ export async function changeStatus(
 
 export async function listMedia(
   auth: Authorized,
-  filters: { reviewStatus?: string | null; search?: string | null; page?: number },
+  filters: { reviewStatus?: string | null | undefined; search?: string | null | undefined; page?: number | undefined },
 ) {
   const page = Math.max(1, filters.page ?? 1);
   let query = auth.admin.from("media_assets").select("*", { count: "exact" }).is("deleted_at", null);
@@ -370,7 +371,7 @@ export async function listMedia(
 
 export async function reviewMedia(
   auth: Authorized,
-  input: { id: string; toStatus: string; reason?: string | null; matchesProduct?: boolean },
+  input: { id: string; toStatus: string; reason?: string | null | undefined; matchesProduct?: boolean | undefined },
 ) {
   const asset = unwrap(
     await auth.admin.from("media_assets").select("*").eq("id", input.id).maybeSingle(),
@@ -430,7 +431,7 @@ export async function reviewMedia(
 
 export async function listNormalizationTasks(
   auth: Authorized,
-  filters: { status?: string | null; reason?: string | null; page?: number },
+  filters: { status?: string | null | undefined; reason?: string | null | undefined; page?: number | undefined },
 ) {
   const page = Math.max(1, filters.page ?? 1);
   let query = auth.admin.from("normalization_tasks").select("*", { count: "exact" });
@@ -445,7 +446,7 @@ export async function listNormalizationTasks(
 
 export async function updateNormalizationTask(
   auth: Authorized,
-  input: { id: string; status?: string; decision?: string | null; comment?: string | null },
+  input: { id: string; status?: string | undefined; decision?: string | null | undefined; comment?: string | null | undefined },
 ) {
   const before = unwrap(
     await auth.admin.from("normalization_tasks").select("*").eq("id", input.id).maybeSingle(),
@@ -491,7 +492,7 @@ export async function listConflicts(auth: Authorized, status?: string | null) {
 
 export async function resolveConflict(
   auth: Authorized,
-  input: { id: string; decision: string; canonicalProductId?: string | null },
+  input: { id: string; decision: string; canonicalProductId?: string | null | undefined },
 ) {
   const before = unwrap(
     await auth.admin.from("code_conflicts").select("*").eq("id", input.id).maybeSingle(),
@@ -527,7 +528,7 @@ export async function resolveConflict(
 
 export async function listAuditLogs(
   auth: Authorized,
-  filters: { entity?: string | null; action?: string | null; page?: number },
+  filters: { entity?: string | null | undefined; action?: string | null | undefined; page?: number | undefined },
 ) {
   const page = Math.max(1, filters.page ?? 1);
   let query = auth.admin.from("audit_logs").select("*", { count: "exact" });

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Execução da importação controlada (§26–§34 da Etapa 6).
  * Regra central: nenhuma execução ocorre sem simulação prévia bem-sucedida
@@ -65,7 +66,7 @@ export interface DryRunResult {
 /** Simulação obrigatória: valida, planeja e registra o job sem alterar o catálogo. */
 export async function runDryRun(
   auth: Authorized,
-  input: { filename: string; content: string; schemaVersion: string; allowedSkus?: string[] | null },
+  input: { filename: string; content: string; schemaVersion: string; allowedSkus?: string[] | null | undefined },
 ): Promise<DryRunResult> {
   if (input.schemaVersion !== IMPORT_SCHEMA_VERSION) {
     throw new AppError(
@@ -157,7 +158,7 @@ export async function runDryRun(
 /** Execução: só prossegue com a mesma assinatura da simulação (§28). */
 export async function runExecute(
   auth: Authorized,
-  input: { dryRunJobId: string; signature: string; content: string; allowedSkus?: string[] | null },
+  input: { dryRunJobId: string; signature: string; content: string; allowedSkus?: string[] | null | undefined },
 ) {
   const job = (
     await auth.admin.from("import_jobs").select("*").eq("id", input.dryRunJobId).maybeSingle()
@@ -213,7 +214,8 @@ export async function runExecute(
   if (error) throw new AppError("SERVICE_UNAVAILABLE", { cause: error.message });
   const jobId = (created as { id: string }).id;
 
-  const rowLogs: Record<string, unknown>[] = [];
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const rowLogs: Record<string, any>[] = [];
 
   for (const item of plan.items) {
     if (item.operation === "UNCHANGED") continue;
@@ -378,7 +380,7 @@ export async function listImportJobs(auth: Authorized) {
     .select("*")
     .order("created_at", { ascending: false })
     .limit(50);
-  return (data ?? []) as Record<string, unknown>[];
+  return (data ?? []) as Record<string, any>[];
 }
 
 export async function getImportJob(auth: Authorized, jobId: string) {
@@ -389,8 +391,8 @@ export async function getImportJob(auth: Authorized, jobId: string) {
     auth.admin.from("import_errors").select("*").eq("import_job_id", jobId).order("row_number"),
   ]);
   return {
-    job: job as Record<string, unknown>,
-    rows: (rows.data ?? []) as Record<string, unknown>[],
-    errors: (errors.data ?? []) as Record<string, unknown>[],
+    job: job as Record<string, any>,
+    rows: (rows.data ?? []) as Record<string, any>[],
+    errors: (errors.data ?? []) as Record<string, any>[],
   };
 }

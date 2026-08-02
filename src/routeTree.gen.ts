@@ -23,9 +23,6 @@ import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
-import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
-import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
-import { Route as ApiAuthSessionRouteImport } from './routes/api/auth/session'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 
 const IndexRoute = IndexRouteImport.update({
@@ -98,21 +95,6 @@ const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminProtectedRoute,
 } as any)
-const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
-  id: '/api/auth/login',
-  path: '/api/auth/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
-  id: '/api/auth/logout',
-  path: '/api/auth/logout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthSessionRoute = ApiAuthSessionRouteImport.update({
-  id: '/api/auth/session',
-  path: '/api/auth/session',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   id: '/api/public/health',
   path: '/api/public/health',
@@ -133,9 +115,6 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
-  '/api/auth/login': typeof ApiAuthLoginRoute
-  '/api/auth/logout': typeof ApiAuthLogoutRoute
-  '/api/auth/session': typeof ApiAuthSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/': typeof AdminProtectedIndexRoute
 }
@@ -152,9 +131,6 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
-  '/api/auth/login': typeof ApiAuthLoginRoute
-  '/api/auth/logout': typeof ApiAuthLogoutRoute
-  '/api/auth/session': typeof ApiAuthSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin': typeof AdminProtectedIndexRoute
 }
@@ -173,9 +149,6 @@ export interface FileRoutesById {
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
-  '/api/auth/login': typeof ApiAuthLoginRoute
-  '/api/auth/logout': typeof ApiAuthLogoutRoute
-  '/api/auth/session': typeof ApiAuthSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
 }
@@ -195,9 +168,6 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
-    | '/api/auth/login'
-    | '/api/auth/logout'
-    | '/api/auth/session'
     | '/api/public/health'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -214,9 +184,6 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/admin/acesso-negado'
     | '/admin/login'
-    | '/api/auth/login'
-    | '/api/auth/logout'
-    | '/api/auth/session'
     | '/api/public/health'
     | '/admin'
   id:
@@ -234,9 +201,6 @@ export interface FileRouteTypes {
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
-    | '/api/auth/login'
-    | '/api/auth/logout'
-    | '/api/auth/session'
     | '/api/public/health'
     | '/admin/_protected/'
   fileRoutesById: FileRoutesById
@@ -255,9 +219,6 @@ export interface RootRouteChildren {
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
-  ApiAuthLoginRoute: typeof ApiAuthLoginRoute
-  ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
-  ApiAuthSessionRoute: typeof ApiAuthSessionRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
 }
 
@@ -361,27 +322,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedIndexRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
-    '/api/auth/login': {
-      id: '/api/auth/login'
-      path: '/api/auth/login'
-      fullPath: '/api/auth/login'
-      preLoaderRoute: typeof ApiAuthLoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/logout': {
-      id: '/api/auth/logout'
-      path: '/api/auth/logout'
-      fullPath: '/api/auth/logout'
-      preLoaderRoute: typeof ApiAuthLogoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/session': {
-      id: '/api/auth/session'
-      path: '/api/auth/session'
-      fullPath: '/api/auth/session'
-      preLoaderRoute: typeof ApiAuthSessionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/public/health': {
       id: '/api/public/health'
       path: '/api/public/health'
@@ -418,9 +358,6 @@ const rootRouteChildren: RootRouteChildren = {
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
-  ApiAuthLoginRoute: ApiAuthLoginRoute,
-  ApiAuthLogoutRoute: ApiAuthLogoutRoute,
-  ApiAuthSessionRoute: ApiAuthSessionRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
 }
 export const routeTree = rootRouteImport

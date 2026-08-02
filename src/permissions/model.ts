@@ -1,5 +1,5 @@
 /**
- * RBAC — fundação (§21 da Etapa 5).
+ * RBAC — Etapa 5 (§21) estendido na Etapa 6 (§37).
  * Origem: docs/avizee/111-role-permission-matrix.md e architecture/permissions.csv.
  * Somente papéis aprovados. Verificação obrigatória no servidor.
  */
@@ -17,13 +17,28 @@ export type Role = (typeof ROLES)[number];
 
 export const PERMISSIONS = [
   "admin.access",
+  // Catálogo
   "catalog.read",
   "catalog.write",
+  "catalog.publish",
+  "catalog.internal.read",
+  "taxonomy.write",
+  "spec.write",
+  "conflict.resolve",
+  // Mídia e documentos
+  "media.read",
+  "media.write",
+  "media.approve",
+  "document.write",
+  // Importação
+  "import.execute",
+  "import.rollback",
+  // Conteúdo e comercial
   "content.read",
   "content.write",
   "content.publish",
   "quotation.read",
-  "media.review",
+  // Governança
   "settings.write",
   "users.manage",
   "audit.read",
@@ -31,15 +46,38 @@ export const PERMISSIONS = [
 
 export type Permission = (typeof PERMISSIONS)[number];
 
-/** Menor privilégio: cada papel recebe apenas o necessário. */
+/** Menor privilégio: cada papel recebe apenas o necessário (§37). */
 export const ROLE_PERMISSIONS: Record<Role, readonly Permission[]> = {
   ADMINISTRADOR: PERMISSIONS,
-  GESTOR_DE_CATALOGO: ["admin.access", "catalog.read", "catalog.write", "media.review"],
-  EDITOR: ["admin.access", "content.read", "content.write", "content.publish", "media.review"],
-  AUTOR: ["admin.access", "content.read", "content.write"],
-  REVISOR_TECNICO: ["admin.access", "catalog.read", "content.read"],
+  GESTOR_DE_CATALOGO: [
+    "admin.access",
+    "catalog.read",
+    "catalog.write",
+    "catalog.publish",
+    "catalog.internal.read",
+    "taxonomy.write",
+    "spec.write",
+    "conflict.resolve",
+    "media.read",
+    "media.write",
+    "media.approve",
+    "document.write",
+    "import.execute",
+    "import.rollback",
+  ],
+  EDITOR: [
+    "admin.access",
+    "catalog.read",
+    "content.read",
+    "content.write",
+    "content.publish",
+    "media.read",
+    "media.write",
+  ],
+  AUTOR: ["admin.access", "content.read", "content.write", "media.read"],
+  REVISOR_TECNICO: ["admin.access", "catalog.read", "content.read", "media.read"],
   COMERCIAL: ["admin.access", "quotation.read", "catalog.read"],
-  AUDITOR: ["admin.access", "audit.read", "catalog.read", "content.read"],
+  AUDITOR: ["admin.access", "audit.read", "catalog.read", "content.read", "media.read"],
 };
 
 export function permissionsFor(roles: readonly Role[]): Permission[] {
@@ -50,4 +88,8 @@ export function permissionsFor(roles: readonly Role[]): Permission[] {
 
 export function hasPermission(roles: readonly Role[], permission: Permission): boolean {
   return roles.some((role) => (ROLE_PERMISSIONS[role] ?? []).includes(permission));
+}
+
+export function isRole(value: string): value is Role {
+  return (ROLES as readonly string[]).includes(value);
 }

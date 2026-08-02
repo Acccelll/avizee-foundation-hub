@@ -8,6 +8,19 @@ import { fetchQuotationDashboard, fetchQuotations } from "@/quotation/admin.func
 import { PageHeader, Pagination, QueryState, StatusBadge, Table, inputClass } from "@/components/admin/ui";
 import { QUOTATION_STATUSES, STATUS_LABEL, type QuotationStatus } from "@/quotation/model";
 
+interface QuotationRow {
+  id: string;
+  protocol: string;
+  status: QuotationStatus;
+  companyName: string;
+  contactName: string;
+  location: string | null;
+  itemCount: number;
+  unavailableItemCount: number;
+  createdAt: string;
+}
+
+
 export const Route = createFileRoute("/admin/_protected/cotacoes")({
   head: () =>
     buildMeta({ title: "Cotações", description: "Painel comercial de listas de cotação." }),

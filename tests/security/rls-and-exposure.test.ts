@@ -2,10 +2,11 @@
  * FASE E — segurança: RLS por papel, ausência de acesso anônimo,
  * imutabilidade da auditoria e não vazamento de dados internos (R-04/R-05).
  */
+import { readFile } from "node:fs/promises";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { authorize } from "@/catalog/guard.server";
 import { upsertProduct } from "@/catalog/catalog.server";
-import { toPublicProduct } from "@/catalog/serializer";
+import { findLeakedFields, toPublicProduct } from "@/catalog/serializer";
 import { BRAND_TERMS } from "@/catalog/brand-terms";
 import {
   TEST_PREFIX,
@@ -195,7 +196,8 @@ describe("não vazamento (R-04 / R-05)", () => {
     const row = data as Record<string, unknown>;
     expect(row["internal_brand"]).toBe(BRAND_TERMS[0]);
 
-    const publico = toPublicProduct(row);
+    const publico = toPublicProduct({ product: row });
+    expect(findLeakedFields(publico)).toEqual([]);
     const serializado = JSON.stringify(publico).toLowerCase();
     for (const campo of [
       "internal_brand",
@@ -248,7 +250,16 @@ describe("não vazamento (R-04 / R-05)", () => {
     }
   });
 
-  it("o banco não possui nenhuma coluna de preço ou custo (R-04)", async () => {
+  it("o esquema gerado não declara nenhuma coluna de preço ou custo (R-04)", async () => {
+    const types = await readFile(new URL("../../src/integrations/supabase/types.ts", import.meta.url), "utf8");
+    for (const proibido of ["price", "preco", "cost", "custo", "valor_unitario", "desconto"]) {
+      expect(types.toLowerCase(), `coluna proibida: ${proibido}`).not.toMatch(
+        new RegExp(`\\b${proibido}\\b\\s*[?:]`),
+      );
+    }
+  });
+
+  it("a verificação de papel no banco responde corretamente", async () => {
     const { data, error } = await adminClient().rpc("has_role", {
       _user_id: gestor.id,
       _role: "GESTOR_DE_CATALOGO",

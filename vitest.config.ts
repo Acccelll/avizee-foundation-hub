@@ -1,5 +1,5 @@
 import { defineConfig } from "vitest/config";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { fileURLToPath } from "node:url";
 
 /**
  * Suíte automatizada da Etapa 6.1 (quita DV-05-09).
@@ -10,7 +10,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
  *  - e2e         → superfícies HTTP servidas pelo dev server
  */
 export default defineConfig({
-  plugins: [tsconfigPaths()],
+  resolve: {
+    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
+  },
   test: {
     environment: "node",
     globals: false,

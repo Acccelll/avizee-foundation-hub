@@ -79,7 +79,7 @@ describe("classificação de operações", () => {
 
   it("registra aviso quando há marca em campo interno, sem bloquear", () => {
     const item = plan([
-      "AG011,Agulha inox 15x20,agulhas-descartaveis,,,,,,,,walmur,,",
+      "AG011,Agulha inox 15x20,agulhas-descartaveis,,,,,,,,,walmur,",
     ]).items[0];
     expect(item?.operation).toBe("CREATE");
     expect(item?.warnings).toContain("marca registrada em campo interno");

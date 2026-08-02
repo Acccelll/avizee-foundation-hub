@@ -1,233 +1,229 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="107" failures="1" errors="0" time="0.111620735">
-    <testsuite name="tests/unit/brand-terms.test.ts" timestamp="2026-08-02T03:40:18.128Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="12" failures="0" errors="0" skipped="0" time="0.017285796">
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo exato" time="0.004475723">
+<testsuites name="vitest tests" tests="107" failures="0" errors="0" time="0.119458296">
+    <testsuite name="tests/unit/brand-terms.test.ts" timestamp="2026-08-02T03:40:28.810Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="12" failures="0" errors="0" skipped="0" time="0.011481168">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo exato" time="0.002555953">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; é insensível a caixa" time="0.001580461">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; é insensível a caixa" time="0.001400755">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; ignora acentuação" time="0.000353503">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; ignora acentuação" time="0.000304385">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo separado por hífen ou espaço" time="0.001190914">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta termo separado por hífen ou espaço" time="0.000329538">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta em texto longo e múltiplos termos" time="0.003130575">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; detecta em texto longo e múltiplos termos" time="0.001196171">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não gera falso positivo em coincidência parcial" time="0.000557549">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não gera falso positivo em coincidência parcial" time="0.000547475">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não detecta plural colado (limitação conhecida, exige revisão humana)" time="0.000269924">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; não detecta plural colado (limitação conhecida, exige revisão humana)" time="0.000270986">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; trata valor nulo ou vazio como limpo" time="0.000241557">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; trata valor nulo ou vazio como limpo" time="0.000277118">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; cobre toda a lista de termos" time="0.00112633">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="detecção de marca &gt; cobre toda a lista de termos" time="0.001324932">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; acusa marca em campo público" time="0.000668573">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; acusa marca em campo público" time="0.000638794">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; permite marca em campo interno" time="0.000414595">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; permite marca em campo interno" time="0.00030388">
         </testcase>
-        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; ignora campos não textuais" time="0.000153598">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/import-plan.test.ts" timestamp="2026-08-02T03:40:18.135Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="14" failures="1" errors="0" skipped="0" time="0.029002796">
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica criação" time="0.008320287">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica registro sem alteração" time="0.000941141">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica atualização e lista os campos alterados" time="0.001298673">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia família inexistente" time="0.000954512">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia marca de terceiro em nome público" time="0.00054726">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia SKU fora do escopo aprovado" time="0.000648089">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; registra aviso quando há marca em campo interno, sem bloquear" time="0.006173063">
-            <failure message="expected [] to include &apos;marca registrada em campo interno&apos;" type="AssertionError">
-AssertionError: expected [] to include &apos;marca registrada em campo interno&apos;
- ❯ tests/unit/import-plan.test.ts:85:28
-            </failure>
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; totaliza corretamente um plano misto" time="0.002540911">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; é determinística para o mesmo arquivo" time="0.001176819">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o conteúdo muda" time="0.000782794">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando a ordem das linhas muda (assinatura amarra linha e operação)" time="0.000942028">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o estado do catálogo muda" time="0.001274039">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; difere entre lotes diferentes" time="0.000534069">
-        </testcase>
-        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; carrega prefixo de versão e cardinalidade" time="0.000348206">
+        <testcase classname="tests/unit/brand-terms.test.ts" name="campos públicos &gt; ignora campos não textuais" time="0.000129289">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/import-schema.test.ts" timestamp="2026-08-02T03:40:18.141Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="25" failures="0" errors="0" skipped="0" time="0.016997119">
-        <testcase classname="tests/unit/import-schema.test.ts" name="versão do contrato &gt; expõe versão semântica estável" time="0.001582347">
+    <testsuite name="tests/unit/import-plan.test.ts" timestamp="2026-08-02T03:40:28.818Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="14" failures="0" errors="0" skipped="0" time="0.033170681">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica criação" time="0.010008362">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; aceita cabeçalho completo" time="0.003300267">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica registro sem alteração" time="0.002096489">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa cabeçalho sem coluna obrigatória" time="0.000278555">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; classifica atualização e lista os campos alterados" time="0.002181163">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa arquivo vazio" time="0.000996215">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia família inexistente" time="0.00170575">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; ignora coluna desconhecida sem quebrar as obrigatórias" time="0.000214724">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia marca de terceiro em nome público" time="0.000834738">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; valida linha correta" time="0.002179194">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; bloqueia SKU fora do escopo aprovado" time="0.001020715">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU vazio e nome curto na mesma linha (múltiplos erros)" time="0.001149472">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; registra aviso quando há marca em campo interno, sem bloquear" time="0.000611222">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa família ausente" time="0.000493013">
+        <testcase classname="tests/unit/import-plan.test.ts" name="classificação de operações &gt; totaliza corretamente um plano misto" time="0.000891098">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU duplicado no arquivo" time="0.000883133">
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; é determinística para o mesmo arquivo" time="0.001728545">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; normaliza booleano sob_consulta" time="0.000374691">
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o conteúdo muda" time="0.001876181">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; converte campo vazio em nulo, não em string vazia" time="0.000290345">
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando a ordem das linhas muda (assinatura amarra linha e operação)" time="0.001841212">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa nome público acima do limite" time="0.000593845">
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; muda quando o estado do catálogo muda" time="0.000913545">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; respeita aspas duplas e vírgulas internas" time="0.000242566">
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; difere entre lotes diferentes" time="0.001168769">
         </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; remove BOM e linhas em branco" time="0.000245584">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=1+1&quot;" time="0.000141557">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;+1+1&quot;" time="0.000062548">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;-1+1&quot;" time="0.000065419">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;@SUM(A1)&quot;" time="0.000067986">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\t=cmd&quot;" time="0.000069795">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\r=cmd&quot;" time="0.000106314">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;   =HYPERLINK(\&quot;http://x\&quot;)&quot;" time="0.000179015">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=cmd|&apos;/c calc&apos;!A1&quot;" time="0.000090875">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; não altera valor legítimo" time="0.000880252">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza também no parser, célula a célula" time="0.000195364">
-        </testcase>
-        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza no cabeçalho" time="0.000112885">
+        <testcase classname="tests/unit/import-plan.test.ts" name="assinatura do plano &gt; carrega prefixo de versão e cardinalidade" time="0.00085483">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T03:40:18.149Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="15" failures="0" errors="0" skipped="0" time="0.0197021">
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 21 permissões finas" time="0.0031387">
+    <testsuite name="tests/unit/import-schema.test.ts" timestamp="2026-08-02T03:40:28.824Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="25" failures="0" errors="0" skipped="0" time="0.024000503">
+        <testcase classname="tests/unit/import-schema.test.ts" name="versão do contrato &gt; expõe versão semântica estável" time="0.003110006">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.000676344">
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; aceita cabeçalho completo" time="0.001217014">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.003225338">
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa cabeçalho sem coluna obrigatória" time="0.000691639">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.000913602">
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; recusa arquivo vazio" time="0.002329952">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.000655026">
+        <testcase classname="tests/unit/import-schema.test.ts" name="cabeçalho &gt; ignora coluna desconhecida sem quebrar as obrigatórias" time="0.000233074">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.00054913">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; valida linha correta" time="0.003906128">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.000355751">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU vazio e nome curto na mesma linha (múltiplos erros)" time="0.002426114">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000306697">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa família ausente" time="0.000561351">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.000601458">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa SKU duplicado no arquivo" time="0.001172717">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.002613576">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; normaliza booleano sob_consulta" time="0.000461442">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.001677062">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; converte campo vazio em nulo, não em string vazia" time="0.000291046">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.001070565">
+        <testcase classname="tests/unit/import-schema.test.ts" name="linhas &gt; recusa nome público acima do limite" time="0.002198126">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000288561">
+        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; respeita aspas duplas e vírgulas internas" time="0.000307263">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.00019164">
+        <testcase classname="tests/unit/import-schema.test.ts" name="parser &gt; remove BOM e linhas em branco" time="0.00027012">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.000911456">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=1+1&quot;" time="0.000138543">
         </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/serializer.test.ts" timestamp="2026-08-02T03:40:18.156Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="25" failures="0" errors="0" skipped="0" time="0.009564187">
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; expõe exatamente os campos permitidos do produto" time="0.002638506">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;+1+1&quot;" time="0.00010637">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_brand" time="0.000393204">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;-1+1&quot;" time="0.000077141">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_manufacturer" time="0.000168788">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;@SUM(A1)&quot;" time="0.000079169">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_supplier_reference" time="0.000140648">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\t=cmd&quot;" time="0.000072426">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_original_name" time="0.000125527">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;\r=cmd&quot;" time="0.000074211">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_notes" time="0.000108146">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;   =HYPERLINK(\&quot;http://x\&quot;)&quot;" time="0.000070306">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe admin_name" time="0.00014973">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza &quot;=cmd|&apos;/c calc&apos;!A1&quot;" time="0.000077118">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe cost" time="0.000112822">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; não altera valor legítimo" time="0.000097086">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source" time="0.000435539">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza também no parser, célula a célula" time="0.000131281">
         </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source_record" time="0.000185013">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe rights_document_path" time="0.000176665">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe detected_brand" time="0.000084207">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe audit_log" time="0.000078616">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe conflict_details" time="0.000064687">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe review_status" time="0.000076882">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe created_by" time="0.000060775">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe updated_by" time="0.000062855">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não deixa vazar objeto relacionado inteiro" time="0.000173653">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não contém termos internos no payload serializado" time="0.000170334">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; aplica placeholder quando não há imagem aprovada" time="0.000079166">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; marca imagem real como não-placeholder" time="0.000659638">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; não encontra vazamento na visão pública" time="0.000234887">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; encontra vazamento recursivamente" time="0.000421543">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; percorre arrays aninhados" time="0.000360188">
-        </testcase>
-        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; tolera valores primitivos e nulos" time="0.000159745">
+        <testcase classname="tests/unit/import-schema.test.ts" name="formula injection &gt; neutraliza no cabeçalho" time="0.00008584">
         </testcase>
     </testsuite>
-    <testsuite name="tests/unit/state-machine.test.ts" timestamp="2026-08-02T03:40:18.163Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="16" failures="0" errors="0" skipped="0" time="0.019068737">
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; aceita todas as transições declaradas" time="0.00279288">
+    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T03:40:28.832Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="15" failures="0" errors="0" skipped="0" time="0.022274987">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 21 permissões finas" time="0.002712938">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; recusa todas as transições não declaradas" time="0.00112109">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.000649255">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite pular de DRAFT direto para READY_TO_PUBLISH" time="0.000223798">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.003500018">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite sair de bloqueio direto para apto a publicar" time="0.000258929">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.003001593">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; aceita as transições declaradas quando o registro está apto" time="0.000601712">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.000742935">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro bloqueado" time="0.000502752">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.000580856">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro apenas em revisão" time="0.000278972">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.000389672">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; arquivamento é terminal" time="0.002487286">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000326932">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; não permite republicar diretamente de PUBLISHED" time="0.000700197">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.001188022">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; aprova imagem própria, sem marca e correspondente" time="0.000604781">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.002031486">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem direito confirmado" time="0.000939141">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.001663526">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem origem registrada" time="0.000124183">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.000343151">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa com marca visível detectada" time="0.000092639">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000181938">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa quando não corresponde ao produto" time="0.000084581">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.001035931">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; apenas papéis com catalog.publish podem publicar" time="0.000302526">
+        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.00096076">
         </testcase>
-        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; nenhum papel além de ADMINISTRADOR gerencia usuários" time="0.003333805">
+    </testsuite>
+    <testsuite name="tests/unit/serializer.test.ts" timestamp="2026-08-02T03:40:28.836Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="25" failures="0" errors="0" skipped="0" time="0.012774505">
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; expõe exatamente os campos permitidos do produto" time="0.003692586">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_brand" time="0.00043996">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_manufacturer" time="0.000159653">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_supplier_reference" time="0.00011439">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_original_name" time="0.000290821">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe internal_notes" time="0.000203247">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe admin_name" time="0.000296341">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe cost" time="0.000138972">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source" time="0.000423421">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe source_record" time="0.000248408">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe rights_document_path" time="0.000199572">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe detected_brand" time="0.000085587">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe audit_log" time="0.000085563">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe conflict_details" time="0.000064423">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe review_status" time="0.000058752">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe created_by" time="0.000058635">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não expõe updated_by" time="0.000061084">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não deixa vazar objeto relacionado inteiro" time="0.000594626">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; não contém termos internos no payload serializado" time="0.000354007">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; aplica placeholder quando não há imagem aprovada" time="0.0001255">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="allowlist &gt; marca imagem real como não-placeholder" time="0.001067485">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; não encontra vazamento na visão pública" time="0.000350692">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; encontra vazamento recursivamente" time="0.00030501">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; percorre arrays aninhados" time="0.000357113">
+        </testcase>
+        <testcase classname="tests/unit/serializer.test.ts" name="findLeakedFields &gt; tolera valores primitivos e nulos" time="0.000407768">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/state-machine.test.ts" timestamp="2026-08-02T03:40:28.850Z" hostname="sandbox-pool-6b6464bb76-xr4cn" tests="16" failures="0" errors="0" skipped="0" time="0.015756452">
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; aceita todas as transições declaradas" time="0.004170396">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; recusa todas as transições não declaradas" time="0.001206709">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite pular de DRAFT direto para READY_TO_PUBLISH" time="0.000186564">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de revisão &gt; não permite sair de bloqueio direto para apto a publicar" time="0.000203068">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; aceita as transições declaradas quando o registro está apto" time="0.001118539">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro bloqueado" time="0.000877625">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; recusa publicar registro apenas em revisão" time="0.000336315">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; arquivamento é terminal" time="0.000722408">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições de publicação &gt; não permite republicar diretamente de PUBLISHED" time="0.000612149">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; aprova imagem própria, sem marca e correspondente" time="0.000267398">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem direito confirmado" time="0.000700654">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa sem origem registrada" time="0.000112818">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa com marca visível detectada" time="0.000098564">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="aprovação de imagem &gt; recusa quando não corresponde ao produto" time="0.000251416">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; apenas papéis com catalog.publish podem publicar" time="0.000269843">
+        </testcase>
+        <testcase classname="tests/unit/state-machine.test.ts" name="transições por papel &gt; nenhum papel além de ADMINISTRADOR gerencia usuários" time="0.00119648">
         </testcase>
     </testsuite>
 </testsuites>

@@ -161,6 +161,53 @@ export type Database = {
           },
         ]
       }
+      consent_records: {
+        Row: {
+          accepted: boolean
+          accepted_at: string
+          consent_text: string
+          id: string
+          legal_basis: string
+          policy_version: string
+          purpose: string
+          quotation_id: string | null
+          revoked_at: string | null
+          subject_email: string | null
+        }
+        Insert: {
+          accepted: boolean
+          accepted_at?: string
+          consent_text: string
+          id?: string
+          legal_basis: string
+          policy_version: string
+          purpose: string
+          quotation_id?: string | null
+          revoked_at?: string | null
+          subject_email?: string | null
+        }
+        Update: {
+          accepted?: boolean
+          accepted_at?: string
+          consent_text?: string
+          id?: string
+          legal_basis?: string
+          policy_version?: string
+          purpose?: string
+          quotation_id?: string | null
+          revoked_at?: string | null
+          subject_email?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consent_records_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: false
+            referencedRelation: "quotations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       documents: {
         Row: {
           bucket: string
@@ -948,6 +995,62 @@ export type Database = {
             columns: ["source_record_id"]
             isOneToOne: false
             referencedRelation: "source_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      outbox_messages: {
+        Row: {
+          attempts: number
+          created_at: string
+          dedupe_key: string | null
+          id: string
+          last_error: string | null
+          max_attempts: number
+          message_type: string
+          next_attempt_at: string
+          payload: Json
+          processed_at: string | null
+          quotation_id: string | null
+          status: Database["public"]["Enums"]["outbox_status"]
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          created_at?: string
+          dedupe_key?: string | null
+          id?: string
+          last_error?: string | null
+          max_attempts?: number
+          message_type: string
+          next_attempt_at?: string
+          payload?: Json
+          processed_at?: string | null
+          quotation_id?: string | null
+          status?: Database["public"]["Enums"]["outbox_status"]
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          created_at?: string
+          dedupe_key?: string | null
+          id?: string
+          last_error?: string | null
+          max_attempts?: number
+          message_type?: string
+          next_attempt_at?: string
+          payload?: Json
+          processed_at?: string | null
+          quotation_id?: string | null
+          status?: Database["public"]["Enums"]["outbox_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "outbox_messages_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: false
+            referencedRelation: "quotations"
             referencedColumns: ["id"]
           },
         ]
@@ -1752,6 +1855,284 @@ export type Database = {
         }
         Relationships: []
       }
+      quotation_events: {
+        Row: {
+          actor_id: string | null
+          actor_label: string | null
+          created_at: string
+          event_type: Database["public"]["Enums"]["quotation_event_type"]
+          from_status: Database["public"]["Enums"]["quotation_status"] | null
+          id: string
+          internal_note: string | null
+          quotation_id: string
+          to_status: Database["public"]["Enums"]["quotation_status"] | null
+        }
+        Insert: {
+          actor_id?: string | null
+          actor_label?: string | null
+          created_at?: string
+          event_type: Database["public"]["Enums"]["quotation_event_type"]
+          from_status?: Database["public"]["Enums"]["quotation_status"] | null
+          id?: string
+          internal_note?: string | null
+          quotation_id: string
+          to_status?: Database["public"]["Enums"]["quotation_status"] | null
+        }
+        Update: {
+          actor_id?: string | null
+          actor_label?: string | null
+          created_at?: string
+          event_type?: Database["public"]["Enums"]["quotation_event_type"]
+          from_status?: Database["public"]["Enums"]["quotation_status"] | null
+          id?: string
+          internal_note?: string | null
+          quotation_id?: string
+          to_status?: Database["public"]["Enums"]["quotation_status"] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotation_events_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: false
+            referencedRelation: "quotations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quotation_items: {
+        Row: {
+          created_at: string
+          family_id: string | null
+          id: string
+          note: string | null
+          position: number
+          product_id: string | null
+          quantity: number
+          quotation_id: string
+          snapshot_category: string | null
+          snapshot_family: string | null
+          snapshot_name: string
+          snapshot_sku: string
+          snapshot_variation: string | null
+          was_available: boolean
+        }
+        Insert: {
+          created_at?: string
+          family_id?: string | null
+          id?: string
+          note?: string | null
+          position?: number
+          product_id?: string | null
+          quantity: number
+          quotation_id: string
+          snapshot_category?: string | null
+          snapshot_family?: string | null
+          snapshot_name: string
+          snapshot_sku: string
+          snapshot_variation?: string | null
+          was_available?: boolean
+        }
+        Update: {
+          created_at?: string
+          family_id?: string | null
+          id?: string
+          note?: string | null
+          position?: number
+          product_id?: string | null
+          quantity?: number
+          quotation_id?: string
+          snapshot_category?: string | null
+          snapshot_family?: string | null
+          snapshot_name?: string
+          snapshot_sku?: string
+          snapshot_variation?: string | null
+          was_available?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotation_items_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "product_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_items_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_items_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+          {
+            foreignKeyName: "quotation_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_items_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: false
+            referencedRelation: "quotations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quotation_rate_limits: {
+        Row: {
+          created_at: string
+          id: string
+          ip_hash: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ip_hash: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ip_hash?: string
+        }
+        Relationships: []
+      }
+      quotation_sources: {
+        Row: {
+          created_at: string
+          id: string
+          origin_page: string | null
+          quotation_id: string
+          referrer: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          origin_page?: string | null
+          quotation_id: string
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          origin_page?: string | null
+          quotation_id?: string
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotation_sources_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: true
+            referencedRelation: "quotations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quotations: {
+        Row: {
+          anonymized_at: string | null
+          assigned_at: string | null
+          assigned_to: string | null
+          city: string | null
+          client_request_id: string
+          closed_at: string | null
+          company_name: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string
+          created_at: string
+          id: string
+          ip_hash: string | null
+          item_count: number
+          last_event_at: string
+          message: string | null
+          preferred_channel: string | null
+          protocol: string
+          responded_at: string | null
+          state_uf: string | null
+          status: Database["public"]["Enums"]["quotation_status"]
+          unavailable_item_count: number
+          updated_at: string
+          user_agent_hash: string | null
+        }
+        Insert: {
+          anonymized_at?: string | null
+          assigned_at?: string | null
+          assigned_to?: string | null
+          city?: string | null
+          client_request_id: string
+          closed_at?: string | null
+          company_name: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          item_count?: number
+          last_event_at?: string
+          message?: string | null
+          preferred_channel?: string | null
+          protocol: string
+          responded_at?: string | null
+          state_uf?: string | null
+          status?: Database["public"]["Enums"]["quotation_status"]
+          unavailable_item_count?: number
+          updated_at?: string
+          user_agent_hash?: string | null
+        }
+        Update: {
+          anonymized_at?: string | null
+          assigned_at?: string | null
+          assigned_to?: string | null
+          city?: string | null
+          client_request_id?: string
+          closed_at?: string | null
+          company_name?: string
+          contact_email?: string
+          contact_name?: string
+          contact_phone?: string
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          item_count?: number
+          last_event_at?: string
+          message?: string | null
+          preferred_channel?: string | null
+          protocol?: string
+          responded_at?: string | null
+          state_uf?: string | null
+          status?: Database["public"]["Enums"]["quotation_status"]
+          unavailable_item_count?: number
+          updated_at?: string
+          user_agent_hash?: string | null
+        }
+        Relationships: []
+      }
       related_products: {
         Row: {
           created_at: string
@@ -2486,6 +2867,8 @@ export type Database = {
       avz_unaccent: { Args: { t: string }; Returns: string }
       can_read_catalog: { Args: { _user_id: string }; Returns: boolean }
       can_read_internal: { Args: { _user_id: string }; Returns: boolean }
+      can_read_quotations: { Args: { _user_id: string }; Returns: boolean }
+      generate_quotation_protocol: { Args: never; Returns: string }
       has_any_role: {
         Args: {
           _roles: Database["public"]["Enums"]["app_role"][]
@@ -2538,6 +2921,7 @@ export type Database = {
           variation_count: number
         }[]
       }
+      submit_quotation: { Args: { p: Json }; Returns: Json }
     }
     Enums: {
       app_role:
@@ -2567,11 +2951,28 @@ export type Database = {
         | "EXECUTING"
         | "EXECUTED"
         | "ROLLED_BACK"
+      outbox_status: "PENDING" | "SENT" | "FAILED" | "DEAD_LETTER" | "SIMULATED"
       publication_status:
         | "NOT_PUBLISHED"
         | "PUBLISHED"
         | "UNPUBLISHED"
         | "ARCHIVED"
+      quotation_event_type:
+        | "CREATED"
+        | "STATUS_CHANGE"
+        | "ASSIGNMENT"
+        | "NOTE"
+        | "NOTIFICATION"
+      quotation_status:
+        | "RECEIVED"
+        | "IN_REVIEW"
+        | "WAITING_INFORMATION"
+        | "IN_SERVICE"
+        | "RESPONDED"
+        | "CONVERTED"
+        | "CLOSED"
+        | "SPAM"
+        | "CANCELLED"
       review_status:
         | "DRAFT"
         | "UNDER_REVIEW"
@@ -2767,11 +3168,30 @@ export const Constants = {
         "EXECUTED",
         "ROLLED_BACK",
       ],
+      outbox_status: ["PENDING", "SENT", "FAILED", "DEAD_LETTER", "SIMULATED"],
       publication_status: [
         "NOT_PUBLISHED",
         "PUBLISHED",
         "UNPUBLISHED",
         "ARCHIVED",
+      ],
+      quotation_event_type: [
+        "CREATED",
+        "STATUS_CHANGE",
+        "ASSIGNMENT",
+        "NOTE",
+        "NOTIFICATION",
+      ],
+      quotation_status: [
+        "RECEIVED",
+        "IN_REVIEW",
+        "WAITING_INFORMATION",
+        "IN_SERVICE",
+        "RESPONDED",
+        "CONVERTED",
+        "CLOSED",
+        "SPAM",
+        "CANCELLED",
       ],
       review_status: [
         "DRAFT",

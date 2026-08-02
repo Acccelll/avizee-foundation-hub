@@ -1,0 +1,98 @@
+sku_publico,nome_publico,familia_slug,categoria_slug,variacao,medida,capacidade,unidade,descricao_publica,sob_consulta,codigo_original,marca_interna,observacao_interna
+AG001,Agulhas descartáveis 13 X 45,agulhas-descartaveis,vacinacao-e-aplicacao,13 X 45,13 X 45,,,,nao,AG001,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG002,Agulhas descartáveis 25 X 10,agulhas-descartaveis,vacinacao-e-aplicacao,25 X 10,25 X 10,,,,nao,AG002,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG003,Agulhas descartáveis 25 X 12,agulhas-descartaveis,vacinacao-e-aplicacao,25 X 12,25 X 12,,,,nao,AG003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG004,Agulhas descartáveis 25 X 7,agulhas-descartaveis,vacinacao-e-aplicacao,25 X 7,25 X 7,,,,nao,AG004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG005,Agulhas descartáveis 25 X 8,agulhas-descartaveis,vacinacao-e-aplicacao,25 X 8,25 X 8,,,,nao,AG005,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0101
+AG006,Agulhas descartáveis 25 X 9,agulhas-descartaveis,vacinacao-e-aplicacao,25 X 9,25 X 9,,,,nao,AG006,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG007,Agulhas descartáveis 40 X 12,agulhas-descartaveis,vacinacao-e-aplicacao,40 X 12,40 X 12,,,,nao,AG007,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG008,Agulhas descartáveis 40 X 16,agulhas-descartaveis,vacinacao-e-aplicacao,40 X 16,40 X 16,,,,nao,AG008,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG009,Agulhas descartáveis 40 X 8,agulhas-descartaveis,vacinacao-e-aplicacao,40 X 8,40 X 8,,,,nao,AG009,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG010,Agulhas descartáveis 6 X 9,agulhas-descartaveis,vacinacao-e-aplicacao,6 X 9,6 X 9,,,,nao,AG010,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG011,Agulhas inox reutilizáveis 10 X 10,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,10 X 10,10 X 10,,,,nao,AG011,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG012,Agulhas inox reutilizáveis 10 X 12,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,10 X 12,10 X 12,,,,nao,AG012,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG013,Agulhas inox reutilizáveis 10 X 08,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,10 X 08,10 X 08,,,,nao,AG013,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG014,Agulhas inox reutilizáveis 07 X 10,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,07 X 10,07 X 10,,,,nao,AG014,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG015,Agulhas inox reutilizáveis 08 X 08,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,08 X 08,08 X 08,,,,nao,AG015,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG016,Agulhas inox reutilizáveis 06 X 10,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,06 X 10,06 X 10,,,,nao,AG016,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0102
+AG017,Agulhas inox reutilizáveis 06 X 08,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,06 X 08,06 X 08,,,,nao,AG017,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG018,Agulhas inox reutilizáveis 12 X 12,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,12 X 12,12 X 12,,,,nao,AG018,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG019,Agulhas inox reutilizáveis 12 X 10,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,12 X 10,12 X 10,,,,nao,AG019,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0103
+AG022,Agulhas inox reutilizáveis 04 X 08,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,04 X 08,04 X 08,,,,nao,AG022,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0104
+AG023,Agulhas inox reutilizáveis 08 X 10,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,08 X 10,08 X 10,,,,nao,AG023,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG024,Agulhas inox reutilizáveis 12 X 8,agulhas-inox-reutilizaveis,vacinacao-e-aplicacao,12 X 8,12 X 8,,,,nao,AG024,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+AG021,Agulhas para aplicador de vacina,agulhas-para-aplicador-de-vacina,vacinacao-e-aplicacao,,,,,,nao,AG021,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AZ002,Seringas automáticas de fluxo contínuo,seringas-automaticas-de-fluxo-continuo,vacinacao-e-aplicacao,,,,,,nao,AZ002,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AZ003,Seringas automáticas de fluxo contínuo,seringas-automaticas-de-fluxo-continuo,vacinacao-e-aplicacao,,,,,,nao,AZ003,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AZ001,Seringas automáticas duplas,seringas-automaticas-duplas,vacinacao-e-aplicacao,,,,,,nao,AZ001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AZ004,Vacinadoras com porta-frasco,vacinadoras-com-porta-frasco,vacinacao-e-aplicacao,,,,,,nao,AZ004,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AZ005,Kits de reparo para seringas automáticas,kits-de-reparo-para-seringas-automaticas,vacinacao-e-aplicacao,,,,,,nao,AZ005,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AZ006,Kits de reparo para seringas automáticas,kits-de-reparo-para-seringas-automaticas,vacinacao-e-aplicacao,,,,,,nao,AZ006,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+SE001,Seringas descartáveis 5 ML COM AGULHA,seringas-descartaveis,vacinacao-e-aplicacao,5 ML COM AGULHA,5 ML COM AGULHA,,,,nao,SE001,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+SE002,Seringas descartáveis 5 ML SEM AGULHA,seringas-descartaveis,vacinacao-e-aplicacao,5 ML SEM AGULHA,5 ML SEM AGULHA,,,,nao,SE002,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+SE003,Seringas descartáveis 20 ML SEM AGULHA,seringas-descartaveis,vacinacao-e-aplicacao,20 ML SEM AGULHA,20 ML SEM AGULHA,,,,nao,SE003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+SE004,Seringas descartáveis 60 ML SEM AGULHA,seringas-descartaveis,vacinacao-e-aplicacao,60 ML SEM AGULHA,60 ML SEM AGULHA,,,,nao,SE004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+SE005,Seringas descartáveis 10 ML SEM AGULHA,seringas-descartaveis,vacinacao-e-aplicacao,10 ML SEM AGULHA,10 ML SEM AGULHA,,,,nao,SE005,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+VR002,Equipos para aplicação e infusão,equipos-para-aplicacao-e-infusao,vacinacao-e-aplicacao,,,,,,nao,VR002,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR008,Equipos para aplicação e infusão,equipos-para-aplicacao-e-infusao,vacinacao-e-aplicacao,,,,,,nao,VR008,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BI001,Bicos pulverizadores,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,,,,,,nao,BI001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BI002,Bicos pulverizadores VERDE LEQUE 80015 BD,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,VERDE LEQUE 80015 BD,VERDE LEQUE 80015 BD,,,,nao,BI002,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0105
+BI003,Bicos pulverizadores VERMELHO TX-VK6°,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,VERMELHO TX-VK6°,VERMELHO TX-VK6°,,,,nao,BI003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0106
+BI004,Bicos pulverizadores LARANJA LEQUE 8001 BD,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,LARANJA LEQUE 8001 BD,LARANJA LEQUE 8001 BD,,,,nao,BI004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0107
+BI005,Bicos pulverizadores AMARELO LEQUE 8002 BD,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,AMARELO LEQUE 8002 BD,AMARELO LEQUE 8002 BD,,,,nao,BI005,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0108
+BI006,Bicos pulverizadores AZUL CONE CHEIO,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,AZUL CONE CHEIO,AZUL CONE CHEIO,,,,nao,BI006,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0109
+BI007,Bicos pulverizadores LARANJA RC 80°,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,LARANJA RC 80°,LARANJA RC 80°,,,,nao,BI007,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BI999,Bicos pulverizadores DIVERSOS - CONSULTAR,bicos-pulverizadores,pulverizacao-e-sistemas-de-fluido,DIVERSOS - CONSULTAR,DIVERSOS - CONSULTAR,,,,sim,BI999,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=CONFLITO; divergencia DIV-0110; nao e SKU: item 'DIVERSOS - CONSULTAR' vira CTA (D-040)
+TB001,Tubulações e mangueiras,tubulacoes-e-mangueiras,pulverizacao-e-sistemas-de-fluido,,,,,,nao,TB001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+TB003,Tubulações e mangueiras 10 MM,tubulacoes-e-mangueiras,pulverizacao-e-sistemas-de-fluido,10 MM,10 MM,,,,nao,TB003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+TB004,Tubulações e mangueiras 6 MM,tubulacoes-e-mangueiras,pulverizacao-e-sistemas-de-fluido,6 MM,6 MM,,,,nao,TB004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+TB005,Tubulações e mangueiras,tubulacoes-e-mangueiras,pulverizacao-e-sistemas-de-fluido,,,,,,nao,TB005,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+TB007,Tubulações e mangueiras 12 MM,tubulacoes-e-mangueiras,pulverizacao-e-sistemas-de-fluido,12 MM,12 MM,,,,nao,TB007,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA003,Balanças suspensas e dinamômetros para aves 40 KG,balancas-suspensas-e-dinamometros-para-aves,pesagem-medicao-e-controle,40 KG,40 KG,,,,nao,BA003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA004,Balanças suspensas e dinamômetros para aves 50 KG,balancas-suspensas-e-dinamometros-para-aves,pesagem-medicao-e-controle,50 KG,50 KG,,,,nao,BA004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA008,Balanças suspensas e dinamômetros para aves 5 KG / 20 GR,balancas-suspensas-e-dinamometros-para-aves,pesagem-medicao-e-controle,5 KG / 20 GR,5 KG / 20 GR,,,,nao,BA008,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA005,Balanças eletrônicas para aves 10 KG / 10 GR,balancas-eletronicas-para-aves,pesagem-medicao-e-controle,10 KG / 10 GR,10 KG / 10 GR,,,,nao,BA005,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA006,Balanças eletrônicas para aves 5 KG / 5 GR,balancas-eletronicas-para-aves,pesagem-medicao-e-controle,5 KG / 5 GR,5 KG / 5 GR,,,,nao,BA006,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA009,Balanças eletrônicas para aves 15 KG / 20 GR,balancas-eletronicas-para-aves,pesagem-medicao-e-controle,15 KG / 20 GR,15 KG / 20 GR,,,,nao,BA009,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA010,Balanças eletrônicas para aves 50 KG / 50 GR,balancas-eletronicas-para-aves,pesagem-medicao-e-controle,50 KG / 50 GR,50 KG / 50 GR,,,,nao,BA010,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA013,Balanças eletrônicas para aves 50 KG / 20 GR,balancas-eletronicas-para-aves,pesagem-medicao-e-controle,50 KG / 20 GR,50 KG / 20 GR,,,,nao,BA013,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA007,"Balanças para ovos 120GR/0,1GR",balancas-para-ovos,pesagem-medicao-e-controle,"120GR/0,1GR","120GR/0,1GR",,,,nao,BA007,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA011,"Balanças para ovos 500GR/0,1GR",balancas-para-ovos,pesagem-medicao-e-controle,"500GR/0,1GR","500GR/0,1GR",,,,nao,BA011,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA014,Balanças para ovos 500G,balancas-para-ovos,pesagem-medicao-e-controle,500G,500G,,,,nao,BA014,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BA012,Balanças de precisão de bolso 100 G,balancas-de-precisao-de-bolso,pesagem-medicao-e-controle,100 G,100 G,,,,nao,BA012,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+TE001,Termômetros,termometros,pesagem-medicao-e-controle,,,,,,nao,TE001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+TE002,Termômetros,termometros,pesagem-medicao-e-controle,,,,,,nao,TE002,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+TE003,Termômetros,termometros,pesagem-medicao-e-controle,,,,,,nao,TE003,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+TE004,Termômetros,termometros,pesagem-medicao-e-controle,,,,,,nao,TE004,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR003,Medidores e testes de qualidade da água,medidores-e-testes-de-qualidade-da-agua,pesagem-medicao-e-controle,,,,,,nao,VR003,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR004,Medidores e testes de qualidade da água,medidores-e-testes-de-qualidade-da-agua,pesagem-medicao-e-controle,,,,,,nao,VR004,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR011,Medidores e testes de qualidade da água,medidores-e-testes-de-qualidade-da-agua,pesagem-medicao-e-controle,,,,,,nao,VR011,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR001,Testes de qualidade do ambiente,testes-de-qualidade-do-ambiente,pesagem-medicao-e-controle,,,,,,nao,VR001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR012,Equipamentos para ovoscopia,equipamentos-para-ovoscopia,pesagem-medicao-e-controle,,,,,,nao,VR012,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR013,Câmeras termográficas,cameras-termograficas,pesagem-medicao-e-controle,,,,,,nao,VR013,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+LM001,Lâminas para debicagem,laminas-para-debicagem,pecas-reposicao-e-automacao,,,,,,nao,LM001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+LM002,Lâminas para debicagem,laminas-para-debicagem,pecas-reposicao-e-automacao,,,,,,nao,LM002,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+LM003,Lâminas para debicagem,laminas-para-debicagem,pecas-reposicao-e-automacao,,,,,,nao,LM003,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BB001,Bebedouros pendulares para aves 10 L,bebedouros-pendulares-para-aves,manejo-alimentacao-e-biosseguranca,10 L,10 L,,,,nao,BB001,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BB002,Bebedouros pendulares para aves 6 L,bebedouros-pendulares-para-aves,manejo-alimentacao-e-biosseguranca,6 L,6 L,,,,nao,BB002,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BB003,"Bebedouros pendulares para aves 1,5 L",bebedouros-pendulares-para-aves,manejo-alimentacao-e-biosseguranca,"1,5 L","1,5 L",,,,nao,BB003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+BB004,Bebedouros pendulares para aves 3 L,bebedouros-pendulares-para-aves,manejo-alimentacao-e-biosseguranca,3 L,3 L,,,,nao,BB004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+CO001,"Comedouros para aves 1,5 KG",comedouros-para-aves,manejo-alimentacao-e-biosseguranca,"1,5 KG","1,5 KG",,,,nao,CO001,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+CO002,Comedouros para aves 3 KG,comedouros-para-aves,manejo-alimentacao-e-biosseguranca,3 KG,3 KG,,,,nao,CO002,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+CO003,Comedouros para aves 6 KG,comedouros-para-aves,manejo-alimentacao-e-biosseguranca,6 KG,6 KG,,,,nao,CO003,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+CO004,Comedouros para aves 9 KG,comedouros-para-aves,manejo-alimentacao-e-biosseguranca,9 KG,9 KG,,,,nao,CO004,,origem matriz aprovada 63/70; status_dado=COMPLETO; status_codigo=UNICO
+VR007,Niples para bebedouro,niples-para-bebedouro,manejo-alimentacao-e-biosseguranca,,,,,,nao,VR007,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AR001,Armadilhas para roedores,armadilhas-para-roedores,manejo-alimentacao-e-biosseguranca,,,,,,nao,AR001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AR003,Armadilhas para roedores,armadilhas-para-roedores,manejo-alimentacao-e-biosseguranca,,,,,,nao,AR003,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AR002,Adesivos e colas para captura,adesivos-e-colas-para-captura,manejo-alimentacao-e-biosseguranca,,,,,,nao,AR002,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+AR004,Adesivos e colas para captura,adesivos-e-colas-para-captura,manejo-alimentacao-e-biosseguranca,,,,,,nao,AR004,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR010,Contadores manuais para aves,contadores-manuais-para-aves,manejo-alimentacao-e-biosseguranca,,,,,,nao,VR010,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR005,Consumíveis de assepsia e apoio,consumiveis-de-assepsia-e-apoio,manejo-alimentacao-e-biosseguranca,,,,,,nao,VR005,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR006,Consumíveis de assepsia e apoio,consumiveis-de-assepsia-e-apoio,manejo-alimentacao-e-biosseguranca,,,,,,nao,VR006,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+VR009,Consumíveis de assepsia e apoio,consumiveis-de-assepsia-e-apoio,manejo-alimentacao-e-biosseguranca,,,,,,nao,VR009,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BV001,Conjunto para aplicação de tuberculina,conjunto-para-aplicacao-de-tuberculina,linhas-complementares,,,,,,nao,BV001,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BV002,Conjunto para aplicação de tuberculina,conjunto-para-aplicacao-de-tuberculina,linhas-complementares,,,,,,nao,BV002,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BV003,Conjunto para aplicação de tuberculina,conjunto-para-aplicacao-de-tuberculina,linhas-complementares,,,,,,nao,BV003,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BV004,Conjunto para aplicação de tuberculina,conjunto-para-aplicacao-de-tuberculina,linhas-complementares,,,,,,nao,BV004,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BV008,Seringas para insulina,seringas-para-insulina,linhas-complementares,,,,,,nao,BV008,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO
+BV009,Imãs intra-ruminais,imas-intra-ruminais,linhas-complementares,,,,,,nao,BV009,,origem matriz aprovada 63/70; status_dado=INCOMPLETO; status_codigo=UNICO

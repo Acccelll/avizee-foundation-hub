@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="15" failures="0" errors="0" time="0.015140994">
-    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-02T23:14:24.092Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="15" failures="0" errors="0" skipped="0" time="0.015140994">
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 25 permissões finas (21 do catálogo + 4 da cotação/outbox)" time="0.002454317">
+<testsuites name="vitest tests" tests="10" failures="2" errors="0" time="0.024759553">
+    <testsuite name="tests/unit/institutional-content.test.ts" timestamp="2026-08-02T23:33:57.593Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="10" failures="2" errors="0" skipped="0" time="0.024759553">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não usa vocabulário de e-commerce nem promessa logística" time="0.0129724">
+            <failure message="termo proibido presente: preço: expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: termo proibido presente: preço: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/institutional-content.test.ts:52:75
+            </failure>
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.000647572">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não publica prazo comercial (O-10 em aberto)" time="0.000548323">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.002847465">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não contém número institucional, ano de fundação ou certificação não comprovada" time="0.000209663">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.000937501">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém o posicionamento aprovado sem ampliar o escopo" time="0.000638701">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.000747684">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; usa exatamente os três diferenciais aprovados" time="0.00033058">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.00051678">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; descreve a cotação em três passos, sem pedido confirmado" time="0.002394564">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/institutional-content.test.ts:82:52
+            </failure>
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.00041298">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; usa apenas CTAs aprovados" time="0.000702551">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000325201">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; não publica dado de contato ou dado legal não confirmado" time="0.001476326">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.00187968">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém desativado tudo que depende de decisão aberta" time="0.002301738">
         </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.000615222">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.00090484">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.000182791">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000156873">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.000214107">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.000233525">
+        <testcase classname="tests/unit/institutional-content.test.ts" name="conteúdo institucional (Etapa 9) &gt; mantém as páginas legais como rascunho sem vigência" time="0.001369543">
         </testcase>
     </testsuite>
 </testsuites>

@@ -2,11 +2,7 @@
  * FASE C — detecção de marcas de terceiros (R-05).
  */
 import { describe, expect, it } from "vitest";
-import {
-  assertNoBrandInPublicFields,
-  BRAND_TERMS,
-  checkBrandTerms,
-} from "@/catalog/brand-terms";
+import { assertNoBrandInPublicFields, BRAND_TERMS, checkBrandTerms } from "@/catalog/brand-terms";
 
 describe("detecção de marca", () => {
   it("detecta termo exato", () => {

@@ -40,7 +40,11 @@ const admin = {
 
 const view = toPublicProduct({
   product: admin,
-  family: { public_name: "Agulhas descartáveis", slug: "agulhas-descartaveis", internal_notes: "x" },
+  family: {
+    public_name: "Agulhas descartáveis",
+    slug: "agulhas-descartaveis",
+    internal_notes: "x",
+  },
   category: { name: "Vacinação e aplicação", slug: "vacinacao-e-aplicacao" },
   applications: [{ name: "vacinação" }],
   specifications: [{ code: "medida", label: "Medida", value: "13 X 45", unit: null }],
@@ -97,9 +101,9 @@ describe("findLeakedFields", () => {
   });
 
   it("encontra vazamento recursivamente", () => {
-    expect(
-      findLeakedFields({ data: { items: [{ ok: 1, internal_brand: "x" }] } }),
-    ).toEqual(["internal_brand"]);
+    expect(findLeakedFields({ data: { items: [{ ok: 1, internal_brand: "x" }] } })).toEqual([
+      "internal_brand",
+    ]);
   });
 
   it("percorre arrays aninhados", () => {

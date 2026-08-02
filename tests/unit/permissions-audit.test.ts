@@ -2,7 +2,14 @@
  * FASE C — RBAC, redação de auditoria e utilitários.
  */
 import { describe, expect, it } from "vitest";
-import { PERMISSIONS, ROLES, ROLE_PERMISSIONS, hasPermission, isRole, permissionsFor } from "@/permissions/model";
+import {
+  PERMISSIONS,
+  ROLES,
+  ROLE_PERMISSIONS,
+  hasPermission,
+  isRole,
+  permissionsFor,
+} from "@/permissions/model";
 import { diffFields, maskEmail, redactValues } from "@/lib/audit.server";
 
 describe("modelo de permissões", () => {

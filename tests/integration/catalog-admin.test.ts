@@ -158,9 +158,9 @@ describe("CRUD de família e SKU", () => {
 
   it("retorna NOT_FOUND para SKU inexistente", async () => {
     const auth = await authorize(authContext(gestor), "catalog.read");
-    await expect(
-      getProduct(auth, "00000000-0000-0000-0000-000000000000"),
-    ).rejects.toBeInstanceOf(AppError);
+    await expect(getProduct(auth, "00000000-0000-0000-0000-000000000000")).rejects.toBeInstanceOf(
+      AppError,
+    );
   });
 });
 

@@ -234,9 +234,7 @@ describe("não vazamento (R-04 / R-05)", () => {
     for (const row of data ?? []) {
       const texto = `${row["public_name"]} ${row["public_description"] ?? ""}`.toLowerCase();
       for (const termo of BRAND_TERMS) {
-        expect(texto, `SKU ${row["public_sku"]} expõe ${termo}`).not.toContain(
-          termo.toLowerCase(),
-        );
+        expect(texto, `SKU ${row["public_sku"]} expõe ${termo}`).not.toContain(termo.toLowerCase());
       }
     }
   });
@@ -257,7 +255,10 @@ describe("não vazamento (R-04 / R-05)", () => {
   });
 
   it("o esquema gerado não declara nenhuma coluna de preço ou custo (R-04)", async () => {
-    const types = await readFile(new URL("../../src/integrations/supabase/types.ts", import.meta.url), "utf8");
+    const types = await readFile(
+      new URL("../../src/integrations/supabase/types.ts", import.meta.url),
+      "utf8",
+    );
     for (const proibido of ["price", "preco", "cost", "custo", "valor_unitario", "desconto"]) {
       expect(types.toLowerCase(), `coluna proibida: ${proibido}`).not.toMatch(
         new RegExp(`\\b${proibido}\\b\\s*[?:]`),

@@ -68,17 +68,20 @@ export async function createTestUser(label: string, roles: Role[]): Promise<Test
   const id = data.user.id;
   created.push(id);
 
-  await admin.from("profiles").upsert(
-    { user_id: id, full_name: `Usuário sintético ${label}`, email },
-    { onConflict: "user_id" },
-  );
+  await admin
+    .from("profiles")
+    .upsert(
+      { user_id: id, full_name: `Usuário sintético ${label}`, email },
+      { onConflict: "user_id" },
+    );
   if (roles.length > 0) {
     await admin.from("user_roles").insert(roles.map((role) => ({ user_id: id, role })));
   }
 
   const client = anonClient();
   const signIn = await client.auth.signInWithPassword({ email, password });
-  if (signIn.error) throw new Error(`Falha ao autenticar usuário de teste: ${signIn.error.message}`);
+  if (signIn.error)
+    throw new Error(`Falha ao autenticar usuário de teste: ${signIn.error.message}`);
 
   return {
     id,

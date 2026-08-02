@@ -80,8 +80,9 @@ describe("linhas", () => {
 
   it("normaliza booleano sob_consulta", () => {
     const { valid } = validateRows(
-      parseDelimited(file("AG001,Agulha um,fam-a,,,,,,,SIM,,,", "AG002,Agulha dois,fam-a,,,,,,,,,,"))
-        .rows,
+      parseDelimited(
+        file("AG001,Agulha um,fam-a,,,,,,,SIM,,,", "AG002,Agulha dois,fam-a,,,,,,,,,,"),
+      ).rows,
     );
     expect(valid[0]?.data.sob_consulta).toBe(true);
     expect(valid[1]?.data.sob_consulta).toBe(false);
@@ -124,7 +125,7 @@ describe("formula injection", () => {
     "@SUM(A1)",
     "\t=cmd",
     "\r=cmd",
-    "   =HYPERLINK(\"http://x\")",
+    '   =HYPERLINK("http://x")',
     "=cmd|'/c calc'!A1",
   ];
 

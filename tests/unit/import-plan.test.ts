@@ -39,8 +39,10 @@ function plan(lines: string[], allowedSkus: string[] | null = null) {
 }
 
 const CREATE_LINE = "AG001,Agulha descartável 13x45,agulhas-descartaveis,,13 X 45,13 X 45,,,,,,,";
-const UNCHANGED_LINE = "AG002,Agulha descartável 25x10,agulhas-descartaveis,,25 X 10,25 X 10,,,,,,,";
-const UPDATE_LINE = "AG002,Agulha descartável 25x10 nova,agulhas-descartaveis,,25 X 10,25 X 10,,,,,,,";
+const UNCHANGED_LINE =
+  "AG002,Agulha descartável 25x10,agulhas-descartaveis,,25 X 10,25 X 10,,,,,,,";
+const UPDATE_LINE =
+  "AG002,Agulha descartável 25x10 nova,agulhas-descartaveis,,25 X 10,25 X 10,,,,,,,";
 
 describe("classificação de operações", () => {
   it("classifica criação", () => {
@@ -78,9 +80,7 @@ describe("classificação de operações", () => {
   });
 
   it("registra aviso quando há marca em campo interno, sem bloquear", () => {
-    const item = plan([
-      "AG011,Agulha inox 15x20,agulhas-descartaveis,,,,,,,,,walmur,",
-    ]).items[0];
+    const item = plan(["AG011,Agulha inox 15x20,agulhas-descartaveis,,,,,,,,,walmur,"]).items[0];
     expect(item?.operation).toBe("CREATE");
     expect(item?.warnings).toContain("marca registrada em campo interno");
   });

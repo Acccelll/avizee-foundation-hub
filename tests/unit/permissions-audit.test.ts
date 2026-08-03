@@ -13,9 +13,9 @@ import {
 import { diffFields, maskEmail, redactValues } from "@/lib/audit.server";
 
 describe("modelo de permissões", () => {
-  it("declara 25 permissões finas (21 do catálogo + 4 da cotação/outbox)", () => {
-    expect(PERMISSIONS).toHaveLength(25);
-    expect(new Set(PERMISSIONS).size).toBe(25);
+  it("declara 32 permissões finas (25 anteriores + 7 editoriais da Etapa 10)", () => {
+    expect(PERMISSIONS).toHaveLength(32);
+    expect(new Set(PERMISSIONS).size).toBe(32);
   });
 
 

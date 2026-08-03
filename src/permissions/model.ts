@@ -33,10 +33,18 @@ export const PERMISSIONS = [
   // Importação
   "import.execute",
   "import.rollback",
-  // Conteúdo e comercial
+  // Conteúdo editorial (Etapa 10)
   "content.read",
   "content.write",
+  "content.submit_review",
+  "content.technical_review",
+  "content.editorial_review",
   "content.publish",
+  "content.archive",
+  "content.manage_social_variants",
+  "content.export_social",
+  "content.manage_authors",
+  // Comercial
   "quotation.read",
   "quotation.write",
   "quotation.assign",

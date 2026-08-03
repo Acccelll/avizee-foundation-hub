@@ -70,8 +70,40 @@ export const QUOTATION_EVENT_TYPES = [
 ] as const;
 export type QuotationEventType = (typeof QUOTATION_EVENT_TYPES)[number];
 
-export const OUTBOX_STATUSES = ["PENDING", "SENT", "FAILED", "DEAD_LETTER", "SIMULATED"] as const;
+/**
+ * Estados da outbox (Etapa 11.1 §10). Devem coincidir exatamente com o enum
+ * `public.outbox_status` do PostgreSQL — há teste de compatibilidade dedicado.
+ * `SENT` e `DEAD_LETTER` são legados preservados; o fluxo novo usa
+ * `DELIVERED`, `RETRY_SCHEDULED` e `CANCELLED`.
+ */
+export const OUTBOX_STATUSES = [
+  "PENDING",
+  "PROCESSING",
+  "RETRY_SCHEDULED",
+  "DELIVERED",
+  "FAILED",
+  "CANCELLED",
+  "SENT",
+  "DEAD_LETTER",
+  "SIMULATED",
+] as const;
 export type OutboxStatus = (typeof OUTBOX_STATUSES)[number];
+
+/** Estados mínimos exigidos pela decisão vigente (§10). */
+export const OUTBOX_REQUIRED_STATUSES = [
+  "PENDING",
+  "PROCESSING",
+  "RETRY_SCHEDULED",
+  "DELIVERED",
+  "FAILED",
+  "CANCELLED",
+] as const;
+
+/** Semântica operacional declarada: nunca "exactly-once". */
+export const OUTBOX_DELIVERY_SEMANTICS = "AT_LEAST_ONCE+CONSUMIDOR_IDEMPOTENTE" as const;
+
+/** Duração da reserva (lease) de um evento reivindicado, em segundos. */
+export const OUTBOX_LEASE_SECONDS = 120;
 
 /** Backoff aprovado (doc 114 §1), em minutos por tentativa. */
 export const OUTBOX_BACKOFF_MINUTES = [1, 5, 15, 60, 240];
@@ -133,10 +165,20 @@ export const BRAZIL_UFS = [
   "TO",
 ] as const;
 
-export const CONSENT_TEXT_CONTACT =
-  "Autorizo a AviZee a utilizar os dados informados exclusivamente para responder a esta solicitação de cotação.";
+/**
+ * Aviso de privacidade (NÃO é consentimento — Etapa 11.1 §6).
+ * O tratamento necessário para responder à solicitação apoia-se em
+ * "procedimentos preliminares a pedido do titular"; por isso é informado,
+ * e não submetido a caixa de seleção obrigatória.
+ */
+export const PRIVACY_NOTICE_QUOTATION =
+  "Os dados informados são utilizados exclusivamente para analisar e responder a esta solicitação de cotação.";
+/** Mantido para registro histórico do texto usado antes da correção §6. */
+export const CONSENT_TEXT_CONTACT = PRIVACY_NOTICE_QUOTATION;
 export const CONSENT_TEXT_MARKETING =
   "Aceito receber comunicações técnicas e comerciais da AviZee. Posso revogar a qualquer momento.";
+/** Versão do texto de marketing registrada junto ao consentimento. */
+export const CONSENT_MARKETING_TEXT_VERSION = "marketing-v1-2026-08";
 
 export function clampQuantity(value: number): number {
   if (!Number.isFinite(value)) return 1;

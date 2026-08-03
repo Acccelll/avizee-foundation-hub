@@ -61,7 +61,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: "Em breve",
     items: [
-      { label: "Conteúdos", to: "/admin", enabled: false },
+      { label: "Conteúdos", to: "/admin/conteudos", enabled: true },
       { label: "Configurações", to: "/admin", enabled: false },
     ],
   },

@@ -1,0 +1,12 @@
+variavel,escopo,obrigatoria,ambiente,observacao
+APP_ENV,servidor,sim,todos,controla robots e noindex
+LOG_LEVEL,servidor,nao,todos,padrao info
+AUTH_SESSION_SECRET,servidor,sim em staging/producao,staging/producao,segredo dev rejeitado
+AUTH_SESSION_TTL_MINUTES,servidor,nao,todos,padrao 480
+EMAIL_PROVIDER,servidor,sim,todos,null|log ate DEP-T1
+STORAGE_PROVIDER,servidor,sim,todos,null|local
+SUPABASE_URL,servidor,sim,todos,gerenciada
+SUPABASE_PUBLISHABLE_KEY,servidor,sim,todos,gerenciada
+SUPABASE_SERVICE_ROLE_KEY,servidor,sim,todos,nunca no cliente
+VITE_SUPABASE_URL,cliente,sim,todos,publica
+VITE_SUPABASE_PUBLISHABLE_KEY,cliente,sim,todos,publica

@@ -1,0 +1,21 @@
+controle,estado,evidencia
+autenticacao,ok,tests/security
+mfa,parcial,exigencia operacional pendente
+sessao,ok,env.server.ts
+rbac,ok,tests/security
+rls,ok,migrations
+csrf,ok,same-origin
+xss,ok,blocos sanitizados
+sql injection,ok,acesso parametrizado
+idor,ok,tests/security
+mass assignment,ok,validacao zod
+uploads,ok,politica de imagens
+ssrf,ok,sem fetch por url de usuario
+path traversal,ok,caminhos por uuid
+rate limiting,ok,submit_quotation
+enumeracao,ok,protocolo aleatorio
+cache,ok,no-store no admin
+headers/cors,ok,same-origin
+segredos,ok,fora do repositorio
+logs,ok,redacao obrigatoria
+credencial legada (O-27),bloqueio P0,RK-15

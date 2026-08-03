@@ -1,0 +1,11 @@
+verificacao,esperado,observado,resultado
+produtos sem familia,0,0,ok
+familias sem categoria,0,0,ok
+artigos sem categoria,0,0,ok
+slugs duplicados,0,0,ok
+referencias quebradas,0,0,ok
+registros bloqueados visiveis,0,0,ok
+campos internos publicos,0,0,ok
+imagens privadas em conteudo publico,0,0,ok
+permissoes inconsistentes,0,0,ok
+cotacoes reais,0,0,ok

@@ -1,0 +1,10 @@
+integracao,aprovada,ambiente,estado,evidencia,bloqueio
+email,nao (DEP-T1),homologacao,provider log/null,doc 339,B11-01
+google maps,sim,homologacao,carregamento sob interacao,doc 340,nenhum
+storage,sim,homologacao,buckets nao provisionados,doc 346,parcial
+monitoramento,sim,homologacao,ativo,doc 341,nenhum
+alertas,sim,homologacao,definidos,doc 343,nenhum
+backup,sim,plataforma,gerenciado,doc 345,B11-07
+analytics,nao,nenhum,nao ativado,doc 340,nenhum
+whatsapp oficial,nao,nenhum,fora de escopo,doc 338,nenhum
+crm/erp,nao,nenhum,fora de escopo,doc 338,nenhum

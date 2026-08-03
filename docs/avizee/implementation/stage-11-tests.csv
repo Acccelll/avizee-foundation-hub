@@ -1,0 +1,10 @@
+suite,quantidade,resultado
+unitarios,114,verde
+integracao,35,verde
+seguranca e RLS,17,verde
+HTTP e e2e,15,verde
+conteudo editorial,53,verde
+total,234,verde
+typecheck,1,limpo
+lint,1,aprovado
+build,1,aprovado

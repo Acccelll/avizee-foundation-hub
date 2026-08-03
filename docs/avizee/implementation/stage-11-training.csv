@@ -1,0 +1,8 @@
+perfil,conteudo,duracao,material,responsavel,dados
+Administrador,papeis auditoria configuracoes,90 min,manual + roteiro,tecnico,sinteticos
+Gestor de Catalogo,familias skus imagens importacao,120 min,manual + roteiro,tecnico,sinteticos
+Comercial,cotacoes status notas outbox,60 min,manual + roteiro,tecnico,sinteticos
+Autor,criacao de artigo e blocos,60 min,manual + roteiro,editor,sinteticos
+Revisor Tecnico,revisao e solicitacao de alteracao,45 min,manual + roteiro,editor,sinteticos
+Editor,publicacao e variantes sociais,60 min,manual + roteiro,editor,sinteticos
+Auditor,leitura de auditoria,30 min,manual,tecnico,sinteticos

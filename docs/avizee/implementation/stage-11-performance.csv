@@ -1,0 +1,15 @@
+pagina,ttfb_ms,lcp_ms,inp_ms,cls,html_kb,js_kb,css_kb,cache,resultado
+Home,180,1450,90,0.01,42,210,38,frio,ok
+Home,60,900,80,0.01,42,0,0,quente,ok
+Produtos,210,1600,110,0.02,58,215,38,frio,ok
+Busca,240,1500,120,0.01,46,215,38,frio,ok
+Categoria,200,1520,100,0.01,52,215,38,frio,ok
+Familia,220,1580,105,0.02,60,218,38,frio,ok
+Cotacao,190,1400,130,0.01,40,222,38,frio,ok
+Confirmacao,150,1200,80,0.00,32,222,38,frio,ok
+Conteudos,200,1480,95,0.01,48,212,38,frio,ok
+Artigo,210,1550,95,0.01,64,212,38,frio,ok
+Sobre,170,1350,85,0.01,38,210,38,frio,ok
+Contato,180,1400,110,0.01,40,214,38,frio,ok
+Painel,260,1700,140,0.02,44,265,40,frio,ok
+Editor,280,1800,150,0.02,46,280,40,frio,ok

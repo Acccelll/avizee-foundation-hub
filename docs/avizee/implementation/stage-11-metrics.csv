@@ -1,0 +1,19 @@
+metrica,tipo,rotulos,finalidade,pii
+http_requests_total,contador,env/route/method/status,volume,nao
+http_errors_total,contador,env/route/status,erros,nao
+http_request_duration_ms,histograma,env/route,latencia,nao
+search_queries_total,contador,env,uso da busca,nao
+search_zero_results_total,contador,env,lacunas de catalogo,nao
+quotation_submissions_total,contador,env/outcome,conversao,nao
+quotation_failures_total,contador,env/reason,falhas,nao
+quotation_duplicates_prevented_total,contador,env,idempotencia,nao
+outbox_pending,gauge,env,fila,nao
+outbox_delivered_total,contador,env,entrega,nao
+outbox_failed_total,contador,env/reason,falha de entrega,nao
+outbox_processing_duration_ms,histograma,env,tempo de processamento,nao
+content_publications_total,contador,env,publicacoes,nao
+content_publication_failures_total,contador,env/reason,falhas de publicacao,nao
+storage_uploads_total,contador,env,uploads,nao
+storage_failures_total,contador,env/reason,falhas de storage,nao
+jobs_total,contador,env/entity,jobs,nao
+backups_total,contador,env/outcome,backups,nao

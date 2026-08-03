@@ -41,6 +41,7 @@ import { Route as ProdutosCategorySlugFamilySlugRouteImport } from './routes/pro
 import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
 import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
 import { Route as AdminProtectedCatalogoTaxonomiaRouteImport } from './routes/admin/_protected/catalogo/taxonomia'
+import { Route as AdminProtectedConteudosArticleIdRouteImport } from './routes/admin/_protected/conteudos_.$articleId'
 import { Route as AdminProtectedCotacoesQuotationIdRouteImport } from './routes/admin/_protected/cotacoes_.$quotationId'
 import { Route as AdminProtectedImportacaoJobIdRouteImport } from './routes/admin/_protected/importacao_.$jobId'
 import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
@@ -213,6 +214,12 @@ const AdminProtectedCatalogoTaxonomiaRoute =
     path: '/catalogo/taxonomia',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
+const AdminProtectedConteudosArticleIdRoute =
+  AdminProtectedConteudosArticleIdRouteImport.update({
+    id: '/conteudos_/$articleId',
+    path: '/conteudos/$articleId',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 const AdminProtectedCotacoesQuotationIdRoute =
   AdminProtectedCotacoesQuotationIdRouteImport.update({
     id: '/cotacoes_/$quotationId',
@@ -271,6 +278,7 @@ export interface FileRoutesByFullPath {
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/conteudos/$articleId': typeof AdminProtectedConteudosArticleIdRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -308,6 +316,7 @@ export interface FileRoutesByTo {
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/conteudos/$articleId': typeof AdminProtectedConteudosArticleIdRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -347,6 +356,7 @@ export interface FileRoutesById {
   '/admin/_protected/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/_protected/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/_protected/conteudos_/$articleId': typeof AdminProtectedConteudosArticleIdRoute
   '/admin/_protected/cotacoes_/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/_protected/importacao_/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -387,6 +397,7 @@ export interface FileRouteTypes {
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
     | '/admin/catalogo/taxonomia'
+    | '/admin/conteudos/$articleId'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
     | '/admin/catalogo/familias/$familyId'
@@ -424,6 +435,7 @@ export interface FileRouteTypes {
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
     | '/admin/catalogo/taxonomia'
+    | '/admin/conteudos/$articleId'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
     | '/admin/catalogo/familias/$familyId'
@@ -462,6 +474,7 @@ export interface FileRouteTypes {
     | '/admin/_protected/catalogo/familias'
     | '/admin/_protected/catalogo/skus'
     | '/admin/_protected/catalogo/taxonomia'
+    | '/admin/_protected/conteudos_/$articleId'
     | '/admin/_protected/cotacoes_/$quotationId'
     | '/admin/_protected/importacao_/$jobId'
     | '/admin/_protected/catalogo/familias_/$familyId'
@@ -718,6 +731,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedCatalogoTaxonomiaRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/conteudos_/$articleId': {
+      id: '/admin/_protected/conteudos_/$articleId'
+      path: '/conteudos/$articleId'
+      fullPath: '/admin/conteudos/$articleId'
+      preLoaderRoute: typeof AdminProtectedConteudosArticleIdRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/admin/_protected/cotacoes_/$quotationId': {
       id: '/admin/_protected/cotacoes_/$quotationId'
       path: '/cotacoes/$quotationId'
@@ -761,6 +781,7 @@ interface AdminProtectedRouteChildren {
   AdminProtectedCatalogoFamiliasRoute: typeof AdminProtectedCatalogoFamiliasRoute
   AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
   AdminProtectedCatalogoTaxonomiaRoute: typeof AdminProtectedCatalogoTaxonomiaRoute
+  AdminProtectedConteudosArticleIdRoute: typeof AdminProtectedConteudosArticleIdRoute
   AdminProtectedCotacoesQuotationIdRoute: typeof AdminProtectedCotacoesQuotationIdRoute
   AdminProtectedImportacaoJobIdRoute: typeof AdminProtectedImportacaoJobIdRoute
   AdminProtectedCatalogoFamiliasFamilyIdRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -779,6 +800,7 @@ const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedCatalogoFamiliasRoute: AdminProtectedCatalogoFamiliasRoute,
   AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
   AdminProtectedCatalogoTaxonomiaRoute: AdminProtectedCatalogoTaxonomiaRoute,
+  AdminProtectedConteudosArticleIdRoute: AdminProtectedConteudosArticleIdRoute,
   AdminProtectedCotacoesQuotationIdRoute:
     AdminProtectedCotacoesQuotationIdRoute,
   AdminProtectedImportacaoJobIdRoute: AdminProtectedImportacaoJobIdRoute,

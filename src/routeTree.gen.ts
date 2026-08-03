@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuscaRouteImport } from './routes/busca'
 import { Route as ContatoRouteImport } from './routes/contato'
-import { Route as ConteudosRouteImport } from './routes/conteudos'
 import { Route as CotacaoRouteImport } from './routes/cotacao'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -56,11 +55,6 @@ const BuscaRoute = BuscaRouteImport.update({
 const ContatoRoute = ContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConteudosRoute = ConteudosRouteImport.update({
-  id: '/conteudos',
-  path: '/conteudos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CotacaoRoute = CotacaoRouteImport.update({
@@ -224,7 +218,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
-  '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -259,7 +252,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
-  '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -294,7 +286,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
-  '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -331,7 +322,6 @@ export interface FileRouteTypes {
     | '/'
     | '/busca'
     | '/contato'
-    | '/conteudos'
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/robots.txt'
@@ -366,7 +356,6 @@ export interface FileRouteTypes {
     | '/'
     | '/busca'
     | '/contato'
-    | '/conteudos'
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/robots.txt'
@@ -400,7 +389,6 @@ export interface FileRouteTypes {
     | '/'
     | '/busca'
     | '/contato'
-    | '/conteudos'
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/robots.txt'
@@ -436,7 +424,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuscaRoute: typeof BuscaRoute
   ContatoRoute: typeof ContatoRoute
-  ConteudosRoute: typeof ConteudosRoute
   CotacaoRoute: typeof CotacaoRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -475,13 +462,6 @@ declare module '@tanstack/react-router' {
       path: '/contato'
       fullPath: '/contato'
       preLoaderRoute: typeof ContatoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/conteudos': {
-      id: '/conteudos'
-      path: '/conteudos'
-      fullPath: '/conteudos'
-      preLoaderRoute: typeof ConteudosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cotacao': {
@@ -735,7 +715,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuscaRoute: BuscaRoute,
   ContatoRoute: ContatoRoute,
-  ConteudosRoute: ConteudosRoute,
   CotacaoRoute: CotacaoRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,

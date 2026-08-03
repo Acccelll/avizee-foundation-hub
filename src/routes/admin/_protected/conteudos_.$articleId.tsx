@@ -102,7 +102,7 @@ function ArticleEditor() {
     setForm({
       title: String(row["title"] ?? ""),
       slug: String(row["slug"] ?? ""),
-      subtitle: String(row["subtitle"] ?? "" ?? ""),
+      subtitle: String(row["subtitle"] ?? ""),
       excerpt: String(row["excerpt"] ?? ""),
       categoryId: String(row["category_id"] ?? ""),
       authorId: String(row["author_id"] ?? ""),
@@ -178,8 +178,10 @@ function ArticleEditor() {
       {compliance.length > 0 && (
         <Callout tone="danger" title="Pendências de conformidade">
           <ul className="list-disc pl-5">
-            {compliance.map((issue: { code: string; message: string }, index: number) => (
-              <li key={`${issue.code}-${index}`}>{issue.message}</li>
+            {compliance.map((issue, index) => (
+              <li key={`${issue.code}-${index}`}>
+                {issue.code}: {issue.detail}
+              </li>
             ))}
           </ul>
         </Callout>
@@ -566,7 +568,7 @@ function SocialPanel({
     headline,
     caption,
     hashtags: normalizeHashtags(hashtags.split(/[\s,]+/).filter(Boolean), channel),
-    callToAction: callToAction || null,
+    callToAction,
   };
   const issues = validateSocialDraft(draft);
 
@@ -616,7 +618,9 @@ function SocialPanel({
       {issues.length > 0 && (
         <ul className="mt-3 list-disc pl-5 text-[13px] text-danger">
           {issues.map((issue, index) => (
-            <li key={index}>{issue.message}</li>
+            <li key={index}>
+              {issue.field}: {issue.detail}
+            </li>
           ))}
         </ul>
       )}

@@ -366,3 +366,12 @@ Suite automatizada com 174 testes aprovados (DV-05-09 encerrado com evidencia). 
 - Registradas as decisões D-084 a D-088 e as regras R-21 a R-25.
 - Parecer emitido: **GO_LIVE_BLOCKED** (1 P0, 6 P1, 1 P2).
 - Produção, DNS e site atual não foram alterados.
+
+## 2026-08-03 — Etapa 12 (gate de entrada)
+
+- Gate de entrada não satisfeito: veredito vigente **GO_LIVE_BLOCKED** (1 P0, 6 P1, 1 P2).
+- Produzidos apenas os documentos 401 e 402 e os artefatos `stage-12-go-no-go.csv`, `stage-12-responsibilities.csv`, `stage-12-deviations.csv` e `stage-12-evidence.csv`.
+- Registrada a decisão **NO_GO**; nenhuma ação produtiva executada.
+- Novos bloqueios de lançamento registrados: E12-01 (domínio/DNS), E12-02 (instância de produção separada), E12-03 (janela de mudança).
+- Produção, DNS, TLS, robots de produção e site legado permanecem intactos.
+- Veredito da Etapa 12: **PRODUCTION_BLOCKED**.

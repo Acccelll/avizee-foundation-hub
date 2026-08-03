@@ -126,7 +126,7 @@ function ArtigoPublico() {
               Referências consultadas
             </h2>
             <ul className="mt-4 space-y-2 text-[15px] text-text-secondary">
-              {article.references.map((reference, index) => (
+              {article.references.map((reference: { label: string; url: string | null; note: string | null }, index: number) => (
                 <li key={index}>
                   {reference.url ? (
                     <a
@@ -153,7 +153,7 @@ function ArtigoPublico() {
               Produtos relacionados
             </h2>
             <ul className="mt-4 grid gap-4 sm:grid-cols-2">
-              {article.relatedFamilies.map((family) => (
+              {article.relatedFamilies.map((family: { slug: string; name: string; summary: string | null; categorySlug: string; categoryName: string }) => (
                 <li key={family.slug}>
                   <Link
                     to="/produtos/$categorySlug/$familySlug"

@@ -23,6 +23,7 @@ import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as ConteudosIndexRouteImport } from './routes/conteudos/index'
+import { Route as ConteudosArticleSlugRouteImport } from './routes/conteudos/$articleSlug'
 import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
@@ -112,6 +113,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
 const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
   id: '/conteudos/',
   path: '/conteudos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConteudosArticleSlugRoute = ConteudosArticleSlugRouteImport.update({
+  id: '/conteudos/$articleSlug',
+  path: '/conteudos/$articleSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProdutosIndexRoute = ProdutosIndexRouteImport.update({
@@ -240,6 +246,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
@@ -275,6 +282,7 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
   '/conteudos': typeof ConteudosIndexRoute
   '/produtos': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
@@ -312,6 +320,7 @@ export interface FileRoutesById {
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
@@ -350,6 +359,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/$articleSlug'
     | '/conteudos/'
     | '/produtos/'
     | '/admin/auditoria'
@@ -385,6 +395,7 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/$articleSlug'
     | '/conteudos'
     | '/produtos'
     | '/admin/auditoria'
@@ -421,6 +432,7 @@ export interface FileRouteTypes {
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/$articleSlug'
     | '/conteudos/'
     | '/produtos/'
     | '/admin/_protected/auditoria'
@@ -458,6 +470,7 @@ export interface RootRouteChildren {
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  ConteudosArticleSlugRoute: typeof ConteudosArticleSlugRoute
   ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
@@ -565,6 +578,13 @@ declare module '@tanstack/react-router' {
       path: '/conteudos'
       fullPath: '/conteudos/'
       preLoaderRoute: typeof ConteudosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conteudos/$articleSlug': {
+      id: '/conteudos/$articleSlug'
+      path: '/conteudos/$articleSlug'
+      fullPath: '/conteudos/$articleSlug'
+      preLoaderRoute: typeof ConteudosArticleSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produtos/': {
@@ -765,6 +785,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
+  ConteudosArticleSlugRoute: ConteudosArticleSlugRoute,
   ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,

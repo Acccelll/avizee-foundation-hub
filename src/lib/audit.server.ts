@@ -39,7 +39,18 @@ export type AuditAction =
   | "quotation.note.add"
   | "quotation.export"
   | "outbox.requeue"
-  | "outbox.run";
+  | "outbox.run"
+  | "content.create"
+  | "content.update"
+  | "content.status.change"
+  | "content.publish"
+  | "content.unpublish"
+  | "content.archive"
+  | "content.slug.change"
+  | "content.relation.change"
+  | "content.author.change"
+  | "social.variant.update"
+  | "social.variant.export";
 
 export interface AuditEntry {
   actorId: string | null;

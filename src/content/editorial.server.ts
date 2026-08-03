@@ -176,7 +176,9 @@ export interface ArticleInput {
   noindex?: boolean | undefined;
   internalNotes?: string | null | undefined;
   blocks?: unknown;
-  references?: { label: string; url?: string | null; note?: string | null }[] | undefined;
+  references?:
+    | { label: string; url?: string | null | undefined; note?: string | null | undefined }[]
+    | undefined;
   note?: string | null | undefined;
 }
 

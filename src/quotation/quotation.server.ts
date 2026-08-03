@@ -12,10 +12,13 @@
 import { AppError } from "@/lib/errors";
 import { logger } from "@/lib/logger";
 import { reconcileProducts } from "@/catalog/public/read.server";
+import { increment } from "@/observability/metrics";
+import { payloadHash } from "./payload-hash";
 import {
+  CONSENT_MARKETING_TEXT_VERSION,
   CONSENT_POLICY_VERSION,
-  CONSENT_TEXT_CONTACT,
   CONSENT_TEXT_MARKETING,
+  PRIVACY_NOTICE_QUOTATION,
   MIN_FILL_TIME_MS,
   QUOTE_MAX_ITEMS,
   clampQuantity,
@@ -93,7 +96,12 @@ export interface SubmitInput {
   stateUf?: string | null | undefined;
   message?: string | null | undefined;
   preferredChannel?: string | null | undefined;
-  consentContact: boolean;
+  /**
+   * Etapa 11.1 §6: o tratamento necessário para responder à solicitação NÃO
+   * depende de consentimento genérico. O campo é aceito por compatibilidade
+   * de contrato, mas não é condição de envio.
+   */
+  consentContact?: boolean | undefined;
   consentMarketing: boolean;
   items: RawQuoteItem[];
   /** Antiabuso: campo invisível, tem de chegar vazio. */
@@ -145,20 +153,23 @@ export async function submitQuotation(
     logger.warn("quotation.too_fast");
     throw new AppError("VALIDATION_ERROR", { cause: "min-fill-time" });
   }
-  if (!input.consentContact) {
-    throw new AppError("VALIDATION_ERROR", { cause: "consent-required" });
-  }
-
   // 2. Reconciliação obrigatória (servidor decide o snapshot gravado).
   const { items, unavailable } = await reconcileList(input.items);
   if (items.length === 0) {
     throw new AppError("VALIDATION_ERROR", { cause: "empty-list" });
   }
-  if (items.every((i) => !i.available)) {
+  // §7 — QUALQUER item inválido impede o envio. Os demais itens permanecem
+  // na lista do solicitante; nenhum motivo administrativo é revelado e
+  // nenhum SKU é substituído automaticamente.
+  const invalid = items.filter((i) => !i.available);
+  if (invalid.length > 0) {
+    increment("quotation_failures_total", { reason: "item-review" });
     throw new AppError(
-      "VALIDATION_ERROR",
-      { cause: "all-unavailable" },
-      "Todos os itens da lista saíram de publicação. Atualize a lista antes de enviar.",
+      "CONFLICT",
+      { cause: "items-need-review", count: invalid.length },
+      invalid.length === 1
+        ? "Um item da lista precisa de revisão antes do envio. Remova-o ou volte à família correspondente."
+        : `${invalid.length} itens da lista precisam de revisão antes do envio. Remova-os ou volte às famílias correspondentes.`,
     );
   }
 
@@ -167,8 +178,25 @@ export async function submitQuotation(
     hashValue(fingerprint.userAgent ?? null),
   ]);
 
+  // §8 — idempotência vinculada ao conteúdo: hash canônico do payload
+  // relevante, com itens ordenados e campos normalizados. Valores voláteis
+  // (clientRequestId, elapsedMs, honeypot, origem) ficam de fora.
+  const hash = await payloadHash({
+    companyName: input.companyName,
+    contactName: input.contactName,
+    contactEmail: input.contactEmail,
+    contactPhone: input.contactPhone,
+    city: input.city ?? null,
+    stateUf: input.stateUf ?? null,
+    message: input.message ?? null,
+    preferredChannel: input.preferredChannel ?? null,
+    consentMarketing: Boolean(input.consentMarketing),
+    items: items.map((i) => ({ productId: i.productId, quantity: i.quantity, note: i.note })),
+  });
+
   const payload = {
     client_request_id: input.clientRequestId,
+    payload_hash: hash,
     company_name: input.companyName,
     contact_name: input.contactName,
     contact_email: input.contactEmail,
@@ -198,16 +226,18 @@ export async function submitQuotation(
     })),
     consents: [
       {
+        // Registro da BASE LEGAL OPERACIONAL — não é consentimento (§6).
         purpose: "Resposta à solicitação de cotação",
         legal_basis: "Procedimentos preliminares a pedido do titular",
         policy_version: CONSENT_POLICY_VERSION,
-        consent_text: CONSENT_TEXT_CONTACT,
+        consent_text: PRIVACY_NOTICE_QUOTATION,
         accepted: true,
       },
       {
+        // Consentimento separado, opcional; recusar não impede a cotação.
         purpose: "Comunicações técnicas e comerciais",
         legal_basis: "Consentimento",
-        policy_version: CONSENT_POLICY_VERSION,
+        policy_version: CONSENT_MARKETING_TEXT_VERSION,
         consent_text: CONSENT_TEXT_MARKETING,
         accepted: Boolean(input.consentMarketing),
       },
@@ -219,9 +249,23 @@ export async function submitQuotation(
 
   if (error) {
     const message = String(error.message ?? "");
-    if (message.includes("RATE_LIMITED")) throw new AppError("RATE_LIMITED");
+    if (message.includes("RATE_LIMITED")) {
+      increment("quotation_failures_total", { reason: "rate-limited" });
+      throw new AppError("RATE_LIMITED");
+    }
+    if (message.includes("IDEMPOTENCY_CONFLICT")) {
+      // Mesma chave com conteúdo diferente: recusa controlada. A cotação
+      // anterior não é alterada nem devolvida como equivalente.
+      increment("quotation_failures_total", { reason: "idempotency-conflict" });
+      throw new AppError(
+        "CONFLICT",
+        { cause: "idempotency-conflict" },
+        "A lista foi alterada depois do primeiro envio. Recarregue a página e envie novamente.",
+      );
+    }
     if (message.includes("INVALID_ITEMS"))
       throw new AppError("VALIDATION_ERROR", { cause: "items" });
+    increment("quotation_failures_total", { reason: "persist" });
     logger.error("quotation.submit.failure", { code: error.code ?? null });
     // Banco indisponível: nenhum protocolo falso é devolvido; a lista fica com o cliente.
     throw new AppError("SERVICE_UNAVAILABLE", { cause: "quotation-persist" });
@@ -229,6 +273,11 @@ export async function submitQuotation(
 
   const result = (data ?? {}) as { protocol?: string; idempotent?: boolean };
   if (!result.protocol) throw new AppError("SERVICE_UNAVAILABLE", { cause: "quotation-protocol" });
+
+  increment("quotation_submissions_total", {
+    outcome: result.idempotent ? "idempotent" : "created",
+  });
+  if (result.idempotent) increment("quotation_duplicates_prevented_total");
 
   logger.info("quotation.submitted", {
     protocol: result.protocol,

@@ -69,3 +69,11 @@ recomendações nunca são misturadas no mesmo bloco.
 | D-034 — identidade | SKU nunca é chave primária; UUID imutável |
 | D-058 — acessibilidade | WCAG 2.2 AA é gate de release |
 | Segredos | Nenhum segredo no repositório, no banco comum, no bundle, em log ou em documentação |
+
+## Reforços da Etapa 11
+
+- **R-21** — Backup não é considerado concluído sem teste de restauração registrado com RPO e RTO observados.
+- **R-22** — Migration aplicada nunca é editada; correção é sempre migration nova.
+- **R-23** — Nenhum log, métrica, rótulo, URL, sitemap ou analytics carrega PII.
+- **R-24** — A release candidate é imutável após o início da homologação.
+- **R-25** — Nenhum teste é desabilitado nem regra é reduzida para obter resultado verde.

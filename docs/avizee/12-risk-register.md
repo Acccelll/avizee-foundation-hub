@@ -96,3 +96,14 @@ só encerra com evidência de revogação (Q-01/O-27). **RK-41** (backup não te
 
 RK-33 (dependência do ambiente Lovable) permanece **aceito como risco controlado** por decisão
 expressa em DT-01.
+
+## Riscos da Etapa 11
+
+| ID | Risco | Probabilidade | Impacto | Mitigação | Estado |
+|---|---|---|---|---|---|
+| RK-51 | Credencial SMTP legada não revogada (O-27) | Média | Crítico | Revogação e comprovação pelo cliente | Aberto (P0) |
+| RK-52 | Go-live sem teste de restauração | Média | Crítico | Executar teste em instância isolada | Aberto (P1) |
+| RK-53 | Notificação de cotação indisponível por DEP-T1 | Alta | Alto | Cotação persistida antes de notificar; outbox com retentativa | Mitigado |
+| RK-54 | Publicação com texto jurídico incompleto (Q-13) | Média | Crítico | Bloqueio formal de produção | Aberto (P1) |
+| RK-55 | Indexação acidental do ambiente de homologação | Baixa | Alto | `noindex` por ambiente e robots restritivo | Mitigado |
+| RK-56 | Retenção indefinida por ausência de DEP-T5 | Alta | Alto | Automação destrutiva desativada | Aberto (P1) |

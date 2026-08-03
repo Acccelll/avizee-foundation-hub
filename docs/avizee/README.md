@@ -264,3 +264,11 @@ Artefatos de design: `design/tokens.json` · `design/color-contrast-matrix.csv` 
 - **Etapa 5 liberada condicionalmente à verificação da stack** (condição atendida), sem
   autorização para alterar o layout aprovado nem ativar produção ou serviços reais.
 - Pendências mantidas: **DEP-T1**, **DEP-T3**, **DEP-T5**.
+
+## Etapa 11 — Consolidação e preparação pré-produção (2026-08-03)
+
+Documentos 325 a 364 e 36 artefatos estruturados em `/docs/avizee/implementation/stage-11-*.csv`.
+
+Release candidate: **RC-AVIZEE-01** (congelada). Suíte: 234 testes verdes. Typecheck limpo.
+
+Parecer: **GO_LIVE_BLOCKED** — ver `364-stage-11-executive-report.md`. A Etapa 12 permanece bloqueada.

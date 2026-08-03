@@ -131,3 +131,13 @@ aprovadas nem aplicadas antes de aprovação expressa item a item.
 | D-063 | **DT-01 a DT-21 deliberadas** com os estados finais registrados em `129-stage-04-decisions-for-approval.md`: aprovadas (DT-02, DT-05, DT-06, DT-07, DT-08, DT-09, DT-12, DT-14, DT-15, DT-17, DT-20, DT-21); com ajuste (DT-03, DT-04); com controles (DT-10); em princípio (DT-11); condicionalmente (DT-01, DT-16); condicionada a prova técnica (DT-13); com alteração estrutural (DT-18); com complemento (DT-19). A aprovação **não autoriza** aplicação silenciosa de alternativas, serviços ou dependências não confirmados | USER_DECISION | 2026-08-01 |
 | D-064 | **Verificação de stack (condição de DT-01) concluída**: o repositório é TanStack Start (`@tanstack/react-start`, roteamento por arquivos, SSR nativo, build Vite oficial), conforme `architecture/stack-verification.md`. Mantida a stack; proibida migração artesanal, recriação silenciosa do projeto ou substituição sem aprovação. Dependência do ambiente aceita como risco controlado | USER_DECISION | 2026-08-01 |
 | D-065 | **Etapa 5 liberada condicionalmente**, atendidas as seis condições da §23: verificação da stack, atualização dos documentos técnicos, arquitetura de ambientes corrigida (homologação separada), backup de storage registrado, manutenção de DEP-T1/DEP-T3/DEP-T5 e confirmação de que a Etapa 5 **não ativa produção nem serviços reais**. A liberação **não autoriza alteração do layout aprovado** | USER_DECISION | 2026-08-01 |
+
+## Etapa 11 — Decisões registradas (2026-08-03)
+
+| ID | Decisão | Origem |
+|---|---|---|
+| D-084 | A release candidate da homologação é **RC-AVIZEE-01**, congelada; correções geram RC-02, RC-03… | Etapa 11 §5–6 |
+| D-085 | Health checks separados: liveness sem dependências e readiness por componente, com distinção entre `degraded` e `unavailable` | Etapa 11 §27 |
+| D-086 | Métricas operam com lista fechada de nomes e rótulos em allowlist; PII em rótulo é proibida | Etapa 11 §28 |
+| D-087 | Sem cookies opcionais ativos, **nenhum banner de consentimento é criado**; o mecanismo só nasce junto do Analytics aprovado | Etapa 11 §23 |
+| D-088 | SLIs/SLOs do doc. 344 são metas técnicas internas e **não** podem ser divulgados como SLA público | Etapa 11 §29 |

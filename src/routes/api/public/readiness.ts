@@ -3,25 +3,35 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getServerConfig } from "@/lib/env.server";
 import { httpStatusFor, readinessBody, type ComponentCheck } from "@/observability/health";
 
-async function probeDatabase(): Promise<ComponentCheck["status"]> {
-  const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
-  if (!url || !key) return "not_configured";
-  try {
-    const probe = await fetch(`${url}/auth/v1/health`, {
-      headers: { apikey: key },
-      signal: AbortSignal.timeout(3000),
-    });
-    return probe.ok ? "healthy" : "degraded";
-  } catch {
-    return "unavailable";
-  }
-}
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
- * Readiness (§27). Reporta componentes por nome e estado; dependências
- * não críticas em falha resultam em `degraded`, não em indisponibilidade.
+ * Readiness (Etapa 11.1 §23/§24).
+ *
+ * - `database` executa CONSULTA REAL ao PostgreSQL (não `/auth/v1/health`);
+ * - `migrations` compara o estado real do esquema com a versão esperada;
+ * - `configuration` falha quando um segredo obrigatório está ausente;
+ * - nenhuma tabela, SQL, URL interna, segredo ou stack é exposto.
  */
+export const EXPECTED_SCHEMA_VERSION = "11.1";
+
+/** Chaves que precisam ser verdadeiras no diagnóstico do esquema. */
+export const REQUIRED_SCHEMA_CHECKS = [
+  "quotations_payload_hash",
+  "outbox_claim_columns",
+  "outbox_states",
+  "claim_function",
+  "complete_function",
+  "release_cohort_table",
+  "quotations_rls",
+] as const;
+
+export function evaluateSchema(report: Record<string, unknown> | null): ComponentCheck["status"] {
+  if (!report) return "unavailable";
+  if (report["expected_version"] !== EXPECTED_SCHEMA_VERSION) return "unavailable";
+  return REQUIRED_SCHEMA_CHECKS.every((key) => report[key] === true) ? "healthy" : "unavailable";
+}
+
 export const Route = createFileRoute("/api/public/readiness")({
   server: {
     handlers: {
@@ -34,22 +44,56 @@ export const Route = createFileRoute("/api/public/readiness")({
           environment = cfg.APP_ENV;
           emailProvider = cfg.EMAIL_PROVIDER;
         } catch {
+          // Inclui ausência de QUOTATION_HASH_SALT ou APP_PUBLIC_URL (§11/§14).
           configuration = "unavailable";
+        }
+
+        let database: ComponentCheck["status"] = "not_configured";
+        let migrations: ComponentCheck["status"] = "not_configured";
+        let outbox: ComponentCheck["status"] = "not_configured";
+
+        if (process.env["SUPABASE_URL"] && process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+          try {
+            const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+            const admin = supabaseAdmin as any;
+
+            // Consulta real de leitura no PostgreSQL.
+            const probe = await admin
+              .from("product_categories")
+              .select("id", { count: "exact", head: true });
+            database = probe.error ? "unavailable" : "healthy";
+
+            const schema = await admin.rpc("schema_readiness");
+            migrations = schema.error
+              ? "unavailable"
+              : evaluateSchema(schema.data as Record<string, unknown>);
+
+            const queue = await admin
+              .from("outbox_messages")
+              .select("id", { count: "exact", head: true })
+              .in("status", ["PENDING", "RETRY_SCHEDULED"]);
+            outbox = queue.error ? "degraded" : "healthy";
+          } catch {
+            database = "unavailable";
+            migrations = "unavailable";
+            outbox = "unavailable";
+          }
         }
 
         const checks: ComponentCheck[] = [
           { name: "application", status: "healthy" },
           { name: "configuration", status: configuration },
-          { name: "database", status: await probeDatabase() },
+          { name: "database", status: database },
           {
             name: "authentication",
             status: process.env["SUPABASE_URL"] ? "healthy" : "not_configured",
           },
-          { name: "storage", status: "healthy" },
-          { name: "outbox", status: "healthy" },
+          // Storage real ainda não homologado (bloqueio documentado §25).
+          { name: "storage", status: "degraded" },
+          { name: "outbox", status: outbox },
           // DEP-T1 pendente: provider de e-mail real ainda não aprovado.
           { name: "email", status: emailProvider === "null" ? "not_configured" : "degraded" },
-          { name: "migrations", status: "healthy" },
+          { name: "migrations", status: migrations },
         ];
 
         const body = readinessBody(checks, environment);

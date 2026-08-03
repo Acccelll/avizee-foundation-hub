@@ -3627,6 +3627,7 @@ export type Database = {
       }
       refresh_public_search_index: { Args: never; Returns: undefined }
       release_expired_outbox_leases: { Args: never; Returns: number }
+      schema_readiness: { Args: never; Returns: Json }
       search_public_catalog: {
         Args: {
           p_application?: string

@@ -193,9 +193,8 @@ async function syncFamilyRelations(auth: Authorized, articleId: string, blocks: 
   await auth.admin.from("content_article_families").delete().eq("article_id", articleId);
   if (slugs.length === 0) return [];
   const families =
-    unwrap<Row[]>(
-      await auth.admin.from("public_families").select("id, slug").in("slug", slugs),
-    ) ?? [];
+    unwrap<Row[]>(await auth.admin.from("public_families").select("id, slug").in("slug", slugs)) ??
+    [];
   if (families.length > 0) {
     await auth.admin.from("content_article_families").insert(
       families.map((f, index) => ({
@@ -354,7 +353,8 @@ export async function changeArticleStatus(
 
   const from = article["status"] as ContentStatus;
   const transition = findTransition(from, input.to);
-  if (!transition) throw new AppError("CONFLICT", { cause: `transicao-invalida:${from}->${input.to}` });
+  if (!transition)
+    throw new AppError("CONFLICT", { cause: `transicao-invalida:${from}->${input.to}` });
 
   // A permissão da transição é verificada além da permissão de entrada.
   requirePermission(auth.roles, transition.permission);
@@ -369,7 +369,8 @@ export async function changeArticleStatus(
       blocks,
     });
     if (!parsed.success) issues.push({ code: "STRUCTURE", detail: "blocos inválidos" });
-    if (!article["category_id"]) issues.push({ code: "STRUCTURE", detail: "categoria obrigatória" });
+    if (!article["category_id"])
+      issues.push({ code: "STRUCTURE", detail: "categoria obrigatória" });
     if (!article["author_id"]) issues.push({ code: "STRUCTURE", detail: "autor obrigatório" });
     if (!article["excerpt"] || String(article["excerpt"]).trim().length < 40) {
       issues.push({ code: "STRUCTURE", detail: "resumo com pelo menos 40 caracteres" });

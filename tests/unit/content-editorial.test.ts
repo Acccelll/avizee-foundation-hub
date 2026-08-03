@@ -29,7 +29,7 @@ const paragraph = (text: string): ContentBlock => ({ type: "paragraph", text });
 
 describe("blocos estruturados", () => {
   it("remove HTML e scripts do texto", () => {
-    expect(sanitizeText('<script>alert(1)</script>Manejo')).not.toContain("<script");
+    expect(sanitizeText("<script>alert(1)</script>Manejo")).not.toContain("<script");
     expect(sanitizeText("<b>Ventilação</b>")).toBe("Ventilação");
   });
 

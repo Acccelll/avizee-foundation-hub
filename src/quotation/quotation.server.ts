@@ -220,7 +220,8 @@ export async function submitQuotation(
   if (error) {
     const message = String(error.message ?? "");
     if (message.includes("RATE_LIMITED")) throw new AppError("RATE_LIMITED");
-    if (message.includes("INVALID_ITEMS")) throw new AppError("VALIDATION_ERROR", { cause: "items" });
+    if (message.includes("INVALID_ITEMS"))
+      throw new AppError("VALIDATION_ERROR", { cause: "items" });
     logger.error("quotation.submit.failure", { code: error.code ?? null });
     // Banco indisponível: nenhum protocolo falso é devolvido; a lista fica com o cliente.
     throw new AppError("SERVICE_UNAVAILABLE", { cause: "quotation-persist" });

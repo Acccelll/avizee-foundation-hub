@@ -1,0 +1,12 @@
+item,gatilho,acao,responsavel,verificacao
+frontend,erro elevado,republicar versao anterior,tecnico,smoke test
+backend,falha de server function,republicar versao anterior,tecnico,readiness
+banco,corrupcao ou perda,restaurar snapshot pre-cutover,operacao,reconciliacao
+migrations,falha irrecuperavel,migration corretiva,tecnico,validacao de schema
+storage,objetos ausentes,restaurar copia,tecnico,hashes
+DNS,indisponibilidade,retornar apontamento anterior,cliente,resolucao
+redirects,loop ou 404,desativar matriz,tecnico,rastreio
+robots,indexacao indevida,restaurar noindex,tecnico,verificacao
+sitemap,urls incorretas,despublicar,tecnico,verificacao
+email,envio indevido,suspender provider,tecnico,fila
+analytics,coleta indevida,desativar,tecnico,inventario

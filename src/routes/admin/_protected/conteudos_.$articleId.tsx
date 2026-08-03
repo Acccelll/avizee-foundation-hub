@@ -24,11 +24,7 @@ import {
   upsertSocialVariant,
 } from "@/content/editorial.functions";
 import { blocksSchema, readingMinutes, type ContentBlock } from "@/content/blocks";
-import {
-  CONTENT_STATUS_LABEL,
-  transitionsFrom,
-  type ContentStatus,
-} from "@/content/workflow";
+import { CONTENT_STATUS_LABEL, transitionsFrom, type ContentStatus } from "@/content/workflow";
 import {
   CHANNEL_LABEL,
   CHANNEL_LIMITS,
@@ -151,7 +147,11 @@ function ArticleEditor() {
 
   if (query.isLoading) return <p className="text-[15px]">Carregando…</p>;
   if (query.error || !data || !row)
-    return <Callout tone="danger" title="Artigo não encontrado">{readableError(query.error)}</Callout>;
+    return (
+      <Callout tone="danger" title="Artigo não encontrado">
+        {readableError(query.error)}
+      </Callout>
+    );
 
   const status = String(row["status"] ?? "DRAFT") as ContentStatus;
   const compliance = data.compliance;

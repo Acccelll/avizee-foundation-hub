@@ -124,3 +124,28 @@ Critérios e situação em `39-stage-01-executive-report.md` (15 critérios, tod
 | 29 | Nenhum banco produtivo criado | Atendido |
 | 30 | Nenhuma integração real ativada | Atendido |
 | 31 | Nenhum layout aprovado alterado | Atendido |
+
+## Etapa 11 — Critérios de aceite
+
+| Critério | Estado |
+|---|---|
+| Release candidate congelada | Atendido (RC-AVIZEE-01) |
+| Migrations validadas | Atendido |
+| Banco e catálogo reconciliados | Atendido |
+| Conteúdo, imagens e documentos autorizados migrados | Atendido |
+| Redirects preparados | Atendido |
+| SEO, sitemap e robots validados | Atendido |
+| Observabilidade, health checks e alertas | Atendido |
+| Backup do banco | Parcial |
+| Backup do storage | Não atendido |
+| Restore testado | Não atendido |
+| Segurança validada | Parcial (P0 externo) |
+| Privacidade validada | Não atendido (DEP-T5, Q-13) |
+| Acessibilidade WCAG 2.2 AA | Atendido |
+| Performance e carga documentadas | Atendido |
+| Suíte e regressão verdes | Atendido (234) |
+| UAT concluída | Não atendido |
+| P0 e P1 em zero | Não atendido |
+| Produção, DNS e site atual intactos | Atendido |
+
+**Conclusão: GO_LIVE_BLOCKED.**

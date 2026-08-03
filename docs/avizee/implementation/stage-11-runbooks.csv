@@ -1,0 +1,17 @@
+runbook,objetivo,precondicao,reversao,responsavel
+deploy,publicar versao,suite verde,rollback de versao,tecnico
+migration,aplicar mudanca de banco,backup recente,migration corretiva,tecnico
+rollback,retornar versao anterior,gatilho atendido,na,tecnico
+restore,restaurar banco e storage,snapshot valido,repetir com snapshot anterior,operacao
+cotacao,investigar falha de submissao,acesso ao painel,na,tecnico
+outbox,reprocessar fila,provider ativo,na,tecnico
+email,configurar e validar provider,DEP-T1 resolvida,desativar provider,tecnico
+usuario,criar e revogar acesso,aprovacao,revogar,administrador
+mfa,recuperar segundo fator,identidade verificada,revogar sessoes,administrador
+catalogo,publicar e despublicar,revisao concluida,despublicar,gestor de catalogo
+conteudo,fluxo editorial,revisao concluida,despublicar,editor
+publicacao,invalidar cache e sitemap,publicacao concluida,republicar,editor
+storage,tratar falha de upload,acesso ao bucket,placeholder,tecnico
+incidente,conduzir resposta,deteccao,na,tecnico
+segredo,rotacionar credencial,acesso ao cofre,restaurar anterior,tecnico
+monitoramento,ajustar alerta,alerta ruidoso,reverter limite,tecnico

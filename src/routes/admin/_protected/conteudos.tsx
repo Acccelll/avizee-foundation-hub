@@ -77,8 +77,8 @@ function ContentListPage() {
   });
 
   const categoryName = (id: string | null) =>
-    ((categories.data ?? []) as Array<{ id: string; name: string }>).find((c) => c.id === id)?.name ??
-    "—";
+    ((categories.data ?? []) as Array<{ id: string; name: string }>).find((c) => c.id === id)
+      ?.name ?? "—";
 
   return (
     <div>

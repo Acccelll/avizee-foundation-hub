@@ -170,3 +170,23 @@ DECT-12/DEC-07, O-08 e O-09 (usuários reais e atribuição de papéis), O-10.
 Essas dependências **não impedem** a fundação técnica com contratos e providers de
 desenvolvimento, mas **bloqueiam a ativação em produção**. DEP-T2 e DEP-T4 seguem sem alteração.
 Nova obrigação derivada de DT-13: prova técnica de processamento de imagem antes da adoção.
+
+## Etapa 11 — Pendências que bloqueiam a produção (2026-08-03)
+
+| ID | Pendência | Severidade | Responsável |
+|---|---|---|---|
+| B11-05 / O-27 | Revogação comprovada da credencial SMTP legada | P0 | Cliente / TI |
+| B11-01 / DEP-T1 | Provedor de e-mail, domínio remetente, SPF/DKIM/DMARC, destinatários | P1 | Cliente |
+| B11-02 / DEP-T5 | Política final de retenção com aprovação operacional e jurídica | P1 | Cliente / Jurídico |
+| B11-03 / Q-13 | Razão social, CNPJ, controlador e canal do titular | P1 | Jurídico |
+| B11-04 / Q-08 | Endereço, telefone, WhatsApp, e-mail e horário | P1 | Cliente |
+| B11-06 | Execução e aceite da UAT | P1 | Cliente |
+| B11-07 | Teste real de restauração com RPO e RTO | P1 | Operação |
+| B11-08 / O-10 | Prazo comercial eventualmente divulgado | P2 | Cliente |
+
+### Recomendações — PENDENTE_DE_APROVAÇÃO
+| ID | Recomendação |
+|---|---|
+| L-16 | Exigir MFA operacionalmente para ADMINISTRADOR e GESTOR_DE_CATÁLOGO |
+| L-17 | Agendar export lógico semanal do banco com cópia fora do ambiente principal |
+| L-18 | Provisionar buckets de storage com rotina de backup e verificação de hash antes do cutover |

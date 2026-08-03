@@ -56,8 +56,8 @@ function CentralDeConteudos() {
         <header className="max-w-3xl">
           <h1 className="text-[34px] font-extrabold">Central de Conteúdos</h1>
           <p className="mt-3 text-[17px] text-text-secondary">
-            Material técnico sobre avicultura, produzido e revisado pela equipe AviZee e
-            relacionado às famílias do catálogo.
+            Material técnico sobre avicultura, produzido e revisado pela equipe AviZee e relacionado
+            às famílias do catálogo.
           </p>
         </header>
 

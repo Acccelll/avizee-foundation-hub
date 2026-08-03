@@ -1,0 +1,8 @@
+arquivo,tipo,motivo,etapa
+src/observability/metrics.ts,novo,registro de métricas sem PII,11
+src/observability/health.ts,novo,classificação de saúde,11
+src/routes/api/public/liveness.ts,novo,endpoint de liveness,11
+src/routes/api/public/readiness.ts,novo,endpoint de readiness,11
+tests/unit/observability.test.ts,novo,7 testes de observabilidade,11
+docs/avizee/325-364,novo,documentação da Etapa 11,11
+docs/avizee/implementation/stage-11-*.csv,novo,artefatos estruturados,11

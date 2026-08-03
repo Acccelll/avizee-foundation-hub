@@ -1,0 +1,7 @@
+id,desvio,motivo,impacto,mitigacao,estado
+DV-11-01,e-mail nao homologado com provider real,DEP-T1 pendente,notificacao nao comprovada,cotacao persistida antes de notificar,aberto
+DV-11-02,restore nao testado,sem instancia isolada disponivel,RTO/RPO estimados,procedimento documentado,aberto
+DV-11-03,storage nao provisionado,decisao operacional pendente,backup de storage nao validado,inventario documental,aberto
+DV-11-04,export logico semanal nao agendado,acesso administrativo limitado,retencao dependente da plataforma,runbook pronto,aberto
+DV-11-05,nenhum artigo editorial aprovado para migracao,sem conteudo aprovado,central sem artigo real,estrutura pronta,aberto
+DV-11-06,MFA nao exigido operacionalmente,sem decisao de operacao,risco em contas privilegiadas,recomendacao registrada,PENDENTE_DE_APROVACAO

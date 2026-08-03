@@ -1,0 +1,9 @@
+item,esperado,observado,resultado
+familias publicaveis,31,31,ok
+skus publicaveis,97,97,ok
+categorias publicas,6,6,ok
+familias pendentes nao incorporadas,12,12,ok
+skus sem identidade nao incorporados,34,34,ok
+skus sem nome aprovado,16,16,ok
+conflitos individuais,7,7,ok
+vazamento de marca interna,0,0,ok

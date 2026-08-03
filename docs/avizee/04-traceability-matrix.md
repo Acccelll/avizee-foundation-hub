@@ -91,3 +91,20 @@ incremento está em `127-technical-traceability-matrix.md`, complementada por
 | DT-16 aprovada condicionalmente | §16 | `113` | Prazos pendentes (DEP-T5); exclusão automática bloqueada |
 | DT-18 aprovada com alteração estrutural | §18 | `118` | Homologação em instância de backend separada |
 | DT-19 aprovada com complemento | §19 | `120` | Backup do storage separado do backup do banco |
+
+## Etapa 11 — Rastreabilidade
+
+| Requisito | Documento | Artefato |
+|---|---|---|
+| Prontidão e release candidate | 326, 327, 328 | stage-11-release-candidates.csv |
+| Repositório e dependências | 329 | stage-11-dependencies.csv |
+| Migrations e reconciliação | 330, 331, 332 | stage-11-migrations.csv, stage-11-*-reconciliation.csv |
+| Mídia, documentos e conteúdo | 333, 334, 335 | stage-11-media-migration.csv, stage-11-content-migration.csv |
+| URLs, SEO e indexação | 336, 337 | stage-11-redirects.csv, stage-11-indexation.csv |
+| Integrações, e-mail e cookies | 338, 339, 340 | stage-11-integrations.csv |
+| Observabilidade | 341–344 | stage-11-metrics.csv, -health-checks.csv, -alerts.csv, -sli-slo.csv |
+| Backup, restore e DR | 345–348 | stage-11-backups.csv, stage-11-restore-tests.csv |
+| Segurança, privacidade, acessibilidade, performance | 349–352 | stage-11-security-controls.csv, -privacy-controls.csv, -accessibility.csv, -performance.csv, -load-tests.csv |
+| Homologação, UAT e defeitos | 353–356 | stage-11-uat-cases.csv, stage-11-defects.csv |
+| Operação, cutover e rollback | 357–362 | stage-11-runbooks.csv, -cutover-checklist.csv, -rollback-checklist.csv, -go-live-checklist.csv |
+| Evidências e parecer | 363, 364 | stage-11-evidence.csv, -deviations.csv, -public-leak-check.csv, -no-ecommerce-check.csv |

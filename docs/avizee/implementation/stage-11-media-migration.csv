@@ -1,0 +1,4 @@
+ativo,associacao,direito,status,visibilidade,alt,hash_verificado,resultado
+placeholder-familia,generico,proprio,APROVADA,publica,sim,sim,ok
+imagens-com-marca-visivel,varias familias,nao confirmado,PENDENTE_MARCA_VISIVEL,privada,na,sim,retido
+imagens-sem-direito,varias,nao confirmado,RIGHTS_UNCONFIRMED,privada,na,sim,retido

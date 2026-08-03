@@ -1,0 +1,11 @@
+sli,definicao,meta,janela,publico
+disponibilidade publica,requisicoes 2xx/3xx sobre total,99.5%,mensal,nao
+latencia paginas publicas,p75 de carregamento,<=1200ms,semanal,nao
+sucesso de cotacao,submissoes persistidas/total,>=99.9%,mensal,nao
+persistencia de cotacao,cotacoes perdidas,0,continuo,nao
+entrega de notificacao,entregues em 15 min,>=99%,mensal,nao
+latencia de busca,p95,<=600ms,semanal,nao
+sucesso de publicacao,publicacoes concluidas,>=99%,mensal,nao
+sucesso de backup,execucoes com sucesso,100%,diario,nao
+RTO,tempo de restauracao,<=4h,por incidente,nao
+RPO,perda maxima de dados,<=24h,por incidente,nao

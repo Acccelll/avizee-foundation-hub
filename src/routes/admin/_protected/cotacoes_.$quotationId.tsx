@@ -27,11 +27,7 @@ import {
   readableError,
   secondaryButtonClass,
 } from "@/components/admin/ui";
-import {
-  STATUS_LABEL,
-  STATUS_TRANSITIONS,
-  type QuotationStatus,
-} from "@/quotation/model";
+import { STATUS_LABEL, STATUS_TRANSITIONS, type QuotationStatus } from "@/quotation/model";
 
 interface DetailItem {
   id: string;
@@ -232,9 +228,7 @@ function QuotationDetailPage() {
                   <Row label="Telefone" value={quotation.contactPhone} />
                   <Row
                     label="Localidade"
-                    value={
-                      [quotation.city, quotation.stateUf].filter(Boolean).join(" / ") || "—"
-                    }
+                    value={[quotation.city, quotation.stateUf].filter(Boolean).join(" / ") || "—"}
                   />
                   <Row label="Canal preferido" value={quotation.preferredChannel ?? "—"} />
                 </dl>
@@ -354,9 +348,7 @@ function QuotationDetailPage() {
                       type="button"
                       className={`${secondaryButtonClass} mt-2`}
                       disabled={ownerMutation.isPending}
-                      onClick={() =>
-                        ownerMutation.mutate(true, { onSuccess: () => invalidate() })
-                      }
+                      onClick={() => ownerMutation.mutate(true, { onSuccess: () => invalidate() })}
                     >
                       Remover responsável
                     </button>
@@ -402,9 +394,7 @@ function QuotationDetailPage() {
 
             <section className="mb-8">
               <h2 className="mb-3 text-[20px] font-bold">Notificações</h2>
-              <Table
-                head={["Tipo", "Situação", "Tentativas", "Próxima tentativa", "Erro", ""]}
-              >
+              <Table head={["Tipo", "Situação", "Tentativas", "Próxima tentativa", "Erro", ""]}>
                 {quotation.notifications.map((message) => (
                   <tr key={message.id} className="border-t border-border">
                     <td className="px-3 py-2">{message.type}</td>
@@ -412,9 +402,7 @@ function QuotationDetailPage() {
                       <StatusBadge value={message.status} />
                     </td>
                     <td className="px-3 py-2 tabular-nums">{message.attempts}</td>
-                    <td className="px-3 py-2 tabular-nums">
-                      {formatDate(message.nextAttemptAt)}
-                    </td>
+                    <td className="px-3 py-2 tabular-nums">{formatDate(message.nextAttemptAt)}</td>
                     <td className="px-3 py-2 text-[13px] text-text-muted">
                       {message.lastError ?? "—"}
                     </td>
@@ -443,7 +431,10 @@ function QuotationDetailPage() {
                       {event.toStatus && (
                         <span className="font-normal">
                           {" "}
-                          — {event.fromStatus ? `${STATUS_LABEL[event.fromStatus as QuotationStatus] ?? event.fromStatus} → ` : ""}
+                          —{" "}
+                          {event.fromStatus
+                            ? `${STATUS_LABEL[event.fromStatus as QuotationStatus] ?? event.fromStatus} → `
+                            : ""}
                           {STATUS_LABEL[event.toStatus as QuotationStatus] ?? event.toStatus}
                         </span>
                       )}

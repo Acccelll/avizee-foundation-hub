@@ -110,7 +110,9 @@ function Cotacao() {
 
   const reconciled: ReconciledItem[] | null = reconciliation.data?.items ?? null;
   const unavailable = reconciled?.filter((i) => !i.available).length ?? 0;
-  const allUnavailable = Boolean(reconciled && reconciled.length > 0 && unavailable === reconciled.length);
+  const allUnavailable = Boolean(
+    reconciled && reconciled.length > 0 && unavailable === reconciled.length,
+  );
 
   const mutation = useMutation({
     mutationFn: (values: QuoteFormValues) =>
@@ -203,7 +205,10 @@ function Cotacao() {
         </header>
 
         {unavailable > 0 && (
-          <div role="status" className="flex gap-3 rounded-[8px] border border-emphasis bg-surface p-4">
+          <div
+            role="status"
+            className="flex gap-3 rounded-[8px] border border-emphasis bg-surface p-4"
+          >
             <AlertTriangle aria-hidden="true" className="h-5 w-5 shrink-0 text-emphasis" />
             <p className="text-[15px]">
               {unavailable === 1

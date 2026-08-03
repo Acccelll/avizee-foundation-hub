@@ -101,7 +101,10 @@ export function VariationTable({
         </tbody>
       </table>
 
-      <p role="note" className="border-t border-border-subtle px-4 py-3 text-[14px] text-text-muted">
+      <p
+        role="note"
+        className="border-t border-border-subtle px-4 py-3 text-[14px] text-text-muted"
+      >
         A montagem e o envio da Lista de Cotação são liberados na próxima etapa. Nenhum preço é
         exibido no site.
       </p>

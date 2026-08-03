@@ -1,0 +1,26 @@
+item,responsavel,evidencia,status,bloqueio
+produto,gestor,doc 332,pronto,
+catalogo,gestor,doc 331,pronto,
+busca,tecnico,doc 337,pronto,
+cotacao,tecnico,doc 353,pronto,
+email,tecnico,doc 339,bloqueado,B11-01
+outbox,tecnico,doc 339,pronto,
+institucional,cliente,doc 334,bloqueado,B11-04
+conteudo,editor,doc 335,pronto,
+juridico,juridico,doc 350,bloqueado,B11-03
+seguranca,tecnico,doc 349,bloqueado,B11-05
+privacidade,juridico,doc 350,bloqueado,B11-02
+acessibilidade,tecnico,doc 351,pronto,
+seo,tecnico,doc 337,pronto,
+performance,tecnico,doc 352,pronto,
+monitoramento,tecnico,doc 341,pronto,
+backup,operacao,doc 345,parcial,B11-07
+restore,operacao,doc 347,bloqueado,B11-07
+dominio,cliente,doc 360,nao iniciado,
+dns,cliente,doc 360,nao iniciado,
+tls,tecnico,doc 360,nao iniciado,
+redirects,tecnico,doc 336,preparado,
+analytics,cliente,doc 340,nao ativado,
+suporte,tecnico,doc 359,preparado,
+treinamento,tecnico,doc 358,preparado,
+aprovacao,cliente,doc 355,bloqueado,B11-06

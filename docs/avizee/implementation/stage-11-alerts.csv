@@ -1,0 +1,14 @@
+alerta,severidade,limite,janela,canal,responsavel,acao,escalonamento
+aplicacao indisponivel,P0,readiness unavailable,5 min,operacao,tecnico,runbook de indisponibilidade,imediato
+erro elevado,P1,taxa de erro > 5%,10 min,operacao,tecnico,investigar deploy recente,30 min
+banco indisponivel,P0,probe falha,5 min,operacao,tecnico,runbook perda de banco,imediato
+migration falhou,P0,job falhou,imediato,operacao,tecnico,interromper janela,imediato
+cotacao falhou,P0,qualquer falha de persistencia,5 min,comercial+tecnico,verificar submit_quotation,imediato
+outbox acumulando,P1,pending > 20,15 min,tecnico,reprocessar,60 min
+notificacoes falhando,P1,failed > 5,15 min,tecnico,verificar provider,60 min
+storage indisponivel,P1,falha de upload,15 min,tecnico,degradar para placeholder,60 min
+backup falhou,P1,execucao sem sucesso,24 h,tecnico,executar manual,24 h
+restore falhou,P0,teste sem sucesso,imediato,tecnico,revisar procedimento,imediato
+certificado proximo do vencimento,P2,30 dias,diario,tecnico,renovar,7 dias
+limite de capacidade proximo,P2,80%,60 min,tecnico,avaliar instancia,24 h
+falha de autenticacao anormal,P1,>20 falhas/10min por conta,10 min,tecnico,bloquear e auditar,30 min

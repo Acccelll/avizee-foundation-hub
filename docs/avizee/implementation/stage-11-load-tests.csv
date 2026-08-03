@@ -1,0 +1,9 @@
+cenario,usuarios,duracao,rampa,criterio,resultado,observacao
+listagem publica,25,5 min,60s,p95<1500ms e 0 erro,ok,homologacao
+busca,25,5 min,60s,p95<800ms,ok,homologacao
+filtros,15,5 min,60s,p95<900ms,ok,homologacao
+pagina de familia,25,5 min,60s,p95<1500ms,ok,homologacao
+artigo,15,5 min,60s,p95<1500ms,ok,homologacao
+cotacao sintetica,10,5 min,60s,0 perda e 0 duplicata,ok,sem envio externo
+outbox,10,5 min,na,fila drenada,ok,provider simulado
+painel,5,5 min,30s,p95<2000ms,ok,homologacao

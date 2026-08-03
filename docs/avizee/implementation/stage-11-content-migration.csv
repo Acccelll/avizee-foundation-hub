@@ -1,0 +1,8 @@
+bloco,pagina,origem,aprovacao,responsavel,data,versao,resultado
+hero,/,Etapa 9,aprovado,cliente,2026-08-02,1,migrado
+segmentos,/,Etapa 9,aprovado,cliente,2026-08-02,1,migrado
+sobre,/sobre,Etapa 9,aprovado,cliente,2026-08-02,1,migrado
+solucoes,/solucoes,Etapa 9,aprovado,cliente,2026-08-02,1,migrado
+contato,/contato,Etapa 9,parcial (Q-08),cliente,2026-08-02,1,migrado com pendencia
+textos legais,/politica-de-privacidade;/termos-de-uso,Etapa 9,pendente (Q-13),juridico,,rascunho,bloqueado
+artigos editoriais,/conteudos,Etapa 10,nenhum aprovado,editor,,,nao migrado

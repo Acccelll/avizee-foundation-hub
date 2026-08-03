@@ -1,0 +1,40 @@
+evidencia,artefato,estado
+release candidate,doc 327 + stage-11-release-candidates.csv,ok
+congelamento,doc 328,ok
+dependencias,stage-11-dependencies.csv,ok
+migrations,stage-11-migrations.csv,ok
+banco,stage-11-database-reconciliation.csv,ok
+catalogo,stage-11-catalog-reconciliation.csv,ok
+imagens,stage-11-media-migration.csv,ok
+documentos,doc 333,ok
+conteudo institucional,stage-11-content-migration.csv,ok
+conteudo editorial,doc 335,ok
+urls e redirects,stage-11-redirects.csv,ok
+seo e sitemap,stage-11-indexation.csv,ok
+robots,doc 337,ok
+email,doc 339,bloqueado
+maps,doc 340,ok
+cookies,doc 340,ok
+analytics,doc 340,nao ativado
+observabilidade,doc 341 + testes,ok
+logs,doc 342,ok
+metricas,stage-11-metrics.csv,ok
+health checks,stage-11-health-checks.csv,ok
+alertas,stage-11-alerts.csv,ok
+backups,stage-11-backups.csv,parcial
+restore,stage-11-restore-tests.csv,nao executado
+seguranca,stage-11-security-controls.csv,ok com P0 externo
+privacidade,stage-11-privacy-controls.csv,bloqueado
+acessibilidade,stage-11-accessibility.csv,ok
+performance,stage-11-performance.csv,ok
+carga,stage-11-load-tests.csv,ok
+homologacao,doc 353,ok
+UAT,stage-11-uat-cases.csv,pendente
+defeitos,stage-11-defects.csv,ok
+runbooks,stage-11-runbooks.csv,ok
+treinamento,stage-11-training.csv,ok
+cutover,stage-11-cutover-checklist.csv,ok
+rollback,stage-11-rollback-checklist.csv,ok
+checklist,stage-11-go-live-checklist.csv,ok
+nao vazamento,stage-11-public-leak-check.csv,ok
+nao e-commerce,stage-11-no-ecommerce-check.csv,ok

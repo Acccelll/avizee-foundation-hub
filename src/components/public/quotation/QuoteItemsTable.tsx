@@ -124,9 +124,12 @@ export function QuoteItemsTable({
           })}
         </tbody>
       </table>
-      <p role="note" className="border-t border-border-subtle px-4 py-3 text-[14px] text-text-muted">
-        Esta lista não é um pedido e não contém preço, prazo ou condição comercial. A equipe
-        AviZee responde com uma proposta técnica.
+      <p
+        role="note"
+        className="border-t border-border-subtle px-4 py-3 text-[14px] text-text-muted"
+      >
+        Esta lista não é um pedido e não contém preço, prazo ou condição comercial. A equipe AviZee
+        responde com uma proposta técnica.
       </p>
     </div>
   );

@@ -34,7 +34,9 @@ import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_pr
 import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
 import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
+import { Route as ApiPublicLivenessRouteImport } from './routes/api/public/liveness'
 import { Route as ApiPublicOutboxWorkerRouteImport } from './routes/api/public/outbox-worker'
+import { Route as ApiPublicReadinessRouteImport } from './routes/api/public/readiness'
 import { Route as ConteudosCategoriaSlugRouteImport } from './routes/conteudos/categoria.$slug'
 import { Route as ProdutosCategorySlugIndexRouteImport } from './routes/produtos/$categorySlug/index'
 import { Route as ProdutosCategorySlugFamilySlugRouteImport } from './routes/produtos/$categorySlug/$familySlug'
@@ -174,9 +176,19 @@ const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   path: '/api/public/health',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicLivenessRoute = ApiPublicLivenessRouteImport.update({
+  id: '/api/public/liveness',
+  path: '/api/public/liveness',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicOutboxWorkerRoute = ApiPublicOutboxWorkerRouteImport.update({
   id: '/api/public/outbox-worker',
   path: '/api/public/outbox-worker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicReadinessRoute = ApiPublicReadinessRouteImport.update({
+  id: '/api/public/readiness',
+  path: '/api/public/readiness',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConteudosCategoriaSlugRoute = ConteudosCategoriaSlugRouteImport.update({
@@ -270,7 +282,9 @@ export interface FileRoutesByFullPath {
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
+  '/api/public/readiness': typeof ApiPublicReadinessRoute
   '/conteudos/categoria/$slug': typeof ConteudosCategoriaSlugRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin/': typeof AdminProtectedIndexRoute
@@ -308,7 +322,9 @@ export interface FileRoutesByTo {
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
+  '/api/public/readiness': typeof ApiPublicReadinessRoute
   '/conteudos/categoria/$slug': typeof ConteudosCategoriaSlugRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin': typeof AdminProtectedIndexRoute
@@ -348,7 +364,9 @@ export interface FileRoutesById {
   '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
   '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
+  '/api/public/readiness': typeof ApiPublicReadinessRoute
   '/conteudos/categoria/$slug': typeof ConteudosCategoriaSlugRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
@@ -389,7 +407,9 @@ export interface FileRouteTypes {
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/public/health'
+    | '/api/public/liveness'
     | '/api/public/outbox-worker'
+    | '/api/public/readiness'
     | '/conteudos/categoria/$slug'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin/'
@@ -427,7 +447,9 @@ export interface FileRouteTypes {
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/public/health'
+    | '/api/public/liveness'
     | '/api/public/outbox-worker'
+    | '/api/public/readiness'
     | '/conteudos/categoria/$slug'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin'
@@ -466,7 +488,9 @@ export interface FileRouteTypes {
     | '/admin/_protected/midia'
     | '/admin/_protected/normalizacao'
     | '/api/public/health'
+    | '/api/public/liveness'
     | '/api/public/outbox-worker'
+    | '/api/public/readiness'
     | '/conteudos/categoria/$slug'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin/_protected/'
@@ -499,7 +523,9 @@ export interface RootRouteChildren {
   ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
+  ApiPublicLivenessRoute: typeof ApiPublicLivenessRoute
   ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
+  ApiPublicReadinessRoute: typeof ApiPublicReadinessRoute
   ConteudosCategoriaSlugRoute: typeof ConteudosCategoriaSlugRoute
   ProdutosCategorySlugFamilySlugRoute: typeof ProdutosCategorySlugFamilySlugRoute
   ProdutosCategorySlugIndexRoute: typeof ProdutosCategorySlugIndexRoute
@@ -682,11 +708,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicHealthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/liveness': {
+      id: '/api/public/liveness'
+      path: '/api/public/liveness'
+      fullPath: '/api/public/liveness'
+      preLoaderRoute: typeof ApiPublicLivenessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/outbox-worker': {
       id: '/api/public/outbox-worker'
       path: '/api/public/outbox-worker'
       fullPath: '/api/public/outbox-worker'
       preLoaderRoute: typeof ApiPublicOutboxWorkerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/readiness': {
+      id: '/api/public/readiness'
+      path: '/api/public/readiness'
+      fullPath: '/api/public/readiness'
+      preLoaderRoute: typeof ApiPublicReadinessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/conteudos/categoria/$slug': {
@@ -832,7 +872,9 @@ const rootRouteChildren: RootRouteChildren = {
   ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
+  ApiPublicLivenessRoute: ApiPublicLivenessRoute,
   ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,
+  ApiPublicReadinessRoute: ApiPublicReadinessRoute,
   ConteudosCategoriaSlugRoute: ConteudosCategoriaSlugRoute,
   ProdutosCategorySlugFamilySlugRoute: ProdutosCategorySlugFamilySlugRoute,
   ProdutosCategorySlugIndexRoute: ProdutosCategorySlugIndexRoute,

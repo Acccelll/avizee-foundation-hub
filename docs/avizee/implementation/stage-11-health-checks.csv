@@ -1,0 +1,10 @@
+endpoint,componente,criticidade,estado_atual,http
+/api/public/liveness,aplicacao,critico,healthy,200
+/api/public/readiness,configuracao,critico,healthy,200
+/api/public/readiness,banco,critico,healthy,200
+/api/public/readiness,migrations,critico,healthy,200
+/api/public/readiness,autenticacao,nao critico,healthy,200
+/api/public/readiness,storage,nao critico,healthy,200
+/api/public/readiness,outbox,nao critico,healthy,200
+/api/public/readiness,email,nao critico,not_configured,200 (degraded)
+/api/public/health,agregado,critico,healthy,200

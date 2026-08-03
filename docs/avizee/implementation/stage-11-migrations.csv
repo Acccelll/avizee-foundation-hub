@@ -1,0 +1,10 @@
+migration,etapa,objeto,idempotente,rls,grants,tempo,resultado
+core-taxonomia,6,categorias/segmentos/aplicacoes,sim,sim,sim,<1s,ok
+core-catalogo,6,familias/produtos/codigos/specs,sim,sim,sim,<2s,ok
+media-direitos,6,media_assets/product_images,sim,sim,sim,<1s,ok
+importacao,6,import_jobs/rows/errors,sim,sim,sim,<1s,ok
+auditoria,6,audit_logs imutavel,sim,sim,sim,<1s,ok
+busca,7,unaccent/pg_trgm/indice materializado,sim,sim,sim,<3s,ok
+cotacao,8,quotations/items/events/outbox,sim,sim,sim,<2s,ok
+cotacao-funcoes,8,submit_quotation/protocolo/rate limit,sim,sim,sim,<1s,ok
+conteudo,10,content_articles e relacionados,sim,sim,sim,<2s,ok

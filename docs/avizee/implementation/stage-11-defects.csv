@@ -1,0 +1,9 @@
+id,severidade,titulo,origem,impacto,correcao,responsavel,estado
+B11-05,P0,credencial SMTP legada sem prova de revogacao,site atual,acesso indevido a e-mail,revogar e comprovar,cliente/TI,aberto
+B11-01,P1,DEP-T1 pendente,dependencia,notificacao real indisponivel,definir provedor e DNS de e-mail,cliente,aberto
+B11-02,P1,DEP-T5 pendente,dependencia,retencao sem politica,aprovar politica,cliente/juridico,aberto
+B11-03,P1,Q-13 pendente,dependencia,textos legais incompletos,fornecer dados,juridico,aberto
+B11-04,P1,Q-08 pendente,dependencia,contato nao confirmado,fornecer dados,cliente,aberto
+B11-06,P1,UAT nao executada,processo,sem aceite,executar roteiro,cliente,aberto
+B11-07,P1,restore nao testado,operacao,RTO/RPO nao comprovados,executar teste isolado,operacao,aberto
+B11-08,P2,O-10 pendente,dependencia,sem prazo comercial divulgado,decidir copy,cliente,aberto

@@ -1,0 +1,17 @@
+categoria,superficie,ocorrencias,resultado
+marca interna,HTML/JSON/hidratacao/sitemap,0,ok
+fabricante,HTML/JSON,0,ok
+fornecedor,HTML/JSON,0,ok
+custo,todas,0,ok
+nome original,HTML/JSON,0,ok
+referencia privada,HTML/JSON,0,ok
+nota interna,HTML/JSON,0,ok
+conflito de codigo,HTML/JSON,0,ok
+staging,HTML/JSON/sitemap,0,ok
+auditoria,APIs publicas,0,ok
+documento de direito,storage publico,0,ok
+path privado,HTML/JSON,0,ok
+segredo,bundle/logs,0,ok
+usuario administrativo,HTML/JSON,0,ok
+comentario de revisao,HTML/JSON,0,ok
+conteudo social privado,HTML/JSON,0,ok

@@ -1,0 +1,15 @@
+rota,title,description,canonical,jsonld,h1_unico,html_servidor,status,indexavel_em_producao
+/,ok,ok,ok,Organization,sim,sim,200,sim
+/produtos,ok,ok,ok,ItemList+BreadcrumbList,sim,sim,200,sim
+/produtos/{categoria},ok,ok,ok,ItemList+BreadcrumbList,sim,sim,200,sim
+/produtos/{categoria}/{familia},ok,ok,ok,Product sem oferta,sim,sim,200,sim
+/busca,ok,ok,ok,nenhum,sim,sim,200,nao
+/cotacao,ok,ok,ok,nenhum,sim,sim,200,nao
+/sobre,ok,ok,ok,Organization,sim,sim,200,sim
+/solucoes,ok,ok,ok,BreadcrumbList,sim,sim,200,sim
+/contato,ok,ok,ok,Organization,sim,sim,200,sim
+/conteudos,ok,ok,ok,ItemList,sim,sim,200,sim
+/conteudos/{artigo},ok,ok,ok,Article,sim,sim,200,sim
+/politica-de-privacidade,ok,ok,ok,nenhum,sim,sim,200,nao (rascunho)
+/termos-de-uso,ok,ok,ok,nenhum,sim,sim,200,nao (rascunho)
+/admin/*,na,na,na,nenhum,sim,sim,200,nao

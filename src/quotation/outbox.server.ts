@@ -10,7 +10,11 @@ import { getEmailProvider } from "@/services/adapters.server";
 import { getServerConfig } from "@/lib/env.server";
 import { logger } from "@/lib/logger";
 import { OUTBOX_BACKOFF_MINUTES, OUTBOX_MAX_ATTEMPTS } from "./model";
-import { confirmationTemplate, internalNoticeTemplate, type QuotationMessageData } from "./templates";
+import {
+  confirmationTemplate,
+  internalNoticeTemplate,
+  type QuotationMessageData,
+} from "./templates";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -23,7 +27,8 @@ export interface OutboxRunResult {
 }
 
 function backoffFor(attempt: number): string {
-  const minutes = OUTBOX_BACKOFF_MINUTES[Math.min(attempt, OUTBOX_BACKOFF_MINUTES.length) - 1] ?? 240;
+  const minutes =
+    OUTBOX_BACKOFF_MINUTES[Math.min(attempt, OUTBOX_BACKOFF_MINUTES.length) - 1] ?? 240;
   return new Date(Date.now() + minutes * 60_000).toISOString();
 }
 
@@ -99,7 +104,13 @@ export async function processOutbox(limit = 20): Promise<OutboxRunResult> {
     return { processed: 0, sent: 0, simulated: 0, failed: 0, deadLettered: 0 };
   }
 
-  const result: OutboxRunResult = { processed: 0, sent: 0, simulated: 0, failed: 0, deadLettered: 0 };
+  const result: OutboxRunResult = {
+    processed: 0,
+    sent: 0,
+    simulated: 0,
+    failed: 0,
+    deadLettered: 0,
+  };
 
   for (const row of rows ?? []) {
     result.processed += 1;
@@ -111,7 +122,12 @@ export async function processOutbox(limit = 20): Promise<OutboxRunResult> {
       if (!externalSendingEnabled) {
         await admin
           .from("outbox_messages")
-          .update({ status: "SIMULATED", attempts, processed_at: new Date().toISOString(), last_error: null })
+          .update({
+            status: "SIMULATED",
+            attempts,
+            processed_at: new Date().toISOString(),
+            last_error: null,
+          })
           .eq("id", row.id);
         result.simulated += 1;
       } else {
@@ -123,7 +139,12 @@ export async function processOutbox(limit = 20): Promise<OutboxRunResult> {
         });
         await admin
           .from("outbox_messages")
-          .update({ status: "SENT", attempts, processed_at: new Date().toISOString(), last_error: null })
+          .update({
+            status: "SENT",
+            attempts,
+            processed_at: new Date().toISOString(),
+            last_error: null,
+          })
           .eq("id", row.id);
         result.sent += 1;
       }

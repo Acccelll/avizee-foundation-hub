@@ -1,0 +1,5 @@
+item,tipo,frequencia,retencao,criptografia,fora_do_ambiente,monitorado,estado
+banco,snapshot,diario,padrao da plataforma,sim,nao confirmado,sim,ativo
+banco,export logico,semanal,a definir,sim,pendente,sim,pendente
+storage,copia de objetos,a definir,a definir,sim,pendente,sim,nao provisionado
+segredos,nao aplicavel,nunca,na,na,na,na,nunca exportados com o banco

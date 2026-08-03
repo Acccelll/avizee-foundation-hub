@@ -38,9 +38,7 @@ function CategoriaEditorial() {
   const { category, list, categories } = Route.useLoaderData();
 
   return (
-    <PublicShell
-      breadcrumb={[{ label: "Conteúdos", to: "/conteudos" }, { label: category.name }]}
-    >
+    <PublicShell breadcrumb={[{ label: "Conteúdos", to: "/conteudos" }, { label: category.name }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
           <p className="text-[13px] font-semibold uppercase tracking-wide text-text-muted">

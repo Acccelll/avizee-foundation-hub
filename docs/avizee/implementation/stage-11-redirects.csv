@@ -1,0 +1,7 @@
+url_antiga,url_nova,tipo,status,motivo,aprovacao,ativacao
+/catalogo.pdf,/produtos,301,preparado,PDF aposentado (D-038),aprovado,Etapa 12
+/produtos.php,/produtos,301,preparado,rota legada,aprovado,Etapa 12
+/index.php,/,301,preparado,rota legada,aprovado,Etapa 12
+/contato.php,/contato,301,preparado,rota legada,aprovado,Etapa 12
+/empresa.php,/sobre,301,preparado,rota legada,aprovado,Etapa 12
+slug historico de artigo,/conteudos/{slug atual},301,implementado,content_article_slugs,aprovado,ativo em homologacao

@@ -1,0 +1,15 @@
+id,trilha,perfil,cenario,precondicao,resultado_esperado,resultado_obtido,severidade,aprovacao
+UAT-01,catalogo,GESTOR_DE_CATALOGO,navegar familias e SKUs,catalogo publicado,31 familias visiveis,pendente,,pendente
+UAT-02,catalogo,GESTOR_DE_CATALOGO,importar lote com simulacao,arquivo valido,simulacao obrigatoria antes da execucao,pendente,,pendente
+UAT-03,catalogo,GESTOR_DE_CATALOGO,imagem sem direito,ativo em quarentena,produto exibe placeholder,pendente,,pendente
+UAT-04,comercial,COMERCIAL,receber cotacao,cotacao sintetica enviada,protocolo e itens visiveis,pendente,,pendente
+UAT-05,comercial,COMERCIAL,atribuir e anotar,cotacao recebida,status e nota registrados,pendente,,pendente
+UAT-06,institucional,visitante,navegar Home a Contato,site em homologacao,campos pendentes como informacao em confirmacao,pendente,,pendente
+UAT-07,institucional,visitante,mapa sob interacao,pagina de contato,nada carrega antes do clique,pendente,,pendente
+UAT-08,editorial,AUTOR,criar artigo,perfil autor,artigo em rascunho,pendente,,pendente
+UAT-09,editorial,REVISOR_TECNICO,solicitar alteracao,artigo em revisao,status alterado com nota,pendente,,pendente
+UAT-10,editorial,EDITOR,publicar e despublicar,artigo aprovado,cache e sitemap atualizados,pendente,,pendente
+UAT-11,administrativo,ADMINISTRADOR,gerir papeis,usuarios sinteticos,permissao aplicada no servidor,pendente,,pendente
+UAT-12,legal,juridico,revisar textos,paginas legais,campos obrigatorios presentes,bloqueado por Q-13,P1,pendente
+UAT-13,mobile,visitante,fluxo de cotacao em mobile,dispositivo pequeno,fluxo completo sem quebra,pendente,,pendente
+UAT-14,acessibilidade,visitante,teclado e leitor de tela,fluxos criticos,sem armadilha de foco,pendente,,pendente

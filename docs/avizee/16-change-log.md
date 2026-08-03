@@ -356,3 +356,13 @@ backend, nenhum formulário ativo, nenhum produto importado, nenhuma alteração
 ## Etapa 6.1 — 2026-08-02
 
 Suite automatizada com 174 testes aprovados (DV-05-09 encerrado com evidencia). Lote canonico de 31 familias e 97 SKUs simulado, importado, reconciliado, provado idempotente e revertido com rollback, em ambiente nao produtivo. Verificacao de nao vazamento sem ocorrencias. Documentos 157 a 187 e arquivos stage-06-*.csv criados. Sete desvios registrados (DV-06-01 a DV-06-07), nenhum bloqueante.
+
+## 2026-08-03 — Etapa 11
+
+- Criados os documentos 325 a 364 e 36 artefatos em `/docs/avizee/implementation/`.
+- Implementada a camada de observabilidade: `src/observability/metrics.ts`, `src/observability/health.ts`, rotas `/api/public/liveness` e `/api/public/readiness`, com 7 testes novos.
+- Suíte elevada de 227 para **234 testes verdes**; typecheck limpo.
+- Release candidate **RC-AVIZEE-01** definida e congelada.
+- Registradas as decisões D-084 a D-088 e as regras R-21 a R-25.
+- Parecer emitido: **GO_LIVE_BLOCKED** (1 P0, 6 P1, 1 P2).
+- Produção, DNS e site atual não foram alterados.

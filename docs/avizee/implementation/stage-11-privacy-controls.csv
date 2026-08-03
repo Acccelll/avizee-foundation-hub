@@ -1,0 +1,14 @@
+controle,estado,observacao
+minimizacao,ok,apenas dados necessarios
+base legal,ok,consent_records
+consentimento de marketing,ok,opcional e separado
+politica de privacidade,bloqueado,Q-13
+retencao,bloqueado,DEP-T5
+logs sem PII integral,ok,redacao
+cache sem PII,ok,no-store no admin
+analytics,ok,nao ativado
+terceiros,ok,apenas Maps sob interacao
+direitos do titular,bloqueado,canal pendente Q-13
+acesso administrativo,ok,restrito por papel
+exportacao,ok,restrita a ADMINISTRADOR
+eliminacao futura,bloqueado,DEP-T5

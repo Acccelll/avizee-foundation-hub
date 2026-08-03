@@ -9,9 +9,12 @@ import type { ContentBlock } from "@/content/blocks";
  * texto puro. É a contrapartida da validação de blocos no servidor.
  */
 function Heading({ level, text }: { level: 2 | 3; text: string }) {
-  const className =
-    level === 2 ? "mt-10 text-[26px] font-extrabold" : "mt-8 text-[20px] font-bold";
-  return level === 2 ? <h2 className={className}>{text}</h2> : <h3 className={className}>{text}</h3>;
+  const className = level === 2 ? "mt-10 text-[26px] font-extrabold" : "mt-8 text-[20px] font-bold";
+  return level === 2 ? (
+    <h2 className={className}>{text}</h2>
+  ) : (
+    <h3 className={className}>{text}</h3>
+  );
 }
 
 export function ArticleBlocks({ blocks }: { blocks: ContentBlock[] }) {
@@ -32,13 +35,19 @@ export function ArticleBlocks({ blocks }: { blocks: ContentBlock[] }) {
 
           case "list":
             return block.ordered ? (
-              <ol key={key} className="mt-4 list-decimal space-y-2 pl-6 text-[17px] text-text-secondary">
+              <ol
+                key={key}
+                className="mt-4 list-decimal space-y-2 pl-6 text-[17px] text-text-secondary"
+              >
                 {block.items.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ol>
             ) : (
-              <ul key={key} className="mt-4 list-disc space-y-2 pl-6 text-[17px] text-text-secondary">
+              <ul
+                key={key}
+                className="mt-4 list-disc space-y-2 pl-6 text-[17px] text-text-secondary"
+              >
                 {block.items.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
@@ -157,9 +166,7 @@ export function ArticleBlocks({ blocks }: { blocks: ContentBlock[] }) {
                 <p className="text-[13px] font-semibold uppercase tracking-wide text-text-muted">
                   Relacionado no catálogo
                 </p>
-                {block.note && (
-                  <p className="mt-2 text-[16px] text-text-secondary">{block.note}</p>
-                )}
+                {block.note && <p className="mt-2 text-[16px] text-text-secondary">{block.note}</p>}
                 <Link
                   to="/produtos"
                   search={{ q: block.familySlug.replace(/-/g, " ") }}

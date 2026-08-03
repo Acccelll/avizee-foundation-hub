@@ -1,0 +1,18 @@
+pacote,versao,licenca,finalidade,risco,vulnerabilidade,criticidade
+react,19.2.0,MIT,UI,baixo,nenhuma,alta
+react-dom,19.2.0,MIT,render,baixo,nenhuma,alta
+@tanstack/react-router,1.170.18,MIT,roteamento,baixo,nenhuma,alta
+@tanstack/react-start,1.168.32,MIT,SSR e server functions,baixo,nenhuma,alta
+@tanstack/react-query,5.101.1,MIT,cache de dados,baixo,nenhuma,media
+@supabase/supabase-js,2.111.0,MIT,acesso ao banco,baixo,nenhuma,alta
+zod,3.24.2,MIT,validacao,baixo,nenhuma,alta
+tailwindcss,4.2.1,MIT,estilos,baixo,nenhuma,media
+@fontsource-variable/montserrat,5.3.0,OFL-1.1,tipografia self-host,baixo,nenhuma,media
+lucide-react,0.575.0,ISC,icones,baixo,nenhuma,baixa
+react-hook-form,7.71.2,MIT,formularios,baixo,nenhuma,media
+sonner,2.0.7,MIT,notificacoes,baixo,nenhuma,baixa
+radix-ui (conjunto),1.x/2.x,MIT,primitivas acessiveis,baixo,nenhuma,alta
+vite,8.1.5,MIT,build,baixo,nenhuma,alta
+vitest,4.1.10,MIT,testes,baixo,nenhuma,media
+typescript,5.8.3,Apache-2.0,tipos,baixo,nenhuma,alta
+eslint,9.32.0,MIT,lint,baixo,nenhuma,media

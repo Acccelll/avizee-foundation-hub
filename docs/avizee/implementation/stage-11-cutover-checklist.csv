@@ -1,0 +1,18 @@
+item,responsavel,evidencia,status
+data e janela acordadas,cliente,ata,pendente
+congelamento de conteudo,editor,registro,pendente
+backup completo verificado,operacao,relatorio,pendente
+export final,tecnico,arquivo,pendente
+migrations em producao,tecnico,log,pendente
+import final do catalogo,gestor,relatorio,pendente
+sincronizacao de storage,tecnico,hashes,pendente
+variaveis e segredos,tecnico,inventario,pendente
+dominio e DNS,cliente,registro,pendente
+TLS,tecnico,certificado,pendente
+redirects 301,tecnico,matriz,pendente
+robots de producao,tecnico,arquivo,pendente
+sitemap publicado,tecnico,url,pendente
+monitoramento ativo,tecnico,alertas,pendente
+testes de fumaca,tecnico,checklist,pendente
+comunicacao,cliente,mensagem,pendente
+rollback disponivel,tecnico,plano,pendente

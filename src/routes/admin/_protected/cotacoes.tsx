@@ -5,7 +5,14 @@ import { useState } from "react";
 
 import { buildMeta } from "@/seo/meta";
 import { fetchQuotationDashboard, fetchQuotations } from "@/quotation/admin.functions";
-import { PageHeader, Pagination, QueryState, StatusBadge, Table, inputClass } from "@/components/admin/ui";
+import {
+  PageHeader,
+  Pagination,
+  QueryState,
+  StatusBadge,
+  Table,
+  inputClass,
+} from "@/components/admin/ui";
 import { QUOTATION_STATUSES, STATUS_LABEL, type QuotationStatus } from "@/quotation/model";
 
 interface QuotationRow {
@@ -19,7 +26,6 @@ interface QuotationRow {
   unavailableItemCount: number;
   createdAt: string;
 }
-
 
 export const Route = createFileRoute("/admin/_protected/cotacoes")({
   head: () =>
@@ -174,7 +180,6 @@ function Cotacoes() {
           pageSize={query.data?.pageSize ?? 20}
           onChange={setPage}
         />
-
       </QueryState>
     </div>
   );

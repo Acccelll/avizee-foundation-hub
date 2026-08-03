@@ -1,0 +1,14 @@
+evidencia,tipo,artefato,estado,observacao
+verificacao de prontidao,documento,docs/avizee/401-stage-12-readiness-verification.md,produzida,
+decisao GO/NO-GO,documento,docs/avizee/402-go-no-go-decision-record.md,produzida,NO_GO
+matriz de criterios,csv,implementation/stage-12-go-no-go.csv,produzida,
+matriz de responsaveis,csv,implementation/stage-12-responsibilities.csv,produzida,sem designacao
+bloqueios,csv,implementation/stage-12-deviations.csv,produzida,
+backup pre-cutover,execucao,-,nao executado,cutover nao iniciado
+migrations produtivas,execucao,-,nao executado,cutover nao iniciado
+migracao final,execucao,-,nao executado,cutover nao iniciado
+deploy produtivo,execucao,-,nao executado,cutover nao iniciado
+DNS/TLS,execucao,-,nao executado,cutover nao iniciado
+robots/sitemap de producao,execucao,-,nao executado,cutover nao iniciado
+smoke tests produtivos,execucao,-,nao executado,cutover nao iniciado
+aceites de producao,execucao,-,nao executado,cutover nao iniciado

@@ -26,10 +26,11 @@ export const Route = createFileRoute("/conteudos/categoria/$slug")({
       description:
         category?.description ??
         "Conteúdo técnico AviZee para avicultura, organizado por categoria editorial.",
-      canonical: category ? `/conteudos/categoria/${category.slug}` : undefined,
+      ...(category ? { canonical: `/conteudos/categoria/${category.slug}` } : {}),
       noindex: (category?.articleCount ?? 0) === 0,
     });
   },
+
   component: CategoriaEditorial,
 });
 

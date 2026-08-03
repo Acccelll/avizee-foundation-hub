@@ -1,0 +1,28 @@
+criterio,exigido,estado,evidencia,bloqueio
+veredito GO_LIVE_READY,sim,nao atendido,doc 364/365,B11-01..B11-08
+P0 = 0,sim,nao atendido,doc 356,B11-05
+P1 = 0,sim,nao atendido,doc 356,B11-01;B11-02;B11-03;B11-04;B11-06;B11-07
+P2 aprovados,sim,pendente,doc 356,B11-08
+UAT aprovada,sim,nao atendido,doc 355,B11-06
+textos juridicos aprovados,sim,nao atendido,stage-09-pending-fields.csv,B11-03
+dados de contato confirmados,sim,nao atendido,doc 334,B11-04
+politica de retencao aprovada,sim,nao atendido,doc 350,B11-02
+email produtivo aprovado,sim,nao atendido,doc 339,B11-01
+storage produtivo homologado,sim,nao atendido,stage-11-backups.csv,B11-07
+MFA administrativo ativo,sim,parcial,doc 349,
+backup de banco validado,sim,parcial,stage-11-backups.csv,B11-07
+backup de storage validado,sim,nao atendido,stage-11-backups.csv,B11-07
+restore executado,sim,nao atendido,doc 347,B11-07
+sitemap absoluto validado,sim,atendido,tests/unit/environment-and-seo.test.ts,
+robots por ambiente validado,sim,atendido,src/routes/robots[.]txt.ts,
+url publica canonica definida,sim,parcial,stage-11-environment-variables.csv,
+outbox concorrente validada,sim,atendido,tests/integration/outbox-claim.test.ts,
+idempotencia da cotacao validada,sim,atendido,tests/unit/quotation-payload-hash.test.ts,
+observabilidade funcional,sim,atendido em homologacao,doc 341,
+alertas funcionais,sim,parcial,stage-11-alerts.csv,
+runbooks completos,sim,atendido,stage-11-runbooks.csv,
+cutover aprovado,sim,pendente,doc 360,
+rollback aprovado,sim,pendente,doc 361,
+checklist de go-live aprovado,sim,nao atendido,doc 362,
+responsaveis designados,sim,nao atendido,doc 402,
+decisao final,sim,NO_GO,doc 402,

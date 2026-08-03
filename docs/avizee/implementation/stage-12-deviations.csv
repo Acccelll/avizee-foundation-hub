@@ -1,0 +1,12 @@
+id,bloqueio,severidade,origem,responsavel,acao_necessaria,estado
+B11-05,credencial SMTP legada sem prova de revogacao (O-27),P0,Etapa 11,Cliente/TI,revogar e apresentar evidencia,aberto
+B11-01,provedor de email e SPF/DKIM/DMARC nao definidos (DEP-T1),P1,Etapa 11,Cliente,aprovar ou dispensar formalmente,aberto
+B11-02,politica de retencao sem aprovacao (DEP-T5),P1,Etapa 11,Cliente/Juridico,aprovar politica,aberto
+B11-03,dados legais ausentes (Q-13),P1,Etapa 9,Juridico,fornecer e aprovar textos,aberto
+B11-04,dados de contato nao confirmados (Q-08),P1,Etapa 9,Cliente,confirmar dados,aberto
+B11-06,UAT nao executada,P1,Etapa 11,Cliente,executar e registrar aceites,aberto
+B11-07,restore nao testado e backup de storage nao provisionado,P1,Etapa 11,Operacao,testar restore em ambiente isolado,aberto
+B11-08,prazo comercial nao confirmado (O-10),P2,Etapa 9,Cliente,confirmar ou aceitar sem SLA,aberto
+E12-01,dominio produtivo e acesso DNS nao fornecidos,P1,Etapa 12,Cliente,fornecer dominio e acesso,aberto
+E12-02,instancia de producao separada do preview nao provisionada (DT-18),P1,Etapa 12,Operacao,provisionar,aberto
+E12-03,janela de mudanca nao acordada,P1,Etapa 12,Cliente,acordar data e janela,aberto

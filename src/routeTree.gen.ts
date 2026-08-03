@@ -28,6 +28,7 @@ import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
 import { Route as AdminProtectedConflitosRouteImport } from './routes/admin/_protected/conflitos'
+import { Route as AdminProtectedConteudosRouteImport } from './routes/admin/_protected/conteudos'
 import { Route as AdminProtectedCotacoesRouteImport } from './routes/admin/_protected/cotacoes'
 import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_protected/importacao'
 import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
@@ -138,6 +139,11 @@ const AdminProtectedAuditoriaRoute = AdminProtectedAuditoriaRouteImport.update({
 const AdminProtectedConflitosRoute = AdminProtectedConflitosRouteImport.update({
   id: '/conflitos',
   path: '/conflitos',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedConteudosRoute = AdminProtectedConteudosRouteImport.update({
+  id: '/conteudos',
+  path: '/conteudos',
   getParentRoute: () => AdminProtectedRoute,
 } as any)
 const AdminProtectedCotacoesRoute = AdminProtectedCotacoesRouteImport.update({
@@ -251,6 +257,7 @@ export interface FileRoutesByFullPath {
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/conteudos': typeof AdminProtectedConteudosRoute
   '/admin/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
@@ -287,6 +294,7 @@ export interface FileRoutesByTo {
   '/produtos': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/conteudos': typeof AdminProtectedConteudosRoute
   '/admin/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
@@ -325,6 +333,7 @@ export interface FileRoutesById {
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/_protected/conteudos': typeof AdminProtectedConteudosRoute
   '/admin/_protected/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/_protected/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
@@ -364,6 +373,7 @@ export interface FileRouteTypes {
     | '/produtos/'
     | '/admin/auditoria'
     | '/admin/conflitos'
+    | '/admin/conteudos'
     | '/admin/cotacoes'
     | '/admin/importacao'
     | '/admin/midia'
@@ -400,6 +410,7 @@ export interface FileRouteTypes {
     | '/produtos'
     | '/admin/auditoria'
     | '/admin/conflitos'
+    | '/admin/conteudos'
     | '/admin/cotacoes'
     | '/admin/importacao'
     | '/admin/midia'
@@ -437,6 +448,7 @@ export interface FileRouteTypes {
     | '/produtos/'
     | '/admin/_protected/auditoria'
     | '/admin/_protected/conflitos'
+    | '/admin/_protected/conteudos'
     | '/admin/_protected/cotacoes'
     | '/admin/_protected/importacao'
     | '/admin/_protected/midia'
@@ -615,6 +627,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedConflitosRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/conteudos': {
+      id: '/admin/_protected/conteudos'
+      path: '/conteudos'
+      fullPath: '/admin/conteudos'
+      preLoaderRoute: typeof AdminProtectedConteudosRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/admin/_protected/cotacoes': {
       id: '/admin/_protected/cotacoes'
       path: '/cotacoes'
@@ -733,6 +752,7 @@ declare module '@tanstack/react-router' {
 interface AdminProtectedRouteChildren {
   AdminProtectedAuditoriaRoute: typeof AdminProtectedAuditoriaRoute
   AdminProtectedConflitosRoute: typeof AdminProtectedConflitosRoute
+  AdminProtectedConteudosRoute: typeof AdminProtectedConteudosRoute
   AdminProtectedCotacoesRoute: typeof AdminProtectedCotacoesRoute
   AdminProtectedImportacaoRoute: typeof AdminProtectedImportacaoRoute
   AdminProtectedMidiaRoute: typeof AdminProtectedMidiaRoute
@@ -750,6 +770,7 @@ interface AdminProtectedRouteChildren {
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedAuditoriaRoute: AdminProtectedAuditoriaRoute,
   AdminProtectedConflitosRoute: AdminProtectedConflitosRoute,
+  AdminProtectedConteudosRoute: AdminProtectedConteudosRoute,
   AdminProtectedCotacoesRoute: AdminProtectedCotacoesRoute,
   AdminProtectedImportacaoRoute: AdminProtectedImportacaoRoute,
   AdminProtectedMidiaRoute: AdminProtectedMidiaRoute,

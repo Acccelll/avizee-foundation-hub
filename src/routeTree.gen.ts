@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuscaRouteImport } from './routes/busca'
 import { Route as ContatoRouteImport } from './routes/contato'
-import { Route as ConteudosRouteImport } from './routes/conteudos'
 import { Route as CotacaoRouteImport } from './routes/cotacao'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
@@ -23,21 +22,26 @@ import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as ConteudosIndexRouteImport } from './routes/conteudos/index'
+import { Route as ConteudosArticleSlugRouteImport } from './routes/conteudos/$articleSlug'
 import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
 import { Route as AdminProtectedConflitosRouteImport } from './routes/admin/_protected/conflitos'
+import { Route as AdminProtectedConteudosRouteImport } from './routes/admin/_protected/conteudos'
 import { Route as AdminProtectedCotacoesRouteImport } from './routes/admin/_protected/cotacoes'
 import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_protected/importacao'
 import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
 import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 import { Route as ApiPublicOutboxWorkerRouteImport } from './routes/api/public/outbox-worker'
+import { Route as ConteudosCategoriaSlugRouteImport } from './routes/conteudos/categoria.$slug'
 import { Route as ProdutosCategorySlugIndexRouteImport } from './routes/produtos/$categorySlug/index'
 import { Route as ProdutosCategorySlugFamilySlugRouteImport } from './routes/produtos/$categorySlug/$familySlug'
 import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/admin/_protected/catalogo/familias'
 import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
 import { Route as AdminProtectedCatalogoTaxonomiaRouteImport } from './routes/admin/_protected/catalogo/taxonomia'
+import { Route as AdminProtectedConteudosArticleIdRouteImport } from './routes/admin/_protected/conteudos_.$articleId'
 import { Route as AdminProtectedCotacoesQuotationIdRouteImport } from './routes/admin/_protected/cotacoes_.$quotationId'
 import { Route as AdminProtectedImportacaoJobIdRouteImport } from './routes/admin/_protected/importacao_.$jobId'
 import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
@@ -56,11 +60,6 @@ const BuscaRoute = BuscaRouteImport.update({
 const ContatoRoute = ContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConteudosRoute = ConteudosRouteImport.update({
-  id: '/conteudos',
-  path: '/conteudos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CotacaoRoute = CotacaoRouteImport.update({
@@ -113,6 +112,16 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
+  id: '/conteudos/',
+  path: '/conteudos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConteudosArticleSlugRoute = ConteudosArticleSlugRouteImport.update({
+  id: '/conteudos/$articleSlug',
+  path: '/conteudos/$articleSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProdutosIndexRoute = ProdutosIndexRouteImport.update({
   id: '/produtos/',
   path: '/produtos/',
@@ -131,6 +140,11 @@ const AdminProtectedAuditoriaRoute = AdminProtectedAuditoriaRouteImport.update({
 const AdminProtectedConflitosRoute = AdminProtectedConflitosRouteImport.update({
   id: '/conflitos',
   path: '/conflitos',
+  getParentRoute: () => AdminProtectedRoute,
+} as any)
+const AdminProtectedConteudosRoute = AdminProtectedConteudosRouteImport.update({
+  id: '/conteudos',
+  path: '/conteudos',
   getParentRoute: () => AdminProtectedRoute,
 } as any)
 const AdminProtectedCotacoesRoute = AdminProtectedCotacoesRouteImport.update({
@@ -165,6 +179,11 @@ const ApiPublicOutboxWorkerRoute = ApiPublicOutboxWorkerRouteImport.update({
   path: '/api/public/outbox-worker',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConteudosCategoriaSlugRoute = ConteudosCategoriaSlugRouteImport.update({
+  id: '/conteudos/categoria/$slug',
+  path: '/conteudos/categoria/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProdutosCategorySlugIndexRoute =
   ProdutosCategorySlugIndexRouteImport.update({
     id: '/produtos/$categorySlug/',
@@ -193,6 +212,12 @@ const AdminProtectedCatalogoTaxonomiaRoute =
   AdminProtectedCatalogoTaxonomiaRouteImport.update({
     id: '/catalogo/taxonomia',
     path: '/catalogo/taxonomia',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
+const AdminProtectedConteudosArticleIdRoute =
+  AdminProtectedConteudosArticleIdRouteImport.update({
+    id: '/conteudos_/$articleId',
+    path: '/conteudos/$articleId',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
 const AdminProtectedCotacoesQuotationIdRoute =
@@ -224,7 +249,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
-  '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -235,21 +259,26 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
+  '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/conteudos': typeof AdminProtectedConteudosRoute
   '/admin/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
+  '/conteudos/categoria/$slug': typeof ConteudosCategoriaSlugRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin/': typeof AdminProtectedIndexRoute
   '/produtos/$categorySlug/': typeof ProdutosCategorySlugIndexRoute
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/conteudos/$articleId': typeof AdminProtectedConteudosArticleIdRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -259,7 +288,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
-  '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -269,21 +297,26 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
+  '/conteudos': typeof ConteudosIndexRoute
   '/produtos': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/conteudos': typeof AdminProtectedConteudosRoute
   '/admin/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
+  '/conteudos/categoria/$slug': typeof ConteudosCategoriaSlugRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin': typeof AdminProtectedIndexRoute
   '/produtos/$categorySlug': typeof ProdutosCategorySlugIndexRoute
   '/admin/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/conteudos/$articleId': typeof AdminProtectedConteudosArticleIdRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -294,7 +327,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
-  '/conteudos': typeof ConteudosRoute
   '/cotacao': typeof CotacaoRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -305,21 +337,26 @@ export interface FileRoutesById {
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
+  '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
+  '/admin/_protected/conteudos': typeof AdminProtectedConteudosRoute
   '/admin/_protected/cotacoes': typeof AdminProtectedCotacoesRoute
   '/admin/_protected/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
   '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
+  '/conteudos/categoria/$slug': typeof ConteudosCategoriaSlugRoute
   '/produtos/$categorySlug/$familySlug': typeof ProdutosCategorySlugFamilySlugRoute
   '/admin/_protected/': typeof AdminProtectedIndexRoute
   '/produtos/$categorySlug/': typeof ProdutosCategorySlugIndexRoute
   '/admin/_protected/catalogo/familias': typeof AdminProtectedCatalogoFamiliasRoute
   '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/_protected/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
+  '/admin/_protected/conteudos_/$articleId': typeof AdminProtectedConteudosArticleIdRoute
   '/admin/_protected/cotacoes_/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/_protected/importacao_/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -331,7 +368,6 @@ export interface FileRouteTypes {
     | '/'
     | '/busca'
     | '/contato'
-    | '/conteudos'
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/robots.txt'
@@ -342,21 +378,26 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/$articleSlug'
+    | '/conteudos/'
     | '/produtos/'
     | '/admin/auditoria'
     | '/admin/conflitos'
+    | '/admin/conteudos'
     | '/admin/cotacoes'
     | '/admin/importacao'
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/public/health'
     | '/api/public/outbox-worker'
+    | '/conteudos/categoria/$slug'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin/'
     | '/produtos/$categorySlug/'
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
     | '/admin/catalogo/taxonomia'
+    | '/admin/conteudos/$articleId'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
     | '/admin/catalogo/familias/$familyId'
@@ -366,7 +407,6 @@ export interface FileRouteTypes {
     | '/'
     | '/busca'
     | '/contato'
-    | '/conteudos'
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/robots.txt'
@@ -376,21 +416,26 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/$articleSlug'
+    | '/conteudos'
     | '/produtos'
     | '/admin/auditoria'
     | '/admin/conflitos'
+    | '/admin/conteudos'
     | '/admin/cotacoes'
     | '/admin/importacao'
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/public/health'
     | '/api/public/outbox-worker'
+    | '/conteudos/categoria/$slug'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin'
     | '/produtos/$categorySlug'
     | '/admin/catalogo/familias'
     | '/admin/catalogo/skus'
     | '/admin/catalogo/taxonomia'
+    | '/admin/conteudos/$articleId'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
     | '/admin/catalogo/familias/$familyId'
@@ -400,7 +445,6 @@ export interface FileRouteTypes {
     | '/'
     | '/busca'
     | '/contato'
-    | '/conteudos'
     | '/cotacao'
     | '/politica-de-privacidade'
     | '/robots.txt'
@@ -411,21 +455,26 @@ export interface FileRouteTypes {
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/$articleSlug'
+    | '/conteudos/'
     | '/produtos/'
     | '/admin/_protected/auditoria'
     | '/admin/_protected/conflitos'
+    | '/admin/_protected/conteudos'
     | '/admin/_protected/cotacoes'
     | '/admin/_protected/importacao'
     | '/admin/_protected/midia'
     | '/admin/_protected/normalizacao'
     | '/api/public/health'
     | '/api/public/outbox-worker'
+    | '/conteudos/categoria/$slug'
     | '/produtos/$categorySlug/$familySlug'
     | '/admin/_protected/'
     | '/produtos/$categorySlug/'
     | '/admin/_protected/catalogo/familias'
     | '/admin/_protected/catalogo/skus'
     | '/admin/_protected/catalogo/taxonomia'
+    | '/admin/_protected/conteudos_/$articleId'
     | '/admin/_protected/cotacoes_/$quotationId'
     | '/admin/_protected/importacao_/$jobId'
     | '/admin/_protected/catalogo/familias_/$familyId'
@@ -436,7 +485,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuscaRoute: typeof BuscaRoute
   ContatoRoute: typeof ContatoRoute
-  ConteudosRoute: typeof ConteudosRoute
   CotacaoRoute: typeof CotacaoRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -447,9 +495,12 @@ export interface RootRouteChildren {
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  ConteudosArticleSlugRoute: typeof ConteudosArticleSlugRoute
+  ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
   ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
+  ConteudosCategoriaSlugRoute: typeof ConteudosCategoriaSlugRoute
   ProdutosCategorySlugFamilySlugRoute: typeof ProdutosCategorySlugFamilySlugRoute
   ProdutosCategorySlugIndexRoute: typeof ProdutosCategorySlugIndexRoute
 }
@@ -475,13 +526,6 @@ declare module '@tanstack/react-router' {
       path: '/contato'
       fullPath: '/contato'
       preLoaderRoute: typeof ContatoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/conteudos': {
-      id: '/conteudos'
-      path: '/conteudos'
-      fullPath: '/conteudos'
-      preLoaderRoute: typeof ConteudosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cotacao': {
@@ -554,6 +598,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conteudos/': {
+      id: '/conteudos/'
+      path: '/conteudos'
+      fullPath: '/conteudos/'
+      preLoaderRoute: typeof ConteudosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conteudos/$articleSlug': {
+      id: '/conteudos/$articleSlug'
+      path: '/conteudos/$articleSlug'
+      fullPath: '/conteudos/$articleSlug'
+      preLoaderRoute: typeof ConteudosArticleSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/produtos/': {
       id: '/produtos/'
       path: '/produtos'
@@ -580,6 +638,13 @@ declare module '@tanstack/react-router' {
       path: '/conflitos'
       fullPath: '/admin/conflitos'
       preLoaderRoute: typeof AdminProtectedConflitosRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/conteudos': {
+      id: '/admin/_protected/conteudos'
+      path: '/conteudos'
+      fullPath: '/admin/conteudos'
+      preLoaderRoute: typeof AdminProtectedConteudosRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
     '/admin/_protected/cotacoes': {
@@ -624,6 +689,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicOutboxWorkerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conteudos/categoria/$slug': {
+      id: '/conteudos/categoria/$slug'
+      path: '/conteudos/categoria/$slug'
+      fullPath: '/conteudos/categoria/$slug'
+      preLoaderRoute: typeof ConteudosCategoriaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/produtos/$categorySlug/': {
       id: '/produtos/$categorySlug/'
       path: '/produtos/$categorySlug'
@@ -657,6 +729,13 @@ declare module '@tanstack/react-router' {
       path: '/catalogo/taxonomia'
       fullPath: '/admin/catalogo/taxonomia'
       preLoaderRoute: typeof AdminProtectedCatalogoTaxonomiaRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
+    '/admin/_protected/conteudos_/$articleId': {
+      id: '/admin/_protected/conteudos_/$articleId'
+      path: '/conteudos/$articleId'
+      fullPath: '/admin/conteudos/$articleId'
+      preLoaderRoute: typeof AdminProtectedConteudosArticleIdRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
     '/admin/_protected/cotacoes_/$quotationId': {
@@ -693,6 +772,7 @@ declare module '@tanstack/react-router' {
 interface AdminProtectedRouteChildren {
   AdminProtectedAuditoriaRoute: typeof AdminProtectedAuditoriaRoute
   AdminProtectedConflitosRoute: typeof AdminProtectedConflitosRoute
+  AdminProtectedConteudosRoute: typeof AdminProtectedConteudosRoute
   AdminProtectedCotacoesRoute: typeof AdminProtectedCotacoesRoute
   AdminProtectedImportacaoRoute: typeof AdminProtectedImportacaoRoute
   AdminProtectedMidiaRoute: typeof AdminProtectedMidiaRoute
@@ -701,6 +781,7 @@ interface AdminProtectedRouteChildren {
   AdminProtectedCatalogoFamiliasRoute: typeof AdminProtectedCatalogoFamiliasRoute
   AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
   AdminProtectedCatalogoTaxonomiaRoute: typeof AdminProtectedCatalogoTaxonomiaRoute
+  AdminProtectedConteudosArticleIdRoute: typeof AdminProtectedConteudosArticleIdRoute
   AdminProtectedCotacoesQuotationIdRoute: typeof AdminProtectedCotacoesQuotationIdRoute
   AdminProtectedImportacaoJobIdRoute: typeof AdminProtectedImportacaoJobIdRoute
   AdminProtectedCatalogoFamiliasFamilyIdRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -710,6 +791,7 @@ interface AdminProtectedRouteChildren {
 const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedAuditoriaRoute: AdminProtectedAuditoriaRoute,
   AdminProtectedConflitosRoute: AdminProtectedConflitosRoute,
+  AdminProtectedConteudosRoute: AdminProtectedConteudosRoute,
   AdminProtectedCotacoesRoute: AdminProtectedCotacoesRoute,
   AdminProtectedImportacaoRoute: AdminProtectedImportacaoRoute,
   AdminProtectedMidiaRoute: AdminProtectedMidiaRoute,
@@ -718,6 +800,7 @@ const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedCatalogoFamiliasRoute: AdminProtectedCatalogoFamiliasRoute,
   AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
   AdminProtectedCatalogoTaxonomiaRoute: AdminProtectedCatalogoTaxonomiaRoute,
+  AdminProtectedConteudosArticleIdRoute: AdminProtectedConteudosArticleIdRoute,
   AdminProtectedCotacoesQuotationIdRoute:
     AdminProtectedCotacoesQuotationIdRoute,
   AdminProtectedImportacaoJobIdRoute: AdminProtectedImportacaoJobIdRoute,
@@ -735,7 +818,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuscaRoute: BuscaRoute,
   ContatoRoute: ContatoRoute,
-  ConteudosRoute: ConteudosRoute,
   CotacaoRoute: CotacaoRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
@@ -746,9 +828,12 @@ const rootRouteChildren: RootRouteChildren = {
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
+  ConteudosArticleSlugRoute: ConteudosArticleSlugRoute,
+  ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
   ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,
+  ConteudosCategoriaSlugRoute: ConteudosCategoriaSlugRoute,
   ProdutosCategorySlugFamilySlugRoute: ProdutosCategorySlugFamilySlugRoute,
   ProdutosCategorySlugIndexRoute: ProdutosCategorySlugIndexRoute,
 }

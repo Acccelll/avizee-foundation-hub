@@ -208,6 +208,545 @@ export type Database = {
           },
         ]
       }
+      content_article_families: {
+        Row: {
+          article_id: string
+          family_id: string
+          sort_order: number
+        }
+        Insert: {
+          article_id: string
+          family_id: string
+          sort_order?: number
+        }
+        Update: {
+          article_id?: string
+          family_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_article_families_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_families_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_families_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "product_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_families_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_families"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_families_family_id_fkey"
+            columns: ["family_id"]
+            isOneToOne: false
+            referencedRelation: "public_search_index"
+            referencedColumns: ["family_id"]
+          },
+        ]
+      }
+      content_article_products: {
+        Row: {
+          article_id: string
+          product_id: string
+          sort_order: number
+        }
+        Insert: {
+          article_id: string
+          product_id: string
+          sort_order?: number
+        }
+        Update: {
+          article_id?: string
+          product_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_article_products_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_products_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_products_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_products_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "public_products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_article_slugs: {
+        Row: {
+          article_id: string
+          created_at: string
+          id: string
+          slug: string
+        }
+        Insert: {
+          article_id: string
+          created_at?: string
+          id?: string
+          slug: string
+        }
+        Update: {
+          article_id?: string
+          created_at?: string
+          id?: string
+          slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_article_slugs_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_slugs_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_articles: {
+        Row: {
+          author_id: string | null
+          blocks: Json
+          category_id: string | null
+          cover_media_id: string | null
+          created_at: string
+          created_by: string | null
+          deleted_at: string | null
+          excerpt: string | null
+          first_published_at: string | null
+          id: string
+          internal_notes: string | null
+          noindex: boolean
+          published_at: string | null
+          reading_minutes: number
+          requires_technical_review: boolean
+          review_note: string | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          status: Database["public"]["Enums"]["content_status"]
+          subtitle: string | null
+          technical_reviewer_id: string | null
+          title: string
+          updated_at: string
+          updated_by: string | null
+          version: number
+        }
+        Insert: {
+          author_id?: string | null
+          blocks?: Json
+          category_id?: string | null
+          cover_media_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          excerpt?: string | null
+          first_published_at?: string | null
+          id?: string
+          internal_notes?: string | null
+          noindex?: boolean
+          published_at?: string | null
+          reading_minutes?: number
+          requires_technical_review?: boolean
+          review_note?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          status?: Database["public"]["Enums"]["content_status"]
+          subtitle?: string | null
+          technical_reviewer_id?: string | null
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          version?: number
+        }
+        Update: {
+          author_id?: string | null
+          blocks?: Json
+          category_id?: string | null
+          cover_media_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          deleted_at?: string | null
+          excerpt?: string | null
+          first_published_at?: string | null
+          id?: string
+          internal_notes?: string | null
+          noindex?: boolean
+          published_at?: string | null
+          reading_minutes?: number
+          requires_technical_review?: boolean
+          review_note?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          status?: Database["public"]["Enums"]["content_status"]
+          subtitle?: string | null
+          technical_reviewer_id?: string | null
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_articles_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "content_authors"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_articles_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "content_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_articles_cover_media_id_fkey"
+            columns: ["cover_media_id"]
+            isOneToOne: false
+            referencedRelation: "media_assets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_articles_technical_reviewer_id_fkey"
+            columns: ["technical_reviewer_id"]
+            isOneToOne: false
+            referencedRelation: "content_authors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_authors: {
+        Row: {
+          bio: string | null
+          created_at: string
+          display_name: string
+          id: string
+          is_active: boolean
+          role_title: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          display_name: string
+          id?: string
+          is_active?: boolean
+          role_title?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          display_name?: string
+          id?: string
+          is_active?: boolean
+          role_title?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      content_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          name: string
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      content_references: {
+        Row: {
+          article_id: string
+          created_at: string
+          id: string
+          label: string
+          note: string | null
+          sort_order: number
+          url: string | null
+        }
+        Insert: {
+          article_id: string
+          created_at?: string
+          id?: string
+          label: string
+          note?: string | null
+          sort_order?: number
+          url?: string | null
+        }
+        Update: {
+          article_id?: string
+          created_at?: string
+          id?: string
+          label?: string
+          note?: string | null
+          sort_order?: number
+          url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_references_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_references_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_revisions: {
+        Row: {
+          article_id: string
+          blocks: Json
+          created_at: string
+          created_by: string | null
+          excerpt: string | null
+          id: string
+          note: string | null
+          status: Database["public"]["Enums"]["content_status"]
+          title: string
+          version: number
+        }
+        Insert: {
+          article_id: string
+          blocks: Json
+          created_at?: string
+          created_by?: string | null
+          excerpt?: string | null
+          id?: string
+          note?: string | null
+          status: Database["public"]["Enums"]["content_status"]
+          title: string
+          version: number
+        }
+        Update: {
+          article_id?: string
+          blocks?: Json
+          created_at?: string
+          created_by?: string | null
+          excerpt?: string | null
+          id?: string
+          note?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          title?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_revisions_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_revisions_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_social_variants: {
+        Row: {
+          article_id: string
+          call_to_action: string | null
+          caption: string | null
+          channel: Database["public"]["Enums"]["content_channel"]
+          created_at: string
+          created_by: string | null
+          exported_at: string | null
+          exported_by: string | null
+          hashtags: string[]
+          headline: string | null
+          id: string
+          image_media_id: string | null
+          status: Database["public"]["Enums"]["social_variant_status"]
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          article_id: string
+          call_to_action?: string | null
+          caption?: string | null
+          channel: Database["public"]["Enums"]["content_channel"]
+          created_at?: string
+          created_by?: string | null
+          exported_at?: string | null
+          exported_by?: string | null
+          hashtags?: string[]
+          headline?: string | null
+          id?: string
+          image_media_id?: string | null
+          status?: Database["public"]["Enums"]["social_variant_status"]
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          article_id?: string
+          call_to_action?: string | null
+          caption?: string | null
+          channel?: Database["public"]["Enums"]["content_channel"]
+          created_at?: string
+          created_by?: string | null
+          exported_at?: string | null
+          exported_by?: string | null
+          hashtags?: string[]
+          headline?: string | null
+          id?: string
+          image_media_id?: string | null
+          status?: Database["public"]["Enums"]["social_variant_status"]
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_social_variants_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_social_variants_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_social_variants_image_media_id_fkey"
+            columns: ["image_media_id"]
+            isOneToOne: false
+            referencedRelation: "media_assets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content_status_events: {
+        Row: {
+          actor_id: string | null
+          article_id: string
+          created_at: string
+          from_status: Database["public"]["Enums"]["content_status"] | null
+          id: string
+          note: string | null
+          to_status: Database["public"]["Enums"]["content_status"]
+        }
+        Insert: {
+          actor_id?: string | null
+          article_id: string
+          created_at?: string
+          from_status?: Database["public"]["Enums"]["content_status"] | null
+          id?: string
+          note?: string | null
+          to_status: Database["public"]["Enums"]["content_status"]
+        }
+        Update: {
+          actor_id?: string | null
+          article_id?: string
+          created_at?: string
+          from_status?: Database["public"]["Enums"]["content_status"] | null
+          id?: string
+          note?: string | null
+          to_status?: Database["public"]["Enums"]["content_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_status_events_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_status_events_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       documents: {
         Row: {
           bucket: string
@@ -2632,6 +3171,89 @@ export type Database = {
       }
     }
     Views: {
+      public_article_references: {
+        Row: {
+          article_id: string | null
+          label: string | null
+          note: string | null
+          sort_order: number | null
+          url: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_references_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_references_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      public_article_relations: {
+        Row: {
+          article_id: string | null
+          category_name: string | null
+          category_slug: string | null
+          family_name: string | null
+          family_slug: string | null
+          family_summary: string | null
+          sort_order: number | null
+          variation_count: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_article_families_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "content_articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_article_families_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "public_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      public_article_slugs: {
+        Row: {
+          current_slug: string | null
+          old_slug: string | null
+        }
+        Relationships: []
+      }
+      public_articles: {
+        Row: {
+          author_name: string | null
+          author_role: string | null
+          blocks: Json | null
+          category_name: string | null
+          category_slug: string | null
+          cover_alt: string | null
+          cover_url: string | null
+          excerpt: string | null
+          id: string | null
+          noindex: boolean | null
+          published_at: string | null
+          reading_minutes: number | null
+          revised_at: string | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string | null
+          subtitle: string | null
+          title: string | null
+        }
+        Relationships: []
+      }
       public_categories: {
         Row: {
           description: string | null
@@ -2657,6 +3279,30 @@ export type Database = {
           id?: string | null
           name?: string | null
           product_count?: never
+          slug?: string | null
+          sort_order?: number | null
+        }
+        Relationships: []
+      }
+      public_content_categories: {
+        Row: {
+          article_count: number | null
+          description: string | null
+          name: string | null
+          slug: string | null
+          sort_order: number | null
+        }
+        Insert: {
+          article_count?: never
+          description?: string | null
+          name?: string | null
+          slug?: string | null
+          sort_order?: number | null
+        }
+        Update: {
+          article_count?: never
+          description?: string | null
+          name?: string | null
           slug?: string | null
           sort_order?: number | null
         }
@@ -2865,9 +3511,12 @@ export type Database = {
       avz_norm_code: { Args: { t: string }; Returns: string }
       avz_norm_text: { Args: { t: string }; Returns: string }
       avz_unaccent: { Args: { t: string }; Returns: string }
+      can_publish_content: { Args: { _user_id: string }; Returns: boolean }
       can_read_catalog: { Args: { _user_id: string }; Returns: boolean }
+      can_read_content: { Args: { _user_id: string }; Returns: boolean }
       can_read_internal: { Args: { _user_id: string }; Returns: boolean }
       can_read_quotations: { Args: { _user_id: string }; Returns: boolean }
+      can_write_content: { Args: { _user_id: string }; Returns: boolean }
       generate_quotation_protocol: { Args: never; Returns: string }
       has_any_role: {
         Args: {
@@ -2933,6 +3582,16 @@ export type Database = {
         | "COMERCIAL"
         | "AUDITOR"
       code_type: "PUBLIC_SKU" | "ORIGINAL" | "LEGACY" | "ALIAS" | "INTERNAL"
+      content_channel: "INSTAGRAM" | "LINKEDIN"
+      content_status:
+        | "DRAFT"
+        | "IN_TECHNICAL_REVIEW"
+        | "IN_EDITORIAL_REVIEW"
+        | "CHANGES_REQUESTED"
+        | "READY_TO_PUBLISH"
+        | "PUBLISHED"
+        | "UNPUBLISHED"
+        | "ARCHIVED"
       image_status:
         | "APROVADA"
         | "APROVADA_PARA_FAMILIA"
@@ -2989,6 +3648,7 @@ export type Database = {
         | "RESTRICTED"
         | "EXPIRED"
         | "DO_NOT_PUBLISH"
+      social_variant_status: "DRAFT" | "READY" | "EXPORTED"
       spec_value_type:
         | "TEXT"
         | "NUMBER"
@@ -3148,6 +3808,17 @@ export const Constants = {
         "AUDITOR",
       ],
       code_type: ["PUBLIC_SKU", "ORIGINAL", "LEGACY", "ALIAS", "INTERNAL"],
+      content_channel: ["INSTAGRAM", "LINKEDIN"],
+      content_status: [
+        "DRAFT",
+        "IN_TECHNICAL_REVIEW",
+        "IN_EDITORIAL_REVIEW",
+        "CHANGES_REQUESTED",
+        "READY_TO_PUBLISH",
+        "PUBLISHED",
+        "UNPUBLISHED",
+        "ARCHIVED",
+      ],
       image_status: [
         "APROVADA",
         "APROVADA_PARA_FAMILIA",
@@ -3211,6 +3882,7 @@ export const Constants = {
         "EXPIRED",
         "DO_NOT_PUBLISH",
       ],
+      social_variant_status: ["DRAFT", "READY", "EXPORTED"],
       spec_value_type: [
         "TEXT",
         "NUMBER",

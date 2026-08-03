@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
 import { publicSitemapEntries } from "@/catalog/public/read.server";
+import { contentSitemapEntries } from "@/content/public/read.server";
 import { getServerConfig } from "@/lib/env.server";
 
 // TODO: substituir pela URL definitiva quando o domínio de produção for aprovado.
@@ -31,7 +32,10 @@ export const Route = createFileRoute("/sitemap.xml")({
           });
         }
 
-        const { categories, families } = await publicSitemapEntries();
+        const [{ categories, families }, content] = await Promise.all([
+          publicSitemapEntries(),
+          contentSitemapEntries(),
+        ]);
 
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
@@ -39,6 +43,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/solucoes", changefreq: "monthly", priority: "0.6" },
           { path: "/sobre", changefreq: "monthly", priority: "0.5" },
           { path: "/contato", changefreq: "monthly", priority: "0.5" },
+          { path: "/conteudos", changefreq: "weekly", priority: "0.6" },
           // Páginas legais em RASCUNHO (Q-13) ficam fora do sitemap até a publicação.
           ...categories.map((slug) => ({
             path: `/produtos/${slug}`,
@@ -49,6 +54,16 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/produtos/${family.categorySlug}/${family.slug}`,
             changefreq: "weekly" as const,
             priority: "0.7",
+          })),
+          ...content.categories.map((slug) => ({
+            path: `/conteudos/categoria/${slug}`,
+            changefreq: "weekly" as const,
+            priority: "0.5",
+          })),
+          ...content.articles.map((slug) => ({
+            path: `/conteudos/${slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.6",
           })),
         ];
 

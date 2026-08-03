@@ -1,24 +1,56 @@
 /**
  * Configuração de servidor com validação fail-fast.
  * Nenhum segredo é exposto ao bundle do cliente (§23 da Etapa 5).
+ *
+ * Etapa 11.1:
+ *  §11 — `QUOTATION_HASH_SALT` obrigatório fora de desenvolvimento (sem fallback fixo);
+ *  §13 — `APP_ENV` é a fonte canônica de ambiente; `VITE_APP_ENV` é derivado/validado;
+ *  §14 — `APP_PUBLIC_URL` absoluta, sem barra final, HTTPS fora de desenvolvimento.
  */
 import { z } from "zod";
 
+/** Ambientes permitidos (§13). `test` existe apenas para a suíte automatizada. */
+export const APP_ENVIRONMENTS = [
+  "development",
+  "preview",
+  "staging",
+  "production",
+  "test",
+] as const;
+export type AppEnv = (typeof APP_ENVIRONMENTS)[number];
+
 const schema = z.object({
-  APP_ENV: z.enum(["development", "preview", "staging", "production"]).default("development"),
-  AUTH_SESSION_SECRET: z.string().min(32).optional(),
+  APP_ENV: z.enum(APP_ENVIRONMENTS).default("development"),
+  APP_PUBLIC_URL: z.string().trim().optional(),
   AUTH_SESSION_TTL_MINUTES: z.coerce.number().int().positive().default(480),
   AUTH_MAX_ATTEMPTS: z.coerce.number().int().positive().default(5),
+  QUOTATION_HASH_SALT: z.string().trim().min(16).optional(),
   EMAIL_PROVIDER: z.enum(["null", "log"]).default("log"),
   STORAGE_PROVIDER: z.enum(["null", "local"]).default("local"),
   CAPTCHA_PROVIDER: z.enum(["null"]).default("null"),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
 });
 
-export type ServerConfig = z.infer<typeof schema> & { AUTH_SESSION_SECRET: string };
+export type ServerConfig = z.infer<typeof schema> & {
+  QUOTATION_HASH_SALT: string;
+  APP_PUBLIC_URL: string;
+};
 
-/** Segredo de desenvolvimento — NUNCA aceito em homologação/produção. */
-const DEV_ONLY_SESSION_SECRET = "avizee-development-only-session-secret-0001";
+/** Sal explicitamente local — aceito somente em desenvolvimento e teste. */
+export const DEV_ONLY_QUOTATION_SALT = "avizee-dev-only-quotation-salt";
+const DEV_PUBLIC_URL = "http://localhost:8080";
+
+/** Ambientes em que segredos e URL pública são obrigatórios. */
+export function requiresStrictConfig(env: AppEnv) {
+  return env === "preview" || env === "staging" || env === "production";
+}
+
+/** Normaliza a URL pública: absoluta, sem barra final (§14). */
+export function normalizePublicUrl(raw: string): string {
+  const url = new URL(raw);
+  const normalized = `${url.protocol}//${url.host}${url.pathname}`.replace(/\/+$/, "");
+  return normalized;
+}
 
 let cached: ServerConfig | null = null;
 
@@ -33,21 +65,58 @@ export function getServerConfig(): ServerConfig {
   }
 
   const cfg = parsed.data;
-  const isProdLike = cfg.APP_ENV === "staging" || cfg.APP_ENV === "production";
+  const strict = requiresStrictConfig(cfg.APP_ENV);
 
-  if (!cfg.AUTH_SESSION_SECRET) {
-    if (isProdLike) {
+  // §11 — nenhum fallback embutido fora de desenvolvimento/teste.
+  if (!cfg.QUOTATION_HASH_SALT) {
+    if (strict) {
       throw new Error(
-        "Configuração ausente: AUTH_SESSION_SECRET é obrigatória fora de desenvolvimento/preview.",
+        "Configuração ausente: QUOTATION_HASH_SALT é obrigatória fora de desenvolvimento.",
       );
     }
-    cfg.AUTH_SESSION_SECRET = DEV_ONLY_SESSION_SECRET;
+    cfg.QUOTATION_HASH_SALT = DEV_ONLY_QUOTATION_SALT;
   }
 
-  cached = cfg as ServerConfig;
+  // §14 — URL pública canônica.
+  let publicUrl = cfg.APP_PUBLIC_URL;
+  if (!publicUrl) {
+    if (strict) {
+      throw new Error("Configuração ausente: APP_PUBLIC_URL é obrigatória fora de desenvolvimento.");
+    }
+    publicUrl = DEV_PUBLIC_URL;
+  }
+  let normalized: string;
+  try {
+    normalized = normalizePublicUrl(publicUrl);
+  } catch {
+    throw new Error("Configuração inválida. Variáveis com problema: APP_PUBLIC_URL");
+  }
+  if (cfg.APP_ENV === "production" && !normalized.startsWith("https://")) {
+    throw new Error("Configuração inválida. Variáveis com problema: APP_PUBLIC_URL");
+  }
+
+  cached = { ...cfg, APP_PUBLIC_URL: normalized } as ServerConfig;
   return cached;
+}
+
+/** Apenas para a suíte automatizada: força releitura de `process.env`. */
+export function resetServerConfigCache() {
+  cached = null;
 }
 
 export function isProductionEnv() {
   return getServerConfig().APP_ENV === "production";
+}
+
+/**
+ * §13 — coerência entre a fonte canônica e o valor público.
+ * Divergência é erro de configuração, não é corrigida silenciosamente.
+ */
+export function assertEnvironmentCoherence(serverEnv: string, publicEnv: string | undefined) {
+  if (!publicEnv) return;
+  if (serverEnv !== publicEnv) {
+    throw new Error(
+      "Configuração inconsistente: APP_ENV e VITE_APP_ENV declaram ambientes diferentes.",
+    );
+  }
 }

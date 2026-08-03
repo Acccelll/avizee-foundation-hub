@@ -1,2 +1,3 @@
 rc,data,commit,branch,ambiente,escopo,testes,estado,aprovacao
-RC-AVIZEE-01,2026-08-03,workspace,main,homologacao,Etapas 5-10 + observabilidade,234 verdes,congelada,pendente
+RC-AVIZEE-01,2026-08-03,workspace,main,homologacao,Etapas 5-10 + observabilidade,234 verdes,superada,pendente
+RC-AVIZEE-02,2026-08-04,workspace,main,homologacao,Etapa 11.1 — saneamento tecnico (idempotencia por payload hash; claim atomico da outbox; ambiente canonico; sitemap/robots absolutos; readiness real),279 verdes,congelada,pendente

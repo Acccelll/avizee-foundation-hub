@@ -1,15 +1,21 @@
 /**
- * Worker do transactional outbox (doc 114 §1).
+ * Worker do transactional outbox — Etapa 11.1 §9/§10.
  *
- * - nunca roda no caminho crítico do formulário;
+ * Semântica declarada: AT_LEAST_ONCE + CONSUMIDOR_IDEMPOTENTE.
+ * Nunca "exactly-once".
+ *
+ * - claim atômico via `public.claim_outbox_messages` (FOR UPDATE SKIP LOCKED);
+ * - cada evento reivindicado recebe `claim_token` e `lease_until`;
+ * - a conclusão só é aceita quando o `claim_token` confere;
+ * - dois workers nunca entregam o mesmo evento simultaneamente;
  * - falha de notificação nunca apaga nem invalida a cotação;
- * - backoff exponencial, limite de tentativas e dead-letter;
- * - em ambiente não produtivo nenhuma mensagem sai da aplicação (`SIMULATED`).
+ * - fora de produção nenhuma mensagem sai da aplicação (`SIMULATED`).
  */
 import { getEmailProvider } from "@/services/adapters.server";
 import { getServerConfig } from "@/lib/env.server";
 import { logger } from "@/lib/logger";
-import { OUTBOX_BACKOFF_MINUTES, OUTBOX_MAX_ATTEMPTS } from "./model";
+import { increment, observe, setGauge } from "@/observability/metrics";
+import { OUTBOX_BACKOFF_MINUTES, OUTBOX_LEASE_SECONDS, OUTBOX_MAX_ATTEMPTS } from "./model";
 import {
   confirmationTemplate,
   internalNoticeTemplate,
@@ -19,6 +25,7 @@ import {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface OutboxRunResult {
+  claimed: number;
   processed: number;
   sent: number;
   simulated: number;
@@ -26,10 +33,15 @@ export interface OutboxRunResult {
   deadLettered: number;
 }
 
-function backoffFor(attempt: number): string {
+export function backoffFor(attempt: number): string {
   const minutes =
     OUTBOX_BACKOFF_MINUTES[Math.min(attempt, OUTBOX_BACKOFF_MINUTES.length) - 1] ?? 240;
   return new Date(Date.now() + minutes * 60_000).toISOString();
+}
+
+/** Identificador estável do worker corrente (sem PII). */
+export function workerId(): string {
+  return process.env["OUTBOX_WORKER_ID"] ?? `worker-${globalThis.crypto.randomUUID().slice(0, 8)}`;
 }
 
 async function buildMessage(
@@ -84,33 +96,38 @@ async function buildMessage(
   return null;
 }
 
-/** Processa um lote de mensagens pendentes. Idempotente por linha. */
+/** Processa um lote reivindicado. Idempotente por linha. */
 export async function processOutbox(limit = 20): Promise<OutboxRunResult> {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const admin = supabaseAdmin as any;
   const { APP_ENV } = getServerConfig();
   const externalSendingEnabled = APP_ENV === "production";
-
-  const { data: rows, error } = await admin
-    .from("outbox_messages")
-    .select("id, message_type, quotation_id, attempts, max_attempts")
-    .in("status", ["PENDING", "FAILED"])
-    .lte("next_attempt_at", new Date().toISOString())
-    .order("next_attempt_at")
-    .limit(limit);
-
-  if (error) {
-    logger.error("outbox.read.failure", { code: error.code ?? null });
-    return { processed: 0, sent: 0, simulated: 0, failed: 0, deadLettered: 0 };
-  }
+  const worker = workerId();
+  const startedAt = Date.now();
 
   const result: OutboxRunResult = {
+    claimed: 0,
     processed: 0,
     sent: 0,
     simulated: 0,
     failed: 0,
     deadLettered: 0,
   };
+
+  // 1. Claim atômico — nenhum evento é lido sem ser reservado.
+  const { data: rows, error } = await admin.rpc("claim_outbox_messages", {
+    p_worker_id: worker,
+    p_limit: limit,
+    p_lease_seconds: OUTBOX_LEASE_SECONDS,
+  });
+
+  if (error) {
+    logger.error("outbox.claim.failure", { code: error.code ?? null });
+    increment("outbox_failed_total", { reason: "claim" });
+    return result;
+  }
+
+  result.claimed = (rows ?? []).length;
 
   for (const row of rows ?? []) {
     result.processed += 1;
@@ -120,15 +137,13 @@ export async function processOutbox(limit = 20): Promise<OutboxRunResult> {
       if (!message) throw new Error("destinatário ou template indisponível");
 
       if (!externalSendingEnabled) {
-        await admin
-          .from("outbox_messages")
-          .update({
-            status: "SIMULATED",
-            attempts,
-            processed_at: new Date().toISOString(),
-            last_error: null,
-          })
-          .eq("id", row.id);
+        // 2a. Ambiente não produtivo: entrega simulada, jamais externa.
+        await admin.rpc("complete_outbox_message", {
+          p_id: row.id,
+          p_claim_token: row.claim_token,
+          p_status: "SIMULATED",
+          p_attempts: attempts,
+        });
         result.simulated += 1;
       } else {
         await getEmailProvider().send({
@@ -137,52 +152,75 @@ export async function processOutbox(limit = 20): Promise<OutboxRunResult> {
           text: message.text,
           template: message.template,
         });
-        await admin
-          .from("outbox_messages")
-          .update({
-            status: "SENT",
-            attempts,
-            processed_at: new Date().toISOString(),
-            last_error: null,
-          })
-          .eq("id", row.id);
+        await admin.rpc("complete_outbox_message", {
+          p_id: row.id,
+          p_claim_token: row.claim_token,
+          p_status: "DELIVERED",
+          p_attempts: attempts,
+        });
         result.sent += 1;
       }
+
+      increment("outbox_delivered_total", {
+        outcome: externalSendingEnabled ? "delivered" : "simulated",
+      });
 
       if (row.quotation_id) {
         await admin.from("quotation_events").insert({
           quotation_id: row.quotation_id,
           event_type: "NOTIFICATION",
           actor_label: "sistema",
-          internal_note: `Notificação ${row.message_type} ${externalSendingEnabled ? "enviada" : "simulada"}.`,
+          internal_note: `Notificação ${row.message_type} ${externalSendingEnabled ? "entregue" : "simulada"}.`,
         });
       }
     } catch (err) {
       const dead = attempts >= (row.max_attempts ?? OUTBOX_MAX_ATTEMPTS);
-      await admin
-        .from("outbox_messages")
-        .update({
-          status: dead ? "DEAD_LETTER" : "FAILED",
-          attempts,
-          next_attempt_at: backoffFor(attempts),
-          // Mensagem curta e sem dado pessoal.
-          last_error: String((err as Error).message ?? "falha").slice(0, 200),
-        })
-        .eq("id", row.id);
+      await admin.rpc("complete_outbox_message", {
+        p_id: row.id,
+        p_claim_token: row.claim_token,
+        p_status: dead ? "FAILED" : "RETRY_SCHEDULED",
+        p_attempts: attempts,
+        p_next_attempt_at: backoffFor(attempts),
+        // Mensagem curta e sem dado pessoal.
+        p_last_error: String((err as Error).message ?? "falha").slice(0, 200),
+      });
       if (dead) result.deadLettered += 1;
       else result.failed += 1;
+      increment("outbox_failed_total", { reason: dead ? "exhausted" : "retry" });
       logger.warn("outbox.attempt.failure", { messageType: row.message_type, attempts, dead });
     }
   }
 
+  observe("outbox_processing_duration_ms", Date.now() - startedAt, { outcome: "run" });
+
+  const { count } = await admin
+    .from("outbox_messages")
+    .select("id", { count: "exact", head: true })
+    .in("status", ["PENDING", "RETRY_SCHEDULED"]);
+  if (typeof count === "number") setGauge("outbox_pending", count);
+
   return result;
+}
+
+/** Libera reservas vencidas (lease expirado) para novo claim. */
+export async function releaseExpiredLeases(admin: any): Promise<number> {
+  const { data, error } = await admin.rpc("release_expired_outbox_leases");
+  if (error) throw new Error(error.message);
+  return typeof data === "number" ? data : 0;
 }
 
 /** Recolocação administrativa de uma mensagem na fila. */
 export async function requeueOutboxMessage(admin: any, id: string) {
   const { error } = await admin
     .from("outbox_messages")
-    .update({ status: "PENDING", next_attempt_at: new Date().toISOString(), last_error: null })
+    .update({
+      status: "PENDING",
+      next_attempt_at: new Date().toISOString(),
+      last_error: null,
+      claim_token: null,
+      lease_until: null,
+      worker_id: null,
+    })
     .eq("id", id);
   if (error) throw new Error(error.message);
 }

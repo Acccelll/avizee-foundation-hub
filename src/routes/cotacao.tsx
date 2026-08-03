@@ -110,9 +110,8 @@ function Cotacao() {
 
   const reconciled: ReconciledItem[] | null = reconciliation.data?.items ?? null;
   const unavailable = reconciled?.filter((i) => !i.available).length ?? 0;
-  const allUnavailable = Boolean(
-    reconciled && reconciled.length > 0 && unavailable === reconciled.length,
-  );
+  // §7 — qualquer item inválido impede o envio (o servidor também recusa).
+  const blockedByInvalidItems = unavailable > 0;
 
   const mutation = useMutation({
     mutationFn: (values: QuoteFormValues) =>
@@ -127,7 +126,6 @@ function Cotacao() {
           stateUf: (values.stateUf || null) as never,
           message: values.message.trim() || null,
           preferredChannel: values.preferredChannel,
-          consentContact: values.consentContact,
           consentMarketing: values.consentMarketing,
           honeypot: values.honeypot,
           elapsedMs: values.elapsedMs,
@@ -171,8 +169,6 @@ function Cotacao() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.contactEmail.trim()))
       next["contactEmail"] = "Informe um e-mail válido.";
     if (values.contactPhone.trim().length < 8) next["contactPhone"] = "Informe um telefone válido.";
-    if (!values.consentContact)
-      next["consentContact"] = "É necessário autorizar o uso dos dados para responder.";
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -212,9 +208,10 @@ function Cotacao() {
             <AlertTriangle aria-hidden="true" className="h-5 w-5 shrink-0 text-emphasis" />
             <p className="text-[15px]">
               {unavailable === 1
-                ? "1 item saiu de publicação e está sinalizado como indisponível para cotação."
-                : `${unavailable} itens saíram de publicação e estão sinalizados como indisponíveis.`}{" "}
-              Você pode removê-los; os demais seguem normalmente.
+                ? "1 item da lista precisa de revisão e está sinalizado para conferência."
+                : `${unavailable} itens da lista precisam de revisão e estão sinalizados para conferência.`}{" "}
+              O envio fica bloqueado até que sejam removidos. Os demais itens permanecem na lista, e
+              você pode voltar à família correspondente para escolher outra variação.
             </p>
           </div>
         )}
@@ -262,7 +259,7 @@ function Cotacao() {
 
           <div className="mt-6">
             <QuoteForm
-              disabled={allUnavailable || quote.items.length === 0}
+              disabled={blockedByInvalidItems || quote.items.length === 0}
               submitting={mutation.isPending}
               errors={errors}
               onSubmit={(values) => {

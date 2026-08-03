@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-import { BRAZIL_UFS, CONSENT_TEXT_CONTACT, CONSENT_TEXT_MARKETING } from "@/quotation/model";
+import {
+  BRAZIL_UFS,
+  CONSENT_TEXT_MARKETING,
+  PRIVACY_NOTICE_QUOTATION,
+} from "@/quotation/model";
 
 export interface QuoteFormValues {
   companyName: string;
@@ -227,25 +231,10 @@ export function QuoteForm({
       </div>
 
       <fieldset className="grid gap-3 rounded-[8px] border border-border p-4">
-        <legend className="px-1 text-[14px] font-semibold">Consentimentos</legend>
-        <label className="flex items-start gap-3 text-[15px]">
-          <input
-            type="checkbox"
-            className="mt-1 h-5 w-5"
-            checked={values.consentContact}
-            onChange={(e) => set("consentContact", e.target.checked)}
-            aria-invalid={Boolean(errors["consentContact"])}
-          />
-          <span>
-            {CONSENT_TEXT_CONTACT}{" "}
-            <span className="text-emphasis" aria-hidden="true">
-              *
-            </span>
-          </span>
-        </label>
-        {errors["consentContact"] && (
-          <p className="text-[13px] font-medium text-emphasis">{errors["consentContact"]}</p>
-        )}
+        <legend className="px-1 text-[14px] font-semibold">Privacidade</legend>
+        {/* §6 — aviso de privacidade: informa a finalidade, não pede
+            consentimento para o tratamento necessário à resposta. */}
+        <p className="text-[15px]">{PRIVACY_NOTICE_QUOTATION}</p>
         <label className="flex items-start gap-3 text-[15px]">
           <input
             type="checkbox"

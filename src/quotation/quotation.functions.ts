@@ -33,7 +33,8 @@ const submitSchema = z.object({
   stateUf: z.enum(BRAZIL_UFS).nullable().optional(),
   message: z.string().trim().max(2000).nullable().optional(),
   preferredChannel: z.enum(["email", "telefone", "whatsapp"]).nullable().optional(),
-  consentContact: z.boolean(),
+  // §6 — aceito por compatibilidade; não é condição de envio.
+  consentContact: z.boolean().optional(),
   consentMarketing: z.boolean().default(false),
   items: z.array(itemSchema).min(1).max(QUOTE_MAX_ITEMS),
   honeypot: z.string().max(200).nullable().optional(),

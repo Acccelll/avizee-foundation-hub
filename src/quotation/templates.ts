@@ -13,7 +13,14 @@ export interface QuotationMessageData {
   city: string | null;
   stateUf: string | null;
   message: string | null;
-  items: { sku: string; name: string; variation: string | null; quantity: number; note: string | null; available: boolean }[];
+  items: {
+    sku: string;
+    name: string;
+    variation: string | null;
+    quantity: number;
+    note: string | null;
+    available: boolean;
+  }[];
   adminUrl: string;
 }
 
@@ -37,7 +44,9 @@ export function internalNoticeTemplate(data: QuotationMessageData) {
       `Protocolo: ${data.protocol}`,
       `Empresa: ${data.companyName}`,
       `Contato: ${data.contactName} — ${data.contactEmail} — ${data.contactPhone}`,
-      data.city || data.stateUf ? `Localidade: ${[data.city, data.stateUf].filter(Boolean).join(" / ")}` : null,
+      data.city || data.stateUf
+        ? `Localidade: ${[data.city, data.stateUf].filter(Boolean).join(" / ")}`
+        : null,
       "",
       "Itens solicitados:",
       itemLines(data),

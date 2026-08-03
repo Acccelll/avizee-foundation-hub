@@ -32,15 +32,7 @@ export const METRIC_NAMES = [
 export type MetricName = (typeof METRIC_NAMES)[number];
 
 /** Rótulos permitidos. Qualquer outro é descartado (§28: sem PII em labels). */
-const ALLOWED_LABELS = [
-  "env",
-  "route",
-  "method",
-  "status",
-  "outcome",
-  "reason",
-  "entity",
-] as const;
+const ALLOWED_LABELS = ["env", "route", "method", "status", "outcome", "reason", "entity"] as const;
 
 export type MetricLabels = Partial<Record<(typeof ALLOWED_LABELS)[number], string>>;
 

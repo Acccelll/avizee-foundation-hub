@@ -31,18 +31,15 @@ export const Route = createFileRoute("/produtos/")({
   },
   loaderDeps: ({ search }) => search,
   loader: async ({ deps }) => {
-    const [catalog, facets] = await Promise.all([
-      fetchCatalog({ data: deps }),
-      fetchFacets(),
-    ]);
+    const [catalog, facets] = await Promise.all([fetchCatalog({ data: deps }), fetchFacets()]);
     return { catalog, facets, search: deps };
   },
   head: ({ loaderData }) => {
     const filtered = Boolean(
       loaderData?.search.q ||
-        loaderData?.search.categoria ||
-        loaderData?.search.segmento ||
-        loaderData?.search.aplicacao,
+      loaderData?.search.categoria ||
+      loaderData?.search.segmento ||
+      loaderData?.search.aplicacao,
     );
     return buildMeta({
       title: "Catálogo de produtos para avicultura",
@@ -76,9 +73,9 @@ function CatalogoPublico() {
         <header className="max-w-3xl">
           <h1 className="text-[36px] font-extrabold md:text-[44px]">Catálogo de produtos</h1>
           <p className="mt-4 text-[18px] text-text-secondary">
-            {catalog.total} {catalog.total === 1 ? "família disponível" : "famílias disponíveis"} nas
-            categorias publicadas. Sem preço público: você monta a lista e a equipe AviZee responde
-            com a proposta.
+            {catalog.total} {catalog.total === 1 ? "família disponível" : "famílias disponíveis"}{" "}
+            nas categorias publicadas. Sem preço público: você monta a lista e a equipe AviZee
+            responde com a proposta.
           </p>
           <div className="mt-6 max-w-2xl">
             <SearchBox defaultValue={search.q ?? ""} />
@@ -128,7 +125,9 @@ function CatalogoPublico() {
                     <Link
                       to="/produtos"
                       search={{ ...search, ordem: option.key, pagina: undefined }}
-                      aria-pressed={(search.ordem ?? (search.q ? "relevance" : "category")) === option.key}
+                      aria-pressed={
+                        (search.ordem ?? (search.q ? "relevance" : "category")) === option.key
+                      }
                       className={`inline-flex min-h-11 items-center rounded-[8px] border px-3 text-[14px] ${
                         (search.ordem ?? (search.q ? "relevance" : "category")) === option.key
                           ? "border-emphasis font-semibold text-emphasis"

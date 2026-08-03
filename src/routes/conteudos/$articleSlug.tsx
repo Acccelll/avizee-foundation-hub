@@ -29,9 +29,7 @@ export const Route = createFileRoute("/conteudos/$articleSlug")({
     return buildMeta({
       title: article.seoTitle ?? article.title,
       description:
-        article.seoDescription ??
-        article.excerpt ??
-        "Conteúdo técnico AviZee sobre avicultura.",
+        article.seoDescription ?? article.excerpt ?? "Conteúdo técnico AviZee sobre avicultura.",
       canonical: `/conteudos/${article.slug}`,
       noindex: article.noindex,
       jsonLd: [
@@ -126,23 +124,28 @@ function ArtigoPublico() {
               Referências consultadas
             </h2>
             <ul className="mt-4 space-y-2 text-[15px] text-text-secondary">
-              {article.references.map((reference: { label: string; url: string | null; note: string | null }, index: number) => (
-                <li key={index}>
-                  {reference.url ? (
-                    <a
-                      href={reference.url}
-                      rel="noopener noreferrer nofollow"
-                      target="_blank"
-                      className="underline hover:text-emphasis"
-                    >
-                      {reference.label}
-                    </a>
-                  ) : (
-                    reference.label
-                  )}
-                  {reference.note && <span className="text-text-muted"> — {reference.note}</span>}
-                </li>
-              ))}
+              {article.references.map(
+                (
+                  reference: { label: string; url: string | null; note: string | null },
+                  index: number,
+                ) => (
+                  <li key={index}>
+                    {reference.url ? (
+                      <a
+                        href={reference.url}
+                        rel="noopener noreferrer nofollow"
+                        target="_blank"
+                        className="underline hover:text-emphasis"
+                      >
+                        {reference.label}
+                      </a>
+                    ) : (
+                      reference.label
+                    )}
+                    {reference.note && <span className="text-text-muted"> — {reference.note}</span>}
+                  </li>
+                ),
+              )}
             </ul>
           </section>
         )}
@@ -153,25 +156,33 @@ function ArtigoPublico() {
               Produtos relacionados
             </h2>
             <ul className="mt-4 grid gap-4 sm:grid-cols-2">
-              {article.relatedFamilies.map((family: { slug: string; name: string; summary: string | null; categorySlug: string; categoryName: string }) => (
-                <li key={family.slug}>
-                  <Link
-                    to="/produtos/$categorySlug/$familySlug"
-                    params={{ categorySlug: family.categorySlug, familySlug: family.slug }}
-                    className="block h-full rounded-[12px] border border-border p-4 hover:border-emphasis"
-                  >
-                    <span className="text-[12px] uppercase tracking-wide text-text-muted">
-                      {family.categoryName}
-                    </span>
-                    <span className="mt-1 block text-[17px] font-bold">{family.name}</span>
-                    {family.summary && (
-                      <span className="mt-1 block line-clamp-2 text-[14px] text-text-secondary">
-                        {family.summary}
+              {article.relatedFamilies.map(
+                (family: {
+                  slug: string;
+                  name: string;
+                  summary: string | null;
+                  categorySlug: string;
+                  categoryName: string;
+                }) => (
+                  <li key={family.slug}>
+                    <Link
+                      to="/produtos/$categorySlug/$familySlug"
+                      params={{ categorySlug: family.categorySlug, familySlug: family.slug }}
+                      className="block h-full rounded-[12px] border border-border p-4 hover:border-emphasis"
+                    >
+                      <span className="text-[12px] uppercase tracking-wide text-text-muted">
+                        {family.categoryName}
                       </span>
-                    )}
-                  </Link>
-                </li>
-              ))}
+                      <span className="mt-1 block text-[17px] font-bold">{family.name}</span>
+                      {family.summary && (
+                        <span className="mt-1 block line-clamp-2 text-[14px] text-text-secondary">
+                          {family.summary}
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
             <Link
               to="/cotacao"

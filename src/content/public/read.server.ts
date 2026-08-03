@@ -198,7 +198,9 @@ export async function getArticle(slug: string): Promise<ArticleDetail | null> {
       .order("sort_order"),
     db()
       .from("public_article_relations")
-      .select("family_slug, family_name, family_summary, category_slug, category_name, variation_count, sort_order")
+      .select(
+        "family_slug, family_name, family_summary, category_slug, category_name, variation_count, sort_order",
+      )
       .eq("article_id", row.id)
       .order("sort_order"),
     db()
@@ -238,11 +240,7 @@ export async function getArticle(slug: string): Promise<ArticleDetail | null> {
 /** Endereço antigo → endereço atual, para redirecionamento 301 lógico. */
 export async function resolveArticleRedirect(oldSlug: string): Promise<string | null> {
   const rows = unwrap<any[]>(
-    await db()
-      .from("public_article_slugs")
-      .select("current_slug")
-      .eq("old_slug", oldSlug)
-      .limit(1),
+    await db().from("public_article_slugs").select("current_slug").eq("old_slug", oldSlug).limit(1),
   );
   return (rows[0]?.current_slug as string | undefined) ?? null;
 }

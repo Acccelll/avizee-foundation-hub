@@ -44,7 +44,11 @@ export function buildMeta(input: MetaInput = {}): {
     { name: "twitter:card", content: "summary_large_image" },
     {
       name: "robots",
-      content: indexable ? "index, follow" : input.noindex ? "noindex, follow" : "noindex, nofollow",
+      content: indexable
+        ? "index, follow"
+        : input.noindex
+          ? "noindex, follow"
+          : "noindex, nofollow",
     },
   ];
 

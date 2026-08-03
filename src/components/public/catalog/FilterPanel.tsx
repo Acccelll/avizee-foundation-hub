@@ -66,13 +66,7 @@ function FacetGroup({
  * funcionam sem JavaScript e são refletidos na URL — que é `noindex,follow`
  * quando há filtro aplicado (doc 100 §5).
  */
-export function FilterPanel({
-  facets,
-  search,
-}: {
-  facets: CatalogFacets;
-  search: CatalogSearch;
-}) {
+export function FilterPanel({ facets, search }: { facets: CatalogFacets; search: CatalogSearch }) {
   const hasFilters = Boolean(search.categoria || search.segmento || search.aplicacao);
 
   return (
@@ -99,7 +93,12 @@ export function FilterPanel({
         options={facets.categories.map((c) => ({ slug: c.slug, name: c.name, count: c.count }))}
         search={search}
       />
-      <FacetGroup legend="Segmento" dimension="segmento" options={facets.segments} search={search} />
+      <FacetGroup
+        legend="Segmento"
+        dimension="segmento"
+        options={facets.segments}
+        search={search}
+      />
       <FacetGroup
         legend="Aplicação"
         dimension="aplicacao"

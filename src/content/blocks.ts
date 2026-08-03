@@ -39,14 +39,16 @@ export type BlockType = (typeof BLOCK_TYPES)[number];
  * Nunca produz HTML: o texto sai como texto puro e é renderizado como texto.
  */
 export function sanitizeText(input: string): string {
-  return input
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&(?:#x?[0-9a-f]+|[a-z]+);/gi, " ")
-    // eslint-disable-next-line no-control-regex
-    .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
-    .replace(/[ \t]+/g, " ")
-    .replace(/\s*\n\s*/g, "\n")
-    .trim();
+  return (
+    input
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&(?:#x?[0-9a-f]+|[a-z]+);/gi, " ")
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
+      .replace(/[ \t]+/g, " ")
+      .replace(/\s*\n\s*/g, "\n")
+      .trim()
+  );
 }
 
 const SAFE_URL = /^https:\/\/[^\s<>"']+$/i;
@@ -58,11 +60,7 @@ export function sanitizeUrl(input: string | null | undefined): string | null {
   return SAFE_URL.test(value) ? value : null;
 }
 
-const text = (max: number) =>
-  z
-    .string()
-    .transform(sanitizeText)
-    .pipe(z.string().min(1).max(max));
+const text = (max: number) => z.string().transform(sanitizeText).pipe(z.string().min(1).max(max));
 
 const optionalText = (max: number) =>
   z
@@ -126,7 +124,10 @@ const tableBlock = z.object({
   type: z.literal("table"),
   caption: optionalText(200),
   headers: z.array(text(80)).min(1).max(6),
-  rows: z.array(z.array(text(200)).min(1).max(6)).min(1).max(40),
+  rows: z
+    .array(z.array(text(200)).min(1).max(6))
+    .min(1)
+    .max(40),
 });
 
 const faqBlock = z.object({
@@ -218,8 +219,9 @@ export function relatedFamilySlugs(blocks: ContentBlock[]): string[] {
   return [
     ...new Set(
       blocks
-        .filter((b): b is Extract<ContentBlock, { type: "product_relation" }> =>
-          b.type === "product_relation",
+        .filter(
+          (b): b is Extract<ContentBlock, { type: "product_relation" }> =>
+            b.type === "product_relation",
         )
         .map((b) => b.familySlug),
     ),

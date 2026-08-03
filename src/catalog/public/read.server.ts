@@ -147,7 +147,10 @@ export async function searchCatalog(query: CatalogQuery) {
 /** Facetas calculadas sobre o índice público (31 famílias — custo desprezível). */
 export async function catalogFacets(): Promise<CatalogFacets> {
   const [categories, index] = await Promise.all([
-    db().from("public_categories").select("slug, name, description, family_count").order("sort_order"),
+    db()
+      .from("public_categories")
+      .select("slug, name, description, family_count")
+      .order("sort_order"),
     db()
       .from("public_search_index")
       .select("category_slug, segments, segment_slugs, applications, application_slugs"),

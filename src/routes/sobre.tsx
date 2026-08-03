@@ -62,7 +62,10 @@ function Sobre() {
             </ul>
           </section>
 
-          <section aria-labelledby="abrangencia" className="rounded-[12px] border border-border p-6">
+          <section
+            aria-labelledby="abrangencia"
+            className="rounded-[12px] border border-border p-6"
+          >
             <h2 id="abrangencia" className="text-[22px] font-bold">
               {NATIONAL_COVERAGE.title}
             </h2>
@@ -77,8 +80,8 @@ function Sobre() {
           <p className="mt-4 text-[16px] text-text-secondary">
             O atendimento é consultivo e B2B: identificamos a necessidade, ajudamos a definir o
             produto, a medida ou o componente adequado à aplicação apresentada e preparamos a
-            cotação. O site não exibe preço nem realiza venda on-line — as condições são
-            confirmadas no retorno da equipe.
+            cotação. O site não exibe preço nem realiza venda on-line — as condições são confirmadas
+            no retorno da equipe.
           </p>
         </section>
 

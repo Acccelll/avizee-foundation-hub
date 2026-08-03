@@ -18,7 +18,6 @@ describe("modelo de permissões", () => {
     expect(new Set(PERMISSIONS).size).toBe(32);
   });
 
-
   it("declara os 7 papéis aprovados", () => {
     expect(ROLES).toHaveLength(7);
     for (const role of ROLES) expect(ROLE_PERMISSIONS[role]).toBeDefined();

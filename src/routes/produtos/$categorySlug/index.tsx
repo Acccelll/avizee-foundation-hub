@@ -65,9 +65,7 @@ function CategoriaPublica() {
   const { category, catalog } = Route.useLoaderData();
 
   return (
-    <PublicShell
-      breadcrumb={[{ label: "Produtos", to: "/produtos" }, { label: category.name }]}
-    >
+    <PublicShell breadcrumb={[{ label: "Produtos", to: "/produtos" }, { label: category.name }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
           <p className="text-[13px] font-semibold uppercase tracking-widest text-emphasis">

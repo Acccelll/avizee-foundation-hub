@@ -127,7 +127,12 @@ export function useQuoteList() {
       return "updated" as AddResult;
     }
     if (current.length >= QUOTE_MAX_ITEMS) return "full" as AddResult;
-    setState(writeQuoteList([...current, { ...item, quantity: clampQuantity(item.quantity ?? 1), note: null }]));
+    setState(
+      writeQuoteList([
+        ...current,
+        { ...item, quantity: clampQuantity(item.quantity ?? 1), note: null },
+      ]),
+    );
     return "added" as AddResult;
   }, []);
 

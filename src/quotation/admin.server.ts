@@ -67,12 +67,29 @@ export async function listQuotations(ctx: Authorized, filters: QuotationFilters)
 }
 
 export async function quotationDashboard(ctx: Authorized) {
-  const statuses: QuotationStatus[] = ["RECEIVED", "IN_REVIEW", "WAITING_INFORMATION", "IN_SERVICE"];
+  const statuses: QuotationStatus[] = [
+    "RECEIVED",
+    "IN_REVIEW",
+    "WAITING_INFORMATION",
+    "IN_SERVICE",
+  ];
   const [open, mine, pendingOutbox, deadLetter] = await Promise.all([
-    (ctx.supabase as any).from("quotations").select("id", { count: "exact", head: true }).in("status", statuses),
-    (ctx.supabase as any).from("quotations").select("id", { count: "exact", head: true }).eq("assigned_to", ctx.userId),
-    (ctx.supabase as any).from("outbox_messages").select("id", { count: "exact", head: true }).in("status", ["PENDING", "FAILED"]),
-    (ctx.supabase as any).from("outbox_messages").select("id", { count: "exact", head: true }).eq("status", "DEAD_LETTER"),
+    (ctx.supabase as any)
+      .from("quotations")
+      .select("id", { count: "exact", head: true })
+      .in("status", statuses),
+    (ctx.supabase as any)
+      .from("quotations")
+      .select("id", { count: "exact", head: true })
+      .eq("assigned_to", ctx.userId),
+    (ctx.supabase as any)
+      .from("outbox_messages")
+      .select("id", { count: "exact", head: true })
+      .in("status", ["PENDING", "FAILED"]),
+    (ctx.supabase as any)
+      .from("outbox_messages")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "DEAD_LETTER"),
   ]);
 
   return {
@@ -95,7 +112,9 @@ export async function getQuotation(ctx: Authorized, id: string) {
   const [items, events, source, outbox] = await Promise.all([
     (ctx.supabase as any)
       .from("quotation_items")
-      .select("id, snapshot_sku, snapshot_name, snapshot_variation, snapshot_family, snapshot_category, quantity, note, was_available, product_id, position")
+      .select(
+        "id, snapshot_sku, snapshot_name, snapshot_variation, snapshot_family, snapshot_category, quantity, note, was_available, product_id, position",
+      )
       .eq("quotation_id", id)
       .order("position"),
     (ctx.supabase as any)
@@ -287,7 +306,9 @@ export async function addQuotationNote(ctx: Authorized, input: { id: string; not
 export async function listOutboxMessages(ctx: Authorized, status?: string | null) {
   let query = (ctx.supabase as any)
     .from("outbox_messages")
-    .select("id, message_type, quotation_id, status, attempts, next_attempt_at, processed_at, last_error, created_at")
+    .select(
+      "id, message_type, quotation_id, status, attempts, next_attempt_at, processed_at, last_error, created_at",
+    )
     .order("created_at", { ascending: false })
     .limit(100);
   if (status) query = query.eq("status", status);

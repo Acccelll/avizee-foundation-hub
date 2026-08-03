@@ -41,7 +41,10 @@ export const Route = createFileRoute("/api/public/readiness")({
           { name: "application", status: "healthy" },
           { name: "configuration", status: configuration },
           { name: "database", status: await probeDatabase() },
-          { name: "authentication", status: process.env["SUPABASE_URL"] ? "healthy" : "not_configured" },
+          {
+            name: "authentication",
+            status: process.env["SUPABASE_URL"] ? "healthy" : "not_configured",
+          },
           { name: "storage", status: "healthy" },
           { name: "outbox", status: "healthy" },
           // DEP-T1 pendente: provider de e-mail real ainda não aprovado.

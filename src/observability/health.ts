@@ -31,7 +31,11 @@ export type ComponentCheck = { name: ComponentName; status: CheckStatus };
 
 export function evaluate(checks: ComponentCheck[]): OverallStatus {
   const isCritical = (c: ComponentCheck) => CRITICAL_COMPONENTS.includes(c.name);
-  if (checks.some((c) => isCritical(c) && (c.status === "unavailable" || c.status === "not_configured"))) {
+  if (
+    checks.some(
+      (c) => isCritical(c) && (c.status === "unavailable" || c.status === "not_configured"),
+    )
+  ) {
     return "unavailable";
   }
   if (checks.some((c) => c.status === "unavailable" || c.status === "degraded")) return "degraded";

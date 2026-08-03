@@ -127,7 +127,6 @@ function Cotacao() {
           stateUf: (values.stateUf || null) as never,
           message: values.message.trim() || null,
           preferredChannel: values.preferredChannel,
-          consentContact: values.consentContact,
           consentMarketing: values.consentMarketing,
           honeypot: values.honeypot,
           elapsedMs: values.elapsedMs,
@@ -171,8 +170,6 @@ function Cotacao() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.contactEmail.trim()))
       next["contactEmail"] = "Informe um e-mail válido.";
     if (values.contactPhone.trim().length < 8) next["contactPhone"] = "Informe um telefone válido.";
-    if (!values.consentContact)
-      next["consentContact"] = "É necessário autorizar o uso dos dados para responder.";
     setErrors(next);
     return Object.keys(next).length === 0;
   };

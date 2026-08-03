@@ -18,7 +18,7 @@ import {
   StatusBadge,
   Table,
   inputClass,
-  primaryButtonClass,
+  buttonClass,
   readableError,
 } from "@/components/admin/ui";
 import { CONTENT_STATUSES, CONTENT_STATUS_LABEL } from "@/content/workflow";
@@ -77,7 +77,8 @@ function ContentListPage() {
   });
 
   const categoryName = (id: string | null) =>
-    (categories.data ?? []).find((c: { id: string }) => c.id === id)?.name ?? "—";
+    ((categories.data ?? []) as Array<{ id: string; name: string }>).find((c) => c.id === id)?.name ??
+    "—";
 
   return (
     <div>
@@ -132,7 +133,7 @@ function ContentListPage() {
             required
           />
         </label>
-        <button type="submit" className={primaryButtonClass} disabled={mutation.isPending}>
+        <button type="submit" className={buttonClass} disabled={mutation.isPending}>
           Criar rascunho
         </button>
       </form>
@@ -174,9 +175,9 @@ function ContentListPage() {
         isLoading={query.isLoading}
         error={query.error}
         isEmpty={(query.data?.items.length ?? 0) === 0}
-        emptyMessage="Nenhum artigo encontrado com estes filtros."
+        emptyLabel="Nenhum artigo encontrado com estes filtros."
       >
-        <Table headers={["Título", "Categoria", "Situação", "Versão", "Atualizado"]}>
+        <Table head={["Título", "Categoria", "Situação", "Versão", "Atualizado"]}>
           {(query.data?.items ?? []).map(
             (article: {
               id: string;
@@ -214,7 +215,8 @@ function ContentListPage() {
 
       <Pagination
         page={query.data?.page ?? 1}
-        pageCount={query.data?.pageCount ?? 1}
+        total={query.data?.total ?? 0}
+        pageSize={query.data?.pageSize ?? 20}
         onChange={setPage}
       />
     </div>

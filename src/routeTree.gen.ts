@@ -22,6 +22,7 @@ import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as ConteudosIndexRouteImport } from './routes/conteudos/index'
 import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
@@ -105,6 +106,11 @@ const AdminAcessoNegadoRoute = AdminAcessoNegadoRouteImport.update({
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
   path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
+  id: '/conteudos/',
+  path: '/conteudos/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProdutosIndexRoute = ProdutosIndexRouteImport.update({
@@ -228,6 +234,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
@@ -261,6 +268,7 @@ export interface FileRoutesByTo {
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos': typeof ConteudosIndexRoute
   '/produtos': typeof ProdutosIndexRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
@@ -296,6 +304,7 @@ export interface FileRoutesById {
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
+  '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
@@ -332,6 +341,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/'
     | '/produtos/'
     | '/admin/auditoria'
     | '/admin/conflitos'
@@ -365,6 +375,7 @@ export interface FileRouteTypes {
     | '/termos-de-uso'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos'
     | '/produtos'
     | '/admin/auditoria'
     | '/admin/conflitos'
@@ -399,6 +410,7 @@ export interface FileRouteTypes {
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
+    | '/conteudos/'
     | '/produtos/'
     | '/admin/_protected/auditoria'
     | '/admin/_protected/conflitos'
@@ -434,6 +446,7 @@ export interface RootRouteChildren {
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
   ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
@@ -532,6 +545,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conteudos/': {
+      id: '/conteudos/'
+      path: '/conteudos'
+      fullPath: '/conteudos/'
+      preLoaderRoute: typeof ConteudosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produtos/': {
@@ -725,6 +745,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
+  ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
   ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,

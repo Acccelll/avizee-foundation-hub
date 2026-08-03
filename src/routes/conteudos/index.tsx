@@ -74,7 +74,7 @@ function CentralDeConteudos() {
                 Todas
               </Link>
             </li>
-            {categories.map((category) => (
+            {categories.map((category: { slug: string; name: string; articleCount: number }) => (
               <li key={category.slug}>
                 <Link
                   to="/conteudos/categoria/$slug"

@@ -1,100 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="31" failures="1" errors="0" time="0.066825175">
-    <testsuite name="tests/unit/content-editorial.test.ts" timestamp="2026-08-03T00:11:18.137Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="16" failures="1" errors="0" skipped="0" time="0.028958017">
-        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; remove HTML e scripts do texto" time="0.003246553">
+<testsuites name="vitest tests" tests="16" failures="0" errors="0" time="0.020579544">
+    <testsuite name="tests/unit/content-editorial.test.ts" timestamp="2026-08-03T00:11:25.948Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="16" failures="0" errors="0" skipped="0" time="0.020579544">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; remove HTML e scripts do texto" time="0.004984796">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; aceita apenas endereços http(s)" time="0.000458258">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; aceita apenas endereços http(s)" time="0.000935697">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; rejeita blocos de tipo desconhecido" time="0.002781184">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; rejeita blocos de tipo desconhecido" time="0.002558271">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; calcula tempo de leitura mínimo de 1 minuto" time="0.000813544">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; calcula tempo de leitura mínimo de 1 minuto" time="0.000427958">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; extrai famílias relacionadas dos blocos" time="0.006738519">
-            <failure message="[
-  {
-    &quot;code&quot;: &quot;invalid_type&quot;,
-    &quot;expected&quot;: &quot;string&quot;,
-    &quot;received&quot;: &quot;undefined&quot;,
-    &quot;path&quot;: [
-      1,
-      &quot;familySlug&quot;
-    ],
-    &quot;message&quot;: &quot;Required&quot;
-  }
-]" type="ZodError">
-ZodError: [
-  {
-    &quot;code&quot;: &quot;invalid_type&quot;,
-    &quot;expected&quot;: &quot;string&quot;,
-    &quot;received&quot;: &quot;undefined&quot;,
-    &quot;path&quot;: [
-      1,
-      &quot;familySlug&quot;
-    ],
-    &quot;message&quot;: &quot;Required&quot;
-  }
-]
- ❯ Object.get error [as error] node_modules/zod/v3/types.js:39:31
- ❯ ZodArray.parse node_modules/zod/v3/types.js:114:22
- ❯ tests/unit/content-editorial.test.ts:51:33
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-Serialized Error: { issues: [ { code: &apos;invalid_type&apos;, expected: &apos;string&apos;, received: &apos;undefined&apos;, path: [ 1, &apos;familySlug&apos; ], message: &apos;Required&apos; } ], addIssue: &apos;Function&lt;anonymous&gt;&apos;, addIssues: &apos;Function&lt;anonymous&gt;&apos;, errors: [ { code: &apos;invalid_type&apos;, expected: &apos;string&apos;, received: &apos;undefined&apos;, path: [ 1, &apos;familySlug&apos; ], message: &apos;Required&apos; } ], format: &apos;Function&lt;format&gt;&apos;, isEmpty: false, flatten: &apos;Function&lt;flatten&gt;&apos;, formErrors: { formErrors: [], fieldErrors: { &apos;1&apos;: [ &apos;Required&apos; ] } } }
-            </failure>
+        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; extrai famílias relacionadas dos blocos" time="0.00139478">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; gera slug sem acento e sem símbolo" time="0.000370377">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="blocos estruturados &gt; gera slug sem acento e sem símbolo" time="0.000422437">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="conformidade editorial &gt; bloqueia vocabulário de preço e promessa comercial" time="0.001264863">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="conformidade editorial &gt; bloqueia vocabulário de preço e promessa comercial" time="0.002240598">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="conformidade editorial &gt; aprova conteúdo técnico sem marca nem preço" time="0.001652908">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="conformidade editorial &gt; aprova conteúdo técnico sem marca nem preço" time="0.000633727">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; declara as situações aprovadas" time="0.001100772">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; declara as situações aprovadas" time="0.001814227">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; não permite publicar direto do rascunho" time="0.000293336">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; não permite publicar direto do rascunho" time="0.00031585">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; só o estado publicado é público" time="0.000382099">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; só o estado publicado é público" time="0.000214509">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; conteúdo publicado não é editável diretamente" time="0.000144977">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; conteúdo publicado não é editável diretamente" time="0.00011104">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; cada transição exige permissão declarada" time="0.000480738">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="fluxo editorial &gt; cada transição exige permissão declarada" time="0.00061304">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="variantes sociais &gt; normaliza hashtags e respeita o limite do canal" time="0.000390874">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="variantes sociais &gt; normaliza hashtags e respeita o limite do canal" time="0.000607535">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="variantes sociais &gt; recusa legenda acima do limite do canal" time="0.000215139">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="variantes sociais &gt; recusa legenda acima do limite do canal" time="0.000328672">
         </testcase>
-        <testcase classname="tests/unit/content-editorial.test.ts" name="variantes sociais &gt; sugere rascunho a partir do artigo e exporta texto para cópia manual" time="0.002528184">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/unit/permissions-audit.test.ts" timestamp="2026-08-03T00:11:18.150Z" hostname="sandbox-pool-66d865bbb7-4b6rx" tests="15" failures="0" errors="0" skipped="0" time="0.037867158">
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara 32 permissões finas (25 anteriores + 7 editoriais da Etapa 10)" time="0.006733692">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; declara os 7 papéis aprovados" time="0.002854369">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; toda permissão atribuída existe no catálogo de permissões" time="0.007523374">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; ADMINISTRADOR concentra todas as permissões" time="0.003193438">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; todo papel tem admin.access e nenhum é vazio" time="0.004454917">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; menor privilégio: papéis de leitura não escrevem no catálogo" time="0.002230815">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; apenas ADMINISTRADOR e AUDITOR leem auditoria" time="0.00047633">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; acumula permissões de múltiplos papéis" time="0.000353195">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; rejeita papel desconhecido" time="0.000527499">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="modelo de permissões &gt; lista de papéis vazia não concede nada" time="0.003788535">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; redige chaves sensíveis por substring" time="0.000893492">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; é insensível a caixa" time="0.001607963">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; trata nulo" time="0.000212875">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; mascara e-mail preservando domínio" time="0.000168533">
-        </testcase>
-        <testcase classname="tests/unit/permissions-audit.test.ts" name="redação de auditoria &gt; calcula diff de campos" time="0.000297535">
+        <testcase classname="tests/unit/content-editorial.test.ts" name="variantes sociais &gt; sugere rascunho a partir do artigo e exporta texto para cópia manual" time="0.000370531">
         </testcase>
     </testsuite>
 </testsuites>

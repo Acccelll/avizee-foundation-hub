@@ -50,7 +50,8 @@ describe("blocos estruturados", () => {
   it("extrai famílias relacionadas dos blocos", () => {
     const blocks = blocksSchema.parse([
       paragraph("Comparativo de bebedouros."),
-      { type: "product_relation", familySlugs: ["bebedouro-nipple", "bebedouro-nipple"] },
+      { type: "product_relation", familySlug: "bebedouro-nipple" },
+      { type: "product_relation", familySlug: "bebedouro-nipple" },
     ]);
     expect(relatedFamilySlugs(blocks)).toEqual(["bebedouro-nipple"]);
   });

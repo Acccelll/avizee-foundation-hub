@@ -1541,10 +1541,13 @@ export type Database = {
       outbox_messages: {
         Row: {
           attempts: number
+          claim_token: string | null
+          claimed_at: string | null
           created_at: string
           dedupe_key: string | null
           id: string
           last_error: string | null
+          lease_until: string | null
           max_attempts: number
           message_type: string
           next_attempt_at: string
@@ -1553,13 +1556,17 @@ export type Database = {
           quotation_id: string | null
           status: Database["public"]["Enums"]["outbox_status"]
           updated_at: string
+          worker_id: string | null
         }
         Insert: {
           attempts?: number
+          claim_token?: string | null
+          claimed_at?: string | null
           created_at?: string
           dedupe_key?: string | null
           id?: string
           last_error?: string | null
+          lease_until?: string | null
           max_attempts?: number
           message_type: string
           next_attempt_at?: string
@@ -1568,13 +1575,17 @@ export type Database = {
           quotation_id?: string | null
           status?: Database["public"]["Enums"]["outbox_status"]
           updated_at?: string
+          worker_id?: string | null
         }
         Update: {
           attempts?: number
+          claim_token?: string | null
+          claimed_at?: string | null
           created_at?: string
           dedupe_key?: string | null
           id?: string
           last_error?: string | null
+          lease_until?: string | null
           max_attempts?: number
           message_type?: string
           next_attempt_at?: string
@@ -1583,6 +1594,7 @@ export type Database = {
           quotation_id?: string | null
           status?: Database["public"]["Enums"]["outbox_status"]
           updated_at?: string
+          worker_id?: string | null
         }
         Relationships: [
           {
@@ -2361,6 +2373,39 @@ export type Database = {
         }
         Relationships: []
       }
+      public_release_cohort: {
+        Row: {
+          approval_reference: string
+          approved_by: string | null
+          cohort_code: string
+          created_at: string
+          entity: string
+          entity_id: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          approval_reference?: string
+          approved_by?: string | null
+          cohort_code?: string
+          created_at?: string
+          entity: string
+          entity_id: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          approval_reference?: string
+          approved_by?: string | null
+          cohort_code?: string
+          created_at?: string
+          entity?: string
+          entity_id?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       publication_history: {
         Row: {
           actor_id: string | null
@@ -2609,6 +2654,7 @@ export type Database = {
           item_count: number
           last_event_at: string
           message: string | null
+          payload_hash: string | null
           preferred_channel: string | null
           protocol: string
           responded_at: string | null
@@ -2635,6 +2681,7 @@ export type Database = {
           item_count?: number
           last_event_at?: string
           message?: string | null
+          payload_hash?: string | null
           preferred_channel?: string | null
           protocol: string
           responded_at?: string | null
@@ -2661,6 +2708,7 @@ export type Database = {
           item_count?: number
           last_event_at?: string
           message?: string | null
+          payload_hash?: string | null
           preferred_channel?: string | null
           protocol?: string
           responded_at?: string | null
@@ -3508,6 +3556,14 @@ export type Database = {
       }
     }
     Functions: {
+      audit_release_cohort: {
+        Args: { p_cohort?: string }
+        Returns: {
+          entity: string
+          entity_id: string
+          issue: string
+        }[]
+      }
       avz_norm_code: { Args: { t: string }; Returns: string }
       avz_norm_text: { Args: { t: string }; Returns: string }
       avz_unaccent: { Args: { t: string }; Returns: string }
@@ -3517,6 +3573,33 @@ export type Database = {
       can_read_internal: { Args: { _user_id: string }; Returns: boolean }
       can_read_quotations: { Args: { _user_id: string }; Returns: boolean }
       can_write_content: { Args: { _user_id: string }; Returns: boolean }
+      claim_outbox_messages: {
+        Args: {
+          p_lease_seconds?: number
+          p_limit?: number
+          p_worker_id: string
+        }
+        Returns: {
+          attempts: number
+          claim_token: string
+          dedupe_key: string
+          id: string
+          max_attempts: number
+          message_type: string
+          quotation_id: string
+        }[]
+      }
+      complete_outbox_message: {
+        Args: {
+          p_attempts: number
+          p_claim_token: string
+          p_id: string
+          p_last_error?: string
+          p_next_attempt_at?: string
+          p_status: string
+        }
+        Returns: boolean
+      }
       generate_quotation_protocol: { Args: never; Returns: string }
       has_any_role: {
         Args: {
@@ -3543,6 +3626,7 @@ export type Database = {
         }[]
       }
       refresh_public_search_index: { Args: never; Returns: undefined }
+      release_expired_outbox_leases: { Args: never; Returns: number }
       search_public_catalog: {
         Args: {
           p_application?: string
@@ -3610,7 +3694,16 @@ export type Database = {
         | "EXECUTING"
         | "EXECUTED"
         | "ROLLED_BACK"
-      outbox_status: "PENDING" | "SENT" | "FAILED" | "DEAD_LETTER" | "SIMULATED"
+      outbox_status:
+        | "PENDING"
+        | "SENT"
+        | "FAILED"
+        | "DEAD_LETTER"
+        | "SIMULATED"
+        | "PROCESSING"
+        | "RETRY_SCHEDULED"
+        | "DELIVERED"
+        | "CANCELLED"
       publication_status:
         | "NOT_PUBLISHED"
         | "PUBLISHED"
@@ -3839,7 +3932,17 @@ export const Constants = {
         "EXECUTED",
         "ROLLED_BACK",
       ],
-      outbox_status: ["PENDING", "SENT", "FAILED", "DEAD_LETTER", "SIMULATED"],
+      outbox_status: [
+        "PENDING",
+        "SENT",
+        "FAILED",
+        "DEAD_LETTER",
+        "SIMULATED",
+        "PROCESSING",
+        "RETRY_SCHEDULED",
+        "DELIVERED",
+        "CANCELLED",
+      ],
       publication_status: [
         "NOT_PUBLISHED",
         "PUBLISHED",

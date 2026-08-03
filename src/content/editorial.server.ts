@@ -175,7 +175,7 @@ export interface ArticleInput {
   seoDescription?: string | null | undefined;
   noindex?: boolean | undefined;
   internalNotes?: string | null | undefined;
-  blocks: unknown;
+  blocks?: unknown;
   references?: { label: string; url?: string | null; note?: string | null }[] | undefined;
   note?: string | null | undefined;
 }
@@ -342,7 +342,7 @@ export async function saveArticle(auth: Authorized, input: ArticleInput) {
 
 export async function changeArticleStatus(
   auth: Authorized,
-  input: { id: string; to: ContentStatus; note?: string | null },
+  input: { id: string; to: ContentStatus; note?: string | null | undefined },
 ) {
   const rows = unwrap<Row[]>(
     await auth.supabase.from("content_articles").select("*").eq("id", input.id).limit(1),
@@ -434,8 +434,8 @@ export async function saveSocialVariant(
     headline: string;
     caption: string;
     hashtags: string[];
-    callToAction?: string | null;
-    ready?: boolean;
+    callToAction?: string | null | undefined;
+    ready?: boolean | undefined;
   },
 ) {
   const draft = {
@@ -502,7 +502,7 @@ export async function saveSocialVariant(
  */
 export async function exportSocialVariant(
   auth: Authorized,
-  input: { articleId: string; channel: SocialChannel; articleUrl?: string | null },
+  input: { articleId: string; channel: SocialChannel; articleUrl?: string | null | undefined },
 ) {
   const rows = unwrap<Row[]>(
     await auth.supabase
@@ -557,11 +557,11 @@ export async function exportSocialVariant(
 export async function saveAuthor(
   auth: Authorized,
   input: {
-    id?: string | null;
+    id?: string | null | undefined;
     displayName: string;
-    roleTitle?: string | null;
-    bio?: string | null;
-    isActive?: boolean;
+    roleTitle?: string | null | undefined;
+    bio?: string | null | undefined;
+    isActive?: boolean | undefined;
   },
 ) {
   const payload = {

@@ -14,12 +14,13 @@ const criados: string[] = [];
 async function produtoPublico() {
   const { data } = await admin
     .from("public_products")
-    .select("product_id, public_sku, public_name, family_id")
+    .select("id, public_sku, public_name, family_id")
     .limit(1)
     .maybeSingle();
   if (!data) throw new Error("Catálogo público sem produtos para o teste.");
-  return data as { product_id: string; public_sku: string; public_name: string; family_id: string };
+  return data as { id: string; public_sku: string; public_name: string; family_id: string };
 }
+
 
 function payloadBase(clientRequestId: string, hash: string, quantidade = 3) {
   return {

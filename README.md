@@ -1,6 +1,8 @@
-# AviZee Foundation
+# AviZee — Projeto Consolidado
 
-O prompt abaixo consolida as decisões aprovadas, o catálogo de produtos e variações , além da identidade visual, logotipo, grafismos e paleta oficial da AviZee.
+Status: **OPERATION_BLOCKED** (Etapa 13 encerrada com restrições críticas)
+Release Candidate: **RC-AVIZEE-02**
+
 
 Prompt — Etapa 0: Constituição do Projeto e Memória Permanente
 

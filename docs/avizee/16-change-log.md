@@ -4,7 +4,14 @@ Formato: data · etapa · alteração · documentos afetados · origem.
 
 ---
 
+## 2026-08-04 — Etapa 13: Operação Assistida e Governança
+
+**Alteração**: Conclusão da Etapa 13 com veredito **OPERATION_BLOCKED**. Operação regular não iniciada devido a bloqueios P0/P1 da Etapa 12. Documentos 436–470 criados.
+
+---
+
 ## 2026-07-31 — Etapa 0: Constituição do Projeto e Memória Permanente
+
 
 **Alteração**: criação da memória permanente do projeto AviZee.
 

@@ -141,3 +141,5 @@ aprovadas nem aplicadas antes de aprovação expressa item a item.
 | D-086 | Métricas operam com lista fechada de nomes e rótulos em allowlist; PII em rótulo é proibida | Etapa 11 §28 |
 | D-087 | Sem cookies opcionais ativos, **nenhum banner de consentimento é criado**; o mecanismo só nasce junto do Analytics aprovado | Etapa 11 §23 |
 | D-088 | SLIs/SLOs do doc. 344 são metas técnicas internas e **não** podem ser divulgados como SLA público | Etapa 11 §29 |
+| D-089 | **OPERATION_BLOCKED** na Etapa 13: operação regular suspensa devido a bloqueios P0/P1 herdados da Etapa 12 | Etapa 13 §1 | 2026-08-04 |
+

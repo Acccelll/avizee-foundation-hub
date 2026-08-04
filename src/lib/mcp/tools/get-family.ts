@@ -20,7 +20,7 @@ export default defineTool({
     }
     return {
       content: [{ type: "text" as const, text: JSON.stringify(family) }],
-      structuredContent: family,
+      structuredContent: family as unknown as Record<string, unknown>,
     };
   },
 });

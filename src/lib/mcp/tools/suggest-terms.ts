@@ -16,7 +16,7 @@ export default defineTool({
     const result = await autocomplete(q);
     return {
       content: [{ type: "text" as const, text: JSON.stringify(result) }],
-      structuredContent: result,
+      structuredContent: result as unknown as Record<string, unknown>,
     };
   },
 });

@@ -13,7 +13,7 @@ export default defineTool({
     const facets = await catalogFacets();
     return {
       content: [{ type: "text" as const, text: JSON.stringify(facets) }],
-      structuredContent: facets,
+      structuredContent: facets as unknown as Record<string, unknown>,
     };
   },
 });

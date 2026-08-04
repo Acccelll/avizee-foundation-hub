@@ -13,7 +13,7 @@ export default defineTool({
     const categories = await listPublicCategories();
     return {
       content: [{ type: "text" as const, text: JSON.stringify(categories) }],
-      structuredContent: { categories },
+      structuredContent: { categories } as unknown as Record<string, unknown>,
     };
   },
 });

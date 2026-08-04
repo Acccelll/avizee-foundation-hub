@@ -13,18 +13,22 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuscaRouteImport } from './routes/busca'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as CotacaoRouteImport } from './routes/cotacao'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as AdminProtectedRouteImport } from './routes/admin/_protected'
 import { Route as AdminAcessoNegadoRouteImport } from './routes/admin/acesso-negado'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as ConteudosIndexRouteImport } from './routes/conteudos/index'
 import { Route as ConteudosArticleSlugRouteImport } from './routes/conteudos/$articleSlug'
 import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
 import { Route as AdminProtectedConflitosRouteImport } from './routes/admin/_protected/conflitos'
@@ -69,6 +73,11 @@ const CotacaoRoute = CotacaoRouteImport.update({
   path: '/cotacao',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
   id: '/politica-de-privacidade',
   path: '/politica-de-privacidade',
@@ -99,6 +108,18 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   path: '/termos-de-uso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminProtectedRoute = AdminProtectedRouteImport.update({
   id: '/admin/_protected',
   path: '/admin',
@@ -129,6 +150,12 @@ const ProdutosIndexRoute = ProdutosIndexRouteImport.update({
   path: '/produtos/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminProtectedIndexRoute = AdminProtectedIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -262,18 +289,22 @@ export interface FileRoutesByFullPath {
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
   '/cotacao': typeof CotacaoRoute
+  '/mcp': typeof McpRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
   '/admin/conteudos': typeof AdminProtectedConteudosRoute
@@ -303,17 +334,21 @@ export interface FileRoutesByTo {
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
   '/cotacao': typeof CotacaoRoute
+  '/mcp': typeof McpRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
   '/conteudos': typeof ConteudosIndexRoute
   '/produtos': typeof ProdutosIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
   '/admin/conteudos': typeof AdminProtectedConteudosRoute
@@ -344,18 +379,22 @@ export interface FileRoutesById {
   '/busca': typeof BuscaRoute
   '/contato': typeof ContatoRoute
   '/cotacao': typeof CotacaoRoute
+  '/mcp': typeof McpRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
   '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/_protected': typeof AdminProtectedRouteWithChildren
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
   '/admin/_protected/conteudos': typeof AdminProtectedConteudosRoute
@@ -387,18 +426,22 @@ export interface FileRouteTypes {
     | '/busca'
     | '/contato'
     | '/cotacao'
+    | '/mcp'
     | '/politica-de-privacidade'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/admin'
     | '/admin/acesso-negado'
     | '/admin/login'
     | '/conteudos/$articleSlug'
     | '/conteudos/'
     | '/produtos/'
+    | '/.mcp/invoke-tool/$tool'
     | '/admin/auditoria'
     | '/admin/conflitos'
     | '/admin/conteudos'
@@ -428,17 +471,21 @@ export interface FileRouteTypes {
     | '/busca'
     | '/contato'
     | '/cotacao'
+    | '/mcp'
     | '/politica-de-privacidade'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/admin/acesso-negado'
     | '/admin/login'
     | '/conteudos/$articleSlug'
     | '/conteudos'
     | '/produtos'
+    | '/.mcp/invoke-tool/$tool'
     | '/admin/auditoria'
     | '/admin/conflitos'
     | '/admin/conteudos'
@@ -468,18 +515,22 @@ export interface FileRouteTypes {
     | '/busca'
     | '/contato'
     | '/cotacao'
+    | '/mcp'
     | '/politica-de-privacidade'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sobre'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/admin/_protected'
     | '/admin/acesso-negado'
     | '/admin/login'
     | '/conteudos/$articleSlug'
     | '/conteudos/'
     | '/produtos/'
+    | '/.mcp/invoke-tool/$tool'
     | '/admin/_protected/auditoria'
     | '/admin/_protected/conflitos'
     | '/admin/_protected/conteudos'
@@ -510,18 +561,22 @@ export interface RootRouteChildren {
   BuscaRoute: typeof BuscaRoute
   ContatoRoute: typeof ContatoRoute
   CotacaoRoute: typeof CotacaoRoute
+  McpRoute: typeof McpRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SobreRoute: typeof SobreRoute
   SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   AdminProtectedRoute: typeof AdminProtectedRouteWithChildren
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
   ConteudosArticleSlugRoute: typeof ConteudosArticleSlugRoute
   ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
   ApiPublicLivenessRoute: typeof ApiPublicLivenessRoute
   ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
@@ -559,6 +614,13 @@ declare module '@tanstack/react-router' {
       path: '/cotacao'
       fullPath: '/cotacao'
       preLoaderRoute: typeof CotacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/politica-de-privacidade': {
@@ -603,6 +665,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUsoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/_protected': {
       id: '/admin/_protected'
       path: '/admin'
@@ -643,6 +719,13 @@ declare module '@tanstack/react-router' {
       path: '/produtos'
       fullPath: '/produtos/'
       preLoaderRoute: typeof ProdutosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/_protected/': {
@@ -859,18 +942,23 @@ const rootRouteChildren: RootRouteChildren = {
   BuscaRoute: BuscaRoute,
   ContatoRoute: ContatoRoute,
   CotacaoRoute: CotacaoRoute,
+  McpRoute: McpRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SobreRoute: SobreRoute,
   SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   AdminProtectedRoute: AdminProtectedRouteWithChildren,
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
   ConteudosArticleSlugRoute: ConteudosArticleSlugRoute,
   ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
   ApiPublicLivenessRoute: ApiPublicLivenessRoute,
   ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,
@@ -882,3 +970,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

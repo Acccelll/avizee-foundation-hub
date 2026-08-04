@@ -4,6 +4,22 @@ Formato: data · etapa · alteração · documentos afetados · origem.
 
 ---
 
+## 2026-08-04 — Integrações de agente (MCP)
+
+**Alteração**: exposição do catálogo público como servidor MCP (`/mcp`) via `@lovable.dev/mcp-js`,
+com 5 ferramentas somente leitura: `search_catalog`, `list_categories`, `list_facets`,
+`get_family`, `suggest_terms`. Todas reutilizam a camada pública `catalog/public/read.server.ts`,
+portanto passam pelo `guard()`/`findLeakedFields()` — sem preço (R-04) e sem marca de terceiro (R-05).
+
+**Acesso**: **público, sem autenticação**, por escolha explícita do usuário. Nenhuma tabela
+administrativa, cotação, dado pessoal ou chave de serviço é acessível pelas ferramentas.
+
+**Arquivos**: `src/lib/mcp/**`, `vite.config.ts`, `package.json`. Nada publicado.
+
+---
+
+
+
 ## 2026-08-04 — Etapa 13: Operação Assistida e Governança
 
 **Alteração**: Conclusão da Etapa 13 com veredito **OPERATION_BLOCKED**. Operação regular não iniciada devido a bloqueios P0/P1 da Etapa 12. Documentos 436–470 criados.

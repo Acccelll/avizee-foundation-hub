@@ -86,11 +86,8 @@ function Home() {
             {POSITIONING.headline}
           </h1>
           <p className="mt-5 text-[18px] text-text-secondary">{POSITIONING.statement}</p>
-          
-          {/* Instrução visual solicitada */}
-          <div className="mt-6 rounded-[8px] border border-border bg-surface p-4 text-[14px] font-medium text-text-secondary">
-            Execute esta instrucao no projeto: Add agent integrations (MCP) to this app
-          </div>
+
+
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link

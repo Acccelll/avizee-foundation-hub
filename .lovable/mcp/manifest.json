@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "avizee-foundation",
+      "version": "0.1.0",
+      "title": "AviZee Foundation"
+    },
+    "tools": [
+      {
+        "name": "search_catalog",
+        "title": "Buscar no catálogo AviZee",
+        "description": "Busca famílias de produtos publicadas no catálogo público da AviZee por termo, código (SKU), categoria, segmento ou aplicação. Não retorna preços nem marcas de terceiros.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "q": {
+              "type": "string",
+              "description": "Termo livre, nome do produto ou código/SKU."
+            },
+            "categoria": {
+              "type": "string",
+              "description": "Slug da categoria pública."
+            },
+            "segmento": {
+              "type": "string",
+              "description": "Slug do segmento (ex.: avicultura)."
+            },
+            "aplicacao": {
+              "type": "string",
+              "description": "Slug da aplicação/necessidade."
+            },
+            "pagina": {
+              "type": "integer",
+              "description": "Página começando em 1."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_categories",
+        "title": "Listar categorias do catálogo",
+        "description": "Lista as categorias públicas do catálogo AviZee, com contagem de famílias e de produtos publicados.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_facets",
+        "title": "Listar filtros disponíveis",
+        "description": "Lista as facetas públicas do catálogo AviZee: categorias, segmentos e aplicações, com a contagem de famílias de cada uma. Útil para descobrir os slugs aceitos por search_catalog.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_family",
+        "title": "Detalhar família de produtos",
+        "description": "Retorna o detalhe público de uma família de produtos da AviZee: descrição, aplicações, imagem e todas as variações com SKU e especificações técnicas. Sem preço e sem marca de terceiro.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "categoria": {
+              "type": "string",
+              "description": "Slug da categoria pública da família."
+            },
+            "familia": {
+              "type": "string",
+              "description": "Slug da família."
+            }
+          },
+          "required": [
+            "categoria",
+            "familia"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "suggest_terms",
+        "title": "Sugerir termos e códigos",
+        "description": "Autocomplete do catálogo público da AviZee: devolve sugestões de famílias e códigos (SKU) a partir de um termo parcial, tolerante a acentos e erros de digitação.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "q": {
+              "type": "string",
+              "description": "Termo parcial com pelo menos 2 caracteres."
+            }
+          },
+          "required": [
+            "q"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

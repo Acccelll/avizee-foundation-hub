@@ -1,1 +1,9 @@
-id,data,status,observacao
+id,area,criterio,estado,bloqueio
+1,Infraestrutura,Instancia de producao (DT-18),nao provisionado,B11-01
+2,Seguranca,Revogacao SMTP legada (O-27),pendente,B11-05
+3,E-mail,Configuracao SMTP/Provedor (DEP-T1),pendente,B11-01
+4,Juridico,Textos legais e CNPJ (Q-13),pendente,B11-03
+5,Dados,Dados de contato (Q-08),pendente,B11-04
+6,Operacao,Teste de Restore (B11-07),pendente,B11-07
+7,Aceite,UAT (B11-06),pendente,B11-06
+8,Privacidade,Politica de retencao (DEP-T5),pendente,B11-02

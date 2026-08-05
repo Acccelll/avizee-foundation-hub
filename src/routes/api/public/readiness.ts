@@ -86,7 +86,7 @@ export const Route = createFileRoute("/api/public/readiness")({
           { name: "database", status: database },
           {
             name: "authentication",
-            status: process.env["SUPABASE_URL"] ? "healthy" : "not_configured",
+            status: process.env["SUPABASE_URL"] ? "configured" : "not_configured",
           },
           // Storage real ainda não homologado (bloqueio documentado §25).
           { name: "storage", status: "degraded" },

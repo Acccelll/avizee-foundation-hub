@@ -6,7 +6,7 @@
  * principal — catálogo público e registro de cotação — continua operando.
  */
 
-export type CheckStatus = "healthy" | "degraded" | "unavailable" | "not_configured";
+export type CheckStatus = "healthy" | "degraded" | "unavailable" | "not_configured" | "configured";
 export type OverallStatus = "healthy" | "degraded" | "unavailable";
 
 export type ComponentName =

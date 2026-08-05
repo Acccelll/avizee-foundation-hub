@@ -4,6 +4,23 @@ Formato: data · etapa · alteração · documentos afetados · origem.
 
 ---
 
+## 2026-08-05 — Remediação Técnica (Etapa 13.1)
+
+**Release Candidate**: RC-AVIZEE-03.
+
+**Alteração**: saneamento técnico e endurecimento de segurança após inclusão do MCP.
+- Removido fallback inseguro `"avizee-antiabuse"` para `QUOTATION_HASH_SALT`.
+- Centralizada a configuração de ambiente em `getServerConfig()`.
+- Endurecimento (Hardening) do servidor MCP com limites de contrato Zod.
+- Atualização do endpoint de `/readiness` para status `configured` no componente de autenticação.
+- Criada suíte de testes dedicada para MCP (`tests/mcp/`).
+- **Risco**: Arquivo `.env` identificado como rastreado no histórico; rotação de chaves exigida.
+
+**Arquivos**: `src/lib/env.server.ts`, `src/quotation/quotation.server.ts`, `src/lib/mcp/tools/**`, `src/routes/api/public/readiness.ts`, `tests/mcp/**`, `docs/avizee/471-484`.
+
+---
+
+
 ## 2026-08-04 — Integrações de agente (MCP)
 
 **Alteração**: exposição do catálogo público como servidor MCP (`/mcp`) via `@lovable.dev/mcp-js`,

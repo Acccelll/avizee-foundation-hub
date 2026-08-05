@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="3" failures="0" errors="0" time="0.006475307">
+    <testsuite name="tests/mcp/tools.test.ts" timestamp="2026-08-05T01:27:29.839Z" hostname="sandbox-pool-6d849b5855-zxvbc" tests="3" failures="0" errors="0" skipped="0" time="0.006475307">
+        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; search_catalog should reject long strings" time="0.003436735">
+        </testcase>
+        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; get_family should reject long slugs" time="0.000646036">
+        </testcase>
+        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; suggest_terms should reject short queries" time="0.000452739">
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -31,7 +31,11 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
 
   const updateBlock = (index: number, patch: Partial<ContentBlock>) => {
     const next = [...blocks];
-    next[index] = { ...next[index], ...patch } as ContentBlock;
+    const current = next[index];
+    if (!current) return;
+    
+    // Type safe update
+    next[index] = { ...current, ...patch } as ContentBlock;
     onChange(next);
   };
 
@@ -45,24 +49,32 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
     const next = [...blocks];
     const target = direction === 'up' ? index - 1 : index + 1;
     if (target < 0 || target >= blocks.length) return;
-    [next[index], next[target]] = [next[target], next[index]];
+    
+    const temp = next[index];
+    const targetBlock = next[target];
+    if (!temp || !targetBlock) return;
+    
+    next[index] = targetBlock;
+    next[target] = temp;
+    
     onChange(next);
   };
 
   const addBlock = (type: (typeof BLOCK_TYPES)[number]) => {
-    const newBlock: any = { type };
+    let newBlock: any = { type };
     switch (type) {
-      case 'heading': newBlock.level = 2; newBlock.text = ""; break;
-      case 'paragraph': newBlock.text = ""; break;
-      case 'list': newBlock.ordered = false; newBlock.items = [""]; break;
-      case 'quote': newBlock.text = ""; newBlock.attribution = ""; break;
-      case 'image': newBlock.alt = ""; newBlock.url = ""; break;
-      case 'callout': newBlock.tone = "info"; newBlock.text = ""; break;
-      case 'table': newBlock.headers = [""]; newBlock.rows = [[""]]; break;
-      case 'faq': newBlock.items = [{ question: "", answer: "" }]; break;
-      case 'product_relation': newBlock.familySlug = ""; break;
+      case 'heading': newBlock = { type, level: 2, text: "" }; break;
+      case 'paragraph': newBlock = { type, text: "" }; break;
+      case 'list': newBlock = { type, ordered: false, items: [""] }; break;
+      case 'quote': newBlock = { type, text: "", attribution: "" }; break;
+      case 'image': newBlock = { type, alt: "", url: "" }; break;
+      case 'callout': newBlock = { type, tone: "info", text: "" }; break;
+      case 'table': newBlock = { type, headers: [""], rows: [[""]] }; break;
+      case 'faq': newBlock = { type, items: [{ question: "", answer: "" }] }; break;
+      case 'product_relation': newBlock = { type, familySlug: "" }; break;
+      case 'divider': newBlock = { type }; break;
     }
-    onChange([...blocks, newBlock]);
+    onChange([...blocks, newBlock as ContentBlock]);
     setExpanded(prev => ({ ...prev, [blocks.length]: true }));
   };
 
@@ -160,7 +172,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                       <span className="text-xs font-semibold">Nota Editorial (opcional)</span>
                       <input 
                         className={inputClass}
-                        value={block.note || ""}
+                        value={(block as any).note || ""}
                         onChange={e => updateBlock(index, { note: e.target.value })}
                         placeholder="Por que este produto é relevante?"
                       />

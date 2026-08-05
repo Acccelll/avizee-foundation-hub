@@ -4,9 +4,22 @@ import { z } from "zod";
 import { catalogFacets } from "@/catalog/public/read.server";
 
 const listFacetsResultSchema = z.object({
-  categories: z.array(z.any()),
-  segments: z.array(z.any()),
-  applications: z.array(z.any()),
+  categories: z.array(z.object({
+    slug: z.string(),
+    name: z.string(),
+    description: z.string().nullable(),
+    count: z.number(),
+  })),
+  segments: z.array(z.object({
+    slug: z.string(),
+    name: z.string(),
+    count: z.number(),
+  })),
+  applications: z.array(z.object({
+    slug: z.string(),
+    name: z.string(),
+    count: z.number(),
+  })),
 });
 
 export default defineTool({
@@ -23,7 +36,7 @@ export default defineTool({
     
     return {
       content: [{ type: "text" as const, text: JSON.stringify(parsed) }],
-      structuredContent: parsed as any,
+      structuredContent: parsed,
     };
   },
 });

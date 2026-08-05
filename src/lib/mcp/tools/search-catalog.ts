@@ -4,7 +4,24 @@ import { z } from "zod";
 import { searchCatalog } from "@/catalog/public/read.server";
 
 const searchCatalogResultSchema = z.object({
-  items: z.array(z.any()),
+  items: z.array(z.object({
+    id: z.string(),
+    slug: z.string(),
+    name: z.string(),
+    summary: z.string().nullable(),
+    categorySlug: z.string(),
+    categoryName: z.string(),
+    segments: z.array(z.string()),
+    applications: z.array(z.string()),
+    variationCount: z.number(),
+    skus: z.array(z.string()),
+    matchedSku: z.string().nullable(),
+    image: z.object({
+      url: z.string(),
+      alt: z.string(),
+      is_placeholder: z.boolean(),
+    }),
+  })),
   total: z.number(),
   page: z.number(),
   pageSize: z.number(),
@@ -41,7 +58,7 @@ export default defineTool({
     
     return {
       content: [{ type: "text" as const, text: JSON.stringify(parsed) }],
-      structuredContent: parsed as any,
+      structuredContent: parsed,
     };
   },
 });

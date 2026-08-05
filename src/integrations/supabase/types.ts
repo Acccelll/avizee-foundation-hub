@@ -3677,6 +3677,7 @@ export type Database = {
         | "PUBLISHED"
         | "UNPUBLISHED"
         | "ARCHIVED"
+        | "SCHEDULED"
       image_status:
         | "APROVADA"
         | "APROVADA_PARA_FAMILIA"
@@ -3912,6 +3913,7 @@ export const Constants = {
         "PUBLISHED",
         "UNPUBLISHED",
         "ARCHIVED",
+        "SCHEDULED",
       ],
       image_status: [
         "APROVADA",

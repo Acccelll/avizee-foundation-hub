@@ -161,7 +161,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                     <input className={inputClass} value={block.url} onChange={e => updateBlock(index, { url: e.target.value })} placeholder="URL da Imagem" />
                     <div className="grid grid-cols-2 gap-3">
                       <input className={inputClass} value={block.alt} onChange={e => updateBlock(index, { alt: e.target.value })} placeholder="Texto alternativo (Acessibilidade)" />
-                      <input className={inputClass} value={block.caption || ""} onChange={e => updateBlock(index, { caption: e.target.value })} placeholder="Legenda (opcional)" />
+                      <input className={inputClass} value={block.caption ?? ""} onChange={e => updateBlock(index, { caption: e.target.value })} placeholder="Legenda (opcional)" />
                     </div>
                   </div>
                 )}
@@ -221,7 +221,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                 {block.type === 'faq' && (
                   <div className="space-y-4">
                     {block.items.map((item, i) => {
-                      if (!item) return null;
+                      if (!item || item === undefined) return null;
                       return (
                       <div key={i} className="p-3 bg-muted/20 rounded-md space-y-2 relative group">
                         <input className={`${inputClass} font-semibold`} value={item.question} onChange={e => {

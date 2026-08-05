@@ -65,7 +65,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
       case 'paragraph': newBlock = { type, text: "" }; break;
       case 'list': newBlock = { type, ordered: false, items: [""] }; break;
       case 'quote': newBlock = { type, text: "", attribution: "" }; break;
-      case 'image': newBlock = { type, url: "", alt: "", caption: "" }; break;
+      case 'image': newBlock = { type, url: null, alt: "", caption: null }; break;
       case 'callout': newBlock = { type, tone: "info", text: "", title: "" }; break;
       case 'table': newBlock = { type, headers: [""], rows: [[""]] }; break;
       case 'faq': newBlock = { type, items: [{ question: "", answer: "" }] }; break;
@@ -158,7 +158,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
 
                 {block.type === 'image' && (
                   <div className="space-y-3">
-                    <input className={inputClass} value={block.url} onChange={e => updateBlock(index, { url: e.target.value })} placeholder="URL da Imagem" />
+                    <input className={inputClass} value={block.url ?? ""} onChange={e => updateBlock(index, { url: e.target.value || null })} placeholder="URL da Imagem" />
                     <div className="grid grid-cols-2 gap-3">
                       <input className={inputClass} value={block.alt} onChange={e => updateBlock(index, { alt: e.target.value })} placeholder="Texto alternativo (Acessibilidade)" />
                       <input className={inputClass} value={block.caption || ""} onChange={e => updateBlock(index, { caption: e.target.value })} placeholder="Legenda (opcional)" />

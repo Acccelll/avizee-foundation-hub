@@ -102,10 +102,12 @@
           "properties": {
             "categoria": {
               "type": "string",
+              "maxLength": 100,
               "description": "Slug da categoria pública da família."
             },
             "familia": {
               "type": "string",
+              "maxLength": 100,
               "description": "Slug da família."
             }
           },

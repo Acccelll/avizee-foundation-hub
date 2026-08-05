@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="3" failures="0" errors="0" time="0.006475307">
-    <testsuite name="tests/mcp/tools.test.ts" timestamp="2026-08-05T01:27:29.839Z" hostname="sandbox-pool-6d849b5855-zxvbc" tests="3" failures="0" errors="0" skipped="0" time="0.006475307">
-        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; search_catalog should reject long strings" time="0.003436735">
+<testsuites name="vitest tests" tests="7" failures="2" errors="0" time="0.041205883">
+    <testsuite name="tests/mcp/security.test.ts" timestamp="2026-08-05T01:55:05.667Z" hostname="sandbox-pool-8648fb66f7-tc2bt" tests="4" failures="0" errors="0" skipped="0" time="0.022143752">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; search_catalog &gt; should reject excessively long search terms" time="0.01610411">
         </testcase>
-        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; get_family should reject long slugs" time="0.000646036">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; search_catalog &gt; should reject invalid page numbers" time="0.002738336">
         </testcase>
-        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; suggest_terms should reject short queries" time="0.000452739">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; get_family &gt; should reject excessively long slugs" time="0.00057238">
+        </testcase>
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; suggest_terms &gt; should reject terms shorter than 2 chars" time="0.000460086">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/security/regression.test.ts" timestamp="2026-08-05T01:55:05.671Z" hostname="sandbox-pool-8648fb66f7-tc2bt" tests="3" failures="2" errors="0" skipped="0" time="0.019062131">
+        <testcase classname="tests/security/regression.test.ts" name="Home Page Security Regression &gt; should not contain internal operational markers in the homepage" time="0.004402773">
+        </testcase>
+        <testcase classname="tests/security/regression.test.ts" name="Server Config Security &gt; should fail strict config when variables are missing" time="0.009834073">
+            <failure message="expected [Function] to throw error matching /Configuração ausente/ but got &apos;Configuração inválida. Variáveis com …&apos;" type="AssertionError">
+AssertionError: expected [Function] to throw error matching /Configuração ausente/ but got &apos;Configuração inválida. Variáveis com …&apos;
+
+- Expected:
+/Configuração ausente/
+
++ Received:
+&quot;Configuração inválida. Variáveis com problema: QUOTATION_HASH_SALT&quot;
+
+ ❯ tests/security/regression.test.ts:32:37
+            </failure>
+        </testcase>
+        <testcase classname="tests/security/regression.test.ts" name="Server Config Security &gt; should use dev salt only in development" time="0.002797174">
+            <failure message="Configuração inválida. Variáveis com problema: QUOTATION_HASH_SALT" type="Error">
+Error: Configuração inválida. Variáveis com problema: QUOTATION_HASH_SALT
+ ❯ getServerConfig src/lib/env.server.ts:64:11
+ ❯ tests/security/regression.test.ts:40:20
+            </failure>
         </testcase>
     </testsuite>
 </testsuites>

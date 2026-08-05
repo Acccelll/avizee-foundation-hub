@@ -7,25 +7,23 @@ import searchCatalogTool from "./tools/search-catalog";
 import suggestTermsTool from "./tools/suggest-terms";
 
 /**
- * `defineTool` devolve `outputSchema: undefined`, incompatível com
- * `exactOptionalPropertyTypes` deste projeto — a coerção é apenas de tipos.
+ * Servidor MCP da AviZee Foundation.
+ * Exposição pública do catálogo B2B (Etapa 13.1.1).
  */
-const tools = [
-  searchCatalogTool,
-  listCategoriesTool,
-  listFacetsTool,
-  getFamilyTool,
-  suggestTermsTool,
-] as unknown as Parameters<typeof defineMcp>[0]["tools"];
-
 export default defineMcp({
   name: "avizee-foundation",
   title: "AviZee Foundation",
-  version: "0.1.0",
+  version: "0.1.1",
   instructions:
     "Ferramentas de leitura do catálogo público B2B da AviZee (equipamentos, componentes e peças para avicultura). " +
     "Use `list_facets` ou `list_categories` para descobrir os slugs, `search_catalog` para localizar famílias, " +
     "`suggest_terms` para completar termos ou códigos e `get_family` para o detalhe com variações e especificações. " +
     "O catálogo não possui preços, estoque, prazos nem marcas de terceiros: a conversão é sempre por Lista de Cotação.",
-  tools,
+  tools: [
+    searchCatalogTool,
+    listCategoriesTool,
+    listFacetsTool,
+    getFamilyTool,
+    suggestTermsTool,
+  ] as any,
 });

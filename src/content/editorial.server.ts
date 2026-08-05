@@ -72,6 +72,33 @@ export async function listAuthors(auth: Authorized) {
   );
 }
 
+export async function getAuthor(auth: Authorized, id: string) {
+  const rows = unwrap<Row[]>(
+    await auth.supabase.from("content_authors").select("*").eq("id", id).limit(1),
+  );
+  return rows?.[0] ?? null;
+}
+
+export async function saveAuthor(auth: Authorized, input: { id?: string; display_name: string; role_title?: string; bio?: string; is_active?: boolean }) {
+  requirePermission(auth.roles, "content.manage_authors");
+  
+  const payload = {
+    display_name: sanitizeText(input.display_name),
+    role_title: clean(input.role_title),
+    bio: clean(input.bio),
+    is_active: input.is_active ?? true,
+    updated_at: new Date().toISOString(),
+    updated_by: auth.userId,
+  };
+
+  if (input.id) {
+    unwrap<Row[]>(await auth.admin.from("content_authors").update(payload).eq("id", input.id).select("id"));
+  } else {
+    const slug = slugify(input.display_name);
+    unwrap<Row[]>(await auth.admin.from("content_authors").insert({ ...payload, slug, created_by: auth.userId }).select("id"));
+  }
+}
+
 export interface ArticleFilters {
   search?: string | null | undefined;
   status?: string | null | undefined;

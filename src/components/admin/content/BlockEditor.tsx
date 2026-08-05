@@ -161,7 +161,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                     <input className={inputClass} value={block.url} onChange={e => updateBlock(index, { url: e.target.value })} placeholder="URL da Imagem" />
                     <div className="grid grid-cols-2 gap-3">
                       <input className={inputClass} value={block.alt} onChange={e => updateBlock(index, { alt: e.target.value })} placeholder="Texto alternativo (Acessibilidade)" />
-                      <input className={inputClass} value={block.caption ?? ""} onChange={e => updateBlock(index, { caption: e.target.value })} placeholder="Legenda (opcional)" />
+                      <input className={inputClass} value={block.caption || ""} onChange={e => updateBlock(index, { caption: e.target.value })} placeholder="Legenda (opcional)" />
                     </div>
                   </div>
                 )}
@@ -207,7 +207,12 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                             {row.map((cell, ci) => (
                               <td key={ci} className="p-1 border border-border">
                                 <input className="w-full bg-transparent border-none text-[11px] focus:ring-0" value={cell} onChange={e => {
-                                  const nextRows = [...block.rows]; nextRows[ri][ci] = e.target.value; updateBlock(index, { rows: nextRows });
+                                  const nextRows = [...block.rows];
+                                  const targetRow = nextRows[ri];
+                                  if (targetRow) {
+                                    targetRow[ci] = e.target.value;
+                                    updateBlock(index, { rows: nextRows });
+                                  }
                                 }} />
                               </td>
                             ))}

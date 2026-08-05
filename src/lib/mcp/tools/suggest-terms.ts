@@ -3,6 +3,16 @@ import { z } from "zod";
 
 import { autocomplete } from "@/catalog/public/read.server";
 
+const suggestTermsResultSchema = z.object({
+  suggestions: z.array(z.object({
+    kind: z.enum(["sku", "family"]),
+    label: z.string(),
+    sublabel: z.string().nullable(),
+    familySlug: z.string(),
+    sku: z.string().nullable(),
+  })),
+});
+
 export default defineTool({
   name: "suggest_terms",
   title: "Sugerir termos e códigos",
@@ -11,12 +21,15 @@ export default defineTool({
   inputSchema: {
     q: z.string().trim().min(2).max(50).describe("Termo parcial com pelo menos 2 caracteres."),
   },
+  outputSchema: suggestTermsResultSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ q }) => {
     const result = await autocomplete(q);
+    const parsed = suggestTermsResultSchema.parse(result);
+    
     return {
-      content: [{ type: "text" as const, text: JSON.stringify(result) }],
-      structuredContent: result as unknown as Record<string, unknown>,
+      content: [{ type: "text" as const, text: JSON.stringify(parsed) }],
+      structuredContent: parsed as any,
     };
   },
 });

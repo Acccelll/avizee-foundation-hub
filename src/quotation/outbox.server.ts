@@ -80,7 +80,7 @@ async function buildMessage(
       note: i.note ?? null,
       available: i.was_available,
     })),
-    adminUrl: `${process.env["APP_PUBLIC_URL"] ?? ""}/admin/cotacoes`,
+    adminUrl: `${getServerConfig().APP_PUBLIC_URL}/admin/cotacoes`,
   };
 
   if (row.message_type === "QUOTATION_INTERNAL_NOTICE") {

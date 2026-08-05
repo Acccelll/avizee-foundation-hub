@@ -86,57 +86,6 @@ function Home() {
             {POSITIONING.headline}
           </h1>
           <p className="mt-5 text-[18px] text-text-secondary">{POSITIONING.statement}</p>
-          {/* Instrução visual solicitada */}
-          <div className="mt-6 rounded-[8px] border border-border bg-surface p-4 text-[14px] font-medium text-text-secondary whitespace-pre-wrap">
-            Execute esta instrucao no projeto: ETAPA 13.1 — REMEDIAÇÃO TÉCNICA PÓS-MCP, SANEAMENTO DE SEGREDOS, HARDENING DA SUPERFÍCIE PÚBLICA E RECERTIFICAÇÃO DA RELEASE CANDIDATE{"\n\n"}
-            SITE INSTITUCIONAL, CATÁLOGO B2B, LISTA DE COTAÇÃO, CENTRAL DE CONTEÚDOS E MCP PÚBLICO AVIZEE{"\n\n"}
-            Atue como arquiteto de software sênior, engenheiro de segurança, especialista em PostgreSQL,{"\n"}
-            Supabase/Lovable Cloud, TanStack Start, TypeScript, gestão de segredos, testes automatizados,{"\n"}
-            MCP, segurança de APIs públicas, observabilidade, governança de releases e rastreabilidade.{"\n\n"}
-            Esta é uma etapa corretiva e de recertificação técnica.{"\n\n"}
-            Ela NÃO representa avanço para produção, início de operação regular ou autorização da Etapa 14.{"\n\n"}
-            O estado documental vigente deverá continuar sendo respeitado:{"\n\n"}
-            - Etapa 12: NO_GO;{"\n"}
-            - produção: PRODUCTION_BLOCKED;{"\n"}
-            - Etapa 13: OPERATION_BLOCKED;{"\n"}
-            - Etapa 14: STAGE_14_BLOCKED.{"\n\n"}
-            A Release Candidate RC-AVIZEE-02 foi definida antes da inclusão do MCP público. Portanto, ela não{"\n"}
-            deve ser considerada imutável ou atual sem nova recertificação.{"\n\n"}
-            O objetivo desta etapa é:{"\n\n"}
-            - verificar diretamente o estado real do repositório;{"\n"}
-            - sanear arquivos de ambiente e possíveis segredos;{"\n"}
-            - eliminar fallbacks inseguros de configuração;{"\n"}
-            - centralizar o uso de configurações validadas;{"\n"}
-            - endurecer o MCP público;{"\n"}
-            - adicionar testes específicos do MCP;{"\n"}
-            - executar novamente toda a regressão;{"\n"}
-            - produzir evidências reais;{"\n"}
-            - criar uma nova Release Candidate somente quando todos os gates técnicos forem atendidos.{"\n\n"}
-            NÃO alterar o layout aprovado.{"\n\n"}
-            NÃO redesenhar componentes.{"\n\n"}
-            NÃO modificar a identidade visual.{"\n\n"}
-            NÃO alterar a taxonomia aprovada.{"\n\n"}
-            NÃO mudar categorias, famílias, SKUs, segmentos, aplicações ou soluções.{"\n\n"}
-            NÃO publicar produtos pendentes.{"\n\n"}
-            NÃO modificar nomes públicos ou conteúdo comercial.{"\n\n"}
-            NÃO introduzir preços.{"\n\n"}
-            NÃO introduzir estoque público.{"\n\n"}
-            NÃO implementar checkout.{"\n\n"}
-            NÃO implementar pagamentos.{"\n\n"}
-            NÃO transformar cotação em pedido.{"\n\n"}
-            NÃO expor cotações, usuários, administração ou dados pessoais pelo MCP.{"\n\n"}
-            NÃO adicionar ferramentas de escrita ao MCP.{"\n\n"}
-            NÃO alterar o MCP de público para autenticado sem aprovação expressa.{"\n\n"}
-            NÃO ativar Analytics.{"\n\n"}
-            NÃO alterar DNS, domínio, TLS ou ambiente produtivo.{"\n\n"}
-            NÃO desativar o site legado.{"\n\n"}
-            NÃO fechar bloqueios externos sem evidência real.{"\n\n"}
-            NÃO reescrever o histórico Git automaticamente.{"\n\n"}
-            NÃO instalar dependência externa, contratar serviço ou criar custo sem aprovação.{"\n\n"}
-            Toda melhoria que não seja necessária para correção de segurança, defeito ou risco técnico deverá{"\n"}
-            ser registrada como:{"\n\n"}
-            PENDENTE_DE_APROVAÇÃO
-          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/produtos"

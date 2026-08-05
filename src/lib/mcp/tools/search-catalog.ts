@@ -3,6 +3,14 @@ import { z } from "zod";
 
 import { searchCatalog } from "@/catalog/public/read.server";
 
+const searchCatalogResultSchema = z.object({
+  items: z.array(z.any()),
+  total: z.number(),
+  page: z.number(),
+  pageSize: z.number(),
+  pageCount: z.number(),
+});
+
 export default defineTool({
   name: "search_catalog",
   title: "Buscar no catálogo AviZee",
@@ -15,6 +23,7 @@ export default defineTool({
     aplicacao: z.string().trim().max(100).optional().describe("Slug da aplicação/necessidade."),
     pagina: z.number().int().min(1).max(200).optional().describe("Página começando em 1."),
   },
+  outputSchema: searchCatalogResultSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ q, categoria, segmento, aplicacao, pagina }) => {
     const page = Math.min(Math.max(Math.trunc(pagina ?? 1), 1), 200);
@@ -26,9 +35,13 @@ export default defineTool({
       ordem: q ? "relevance" : "category",
       pagina: page,
     });
+    
+    // Runtime validation
+    const parsed = searchCatalogResultSchema.parse(result);
+    
     return {
-      content: [{ type: "text" as const, text: JSON.stringify(result) }],
-      structuredContent: result as unknown as Record<string, unknown>,
+      content: [{ type: "text" as const, text: JSON.stringify(parsed) }],
+      structuredContent: parsed as any,
     };
   },
 });

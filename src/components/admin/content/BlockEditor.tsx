@@ -221,14 +221,14 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                 {block.type === 'faq' && (
                   <div className="space-y-4">
                     {block.items.map((item, i) => {
-                      if (!item || item === undefined) return null;
+                      if (!item) return null;
                       return (
                       <div key={i} className="p-3 bg-muted/20 rounded-md space-y-2 relative group">
                         <input className={`${inputClass} font-semibold`} value={item.question} onChange={e => {
                           const next = [...block.items]; 
                           const currentItem = next[i];
                           if (currentItem) {
-                            next[i] = { ...currentItem, question: e.target.value }; 
+                            next[i] = { question: e.target.value, answer: currentItem.answer }; 
                             updateBlock(index, { items: next });
                           }
                         }} placeholder="Pergunta" />
@@ -236,7 +236,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                           const next = [...block.items]; 
                           const currentItem = next[i];
                           if (currentItem) {
-                            next[i] = { ...currentItem, answer: e.target.value }; 
+                            next[i] = { question: currentItem.question, answer: e.target.value }; 
                             updateBlock(index, { items: next });
                           }
                         }} placeholder="Resposta" />

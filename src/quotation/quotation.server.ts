@@ -9,6 +9,7 @@
  * - nenhum e-mail é enviado no caminho crítico (doc 114 §1);
  * - nenhum valor monetário, frete, prazo ou estoque é calculado ou gravado.
  */
+import { getServerConfig } from "@/lib/env.server";
 import { AppError } from "@/lib/errors";
 import { logger } from "@/lib/logger";
 import { reconcileProducts } from "@/catalog/public/read.server";

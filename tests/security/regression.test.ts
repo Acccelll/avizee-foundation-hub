@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { getServerConfig, DEV_ONLY_QUOTATION_SALT } from "../../src/lib/env.server";
+import { getServerConfig, DEV_ONLY_QUOTATION_SALT, resetServerConfigCache } from "../../src/lib/env.server";
 
 describe("Home Page Security Regression", () => {
   it("should not contain internal operational markers in the homepage", async () => {

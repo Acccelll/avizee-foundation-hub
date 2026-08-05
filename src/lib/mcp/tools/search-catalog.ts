@@ -23,7 +23,7 @@ export default defineTool({
     aplicacao: z.string().trim().max(100).optional().describe("Slug da aplicação/necessidade."),
     pagina: z.number().int().min(1).max(200).optional().describe("Página começando em 1."),
   },
-  outputSchema: searchCatalogResultSchema,
+  outputSchema: searchCatalogResultSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ q, categoria, segmento, aplicacao, pagina }) => {
     const page = Math.min(Math.max(Math.trunc(pagina ?? 1), 1), 200);

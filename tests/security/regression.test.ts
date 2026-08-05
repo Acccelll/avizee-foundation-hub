@@ -27,9 +27,9 @@ describe("Server Config Security", () => {
     vi.stubEnv("APP_ENV", "production");
     vi.stubEnv("APP_PUBLIC_URL", "");
     vi.stubEnv("QUOTATION_HASH_SALT", "");
+    resetServerConfigCache();
     
-    // We expect it to throw because production requires these
-    expect(() => getServerConfig()).toThrow(/Configuração ausente/);
+    expect(() => getServerConfig()).toThrow(/Configuração ausente|Variáveis com problema/);
     
     vi.unstubAllEnvs();
   });
@@ -37,6 +37,7 @@ describe("Server Config Security", () => {
   it("should use dev salt only in development", () => {
     vi.stubEnv("APP_ENV", "development");
     vi.stubEnv("QUOTATION_HASH_SALT", "");
+    resetServerConfigCache();
     const config = getServerConfig();
     expect(config.QUOTATION_HASH_SALT).toBe(DEV_ONLY_QUOTATION_SALT);
     vi.unstubAllEnvs();

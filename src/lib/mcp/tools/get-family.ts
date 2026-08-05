@@ -27,7 +27,7 @@ export default defineTool({
     categoria: z.string().trim().max(100).describe("Slug da categoria pública da família."),
     familia: z.string().trim().max(100).describe("Slug da família."),
   },
-  outputSchema: familyDetailSchema,
+  outputSchema: familyDetailSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ categoria, familia }) => {
     const family = await getPublicFamily(categoria, familia);

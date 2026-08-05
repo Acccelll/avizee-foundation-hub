@@ -15,7 +15,7 @@ export default defineTool({
   description:
     "Lista as facetas públicas do catálogo AviZee: categorias, segmentos e aplicações, com a contagem de famílias de cada uma. Útil para descobrir os slugs aceitos por search_catalog.",
   inputSchema: {},
-  outputSchema: listFacetsResultSchema,
+  outputSchema: listFacetsResultSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async () => {
     const facets = await catalogFacets();

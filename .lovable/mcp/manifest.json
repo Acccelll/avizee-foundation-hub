@@ -54,7 +54,35 @@
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
-        "outputSchema": null
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array"
+            },
+            "total": {
+              "type": "number"
+            },
+            "page": {
+              "type": "number"
+            },
+            "pageSize": {
+              "type": "number"
+            },
+            "pageCount": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "page",
+            "pageSize",
+            "pageCount"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
       },
       {
         "name": "list_categories",
@@ -70,7 +98,50 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "categories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "familyCount": {
+                    "type": "number"
+                  },
+                  "productCount": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "description",
+                  "familyCount",
+                  "productCount"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "categories"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
       },
       {
         "name": "list_facets",
@@ -86,7 +157,27 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "categories": {
+              "type": "array"
+            },
+            "segments": {
+              "type": "array"
+            },
+            "applications": {
+              "type": "array"
+            }
+          },
+          "required": [
+            "categories",
+            "segments",
+            "applications"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
       },
       {
         "name": "get_family",
@@ -118,7 +209,72 @@
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
-        "outputSchema": null
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "summary": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "description": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "categorySlug": {
+              "type": "string"
+            },
+            "categoryName": {
+              "type": "string"
+            },
+            "segments": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "applications": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "image": {},
+            "variations": {
+              "type": "array"
+            },
+            "related": {
+              "type": "array"
+            }
+          },
+          "required": [
+            "id",
+            "slug",
+            "name",
+            "summary",
+            "description",
+            "categorySlug",
+            "categoryName",
+            "segments",
+            "applications",
+            "variations",
+            "related"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
       },
       {
         "name": "suggest_terms",
@@ -145,7 +301,57 @@
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
-        "outputSchema": null
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "suggestions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "sku",
+                      "family"
+                    ]
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "sublabel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "familySlug": {
+                    "type": "string"
+                  },
+                  "sku": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "label",
+                  "sublabel",
+                  "familySlug",
+                  "sku"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "suggestions"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
       }
     ]
   }

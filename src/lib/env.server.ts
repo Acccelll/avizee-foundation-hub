@@ -24,7 +24,7 @@ const schema = z.object({
   APP_PUBLIC_URL: z.string().trim().optional(),
   AUTH_SESSION_TTL_MINUTES: z.coerce.number().int().positive().default(480),
   AUTH_MAX_ATTEMPTS: z.coerce.number().int().positive().default(5),
-  QUOTATION_HASH_SALT: z.string().trim().min(32).optional(),
+  QUOTATION_HASH_SALT: z.string().trim().optional().refine(val => !val || val.length >= 32, { message: "Deve ter pelo menos 32 caracteres" }),
   EMAIL_PROVIDER: z.enum(["null", "log"]).default("log"),
   STORAGE_PROVIDER: z.enum(["null", "local"]).default("local"),
   CAPTCHA_PROVIDER: z.enum(["null"]).default("null"),

@@ -19,7 +19,7 @@ export default defineTool({
   description:
     "Lista as categorias públicas do catálogo AviZee, com contagem de famílias e de produtos publicados.",
   inputSchema: {},
-  outputSchema: listCategoriesResultSchema,
+  outputSchema: listCategoriesResultSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async () => {
     const categories = await listPublicCategories();

@@ -21,7 +21,7 @@ export default defineTool({
   inputSchema: {
     q: z.string().trim().min(2).max(50).describe("Termo parcial com pelo menos 2 caracteres."),
   },
-  outputSchema: suggestTermsResultSchema,
+  outputSchema: suggestTermsResultSchema.shape,
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ q }) => {
     const result = await autocomplete(q);

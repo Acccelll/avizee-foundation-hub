@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="3" failures="3" errors="0" time="0.006969476">
-    <testsuite name="tests/mcp/tools.test.ts" timestamp="2026-08-05T01:24:15.006Z" hostname="sandbox-pool-6d849b5855-zxvbc" tests="3" failures="3" errors="0" skipped="0" time="0.006969476">
-        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; search_catalog should reject long strings" time="0.003729007">
-            <failure message="Cannot read properties of undefined (reading &apos;0&apos;)" type="TypeError">
-TypeError: Cannot read properties of undefined (reading &apos;0&apos;)
- ❯ tests/mcp/tools.test.ts:15:16
-            </failure>
+<testsuites name="vitest tests" tests="3" failures="0" errors="0" time="0.007175497">
+    <testsuite name="tests/mcp/tools.test.ts" timestamp="2026-08-05T01:24:29.155Z" hostname="sandbox-pool-6d849b5855-zxvbc" tests="3" failures="0" errors="0" skipped="0" time="0.007175497">
+        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; search_catalog should reject long strings" time="0.004447313">
         </testcase>
-        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; get_family should reject long slugs" time="0.000871877">
-            <failure message="Cannot read properties of undefined (reading &apos;0&apos;)" type="TypeError">
-TypeError: Cannot read properties of undefined (reading &apos;0&apos;)
- ❯ tests/mcp/tools.test.ts:24:16
-            </failure>
+        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; get_family should reject long slugs" time="0.000848868">
         </testcase>
-        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; suggest_terms should reject short queries" time="0.000567026">
-            <failure message="Cannot read properties of undefined (reading &apos;0&apos;)" type="TypeError">
-TypeError: Cannot read properties of undefined (reading &apos;0&apos;)
- ❯ tests/mcp/tools.test.ts:33:16
-            </failure>
+        <testcase classname="tests/mcp/tools.test.ts" name="MCP Tools - Hardening &amp; Contracts &gt; suggest_terms should reject short queries" time="0.000388278">
         </testcase>
     </testsuite>
 </testsuites>

@@ -174,7 +174,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                       <option value="danger">Crítico (Vinho)</option>
                       <option value="success">Sucesso (Verde)</option>
                     </select>
-                    <input className={`${inputClass} font-bold`} value={block.title || ""} onChange={e => updateBlock(index, { title: e.target.value })} placeholder="Título do Destaque (opcional)" />
+                    <input className={`${inputClass} font-bold`} value={block.title ?? ""} onChange={e => updateBlock(index, { title: e.target.value })} placeholder="Título do Destaque (opcional)" />
                     <textarea className={inputClass} value={block.text} onChange={e => updateBlock(index, { text: e.target.value })} placeholder="Conteúdo do destaque..." />
                   </div>
                 )}
@@ -261,7 +261,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                     </label>
                     <label className="block">
                       <span className="text-[10px] font-black uppercase text-text-muted mb-1 block">Nota Editorial</span>
-                      <input className={inputClass} value={block.note || ""} onChange={e => updateBlock(index, { note: e.target.value })} placeholder="Destaque por que este produto é relevante..." />
+                      <input className={inputClass} value={block.note ?? ""} onChange={e => updateBlock(index, { note: e.target.value })} placeholder="Destaque por que este produto é relevante..." />
                     </label>
                   </div>
                 )}

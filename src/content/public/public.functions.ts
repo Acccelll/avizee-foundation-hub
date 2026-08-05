@@ -12,7 +12,11 @@ import {
   listArticles,
   listContentCategories,
   resolveArticleRedirect,
+  type ArticleCardData,
 } from "@/content/public/read.server";
+
+export type { ArticleCardData };
+
 
 const slugSchema = z
   .string()

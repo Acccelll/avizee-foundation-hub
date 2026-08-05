@@ -14,6 +14,7 @@ import {
   readableError,
   secondaryButtonClass,
 } from "@/components/admin/ui";
+import { BlockEditor } from "@/components/admin/content/BlockEditor";
 import {
   exportSocialText,
   fetchAdminArticle,
@@ -307,17 +308,28 @@ function ArticleEditor() {
           />
         </label>
 
-        <label className="block">
-          <span className="text-[13px] font-semibold">
-            Blocos estruturados (JSON validado — sem HTML arbitrário)
+        <div className="block">
+          <span className="text-[13px] font-semibold mb-2 block">
+            Editor Estruturado
           </span>
+          <BlockEditor 
+            blocks={blocks} 
+            onChange={(newBlocks) => setBlocksText(JSON.stringify(newBlocks, null, 2))}
+          />
+        </div>
+
+        <details className="mt-4">
+          <summary className="text-[13px] font-semibold cursor-pointer text-text-muted hover:text-text-primary">
+            Modo técnico (JSON)
+          </summary>
           <textarea
-            className={`${inputClass} min-h-[260px] font-mono text-[13px]`}
+            className={`${inputClass} mt-2 min-h-[200px] font-mono text-[12px]`}
             value={blocksText}
             onChange={(event) => setBlocksText(event.target.value)}
             spellCheck={false}
           />
-        </label>
+        </details>
+        
         {!parsedBlocks.success && (
           <Callout tone="danger" title="Blocos inválidos">
             Corrija a estrutura antes de salvar. Apenas os tipos de bloco previstos são aceitos.

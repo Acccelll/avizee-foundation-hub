@@ -71,6 +71,7 @@ export async function listAuthors(auth: Authorized) {
     ) ?? []
   );
 }
+}
 
 export interface ArticleFilters {
   search?: string | null | undefined;

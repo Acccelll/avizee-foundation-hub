@@ -5,6 +5,8 @@ import { fetchCatalog, fetchCategories, fetchFacets } from "@/catalog/public/pub
 import { PublicShell } from "@/components/public/PublicShell";
 import { FamilyGrid } from "@/components/public/catalog/FamilyCard";
 import { SearchBox } from "@/components/public/catalog/SearchBox";
+import { fetchArticles } from "@/content/public/public.functions";
+import { ArticleCard } from "@/components/public/content/ArticleCard";
 import {
   CTA,
   DIFFERENTIATORS,
@@ -34,16 +36,18 @@ const DIFF_ICON = { variedade: Boxes, agilidade: Zap, consultivo: Headset } as c
 
 export const Route = createFileRoute("/")({
   loader: async () => {
-    const [categories, facets, catalog] = await Promise.all([
+    const [categories, facets, catalog, articles] = await Promise.all([
       fetchCategories(),
       fetchFacets(),
       fetchCatalog({ data: { ordem: "category", pagina: 1 } }),
+      fetchArticles({ data: { pagina: 1 } }),
     ]);
     return {
       categories,
       applications: facets.applications.slice(0, 6),
       featured: catalog.items.slice(0, FEATURED_LIMIT),
       publishable: catalog.total,
+      recentArticles: articles.items.slice(0, 3),
     };
   },
   head: () =>
@@ -71,8 +75,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { categories, applications, featured, publishable } = Route.useLoaderData();
+  const { categories, applications, featured, publishable, recentArticles } = Route.useLoaderData();
   const showFeatured = publishable >= FEATURED_MIN && featured.length >= FEATURED_MIN;
+  const showArticles = recentArticles.length > 0;
 
   return (
     <PublicShell>
@@ -222,7 +227,23 @@ function Home() {
       </section>
 
       {/* 8 — Conteúdos recentes: só aparece quando houver artigos publicados */}
-      {PUBLISHED_ARTICLES > 0 && null}
+      {showArticles && (
+        <section aria-labelledby="artigos-home" className="container-avizee mt-16">
+          <div className="flex items-end justify-between">
+            <h2 id="artigos-home" className="text-[26px] font-bold">
+              Conteúdos recentes
+            </h2>
+            <Link to="/conteudos" className="font-semibold underline">
+              Ver todos
+            </Link>
+          </div>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {recentArticles.map((article: any) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 9 — Atendimento em todo o Brasil */}
       <section

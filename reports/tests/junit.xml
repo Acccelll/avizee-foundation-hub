@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="7" failures="0" errors="0" time="0.028758663">
-    <testsuite name="tests/mcp/security.test.ts" timestamp="2026-08-05T01:55:47.844Z" hostname="sandbox-pool-8648fb66f7-tc2bt" tests="4" failures="0" errors="0" skipped="0" time="0.017114645">
-        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; search_catalog &gt; should reject excessively long search terms" time="0.012187322">
+<testsuites name="vitest tests" tests="7" failures="0" errors="0" time="0.038539391">
+    <testsuite name="tests/mcp/security.test.ts" timestamp="2026-08-05T02:30:48.812Z" hostname="sandbox-pool-759c7b7484-tjh4h" tests="4" failures="0" errors="0" skipped="0" time="0.030229397">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; search_catalog &gt; should reject excessively long search terms" time="0.023204869">
         </testcase>
-        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; search_catalog &gt; should reject invalid page numbers" time="0.000802689">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; search_catalog &gt; should reject invalid page numbers" time="0.001154252">
         </testcase>
-        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; get_family &gt; should reject excessively long slugs" time="0.000553953">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; get_family &gt; should reject excessively long slugs" time="0.000833487">
         </testcase>
-        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; suggest_terms &gt; should reject terms shorter than 2 chars" time="0.000400357">
+        <testcase classname="tests/mcp/security.test.ts" name="MCP Tools Hardening &gt; suggest_terms &gt; should reject terms shorter than 2 chars" time="0.002068776">
         </testcase>
     </testsuite>
-    <testsuite name="tests/security/regression.test.ts" timestamp="2026-08-05T01:55:47.848Z" hostname="sandbox-pool-8648fb66f7-tc2bt" tests="3" failures="0" errors="0" skipped="0" time="0.011644018">
-        <testcase classname="tests/security/regression.test.ts" name="Home Page Security Regression &gt; should not contain internal operational markers in the homepage" time="0.003614345">
+    <testsuite name="tests/security/regression.test.ts" timestamp="2026-08-05T02:30:48.815Z" hostname="sandbox-pool-759c7b7484-tjh4h" tests="3" failures="0" errors="0" skipped="0" time="0.008309994">
+        <testcase classname="tests/security/regression.test.ts" name="Home Page Security Regression &gt; should not contain internal operational markers in the homepage" time="0.002763556">
         </testcase>
-        <testcase classname="tests/security/regression.test.ts" name="Server Config Security &gt; should fail strict config when variables are missing" time="0.003430486">
+        <testcase classname="tests/security/regression.test.ts" name="Server Config Security &gt; should fail strict config when variables are missing" time="0.002707016">
         </testcase>
-        <testcase classname="tests/security/regression.test.ts" name="Server Config Security &gt; should use dev salt only in development" time="0.00067701">
+        <testcase classname="tests/security/regression.test.ts" name="Server Config Security &gt; should use dev salt only in development" time="0.000785818">
         </testcase>
     </testsuite>
 </testsuites>

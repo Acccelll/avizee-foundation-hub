@@ -134,6 +134,8 @@
           "properties": {
             "q": {
               "type": "string",
+              "minLength": 2,
+              "maxLength": 50,
               "description": "Termo parcial com pelo menos 2 caracteres."
             }
           },

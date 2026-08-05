@@ -9,7 +9,7 @@ export default defineTool({
   description:
     "Autocomplete do catálogo público da AviZee: devolve sugestões de famílias e códigos (SKU) a partir de um termo parcial, tolerante a acentos e erros de digitação.",
   inputSchema: {
-    q: z.string().trim().describe("Termo parcial com pelo menos 2 caracteres."),
+    q: z.string().trim().min(2).max(50).describe("Termo parcial com pelo menos 2 caracteres."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ q }) => {

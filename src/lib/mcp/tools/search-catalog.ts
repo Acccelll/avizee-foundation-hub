@@ -9,11 +9,11 @@ export default defineTool({
   description:
     "Busca famílias de produtos publicadas no catálogo público da AviZee por termo, código (SKU), categoria, segmento ou aplicação. Não retorna preços nem marcas de terceiros.",
   inputSchema: {
-    q: z.string().trim().optional().describe("Termo livre, nome do produto ou código/SKU."),
-    categoria: z.string().trim().optional().describe("Slug da categoria pública."),
-    segmento: z.string().trim().optional().describe("Slug do segmento (ex.: avicultura)."),
-    aplicacao: z.string().trim().optional().describe("Slug da aplicação/necessidade."),
-    pagina: z.number().int().optional().describe("Página começando em 1."),
+    q: z.string().trim().max(100).optional().describe("Termo livre, nome do produto ou código/SKU."),
+    categoria: z.string().trim().max(100).optional().describe("Slug da categoria pública."),
+    segmento: z.string().trim().max(100).optional().describe("Slug do segmento (ex.: avicultura)."),
+    aplicacao: z.string().trim().max(100).optional().describe("Slug da aplicação/necessidade."),
+    pagina: z.number().int().min(1).max(200).optional().describe("Página começando em 1."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ q, categoria, segmento, aplicacao, pagina }) => {

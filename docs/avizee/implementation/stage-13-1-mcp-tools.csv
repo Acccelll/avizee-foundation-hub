@@ -1,0 +1,6 @@
+tool_name,file
+get-family,src/lib/mcp/tools/get-family.ts
+list-categories,src/lib/mcp/tools/list-categories.ts
+list-facets,src/lib/mcp/tools/list-facets.ts
+search-catalog,src/lib/mcp/tools/search-catalog.ts
+suggest-terms,src/lib/mcp/tools/suggest-terms.ts

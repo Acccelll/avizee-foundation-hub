@@ -1,0 +1,2 @@
+risk_id,description,status,mitigation
+R13.1-01,.env versionado no histórico,OPEN,Rotação de segredos pendente externamente

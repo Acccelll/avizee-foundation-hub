@@ -19,28 +19,25 @@ export async function processEditorialSchedule() {
   });
 
   const now = new Date().toISOString();
-  const claimToken = crypto.randomUUID();
+  const workerId = crypto.randomUUID();
 
-  // 1. Claim atômico de artigos agendados vencidos
-  const { data: claimed, error: claimError } = await admin
-    .from("content_articles")
-    .update({ 
-      schedule_claimed_at: now, 
-      schedule_claim_token: claimToken 
-    })
-    .eq("status", "SCHEDULED")
-    .lte("scheduled_at", now)
-    .is("schedule_claimed_at", null)
-    .select("id, title, version");
+  // 1. Claim atômico de artigos agendados vencidos usando RPC real
+  const { data: claimed, error: claimError } = await admin.rpc("claim_scheduled_articles", {
+    worker_id: workerId,
+    max_batch: 10,
+    lease_duration: "10 minutes",
+  });
 
   if (claimError) throw new AppError("SERVICE_UNAVAILABLE", { cause: claimError.message });
-  if (!claimed || claimed.length === 0) return { published: 0, failures: 0 };
+  const articles = (claimed ?? []) as any[];
+  if (articles.length === 0) return { published: 0, failures: 0 };
 
   let published = 0;
   let failures = 0;
 
   // 2. Processar cada claim
-  for (const article of claimed) {
+  for (const article of articles) {
+    const claimToken = article.schedule_claim_token;
     try {
       const { error: publishError } = await admin
         .from("content_articles")
@@ -49,8 +46,9 @@ export async function processEditorialSchedule() {
           published_at: now,
           schedule_claimed_at: null,
           schedule_claim_token: null,
+          schedule_lease_until: null,
           last_schedule_attempt_at: now,
-          schedule_attempts: 0 // Resetar ao ter sucesso
+          schedule_attempts: 0
         })
         .eq("id", article.id)
         .eq("schedule_claim_token", claimToken);
@@ -66,9 +64,9 @@ export async function processEditorialSchedule() {
       });
 
       await audit(admin, {
-        actorId: "00000000-0000-0000-0000-000000000000", // System
+        actorId: null,
         actorEmail: "system@avizee.com.br",
-        action: "content.publish.auto",
+        action: "content.publish",
         entity: "content_articles",
         entityId: article.id,
         newValues: { status: "PUBLISHED", version: article.version },
@@ -77,16 +75,10 @@ export async function processEditorialSchedule() {
       published++;
     } catch (err: any) {
       failures++;
-      await admin
-        .from("content_articles")
-        .update({ 
-          schedule_claimed_at: null,
-          schedule_claim_token: null,
-          last_schedule_attempt_at: now,
-          last_schedule_error: err.message,
-          schedule_attempts: admin.rpc('increment_attempts', { article_id: article.id }) // Simulando incremento
-        })
-        .eq("id", article.id);
+      await admin.rpc("increment_schedule_attempts", {
+        target_id: article.id,
+        error_msg: err.message || "Erro desconhecido no scheduler",
+      });
     }
   }
 

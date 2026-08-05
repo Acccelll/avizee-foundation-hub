@@ -5,7 +5,7 @@ import { fetchCatalog, fetchCategories, fetchFacets } from "@/catalog/public/pub
 import { PublicShell } from "@/components/public/PublicShell";
 import { FamilyGrid } from "@/components/public/catalog/FamilyCard";
 import { SearchBox } from "@/components/public/catalog/SearchBox";
-import { fetchArticles } from "@/content/public/public.functions";
+import { fetchArticles, type ArticleCardData } from "@/content/public/public.functions";
 import { ArticleCard } from "@/components/public/content/ArticleCard";
 import {
   CTA,
@@ -238,7 +238,7 @@ function Home() {
             </Link>
           </div>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {recentArticles.map((article: any) => (
+            {recentArticles.map((article: ArticleCardData) => (
               <ArticleCard key={article.slug} article={article} />
             ))}
           </div>

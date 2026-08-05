@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ImageOff } from "lucide-react";
 
 import { fetchFamily } from "@/catalog/public/public.functions";
-import { fetchArticlesForFamily } from "@/content/public/public.functions";
+import { fetchArticlesForFamily, type ArticleCardData } from "@/content/public/public.functions";
 import { ArticleCard } from "@/components/public/content/ArticleCard";
 import { PublicShell } from "@/components/public/PublicShell";
 import { VariationTable } from "@/components/public/catalog/VariationTable";
@@ -225,7 +225,7 @@ function FamiliaPublica() {
               Conteúdos relacionados
             </h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((article: any) => (
+              {articles.map((article: ArticleCardData) => (
                 <ArticleCard key={article.slug} article={article} />
               ))}
             </div>

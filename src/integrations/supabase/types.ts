@@ -358,11 +358,19 @@ export type Database = {
           first_published_at: string | null
           id: string
           internal_notes: string | null
+          last_schedule_attempt_at: string | null
+          last_schedule_error: string | null
           noindex: boolean
           published_at: string | null
           reading_minutes: number
           requires_technical_review: boolean
           review_note: string | null
+          schedule_attempts: number
+          schedule_claim_token: string | null
+          schedule_claimed_at: string | null
+          schedule_lease_until: string | null
+          scheduled_at: string | null
+          scheduled_by: string | null
           seo_description: string | null
           seo_title: string | null
           slug: string
@@ -386,11 +394,19 @@ export type Database = {
           first_published_at?: string | null
           id?: string
           internal_notes?: string | null
+          last_schedule_attempt_at?: string | null
+          last_schedule_error?: string | null
           noindex?: boolean
           published_at?: string | null
           reading_minutes?: number
           requires_technical_review?: boolean
           review_note?: string | null
+          schedule_attempts?: number
+          schedule_claim_token?: string | null
+          schedule_claimed_at?: string | null
+          schedule_lease_until?: string | null
+          scheduled_at?: string | null
+          scheduled_by?: string | null
           seo_description?: string | null
           seo_title?: string | null
           slug: string
@@ -414,11 +430,19 @@ export type Database = {
           first_published_at?: string | null
           id?: string
           internal_notes?: string | null
+          last_schedule_attempt_at?: string | null
+          last_schedule_error?: string | null
           noindex?: boolean
           published_at?: string | null
           reading_minutes?: number
           requires_technical_review?: boolean
           review_note?: string | null
+          schedule_attempts?: number
+          schedule_claim_token?: string | null
+          schedule_claimed_at?: string | null
+          schedule_lease_until?: string | null
+          scheduled_at?: string | null
+          scheduled_by?: string | null
           seo_description?: string | null
           seo_title?: string | null
           slug?: string
@@ -3589,6 +3613,15 @@ export type Database = {
           quotation_id: string
         }[]
       }
+      claim_scheduled_articles: {
+        Args: { lease_duration: string; max_batch: number; worker_id: string }
+        Returns: {
+          id: string
+          schedule_claim_token: string
+          title: string
+          version: number
+        }[]
+      }
       complete_outbox_message: {
         Args: {
           p_attempts: number
@@ -3614,6 +3647,10 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      increment_schedule_attempts: {
+        Args: { error_msg: string; target_id: string }
+        Returns: undefined
       }
       public_autocomplete: {
         Args: { p_limit?: number; q: string }
@@ -3677,6 +3714,7 @@ export type Database = {
         | "PUBLISHED"
         | "UNPUBLISHED"
         | "ARCHIVED"
+        | "SCHEDULED"
       image_status:
         | "APROVADA"
         | "APROVADA_PARA_FAMILIA"
@@ -3912,6 +3950,7 @@ export const Constants = {
         "PUBLISHED",
         "UNPUBLISHED",
         "ARCHIVED",
+        "SCHEDULED",
       ],
       image_status: [
         "APROVADA",

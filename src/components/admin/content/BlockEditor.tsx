@@ -48,9 +48,13 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
     const next = [...blocks];
     const target = direction === 'up' ? index - 1 : index + 1;
     if (target < 0 || target >= blocks.length) return;
-    const temp = next[index];
-    next[index] = next[target];
-    next[target] = temp;
+    
+    const current = next[index];
+    const targetBlock = next[target];
+    if (current === undefined || targetBlock === undefined) return;
+    
+    next[index] = targetBlock;
+    next[target] = current;
     onChange(next);
   };
 
@@ -148,7 +152,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                 {block.type === 'quote' && (
                   <div className="space-y-3">
                     <textarea className={`${inputClass} min-h-[80px] italic`} value={block.text} onChange={e => updateBlock(index, { text: e.target.value })} placeholder="Texto da citação..." />
-                    <input className={inputClass} value={block.attribution || ""} onChange={e => updateBlock(index, { attribution: e.target.value })} placeholder="Autor/Fonte" />
+                    <input className={inputClass} value={block.attribution ?? ""} onChange={e => updateBlock(index, { attribution: e.target.value })} placeholder="Autor/Fonte" />
                   </div>
                 )}
 
@@ -216,13 +220,25 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
 
                 {block.type === 'faq' && (
                   <div className="space-y-4">
-                    {block.items.map((item, i) => (
+                    {block.items.map((item, i) => {
+                      if (!item) return null;
+                      return (
                       <div key={i} className="p-3 bg-muted/20 rounded-md space-y-2 relative group">
                         <input className={`${inputClass} font-semibold`} value={item.question} onChange={e => {
-                          const next = [...block.items]; next[i] = { ...next[i], question: e.target.value }; updateBlock(index, { items: next });
+                          const next = [...block.items]; 
+                          const currentItem = next[i];
+                          if (currentItem) {
+                            next[i] = { ...currentItem, question: e.target.value }; 
+                            updateBlock(index, { items: next });
+                          }
                         }} placeholder="Pergunta" />
                         <textarea className={inputClass} value={item.answer} onChange={e => {
-                          const next = [...block.items]; next[i] = { ...next[i], answer: e.target.value }; updateBlock(index, { items: next });
+                          const next = [...block.items]; 
+                          const currentItem = next[i];
+                          if (currentItem) {
+                            next[i] = { ...currentItem, answer: e.target.value }; 
+                            updateBlock(index, { items: next });
+                          }
                         }} placeholder="Resposta" />
                         <button type="button" className="absolute -right-2 -top-2 p-1 bg-danger text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => {
                           updateBlock(index, { items: block.items.filter((_, idx) => idx !== i) });
@@ -230,7 +246,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                           <Trash2 className="w-3 h-3" />
                         </button>
                       </div>
-                    ))}
+                    )})}
                     <button type="button" className="flex items-center gap-1.5 text-xs font-bold text-terracota hover:underline" onClick={() => updateBlock(index, { items: [...block.items, { question: "", answer: "" }] })}>
                       <Plus className="w-3 h-3" /> Adicionar Pergunta
                     </button>

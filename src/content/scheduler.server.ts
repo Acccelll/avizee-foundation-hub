@@ -66,9 +66,9 @@ export async function processEditorialSchedule() {
       });
 
       await audit(admin, {
-        actorId: "00000000-0000-0000-0000-000000000000", // System
+        actorId: null,
         actorEmail: "system@avizee.com.br",
-        action: "content.publish.auto",
+        action: "content.publish",
         entity: "content_articles",
         entityId: article.id,
         newValues: { status: "PUBLISHED", version: article.version },

@@ -123,7 +123,7 @@ export interface SubmitInput {
 /** Hash irreversível de IP/user-agent (base legal: legítimo interesse, doc 113). */
 async function hashValue(value: string | null | undefined): Promise<string | null> {
   if (!value) return null;
-  const salt = process.env["QUOTATION_HASH_SALT"] ?? "avizee-antiabuse";
+  const salt = getServerConfig().QUOTATION_HASH_SALT;
   const bytes = new TextEncoder().encode(`${salt}:${value}`);
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");

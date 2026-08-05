@@ -58,7 +58,95 @@
           "type": "object",
           "properties": {
             "items": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "categorySlug": {
+                    "type": "string"
+                  },
+                  "categoryName": {
+                    "type": "string"
+                  },
+                  "segments": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "applications": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "variationCount": {
+                    "type": "number"
+                  },
+                  "skus": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "matchedSku": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "image": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "alt": {
+                        "type": "string"
+                      },
+                      "is_placeholder": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "url",
+                      "alt",
+                      "is_placeholder"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "slug",
+                  "name",
+                  "summary",
+                  "categorySlug",
+                  "categoryName",
+                  "segments",
+                  "applications",
+                  "variationCount",
+                  "skus",
+                  "matchedSku",
+                  "image"
+                ],
+                "additionalProperties": false
+              }
             },
             "total": {
               "type": "number"
@@ -161,13 +249,80 @@
           "type": "object",
           "properties": {
             "categories": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "count": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "description",
+                  "count"
+                ],
+                "additionalProperties": false
+              }
             },
             "segments": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "count"
+                ],
+                "additionalProperties": false
+              }
             },
             "applications": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "count"
+                ],
+                "additionalProperties": false
+              }
             }
           },
           "required": [
@@ -251,12 +406,156 @@
                 "type": "string"
               }
             },
-            "image": {},
+            "image": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "alt": {
+                  "type": "string"
+                },
+                "is_placeholder": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "url",
+                "alt",
+                "is_placeholder"
+              ],
+              "additionalProperties": false
+            },
             "variations": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "sku": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "variationLabel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "measure": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "capacity": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "unit": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "isOnRequest": {
+                    "type": "boolean"
+                  },
+                  "specifications": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        },
+                        "unit": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "label",
+                        "value",
+                        "unit"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "sku",
+                  "name",
+                  "variationLabel",
+                  "measure",
+                  "capacity",
+                  "unit",
+                  "description",
+                  "isOnRequest",
+                  "specifications"
+                ],
+                "additionalProperties": false
+              }
             },
             "related": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "categorySlug": {
+                    "type": "string"
+                  },
+                  "categoryName": {
+                    "type": "string"
+                  },
+                  "variationCount": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name",
+                  "summary",
+                  "categorySlug",
+                  "categoryName",
+                  "variationCount"
+                ],
+                "additionalProperties": false
+              }
             }
           },
           "required": [
@@ -269,6 +568,7 @@
             "categoryName",
             "segments",
             "applications",
+            "image",
             "variations",
             "related"
           ],

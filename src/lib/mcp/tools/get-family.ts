@@ -13,9 +13,36 @@ const familyDetailSchema = z.object({
   categoryName: z.string(),
   segments: z.array(z.string()),
   applications: z.array(z.string()),
-  image: z.any(),
-  variations: z.array(z.any()),
-  related: z.array(z.any()),
+  image: z.object({
+    url: z.string(),
+    alt: z.string(),
+    is_placeholder: z.boolean(),
+  }),
+  variations: z.array(z.object({
+    id: z.string(),
+    sku: z.string(),
+    name: z.string(),
+    variationLabel: z.string().nullable(),
+    measure: z.string().nullable(),
+    capacity: z.string().nullable(),
+    unit: z.string().nullable(),
+    description: z.string().nullable(),
+    isOnRequest: z.boolean(),
+    specifications: z.array(z.object({
+      code: z.string(),
+      label: z.string(),
+      value: z.string(),
+      unit: z.string().nullable(),
+    })),
+  })),
+  related: z.array(z.object({
+    slug: z.string(),
+    name: z.string(),
+    summary: z.string().nullable(),
+    categorySlug: z.string(),
+    categoryName: z.string(),
+    variationCount: z.number(),
+  })),
 });
 
 export default defineTool({
@@ -39,7 +66,7 @@ export default defineTool({
     
     return {
       content: [{ type: "text" as const, text: JSON.stringify(parsed) }],
-      structuredContent: parsed as any,
+      structuredContent: parsed,
     };
   },
 });

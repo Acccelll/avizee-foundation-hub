@@ -28,7 +28,7 @@ export default defineTool({
     
     return {
       content: [{ type: "text" as const, text: JSON.stringify(parsed) }],
-      structuredContent: parsed as any,
+      structuredContent: parsed,
     };
   },
 });

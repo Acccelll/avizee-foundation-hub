@@ -13,6 +13,16 @@ async function get(path: string) {
   return { response, body };
 }
 
+async function post(path: string, headers?: HeadersInit) {
+  const response = await fetch(`${BASE}${path}`, {
+    method: "POST",
+    headers,
+    redirect: "manual",
+  });
+  const body = await response.text();
+  return { response, body };
+}
+
 const PUBLIC_ROUTES = [
   "/",
   "/produtos",
@@ -39,6 +49,16 @@ describe("saúde e indexação", () => {
     const { response, body } = await get("/robots.txt");
     expect(response.status).toBe(200);
     expect(body).toContain("Disallow: /");
+  });
+});
+
+describe("rotas internas protegidas", () => {
+  it("worker de retenção recusa requisição sem credencial e não vaza configuração", async () => {
+    const { response, body } = await post("/api/internal/quotation-retention");
+    expect(response.status).toBe(401);
+    expect(response.headers.get("cache-control")).toContain("no-store");
+    expect(body).toContain("unauthorized");
+    expect(body).not.toMatch(/RETENTION_WORKER_SECRET|service_role|sb_secret|postgres/i);
   });
 });
 

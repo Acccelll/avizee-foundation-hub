@@ -1,9 +1,9 @@
 # 543 — Confirmações do Usuário para Fechamento Pré-Etapa 15
 
 Data: 2026-08-10
-Status: PARCIALMENTE_CONFIRMADO
+Status: CONFIRMADO_COM_ACOES_EXTERNAS_PENDENTES
 
-Este documento registra apenas decisões explicitamente confirmadas pelo usuário no fechamento das Etapas 0–14.1. Recomendações ainda dependentes de aprovação permanecem separadas e não são tratadas como decisão.
+Este documento registra apenas decisões explicitamente confirmadas pelo usuário no fechamento das Etapas 0–14.1. Recomendações aprovadas passam a integrar a decisão; ações externas ainda não executadas permanecem claramente separadas.
 
 ## 1. Contato público — CONFIRMADO
 
@@ -15,33 +15,41 @@ Este documento registra apenas decisões explicitamente confirmadas pelo usuári
 
 Estes dados substituem referências antigas divergentes encontradas no site legado.
 
-## 2. Dados legais — PARCIALMENTE CONFIRMADO
+## 2. Dados legais — CONFIRMADO NO ESCOPO INFORMADO
 
 - Razão social: AviZee Equipamentos LTDA
 - CNPJ: 53.078.538/0001-85
-- Canal público de privacidade/LGPD: PENDENTE DE CONFIRMAÇÃO
+- Canal público de privacidade/LGPD aprovado: privacidade@avizee.com.br
 
-## 3. E-mail comercial — DECISÃO PARCIAL
+A criação efetiva da nova caixa/alias de privacidade foi deliberadamente adiada até a conclusão de todas as etapas do projeto e está coberta por lembrete específico.
 
-- `comercial@avizee.com.br` permanece confirmado como endereço comercial público.
-- Provedor transacional do site: PENDENTE DE APROVAÇÃO após recomendação técnica.
-- Remetente e destino operacional das solicitações de cotação: confirmar junto com a decisão do provedor.
+## 3. E-mail comercial e transacional — APROVADO
+
+- `comercial@avizee.com.br` permanece como endereço comercial público, destino interno das solicitações e `Reply-To`.
+- Provedor transacional aprovado: Resend.
+- Remetente transacional planejado: `AviZee <cotacoes@envios.avizee.com.br>`.
+- Segredos do Resend serão configurados somente no ambiente server-side/secret manager.
+- Desenvolvimento e testes permanecem com envio simulado.
+
+A criação/configuração do endereço/subdomínio transacional e os registros DNS necessários são ações externas deliberadamente adiadas até o fechamento de todas as etapas do projeto.
 
 ## 4. Credencial SMTP legada — CONFIRMADO
 
 O usuário confirmou em 2026-08-10 que a senha/app password exposta no legado já foi revogada/trocada.
 
-Classificação documental: B11-05 / O-27 pode ser encerrado por confirmação explícita do responsável, preservando o registro histórico da exposição e sem reutilizar a credencial anterior.
+Classificação documental: B11-05 / O-27 encerrado por confirmação explícita do responsável, preservando o registro histórico da exposição e proibindo reutilização da credencial anterior.
 
-## 5. Retenção de dados — PENDENTE DE APROVAÇÃO
+## 5. Retenção de cotações/leads — APROVADA
 
-O usuário solicitou recomendação. Nenhum prazo deve ser tratado como aprovado até manifestação explícita posterior.
+Regra aprovada: 24 meses após a última interação comercial.
+
+Após esse período, os dados pessoais de lead/cotação devem ser excluídos ou anonimizados quando não houver relacionamento ativo ou outra obrigação aplicável. Registros que tenham evoluído para contrato, operação fiscal ou relacionamento comercial passam a seguir a retenção própria desses processos, fora da política de lead do site.
 
 ## 6. Prazo comercial público — CONFIRMADO
 
 Decisão: não divulgar prazo fixo de retorno comercial.
 
-Consequência: O-10 / B11-08 pode ser encerrado com a regra de não publicar promessa temporal fixa.
+Consequência: O-10 / B11-08 encerrado com a regra de não publicar promessa temporal fixa.
 
 ## 7. Administração inicial — CONFIRMADO COMO REGRA OPERACIONAL
 
@@ -49,12 +57,13 @@ Consequência: O-10 / B11-08 pode ser encerrado com a regra de não publicar pro
 - O sistema deve manter capacidade de conceder acesso a outra pessoa posteriormente.
 - Não criar usuários fictícios nem inferir e-mail/login do administrador inicial.
 - A implementação deve preservar RBAC e permitir futura inclusão controlada de usuários/papéis.
+- O provisionamento da conta concreta fica para o momento em que o e-mail/login real for informado.
 
-## 8. Itens ainda dependentes de decisão explícita
+## 8. Ações externas ainda necessárias antes da operação real
 
-1. Provedor transacional de e-mail e configuração final de remetente/destino.
-2. Política de retenção de cotações/leads.
-3. Canal público de privacidade/LGPD.
-4. Identidade/login concreto do administrador inicial, somente quando necessário ao provisionamento real.
+1. Criar/configurar `privacidade@avizee.com.br`.
+2. Criar/configurar o remetente/subdomínio transacional para o Resend.
+3. Configurar DNS de envio (SPF/DKIM/DMARC) e chave de API do Resend no ambiente seguro.
+4. Informar/provisionar o login concreto do administrador inicial quando necessário.
 
-Nenhuma recomendação técnica futura substitui automaticamente uma dessas decisões.
+Essas ações não alteram as decisões já aprovadas e não autorizam produção enquanto os demais gates de fechamento permanecerem abertos.

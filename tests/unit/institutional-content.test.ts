@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  CONTACT_FIELDS,
+  CONTACT_DETAILS,
   CONTACT_FORM_APPROVED,
   CTA,
   DIFFERENTIATORS,
+  LEGAL_DETAILS,
   LEGAL_DOCUMENTS,
   LEGAL_FIELDS,
   MAP_APPROVED,
@@ -56,7 +57,7 @@ describe("conteúdo institucional (Etapa 9)", () => {
     }
   });
 
-  it("não publica prazo comercial (O-10 em aberto)", () => {
+  it("não publica prazo comercial fixo, conforme decisão do usuário", () => {
     expect(/em at[ée] \d/.test(ALL_TEXT)).toBe(false);
     expect(/\d+\s*(h|horas|dias|úteis)/.test(ALL_TEXT)).toBe(false);
   });
@@ -93,20 +94,33 @@ describe("conteúdo institucional (Etapa 9)", () => {
     ]);
   });
 
-  it("não publica dado de contato ou dado legal não confirmado", () => {
-    for (const field of [...CONTACT_FIELDS, ...LEGAL_FIELDS]) {
-      expect(field.status).toBe(PENDING);
-    }
-    expect(CONTACT_FIELDS.map((f) => f.label)).toEqual([
-      "Telefone",
-      "WhatsApp",
-      "E-mail",
-      "Endereço",
-      "Horário de atendimento",
-    ]);
+  it("mantém os dados públicos confirmados como fonte única", () => {
+    expect(Object.fromEntries(CONTACT_DETAILS.map((field) => [field.label, field.value]))).toMatchObject({
+      Telefone: "(19) 99898-2930",
+      WhatsApp: "(19) 99898-2930",
+      "E-mail": "comercial@avizee.com.br",
+      "Horário de atendimento": "Seg - Sáb, 08h - 18h",
+    });
+    expect(CONTACT_DETAILS.find((field) => field.label === "Endereço")?.value).toContain(
+      "Rua Diogo António Feijó, 111",
+    );
+    expect(CONTACT_DETAILS.find((field) => field.label === "Endereço")?.value).toContain("13145-706");
+
+    expect(Object.fromEntries(LEGAL_DETAILS.map((field) => [field.label, field.value]))).toMatchObject({
+      "Razão social": "AviZee Equipamentos LTDA",
+      CNPJ: "53.078.538/0001-85",
+      "Canal de privacidade": "privacidade@avizee.com.br",
+    });
   });
 
-  it("mantém desativado tudo que depende de decisão aberta", () => {
+  it("não transforma pendências legais remanescentes em dado confirmado", () => {
+    for (const field of LEGAL_FIELDS) {
+      expect(field.status).toBe(PENDING);
+    }
+    expect(LEGAL_FIELDS.map((field) => field.label)).toEqual(["Provedores e operadores"]);
+  });
+
+  it("mantém desativado tudo que ainda depende de decisão aberta", () => {
     expect(MISSION_VISION_VALUES_APPROVED).toBe(false);
     expect(SOLUTION_DETAIL_PAGES_APPROVED).toBe(false);
     expect(CONTACT_FORM_APPROVED).toBe(false);

@@ -24,8 +24,15 @@ const schema = z.object({
   APP_PUBLIC_URL: z.string().trim().optional(),
   AUTH_SESSION_TTL_MINUTES: z.coerce.number().int().positive().default(480),
   AUTH_MAX_ATTEMPTS: z.coerce.number().int().positive().default(5),
-  QUOTATION_HASH_SALT: z.string().trim().optional().refine(val => !val || val.length >= 32, { message: "Deve ter pelo menos 32 caracteres" }),
-  EMAIL_PROVIDER: z.enum(["null", "log"]).default("log"),
+  QUOTATION_HASH_SALT: z
+    .string()
+    .trim()
+    .optional()
+    .refine((val) => !val || val.length >= 32, { message: "Deve ter pelo menos 32 caracteres" }),
+  EMAIL_PROVIDER: z.enum(["null", "log", "resend"]).default("log"),
+  RESEND_API_KEY: z.string().trim().optional(),
+  RESEND_FROM: z.string().trim().optional(),
+  EMAIL_REPLY_TO: z.string().trim().email().optional(),
   STORAGE_PROVIDER: z.enum(["null", "local"]).default("local"),
   CAPTCHA_PROVIDER: z.enum(["null"]).default("null"),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
@@ -77,11 +84,25 @@ export function getServerConfig(): ServerConfig {
     cfg.QUOTATION_HASH_SALT = DEV_ONLY_QUOTATION_SALT;
   }
 
+  // Provider aprovado: quando selecionado, configuração completa é obrigatória.
+  if (cfg.EMAIL_PROVIDER === "resend") {
+    const missing = [
+      !cfg.RESEND_API_KEY ? "RESEND_API_KEY" : null,
+      !cfg.RESEND_FROM ? "RESEND_FROM" : null,
+      !cfg.EMAIL_REPLY_TO ? "EMAIL_REPLY_TO" : null,
+    ].filter(Boolean);
+    if (missing.length > 0) {
+      throw new Error(`Configuração ausente para Resend: ${missing.join(", ")}`);
+    }
+  }
+
   // §14 — URL pública canônica.
   let publicUrl = cfg.APP_PUBLIC_URL;
   if (!publicUrl) {
     if (strict) {
-      throw new Error("Configuração ausente: APP_PUBLIC_URL é obrigatória fora de desenvolvimento.");
+      throw new Error(
+        "Configuração ausente: APP_PUBLIC_URL é obrigatória fora de desenvolvimento.",
+      );
     }
     publicUrl = DEV_PUBLIC_URL;
   }

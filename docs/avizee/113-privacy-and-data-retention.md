@@ -1,9 +1,11 @@
 # 113 — Privacidade (LGPD) e Retenção
 
-Todas as propostas: `PENDENTE_DE_APROVAÇÃO_JURÍDICA_E_OPERACIONAL`.
+Todas as propostas: `PENDENTE_DE_APROVAÇÃO_JURÍDICA_E_OPERACIONAL`, salvo atualizações explícitas
+registradas ao final deste documento.
 
 ## 1. Dados, finalidade e base legal
 
+<!-- prettier-ignore -->
 | Dado | Finalidade | Base legal (proposta) |
 |---|---|---|
 | Empresa, contato, e-mail, telefone, cidade, UF | Responder à solicitação de cotação | Procedimentos preliminares relacionados a contrato, a pedido do titular |
@@ -30,6 +32,7 @@ para entregar a mensagem.
 
 ## 4. Retenção proposta
 
+<!-- prettier-ignore -->
 | Dado | Retenção operacional | Observação |
 |---|---|---|
 | Cotações ativas | 24 meses após o último evento | Depois: anonimizar contato, preservar itens agregados |
@@ -52,7 +55,6 @@ histórica (integridade do catálogo e de cotações) · exclusão manual · ano
 Textos jurídicos (Política de Privacidade, Termos, Cookies) não podem ser finalizados sem os
 dados legais da empresa e revisão apropriada — DEP-T5.
 
-
 ## Atualização 2026-08-01 — DT-16 aprovada condicionalmente
 
 Aprovado o **princípio** de política finita e configurável. **Prazos definitivos não aprovados**
@@ -61,3 +63,18 @@ consentimentos, logs, auditoria, arquivos de importação, backups, imagens reje
 de direito e contas administrativas. Cada grupo declara finalidade, base legal, prazo, evento
 inicial, destino após o prazo, anonimização ou exclusão, exceções e responsável.
 **A exclusão automática em produção fica bloqueada até a definição dos prazos.**
+
+## Atualização 2026-08-10 — retenção de cotações/leads aprovada
+
+O usuário aprovou explicitamente **24 meses após a última interação comercial** como prazo de
+retenção para cotações/leads do site.
+
+Após o prazo, os dados pessoais devem ser excluídos ou anonimizados quando não houver
+relacionamento ativo ou outra obrigação aplicável. Se a cotação evoluir para contrato, operação
+fiscal ou relacionamento comercial, o registro deixa de ser tratado apenas como lead do site e
+passa a seguir a retenção aplicável ao processo correspondente.
+
+Esta aprovação encerra `B11-02 / DEP-T5` **somente para cotações/leads**. Os demais prazos da tabela
+acima continuam como proposta até decisão específica ou até demonstração de que não são necessários
+no escopo operacional da v1. A exclusão automática ampla em produção continua bloqueada enquanto
+esses grupos remanescentes não forem conciliados.

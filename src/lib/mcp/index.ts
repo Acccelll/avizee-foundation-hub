@@ -19,11 +19,5 @@ export default defineMcp({
     "Use `list_facets` ou `list_categories` para descobrir os slugs, `search_catalog` para localizar famílias, " +
     "`suggest_terms` para completar termos ou códigos e `get_family` para o detalhe com variações e especificações. " +
     "O catálogo não possui preços, estoque, prazos nem marcas de terceiros: a conversão é sempre por Lista de Cotação.",
-  tools: [
-    searchCatalogTool,
-    listCategoriesTool,
-    listFacetsTool,
-    getFamilyTool,
-    suggestTermsTool,
-  ] as any,
+  tools: [searchCatalogTool, listCategoriesTool, listFacetsTool, getFamilyTool, suggestTermsTool],
 });

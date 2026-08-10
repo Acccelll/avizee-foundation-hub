@@ -112,10 +112,15 @@ describe("URL pública canônica (§14)", () => {
 });
 
 describe("sitemap (§15)", () => {
-  const paths = buildSitemapPaths(["nutricao"], [{ slug: "familia-a", categorySlug: "nutricao" }], {
-    categories: ["manejo"],
-    articles: ["artigo-a"],
-  });
+  const paths = buildSitemapPaths(
+    ["nutricao"],
+    [{ slug: "familia-a", categorySlug: "nutricao" }],
+    {
+      categories: ["manejo"],
+      articles: ["artigo-a"],
+    },
+    ["vacinacao"],
+  );
 
   it("gera apenas URLs absolutas", () => {
     const xml = renderSitemap("https://exemplo.invalid", paths);
@@ -123,6 +128,11 @@ describe("sitemap (§15)", () => {
     expect(locs.length).toBeGreaterThan(5);
     for (const loc of locs) expect(loc.startsWith("https://exemplo.invalid/")).toBe(true);
     expect(xml).not.toContain("<loc>/");
+  });
+
+  it("inclui páginas consultivas de solução aprovadas", () => {
+    const xml = renderSitemap("https://exemplo.invalid", paths);
+    expect(xml).toContain("https://exemplo.invalid/solucoes/vacinacao");
   });
 
   it("não inclui busca, cotação, painel, prévias nem páginas legais em rascunho", () => {

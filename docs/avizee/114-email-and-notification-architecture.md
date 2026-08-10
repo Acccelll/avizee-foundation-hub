@@ -9,6 +9,7 @@ processa pendentes com backoff exponencial (1, 5, 15, 60, 240 min; 5 tentativas)
 
 ## 2. Mensagens previstas
 
+<!-- prettier-ignore -->
 | Tipo | Destinatário | Conteúdo |
 |---|---|---|
 | Nova cotação | Caixa comercial interna | Protocolo, empresa, contato, itens, link para o painel |
@@ -29,6 +30,7 @@ Sem marca de terceiro, sem preço, sem dado além do necessário no corpo.
 
 ## 4. Alternativas (DT-11, `PENDENTE_DE_APROVAÇÃO`)
 
+<!-- prettier-ignore -->
 | Opção | Prós | Contras |
 |---|---|---|
 | E-mail gerenciado do Lovable com domínio próprio | Integrado, menos configuração | Recursos de bounce dependem do provedor subjacente |
@@ -43,7 +45,6 @@ necessidade de bounce/analytics justificar. Em qualquer caso, o outbox mantém a
 Em desenvolvimento e homologação, envio real desabilitado: mensagens gravadas no outbox com
 destino redirecionado para caixa de teste ou marcadas `SIMULATED`.
 
-
 ## Atualização 2026-08-01 — DT-11 aprovada em princípio
 
 Interface desacoplada `EmailProvider` obrigatória. Requisitos: SPF, DKIM, DMARC, remetente no
@@ -51,3 +52,20 @@ domínio da AviZee, reply-to adequado, templates versionados, retry, logs saniti
 de bounce quando suportado, métricas de entrega e nenhum segredo no código.
 **As credenciais SMTP antigas não serão utilizadas.** Enquanto DEP-T1 estiver aberta, vale o
 provider nulo ou de desenvolvimento, sem envio externo.
+
+## Atualização 2026-08-10 — DEP-T1 encerrada por decisão do usuário
+
+O provider transacional aprovado é **Resend**, mantendo o contrato `EmailProvider` desacoplado e
+o padrão outbox já existente.
+
+Configuração aprovada:
+
+- endereço comercial público, destino interno e `Reply-To`: `comercial@avizee.com.br`;
+- remetente planejado: `AviZee <cotacoes@envios.avizee.com.br>`;
+- chave de API somente no ambiente server-side/secret manager;
+- desenvolvimento, teste e homologação continuam sem envio externo por padrão;
+- a credencial SMTP legada foi confirmada como revogada/trocada e não pode ser reutilizada.
+
+A criação do endereço/subdomínio e os registros SPF/DKIM/DMARC foram deliberadamente adiados pelo
+usuário para o fechamento de todas as etapas do projeto. Essa ação externa não altera a decisão do
+provider nem autoriza produção antes dos demais gates.

@@ -13,10 +13,21 @@ async function get(path: string) {
   return { response, body };
 }
 
+async function post(path: string, headers?: HeadersInit) {
+  const response = await fetch(`${BASE}${path}`, {
+    method: "POST",
+    headers,
+    redirect: "manual",
+  });
+  const body = await response.text();
+  return { response, body };
+}
+
 const PUBLIC_ROUTES = [
   "/",
   "/produtos",
   "/solucoes",
+  "/solucoes/vacinacao",
   "/conteudos",
   "/sobre",
   "/contato",
@@ -39,6 +50,16 @@ describe("saúde e indexação", () => {
     const { response, body } = await get("/robots.txt");
     expect(response.status).toBe(200);
     expect(body).toContain("Disallow: /");
+  });
+});
+
+describe("rotas internas protegidas", () => {
+  it("worker de retenção recusa requisição sem credencial e não vaza configuração", async () => {
+    const { response, body } = await post("/api/internal/quotation-retention");
+    expect(response.status).toBe(401);
+    expect(response.headers.get("cache-control")).toContain("no-store");
+    expect(body).toContain("unauthorized");
+    expect(body).not.toMatch(/RETENTION_WORKER_SECRET|service_role|sb_secret|postgres/i);
   });
 });
 
@@ -112,7 +133,7 @@ describe("páginas institucionais", () => {
   });
 
   it("Home, Sobre, Soluções e Contato não usam vocabulário de e-commerce", async () => {
-    for (const path of ["/", "/sobre", "/solucoes", "/contato"]) {
+    for (const path of ["/", "/sobre", "/solucoes", "/solucoes/vacinacao", "/contato"]) {
       const lower = (await get(path)).body.toLowerCase();
       for (const term of ECOMMERCE) {
         expect(lower, `${path} contém "${term}"`).not.toContain(term);
@@ -120,11 +141,33 @@ describe("páginas institucionais", () => {
     }
   });
 
-  it("Contato não publica dado não confirmado nem carrega mapa", async () => {
+  it("Solução por aplicação usa a curadoria do catálogo publicado", async () => {
+    const { response, body } = await get("/solucoes/vacinacao");
+    expect(response.status).toBe(200);
+    expect(body).toContain("Solução por aplicação");
+    expect(body).toContain("O que costuma ser necessário");
+    expect(body).toContain("Agulhas descartáveis");
+    expect(body).toContain("Solicitar cotação");
+  });
+
+  it("Busca global agrupa produtos e soluções", async () => {
+    const { response, body } = await get("/busca?q=vacinacao");
+    expect(response.status).toBe(200);
+    expect(body).toContain("Produtos");
+    expect(body).toContain("Soluções");
+    expect(body).toContain("Vacinação");
+    expect(body).not.toContain("Busca no catálogo");
+  });
+
+  it("Contato publica apenas os dados confirmados, sem formulário geral nem mapa", async () => {
     const { body } = await get("/contato");
-    expect(body).toContain("informação em confirmação");
+    expect(body).toContain("(19) 99898-2930");
+    expect(body).toContain("comercial@avizee.com.br");
+    expect(body).toContain("Rua Diogo António Feijó, 111");
+    expect(body).toContain("13145-706");
+    expect(body).toContain("Seg - Sáb, 08h - 18h");
+    expect(body).not.toMatch(/<form[\s>]/i);
     expect(body).not.toMatch(/google\.com\/maps|maps\.googleapis|embedsocial/i);
-    expect(body).not.toMatch(/\(\d{2}\)\s?\d{4,5}-\d{4}/);
     expect(body).not.toMatch(/wa\.me\/\d/);
   });
 

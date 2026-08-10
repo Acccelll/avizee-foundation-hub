@@ -284,6 +284,36 @@ export async function articlesForFamily(familySlug: string) {
   return guard(ordered.map(toCard));
 }
 
+/**
+ * Artigos relacionados a um conjunto de famílias já curadas por outra superfície pública.
+ * A relação continua sendo declarativa artigo ↔ família: não existe inferência por palavra-chave.
+ */
+export async function articlesForFamilies(familySlugs: string[], limit = 3) {
+  const slugs = [...new Set(familySlugs.map((slug) => slug.trim()).filter(Boolean))].slice(0, 31);
+  const boundedLimit = Math.max(1, Math.min(Math.trunc(limit), 6));
+  if (slugs.length === 0) return [];
+
+  const relations = unwrap<any[]>(
+    await db()
+      .from("public_article_relations")
+      .select("article_id")
+      .in("family_slug", slugs)
+      .limit(100),
+  );
+  if (relations.length === 0) return [];
+
+  const articleIds = [...new Set(relations.map((relation) => String(relation.article_id)))];
+  const rows = unwrap<any[]>(
+    await db()
+      .from("public_articles")
+      .select(`id, ${CARD_FIELDS}`)
+      .in("id", articleIds)
+      .order("published_at", { ascending: false }),
+  );
+
+  return guard(rows.slice(0, boundedLimit).map(toCard));
+}
+
 /** Entradas indexáveis da Central para o sitemap. */
 export async function contentSitemapEntries() {
   const [categories, articles] = await Promise.all([

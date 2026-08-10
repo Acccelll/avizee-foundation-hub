@@ -6,6 +6,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 import {
+  articlesForFamilies,
   articlesForFamily,
   getArticle,
   getContentCategory,
@@ -16,7 +17,6 @@ import {
 } from "@/content/public/read.server";
 
 export type { ArticleCardData };
-
 
 const slugSchema = z
   .string()
@@ -53,3 +53,14 @@ export const fetchArticle = createServerFn({ method: "GET" })
 export const fetchArticlesForFamily = createServerFn({ method: "GET" })
   .inputValidator((input: unknown) => z.object({ familySlug: slugSchema }).parse(input))
   .handler(async ({ data }) => articlesForFamily(data.familySlug));
+
+export const fetchArticlesForFamilies = createServerFn({ method: "GET" })
+  .inputValidator((input: unknown) =>
+    z
+      .object({
+        familySlugs: z.array(slugSchema).min(1).max(31),
+        limit: z.number().int().min(1).max(6).optional(),
+      })
+      .parse(input),
+  )
+  .handler(async ({ data }) => articlesForFamilies(data.familySlugs, data.limit ?? 3));

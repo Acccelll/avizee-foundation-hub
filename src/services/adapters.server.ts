@@ -1,8 +1,7 @@
 /**
- * Adaptadores da Etapa 5 — MOCK CONTROLADO E IDENTIFICADO.
- * Nenhum envio externo, nenhum dado real, nenhuma coleta.
- * Substituir pelos provedores aprovados (DT-11, DT-12, DT-17) sem alterar o
- * fluxo de negócio.
+ * Adaptadores externos desacoplados do fluxo de negócio.
+ * Em desenvolvimento/homologação, e-mail permanece simulado.
+ * O provider Resend só opera quando explicitamente configurado.
  */
 import { logger } from "@/lib/logger";
 import { getServerConfig } from "@/lib/env.server";
@@ -29,6 +28,52 @@ export const devEmailProvider: EmailProvider = {
       template: message.template,
     });
     return { queued: true, providerMessageId: null };
+  },
+};
+
+/**
+ * Provider transacional aprovado para produção.
+ * Credenciais e remetentes são sempre lidos de configuração server-only.
+ */
+export const resendEmailProvider: EmailProvider = {
+  name: "resend",
+  async send(message) {
+    const config = getServerConfig();
+    if (
+      config.EMAIL_PROVIDER !== "resend" ||
+      !config.RESEND_API_KEY ||
+      !config.RESEND_FROM ||
+      !config.EMAIL_REPLY_TO
+    ) {
+      throw new Error("Provider Resend não está completamente configurado.");
+    }
+
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${config.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+        "User-Agent": "avizee-foundation-hub/1.0",
+      },
+      body: JSON.stringify({
+        from: config.RESEND_FROM,
+        to: [message.to],
+        subject: message.subject,
+        text: message.text,
+        reply_to: config.EMAIL_REPLY_TO,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Falha no provedor de e-mail (${response.status}).`);
+    }
+
+    const payload = (await response.json()) as { id?: string };
+    if (!payload.id) {
+      throw new Error("Provedor de e-mail não retornou identificador da mensagem.");
+    }
+
+    return { queued: true, providerMessageId: payload.id };
   },
 };
 
@@ -86,7 +131,7 @@ export const nullNotificationProvider: NotificationProvider = {
 };
 
 export function getEmailProvider(): EmailProvider {
-  return devEmailProvider;
+  return getServerConfig().EMAIL_PROVIDER === "resend" ? resendEmailProvider : devEmailProvider;
 }
 
 export function getStorageProvider(): StorageProvider {

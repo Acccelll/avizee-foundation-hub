@@ -95,7 +95,9 @@ describe("conteúdo institucional (Etapa 9)", () => {
   });
 
   it("mantém os dados públicos confirmados como fonte única", () => {
-    expect(Object.fromEntries(CONTACT_DETAILS.map((field) => [field.label, field.value]))).toMatchObject({
+    expect(
+      Object.fromEntries(CONTACT_DETAILS.map((field) => [field.label, field.value])),
+    ).toMatchObject({
       Telefone: "(19) 99898-2930",
       WhatsApp: "(19) 99898-2930",
       "E-mail": "comercial@avizee.com.br",
@@ -104,9 +106,13 @@ describe("conteúdo institucional (Etapa 9)", () => {
     expect(CONTACT_DETAILS.find((field) => field.label === "Endereço")?.value).toContain(
       "Rua Diogo António Feijó, 111",
     );
-    expect(CONTACT_DETAILS.find((field) => field.label === "Endereço")?.value).toContain("13145-706");
+    expect(CONTACT_DETAILS.find((field) => field.label === "Endereço")?.value).toContain(
+      "13145-706",
+    );
 
-    expect(Object.fromEntries(LEGAL_DETAILS.map((field) => [field.label, field.value]))).toMatchObject({
+    expect(
+      Object.fromEntries(LEGAL_DETAILS.map((field) => [field.label, field.value])),
+    ).toMatchObject({
       "Razão social": "AviZee Equipamentos LTDA",
       CNPJ: "53.078.538/0001-85",
       "Canal de privacidade": "privacidade@avizee.com.br",

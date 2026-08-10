@@ -58,8 +58,9 @@ function Contato() {
             <ConfirmedDataList title="Dados de contato" fields={CONTACT_DETAILS} />
             {!MAP_APPROVED && (
               <PendingNotice>
-                O endereço está confirmado. O mapa permanece desativado até aprovação explícita de
-                sua ativação; nenhum serviço externo é chamado nesta página.
+                O endereço acima é a referência pública da AviZee. Nesta versão do site não é
+                carregado mapa externo, evitando uma integração que não é necessária para a jornada
+                comercial atual.
               </PendingNotice>
             )}
           </section>
@@ -91,8 +92,8 @@ function Contato() {
 
             {!CONTACT_FORM_APPROVED && (
               <PendingNotice>
-                O formulário geral de contato permanece desativado até aprovação explícita. A lista
-                de cotação continua sendo o canal registrado de solicitação.
+                A Lista de Cotação permanece como fluxo registrado para solicitações comerciais. Para
+                outros assuntos, utilize os canais de atendimento informados nesta página.
               </PendingNotice>
             )}
 

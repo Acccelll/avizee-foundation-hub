@@ -14,16 +14,20 @@ As rotas geradas por `@lovable.dev/mcp-js` permanecem sob responsabilidade do pl
 
 A proteção foi aplicada no entrypoint estável `src/server.ts`, antes de qualquer entrega da requisição ao handler gerado do MCP.
 
-As superfícies protegidas são:
+As superfícies de execução sujeitas ao rate-limit específico são:
 
 - `/mcp`;
 - `/.mcp/*`.
+
+A validação de origem canônica também abrange:
+
+- `/.well-known/oauth-protected-resource`.
 
 Rotas públicas normais e o restante do site não passam pelo limiter específico do MCP.
 
 ## 3. Origem canônica em produção
 
-Antes do handler MCP, o servidor exige em `APP_ENV=production` que a origem da própria URL da requisição corresponda à origem HTTPS configurada em `APP_PUBLIC_URL`.
+Antes do handler MCP ou do handler de metadados protegidos, o servidor exige em `APP_ENV=production` que a origem da própria URL da requisição corresponda à origem HTTPS configurada em `APP_PUBLIC_URL`.
 
 O guard não usa `X-Forwarded-Host` fornecido pelo cliente para tomar essa decisão.
 
@@ -45,9 +49,11 @@ O código exige um binding distribuído com o nome:
 
 O contrato esperado é um objeto com operação assíncrona `limit({ key })` retornando `{ success: boolean }`.
 
-Se o binding não existir em produção, o MCP responde HTTP 503 (`rate_limit_not_configured`). Se o binding falhar, responde HTTP 503 (`rate_limit_unavailable`). Se o limite for excedido, responde HTTP 429 (`rate_limited`). Em todos esses casos a resposta é genérica e `Cache-Control: no-store`.
+Se o binding não existir em produção, as superfícies de execução do MCP respondem HTTP 503 (`rate_limit_not_configured`). Se o binding falhar, respondem HTTP 503 (`rate_limit_unavailable`). Se o limite for excedido, respondem HTTP 429 (`rate_limited`). Em todos esses casos a resposta é genérica e `Cache-Control: no-store`.
 
 Não foi escolhido nem hardcoded neste repositório um limite operacional de produção, período ou namespace do provedor. Esses valores pertencem à configuração real de infraestrutura e devem ser definidos no ambiente de publicação antes que o MCP possa ser habilitado em produção.
+
+O endpoint de metadados participa do guard de origem, mas não consome a cota de execução das ferramentas.
 
 ### Desenvolvimento, preview e teste
 
@@ -81,6 +87,7 @@ A remoção do arquivo do HEAD não equivale à rotação retroativa de qualquer
 
 - delimitação das superfícies MCP;
 - ausência de impacto em rotas públicas normais;
+- proteção de origem do endpoint de metadados;
 - origem canônica válida;
 - rejeição de host divergente mesmo quando existe `X-Forwarded-Host`;
 - fail-closed de origem inválida;

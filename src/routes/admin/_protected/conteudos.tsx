@@ -20,6 +20,7 @@ import {
   inputClass,
   buttonClass,
   readableError,
+  secondaryButtonClass,
 } from "@/components/admin/ui";
 import { CONTENT_STATUSES, CONTENT_STATUS_LABEL } from "@/content/workflow";
 
@@ -86,6 +87,12 @@ function ContentListPage() {
         title="Central de Conteúdos"
         description="Fluxo editorial completo: rascunho, revisão técnica, revisão editorial, publicação e preparação manual para Instagram e LinkedIn."
       />
+
+      <div className="mb-4 flex flex-wrap gap-2">
+        <Link to="/admin/conteudos/autores" className={secondaryButtonClass}>
+          Gerenciar autores
+        </Link>
+      </div>
 
       <div className="mb-4">
         <Callout tone="info" title="Nenhuma publicação automática em rede social">

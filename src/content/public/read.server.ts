@@ -284,6 +284,49 @@ export async function articlesForFamily(familySlug: string) {
   return guard(ordered.map(toCard));
 }
 
+/**
+ * Artigos relacionados a um conjunto de famílias já curadas por outra superfície pública.
+ * A relação continua sendo declarativa artigo ↔ família: não existe inferência por palavra-chave.
+ */
+export async function articlesForFamilies(familySlugs: string[], limit = 3) {
+  const slugs = [...new Set(familySlugs.map((slug) => slug.trim()).filter(Boolean))].slice(0, 31);
+  const boundedLimit = Math.max(1, Math.min(Math.trunc(limit), 6));
+  if (slugs.length === 0) return [];
+
+  const relations = unwrap<any[]>(
+    await db()
+      .from("public_article_relations")
+      .select("article_id, family_slug, sort_order")
+      .in("family_slug", slugs)
+      .order("sort_order", { ascending: true })
+      .limit(100),
+  );
+  if (relations.length === 0) return [];
+
+  const articleIds = [...new Set(relations.map((relation) => String(relation.article_id)))];
+  const rows = unwrap<any[]>(
+    await db().from("public_articles").select(`id, ${CARD_FIELDS}`).in("id", articleIds),
+  );
+
+  const matchedFamilyCount = new Map<string, number>();
+  for (const relation of relations) {
+    const articleId = String(relation.article_id);
+    matchedFamilyCount.set(articleId, (matchedFamilyCount.get(articleId) ?? 0) + 1);
+  }
+
+  const ordered = [...rows].sort((a, b) => {
+    const byCoverage =
+      (matchedFamilyCount.get(String(b.id)) ?? 0) - (matchedFamilyCount.get(String(a.id)) ?? 0);
+    if (byCoverage !== 0) return byCoverage;
+
+    const aPublishedAt = a.published_at ? Date.parse(String(a.published_at)) : 0;
+    const bPublishedAt = b.published_at ? Date.parse(String(b.published_at)) : 0;
+    return bPublishedAt - aPublishedAt;
+  });
+
+  return guard(ordered.slice(0, boundedLimit).map(toCard));
+}
+
 /** Entradas indexáveis da Central para o sitemap. */
 export async function contentSitemapEntries() {
   const [categories, articles] = await Promise.all([

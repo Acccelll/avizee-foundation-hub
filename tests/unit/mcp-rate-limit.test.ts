@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   enforceMcpCanonicalOrigin,
   enforceMcpRateLimit,
+  isMcpOriginProtectedPath,
   isMcpRequestPath,
   resetLocalMcpRateLimitForTests,
   type McpRateLimitBinding,
@@ -14,13 +15,20 @@ afterEach(() => {
 });
 
 describe("MCP request boundary", () => {
-  it("reconhece somente superfícies MCP", () => {
+  it("reconhece somente superfícies de execução MCP para rate limit", () => {
     expect(isMcpRequestPath("/mcp")).toBe(true);
     expect(isMcpRequestPath("/.mcp/list-tools")).toBe(true);
     expect(isMcpRequestPath("/.mcp/invoke-tool/catalog.search")).toBe(true);
     expect(isMcpRequestPath("/mcp-extra")).toBe(false);
     expect(isMcpRequestPath("/produtos")).toBe(false);
     expect(isMcpRequestPath("/.well-known/oauth-protected-resource")).toBe(false);
+  });
+
+  it("protege também a origem do endpoint de metadados MCP", () => {
+    expect(isMcpOriginProtectedPath("/mcp")).toBe(true);
+    expect(isMcpOriginProtectedPath("/.mcp/list-tools")).toBe(true);
+    expect(isMcpOriginProtectedPath("/.well-known/oauth-protected-resource")).toBe(true);
+    expect(isMcpOriginProtectedPath("/produtos")).toBe(false);
   });
 
   it("não aplica a validação de origem fora das superfícies MCP", () => {
@@ -44,6 +52,16 @@ describe("MCP request boundary", () => {
       new Request("https://host-nao-canonico.invalid/mcp", {
         headers: { "x-forwarded-host": "avizee.example" },
       }),
+      { appEnv: "production", publicUrl: "https://avizee.example" },
+    );
+
+    expect(result?.status).toBe(421);
+    await expect(result?.json()).resolves.toEqual({ ok: false, error: "invalid_origin" });
+  });
+
+  it("recusa origem divergente também no metadata endpoint", async () => {
+    const result = enforceMcpCanonicalOrigin(
+      new Request("https://host-nao-canonico.invalid/.well-known/oauth-protected-resource"),
       { appEnv: "production", publicUrl: "https://avizee.example" },
     );
 

@@ -212,21 +212,7 @@ jobs:
           exit 1
 
       - name: Tests
-        shell: bash
-        run: |
-          set -o pipefail
-          bunx vitest run --reporter=default --reporter=junit --outputFile.junit=/tmp/vitest-junit.xml 2>&1 | tee /tmp/vitest.log
-
-      - name: Upload test diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: vitest-diagnostics
-          path: |
-            /tmp/vitest-junit.xml
-            /tmp/vitest.log
-          if-no-files-found: warn
-          retention-days: 1
+        run: bun run test
 
       - name: Cleanup local services
         if: always()

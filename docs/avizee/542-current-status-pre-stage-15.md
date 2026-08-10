@@ -12,31 +12,29 @@ Este documento e `541-pre-stage-15-closure-matrix.md` representam o estado vigen
 - Retenção de cotações/leads por 24 meses foi implementada.
 - Provider transacional Resend foi decidido; ativação real permanece para o gate de lançamento.
 - Hardening interno do MCP está implementado com origem canônica e rate-limit fail-closed.
+- Páginas consultivas próprias por aplicação e busca global em Produtos + Soluções + Conteúdos publicados foram implementadas.
+- Formulário geral de Contato e mapa permanecem fora da v1 por decisão explícita.
 
-## Decisões finais aprovadas
+## Recertificação funcional
 
-O usuário aprovou o conjunto registrado em `549-approved-functional-decisions-pre-stage-15.md`:
+O fechamento funcional foi recertificado no GitHub Actions:
 
-1. páginas consultivas próprias por aplicação;
-2. busca global em Produtos + Soluções + Conteúdos publicados;
-3. formulário geral de Contato mantido fora da v1;
-4. mapa mantido fora da v1.
+- workflow: **CI**;
+- run: **#211** (`31436944133`);
+- commit funcional certificado: `946b91a4fba0f3f4c2def88a04d24fe2c8b4aaab`;
+- resultado: **success**.
 
-As duas decisões positivas foram implementadas no PR #2 reutilizando os componentes, tokens e padrões públicos existentes. Não houve mudança de branding, taxonomia ou modelo comercial.
+No mesmo job passaram lint, Prettier, build, typecheck, replay das migrations em Supabase local, fixture canônico 31/97, ensaio de restore lógico, servidor SSR e a suíte integral.
 
-## Qualidade
+A evidência está em `550-pre-stage-15-functional-closure-recertification.md`.
 
-O marco técnico anterior foi integralmente recertificado no CI #127. O novo HEAD, que inclui as decisões funcionais acima, está em recertificação integral.
+Status funcional:
 
-No ciclo atual já foram observados com sucesso lint, Prettier, build e typecheck. A certificação final só será atualizada quando o mesmo HEAD concluir migrations, fixture canônico, restore lógico, servidor SSR e suíte integral.
-
-Status atual:
-
-`PRE_STAGE_15_FUNCTIONAL_CLOSURE_IMPLEMENTED_REVALIDATION_IN_PROGRESS`
+`PRE_STAGE_15_FUNCTIONAL_CLOSURE_CERTIFIED`
 
 ## Gates de lançamento segregados
 
-Ações que dependem do ambiente real não são tratadas como desenvolvimento funcional pendente, mas continuam obrigatórias antes da operação quando aplicáveis: configuração real de e-mail/DNS, provisionamento do administrador, binding MCP distribuído, backup/storage real, RPO/RTO, UAT, revisão jurídica e verificação do ambiente conectado.
+Ações que dependem do ambiente real não são tratadas como desenvolvimento funcional pendente, mas continuam obrigatórias antes da operação quando aplicáveis: configuração real de e-mail/DNS, criação das novas caixas de e-mail, provisionamento do administrador, binding MCP distribuído, backup/storage real, RPO/RTO, UAT, revisão jurídica e verificação do ambiente conectado.
 
 Portanto permanecem válidos:
 
@@ -46,4 +44,4 @@ Portanto permanecem válidos:
 
 ## Próximo passo
 
-A Etapa 15 permanece suspensa até o CI integral verde do HEAD final, consolidação da evidência, revisão do PR #2 e aprovação explícita do merge.
+As Etapas 0–14.1 estão funcionalmente encerradas. A Etapa 15 permanece suspensa apenas até a revisão final do PR #2 e aprovação explícita do merge pelo usuário.

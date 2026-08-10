@@ -20,6 +20,7 @@ Nenhuma pendência será considerada encerrada por simples mudança documental. 
 
 ## Matriz consolidada
 
+<!-- prettier-ignore -->
 | Origem | ID / Tema | Estado inicial desta etapa | Fechamento requerido |
 |---|---|---|---|
 | Etapas 2/2.1 | DECT-08 / DEP-09 — 34 SKUs sem identidade | `OPEN_USER_INPUT` | identificar ou manter contenção formal sem publicação |

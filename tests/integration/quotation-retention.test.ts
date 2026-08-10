@@ -134,7 +134,11 @@ describe("retenção de cotações/leads", () => {
       .select("origin_page,referrer,utm_source")
       .eq("quotation_id", quotation.id)
       .single();
-    expect(storedSource).toMatchObject({ origin_page: "/produtos", referrer: null, utm_source: "teste" });
+    expect(storedSource).toMatchObject({
+      origin_page: "/produtos",
+      referrer: null,
+      utm_source: "teste",
+    });
 
     const { data: storedConsent } = await admin
       .from("consent_records")

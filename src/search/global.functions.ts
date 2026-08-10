@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 import { autocomplete, catalogFacets } from "@/catalog/public/read.server";
-import { listArticles } from "@/content/public/read.server";
+import { listArticles, type ArticleCardData } from "@/content/public/read.server";
 
 export type GlobalSuggestion =
   | {
@@ -62,12 +62,14 @@ export const fetchGlobalSuggestions = createServerFn({ method: "GET" })
         applicationSlug: application.slug,
       }));
 
-    const contentSuggestions: GlobalSuggestion[] = content.items.slice(0, 2).map((article) => ({
-      kind: "content" as const,
-      label: article.title,
-      sublabel: article.categoryName,
-      articleSlug: article.slug,
-    }));
+    const contentSuggestions: GlobalSuggestion[] = content.items
+      .slice(0, 2)
+      .map((article: ArticleCardData) => ({
+        kind: "content" as const,
+        label: article.title,
+        sublabel: article.categoryName,
+        articleSlug: article.slug,
+      }));
 
     return {
       suggestions: [...productSuggestions, ...solutionSuggestions, ...contentSuggestions],

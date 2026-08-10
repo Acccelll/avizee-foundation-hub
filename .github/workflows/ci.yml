@@ -103,6 +103,67 @@ jobs:
             echo "VITE_SUPABASE_PROJECT_ID=local"
           } >> "$GITHUB_ENV"
 
+      - name: Database logical restore rehearsal
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | grep '^supabase_db_' | head -n 1)"
+          if [ -z "$db_container" ]; then
+            echo "Container PostgreSQL local do Supabase não encontrado."
+            exit 1
+          fi
+
+          started_at="$(date +%s)"
+          dump_path="/tmp/avizee-pre-stage-15.dump"
+          restore_db="avizee_restore_rehearsal"
+
+          docker exec "$db_container" pg_dump \
+            -U postgres \
+            -d postgres \
+            -Fc \
+            -f "$dump_path"
+
+          docker exec "$db_container" psql \
+            -U postgres \
+            -d postgres \
+            -v ON_ERROR_STOP=1 \
+            -c "DROP DATABASE IF EXISTS ${restore_db} WITH (FORCE);" \
+            -c "CREATE DATABASE ${restore_db};"
+
+          docker exec "$db_container" pg_restore \
+            -U postgres \
+            -d "$restore_db" \
+            --no-owner \
+            --no-acl \
+            --exit-on-error \
+            "$dump_path"
+
+          restored_tables="$(docker exec "$db_container" psql -U postgres -d "$restore_db" -Atc "select count(*) from information_schema.tables where table_schema = 'public';")"
+          if [ "$restored_tables" -lt 20 ]; then
+            echo "Restore incompleto: somente ${restored_tables} tabelas públicas encontradas."
+            exit 1
+          fi
+
+          for table in product_families products quotations content_articles audit_logs; do
+            source_count="$(docker exec "$db_container" psql -U postgres -d postgres -Atc "select count(*) from public.${table};")"
+            restore_count="$(docker exec "$db_container" psql -U postgres -d "$restore_db" -Atc "select count(*) from public.${table};")"
+            if [ "$source_count" != "$restore_count" ]; then
+              echo "Contagem divergente após restore em ${table}: origem=${source_count}, restore=${restore_count}."
+              exit 1
+            fi
+          done
+
+          docker exec "$db_container" psql \
+            -U postgres \
+            -d postgres \
+            -v ON_ERROR_STOP=1 \
+            -c "DROP DATABASE ${restore_db} WITH (FORCE);"
+
+          finished_at="$(date +%s)"
+          elapsed="$((finished_at - started_at))"
+          echo "Database logical restore rehearsal: ${elapsed}s" >> "$GITHUB_STEP_SUMMARY"
+          echo "Validação: schema restaurado e contagens críticas equivalentes." >> "$GITHUB_STEP_SUMMARY"
+
       - name: Start application test server
         shell: bash
         run: |

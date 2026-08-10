@@ -120,9 +120,6 @@ jobs:
           dump_path="/tmp/avizee-pre-stage-15-public.dump"
           restore_db="avizee_restore_rehearsal"
 
-          # O ensaio cobre o schema da aplicação AviZee. Schemas gerenciados pela
-          # plataforma (realtime, storage, graphql etc.) pertencem ao backup do provedor
-          # e não devem contaminar o restore lógico independente da aplicação.
           docker exec "$db_container" pg_dump \
             -U postgres \
             -d postgres \
@@ -137,10 +134,6 @@ jobs:
             -c "DROP DATABASE IF EXISTS ${restore_db} WITH (FORCE);" \
             -c "CREATE DATABASE ${restore_db};"
 
-          # O banco novo já nasce com `public`; o dump da aplicação contém a criação
-          # desse schema, então ele precisa estar ausente antes do pg_restore.
-          # Dependências externas mínimas referenciadas pelo schema público são
-          # reconstruídas separadamente, sem restaurar os subsistemas gerenciados.
           docker exec -i "$db_container" psql \
             -U postgres \
             -d "$restore_db" \
@@ -160,8 +153,6 @@ jobs:
           $$;
           SQL
 
-          # Preserva somente os identificadores dos usuários necessários para satisfazer
-          # as FKs do schema da aplicação. Nenhum dado de autenticação é copiado.
           docker exec "$db_container" psql \
             -U postgres \
             -d postgres \
@@ -209,9 +200,6 @@ jobs:
       - name: Start application test server
         shell: bash
         run: |
-          # `vite preview` serves only the client preview for this TanStack Start/Nitro setup.
-          # The E2E gate needs the SSR/server-function routes, so it runs the Vite SSR dev server
-          # after the production build has already been validated by the previous step.
           nohup bunx vite dev --host 127.0.0.1 --port 8080 > /tmp/avizee-preview.log 2>&1 &
           echo $! > /tmp/avizee-preview.pid
           for attempt in $(seq 1 60); do
@@ -224,7 +212,21 @@ jobs:
           exit 1
 
       - name: Tests
-        run: bun run test
+        shell: bash
+        run: |
+          set -o pipefail
+          bunx vitest run --reporter=default --reporter=junit --outputFile.junit=/tmp/vitest-junit.xml 2>&1 | tee /tmp/vitest.log
+
+      - name: Upload test diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-diagnostics
+          path: |
+            /tmp/vitest-junit.xml
+            /tmp/vitest.log
+          if-no-files-found: warn
+          retention-days: 1
 
       - name: Cleanup local services
         if: always()

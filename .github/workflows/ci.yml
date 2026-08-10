@@ -98,10 +98,13 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Start application preview
+      - name: Start application test server
         shell: bash
         run: |
-          nohup bunx vite preview --host 127.0.0.1 --port 8080 > /tmp/avizee-preview.log 2>&1 &
+          # `vite preview` serves only the client preview for this TanStack Start/Nitro setup.
+          # The E2E gate needs the SSR/server-function routes, so it runs the Vite SSR dev server
+          # after the production build has already been validated by the previous step.
+          nohup bunx vite dev --host 127.0.0.1 --port 8080 > /tmp/avizee-preview.log 2>&1 &
           echo $! > /tmp/avizee-preview.pid
           for attempt in $(seq 1 60); do
             if curl --silent --fail http://127.0.0.1:8080/api/public/health > /tmp/health.json; then

@@ -6,13 +6,28 @@ export interface RetentionRunResult {
   protocols: string[];
 }
 
+interface RetentionRpcError {
+  code?: string | null;
+}
+
+interface RetentionRpcClient {
+  rpc(
+    name: "anonymize_expired_quotations",
+    params: { p_limit: number },
+  ): Promise<{
+    data: Array<{ id: string; protocol: string }> | null;
+    error: RetentionRpcError | null;
+  }>;
+}
+
 /**
  * Executa um lote da política aprovada de retenção de cotações/leads.
  * A seleção, o lock e a anonimização são atômicos no RPC do banco.
  */
 export async function processQuotationRetention(limit = 100): Promise<RetentionRunResult> {
   const boundedLimit = Math.max(1, Math.min(Math.trunc(limit), 1000));
-  const { data, error } = await supabaseAdmin.rpc("anonymize_expired_quotations", {
+  const retentionClient = supabaseAdmin as unknown as RetentionRpcClient;
+  const { data, error } = await retentionClient.rpc("anonymize_expired_quotations", {
     p_limit: boundedLimit,
   });
 
@@ -21,7 +36,7 @@ export async function processQuotationRetention(limit = 100): Promise<RetentionR
     throw new Error("Falha ao executar retenção de cotações.");
   }
 
-  const rows = (data ?? []) as Array<{ id: string; protocol: string }>;
+  const rows = data ?? [];
   logger.info("privacy.retention.completed", { anonymized: rows.length });
 
   return {

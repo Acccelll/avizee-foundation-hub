@@ -92,8 +92,8 @@ function Contato() {
 
             {!CONTACT_FORM_APPROVED && (
               <PendingNotice>
-                A Lista de Cotação permanece como fluxo registrado para solicitações comerciais. Para
-                outros assuntos, utilize os canais de atendimento informados nesta página.
+                A Lista de Cotação permanece como fluxo registrado para solicitações comerciais.
+                Para outros assuntos, utilize os canais de atendimento informados nesta página.
               </PendingNotice>
             )}
 

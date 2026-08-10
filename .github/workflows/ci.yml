@@ -137,7 +137,7 @@ jobs:
           # Dependências externas mínimas referenciadas pelo schema público.
           # auth.users/auth.uid existem no Supabase real; o ensaio cria somente o
           # contrato necessário para validar FKs e políticas sem restaurar o subsistema Auth.
-          docker exec "$db_container" psql \
+          docker exec -i "$db_container" psql \
             -U postgres \
             -d "$restore_db" \
             -v ON_ERROR_STOP=1 <<'SQL'

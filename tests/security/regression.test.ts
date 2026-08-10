@@ -1,11 +1,24 @@
-import { describe, it, expect, vi } from "vitest";
-import { getServerConfig, DEV_ONLY_QUOTATION_SALT, resetServerConfigCache } from "../../src/lib/env.server";
+import fs from "node:fs";
+import path from "node:path";
+
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import {
+  DEV_ONLY_QUOTATION_SALT,
+  getServerConfig,
+  resetServerConfigCache,
+} from "../../src/lib/env.server";
+
+const ORIGINAL_ENV = { ...process.env };
+
+afterEach(() => {
+  vi.unstubAllEnvs();
+  process.env = { ...ORIGINAL_ENV };
+  resetServerConfigCache();
+});
 
 describe("Home Page Security Regression", () => {
-  it("should not contain internal operational markers in the homepage", async () => {
-    // Simulating a fetch or reading the file content to check for forbidden strings
-    const fs = await import("fs");
-    const path = await import("path");
+  it("não contém marcadores operacionais internos na Home", () => {
     const content = fs.readFileSync(path.resolve(__dirname, "../../src/routes/index.tsx"), "utf-8");
 
     const forbidden = [
@@ -16,32 +29,37 @@ describe("Home Page Security Regression", () => {
       "ETAPA 13.1",
     ];
 
-    forbidden.forEach((term) => {
+    for (const term of forbidden) {
       expect(content).not.toContain(term);
-    });
+    }
   });
 });
 
 describe("Server Config Security", () => {
-  it("should fail strict config when variables are missing", () => {
+  it("recusa configuração estrita quando variáveis obrigatórias estão ausentes", () => {
     vi.stubEnv("APP_ENV", "production");
     vi.stubEnv("APP_PUBLIC_URL", "");
     vi.stubEnv("QUOTATION_HASH_SALT", "");
-    
-    // We expect it to throw because production requires these
-    expect(() => getServerConfig()).toThrow();
-    
-    vi.unstubAllEnvs();
+    resetServerConfigCache();
+
+    expect(() => getServerConfig()).toThrow(/QUOTATION_HASH_SALT|APP_PUBLIC_URL/);
   });
 
-  it("should use dev salt only in development", () => {
+  it("usa o sal local exclusivamente em desenvolvimento", () => {
     vi.stubEnv("APP_ENV", "development");
+    vi.stubEnv("APP_PUBLIC_URL", "http://localhost:8080");
     vi.stubEnv("QUOTATION_HASH_SALT", "");
-    // Reset cache is internal, but stubbing and calling should work if not cached
-    const config = getServerConfig();
-    // If it was already cached from a previous test, this might fail in a shared environment,
-    // but vitest usually isolates or we can try to force it if needed.
-    // Given previous failure, it seems it IS running the logic.
-    vi.unstubAllEnvs();
+    resetServerConfigCache();
+
+    expect(getServerConfig().QUOTATION_HASH_SALT).toBe(DEV_ONLY_QUOTATION_SALT);
+  });
+
+  it("nunca usa o sal local em produção", () => {
+    vi.stubEnv("APP_ENV", "production");
+    vi.stubEnv("APP_PUBLIC_URL", "https://avizee.example");
+    vi.stubEnv("QUOTATION_HASH_SALT", "production-salt-with-more-than-thirty-two-characters");
+    resetServerConfigCache();
+
+    expect(getServerConfig().QUOTATION_HASH_SALT).not.toBe(DEV_ONLY_QUOTATION_SALT);
   });
 });

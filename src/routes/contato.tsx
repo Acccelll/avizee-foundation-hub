@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { PublicShell } from "@/components/public/PublicShell";
-import { PendingDataList, PendingNotice } from "@/components/public/PendingData";
+import { ConfirmedDataList, PendingNotice } from "@/components/public/PendingData";
 import {
-  CONTACT_FIELDS,
+  CONTACT_DETAILS,
   CONTACT_FORM_APPROVED,
   CTA,
   MAP_APPROVED,
@@ -55,15 +55,11 @@ function Contato() {
             <h2 id="canais" className="text-[24px] font-bold">
               Canais de atendimento
             </h2>
-            <PendingDataList title="Dados de contato" fields={CONTACT_FIELDS} />
-            <PendingNotice>
-              Telefone, WhatsApp, e-mail, endereço e horário só serão publicados após a confirmação
-              formal desses dados (decisão Q-08). Nenhum valor provisório é exibido.
-            </PendingNotice>
+            <ConfirmedDataList title="Dados de contato" fields={CONTACT_DETAILS} />
             {!MAP_APPROVED && (
               <PendingNotice>
-                O mapa depende do endereço confirmado e só será carregado após ação explícita da
-                pessoa usuária. Nenhum serviço externo é chamado nesta página.
+                O endereço está confirmado. O mapa permanece desativado até aprovação explícita de
+                sua ativação; nenhum serviço externo é chamado nesta página.
               </PendingNotice>
             )}
           </section>
@@ -95,9 +91,8 @@ function Contato() {
 
             {!CONTACT_FORM_APPROVED && (
               <PendingNotice>
-                O formulário geral de contato ainda não foi ativado: finalidade, campos, destino,
-                retenção e provedor de e-mail dependem das decisões Q-13 e DEP-T1. Até lá, a lista
-                de cotação é o canal registrado de solicitação.
+                O formulário geral de contato permanece desativado até aprovação explícita. A lista
+                de cotação continua sendo o canal registrado de solicitação.
               </PendingNotice>
             )}
 

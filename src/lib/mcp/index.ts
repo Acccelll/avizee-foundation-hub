@@ -25,5 +25,5 @@ export default defineMcp({
     listFacetsTool,
     getFamilyTool,
     suggestTermsTool,
-  ] as any,
+  ],
 });

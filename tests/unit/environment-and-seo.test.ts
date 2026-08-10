@@ -75,7 +75,7 @@ describe("salt antiabuso (§11)", () => {
   it("nunca embute o valor de desenvolvimento em ambiente estrito", () => {
     withEnv({
       APP_ENV: "production",
-      QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001",
+      QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001-xx",
       APP_PUBLIC_URL: "https://exemplo.invalid",
     });
     expect(getServerConfig().QUOTATION_HASH_SALT).not.toBe(DEV_ONLY_QUOTATION_SALT);
@@ -91,7 +91,7 @@ describe("URL pública canônica (§14)", () => {
   it("exige APP_PUBLIC_URL fora de desenvolvimento", () => {
     withEnv({
       APP_ENV: "staging",
-      QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001",
+      QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001-xx",
       APP_PUBLIC_URL: undefined,
     });
     expect(() => getServerConfig()).toThrow(/APP_PUBLIC_URL/);
@@ -100,7 +100,7 @@ describe("URL pública canônica (§14)", () => {
   it("recusa URL sem HTTPS em produção", () => {
     withEnv({
       APP_ENV: "production",
-      QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001",
+      QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001-xx",
       APP_PUBLIC_URL: "http://exemplo.invalid",
     });
     expect(() => getServerConfig()).toThrow(/APP_PUBLIC_URL/);

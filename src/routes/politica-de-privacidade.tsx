@@ -1,8 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PublicShell } from "@/components/public/PublicShell";
-import { PendingDataList, PendingNotice } from "@/components/public/PendingData";
-import { LEGAL_DOCUMENTS, LEGAL_FIELDS } from "@/content/institutional";
+import {
+  ConfirmedDataList,
+  PendingDataList,
+  PendingNotice,
+} from "@/components/public/PendingData";
+import { LEGAL_DETAILS, LEGAL_DOCUMENTS, LEGAL_FIELDS } from "@/content/institutional";
 import { buildMeta } from "@/seo/meta";
 
 const DOC = LEGAL_DOCUMENTS.privacy;
@@ -13,7 +17,7 @@ export const Route = createFileRoute("/politica-de-privacidade")({
       title: "Política de privacidade",
       description:
         "Estrutura da política de privacidade da AviZee: dados tratados na lista de cotação, finalidade, retenção e direitos do titular conforme a LGPD.",
-      // Documento em rascunho: não indexável até a revisão jurídica (Q-13).
+      // Documento em rascunho: não indexável até o fechamento do conteúdo jurídico.
       noindex: true,
     }),
   component: Privacidade,
@@ -30,9 +34,9 @@ function Privacidade() {
 
         <div className="mt-8">
           <PendingNotice>
-            Este documento está em rascunho e não produz efeitos: o texto definitivo depende de
-            revisão jurídica e da confirmação dos dados da decisão Q-13. A página não é indexável
-            enquanto permanecer nesta situação.
+            Este documento permanece em rascunho enquanto o inventário final de operadores e a
+            revisão jurídica do texto não forem concluídos. Os dados confirmados abaixo já refletem
+            as decisões atuais da AviZee.
           </PendingNotice>
         </div>
 
@@ -49,10 +53,13 @@ function Privacidade() {
 
         <section aria-labelledby="dados-legais" className="mt-10">
           <h2 id="dados-legais" className="text-[22px] font-bold">
-            Informações pendentes de confirmação
+            Informações legais e de privacidade
           </h2>
-          <div className="mt-4">
-            <PendingDataList title="Dados legais e de privacidade" fields={LEGAL_FIELDS} />
+          <div className="mt-4 space-y-4">
+            <ConfirmedDataList title="Dados confirmados" fields={LEGAL_DETAILS} />
+            {LEGAL_FIELDS.length > 0 && (
+              <PendingDataList title="Dados ainda em fechamento" fields={LEGAL_FIELDS} />
+            )}
           </div>
         </section>
       </article>

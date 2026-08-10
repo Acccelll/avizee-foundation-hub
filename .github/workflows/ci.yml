@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [stage-14-1-content-completion]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      APP_ENV: test
+      VITE_APP_ENV: test
+      VITE_APP_VERSION: ci
+      APP_PUBLIC_URL: http://localhost:8080
+      QUOTATION_HASH_SALT: ci-only-quotation-hash-salt-0000000000000000
+      SUPABASE_URL: https://example.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: ci-publishable-key
+      SUPABASE_SERVICE_ROLE_KEY: ci-service-role-key
+      VITE_SUPABASE_URL: https://example.supabase.co
+      VITE_SUPABASE_PUBLISHABLE_KEY: ci-publishable-key
+      VITE_SUPABASE_PROJECT_ID: ci
+      CONTENT_SCHEDULER_SECRET: ci-only-content-scheduler-secret-000000000000
+      EMAIL_PROVIDER: log
+      STORAGE_PROVIDER: local
+      CAPTCHA_PROVIDER: null
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Tests
+        run: bun run test
+
+      - name: Build
+        run: bun run build

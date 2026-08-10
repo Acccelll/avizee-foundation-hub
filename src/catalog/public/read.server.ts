@@ -152,7 +152,9 @@ export async function catalogFacets(): Promise<CatalogFacets> {
       .select("slug, name, description, family_count")
       .order("sort_order"),
     db()
-      .from("public_search_index")
+      // O índice materializado não é exposto na API pública (hardening);
+      // a view `public_families` traz as mesmas facetas.
+      .from("public_families")
       .select("category_slug, segments, segment_slugs, applications, application_slugs"),
   ]);
 

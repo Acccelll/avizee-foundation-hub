@@ -1,4 +1,3 @@
-const MCP_PATH_PREFIXES = ["/mcp", "/.mcp/"] as const;
 const LOCAL_WINDOW_MS = 60_000;
 const LOCAL_MAX_REQUESTS = 300;
 
@@ -28,7 +27,7 @@ export interface McpOriginOptions {
 }
 
 export function isMcpRequestPath(pathname: string): boolean {
-  return MCP_PATH_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(prefix));
+  return pathname === "/mcp" || pathname.startsWith("/.mcp/");
 }
 
 function workerEnv(value: unknown): McpWorkerEnv {

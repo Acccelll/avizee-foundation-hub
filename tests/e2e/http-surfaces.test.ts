@@ -120,11 +120,14 @@ describe("páginas institucionais", () => {
     }
   });
 
-  it("Contato não publica dado não confirmado nem carrega mapa", async () => {
+  it("Contato publica apenas os dados confirmados e não carrega mapa automaticamente", async () => {
     const { body } = await get("/contato");
-    expect(body).toContain("informação em confirmação");
+    expect(body).toContain("(19) 99898-2930");
+    expect(body).toContain("comercial@avizee.com.br");
+    expect(body).toContain("Rua Diogo António Feijó, 111");
+    expect(body).toContain("13145-706");
+    expect(body).toContain("Seg - Sáb, 08h - 18h");
     expect(body).not.toMatch(/google\.com\/maps|maps\.googleapis|embedsocial/i);
-    expect(body).not.toMatch(/\(\d{2}\)\s?\d{4,5}-\d{4}/);
     expect(body).not.toMatch(/wa\.me\/\d/);
   });
 

@@ -182,6 +182,12 @@ export interface ArticleInput {
   note?: string | null | undefined;
 }
 
+export interface ScheduleArticleInput {
+  id: string;
+  scheduledAt: string;
+  note?: string | null | undefined;
+}
+
 function clean(value: string | null | undefined): string | null {
   if (value == null) return null;
   const text = sanitizeText(value);
@@ -197,14 +203,14 @@ async function syncFamilyRelations(auth: Authorized, articleId: string, blocks: 
     [];
   if (families.length > 0) {
     await auth.admin.from("content_article_families").insert(
-      families.map((f, index) => ({
-        article_id: articleId,
-        family_id: f["id"],
-        sort_order: index,
-      })),
+      slugs.flatMap((slug, index) => {
+        const family = families.find((f) => f["slug"] === slug);
+        return family
+          ? [{ article_id: articleId, family_id: family["id"], sort_order: index }]
+          : [];
+      }),
     );
   }
-  // Slug citado que não corresponde a família publicada é devolvido como aviso.
   return slugs.filter((slug) => !families.some((f) => f["slug"] === slug));
 }
 
@@ -225,6 +231,64 @@ async function syncReferences(
     }))
     .filter((r) => r.label);
   if (rows.length > 0) await auth.admin.from("content_references").insert(rows);
+}
+
+async function assertPublicationReady(auth: Authorized, article: Row) {
+  const parsed = blocksSchema.safeParse(article["blocks"] ?? []);
+  const blocks = parsed.success ? parsed.data : [];
+  const issues = checkContentCompliance({
+    title: String(article["title"] ?? ""),
+    excerpt: (article["excerpt"] ?? null) as string | null,
+    blocks,
+  });
+
+  if (!parsed.success) issues.push({ code: "STRUCTURE", detail: "blocos inválidos" });
+  if (!article["category_id"])
+    issues.push({ code: "STRUCTURE", detail: "categoria obrigatória" });
+  if (!article["author_id"]) issues.push({ code: "STRUCTURE", detail: "autor obrigatório" });
+  if (article["requires_technical_review"] && !article["technical_reviewer_id"]) {
+    issues.push({ code: "STRUCTURE", detail: "revisor técnico obrigatório" });
+  }
+  if (!article["excerpt"] || String(article["excerpt"]).trim().length < 40) {
+    issues.push({ code: "STRUCTURE", detail: "resumo com pelo menos 40 caracteres" });
+  }
+
+  const relationSlugs = relatedFamilySlugs(blocks);
+  if (relationSlugs.length > 0) {
+    const families =
+      unwrap<Row[]>(
+        await auth.admin.from("public_families").select("slug").in("slug", relationSlugs),
+      ) ?? [];
+    const unknown = relationSlugs.filter(
+      (slug) => !families.some((family) => family["slug"] === slug),
+    );
+    if (unknown.length > 0) {
+      issues.push({
+        code: "STRUCTURE",
+        detail: `família relacionada inválida: ${unknown.join(", ")}`,
+      });
+    }
+  }
+
+  if (issues.length > 0) {
+    throw new AppError("VALIDATION_ERROR", {
+      cause: `conformidade:${issues.map((issue) => `${issue.code}(${issue.detail})`).join("; ")}`,
+    });
+  }
+}
+
+async function statusEvent(
+  auth: Authorized,
+  input: { articleId: string; from: ContentStatus; to: ContentStatus; note?: string | null },
+) {
+  const { error } = await auth.admin.from("content_status_events").insert({
+    article_id: input.articleId,
+    from_status: input.from,
+    to_status: input.to,
+    actor_id: auth.userId,
+    note: clean(input.note),
+  });
+  if (error) throw new AppError("SERVICE_UNAVAILABLE", { cause: error.message });
 }
 
 export async function saveArticle(auth: Authorized, input: ArticleInput) {
@@ -283,7 +347,6 @@ export async function saveArticle(auth: Authorized, input: ArticleInput) {
         .select("id"),
     );
     if (previous["slug"] !== slug) {
-      // Endereço antigo continua resolvendo (redirecionamento).
       await auth.admin
         .from("content_article_slugs")
         .upsert({ article_id: articleId, slug: previous["slug"] }, { onConflict: "slug" });
@@ -341,6 +404,125 @@ export async function saveArticle(auth: Authorized, input: ArticleInput) {
   };
 }
 
+export async function scheduleArticle(auth: Authorized, input: ScheduleArticleInput) {
+  requirePermission(auth.roles, "content.publish");
+  const scheduledAt = new Date(input.scheduledAt);
+  if (Number.isNaN(scheduledAt.getTime()) || scheduledAt.getTime() <= Date.now()) {
+    throw new AppError("VALIDATION_ERROR", { cause: "agendamento-deve-ser-futuro" });
+  }
+
+  const rows = unwrap<Row[]>(
+    await auth.supabase.from("content_articles").select("*").eq("id", input.id).limit(1),
+  );
+  const article = rows?.[0];
+  if (!article) throw new AppError("NOT_FOUND");
+  if (article["status"] !== "READY_TO_PUBLISH") {
+    throw new AppError("CONFLICT", { cause: "artigo-nao-esta-pronto-para-agendar" });
+  }
+
+  await assertPublicationReady(auth, article);
+
+  const patch: Row = {
+    status: "SCHEDULED",
+    scheduled_at: scheduledAt.toISOString(),
+    scheduled_by: auth.userId,
+    schedule_attempts: 0,
+    last_schedule_attempt_at: null,
+    last_schedule_error: null,
+    schedule_claimed_at: null,
+    schedule_claim_token: null,
+    schedule_lease_until: null,
+    review_note: clean(input.note),
+    updated_by: auth.userId,
+  };
+  const updated = unwrap<Row[]>(
+    await auth.admin
+      .from("content_articles")
+      .update(patch)
+      .eq("id", input.id)
+      .eq("status", "READY_TO_PUBLISH")
+      .select("id"),
+  );
+  if ((updated ?? []).length !== 1) {
+    throw new AppError("CONFLICT", { cause: "estado-alterado-durante-agendamento" });
+  }
+
+  await statusEvent(auth, {
+    articleId: input.id,
+    from: "READY_TO_PUBLISH",
+    to: "SCHEDULED",
+    note: input.note,
+  });
+  await audit(auth.admin, {
+    actorId: auth.userId,
+    actorEmail: auth.email,
+    action: "content.status.change",
+    entity: "content_articles",
+    entityId: input.id,
+    previousValues: { status: "READY_TO_PUBLISH" },
+    newValues: { status: "SCHEDULED", scheduled_at: scheduledAt.toISOString() },
+  });
+
+  return { id: input.id, status: "SCHEDULED" as const, scheduledAt: scheduledAt.toISOString() };
+}
+
+export async function cancelArticleSchedule(
+  auth: Authorized,
+  input: { id: string; note?: string | null | undefined },
+) {
+  requirePermission(auth.roles, "content.publish");
+  const rows = unwrap<Row[]>(
+    await auth.supabase.from("content_articles").select("status, scheduled_at").eq("id", input.id).limit(1),
+  );
+  const article = rows?.[0];
+  if (!article) throw new AppError("NOT_FOUND");
+  if (article["status"] !== "SCHEDULED") {
+    throw new AppError("CONFLICT", { cause: "artigo-nao-esta-agendado" });
+  }
+
+  const updated = unwrap<Row[]>(
+    await auth.admin
+      .from("content_articles")
+      .update({
+        status: "READY_TO_PUBLISH",
+        scheduled_at: null,
+        scheduled_by: null,
+        schedule_attempts: 0,
+        last_schedule_attempt_at: null,
+        last_schedule_error: null,
+        schedule_claimed_at: null,
+        schedule_claim_token: null,
+        schedule_lease_until: null,
+        review_note: clean(input.note),
+        updated_by: auth.userId,
+      })
+      .eq("id", input.id)
+      .eq("status", "SCHEDULED")
+      .select("id"),
+  );
+  if ((updated ?? []).length !== 1) {
+    throw new AppError("CONFLICT", { cause: "estado-alterado-durante-cancelamento" });
+  }
+
+  await statusEvent(auth, {
+    articleId: input.id,
+    from: "SCHEDULED",
+    to: "READY_TO_PUBLISH",
+    note: input.note,
+  });
+  await audit(auth.admin, {
+    actorId: auth.userId,
+    actorEmail: auth.email,
+    action: "content.status.change",
+    entity: "content_articles",
+    entityId: input.id,
+    previousValues: { status: "SCHEDULED", scheduled_at: article["scheduled_at"] },
+    newValues: { status: "READY_TO_PUBLISH", scheduled_at: null },
+  });
+
+  return { id: input.id, status: "READY_TO_PUBLISH" as const };
+}
+
 export async function changeArticleStatus(
   auth: Authorized,
   input: { id: string; to: ContentStatus; note?: string | null | undefined },
@@ -352,35 +534,16 @@ export async function changeArticleStatus(
   if (!article) throw new AppError("NOT_FOUND");
 
   const from = article["status"] as ContentStatus;
+  if (input.to === "SCHEDULED" || from === "SCHEDULED") {
+    throw new AppError("CONFLICT", { cause: "use-operacao-especifica-de-agendamento" });
+  }
+
   const transition = findTransition(from, input.to);
   if (!transition)
     throw new AppError("CONFLICT", { cause: `transicao-invalida:${from}->${input.to}` });
 
-  // A permissão da transição é verificada além da permissão de entrada.
   requirePermission(auth.roles, transition.permission);
-
-  const parsed = blocksSchema.safeParse(article["blocks"] ?? []);
-  const blocks = parsed.success ? parsed.data : [];
-
-  if (transition.requiresCompliance) {
-    const issues = checkContentCompliance({
-      title: String(article["title"] ?? ""),
-      excerpt: (article["excerpt"] ?? null) as string | null,
-      blocks,
-    });
-    if (!parsed.success) issues.push({ code: "STRUCTURE", detail: "blocos inválidos" });
-    if (!article["category_id"])
-      issues.push({ code: "STRUCTURE", detail: "categoria obrigatória" });
-    if (!article["author_id"]) issues.push({ code: "STRUCTURE", detail: "autor obrigatório" });
-    if (!article["excerpt"] || String(article["excerpt"]).trim().length < 40) {
-      issues.push({ code: "STRUCTURE", detail: "resumo com pelo menos 40 caracteres" });
-    }
-    if (issues.length > 0) {
-      throw new AppError("VALIDATION_ERROR", {
-        cause: `conformidade:${issues.map((i) => `${i.code}(${i.detail})`).join("; ")}`,
-      });
-    }
-  }
+  if (transition.requiresCompliance) await assertPublicationReady(auth, article);
 
   const patch: Row = { status: input.to, updated_by: auth.userId, review_note: clean(input.note) };
   if (input.to === "PUBLISHED") {
@@ -391,17 +554,19 @@ export async function changeArticleStatus(
     patch["published_at"] = null;
   }
 
-  unwrap<Row[]>(
-    await auth.admin.from("content_articles").update(patch).eq("id", input.id).select("id"),
+  const updated = unwrap<Row[]>(
+    await auth.admin
+      .from("content_articles")
+      .update(patch)
+      .eq("id", input.id)
+      .eq("status", from)
+      .select("id"),
   );
+  if ((updated ?? []).length !== 1) {
+    throw new AppError("CONFLICT", { cause: "estado-alterado-durante-transicao" });
+  }
 
-  await auth.admin.from("content_status_events").insert({
-    article_id: input.id,
-    from_status: from,
-    to_status: input.to,
-    actor_id: auth.userId,
-    note: clean(input.note),
-  });
+  await statusEvent(auth, { articleId: input.id, from, to: input.to, note: input.note });
 
   const action =
     input.to === "PUBLISHED"

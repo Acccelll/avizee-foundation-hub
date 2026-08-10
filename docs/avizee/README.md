@@ -1,23 +1,34 @@
 # AviZee — Projeto de Catálogo B2B e Site Institucional
 
-Status: **REMEDIATION_COMPLETE_RC03_READY**
-Release Candidate: **RC-AVIZEE-03**
+Status corrente: **PRE_STAGE_15_CLOSURE_IN_PROGRESS**
 
-## Governança Vigente (Etapa 13.1.1)
+> Este arquivo aponta para o estado vigente. Relatórios de RC e etapas anteriores permanecem como histórico e não devem ser usados isoladamente como status atual.
 
-- **Veredito Produção**: PRODUCTION_BLOCKED
-- **Veredito Operação**: OPERATION_BLOCKED
-- **Etapa 14**: STAGE_14_BLOCKED
-- **Bloqueio Crítico P0**: SECRET_ROTATION_EXTERNAL_BLOCKER (Exposição histórica de .env)
-- **Bloqueio Crítico P0**: SMTP_DNS_PENDING (Falta de DNS/SPF/DKIM para e-mail comercial)
+## Estado atual
 
-## Sobre o Projeto
-Plataforma B2B para o setor de avicultura, focada em catálogo técnico e geração de leads via lista de cotação.
+- Etapa 14.1 foi integrada à `main` no PR #1.
+- O fechamento integral das Etapas 0–14.1 ocorre no PR #2 antes de qualquer início da Etapa 15.
+- A coorte pública continua restrita às 31 famílias / 97 SKUs aprovados; registros sem dados confiáveis permanecem contidos e não publicados.
+- A credencial SMTP legada foi confirmada pelo usuário como revogada/trocada.
+- Resend foi aprovado como provider transacional, mas criação de novos endereços, DNS e credenciais reais foi deliberadamente adiada até a conclusão de todas as etapas do projeto.
+- Produção não é autorizada automaticamente por este fechamento; gates externos de lançamento continuam separados da conclusão funcional.
 
-## Documentação de Remediação (Etapa 13.1.1)
-- [471-stage-13-1-remediation-plan.md](docs/avizee/471-stage-13-1-remediation-plan.md)
-- [480-release-candidate-recertification.md](docs/avizee/480-release-candidate-recertification.md)
-- [484-stage-13-1-executive-report.md](docs/avizee/484-stage-13-1-executive-report.md)
+## Fonte corrente de governança
+
+- [541-pre-stage-15-closure-matrix.md](541-pre-stage-15-closure-matrix.md) — matriz integral de fechamento.
+- [542-current-status-pre-stage-15.md](542-current-status-pre-stage-15.md) — status corrente.
+- [543-user-confirmations-2026-08-10.md](543-user-confirmations-2026-08-10.md) — decisões e dados confirmados pelo usuário.
+- [544-decision-reconciliation-pre-stage-15.md](544-decision-reconciliation-pre-stage-15.md) — reconciliação das decisões antigas.
+- [545-provider-operator-inventory.md](545-provider-operator-inventory.md) — inventário técnico de serviços externos.
+
+## Governança histórica
+
+Os documentos das Etapas 11–14, incluindo release candidates e relatórios de remediação, continuam versionados para rastreabilidade. Quando houver divergência de status entre um documento histórico e os arquivos correntes acima, prevalece a fonte corrente sem apagar o registro histórico.
+
+## Sobre o projeto
+
+Plataforma B2B para avicultura, focada em catálogo técnico, conteúdo consultivo e geração de solicitações por Lista de Cotação, sem preços públicos, estoque, checkout ou pagamento.
 
 ## Change Log
-Veja o histórico completo em [16-change-log.md](docs/avizee/16-change-log.md).
+
+Veja o histórico completo em [16-change-log.md](16-change-log.md).

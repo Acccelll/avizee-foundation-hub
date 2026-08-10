@@ -18,6 +18,7 @@ describe("MCP request boundary", () => {
     expect(isMcpRequestPath("/mcp")).toBe(true);
     expect(isMcpRequestPath("/.mcp/list-tools")).toBe(true);
     expect(isMcpRequestPath("/.mcp/invoke-tool/catalog.search")).toBe(true);
+    expect(isMcpRequestPath("/mcp-extra")).toBe(false);
     expect(isMcpRequestPath("/produtos")).toBe(false);
     expect(isMcpRequestPath("/.well-known/oauth-protected-resource")).toBe(false);
   });

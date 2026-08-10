@@ -5,6 +5,7 @@ registradas ao final deste documento.
 
 ## 1. Dados, finalidade e base legal
 
+<!-- prettier-ignore -->
 | Dado | Finalidade | Base legal (proposta) |
 |---|---|---|
 | Empresa, contato, e-mail, telefone, cidade, UF | Responder à solicitação de cotação | Procedimentos preliminares relacionados a contrato, a pedido do titular |
@@ -31,6 +32,7 @@ para entregar a mensagem.
 
 ## 4. Retenção proposta
 
+<!-- prettier-ignore -->
 | Dado | Retenção operacional | Observação |
 |---|---|---|
 | Cotações ativas | 24 meses após o último evento | Depois: anonimizar contato, preservar itens agregados |

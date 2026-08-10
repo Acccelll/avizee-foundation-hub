@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import {
   AlertCircle,
@@ -16,6 +18,7 @@ import {
   Type,
 } from "lucide-react";
 
+import { fetchCatalog } from "@/catalog/public/public.functions";
 import { inputClass, secondaryButtonClass } from "@/components/admin/ui";
 import { BLOCK_TYPES, type ContentBlock } from "@/content/blocks";
 
@@ -25,6 +28,13 @@ interface BlockEditorProps {
 }
 
 type CalloutTone = Extract<ContentBlock, { type: "callout" }>["tone"];
+
+interface FamilyOption {
+  slug: string;
+  name: string;
+  categoryName: string;
+  variationCount: number;
+}
 
 function moveItem<T>(items: T[], index: number, direction: "up" | "down"): T[] {
   const target = direction === "up" ? index - 1 : index + 1;
@@ -40,6 +50,36 @@ function moveItem<T>(items: T[], index: number, direction: "up" | "down"): T[] {
 
 export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+  const [familySearch, setFamilySearch] = useState<Record<number, string>>({});
+  const loadCatalog = useServerFn(fetchCatalog);
+
+  const familyOptionsQuery = useQuery({
+    queryKey: ["admin", "content", "public-family-options"],
+    staleTime: 5 * 60 * 1000,
+    queryFn: async (): Promise<FamilyOption[]> => {
+      const first = await loadCatalog({ data: { ordem: "category", pagina: 1 } });
+      const remainingPages = Array.from(
+        { length: Math.max(0, first.pageCount - 1) },
+        (_, index) => index + 2,
+      );
+      const remaining = await Promise.all(
+        remainingPages.map((page) => loadCatalog({ data: { ordem: "category", pagina: page } })),
+      );
+      const options = [first, ...remaining].flatMap((page) =>
+        page.items.map((family) => ({
+          slug: family.slug,
+          name: family.name,
+          categoryName: family.categoryName,
+          variationCount: family.variationCount,
+        })),
+      );
+      return [...new Map(options.map((option) => [option.slug, option])).values()].sort(
+        (a, b) =>
+          a.categoryName.localeCompare(b.categoryName, "pt-BR") ||
+          a.name.localeCompare(b.name, "pt-BR"),
+      );
+    },
+  });
 
   const toggleExpand = (index: number) => {
     setExpanded((previous) => ({ ...previous, [index]: !previous[index] }));
@@ -497,10 +537,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                 {block.type === "faq" && (
                   <div className="space-y-4">
                     {block.items.map((item, itemIndex) => (
-                      <div
-                        key={itemIndex}
-                        className="space-y-2 rounded-md bg-muted/20 p-3"
-                      >
+                      <div key={itemIndex} className="space-y-2 rounded-md bg-muted/20 p-3">
                         <label className="block">
                           <span className="sr-only">Pergunta {itemIndex + 1}</span>
                           <input
@@ -587,32 +624,98 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                   </div>
                 )}
 
-                {block.type === "product_relation" && (
-                  <div className="space-y-3">
-                    <label className="block">
-                      <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
-                        Slug da família
-                      </span>
-                      <input
-                        className={inputClass}
-                        value={block.familySlug}
-                        onChange={(event) => updateBlock(index, { familySlug: event.target.value })}
-                        placeholder="ex: familia-publica"
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
-                        Nota editorial
-                      </span>
-                      <input
-                        className={inputClass}
-                        value={block.note ?? ""}
-                        onChange={(event) => updateBlock(index, { note: event.target.value })}
-                        placeholder="Por que esta família é relevante para o artigo..."
-                      />
-                    </label>
-                  </div>
-                )}
+                {block.type === "product_relation" && (() => {
+                  const search = (familySearch[index] ?? "").trim().toLocaleLowerCase("pt-BR");
+                  const usedSlugs = new Set(
+                    blocks
+                      .filter(
+                        (candidate): candidate is Extract<ContentBlock, { type: "product_relation" }> =>
+                          candidate.type === "product_relation",
+                      )
+                      .map((candidate) => candidate.familySlug)
+                      .filter(Boolean),
+                  );
+                  const options = (familyOptionsQuery.data ?? []).filter((option) => {
+                    if (!search) return true;
+                    return [option.name, option.slug, option.categoryName].some((value) =>
+                      value.toLocaleLowerCase("pt-BR").includes(search),
+                    );
+                  });
+                  const currentExists = (familyOptionsQuery.data ?? []).some(
+                    (option) => option.slug === block.familySlug,
+                  );
+
+                  return (
+                    <div className="space-y-3">
+                      <label className="block">
+                        <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
+                          Buscar família pública
+                        </span>
+                        <input
+                          className={inputClass}
+                          value={familySearch[index] ?? ""}
+                          onChange={(event) =>
+                            setFamilySearch((previous) => ({
+                              ...previous,
+                              [index]: event.target.value,
+                            }))
+                          }
+                          placeholder="Nome, categoria ou slug"
+                        />
+                      </label>
+                      <label className="block">
+                        <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
+                          Família relacionada
+                        </span>
+                        <select
+                          className={inputClass}
+                          value={block.familySlug}
+                          disabled={familyOptionsQuery.isLoading || familyOptionsQuery.isError}
+                          onChange={(event) => {
+                            updateBlock(index, { familySlug: event.target.value });
+                            setFamilySearch((previous) => ({ ...previous, [index]: "" }));
+                          }}
+                        >
+                          <option value="">
+                            {familyOptionsQuery.isLoading
+                              ? "Carregando famílias…"
+                              : familyOptionsQuery.isError
+                                ? "Não foi possível carregar as famílias"
+                                : "Selecione uma família"}
+                          </option>
+                          {block.familySlug && !currentExists && (
+                            <option value={block.familySlug}>{block.familySlug} — referência inválida</option>
+                          )}
+                          {options.map((option) => (
+                            <option
+                              key={option.slug}
+                              value={option.slug}
+                              disabled={option.slug !== block.familySlug && usedSlugs.has(option.slug)}
+                            >
+                              {option.name} — {option.categoryName} ({option.variationCount} variações)
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      {block.familySlug && !currentExists && !familyOptionsQuery.isLoading && (
+                        <p className="text-[12px] text-danger" role="alert">
+                          A família informada não está disponível na camada pública do catálogo.
+                        </p>
+                      )}
+                      <label className="block">
+                        <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
+                          Nota editorial
+                        </span>
+                        <input
+                          className={inputClass}
+                          value={block.note ?? ""}
+                          onChange={(event) => updateBlock(index, { note: event.target.value })}
+                          placeholder="Por que esta família é relevante para o artigo..."
+                        />
+                      </label>
+                    </div>
+                  );
+                })()}
 
                 {block.type === "divider" && (
                   <div className="flex items-center justify-center py-8" aria-label="Divisor">
@@ -629,11 +732,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
         <button type="button" onClick={() => addBlock("heading")} className={secondaryButtonClass}>
           <Heading2 aria-hidden="true" className="mr-2 h-4 w-4" /> Título
         </button>
-        <button
-          type="button"
-          onClick={() => addBlock("paragraph")}
-          className={secondaryButtonClass}
-        >
+        <button type="button" onClick={() => addBlock("paragraph")} className={secondaryButtonClass}>
           <Type aria-hidden="true" className="mr-2 h-4 w-4" /> Texto
         </button>
         <button type="button" onClick={() => addBlock("list")} className={secondaryButtonClass}>
@@ -645,11 +744,7 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
         <button type="button" onClick={() => addBlock("image")} className={secondaryButtonClass}>
           <ImageIcon aria-hidden="true" className="mr-2 h-4 w-4" /> Imagem
         </button>
-        <button
-          type="button"
-          onClick={() => addBlock("callout")}
-          className={secondaryButtonClass}
-        >
+        <button type="button" onClick={() => addBlock("callout")} className={secondaryButtonClass}>
           <AlertCircle aria-hidden="true" className="mr-2 h-4 w-4" /> Destaque
         </button>
         <button type="button" onClick={() => addBlock("table")} className={secondaryButtonClass}>
@@ -658,18 +753,10 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
         <button type="button" onClick={() => addBlock("faq")} className={secondaryButtonClass}>
           <HelpCircle aria-hidden="true" className="mr-2 h-4 w-4" /> FAQ
         </button>
-        <button
-          type="button"
-          onClick={() => addBlock("product_relation")}
-          className={secondaryButtonClass}
-        >
+        <button type="button" onClick={() => addBlock("product_relation")} className={secondaryButtonClass}>
           <Box aria-hidden="true" className="mr-2 h-4 w-4" /> Produto
         </button>
-        <button
-          type="button"
-          onClick={() => addBlock("divider")}
-          className={secondaryButtonClass}
-        >
+        <button type="button" onClick={() => addBlock("divider")} className={secondaryButtonClass}>
           <Minus aria-hidden="true" className="mr-2 h-4 w-4" /> Divisor
         </button>
       </div>

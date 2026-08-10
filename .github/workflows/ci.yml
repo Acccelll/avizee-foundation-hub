@@ -103,6 +103,9 @@ jobs:
             echo "VITE_SUPABASE_PROJECT_ID=local"
           } >> "$GITHUB_ENV"
 
+      - name: Seed approved catalog fixture
+        run: bun scripts/ops/canonical-import.ts ci-seed
+
       - name: Database logical restore rehearsal
         shell: bash
         run: |

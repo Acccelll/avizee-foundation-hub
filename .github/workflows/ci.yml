@@ -66,7 +66,12 @@ jobs:
             echo "Nenhum arquivo formatável alterado."
             exit 0
           fi
-          bunx prettier --check "${files[@]}"
+          bunx prettier --write "${files[@]}"
+          if ! git diff --quiet; then
+            echo "::error::Prettier encontrou diferenças; patch exato abaixo."
+            git diff --no-ext-diff -- "${files[@]}"
+            exit 1
+          fi
 
       # O plugin file-based do TanStack Router regenera routeTree.gen.ts no build.
       # A compilação vem antes do tsc para que novas rotas sejam tipadas pelo artefato gerado.

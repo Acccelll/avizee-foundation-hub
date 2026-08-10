@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { fetchFacets } from "@/catalog/public/public.functions";
 import { PublicShell } from "@/components/public/PublicShell";
 import { PendingNotice } from "@/components/public/PendingData";
-import { CTA, SOLUTION_DETAIL_PAGES_APPROVED } from "@/content/institutional";
+import { CTA } from "@/content/institutional";
 import { buildMeta } from "@/seo/meta";
 
 interface Application {
@@ -59,8 +59,8 @@ function Solucoes() {
             {(applications as Application[]).map((application) => (
               <li key={application.slug}>
                 <Link
-                  to="/produtos"
-                  search={{ aplicacao: application.slug }}
+                  to="/solucoes/$applicationSlug"
+                  params={{ applicationSlug: application.slug }}
                   className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
                 >
                   <span className="text-[18px] font-semibold">{application.name}</span>
@@ -73,15 +73,13 @@ function Solucoes() {
           </ul>
         </section>
 
-        {!SOLUTION_DETAIL_PAGES_APPROVED && (
-          <div className="mt-10 max-w-3xl">
-            <PendingNotice>
-              As páginas detalhadas de solução (conteúdo consultivo por aplicação) dependem da
-              decisão DEC-07 / DECT-12, ainda em aberto. Até a aprovação, cada aplicação leva à
-              seleção correspondente do catálogo.
-            </PendingNotice>
-          </div>
-        )}
+        <div className="mt-10 max-w-3xl">
+          <PendingNotice>
+            Cada aplicação abre uma página consultiva própria, reunindo apenas famílias publicadas
+            associadas àquela necessidade e conteúdos ligados a essas famílias por relação editorial
+            declarada.
+          </PendingNotice>
+        </div>
 
         <section
           aria-labelledby="cta-solucoes"

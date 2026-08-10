@@ -4,7 +4,9 @@ Data: 2026-08-10
 
 ## Objetivo
 
-Eliminar estados documentais obsoletos sem transformar recomendações antigas em decisões por inferência. Quando uma proposta antiga foi posteriormente substituída por decisão explícita, implementação já aprovada ou contenção formal, este documento registra essa relação. Itens que ainda exigem manifestação do usuário permanecem abertos.
+Eliminar estados documentais obsoletos sem transformar recomendações antigas em decisões por inferência. Quando uma proposta antiga foi posteriormente substituída por decisão explícita, implementação já aprovada ou contenção formal, este documento registra essa relação.
+
+As quatro decisões funcionais que ainda estavam abertas foram aprovadas pelo usuário no fechamento pré-Etapa 15 e estão registradas no doc. 549.
 
 ## Etapa 2 — DEC-01 a DEC-18
 
@@ -14,10 +16,10 @@ Eliminar estados documentais obsoletos sem transformar recomendações antigas e
 - `DEC-04 — URLs de catálogo`: encerrada pela implementação canônica `/produtos/{categoria}/{familia}`.
 - `DEC-05 — Linhas complementares`: encerrada como rejeitada; a sexta categoria permanece válida.
 - `DEC-06 — páginas individuais de SKU`: encerrada no escopo v1 pela página canônica de família; SKU permanece variação/atributo e não recebe rota pública própria.
-- `DEC-07 — páginas de solução`: permanece aberta. É a única decisão estrutural de conteúdo necessária antes da Etapa 15.
+- `DEC-07 — páginas de solução`: encerrada por decisão explícita no doc. 549. A v1 passa a ter páginas consultivas canônicas `/solucoes/{aplicacao}`, sem alterar taxonomia nem inventar conteúdo técnico.
 - `DEC-08 — marcas de terceiro na busca`: encerrada pelos controles públicos de marca e pela proibição R-05/D-011 a D-013.
 - `DEC-09 — páginas de segmento`: encerrada no escopo v1; segmentos permanecem atributo/filtro, sem nova superfície pública própria.
-- `DEC-10 — busca global`: permanece como divergência funcional. O wireframe aprovado descreve resultados agrupados de Produtos, Soluções e Conteúdos, enquanto a implementação atual pesquisa somente o catálogo. Deve ser fechada por implementação ou decisão explícita de conter a busca à v1 atual.
+- `DEC-10 — busca global`: encerrada por decisão explícita no doc. 549. A busca pública passa a agrupar Produtos, Soluções e Conteúdos publicados, preservando Produtos como primeiro grupo e `/busca` como `noindex`.
 - `DEC-11 — WhatsApp`: encerrada por D-044; Lista de Cotação é principal e WhatsApp é secundário/contextual.
 - `DEC-12 — campos da cotação`: encerrada pela implementação do fluxo atual e pela minimização LGPD aprovada.
 - `DEC-13 — persistência da lista`: encerrada pela implementação vigente da Lista de Cotação, sem criação de conta pública.
@@ -35,7 +37,7 @@ Eliminar estados documentais obsoletos sem transformar recomendações antigas e
 - `DECT-08`: encerrada por contenção formal D-054. Os 34 SKUs sem identidade permanecem na fila de normalização e fora da publicação.
 - `DECT-10`: encerrada por D-053.
 - `DECT-11`: encerrada por contenção formal D-054. Os 16 SKUs sem nome público confiável permanecem fora da publicação até dados confiáveis.
-- `DECT-12`: permanece aberta em conjunto com `DEC-07`.
+- `DECT-12`: encerrada em conjunto com `DEC-07` pela decisão explícita do doc. 549.
 - `DECT-13`: a categoria Linhas complementares permanece categoria aprovada; filtros não criam URLs públicas canônicas alternativas. Nenhuma mudança taxonômica é feita neste fechamento.
 - `DECT-14`: encerrada por D-054; FAM-032/PE sem identidade permanece fora do catálogo público.
 
@@ -43,16 +45,16 @@ Eliminar estados documentais obsoletos sem transformar recomendações antigas e
 
 Os conflitos individuais não resolvidos permanecem `CLOSED_CONTAINED` para fins de fechamento da v1: não são apagados, não são publicados e não bloqueiam a coorte 31/97. Só entram no catálogo quando a AviZee fornecer dado confiável e a normalização for revisada.
 
-## Decisões que ainda exigem manifestação
+## Decisões funcionais finais
 
-Após esta reconciliação, as decisões antigas que realmente continuam abertas são:
+O lote antes aberto foi encerrado no doc. 549:
 
-1. `DEC-07 / DECT-12` — páginas consultivas de solução por aplicação.
-2. `DEC-10` — completar a busca global prevista no wireframe ou formalizar a busca somente de catálogo na v1.
-3. Ativação do formulário geral de contato dentro do layout já aprovado.
-4. Ativação do mapa sob interação dentro do layout já aprovado.
+1. páginas consultivas por aplicação — aprovadas;
+2. busca global Produtos + Soluções + Conteúdos — aprovada;
+3. formulário geral de Contato — mantido fora da v1;
+4. mapa — mantido fora da v1.
 
-Os itens acima não serão resolvidos por inferência.
+Não resta `OPEN_USER_INPUT` funcional deste lote. A implementação das duas decisões positivas deve ser validada pelo CI do HEAD antes de ser classificada como `CLOSED_IMPLEMENTED`.
 
 ## Regra de precedência
 

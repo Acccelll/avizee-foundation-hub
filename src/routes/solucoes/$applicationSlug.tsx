@@ -94,9 +94,7 @@ function SolucaoPorAplicacao() {
   const { application, families, articles } = Route.useLoaderData();
 
   return (
-    <PublicShell
-      breadcrumb={[{ label: "Soluções", to: "/solucoes" }, { label: application.name }]}
-    >
+    <PublicShell breadcrumb={[{ label: "Soluções", to: "/solucoes" }, { label: application.name }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
           <p className="text-[13px] font-semibold uppercase tracking-widest text-emphasis">
@@ -109,7 +107,8 @@ function SolucaoPorAplicacao() {
             associada no catálogo AviZee.
           </p>
           <p className="mt-4 text-[16px] text-text-secondary">
-            {families.length} {families.length === 1 ? "família relacionada" : "famílias relacionadas"}.
+            {families.length}{" "}
+            {families.length === 1 ? "família relacionada" : "famílias relacionadas"}.
           </p>
         </header>
 

@@ -2,21 +2,17 @@ import { useNavigate } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 
-import { fetchSuggestions } from "@/catalog/public/public.functions";
-
-interface Suggestion {
-  kind: "sku" | "family";
-  label: string;
-  sublabel: string | null;
-  familySlug: string;
-  sku: string | null;
-}
+import {
+  fetchGlobalSuggestions,
+  type GlobalSuggestion,
+} from "@/search/global.functions";
 
 /**
- * Combobox de busca do catálogo (WCAG 2.2 AA):
+ * Combobox de busca global (WCAG 2.2 AA):
  * - funciona sem JavaScript (submit do formulário navega para /busca);
  * - sugestões com `role="listbox"`, navegação por setas e Escape;
- * - mínimo de 2 caracteres, debounce de 250 ms (doc 106 §3).
+ * - mínimo de 2 caracteres, debounce de 250 ms (doc 49 / doc 106 §3);
+ * - resultados agrupados pela ordem Produtos → Soluções → Conteúdos.
  */
 export function SearchBox({
   defaultValue = "",
@@ -29,7 +25,7 @@ export function SearchBox({
   const listId = useId();
   const inputId = useId();
   const [term, setTerm] = useState(defaultValue);
-  const [items, setItems] = useState<Suggestion[]>([]);
+  const [items, setItems] = useState<GlobalSuggestion[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -45,10 +41,10 @@ export function SearchBox({
     }
     let cancelled = false;
     const timer = setTimeout(() => {
-      void fetchSuggestions({ data: { q: value } })
+      void fetchGlobalSuggestions({ data: { q: value } })
         .then((result) => {
           if (cancelled) return;
-          setItems(result.suggestions as Suggestion[]);
+          setItems(result.suggestions as GlobalSuggestion[]);
           setOpen(result.suggestions.length > 0);
           setActive(-1);
         })
@@ -75,8 +71,22 @@ export function SearchBox({
     void navigate({ to: "/busca", search: { q: value.trim() } });
   }
 
-  function choose(item: Suggestion) {
+  function choose(item: GlobalSuggestion) {
     setOpen(false);
+    if (item.kind === "solution") {
+      void navigate({
+        to: "/solucoes/$applicationSlug",
+        params: { applicationSlug: item.applicationSlug },
+      });
+      return;
+    }
+    if (item.kind === "content") {
+      void navigate({
+        to: "/conteudos/$articleSlug",
+        params: { articleSlug: item.articleSlug },
+      });
+      return;
+    }
     submit(item.kind === "sku" && item.sku ? item.sku : item.label);
   }
 
@@ -92,7 +102,7 @@ export function SearchBox({
         }}
       >
         <label htmlFor={inputId} className="mb-2 block text-[14px] font-semibold">
-          Buscar no catálogo
+          Buscar no site
         </label>
         <div className="flex gap-2">
           <input
@@ -123,7 +133,7 @@ export function SearchBox({
             aria-controls={listId}
             aria-autocomplete="list"
             aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
-            placeholder="Nome do produto, aplicação ou referência (ex.: AG011)"
+            placeholder="Produto, aplicação, conteúdo ou referência (ex.: AG011)"
             className="h-12 w-full rounded-[8px] border border-border bg-background px-4 text-[16px] placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis"
           />
           <button

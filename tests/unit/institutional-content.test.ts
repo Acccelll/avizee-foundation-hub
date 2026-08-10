@@ -126,11 +126,14 @@ describe("conteúdo institucional (Etapa 9)", () => {
     expect(LEGAL_FIELDS.map((field) => field.label)).toEqual(["Provedores e operadores"]);
   });
 
-  it("mantém desativado tudo que ainda depende de decisão aberta", () => {
-    expect(MISSION_VISION_VALUES_APPROVED).toBe(false);
-    expect(SOLUTION_DETAIL_PAGES_APPROVED).toBe(false);
+  it("registra as decisões funcionais finais pré-Etapa 15", () => {
+    expect(SOLUTION_DETAIL_PAGES_APPROVED).toBe(true);
     expect(CONTACT_FORM_APPROVED).toBe(false);
     expect(MAP_APPROVED).toBe(false);
+  });
+
+  it("mantém fora do escopo o que continua não aprovado", () => {
+    expect(MISSION_VISION_VALUES_APPROVED).toBe(false);
     expect(PUBLISHED_ARTICLES).toBe(0);
   });
 

@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
+  enforceMcpCanonicalOrigin,
   enforceMcpRateLimit,
   isMcpRequestPath,
   resetLocalMcpRateLimitForTests,
@@ -12,13 +13,54 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("MCP rate limit boundary", () => {
+describe("MCP request boundary", () => {
   it("reconhece somente superfícies MCP", () => {
     expect(isMcpRequestPath("/mcp")).toBe(true);
     expect(isMcpRequestPath("/.mcp/list-tools")).toBe(true);
     expect(isMcpRequestPath("/.mcp/invoke-tool/catalog.search")).toBe(true);
     expect(isMcpRequestPath("/produtos")).toBe(false);
     expect(isMcpRequestPath("/.well-known/oauth-protected-resource")).toBe(false);
+  });
+
+  it("não aplica a validação de origem fora das superfícies MCP", () => {
+    const result = enforceMcpCanonicalOrigin(
+      new Request("https://host-nao-canonico.invalid/produtos"),
+      { appEnv: "production", publicUrl: "https://avizee.example" },
+    );
+    expect(result).toBeNull();
+  });
+
+  it("aceita a origem canônica configurada em produção", () => {
+    const result = enforceMcpCanonicalOrigin(new Request("https://avizee.example/mcp"), {
+      appEnv: "production",
+      publicUrl: "https://avizee.example",
+    });
+    expect(result).toBeNull();
+  });
+
+  it("recusa host divergente em produção sem confiar em forwarded host", async () => {
+    const result = enforceMcpCanonicalOrigin(
+      new Request("https://host-nao-canonico.invalid/mcp", {
+        headers: { "x-forwarded-host": "avizee.example" },
+      }),
+      { appEnv: "production", publicUrl: "https://avizee.example" },
+    );
+
+    expect(result?.status).toBe(421);
+    await expect(result?.json()).resolves.toEqual({ ok: false, error: "invalid_origin" });
+  });
+
+  it("falha fechado em produção quando a origem canônica não está válida", async () => {
+    const result = enforceMcpCanonicalOrigin(new Request("https://avizee.example/mcp"), {
+      appEnv: "production",
+      publicUrl: "http://avizee.example",
+    });
+
+    expect(result?.status).toBe(503);
+    await expect(result?.json()).resolves.toEqual({
+      ok: false,
+      error: "mcp_origin_not_configured",
+    });
   });
 
   it("não interfere em rotas públicas normais", async () => {

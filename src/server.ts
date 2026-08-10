@@ -2,7 +2,10 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
-import { enforceMcpRateLimit } from "./lib/mcp/rate-limit.server";
+import {
+  enforceMcpCanonicalOrigin,
+  enforceMcpRateLimit,
+} from "./lib/mcp/rate-limit.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -48,6 +51,9 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const originResponse = enforceMcpCanonicalOrigin(request);
+      if (originResponse) return originResponse;
+
       const rateLimitResponse = await enforceMcpRateLimit(request, env);
       if (rateLimitResponse) return rateLimitResponse;
 

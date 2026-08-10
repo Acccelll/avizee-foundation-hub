@@ -22,6 +22,11 @@ export interface McpRateLimitOptions {
   now?: number;
 }
 
+export interface McpOriginOptions {
+  appEnv?: string;
+  publicUrl?: string;
+}
+
 export function isMcpRequestPath(pathname: string): boolean {
   return MCP_PATH_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(prefix));
 }
@@ -38,7 +43,7 @@ function actorKey(request: Request): string {
   return cloudflareIp ? `ip:${cloudflareIp}` : "anonymous";
 }
 
-function blocked(status: 429 | 503, error: string): Response {
+function blocked(status: 421 | 429 | 503, error: string): Response {
   return Response.json(
     { ok: false, error },
     {
@@ -48,6 +53,33 @@ function blocked(status: 429 | 503, error: string): Response {
       },
     },
   );
+}
+
+/**
+ * O adaptador MCP gerado pode operar atrás de proxies. Em produção, o entrypoint
+ * externo limita a superfície MCP à origem canônica explicitamente configurada,
+ * sem depender de X-Forwarded-Host fornecido pelo cliente.
+ */
+export function enforceMcpCanonicalOrigin(
+  request: Request,
+  options: McpOriginOptions = {},
+): Response | null {
+  const requestUrl = new URL(request.url);
+  if (!isMcpRequestPath(requestUrl.pathname)) return null;
+
+  const appEnv = options.appEnv ?? process.env["APP_ENV"] ?? "development";
+  if (appEnv !== "production") return null;
+
+  const publicUrl = options.publicUrl ?? process.env["APP_PUBLIC_URL"] ?? "";
+  try {
+    const canonicalUrl = new URL(publicUrl);
+    if (canonicalUrl.protocol !== "https:") {
+      return blocked(503, "mcp_origin_not_configured");
+    }
+    return requestUrl.origin === canonicalUrl.origin ? null : blocked(421, "invalid_origin");
+  } catch {
+    return blocked(503, "mcp_origin_not_configured");
+  }
 }
 
 function localLimit(key: string, now: number): Response | null {

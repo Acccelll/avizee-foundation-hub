@@ -2,10 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 
-import {
-  fetchGlobalSuggestions,
-  type GlobalSuggestion,
-} from "@/search/global.functions";
+import { fetchGlobalSuggestions, type GlobalSuggestion } from "@/search/global.functions";
 
 /**
  * Combobox de busca global (WCAG 2.2 AA):

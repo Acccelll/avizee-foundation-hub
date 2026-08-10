@@ -47,10 +47,47 @@ describe("MCP request boundary", () => {
     expect(result).toBeNull();
   });
 
-  it("recusa host divergente em produção sem confiar em forwarded host", async () => {
+  it("aceita forwarded host e proto somente quando coerentes com a origem canônica", () => {
+    const result = enforceMcpCanonicalOrigin(
+      new Request("https://avizee.example/mcp", {
+        headers: {
+          "x-forwarded-host": "avizee.example",
+          "x-forwarded-proto": "https",
+        },
+      }),
+      { appEnv: "production", publicUrl: "https://avizee.example" },
+    );
+    expect(result).toBeNull();
+  });
+
+  it("recusa origem de request divergente mesmo com forwarded host canônico", async () => {
     const result = enforceMcpCanonicalOrigin(
       new Request("https://host-nao-canonico.invalid/mcp", {
         headers: { "x-forwarded-host": "avizee.example" },
+      }),
+      { appEnv: "production", publicUrl: "https://avizee.example" },
+    );
+
+    expect(result?.status).toBe(421);
+    await expect(result?.json()).resolves.toEqual({ ok: false, error: "invalid_origin" });
+  });
+
+  it("recusa forwarded host divergente mesmo quando a URL do request é canônica", async () => {
+    const result = enforceMcpCanonicalOrigin(
+      new Request("https://avizee.example/mcp", {
+        headers: { "x-forwarded-host": "host-nao-canonico.invalid" },
+      }),
+      { appEnv: "production", publicUrl: "https://avizee.example" },
+    );
+
+    expect(result?.status).toBe(421);
+    await expect(result?.json()).resolves.toEqual({ ok: false, error: "invalid_origin" });
+  });
+
+  it("recusa forwarded proto não HTTPS em produção", async () => {
+    const result = enforceMcpCanonicalOrigin(
+      new Request("https://avizee.example/mcp", {
+        headers: { "x-forwarded-proto": "http" },
       }),
       { appEnv: "production", publicUrl: "https://avizee.example" },
     );

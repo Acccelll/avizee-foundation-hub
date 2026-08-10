@@ -100,7 +100,9 @@ export function getServerConfig(): ServerConfig {
   let publicUrl = cfg.APP_PUBLIC_URL;
   if (!publicUrl) {
     if (strict) {
-      throw new Error("Configuração ausente: APP_PUBLIC_URL é obrigatória fora de desenvolvimento.");
+      throw new Error(
+        "Configuração ausente: APP_PUBLIC_URL é obrigatória fora de desenvolvimento.",
+      );
     }
     publicUrl = DEV_PUBLIC_URL;
   }

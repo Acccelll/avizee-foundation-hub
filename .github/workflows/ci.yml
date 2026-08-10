@@ -137,13 +137,15 @@ jobs:
             -c "DROP DATABASE IF EXISTS ${restore_db} WITH (FORCE);" \
             -c "CREATE DATABASE ${restore_db};"
 
-          # Dependências externas mínimas referenciadas pelo schema público.
-          # auth.users/auth.uid existem no Supabase real; o ensaio cria somente o
-          # contrato necessário para validar FKs e políticas sem restaurar o subsistema Auth.
+          # O banco novo já nasce com `public`; o dump da aplicação contém a criação
+          # desse schema, então ele precisa estar ausente antes do pg_restore.
+          # Dependências externas mínimas referenciadas pelo schema público são
+          # reconstruídas separadamente, sem restaurar os subsistemas gerenciados.
           docker exec -i "$db_container" psql \
             -U postgres \
             -d "$restore_db" \
             -v ON_ERROR_STOP=1 <<'SQL'
+          DROP SCHEMA IF EXISTS public CASCADE;
           CREATE SCHEMA IF NOT EXISTS extensions;
           CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA extensions;
           CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA extensions;
@@ -157,6 +159,18 @@ jobs:
             SELECT NULLIF(current_setting('request.jwt.claim.sub', true), '')::uuid
           $$;
           SQL
+
+          # Preserva somente os identificadores dos usuários necessários para satisfazer
+          # as FKs do schema da aplicação. Nenhum dado de autenticação é copiado.
+          docker exec "$db_container" psql \
+            -U postgres \
+            -d postgres \
+            -Atc "SELECT id FROM auth.users ORDER BY id" \
+            | docker exec -i "$db_container" psql \
+                -U postgres \
+                -d "$restore_db" \
+                -v ON_ERROR_STOP=1 \
+                -c "COPY auth.users(id) FROM STDIN"
 
           docker exec "$db_container" pg_restore \
             -U postgres \

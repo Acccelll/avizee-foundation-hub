@@ -4,7 +4,9 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [stage-14-1-content-completion]
+    branches:
+      - stage-14-1-content-completion
+      - pre-stage-15-close-previous-stages
 
 permissions:
   contents: read

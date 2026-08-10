@@ -168,13 +168,13 @@ export const LEGAL_DOCUMENTS = {
 /** Missão, visão e valores: NÃO aprovados — o bloco não é publicado. */
 export const MISSION_VISION_VALUES_APPROVED = false;
 
-/** Página detalhada de solução: DEC-07 / DECT-12 em aberto — não implementada. */
-export const SOLUTION_DETAIL_PAGES_APPROVED = false;
+/** Páginas consultivas por aplicação aprovadas no fechamento pré-Etapa 15. */
+export const SOLUTION_DETAIL_PAGES_APPROVED = true;
 
-/** Formulário geral de contato: ainda depende de aprovação explícita de ativação. */
+/** Decisão final pré-Etapa 15: não ativar formulário geral de contato na v1. */
 export const CONTACT_FORM_APPROVED = false;
 
-/** Endereço está confirmado, mas o mapa continua desativado até aprovação explícita. */
+/** Decisão final pré-Etapa 15: não carregar mapa externo na v1. */
 export const MAP_APPROVED = false;
 
 /** Central de Conteúdos é dinâmica; constante histórica mantida apenas por compatibilidade. */

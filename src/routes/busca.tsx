@@ -24,7 +24,13 @@ export const Route = createFileRoute("/busca")({
   loader: async ({ deps }) => {
     const facets = await fetchFacets();
     if (!deps.q) {
-      return { q: "", catalog: null, content: null, solutions: [], facets };
+      return {
+        q: "",
+        catalog: null,
+        content: null,
+        solutions: [] as typeof facets.applications,
+        facets,
+      };
     }
 
     const contentPromise =

@@ -23,9 +23,7 @@ export interface McpRateLimitOptions {
 }
 
 export function isMcpRequestPath(pathname: string): boolean {
-  return MCP_PATH_PREFIXES.some(
-    (prefix) => pathname === prefix || pathname.startsWith(prefix),
-  );
+  return MCP_PATH_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(prefix));
 }
 
 function workerEnv(value: unknown): McpWorkerEnv {

@@ -1,45 +1,51 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import searchCatalogTool from "../../src/lib/mcp/tools/search-catalog";
-import getFamilyTool from "../../src/lib/mcp/tools/get-family";
-import suggestTermsTool from "../../src/lib/mcp/tools/suggest-terms";
+import { describe, expect, it } from "vitest";
+import { z } from "zod";
+
+import { getFamilyInputSchema } from "../../src/lib/mcp/tools/get-family";
+import { searchCatalogInputSchema } from "../../src/lib/mcp/tools/search-catalog";
+import { suggestTermsInputSchema } from "../../src/lib/mcp/tools/suggest-terms";
 
 describe("MCP Tools Hardening", () => {
   describe("search_catalog", () => {
-    it("should reject excessively long search terms", async () => {
-      const longTerm = "a".repeat(101);
-      // We check if the Zod schema in inputSchema would catch this
-      // The defineTool handler is wrapped, but we can test the logic
-      const schema = (searchCatalogTool as any).inputSchema;
-      const result = zSchemaParse(schema, { q: longTerm });
-      expect(result.success).toBe(false);
+    const schema = z.object(searchCatalogInputSchema);
+
+    it("rejeita termos de busca excessivamente longos", () => {
+      expect(schema.safeParse({ q: "a".repeat(101) }).success).toBe(false);
     });
 
-    it("should reject invalid page numbers", async () => {
-      const schema = (searchCatalogTool as any).inputSchema;
-      expect(zSchemaParse(schema, { pagina: 0 }).success).toBe(false);
-      expect(zSchemaParse(schema, { pagina: 201 }).success).toBe(false);
+    it("rejeita páginas fora do intervalo permitido", () => {
+      expect(schema.safeParse({ pagina: 0 }).success).toBe(false);
+      expect(schema.safeParse({ pagina: 201 }).success).toBe(false);
+    });
+
+    it("aceita consulta pública dentro dos limites", () => {
+      expect(schema.safeParse({ q: "agulha", pagina: 1 }).success).toBe(true);
     });
   });
 
   describe("get_family", () => {
-    it("should reject excessively long slugs", async () => {
-      const schema = (getFamilyTool as any).inputSchema;
-      expect(zSchemaParse(schema, { categoria: "a".repeat(101), familia: "f" }).success).toBe(false);
+    const schema = z.object(getFamilyInputSchema);
+
+    it("rejeita slugs excessivamente longos", () => {
+      expect(
+        schema.safeParse({ categoria: "a".repeat(101), familia: "familia-publica" }).success,
+      ).toBe(false);
+    });
+
+    it("exige os dois slugs públicos", () => {
+      expect(schema.safeParse({ categoria: "vacina" }).success).toBe(false);
     });
   });
 
   describe("suggest_terms", () => {
-    it("should reject terms shorter than 2 chars", async () => {
-      const schema = (suggestTermsTool as any).inputSchema;
-      expect(zSchemaParse(schema, { q: "a" }).success).toBe(false);
+    const schema = z.object(suggestTermsInputSchema);
+
+    it("rejeita termos menores que dois caracteres", () => {
+      expect(schema.safeParse({ q: "a" }).success).toBe(false);
+    });
+
+    it("rejeita termos maiores que cinquenta caracteres", () => {
+      expect(schema.safeParse({ q: "a".repeat(51) }).success).toBe(false);
     });
   });
 });
-
-function zSchemaParse(schema: any, data: any) {
-  // Simple helper since we can't easily import the internal tool structure if it's not exported
-  // But we know defineTool uses Zod
-  const { z } = require("zod");
-  const zodSchema = z.object(schema);
-  return zodSchema.safeParse(data);
-}

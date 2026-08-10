@@ -117,7 +117,8 @@ function BuscaPublica() {
                       Produtos
                     </h2>
                     <p className="mt-2 text-[14px] text-text-muted">
-                      {catalog.total} {catalog.total === 1 ? "família encontrada" : "famílias encontradas"}
+                      {catalog.total}{" "}
+                      {catalog.total === 1 ? "família encontrada" : "famílias encontradas"}
                     </p>
                     <div className="mt-6">
                       <FamilyGrid families={catalog.items} />
@@ -164,7 +165,8 @@ function BuscaPublica() {
                       Conteúdos
                     </h2>
                     <p className="mt-2 text-[14px] text-text-muted">
-                      {content.total} {content.total === 1 ? "artigo encontrado" : "artigos encontrados"}
+                      {content.total}{" "}
+                      {content.total === 1 ? "artigo encontrado" : "artigos encontrados"}
                     </p>
                     <div className="mt-6">
                       <ArticleGrid articles={content.items} />

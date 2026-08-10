@@ -1,3 +1,4 @@
+const MCP_METADATA_PATH = "/.well-known/oauth-protected-resource";
 const LOCAL_WINDOW_MS = 60_000;
 const LOCAL_MAX_REQUESTS = 300;
 
@@ -28,6 +29,10 @@ export interface McpOriginOptions {
 
 export function isMcpRequestPath(pathname: string): boolean {
   return pathname === "/mcp" || pathname.startsWith("/.mcp/");
+}
+
+export function isMcpOriginProtectedPath(pathname: string): boolean {
+  return isMcpRequestPath(pathname) || pathname === MCP_METADATA_PATH;
 }
 
 function workerEnv(value: unknown): McpWorkerEnv {
@@ -64,7 +69,7 @@ export function enforceMcpCanonicalOrigin(
   options: McpOriginOptions = {},
 ): Response | null {
   const requestUrl = new URL(request.url);
-  if (!isMcpRequestPath(requestUrl.pathname)) return null;
+  if (!isMcpOriginProtectedPath(requestUrl.pathname)) return null;
 
   const appEnv = options.appEnv ?? process.env["APP_ENV"] ?? "development";
   if (appEnv !== "production") return null;
@@ -97,7 +102,7 @@ function localLimit(key: string, now: number): Response | null {
 }
 
 /**
- * Protege exclusivamente as superfícies MCP.
+ * Protege exclusivamente as superfícies de execução MCP.
  *
  * Produção: exige um binding distribuído `MCP_RATE_LIMITER`. Ausência ou falha
  * da infraestrutura bloqueia o MCP em vez de deixá-lo sem limite.

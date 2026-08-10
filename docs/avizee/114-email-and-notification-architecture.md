@@ -9,6 +9,7 @@ processa pendentes com backoff exponencial (1, 5, 15, 60, 240 min; 5 tentativas)
 
 ## 2. Mensagens previstas
 
+<!-- prettier-ignore -->
 | Tipo | Destinatário | Conteúdo |
 |---|---|---|
 | Nova cotação | Caixa comercial interna | Protocolo, empresa, contato, itens, link para o painel |
@@ -29,6 +30,7 @@ Sem marca de terceiro, sem preço, sem dado além do necessário no corpo.
 
 ## 4. Alternativas (DT-11, `PENDENTE_DE_APROVAÇÃO`)
 
+<!-- prettier-ignore -->
 | Opção | Prós | Contras |
 |---|---|---|
 | E-mail gerenciado do Lovable com domínio próprio | Integrado, menos configuração | Recursos de bounce dependem do provedor subjacente |

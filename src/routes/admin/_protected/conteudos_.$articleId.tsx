@@ -15,6 +15,7 @@ import {
   secondaryButtonClass,
 } from "@/components/admin/ui";
 import { BlockEditor } from "@/components/admin/content/BlockEditor";
+import { ScheduleControls } from "@/components/admin/content/ScheduleControls";
 import {
   exportSocialText,
   fetchAdminArticle,
@@ -156,6 +157,9 @@ function ArticleEditor() {
 
   const status = String(row["status"] ?? "DRAFT") as ContentStatus;
   const compliance = data.compliance;
+  const genericTransitions = transitionsFrom(status).filter(
+    (item) => item.to !== "SCHEDULED" && status !== "SCHEDULED",
+  );
 
   return (
     <div className="space-y-8">
@@ -188,7 +192,6 @@ function ArticleEditor() {
         </Callout>
       )}
 
-      {/* ---------------- Metadados ---------------- */}
       <form
         className="space-y-4 rounded-[12px] border border-border p-5"
         onSubmit={(event) => {
@@ -309,17 +312,15 @@ function ArticleEditor() {
         </label>
 
         <div className="block">
-          <span className="text-[13px] font-semibold mb-2 block">
-            Editor Estruturado
-          </span>
-          <BlockEditor 
-            blocks={blocks} 
+          <span className="mb-2 block text-[13px] font-semibold">Editor Estruturado</span>
+          <BlockEditor
+            blocks={blocks}
             onChange={(newBlocks) => setBlocksText(JSON.stringify(newBlocks, null, 2))}
           />
         </div>
 
         <details className="mt-4">
-          <summary className="text-[13px] font-semibold cursor-pointer text-text-muted hover:text-text-primary">
+          <summary className="cursor-pointer text-[13px] font-semibold text-text-muted hover:text-text-primary">
             Modo técnico (JSON)
           </summary>
           <textarea
@@ -329,7 +330,7 @@ function ArticleEditor() {
             spellCheck={false}
           />
         </details>
-        
+
         {!parsedBlocks.success && (
           <Callout tone="danger" title="Blocos inválidos">
             Corrija a estrutura antes de salvar. Apenas os tipos de bloco previstos são aceitos.
@@ -435,14 +436,22 @@ function ArticleEditor() {
         </button>
       </form>
 
-      {/* ---------------- Workflow ---------------- */}
       <section className="rounded-[12px] border border-border p-5">
         <h2 className="text-[20px] font-bold">Fluxo editorial</h2>
         <p className="mt-1 text-[14px] text-text-secondary">
           Situação atual: <StatusBadge value={status} />
         </p>
+
+        <ScheduleControls
+          articleId={articleId}
+          status={status}
+          scheduledAt={(row["scheduled_at"] as string | null) ?? null}
+          attempts={Number(row["schedule_attempts"] ?? 0)}
+          lastError={(row["last_schedule_error"] as string | null) ?? null}
+        />
+
         <div className="mt-4 flex flex-wrap gap-2">
-          {transitionsFrom(status).map((item) => (
+          {genericTransitions.map((item) => (
             <button
               key={item.to}
               type="button"
@@ -455,7 +464,7 @@ function ArticleEditor() {
               {item.label}
             </button>
           ))}
-          {transitionsFrom(status).length === 0 && (
+          {genericTransitions.length === 0 && status !== "SCHEDULED" && (
             <p className="text-[14px] text-text-muted">Nenhuma transição disponível.</p>
           )}
         </div>
@@ -494,7 +503,6 @@ function ArticleEditor() {
         </div>
       </section>
 
-      {/* ---------------- Social ---------------- */}
       <section className="rounded-[12px] border border-border p-5">
         <h2 className="text-[20px] font-bold">Preparação para Instagram e LinkedIn</h2>
         <Callout tone="info" title="Exportação manual">

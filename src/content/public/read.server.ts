@@ -250,22 +250,38 @@ export async function articlesForFamily(familySlug: string) {
   const relations = unwrap<any[]>(
     await db()
       .from("public_article_relations")
-      .select("article_id")
+      .select("article_id, sort_order")
       .eq("family_slug", familySlug)
+      .order("sort_order", { ascending: true })
       .limit(3),
   );
   if (relations.length === 0) return [];
+
   const rows = unwrap<any[]>(
     await db()
       .from("public_articles")
-      .select(CARD_FIELDS)
+      .select(`id, ${CARD_FIELDS}`)
       .in(
         "id",
         relations.map((r) => r.article_id),
-      )
-      .order("published_at", { ascending: false }),
+      ),
   );
-  return guard(rows.map(toCard));
+
+  const relationOrder = new Map<string, number>(
+    relations.map((relation) => [String(relation.article_id), Number(relation.sort_order ?? 0)]),
+  );
+  const ordered = [...rows].sort((a, b) => {
+    const byEditorialOrder =
+      (relationOrder.get(String(a.id)) ?? Number.MAX_SAFE_INTEGER) -
+      (relationOrder.get(String(b.id)) ?? Number.MAX_SAFE_INTEGER);
+    if (byEditorialOrder !== 0) return byEditorialOrder;
+
+    const aPublishedAt = a.published_at ? Date.parse(String(a.published_at)) : 0;
+    const bPublishedAt = b.published_at ? Date.parse(String(b.published_at)) : 0;
+    return bPublishedAt - aPublishedAt;
+  });
+
+  return guard(ordered.map(toCard));
 }
 
 /** Entradas indexáveis da Central para o sitemap. */

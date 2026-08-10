@@ -1,39 +1,8 @@
--- Etapa 14.1 — schema canônico do agendamento editorial.
+-- Etapa 14.1 — correção forward-only para ambientes que já aplicaram as
+-- migrations iniciais do agendamento antes da consolidação no repositório.
+
 ALTER TABLE public.content_articles
-ADD COLUMN IF NOT EXISTS scheduled_at timestamptz,
-ADD COLUMN IF NOT EXISTS scheduled_by uuid REFERENCES auth.users(id),
-ADD COLUMN IF NOT EXISTS schedule_attempts integer NOT NULL DEFAULT 0,
-ADD COLUMN IF NOT EXISTS last_schedule_attempt_at timestamptz,
-ADD COLUMN IF NOT EXISTS last_schedule_error text,
-ADD COLUMN IF NOT EXISTS schedule_claimed_at timestamptz,
-ADD COLUMN IF NOT EXISTS schedule_claim_token uuid,
-ADD COLUMN IF NOT EXISTS schedule_claimed_by uuid,
-ADD COLUMN IF NOT EXISTS schedule_lease_until timestamptz,
-ADD COLUMN IF NOT EXISTS technical_reviewer_id uuid REFERENCES auth.users(id);
-
-CREATE INDEX IF NOT EXISTS idx_articles_scheduling
-ON public.content_articles (status, scheduled_at, schedule_lease_until)
-WHERE status = 'SCHEDULED';
-
-CREATE TABLE IF NOT EXISTS public.content_authors (
-    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-    display_name text NOT NULL,
-    role_title text,
-    bio text,
-    is_active boolean NOT NULL DEFAULT true,
-    created_at timestamptz NOT NULL DEFAULT now(),
-    updated_at timestamptz NOT NULL DEFAULT now(),
-    created_by uuid REFERENCES auth.users(id),
-    updated_by uuid REFERENCES auth.users(id)
-);
-
-GRANT SELECT ON public.content_authors TO authenticated;
-GRANT ALL ON public.content_authors TO service_role;
-ALTER TABLE public.content_authors ENABLE ROW LEVEL SECURITY;
-
-DROP POLICY IF EXISTS "Autores visíveis para autenticados" ON public.content_authors;
-CREATE POLICY "Autores visíveis para autenticados"
-ON public.content_authors FOR SELECT TO authenticated USING (true);
+ADD COLUMN IF NOT EXISTS schedule_claimed_by uuid;
 
 DROP POLICY IF EXISTS "Apenas admin gere autores" ON public.content_authors;
 CREATE POLICY "Apenas admin gere autores"

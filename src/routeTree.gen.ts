@@ -37,6 +37,7 @@ import { Route as AdminProtectedCotacoesRouteImport } from './routes/admin/_prot
 import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_protected/importacao'
 import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
 import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
+import { Route as ApiInternalContentSchedulerRouteImport } from './routes/api/internal/content-scheduler'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 import { Route as ApiPublicLivenessRouteImport } from './routes/api/public/liveness'
 import { Route as ApiPublicOutboxWorkerRouteImport } from './routes/api/public/outbox-worker'
@@ -48,6 +49,7 @@ import { Route as AdminProtectedCatalogoFamiliasRouteImport } from './routes/adm
 import { Route as AdminProtectedCatalogoSkusRouteImport } from './routes/admin/_protected/catalogo/skus'
 import { Route as AdminProtectedCatalogoTaxonomiaRouteImport } from './routes/admin/_protected/catalogo/taxonomia'
 import { Route as AdminProtectedConteudosArticleIdRouteImport } from './routes/admin/_protected/conteudos_.$articleId'
+import { Route as AdminProtectedConteudosAutoresRouteImport } from './routes/admin/_protected/conteudos_.autores'
 import { Route as AdminProtectedCotacoesQuotationIdRouteImport } from './routes/admin/_protected/cotacoes_.$quotationId'
 import { Route as AdminProtectedImportacaoJobIdRouteImport } from './routes/admin/_protected/importacao_.$jobId'
 import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
@@ -198,6 +200,12 @@ const AdminProtectedNormalizacaoRoute =
     path: '/normalizacao',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
+const ApiInternalContentSchedulerRoute =
+  ApiInternalContentSchedulerRouteImport.update({
+    id: '/api/internal/content-scheduler',
+    path: '/api/internal/content-scheduler',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
   id: '/api/public/health',
   path: '/api/public/health',
@@ -259,6 +267,12 @@ const AdminProtectedConteudosArticleIdRoute =
     path: '/conteudos/$articleId',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
+const AdminProtectedConteudosAutoresRoute =
+  AdminProtectedConteudosAutoresRouteImport.update({
+    id: '/conteudos_/autores',
+    path: '/conteudos/autores',
+    getParentRoute: () => AdminProtectedRoute,
+  } as any)
 const AdminProtectedCotacoesQuotationIdRoute =
   AdminProtectedCotacoesQuotationIdRouteImport.update({
     id: '/cotacoes_/$quotationId',
@@ -312,6 +326,7 @@ export interface FileRoutesByFullPath {
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
+  '/api/internal/content-scheduler': typeof ApiInternalContentSchedulerRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
@@ -324,6 +339,7 @@ export interface FileRoutesByFullPath {
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
   '/admin/conteudos/$articleId': typeof AdminProtectedConteudosArticleIdRoute
+  '/admin/conteudos/autores': typeof AdminProtectedConteudosAutoresRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -356,6 +372,7 @@ export interface FileRoutesByTo {
   '/admin/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
+  '/api/internal/content-scheduler': typeof ApiInternalContentSchedulerRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
@@ -368,6 +385,7 @@ export interface FileRoutesByTo {
   '/admin/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
   '/admin/conteudos/$articleId': typeof AdminProtectedConteudosArticleIdRoute
+  '/admin/conteudos/autores': typeof AdminProtectedConteudosAutoresRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -402,6 +420,7 @@ export interface FileRoutesById {
   '/admin/_protected/importacao': typeof AdminProtectedImportacaoRoute
   '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
   '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
+  '/api/internal/content-scheduler': typeof ApiInternalContentSchedulerRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
@@ -414,6 +433,7 @@ export interface FileRoutesById {
   '/admin/_protected/catalogo/skus': typeof AdminProtectedCatalogoSkusRoute
   '/admin/_protected/catalogo/taxonomia': typeof AdminProtectedCatalogoTaxonomiaRoute
   '/admin/_protected/conteudos_/$articleId': typeof AdminProtectedConteudosArticleIdRoute
+  '/admin/_protected/conteudos_/autores': typeof AdminProtectedConteudosAutoresRoute
   '/admin/_protected/cotacoes_/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/_protected/importacao_/$jobId': typeof AdminProtectedImportacaoJobIdRoute
   '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -449,6 +469,7 @@ export interface FileRouteTypes {
     | '/admin/importacao'
     | '/admin/midia'
     | '/admin/normalizacao'
+    | '/api/internal/content-scheduler'
     | '/api/public/health'
     | '/api/public/liveness'
     | '/api/public/outbox-worker'
@@ -461,6 +482,7 @@ export interface FileRouteTypes {
     | '/admin/catalogo/skus'
     | '/admin/catalogo/taxonomia'
     | '/admin/conteudos/$articleId'
+    | '/admin/conteudos/autores'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
     | '/admin/catalogo/familias/$familyId'
@@ -493,6 +515,7 @@ export interface FileRouteTypes {
     | '/admin/importacao'
     | '/admin/midia'
     | '/admin/normalizacao'
+    | '/api/internal/content-scheduler'
     | '/api/public/health'
     | '/api/public/liveness'
     | '/api/public/outbox-worker'
@@ -505,6 +528,7 @@ export interface FileRouteTypes {
     | '/admin/catalogo/skus'
     | '/admin/catalogo/taxonomia'
     | '/admin/conteudos/$articleId'
+    | '/admin/conteudos/autores'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
     | '/admin/catalogo/familias/$familyId'
@@ -538,6 +562,7 @@ export interface FileRouteTypes {
     | '/admin/_protected/importacao'
     | '/admin/_protected/midia'
     | '/admin/_protected/normalizacao'
+    | '/api/internal/content-scheduler'
     | '/api/public/health'
     | '/api/public/liveness'
     | '/api/public/outbox-worker'
@@ -550,6 +575,7 @@ export interface FileRouteTypes {
     | '/admin/_protected/catalogo/skus'
     | '/admin/_protected/catalogo/taxonomia'
     | '/admin/_protected/conteudos_/$articleId'
+    | '/admin/_protected/conteudos_/autores'
     | '/admin/_protected/cotacoes_/$quotationId'
     | '/admin/_protected/importacao_/$jobId'
     | '/admin/_protected/catalogo/familias_/$familyId'
@@ -577,6 +603,7 @@ export interface RootRouteChildren {
   ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiInternalContentSchedulerRoute: typeof ApiInternalContentSchedulerRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
   ApiPublicLivenessRoute: typeof ApiPublicLivenessRoute
   ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
@@ -784,6 +811,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedNormalizacaoRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/api/internal/content-scheduler': {
+      id: '/api/internal/content-scheduler'
+      path: '/api/internal/content-scheduler'
+      fullPath: '/api/internal/content-scheduler'
+      preLoaderRoute: typeof ApiInternalContentSchedulerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/health': {
       id: '/api/public/health'
       path: '/api/public/health'
@@ -861,6 +895,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedConteudosArticleIdRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/admin/_protected/conteudos_/autores': {
+      id: '/admin/_protected/conteudos_/autores'
+      path: '/conteudos/autores'
+      fullPath: '/admin/conteudos/autores'
+      preLoaderRoute: typeof AdminProtectedConteudosAutoresRouteImport
+      parentRoute: typeof AdminProtectedRoute
+    }
     '/admin/_protected/cotacoes_/$quotationId': {
       id: '/admin/_protected/cotacoes_/$quotationId'
       path: '/cotacoes/$quotationId'
@@ -905,6 +946,7 @@ interface AdminProtectedRouteChildren {
   AdminProtectedCatalogoSkusRoute: typeof AdminProtectedCatalogoSkusRoute
   AdminProtectedCatalogoTaxonomiaRoute: typeof AdminProtectedCatalogoTaxonomiaRoute
   AdminProtectedConteudosArticleIdRoute: typeof AdminProtectedConteudosArticleIdRoute
+  AdminProtectedConteudosAutoresRoute: typeof AdminProtectedConteudosAutoresRoute
   AdminProtectedCotacoesQuotationIdRoute: typeof AdminProtectedCotacoesQuotationIdRoute
   AdminProtectedImportacaoJobIdRoute: typeof AdminProtectedImportacaoJobIdRoute
   AdminProtectedCatalogoFamiliasFamilyIdRoute: typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
@@ -924,6 +966,7 @@ const AdminProtectedRouteChildren: AdminProtectedRouteChildren = {
   AdminProtectedCatalogoSkusRoute: AdminProtectedCatalogoSkusRoute,
   AdminProtectedCatalogoTaxonomiaRoute: AdminProtectedCatalogoTaxonomiaRoute,
   AdminProtectedConteudosArticleIdRoute: AdminProtectedConteudosArticleIdRoute,
+  AdminProtectedConteudosAutoresRoute: AdminProtectedConteudosAutoresRoute,
   AdminProtectedCotacoesQuotationIdRoute:
     AdminProtectedCotacoesQuotationIdRoute,
   AdminProtectedImportacaoJobIdRoute: AdminProtectedImportacaoJobIdRoute,
@@ -959,6 +1002,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiInternalContentSchedulerRoute: ApiInternalContentSchedulerRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
   ApiPublicLivenessRoute: ApiPublicLivenessRoute,
   ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,

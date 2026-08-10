@@ -8,6 +8,7 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { authorize } from "@/catalog/guard.server";
 import {
+  cancelArticleSchedule,
   changeArticleStatus,
   contentDashboard,
   exportSocialVariant,
@@ -18,6 +19,7 @@ import {
   saveArticle,
   saveAuthor,
   saveSocialVariant,
+  scheduleArticle,
 } from "@/content/editorial.server";
 import { CONTENT_STATUSES } from "@/content/workflow";
 import { SOCIAL_CHANNELS } from "@/content/social";
@@ -61,6 +63,17 @@ const articleInput = z.object({
 const statusInput = z.object({
   id: z.string().uuid(),
   to: z.enum(CONTENT_STATUSES),
+  note: z.string().trim().max(500).nullable().optional(),
+});
+
+const scheduleInput = z.object({
+  id: z.string().uuid(),
+  scheduledAt: z.string().datetime({ offset: true }),
+  note: z.string().trim().max(500).nullable().optional(),
+});
+
+const cancelScheduleInput = z.object({
+  id: z.string().uuid(),
   note: z.string().trim().max(500).nullable().optional(),
 });
 
@@ -128,6 +141,20 @@ export const transitionArticle = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => statusInput.parse(input))
   .handler(async ({ context, data }) =>
     changeArticleStatus(await authorize(context, "content.read"), data),
+  );
+
+export const scheduleContentArticle = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => scheduleInput.parse(input))
+  .handler(async ({ context, data }) =>
+    scheduleArticle(await authorize(context, "content.publish"), data),
+  );
+
+export const cancelContentArticleSchedule = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => cancelScheduleInput.parse(input))
+  .handler(async ({ context, data }) =>
+    cancelArticleSchedule(await authorize(context, "content.publish"), data),
   );
 
 export const upsertSocialVariant = createServerFn({ method: "POST" })

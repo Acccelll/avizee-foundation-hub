@@ -89,6 +89,7 @@ describe("conformidade editorial", () => {
 describe("fluxo editorial", () => {
   it("declara as situações aprovadas", () => {
     expect(CONTENT_STATUSES).toContain("DRAFT");
+    expect(CONTENT_STATUSES).toContain("SCHEDULED");
     expect(CONTENT_STATUSES).toContain("PUBLISHED");
   });
 
@@ -97,14 +98,22 @@ describe("fluxo editorial", () => {
     expect(canTransition("DRAFT", "IN_TECHNICAL_REVIEW")).toBe(true);
   });
 
+  it("declara o ciclo explícito de agendamento", () => {
+    expect(canTransition("READY_TO_PUBLISH", "SCHEDULED")).toBe(true);
+    expect(canTransition("SCHEDULED", "READY_TO_PUBLISH")).toBe(true);
+    expect(canTransition("SCHEDULED", "PUBLISHED")).toBe(true);
+  });
+
   it("só o estado publicado é público", () => {
     expect(isPublic("PUBLISHED")).toBe(true);
     expect(isPublic("DRAFT")).toBe(false);
+    expect(isPublic("SCHEDULED")).toBe(false);
     expect(isPublic("ARCHIVED")).toBe(false);
   });
 
-  it("conteúdo publicado não é editável diretamente", () => {
+  it("conteúdo publicado ou agendado não é editável diretamente", () => {
     expect(isEditable("PUBLISHED")).toBe(false);
+    expect(isEditable("SCHEDULED")).toBe(false);
     expect(isEditable("DRAFT")).toBe(true);
   });
 

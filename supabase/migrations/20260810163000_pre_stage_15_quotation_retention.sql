@@ -7,6 +7,7 @@
 -- - CONVERTED e situações operacionais permanecem fora para evitar apagar relação ativa;
 -- - execução em lotes com FOR UPDATE SKIP LOCKED;
 -- - idempotente por anonymized_at;
+-- - histórico imutável de eventos permanece intacto e segue política própria de auditoria;
 -- - funções disponíveis apenas para service_role.
 
 CREATE OR REPLACE FUNCTION public.list_expired_quotation_candidates(
@@ -81,12 +82,6 @@ BEGIN
       FROM anonymized a
      WHERE c.quotation_id = a.id
      RETURNING c.quotation_id
-  ), scrub_event_notes AS (
-    UPDATE public.quotation_events e
-       SET internal_note = NULL
-      FROM anonymized a
-     WHERE e.quotation_id = a.id
-     RETURNING e.quotation_id
   ), audit_rows AS (
     INSERT INTO public.audit_logs (
       actor_id,

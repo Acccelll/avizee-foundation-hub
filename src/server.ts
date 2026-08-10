@@ -2,10 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
-import {
-  enforceMcpCanonicalOrigin,
-  enforceMcpRateLimit,
-} from "./lib/mcp/rate-limit.server";
+import { enforceMcpCanonicalOrigin, enforceMcpRateLimit } from "./lib/mcp/rate-limit.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;

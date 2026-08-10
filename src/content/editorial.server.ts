@@ -243,8 +243,7 @@ async function assertPublicationReady(auth: Authorized, article: Row) {
   });
 
   if (!parsed.success) issues.push({ code: "STRUCTURE", detail: "blocos inválidos" });
-  if (!article["category_id"])
-    issues.push({ code: "STRUCTURE", detail: "categoria obrigatória" });
+  if (!article["category_id"]) issues.push({ code: "STRUCTURE", detail: "categoria obrigatória" });
   if (!article["author_id"]) issues.push({ code: "STRUCTURE", detail: "autor obrigatório" });
   if (article["requires_technical_review"] && !article["technical_reviewer_id"]) {
     issues.push({ code: "STRUCTURE", detail: "revisor técnico obrigatório" });
@@ -472,7 +471,11 @@ export async function cancelArticleSchedule(
 ) {
   requirePermission(auth.roles, "content.publish");
   const rows = unwrap<Row[]>(
-    await auth.supabase.from("content_articles").select("status, scheduled_at").eq("id", input.id).limit(1),
+    await auth.supabase
+      .from("content_articles")
+      .select("status, scheduled_at")
+      .eq("id", input.id)
+      .limit(1),
   );
   const article = rows?.[0];
   if (!article) throw new AppError("NOT_FOUND");

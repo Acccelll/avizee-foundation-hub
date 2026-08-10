@@ -55,7 +55,11 @@ export function ScheduleControls({
     <div className="mt-4 rounded-[10px] border border-border-subtle p-4">
       <h3 className="text-[16px] font-bold">Agendamento editorial</h3>
 
-      {feedback && <div className="mt-3"><Callout tone="success" title={feedback} /></div>}
+      {feedback && (
+        <div className="mt-3">
+          <Callout tone="success" title={feedback} />
+        </div>
+      )}
       {scheduleMutation.error && (
         <div className="mt-3">
           <Callout tone="danger" title="Não foi possível agendar">
@@ -108,7 +112,8 @@ export function ScheduleControls({
             Publicação prevista para{" "}
             <strong>
               {scheduledAt ? new Date(scheduledAt).toLocaleString("pt-BR") : "data não informada"}
-            </strong>.
+            </strong>
+            .
           </p>
           <p className="text-[13px] text-text-muted">Tentativas com falha: {attempts}</p>
           {lastError && (

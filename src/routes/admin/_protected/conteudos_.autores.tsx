@@ -13,9 +13,7 @@ import {
   readableError,
   secondaryButtonClass,
 } from "@/components/admin/ui";
-import {
-  fetchAuthorsForManagement,
-} from "@/content/authors.functions";
+import { fetchAuthorsForManagement } from "@/content/authors.functions";
 import type { AuthorManagementRow } from "@/content/authors.server";
 import { upsertAuthor } from "@/content/editorial.functions";
 import { buildMeta } from "@/seo/meta";

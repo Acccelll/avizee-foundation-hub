@@ -297,7 +297,9 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                           className="p-2 text-text-muted hover:text-danger"
                           onClick={() =>
                             updateBlock(index, {
-                              items: block.items.filter((_, currentIndex) => currentIndex !== itemIndex),
+                              items: block.items.filter(
+                                (_, currentIndex) => currentIndex !== itemIndex,
+                              ),
                             })
                           }
                           disabled={block.items.length === 1}
@@ -333,7 +335,9 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                       <input
                         className={inputClass}
                         value={block.attribution ?? ""}
-                        onChange={(event) => updateBlock(index, { attribution: event.target.value })}
+                        onChange={(event) =>
+                          updateBlock(index, { attribution: event.target.value })
+                        }
                         placeholder="Autor/Fonte"
                       />
                     </label>
@@ -347,7 +351,9 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                       <input
                         className={inputClass}
                         value={block.url ?? ""}
-                        onChange={(event) => updateBlock(index, { url: event.target.value || null })}
+                        onChange={(event) =>
+                          updateBlock(index, { url: event.target.value || null })
+                        }
                         placeholder="https://..."
                       />
                     </label>
@@ -624,98 +630,106 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                   </div>
                 )}
 
-                {block.type === "product_relation" && (() => {
-                  const search = (familySearch[index] ?? "").trim().toLocaleLowerCase("pt-BR");
-                  const usedSlugs = new Set(
-                    blocks
-                      .filter(
-                        (candidate): candidate is Extract<ContentBlock, { type: "product_relation" }> =>
-                          candidate.type === "product_relation",
-                      )
-                      .map((candidate) => candidate.familySlug)
-                      .filter(Boolean),
-                  );
-                  const options = (familyOptionsQuery.data ?? []).filter((option) => {
-                    if (!search) return true;
-                    return [option.name, option.slug, option.categoryName].some((value) =>
-                      value.toLocaleLowerCase("pt-BR").includes(search),
+                {block.type === "product_relation" &&
+                  (() => {
+                    const search = (familySearch[index] ?? "").trim().toLocaleLowerCase("pt-BR");
+                    const usedSlugs = new Set(
+                      blocks
+                        .filter(
+                          (
+                            candidate,
+                          ): candidate is Extract<ContentBlock, { type: "product_relation" }> =>
+                            candidate.type === "product_relation",
+                        )
+                        .map((candidate) => candidate.familySlug)
+                        .filter(Boolean),
                     );
-                  });
-                  const currentExists = (familyOptionsQuery.data ?? []).some(
-                    (option) => option.slug === block.familySlug,
-                  );
+                    const options = (familyOptionsQuery.data ?? []).filter((option) => {
+                      if (!search) return true;
+                      return [option.name, option.slug, option.categoryName].some((value) =>
+                        value.toLocaleLowerCase("pt-BR").includes(search),
+                      );
+                    });
+                    const currentExists = (familyOptionsQuery.data ?? []).some(
+                      (option) => option.slug === block.familySlug,
+                    );
 
-                  return (
-                    <div className="space-y-3">
-                      <label className="block">
-                        <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
-                          Buscar família pública
-                        </span>
-                        <input
-                          className={inputClass}
-                          value={familySearch[index] ?? ""}
-                          onChange={(event) =>
-                            setFamilySearch((previous) => ({
-                              ...previous,
-                              [index]: event.target.value,
-                            }))
-                          }
-                          placeholder="Nome, categoria ou slug"
-                        />
-                      </label>
-                      <label className="block">
-                        <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
-                          Família relacionada
-                        </span>
-                        <select
-                          className={inputClass}
-                          value={block.familySlug}
-                          disabled={familyOptionsQuery.isLoading || familyOptionsQuery.isError}
-                          onChange={(event) => {
-                            updateBlock(index, { familySlug: event.target.value });
-                            setFamilySearch((previous) => ({ ...previous, [index]: "" }));
-                          }}
-                        >
-                          <option value="">
-                            {familyOptionsQuery.isLoading
-                              ? "Carregando famílias…"
-                              : familyOptionsQuery.isError
-                                ? "Não foi possível carregar as famílias"
-                                : "Selecione uma família"}
-                          </option>
-                          {block.familySlug && !currentExists && (
-                            <option value={block.familySlug}>{block.familySlug} — referência inválida</option>
-                          )}
-                          {options.map((option) => (
-                            <option
-                              key={option.slug}
-                              value={option.slug}
-                              disabled={option.slug !== block.familySlug && usedSlugs.has(option.slug)}
-                            >
-                              {option.name} — {option.categoryName} ({option.variationCount} variações)
+                    return (
+                      <div className="space-y-3">
+                        <label className="block">
+                          <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
+                            Buscar família pública
+                          </span>
+                          <input
+                            className={inputClass}
+                            value={familySearch[index] ?? ""}
+                            onChange={(event) =>
+                              setFamilySearch((previous) => ({
+                                ...previous,
+                                [index]: event.target.value,
+                              }))
+                            }
+                            placeholder="Nome, categoria ou slug"
+                          />
+                        </label>
+                        <label className="block">
+                          <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
+                            Família relacionada
+                          </span>
+                          <select
+                            className={inputClass}
+                            value={block.familySlug}
+                            disabled={familyOptionsQuery.isLoading || familyOptionsQuery.isError}
+                            onChange={(event) => {
+                              updateBlock(index, { familySlug: event.target.value });
+                              setFamilySearch((previous) => ({ ...previous, [index]: "" }));
+                            }}
+                          >
+                            <option value="">
+                              {familyOptionsQuery.isLoading
+                                ? "Carregando famílias…"
+                                : familyOptionsQuery.isError
+                                  ? "Não foi possível carregar as famílias"
+                                  : "Selecione uma família"}
                             </option>
-                          ))}
-                        </select>
-                      </label>
-                      {block.familySlug && !currentExists && !familyOptionsQuery.isLoading && (
-                        <p className="text-[12px] text-danger" role="alert">
-                          A família informada não está disponível na camada pública do catálogo.
-                        </p>
-                      )}
-                      <label className="block">
-                        <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
-                          Nota editorial
-                        </span>
-                        <input
-                          className={inputClass}
-                          value={block.note ?? ""}
-                          onChange={(event) => updateBlock(index, { note: event.target.value })}
-                          placeholder="Por que esta família é relevante para o artigo..."
-                        />
-                      </label>
-                    </div>
-                  );
-                })()}
+                            {block.familySlug && !currentExists && (
+                              <option value={block.familySlug}>
+                                {block.familySlug} — referência inválida
+                              </option>
+                            )}
+                            {options.map((option) => (
+                              <option
+                                key={option.slug}
+                                value={option.slug}
+                                disabled={
+                                  option.slug !== block.familySlug && usedSlugs.has(option.slug)
+                                }
+                              >
+                                {option.name} — {option.categoryName} ({option.variationCount}{" "}
+                                variações)
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        {block.familySlug && !currentExists && !familyOptionsQuery.isLoading && (
+                          <p className="text-[12px] text-danger" role="alert">
+                            A família informada não está disponível na camada pública do catálogo.
+                          </p>
+                        )}
+                        <label className="block">
+                          <span className="mb-1 block text-[10px] font-black uppercase text-text-muted">
+                            Nota editorial
+                          </span>
+                          <input
+                            className={inputClass}
+                            value={block.note ?? ""}
+                            onChange={(event) => updateBlock(index, { note: event.target.value })}
+                            placeholder="Por que esta família é relevante para o artigo..."
+                          />
+                        </label>
+                      </div>
+                    );
+                  })()}
 
                 {block.type === "divider" && (
                   <div className="flex items-center justify-center py-8" aria-label="Divisor">
@@ -732,7 +746,11 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
         <button type="button" onClick={() => addBlock("heading")} className={secondaryButtonClass}>
           <Heading2 aria-hidden="true" className="mr-2 h-4 w-4" /> Título
         </button>
-        <button type="button" onClick={() => addBlock("paragraph")} className={secondaryButtonClass}>
+        <button
+          type="button"
+          onClick={() => addBlock("paragraph")}
+          className={secondaryButtonClass}
+        >
           <Type aria-hidden="true" className="mr-2 h-4 w-4" /> Texto
         </button>
         <button type="button" onClick={() => addBlock("list")} className={secondaryButtonClass}>
@@ -753,7 +771,11 @@ export function BlockEditor({ blocks, onChange }: BlockEditorProps) {
         <button type="button" onClick={() => addBlock("faq")} className={secondaryButtonClass}>
           <HelpCircle aria-hidden="true" className="mr-2 h-4 w-4" /> FAQ
         </button>
-        <button type="button" onClick={() => addBlock("product_relation")} className={secondaryButtonClass}>
+        <button
+          type="button"
+          onClick={() => addBlock("product_relation")}
+          className={secondaryButtonClass}
+        >
           <Box aria-hidden="true" className="mr-2 h-4 w-4" /> Produto
         </button>
         <button type="button" onClick={() => addBlock("divider")} className={secondaryButtonClass}>

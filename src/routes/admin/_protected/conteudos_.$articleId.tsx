@@ -226,83 +226,155 @@ function ArticleEditor() {
         <div className="grid gap-4 md:grid-cols-2">
           <label>
             <span className="text-[13px] font-semibold">Título</span>
-            <input className={inputClass} value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} required minLength={5} />
+            <input
+              className={inputClass}
+              value={form.title}
+              onChange={(event) => setForm({ ...form, title: event.target.value })}
+              required
+              minLength={5}
+            />
           </label>
           <label>
             <span className="text-[13px] font-semibold">Endereço (slug)</span>
-            <input className={inputClass} value={form.slug} onChange={(event) => setForm({ ...form, slug: event.target.value })} />
+            <input
+              className={inputClass}
+              value={form.slug}
+              onChange={(event) => setForm({ ...form, slug: event.target.value })}
+            />
           </label>
           <label>
             <span className="text-[13px] font-semibold">Subtítulo</span>
-            <input className={inputClass} value={form.subtitle} onChange={(event) => setForm({ ...form, subtitle: event.target.value })} />
+            <input
+              className={inputClass}
+              value={form.subtitle}
+              onChange={(event) => setForm({ ...form, subtitle: event.target.value })}
+            />
           </label>
           <label>
             <span className="text-[13px] font-semibold">Categoria editorial</span>
-            <select className={inputClass} value={form.categoryId} onChange={(event) => setForm({ ...form, categoryId: event.target.value })}>
+            <select
+              className={inputClass}
+              value={form.categoryId}
+              onChange={(event) => setForm({ ...form, categoryId: event.target.value })}
+            >
               <option value="">Selecione</option>
               {((categories.data ?? []) as Array<{ id: string; name: string }>).map((category) => (
-                <option key={category.id} value={category.id}>{category.name}</option>
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
               ))}
             </select>
           </label>
           <label>
             <span className="text-[13px] font-semibold">Autor</span>
-            <select className={inputClass} value={form.authorId} onChange={(event) => setForm({ ...form, authorId: event.target.value })}>
+            <select
+              className={inputClass}
+              value={form.authorId}
+              onChange={(event) => setForm({ ...form, authorId: event.target.value })}
+            >
               <option value="">Selecione</option>
-              {((authors.data ?? []) as Array<{ id: string; display_name: string }>).map((author) => (
-                <option key={author.id} value={author.id}>{author.display_name}</option>
-              ))}
+              {((authors.data ?? []) as Array<{ id: string; display_name: string }>).map(
+                (author) => (
+                  <option key={author.id} value={author.id}>
+                    {author.display_name}
+                  </option>
+                ),
+              )}
             </select>
           </label>
           <label>
             <span className="text-[13px] font-semibold">Revisor técnico</span>
-            <select className={inputClass} value={form.technicalReviewerId} onChange={(event) => setForm({ ...form, technicalReviewerId: event.target.value })}>
+            <select
+              className={inputClass}
+              value={form.technicalReviewerId}
+              onChange={(event) => setForm({ ...form, technicalReviewerId: event.target.value })}
+            >
               <option value="">Selecione</option>
-              {((authors.data ?? []) as Array<{ id: string; display_name: string }>).map((author) => (
-                <option key={author.id} value={author.id}>{author.display_name}</option>
-              ))}
+              {((authors.data ?? []) as Array<{ id: string; display_name: string }>).map(
+                (author) => (
+                  <option key={author.id} value={author.id}>
+                    {author.display_name}
+                  </option>
+                ),
+              )}
             </select>
           </label>
         </div>
 
         <label className="block">
           <span className="text-[13px] font-semibold">Resumo (excerpt)</span>
-          <textarea className={`${inputClass} min-h-[80px]`} value={form.excerpt} onChange={(event) => setForm({ ...form, excerpt: event.target.value })} maxLength={600} />
+          <textarea
+            className={`${inputClass} min-h-[80px]`}
+            value={form.excerpt}
+            onChange={(event) => setForm({ ...form, excerpt: event.target.value })}
+            maxLength={600}
+          />
         </label>
 
         <div className="block">
           <span className="mb-2 block text-[13px] font-semibold">Editor Estruturado</span>
-          <BlockEditor blocks={blocks} onChange={(newBlocks) => setBlocksText(JSON.stringify(newBlocks, null, 2))} />
+          <BlockEditor
+            blocks={blocks}
+            onChange={(newBlocks) => setBlocksText(JSON.stringify(newBlocks, null, 2))}
+          />
         </div>
 
         <details className="mt-4">
-          <summary className="cursor-pointer text-[13px] font-semibold text-text-muted hover:text-text-primary">Modo técnico (JSON)</summary>
-          <textarea className={`${inputClass} mt-2 min-h-[200px] font-mono text-[12px]`} value={blocksText} onChange={(event) => setBlocksText(event.target.value)} spellCheck={false} />
+          <summary className="cursor-pointer text-[13px] font-semibold text-text-muted hover:text-text-primary">
+            Modo técnico (JSON)
+          </summary>
+          <textarea
+            className={`${inputClass} mt-2 min-h-[200px] font-mono text-[12px]`}
+            value={blocksText}
+            onChange={(event) => setBlocksText(event.target.value)}
+            spellCheck={false}
+          />
         </details>
 
         {!parsedBlocks.success && (
-          <Callout tone="danger" title="Blocos inválidos">Corrija a estrutura antes de salvar. Apenas os tipos de bloco previstos são aceitos.</Callout>
+          <Callout tone="danger" title="Blocos inválidos">
+            Corrija a estrutura antes de salvar. Apenas os tipos de bloco previstos são aceitos.
+          </Callout>
         )}
 
         <div className="grid gap-4 md:grid-cols-2">
           <label>
             <span className="text-[13px] font-semibold">Título SEO</span>
-            <input className={inputClass} value={form.seoTitle} onChange={(event) => setForm({ ...form, seoTitle: event.target.value })} maxLength={120} />
+            <input
+              className={inputClass}
+              value={form.seoTitle}
+              onChange={(event) => setForm({ ...form, seoTitle: event.target.value })}
+              maxLength={120}
+            />
           </label>
           <label>
             <span className="text-[13px] font-semibold">Descrição SEO</span>
-            <input className={inputClass} value={form.seoDescription} onChange={(event) => setForm({ ...form, seoDescription: event.target.value })} maxLength={200} />
+            <input
+              className={inputClass}
+              value={form.seoDescription}
+              onChange={(event) => setForm({ ...form, seoDescription: event.target.value })}
+              maxLength={200}
+            />
           </label>
         </div>
 
         <label className="flex items-center gap-2 text-[14px]">
-          <input type="checkbox" checked={form.noindex} onChange={(event) => setForm({ ...form, noindex: event.target.checked })} />
+          <input
+            type="checkbox"
+            checked={form.noindex}
+            onChange={(event) => setForm({ ...form, noindex: event.target.checked })}
+          />
           Não indexar este artigo
         </label>
 
         <label className="block">
           <span className="text-[13px] font-semibold">Notas internas (nunca publicadas)</span>
-          <textarea className={`${inputClass} min-h-[70px]`} value={form.internalNotes} onChange={(event) => setForm({ ...form, internalNotes: event.target.value })} maxLength={2000} />
+          <textarea
+            className={`${inputClass} min-h-[70px]`}
+            value={form.internalNotes}
+            onChange={(event) => setForm({ ...form, internalNotes: event.target.value })}
+            maxLength={2000}
+          />
         </label>
 
         <fieldset className="rounded-[10px] border border-border-subtle p-4">
@@ -310,34 +382,65 @@ function ArticleEditor() {
           <div className="space-y-3">
             {references.map((reference, index) => (
               <div key={index} className="flex flex-wrap gap-2">
-                <input className={`${inputClass} min-w-[220px] flex-1`} value={reference.label} placeholder="Descrição da fonte" onChange={(event) => {
-                  const next = [...references];
-                  next[index] = { ...reference, label: event.target.value };
-                  setReferences(next);
-                }} />
-                <input className={`${inputClass} min-w-[220px] flex-1`} value={reference.url ?? ""} placeholder="Endereço (opcional)" onChange={(event) => {
-                  const next = [...references];
-                  next[index] = { ...reference, url: event.target.value || null };
-                  setReferences(next);
-                }} />
-                <button type="button" className={secondaryButtonClass} onClick={() => setReferences(references.filter((_, i) => i !== index))}>Remover</button>
+                <input
+                  className={`${inputClass} min-w-[220px] flex-1`}
+                  value={reference.label}
+                  placeholder="Descrição da fonte"
+                  onChange={(event) => {
+                    const next = [...references];
+                    next[index] = { ...reference, label: event.target.value };
+                    setReferences(next);
+                  }}
+                />
+                <input
+                  className={`${inputClass} min-w-[220px] flex-1`}
+                  value={reference.url ?? ""}
+                  placeholder="Endereço (opcional)"
+                  onChange={(event) => {
+                    const next = [...references];
+                    next[index] = { ...reference, url: event.target.value || null };
+                    setReferences(next);
+                  }}
+                />
+                <button
+                  type="button"
+                  className={secondaryButtonClass}
+                  onClick={() => setReferences(references.filter((_, i) => i !== index))}
+                >
+                  Remover
+                </button>
               </div>
             ))}
-            <button type="button" className={secondaryButtonClass} onClick={() => setReferences([...references, { label: "", url: null, note: null }])}>Adicionar referência</button>
+            <button
+              type="button"
+              className={secondaryButtonClass}
+              onClick={() => setReferences([...references, { label: "", url: null, note: null }])}
+            >
+              Adicionar referência
+            </button>
           </div>
         </fieldset>
 
         <label className="block">
           <span className="text-[13px] font-semibold">Nota desta versão</span>
-          <input className={inputClass} value={form.note} onChange={(event) => setForm({ ...form, note: event.target.value })} maxLength={300} />
+          <input
+            className={inputClass}
+            value={form.note}
+            onChange={(event) => setForm({ ...form, note: event.target.value })}
+            maxLength={300}
+          />
         </label>
 
-        <button type="submit" className={buttonClass} disabled={mutation.isPending}>Salvar nova versão</button>
+        <button type="submit" className={buttonClass} disabled={mutation.isPending}>
+          Salvar nova versão
+        </button>
       </form>
 
       <section className="rounded-[12px] border border-border p-5">
         <h2 className="text-[20px] font-bold">Fluxo editorial</h2>
-        <p className="mt-1 text-[14px] text-text-secondary">Situação atual: <StatusBadge value={status} /></p>
+        <p className="mt-1 text-[14px] text-text-secondary">
+          Situação atual: <StatusBadge value={status} />
+        </p>
 
         <ScheduleControls
           articleId={articleId}
@@ -349,7 +452,15 @@ function ArticleEditor() {
 
         <div className="mt-4 flex flex-wrap gap-2">
           {genericTransitions.map((item) => (
-            <button key={item.to} type="button" className={secondaryButtonClass} disabled={statusMutation.isPending} onClick={() => statusMutation.mutate({ data: { id: articleId, to: item.to, note: null } })}>
+            <button
+              key={item.to}
+              type="button"
+              className={secondaryButtonClass}
+              disabled={statusMutation.isPending}
+              onClick={() =>
+                statusMutation.mutate({ data: { id: articleId, to: item.to, note: null } })
+              }
+            >
               {item.label}
             </button>
           ))}
@@ -366,7 +477,9 @@ function ArticleEditor() {
                 <td className="px-3 py-2">{String(event["from_status"] ?? "—")}</td>
                 <td className="px-3 py-2">{String(event["to_status"] ?? "")}</td>
                 <td className="px-3 py-2">{String(event["note"] ?? "—")}</td>
-                <td className="px-3 py-2 text-[13px] text-text-muted">{new Date(String(event["created_at"])).toLocaleString("pt-BR")}</td>
+                <td className="px-3 py-2 text-[13px] text-text-muted">
+                  {new Date(String(event["created_at"])).toLocaleString("pt-BR")}
+                </td>
               </tr>
             ))}
           </Table>
@@ -381,7 +494,9 @@ function ArticleEditor() {
                 <td className="px-3 py-2">{String(revision["title"] ?? "")}</td>
                 <td className="px-3 py-2">{String(revision["status"] ?? "")}</td>
                 <td className="px-3 py-2">{String(revision["note"] ?? "—")}</td>
-                <td className="px-3 py-2 text-[13px] text-text-muted">{new Date(String(revision["created_at"])).toLocaleString("pt-BR")}</td>
+                <td className="px-3 py-2 text-[13px] text-text-muted">
+                  {new Date(String(revision["created_at"])).toLocaleString("pt-BR")}
+                </td>
               </tr>
             ))}
           </Table>
@@ -390,7 +505,10 @@ function ArticleEditor() {
 
       <section className="rounded-[12px] border border-border p-5">
         <h2 className="text-[20px] font-bold">Preparação para Instagram e LinkedIn</h2>
-        <Callout tone="info" title="Exportação manual">O sistema não publica em nenhuma rede social. O texto abaixo é preparado, validado e copiado manualmente pela equipe.</Callout>
+        <Callout tone="info" title="Exportação manual">
+          O sistema não publica em nenhuma rede social. O texto abaixo é preparado, validado e
+          copiado manualmente pela equipe.
+        </Callout>
 
         <div className="mt-5 grid gap-5 lg:grid-cols-2">
           {SOCIAL_CHANNELS.map((channel) => (
@@ -398,15 +516,25 @@ function ArticleEditor() {
               key={channel}
               channel={channel}
               articleId={articleId}
-              existing={(data.socialVariants ?? []).find((variant: Record<string, unknown>) => variant["channel"] === channel) as Record<string, unknown> | undefined}
-              onSave={(payload) => saveSocial({ data: payload }).then(() => {
-                setFeedback("Variante social salva.");
-                queryClient.invalidateQueries({ queryKey: ["admin", "content", "article"] });
-              })}
-              onExport={() => exportSocial({ data: { articleId, channel, articleUrl: null } }).then((result: { text: string }) => {
-                setExported(result.text);
-                queryClient.invalidateQueries({ queryKey: ["admin", "content", "article"] });
-              })}
+              existing={
+                (data.socialVariants ?? []).find(
+                  (variant: Record<string, unknown>) => variant["channel"] === channel,
+                ) as Record<string, unknown> | undefined
+              }
+              onSave={(payload) =>
+                saveSocial({ data: payload }).then(() => {
+                  setFeedback("Variante social salva.");
+                  queryClient.invalidateQueries({ queryKey: ["admin", "content", "article"] });
+                })
+              }
+              onExport={() =>
+                exportSocial({ data: { articleId, channel, articleUrl: null } }).then(
+                  (result: { text: string }) => {
+                    setExported(result.text);
+                    queryClient.invalidateQueries({ queryKey: ["admin", "content", "article"] });
+                  },
+                )
+              }
             />
           ))}
         </div>
@@ -414,7 +542,11 @@ function ArticleEditor() {
         {exported && (
           <div className="mt-5">
             <h3 className="text-[16px] font-bold">Texto para copiar</h3>
-            <textarea readOnly className={`${inputClass} mt-2 min-h-[200px] font-mono text-[13px]`} value={exported} />
+            <textarea
+              readOnly
+              className={`${inputClass} mt-2 min-h-[200px] font-mono text-[13px]`}
+              value={exported}
+            />
           </div>
         )}
       </section>
@@ -446,7 +578,9 @@ function SocialPanel({
   const limits = CHANNEL_LIMITS[channel];
   const [headline, setHeadline] = useState(String(existing?.["headline"] ?? ""));
   const [caption, setCaption] = useState(String(existing?.["caption"] ?? ""));
-  const [hashtags, setHashtags] = useState(Array.isArray(existing?.["hashtags"]) ? (existing["hashtags"] as string[]).join(" ") : "");
+  const [hashtags, setHashtags] = useState(
+    Array.isArray(existing?.["hashtags"]) ? (existing["hashtags"] as string[]).join(" ") : "",
+  );
   const [callToAction, setCallToAction] = useState(String(existing?.["call_to_action"] ?? ""));
 
   const draft = {
@@ -461,35 +595,82 @@ function SocialPanel({
   return (
     <div className="rounded-[10px] border border-border-subtle p-4">
       <h3 className="text-[16px] font-bold">{CHANNEL_LABEL[channel]}</h3>
-      <p className="text-[13px] text-text-muted">Legenda até {limits.caption} caracteres · até {limits.hashtags} hashtags</p>
+      <p className="text-[13px] text-text-muted">
+        Legenda até {limits.caption} caracteres · até {limits.hashtags} hashtags
+      </p>
 
       <label className="mt-3 block">
         <span className="text-[13px] font-semibold">Chamada</span>
-        <input className={inputClass} value={headline} onChange={(event) => setHeadline(event.target.value)} />
+        <input
+          className={inputClass}
+          value={headline}
+          onChange={(event) => setHeadline(event.target.value)}
+        />
       </label>
       <label className="mt-3 block">
         <span className="text-[13px] font-semibold">Legenda</span>
-        <textarea className={`${inputClass} min-h-[140px]`} value={caption} onChange={(event) => setCaption(event.target.value)} />
-        <span className="text-[12px] text-text-muted">{caption.length}/{limits.caption}</span>
+        <textarea
+          className={`${inputClass} min-h-[140px]`}
+          value={caption}
+          onChange={(event) => setCaption(event.target.value)}
+        />
+        <span className="text-[12px] text-text-muted">
+          {caption.length}/{limits.caption}
+        </span>
       </label>
       <label className="mt-3 block">
         <span className="text-[13px] font-semibold">Hashtags</span>
-        <input className={inputClass} value={hashtags} onChange={(event) => setHashtags(event.target.value)} />
+        <input
+          className={inputClass}
+          value={hashtags}
+          onChange={(event) => setHashtags(event.target.value)}
+        />
       </label>
       <label className="mt-3 block">
         <span className="text-[13px] font-semibold">Chamada para ação</span>
-        <input className={inputClass} value={callToAction} onChange={(event) => setCallToAction(event.target.value)} />
+        <input
+          className={inputClass}
+          value={callToAction}
+          onChange={(event) => setCallToAction(event.target.value)}
+        />
       </label>
 
       {issues.length > 0 && (
         <ul className="mt-3 list-disc pl-5 text-[13px] text-danger">
-          {issues.map((issue, index) => <li key={index}>{issue.field}: {issue.detail}</li>)}
+          {issues.map((issue, index) => (
+            <li key={index}>
+              {issue.field}: {issue.detail}
+            </li>
+          ))}
         </ul>
       )}
 
       <div className="mt-4 flex flex-wrap gap-2">
-        <button type="button" className={secondaryButtonClass} onClick={() => onSave({ articleId, channel, headline, caption, hashtags: draft.hashtags, callToAction: callToAction || null, ready: issues.length === 0 })}>Salvar variante</button>
-        <button type="button" className={secondaryButtonClass} disabled={issues.length > 0} onClick={() => void onExport()}>Gerar texto para copiar</button>
+        <button
+          type="button"
+          className={secondaryButtonClass}
+          onClick={() =>
+            onSave({
+              articleId,
+              channel,
+              headline,
+              caption,
+              hashtags: draft.hashtags,
+              callToAction: callToAction || null,
+              ready: issues.length === 0,
+            })
+          }
+        >
+          Salvar variante
+        </button>
+        <button
+          type="button"
+          className={secondaryButtonClass}
+          disabled={issues.length > 0}
+          onClick={() => void onExport()}
+        >
+          Gerar texto para copiar
+        </button>
       </div>
     </div>
   );

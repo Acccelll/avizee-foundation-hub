@@ -13,7 +13,11 @@ import {
   requiresStrictConfig,
   resetServerConfigCache,
 } from "@/lib/env.server";
-import { buildSitemapPaths, renderSitemap, SITEMAP_EXCLUDED_PREFIXES } from "@/routes/sitemap[.]xml";
+import {
+  buildSitemapPaths,
+  renderSitemap,
+  SITEMAP_EXCLUDED_PREFIXES,
+} from "@/routes/sitemap[.]xml";
 import { renderRobots } from "@/routes/robots[.]txt";
 
 const ORIGINAL = { ...process.env };
@@ -108,11 +112,10 @@ describe("URL pública canônica (§14)", () => {
 });
 
 describe("sitemap (§15)", () => {
-  const paths = buildSitemapPaths(
-    ["nutricao"],
-    [{ slug: "familia-a", categorySlug: "nutricao" }],
-    { categories: ["manejo"], articles: ["artigo-a"] },
-  );
+  const paths = buildSitemapPaths(["nutricao"], [{ slug: "familia-a", categorySlug: "nutricao" }], {
+    categories: ["manejo"],
+    articles: ["artigo-a"],
+  });
 
   it("gera apenas URLs absolutas", () => {
     const xml = renderSitemap("https://exemplo.invalid", paths);

@@ -2,7 +2,8 @@
 
 > Data: 2026-08-10  
 > Branch: `pre-stage-15-close-previous-stages`  
-> Escopo: segurança técnica da superfície MCP; nenhuma alteração de layout público.
+> Escopo: segurança técnica da superfície MCP; nenhuma alteração de layout público.  
+> Recertificação: CI run #127, commit `32e6ca69ba7e89144a433965103fbc50db97598f`, conclusão `success`.
 
 ## 1. Estado funcional preservado
 
@@ -71,7 +72,7 @@ A chave não é retornada ao cliente nem incluída nas mensagens de erro do limi
 
 ## 6. Segredos e arquivos de ambiente
 
-No HEAD deste fechamento:
+No HEAD recertificado:
 
 - `.env` foi removido do repositório;
 - `.gitignore` bloqueia `.env` e `.env.*`, exceto `.env.example`;
@@ -81,7 +82,7 @@ No HEAD deste fechamento:
 
 A remoção do arquivo do HEAD não equivale à rotação retroativa de qualquer segredo histórico. A credencial SMTP legada tem tratamento separado e sua revogação foi confirmada pelo usuário no doc. 543.
 
-## 7. Testes adicionados
+## 7. Testes e recertificação
 
 `tests/unit/mcp-rate-limit.test.ts` cobre:
 
@@ -98,15 +99,18 @@ A remoção do arquivo do HEAD não equivale à rotação retroativa de qualquer
 - fail-closed quando o binding fica indisponível;
 - fallback local somente fora de produção.
 
-`tests/security/regression.test.ts` também protege a higiene do checkout de CI quanto a arquivos `.env` versionados.
+`tests/security/regression.test.ts` protege a higiene do checkout de CI quanto a arquivos `.env` versionados.
+
+O conjunto foi incluído na recertificação integral do CI run #127, com lint, Prettier, build, typecheck, migrations, fixture canônico, restore lógico, SSR e suíte integral concluídos com `success`. A evidência consolidada está em `548-pre-stage-15-final-technical-recertification.md`.
 
 ## 8. Classificação
 
-A lacuna de **código permitir MCP de produção sem rate limiter** fica tecnicamente contida por fail-closed.
+A lacuna de **código permitir MCP de produção sem rate limiter** está tecnicamente encerrada por fail-closed e recertificação automatizada.
 
 A criação/configuração real do binding distribuído permanece uma ação externa de infraestrutura:
 
-- código/boundary: `CLOSED_IMPLEMENTED` após CI verde do novo HEAD;
+- código/boundary: `CLOSED_IMPLEMENTED`;
+- recertificação técnica: `CLOSED_EVIDENCED`;
 - binding real de produção: `OPEN_EXTERNAL_ACTION`;
 - produção: continua `PRODUCTION_BLOCKED`;
 - operação: continua `OPERATION_BLOCKED`.

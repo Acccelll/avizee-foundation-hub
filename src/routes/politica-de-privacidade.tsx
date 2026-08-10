@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PublicShell } from "@/components/public/PublicShell";
-import {
-  ConfirmedDataList,
-  PendingDataList,
-  PendingNotice,
-} from "@/components/public/PendingData";
+import { ConfirmedDataList, PendingDataList, PendingNotice } from "@/components/public/PendingData";
 import { LEGAL_DETAILS, LEGAL_DOCUMENTS, LEGAL_FIELDS } from "@/content/institutional";
 import { buildMeta } from "@/seo/meta";
 

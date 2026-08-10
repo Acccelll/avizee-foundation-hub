@@ -114,13 +114,17 @@ jobs:
           fi
 
           started_at="$(date +%s)"
-          dump_path="/tmp/avizee-pre-stage-15.dump"
+          dump_path="/tmp/avizee-pre-stage-15-public.dump"
           restore_db="avizee_restore_rehearsal"
 
+          # O ensaio cobre o schema da aplicação AviZee. Schemas gerenciados pela
+          # plataforma (realtime, storage, graphql etc.) pertencem ao backup do provedor
+          # e não devem contaminar o restore lógico independente da aplicação.
           docker exec "$db_container" pg_dump \
             -U postgres \
             -d postgres \
             -Fc \
+            --schema=public \
             -f "$dump_path"
 
           docker exec "$db_container" psql \
@@ -129,6 +133,27 @@ jobs:
             -v ON_ERROR_STOP=1 \
             -c "DROP DATABASE IF EXISTS ${restore_db} WITH (FORCE);" \
             -c "CREATE DATABASE ${restore_db};"
+
+          # Dependências externas mínimas referenciadas pelo schema público.
+          # auth.users/auth.uid existem no Supabase real; o ensaio cria somente o
+          # contrato necessário para validar FKs e políticas sem restaurar o subsistema Auth.
+          docker exec "$db_container" psql \
+            -U postgres \
+            -d "$restore_db" \
+            -v ON_ERROR_STOP=1 <<'SQL'
+          CREATE SCHEMA IF NOT EXISTS extensions;
+          CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA extensions;
+          CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA extensions;
+          CREATE SCHEMA IF NOT EXISTS auth;
+          CREATE TABLE IF NOT EXISTS auth.users (id uuid PRIMARY KEY);
+          CREATE OR REPLACE FUNCTION auth.uid()
+          RETURNS uuid
+          LANGUAGE sql
+          STABLE
+          AS $$
+            SELECT NULLIF(current_setting('request.jwt.claim.sub', true), '')::uuid
+          $$;
+          SQL
 
           docker exec "$db_container" pg_restore \
             -U postgres \
@@ -161,8 +186,8 @@ jobs:
 
           finished_at="$(date +%s)"
           elapsed="$((finished_at - started_at))"
-          echo "Database logical restore rehearsal: ${elapsed}s" >> "$GITHUB_STEP_SUMMARY"
-          echo "Validação: schema restaurado e contagens críticas equivalentes." >> "$GITHUB_STEP_SUMMARY"
+          echo "Application-schema logical restore rehearsal: ${elapsed}s" >> "$GITHUB_STEP_SUMMARY"
+          echo "Validação: schema public restaurado isoladamente e contagens críticas equivalentes." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Start application test server
         shell: bash

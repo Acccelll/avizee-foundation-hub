@@ -47,6 +47,11 @@ function actorKey(request: Request): string {
   return cloudflareIp ? `ip:${cloudflareIp}` : "anonymous";
 }
 
+function firstForwardedValue(value: string | null): string | null {
+  const first = value?.split(",", 1)[0]?.trim();
+  return first || null;
+}
+
 function blocked(status: 421 | 429 | 503, error: string): Response {
   return Response.json(
     { ok: false, error },
@@ -61,8 +66,9 @@ function blocked(status: 421 | 429 | 503, error: string): Response {
 
 /**
  * O adaptador MCP gerado pode operar atrás de proxies. Em produção, o entrypoint
- * externo limita a superfície MCP à origem canônica explicitamente configurada,
- * sem depender de X-Forwarded-Host fornecido pelo cliente.
+ * externo limita a superfície MCP à origem canônica explicitamente configurada.
+ * Headers forwarded não são fonte de verdade: quando presentes, precisam ser
+ * coerentes com a origem canônica antes de a requisição chegar ao adaptador.
  */
 export function enforceMcpCanonicalOrigin(
   request: Request,
@@ -80,7 +86,21 @@ export function enforceMcpCanonicalOrigin(
     if (canonicalUrl.protocol !== "https:") {
       return blocked(503, "mcp_origin_not_configured");
     }
-    return requestUrl.origin === canonicalUrl.origin ? null : blocked(421, "invalid_origin");
+    if (requestUrl.origin !== canonicalUrl.origin) {
+      return blocked(421, "invalid_origin");
+    }
+
+    const forwardedHost = firstForwardedValue(request.headers.get("x-forwarded-host"));
+    if (forwardedHost && forwardedHost.toLowerCase() !== canonicalUrl.host.toLowerCase()) {
+      return blocked(421, "invalid_origin");
+    }
+
+    const forwardedProto = firstForwardedValue(request.headers.get("x-forwarded-proto"));
+    if (forwardedProto && forwardedProto.toLowerCase() !== "https") {
+      return blocked(421, "invalid_origin");
+    }
+
+    return null;
   } catch {
     return blocked(503, "mcp_origin_not_configured");
   }

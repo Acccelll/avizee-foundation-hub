@@ -278,7 +278,7 @@ async function assertPublicationReady(auth: Authorized, article: Row) {
 
 async function statusEvent(
   auth: Authorized,
-  input: { articleId: string; from: ContentStatus; to: ContentStatus; note?: string | null },
+  input: { articleId: string; from: ContentStatus; to: ContentStatus; note?: string | null | undefined },
 ) {
   const { error } = await auth.admin.from("content_status_events").insert({
     article_id: input.articleId,

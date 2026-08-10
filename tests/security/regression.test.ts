@@ -63,3 +63,18 @@ describe("Server Config Security", () => {
     expect(getServerConfig().QUOTATION_HASH_SALT).not.toBe(DEV_ONLY_QUOTATION_SALT);
   });
 });
+
+describe("Repository Secret Hygiene", () => {
+  it("mantém arquivos .env fora do checkout versionado do CI", () => {
+    if (process.env["CI"] !== "true") return;
+
+    const envPath = path.resolve(__dirname, "../../.env");
+    const gitignorePath = path.resolve(__dirname, "../../.gitignore");
+    const gitignore = fs.readFileSync(gitignorePath, "utf-8");
+
+    expect(fs.existsSync(envPath)).toBe(false);
+    expect(gitignore).toMatch(/^\.env$/m);
+    expect(gitignore).toMatch(/^\.env\.\*$/m);
+    expect(gitignore).toMatch(/^!\.env\.example$/m);
+  });
+});

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-import { publicSitemapEntries } from "@/catalog/public/read.server";
+import { catalogFacets, publicSitemapEntries } from "@/catalog/public/read.server";
 import { contentSitemapEntries } from "@/content/public/read.server";
 import { getServerConfig } from "@/lib/env.server";
 
@@ -27,11 +27,17 @@ export function buildSitemapPaths(
   categories: string[],
   families: { slug: string; categorySlug: string }[],
   content: { categories: string[]; articles: string[] },
+  applications: string[] = [],
 ): SitemapEntry[] {
   const entries: SitemapEntry[] = [
     { path: "/", changefreq: "weekly", priority: "1.0" },
     { path: "/produtos", changefreq: "weekly", priority: "0.9" },
     { path: "/solucoes", changefreq: "monthly", priority: "0.6" },
+    ...applications.map((slug) => ({
+      path: `/solucoes/${slug}`,
+      changefreq: "monthly" as const,
+      priority: "0.6",
+    })),
     { path: "/sobre", changefreq: "monthly", priority: "0.5" },
     { path: "/contato", changefreq: "monthly", priority: "0.5" },
     { path: "/conteudos", changefreq: "weekly", priority: "0.6" },
@@ -99,14 +105,20 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const { APP_ENV, APP_PUBLIC_URL } = getServerConfig();
 
-        const [{ categories, families }, content] = await Promise.all([
+        const [{ categories, families }, content, facets] = await Promise.all([
           publicSitemapEntries(),
           contentSitemapEntries(),
+          catalogFacets(),
         ]);
 
         const xml = renderSitemap(
           APP_PUBLIC_URL,
-          buildSitemapPaths(categories, families, content),
+          buildSitemapPaths(
+            categories,
+            families,
+            content,
+            facets.applications.map((application) => application.slug),
+          ),
         );
 
         return new Response(xml, {

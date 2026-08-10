@@ -24,7 +24,13 @@ export const Route = createFileRoute("/busca")({
   loader: async ({ deps }) => {
     const facets = await fetchFacets();
     if (!deps.q) {
-      return { q: "", catalog: null, content: null, solutions: [], facets };
+      return {
+        q: "",
+        catalog: null,
+        content: null,
+        solutions: [] as typeof facets.applications,
+        facets,
+      };
     }
 
     const contentPromise =
@@ -141,7 +147,7 @@ function BuscaPublica() {
                       Soluções
                     </h2>
                     <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      {solutions.map((application) => (
+                      {solutions.map((application: { slug: string; name: string; count: number }) => (
                         <li key={application.slug}>
                           <Link
                             to="/solucoes/$applicationSlug"

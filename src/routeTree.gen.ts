@@ -18,7 +18,6 @@ import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SobreRouteImport } from './routes/sobre'
-import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -28,6 +27,8 @@ import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as ConteudosIndexRouteImport } from './routes/conteudos/index'
 import { Route as ConteudosArticleSlugRouteImport } from './routes/conteudos/$articleSlug'
 import { Route as ProdutosIndexRouteImport } from './routes/produtos/index'
+import { Route as SolucoesIndexRouteImport } from './routes/solucoes/index'
+import { Route as SolucoesApplicationSlugRouteImport } from './routes/solucoes/$applicationSlug'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as AdminProtectedIndexRouteImport } from './routes/admin/_protected/index'
 import { Route as AdminProtectedAuditoriaRouteImport } from './routes/admin/_protected/auditoria'
@@ -38,6 +39,7 @@ import { Route as AdminProtectedImportacaoRouteImport } from './routes/admin/_pr
 import { Route as AdminProtectedMidiaRouteImport } from './routes/admin/_protected/midia'
 import { Route as AdminProtectedNormalizacaoRouteImport } from './routes/admin/_protected/normalizacao'
 import { Route as ApiInternalContentSchedulerRouteImport } from './routes/api/internal/content-scheduler'
+import { Route as ApiInternalQuotationRetentionRouteImport } from './routes/api/internal/quotation-retention'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 import { Route as ApiPublicLivenessRouteImport } from './routes/api/public/liveness'
 import { Route as ApiPublicOutboxWorkerRouteImport } from './routes/api/public/outbox-worker'
@@ -100,11 +102,6 @@ const SobreRoute = SobreRouteImport.update({
   path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SolucoesRoute = SolucoesRouteImport.update({
-  id: '/solucoes',
-  path: '/solucoes',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   id: '/termos-de-uso',
   path: '/termos-de-uso',
@@ -150,6 +147,16 @@ const ConteudosArticleSlugRoute = ConteudosArticleSlugRouteImport.update({
 const ProdutosIndexRoute = ProdutosIndexRouteImport.update({
   id: '/produtos/',
   path: '/produtos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucoesIndexRoute = SolucoesIndexRouteImport.update({
+  id: '/solucoes/',
+  path: '/solucoes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucoesApplicationSlugRoute = SolucoesApplicationSlugRouteImport.update({
+  id: '/solucoes/$applicationSlug',
+  path: '/solucoes/$applicationSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
@@ -204,6 +211,12 @@ const ApiInternalContentSchedulerRoute =
   ApiInternalContentSchedulerRouteImport.update({
     id: '/api/internal/content-scheduler',
     path: '/api/internal/content-scheduler',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiInternalQuotationRetentionRoute =
+  ApiInternalQuotationRetentionRouteImport.update({
+    id: '/api/internal/quotation-retention',
+    path: '/api/internal/quotation-retention',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
@@ -308,7 +321,6 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
-  '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -316,8 +328,10 @@ export interface FileRoutesByFullPath {
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
+  '/solucoes/$applicationSlug': typeof SolucoesApplicationSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
+  '/solucoes/': typeof SolucoesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
@@ -327,6 +341,7 @@ export interface FileRoutesByFullPath {
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/internal/content-scheduler': typeof ApiInternalContentSchedulerRoute
+  '/api/internal/quotation-retention': typeof ApiInternalQuotationRetentionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
@@ -355,15 +370,16 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
-  '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
+  '/solucoes/$applicationSlug': typeof SolucoesApplicationSlugRoute
   '/conteudos': typeof ConteudosIndexRoute
   '/produtos': typeof ProdutosIndexRoute
+  '/solucoes': typeof SolucoesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/conflitos': typeof AdminProtectedConflitosRoute
@@ -373,6 +389,7 @@ export interface FileRoutesByTo {
   '/admin/midia': typeof AdminProtectedMidiaRoute
   '/admin/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/internal/content-scheduler': typeof ApiInternalContentSchedulerRoute
+  '/api/internal/quotation-retention': typeof ApiInternalQuotationRetentionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
@@ -402,7 +419,6 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sobre': typeof SobreRoute
-  '/solucoes': typeof SolucoesRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -410,8 +426,10 @@ export interface FileRoutesById {
   '/admin/acesso-negado': typeof AdminAcessoNegadoRoute
   '/admin/login': typeof AdminLoginRoute
   '/conteudos/$articleSlug': typeof ConteudosArticleSlugRoute
+  '/solucoes/$applicationSlug': typeof SolucoesApplicationSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
   '/produtos/': typeof ProdutosIndexRoute
+  '/solucoes/': typeof SolucoesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/_protected/auditoria': typeof AdminProtectedAuditoriaRoute
   '/admin/_protected/conflitos': typeof AdminProtectedConflitosRoute
@@ -421,6 +439,7 @@ export interface FileRoutesById {
   '/admin/_protected/midia': typeof AdminProtectedMidiaRoute
   '/admin/_protected/normalizacao': typeof AdminProtectedNormalizacaoRoute
   '/api/internal/content-scheduler': typeof ApiInternalContentSchedulerRoute
+  '/api/internal/quotation-retention': typeof ApiInternalQuotationRetentionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
   '/api/public/liveness': typeof ApiPublicLivenessRoute
   '/api/public/outbox-worker': typeof ApiPublicOutboxWorkerRoute
@@ -451,7 +470,6 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sobre'
-    | '/solucoes'
     | '/termos-de-uso'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -459,8 +477,10 @@ export interface FileRouteTypes {
     | '/admin/acesso-negado'
     | '/admin/login'
     | '/conteudos/$articleSlug'
+    | '/solucoes/$applicationSlug'
     | '/conteudos/'
     | '/produtos/'
+    | '/solucoes/'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/auditoria'
     | '/admin/conflitos'
@@ -470,6 +490,7 @@ export interface FileRouteTypes {
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/internal/content-scheduler'
+    | '/api/internal/quotation-retention'
     | '/api/public/health'
     | '/api/public/liveness'
     | '/api/public/outbox-worker'
@@ -498,15 +519,16 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sobre'
-    | '/solucoes'
     | '/termos-de-uso'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin/acesso-negado'
     | '/admin/login'
     | '/conteudos/$articleSlug'
+    | '/solucoes/$applicationSlug'
     | '/conteudos'
     | '/produtos'
+    | '/solucoes'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/auditoria'
     | '/admin/conflitos'
@@ -516,6 +538,7 @@ export interface FileRouteTypes {
     | '/admin/midia'
     | '/admin/normalizacao'
     | '/api/internal/content-scheduler'
+    | '/api/internal/quotation-retention'
     | '/api/public/health'
     | '/api/public/liveness'
     | '/api/public/outbox-worker'
@@ -544,7 +567,6 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/sobre'
-    | '/solucoes'
     | '/termos-de-uso'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -552,8 +574,10 @@ export interface FileRouteTypes {
     | '/admin/acesso-negado'
     | '/admin/login'
     | '/conteudos/$articleSlug'
+    | '/solucoes/$applicationSlug'
     | '/conteudos/'
     | '/produtos/'
+    | '/solucoes/'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/_protected/auditoria'
     | '/admin/_protected/conflitos'
@@ -563,6 +587,7 @@ export interface FileRouteTypes {
     | '/admin/_protected/midia'
     | '/admin/_protected/normalizacao'
     | '/api/internal/content-scheduler'
+    | '/api/internal/quotation-retention'
     | '/api/public/health'
     | '/api/public/liveness'
     | '/api/public/outbox-worker'
@@ -592,7 +617,6 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SobreRoute: typeof SobreRoute
-  SolucoesRoute: typeof SolucoesRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -600,10 +624,13 @@ export interface RootRouteChildren {
   AdminAcessoNegadoRoute: typeof AdminAcessoNegadoRoute
   AdminLoginRoute: typeof AdminLoginRoute
   ConteudosArticleSlugRoute: typeof ConteudosArticleSlugRoute
+  SolucoesApplicationSlugRoute: typeof SolucoesApplicationSlugRoute
   ConteudosIndexRoute: typeof ConteudosIndexRoute
   ProdutosIndexRoute: typeof ProdutosIndexRoute
+  SolucoesIndexRoute: typeof SolucoesIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiInternalContentSchedulerRoute: typeof ApiInternalContentSchedulerRoute
+  ApiInternalQuotationRetentionRoute: typeof ApiInternalQuotationRetentionRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
   ApiPublicLivenessRoute: typeof ApiPublicLivenessRoute
   ApiPublicOutboxWorkerRoute: typeof ApiPublicOutboxWorkerRoute
@@ -678,13 +705,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/solucoes': {
-      id: '/solucoes'
-      path: '/solucoes'
-      fullPath: '/solucoes'
-      preLoaderRoute: typeof SolucoesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/termos-de-uso': {
       id: '/termos-de-uso'
       path: '/termos-de-uso'
@@ -746,6 +766,20 @@ declare module '@tanstack/react-router' {
       path: '/produtos'
       fullPath: '/produtos/'
       preLoaderRoute: typeof ProdutosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes/': {
+      id: '/solucoes/'
+      path: '/solucoes'
+      fullPath: '/solucoes/'
+      preLoaderRoute: typeof SolucoesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes/$applicationSlug': {
+      id: '/solucoes/$applicationSlug'
+      path: '/solucoes/$applicationSlug'
+      fullPath: '/solucoes/$applicationSlug'
+      preLoaderRoute: typeof SolucoesApplicationSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
@@ -816,6 +850,13 @@ declare module '@tanstack/react-router' {
       path: '/api/internal/content-scheduler'
       fullPath: '/api/internal/content-scheduler'
       preLoaderRoute: typeof ApiInternalContentSchedulerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/internal/quotation-retention': {
+      id: '/api/internal/quotation-retention'
+      path: '/api/internal/quotation-retention'
+      fullPath: '/api/internal/quotation-retention'
+      preLoaderRoute: typeof ApiInternalQuotationRetentionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/health': {
@@ -990,7 +1031,6 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SobreRoute: SobreRoute,
-  SolucoesRoute: SolucoesRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
@@ -999,10 +1039,13 @@ const rootRouteChildren: RootRouteChildren = {
   AdminAcessoNegadoRoute: AdminAcessoNegadoRoute,
   AdminLoginRoute: AdminLoginRoute,
   ConteudosArticleSlugRoute: ConteudosArticleSlugRoute,
+  SolucoesApplicationSlugRoute: SolucoesApplicationSlugRoute,
   ConteudosIndexRoute: ConteudosIndexRoute,
   ProdutosIndexRoute: ProdutosIndexRoute,
+  SolucoesIndexRoute: SolucoesIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiInternalContentSchedulerRoute: ApiInternalContentSchedulerRoute,
+  ApiInternalQuotationRetentionRoute: ApiInternalQuotationRetentionRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,
   ApiPublicLivenessRoute: ApiPublicLivenessRoute,
   ApiPublicOutboxWorkerRoute: ApiPublicOutboxWorkerRoute,

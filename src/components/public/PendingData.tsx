@@ -1,10 +1,10 @@
 import { Info } from "lucide-react";
 
-import type { PendingField } from "@/content/institutional";
+import type { ConfirmedField, PendingField } from "@/content/institutional";
 
 /**
  * Exibe publicamente a AUSÊNCIA de um dado, sem inventar valor (P-04 / doc 75).
- * Usado para Q-08 (contato) e Q-13 (dados legais).
+ * Usado somente enquanto uma decisão ainda estiver efetivamente pendente.
  */
 export function PendingDataList({ fields, title }: { fields: PendingField[]; title: string }) {
   return (
@@ -18,6 +18,23 @@ export function PendingDataList({ fields, title }: { fields: PendingField[]; tit
               informação em confirmação
               <span className="sr-only"> (decisão {field.decision} pendente)</span>
             </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
+/** Mesma estrutura visual do bloco pendente, agora preenchida por dados confirmados. */
+export function ConfirmedDataList({ fields, title }: { fields: ConfirmedField[]; title: string }) {
+  return (
+    <div className="rounded-[12px] border border-border p-5">
+      <h3 className="text-[17px] font-bold">{title}</h3>
+      <dl className="mt-4 space-y-3">
+        {fields.map((field) => (
+          <div key={field.label} className="flex flex-wrap items-baseline gap-2">
+            <dt className="text-[15px] font-semibold">{field.label}</dt>
+            <dd className="text-[15px] text-text-muted">{field.value}</dd>
           </div>
         ))}
       </dl>

@@ -178,7 +178,9 @@ async function seedCiApprovedCatalog() {
   }));
   const publicationHistory = await service.from("publication_history").insert(publicationRows);
   if (publicationHistory.error) {
-    throw new Error(`Falha ao registrar publicação do fixture: ${publicationHistory.error.message}`);
+    throw new Error(
+      `Falha ao registrar publicação do fixture: ${publicationHistory.error.message}`,
+    );
   }
 
   const publish = await service
@@ -191,7 +193,9 @@ async function seedCiApprovedCatalog() {
     })
     .in("public_sku", skus)
     .is("deleted_at", null);
-  if (publish.error) throw new Error(`Falha ao publicar fixture canônico: ${publish.error.message}`);
+  if (publish.error) {
+    throw new Error(`Falha ao publicar fixture canônico: ${publish.error.message}`);
+  }
 
   const cohortRows = (products ?? []).map((product) => ({
     cohort_code: COHORT_CODE,
@@ -203,10 +207,14 @@ async function seedCiApprovedCatalog() {
   const cohort = await service
     .from("public_release_cohort")
     .upsert(cohortRows, { onConflict: "cohort_code,entity,entity_id" });
-  if (cohort.error) throw new Error(`Falha ao materializar coorte no CI: ${cohort.error.message}`);
+  if (cohort.error) {
+    throw new Error(`Falha ao materializar coorte no CI: ${cohort.error.message}`);
+  }
 
   const refresh = await service.rpc("refresh_public_search_index");
-  if (refresh.error) throw new Error(`Falha ao atualizar índice público: ${refresh.error.message}`);
+  if (refresh.error) {
+    throw new Error(`Falha ao atualizar índice público: ${refresh.error.message}`);
+  }
 
   const [publicFamilies, publicProducts] = await Promise.all([
     service.from("public_families").select("id", { count: "exact", head: true }),

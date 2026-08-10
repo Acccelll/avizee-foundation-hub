@@ -95,8 +95,9 @@ export function PublicShell({
 
           <div className="flex items-center gap-2">
             <Link
-              to="/produtos"
-              aria-label="Buscar no catálogo"
+              to="/busca"
+              search={{}}
+              aria-label="Buscar no site"
               className="inline-flex h-11 w-11 items-center justify-center rounded-[8px] border border-border hover:bg-surface"
             >
               <Search aria-hidden="true" className="h-5 w-5" />

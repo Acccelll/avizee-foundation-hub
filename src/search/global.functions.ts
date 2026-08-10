@@ -44,7 +44,7 @@ export const fetchGlobalSuggestions = createServerFn({ method: "GET" })
     ]);
 
     const term = normalized(data.q);
-    const productSuggestions: GlobalSuggestion[] = catalog.suggestions.map((item) => ({
+    const productSuggestions: GlobalSuggestion[] = catalog.suggestions.slice(0, 4).map((item) => ({
       kind: item.kind,
       label: item.label,
       sublabel: item.sublabel,
@@ -54,6 +54,7 @@ export const fetchGlobalSuggestions = createServerFn({ method: "GET" })
 
     const solutionSuggestions: GlobalSuggestion[] = facets.applications
       .filter((application) => normalized(`${application.name} ${application.slug}`).includes(term))
+      .slice(0, 2)
       .map((application) => ({
         kind: "solution" as const,
         label: application.name,
@@ -61,7 +62,7 @@ export const fetchGlobalSuggestions = createServerFn({ method: "GET" })
         applicationSlug: application.slug,
       }));
 
-    const contentSuggestions: GlobalSuggestion[] = content.items.map((article) => ({
+    const contentSuggestions: GlobalSuggestion[] = content.items.slice(0, 2).map((article) => ({
       kind: "content" as const,
       label: article.title,
       sublabel: article.categoryName,
@@ -69,6 +70,6 @@ export const fetchGlobalSuggestions = createServerFn({ method: "GET" })
     }));
 
     return {
-      suggestions: [...productSuggestions, ...solutionSuggestions, ...contentSuggestions].slice(0, 8),
+      suggestions: [...productSuggestions, ...solutionSuggestions, ...contentSuggestions],
     };
   });

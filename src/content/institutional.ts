@@ -1,13 +1,13 @@
 /**
- * Conteúdo institucional APROVADO (Etapa 9).
+ * Conteúdo institucional APROVADO (Etapa 9 + fechamento pré-Etapa 15).
  *
  * Fonte única de verdade: `docs/avizee/05-business-positioning.md` (USER_DECISION),
- * `docs/avizee/84-public-page-wireframes.md` (PT-01, PT-04, PT-14, PT-15) e
- * `docs/avizee/89-microcopy-and-content-ui-guidelines.md`.
+ * `docs/avizee/84-public-page-wireframes.md` (PT-01, PT-04, PT-14, PT-15),
+ * `docs/avizee/89-microcopy-and-content-ui-guidelines.md` e confirmações do usuário em 2026-08-10.
  *
  * Regras aplicadas:
  * - nenhum texto inventado: tudo aqui deriva de material aprovado;
- * - nenhum dado não confirmado é publicado — vira `PENDING` (Q-08 / Q-13 / O-10);
+ * - nenhum dado não confirmado é publicado — vira `PENDING`;
  * - nenhum preço, prazo, estoque, promessa logística ou marca de terceiro (R-03/R-04/R-05/R-11).
  */
 
@@ -18,6 +18,11 @@ export interface PendingField {
   label: string;
   status: typeof PENDING;
   decision: string;
+}
+
+export interface ConfirmedField {
+  label: string;
+  value: string;
 }
 
 /** Posicionamento aprovado (doc 05, USER_DECISION — essência imutável). */
@@ -72,7 +77,7 @@ export const COMPLEMENTARY_SEGMENTS = {
     "Bovinocultura e suinocultura são atendidas de forma complementar e pontual, sob consulta. O foco principal da AviZee é a avicultura.",
 } as const;
 
-/** Como funciona a cotação (doc 84, PT-01 bloco 7 · sem prazo, O-10 em aberto). */
+/** Como funciona a cotação (doc 84, PT-01 bloco 7). O-10: sem SLA público. */
 export const QUOTATION_STEPS = [
   {
     step: 1,
@@ -99,25 +104,35 @@ export const CTA = {
   talk: "Falar com a equipe",
 } as const;
 
-/** Dados de contato — TODOS pendentes de confirmação (Q-08). Nada é inventado. */
-export const CONTACT_FIELDS: PendingField[] = [
-  { label: "Telefone", status: PENDING, decision: "Q-08" },
-  { label: "WhatsApp", status: PENDING, decision: "Q-08" },
-  { label: "E-mail", status: PENDING, decision: "Q-08" },
-  { label: "Endereço", status: PENDING, decision: "Q-08" },
-  { label: "Horário de atendimento", status: PENDING, decision: "Q-08" },
+/** Dados de contato confirmados explicitamente pelo usuário em 2026-08-10 (Q-08). */
+export const CONTACT_DETAILS: ConfirmedField[] = [
+  { label: "Telefone", value: "(19) 99898-2930" },
+  { label: "WhatsApp", value: "(19) 99898-2930" },
+  { label: "E-mail", value: "comercial@avizee.com.br" },
+  {
+    label: "Endereço",
+    value: "Rua Diogo António Feijó, 111 — João Aranha, Paulínia/SP — CEP 13145-706",
+  },
+  { label: "Horário de atendimento", value: "Seg - Sáb, 08h - 18h" },
 ];
 
-/** Dados legais/societários — pendentes (Q-13). */
+/** Dados legais e de privacidade já confirmados/aprovados. */
+export const LEGAL_DETAILS: ConfirmedField[] = [
+  { label: "Razão social", value: "AviZee Equipamentos LTDA" },
+  { label: "CNPJ", value: "53.078.538/0001-85" },
+  { label: "Canal de privacidade", value: "privacidade@avizee.com.br" },
+  {
+    label: "Retenção de cotações/leads",
+    value: "24 meses após a última interação comercial, salvo obrigação aplicável",
+  },
+];
+
+/** Q-13 remanescente: inventário final de operadores precisa refletir apenas serviços ativados. */
 export const LEGAL_FIELDS: PendingField[] = [
-  { label: "Razão social", status: PENDING, decision: "Q-13" },
-  { label: "CNPJ", status: PENDING, decision: "Q-13" },
-  { label: "Canal de privacidade", status: PENDING, decision: "Q-13" },
-  { label: "Prazo de retenção", status: PENDING, decision: "Q-13" },
   { label: "Provedores e operadores", status: PENDING, decision: "Q-13" },
 ];
 
-/** Estrutura das páginas legais: publicada como RASCUNHO até revisão jurídica. */
+/** Estrutura das páginas legais permanece em rascunho até o fechamento jurídico do conteúdo. */
 export const LEGAL_DOCUMENTS = {
   privacy: {
     title: "Política de privacidade",
@@ -156,13 +171,13 @@ export const MISSION_VISION_VALUES_APPROVED = false;
 /** Página detalhada de solução: DEC-07 / DECT-12 em aberto — não implementada. */
 export const SOLUTION_DETAIL_PAGES_APPROVED = false;
 
-/** Formulário geral de contato: DEP-T1 em aberto — não implementado. */
+/** Formulário geral de contato: ainda depende de aprovação explícita de ativação. */
 export const CONTACT_FORM_APPROVED = false;
 
-/** Mapa (Google Maps): depende do endereço confirmado (Q-08). */
+/** Endereço está confirmado, mas o mapa continua desativado até aprovação explícita. */
 export const MAP_APPROVED = false;
 
-/** Central de Conteúdos: nenhum artigo publicado — bloco de conteúdos recentes oculto. */
+/** Central de Conteúdos é dinâmica; constante histórica mantida apenas por compatibilidade. */
 export const PUBLISHED_ARTICLES = 0;
 
 /** Mínimo de famílias para exibir o bloco de destaques (doc 84, PT-01 bloco 6). */

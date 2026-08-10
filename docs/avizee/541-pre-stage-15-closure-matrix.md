@@ -2,22 +2,21 @@
 
 ## Objetivo
 
-Encerrar de forma rastreável todas as pendências herdadas das Etapas 0–14.1 antes do início da Etapa 15, sem alterar layout público, branding, taxonomia aprovada ou modelo comercial.
+Encerrar de forma rastreável todas as pendências herdadas das Etapas 0–14.1 antes do início da Etapa 15, sem alterar branding, taxonomia aprovada ou modelo comercial e sem redesenhar o layout público existente.
 
-Esta etapa de fechamento não autoriza produção por si só. O status de produção só muda quando os bloqueios operacionais aplicáveis forem efetivamente encerrados e evidenciados.
+Esta etapa de fechamento não autoriza produção por si só. O status de produção só muda quando os gates operacionais de lançamento forem efetivamente concluídos e evidenciados.
 
 ## Critério de fechamento
 
-Nenhuma pendência será considerada encerrada por simples mudança documental. Cada item deve terminar em um dos estados:
+Nenhuma pendência é encerrada por simples mudança documental. Os estados usados são:
 
 - `CLOSED_IMPLEMENTED` — resolvido no código/configuração e validado;
 - `CLOSED_USER_DECISION` — encerrado por decisão explícita do usuário;
-- `CLOSED_EVIDENCED` — encerrado por evidência operacional verificável;
-- `CLOSED_CONTAINED` — escopo deliberadamente contido, com registros fora da publicação e sem risco de exposição;
-- `PARTIALLY_CLOSED` — parcela técnica encerrada, com remanescente operacional claramente separado;
-- `OPEN_USER_INPUT` — depende de dado/decisão que somente a AviZee pode fornecer;
-- `OPEN_EXTERNAL_ACTION` — depende de ação externa verificável;
-- `OPEN_TECHNICAL` — correção técnica ainda necessária.
+- `CLOSED_EVIDENCED` — encerrado por evidência verificável;
+- `CLOSED_CONTAINED` — escopo deliberadamente contido e sem exposição pública indevida;
+- `CLOSED_DEFERRED_LAUNCH_GATE` — não é trabalho funcional pendente da etapa; depende de ação externa no fechamento de lançamento e continua bloqueando produção quando aplicável;
+- `REVALIDATION_IN_PROGRESS` — implementação concluída no branch corrente, aguardando a recertificação integral do HEAD exato;
+- `OPEN_TECHNICAL` — correção técnica interna ainda necessária.
 
 ## Matriz consolidada — estado corrente em 2026-08-10
 
@@ -26,71 +25,61 @@ Nenhuma pendência será considerada encerrada por simples mudança documental. 
 |---|---|---|---|
 | Etapas 2/2.1 | DECT-08 / DEP-09 — 34 SKUs sem identidade | `CLOSED_CONTAINED` | D-054 / doc. 544: permanecem fora da publicação |
 | Etapas 2/2.1 | DECT-11 — 16 SKUs sem nome público | `CLOSED_CONTAINED` | D-054 / doc. 544: permanecem fora da publicação |
-| Etapas 2/2.1 | DECT-02 a DECT-09 e DECT-11 a DECT-14 remanescentes | `CLOSED_USER_DECISION` / `CLOSED_CONTAINED` | reconciliação integral no doc. 544; DECT-12 permanece vinculada a DEC-07 |
-| Etapas 3/5 | DEC-07 / DECT-12 — páginas detalhadas de solução | `OPEN_USER_INPUT` | decisão ainda necessária antes da Etapa 15 |
-| Etapa 2 | DEC-10 — busca global | `OPEN_USER_INPUT` | completar Produtos/Soluções/Conteúdos ou conter formalmente à busca de catálogo v1 |
-| Etapa 4 | DEP-T1 / O-05 / O-06 — provedor e destino de e-mail | `PARTIALLY_CLOSED` | Resend/remetente/destino aprovados no doc. 543; DNS/API key/remetente real = `OPEN_EXTERNAL_ACTION` |
-| Etapa 4 | O-08 / O-09 — usuários reais e atribuição de papéis | `PARTIALLY_CLOSED` | regra de um administrador inicial aprovada; login concreto/provisionamento = `OPEN_EXTERNAL_ACTION` |
-| Etapa 5 | Q-08 — contato público | `CLOSED_USER_DECISION` | dados atuais confirmados no doc. 543 e já refletidos na implementação |
-| Etapa 5 | Q-13 — dados legais | `PARTIALLY_CLOSED` | razão social/CNPJ/canal aprovados; criação de `privacidade@avizee.com.br` e revisão legal final ainda externas |
+| Etapas 2/2.1 | demais decisões taxonômicas antigas | `CLOSED_USER_DECISION` / `CLOSED_CONTAINED` | reconciliação integral no doc. 544; coorte pública continua 31 famílias / 97 SKUs |
+| Etapas 3/5 | DEC-07 / DECT-12 — páginas consultivas de solução | `REVALIDATION_IN_PROGRESS` | opção B aprovada no doc. 549 e implementada em `/solucoes/{aplicacao}`; aguarda CI integral do HEAD final |
+| Etapa 2 | DEC-10 — busca global | `REVALIDATION_IN_PROGRESS` | opção B aprovada no doc. 549 e implementada em Produtos + Soluções + Conteúdos publicados; aguarda CI integral do HEAD final |
+| Etapa 4 | DEP-T1 / O-05 / O-06 — provider e destino de e-mail | `CLOSED_DEFERRED_LAUNCH_GATE` | Resend, remetente planejado, destino e Reply-To decididos; criação de caixas/subdomínio, DNS e chave real ficam para o fechamento do projeto |
+| Etapa 4 | O-08 / O-09 — usuários reais e papéis | `CLOSED_DEFERRED_LAUNCH_GATE` | regra de um administrador inicial aprovada; provisionamento da conta concreta ocorre no gate operacional |
+| Etapa 5 | Q-08 — contato público | `CLOSED_USER_DECISION` | endereço, CEP, e-mail, telefone/WhatsApp e horário confirmados e refletidos na implementação |
+| Etapa 5 | Q-13 — dados legais e canal de privacidade | `CLOSED_DEFERRED_LAUNCH_GATE` | razão social/CNPJ/canal aprovados; criação da caixa e revisão jurídica final permanecem no gate de lançamento |
 | Etapa 5 | O-10 / B11-08 — prazo comercial público | `CLOSED_USER_DECISION` | decisão explícita: não publicar promessa temporal fixa |
-| Etapa 5 | formulário geral de contato | `OPEN_USER_INPUT` | ativar ou manter ausente dentro do layout aprovado; não inferir |
-| Etapa 5 | mapa | `OPEN_USER_INPUT` | ativar sob interação ou manter ausente dentro do layout aprovado; não inferir |
-| Etapa 6 / 14.1 | Central de Conteúdos | `CLOSED_IMPLEMENTED` | integrada e incluída nas recertificações verdes dos docs. 546/548 |
-| Etapa 7 | qualidade integral do HEAD | `CLOSED_EVIDENCED` | CI run #127: lint, Prettier, build, typecheck, migrations, fixture, restore lógico, SSR e suíte integral verdes — doc. 548 |
-| Etapas 11–13 | B11-05 / O-27 — credencial SMTP legada | `CLOSED_USER_DECISION` | usuário confirmou revogação/rotação no doc. 543; credencial antiga proibida |
-| Etapas 11–13 | B11-01 — SPF/DKIM/DMARC e e-mail real | `OPEN_EXTERNAL_ACTION` | provedor já decidido; configuração real ainda pendente |
-| Etapas 11–13 | B11-02 / DEP-T5 — retenção | `CLOSED_IMPLEMENTED` | regra 24 meses aprovada e automação/worker/testes implementados; produção continua dependente de configuração operacional |
-| Etapas 11–13 | B11-03 — dados legais | `PARTIALLY_CLOSED` | dados oficiais confirmados; revisão legal/canal real ainda externos |
-| Etapas 11–13 | B11-04 — contato | `CLOSED_USER_DECISION` | dados atuais confirmados no doc. 543 |
-| Etapas 11–13 | B11-06 — UAT | `OPEN_EXTERNAL_ACTION` | execução e aceite humano continuam necessários |
-| Etapas 11–13 | B11-07 — restore / RPO / RTO | `PARTIALLY_CLOSED` | restore lógico local do schema da aplicação comprovado nos CI #83/#127; backup real, storage e RPO/RTO permanecem externos — docs. 447/448/546/548 |
-| Etapas 11–13 | DEP-T3 — storage/backup | `OPEN_EXTERNAL_ACTION` | mecanismo de restore do DB não certifica objetos de storage; política/backup/restore real ainda necessários |
+| Etapa 5 | formulário geral de contato | `CLOSED_USER_DECISION` | opção A aprovada no doc. 549: não ativar na v1; Lista de Cotação continua fluxo comercial registrado |
+| Etapa 5 | mapa | `CLOSED_USER_DECISION` | opção A aprovada no doc. 549: não ativar na v1; nenhum mapa externo é carregado |
+| Etapa 6 / 14.1 | Central de Conteúdos | `CLOSED_IMPLEMENTED` | integrada e recertificada nos marcos técnicos anteriores; usada apenas por relações editoriais declaradas |
+| Etapa 7 | qualidade técnica anterior ao último bloco funcional | `CLOSED_EVIDENCED` | CI #127 comprovou lint, Prettier, build, typecheck, migrations, fixture, restore lógico, SSR e suíte integral — doc. 548 |
+| Etapas 11–13 | B11-05 / O-27 — credencial SMTP legada | `CLOSED_USER_DECISION` | usuário confirmou revogação/rotação; credencial antiga proibida |
+| Etapas 11–13 | B11-01 — SPF/DKIM/DMARC e e-mail real | `CLOSED_DEFERRED_LAUNCH_GATE` | decisão técnica concluída; configuração real continua obrigatória antes de envio produtivo |
+| Etapas 11–13 | B11-02 / DEP-T5 — retenção de cotações/leads | `CLOSED_IMPLEMENTED` | política de 24 meses, RPC, worker e testes implementados |
+| Etapas 11–13 | B11-03 — revisão jurídica final | `CLOSED_DEFERRED_LAUNCH_GATE` | não é requisito para continuar desenvolvimento; permanece obrigatório antes da publicação definitiva dos textos legais |
+| Etapas 11–13 | B11-04 — contato | `CLOSED_USER_DECISION` | dados atuais confirmados |
+| Etapas 11–13 | B11-06 — UAT humano | `CLOSED_DEFERRED_LAUNCH_GATE` | movido para homologação/aceite final; não é substituído por CI |
+| Etapas 11–13 | B11-07 — backup real / RPO / RTO | `CLOSED_DEFERRED_LAUNCH_GATE` | restore lógico local do schema da aplicação já comprovado; DR real, RPO/RTO e backup do ambiente conectado permanecem gates de lançamento |
+| Etapas 11–13 | DEP-T3 — storage/backup de objetos | `CLOSED_DEFERRED_LAUNCH_GATE` | requer infraestrutura/ambiente real; não é falsamente certificado pelo restore do banco |
 | Etapas 11–13 | hardening MCP/segredos/rate-limit — código | `CLOSED_IMPLEMENTED` | boundary de origem, fail-closed, higiene de `.env` e testes recertificados no CI #127 — docs. 547/548 |
-| Etapas 11–13 | MCP rate-limit distribuído — infraestrutura real | `OPEN_EXTERNAL_ACTION` | configurar binding `MCP_RATE_LIMITER` e política operacional no ambiente de publicação; ausência em produção mantém MCP fail-closed |
-| Governança | README raiz, README docs e relatórios divergentes | `CLOSED_CONTAINED` | `STATUS.md` + `docs/avizee/README.md` apontam explicitamente para 541/542 como fontes correntes; README raiz preservado como consolidado histórico |
-| CI | preview HTTP/E2E e recertificação integral | `CLOSED_EVIDENCED` | GitHub Actions CI run #127, commit `32e6ca69...`, conclusão `success` — doc. 548 |
+| Etapas 11–13 | MCP rate-limit distribuído — infraestrutura real | `CLOSED_DEFERRED_LAUNCH_GATE` | binding `MCP_RATE_LIMITER` continua obrigatório para habilitar MCP em produção; sem binding permanece fail-closed |
+| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md`, `docs/avizee/README.md` e docs. 541/542 são a fonte corrente; histórico não é apagado |
+| Ambiente conectado | verificação direta do banco Lovable/Supabase | `CLOSED_DEFERRED_LAUNCH_GATE` | conector atual não oferece a permissão necessária; nenhuma alegação de banco ao vivo verificado é feita |
+| CI | recertificação do novo bloco funcional aprovado no doc. 549 | `REVALIDATION_IN_PROGRESS` | lint, Prettier, build e typecheck já passaram no run corrente; migrations, fixture, restore, SSR e suíte integral ainda precisam concluir no HEAD final |
 
-## Confirmações atuais
+## Decisões funcionais finais
 
-As decisões fornecidas diretamente pelo usuário neste fechamento estão consolidadas em `543-user-confirmations-2026-08-10.md`. A reconciliação das decisões antigas está em `544-decision-reconciliation-pre-stage-15.md`.
+O lote que dependia do usuário foi encerrado no doc. `549-approved-functional-decisions-pre-stage-15.md`:
 
-Referências divergentes do site legado não prevalecem sobre essas confirmações atuais.
+1. páginas consultivas por aplicação — aprovadas e implementadas;
+2. busca global Produtos + Soluções + Conteúdos — aprovada e implementada;
+3. formulário geral de Contato — mantido fora da v1;
+4. mapa — mantido fora da v1.
 
-## Pendências que continuam exigindo decisão do usuário
+Não resta `OPEN_USER_INPUT` funcional das Etapas 0–14.1.
 
-Após a reconciliação documental e o fechamento técnico interno recertificado, permanecem quatro decisões funcionais sem resposta e que não serão resolvidas por inferência:
+## Gates externos segregados do desenvolvimento
 
-1. `DEC-07 / DECT-12` — páginas consultivas de solução por aplicação;
-2. `DEC-10` — busca global completa ou busca somente de catálogo na v1;
-3. ativação do formulário geral de contato dentro do layout aprovado;
-4. ativação do mapa sob interação dentro do layout aprovado.
+E-mail real/DNS, criação das novas caixas, provisionamento do administrador, UAT, revisão jurídica, backup/storage real, RPO/RTO, binding distribuído MCP e verificações do ambiente conectado continuam **obrigatórios antes da operação/produção quando aplicáveis**, mas não são reapresentados como etapas funcionais incompletas.
 
-## Pendências externas/operacionais segregadas
+Essa segregação respeita a decisão de concluir o desenvolvimento das etapas antes da Etapa 15 sem fabricar evidência externa inexistente. Por isso continuam válidos:
 
-O fechamento interno não depende de inventar execução de ações que só podem ocorrer no ambiente real. Permanecem registradas, entre outras:
+- `PRODUCTION_BLOCKED`;
+- `OPERATION_BLOCKED`.
 
-- Resend, DNS e credenciais reais;
-- criação do canal `privacidade@avizee.com.br`;
-- provisionamento concreto do administrador inicial;
-- binding distribuído `MCP_RATE_LIMITER`;
-- verificação direta do banco conectado;
-- backup/storage operacional e RPO/RTO reais;
-- UAT humano;
-- revisão jurídica final.
+## Ordem restante
 
-Esses itens continuam necessários antes da operação real, mas não constituem correção de código interna pendente neste HEAD.
-
-## Ordem restante de execução
-
-1. obter em um único lote as quatro decisões funcionais ainda abertas;
-2. implementar somente as decisões que o usuário aprovar, sem alterar o layout fora do estritamente necessário ao comportamento escolhido;
-3. recertificar o novo HEAD caso haja alteração funcional;
-4. revisar o PR #2 integralmente;
-5. somente após aprovação explícita deliberar sobre merge e início da Etapa 15.
+1. concluir a recertificação integral do HEAD com as decisões do doc. 549;
+2. atualizar a evidência final com o run verde exato;
+3. revisar o diff integral do PR #2;
+4. retirar o PR de draft somente quando o fechamento estiver consistente;
+5. merge somente após aprovação explícita do usuário;
+6. somente depois iniciar a Etapa 15.
 
 ## Status
 
-`PRE_STAGE_15_INTERNAL_TECHNICAL_CLOSURE_COMPLETE`
-
-O fechamento técnico interno está recertificado, mas `PRODUCTION_BLOCKED` e `OPERATION_BLOCKED` continuam válidos enquanto os gates externos/operacionais aplicáveis não forem concluídos.
+`PRE_STAGE_15_FUNCTIONAL_CLOSURE_IMPLEMENTED_REVALIDATION_IN_PROGRESS`

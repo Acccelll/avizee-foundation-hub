@@ -62,12 +62,9 @@ jobs:
       - name: Prettier check changed files
         shell: bash
         run: |
-          mapfile -t files < <(git diff --name-only origin/main...HEAD -- '*.ts' '*.tsx' '*.yml' '*.yaml' '*.json' '*.md' | grep -v '^src/routeTree\.gen\.ts$' || true)
-          if [ "${#files[@]}" -eq 0 ]; then
-            echo "Nenhum arquivo formatável alterado."
-            exit 0
-          fi
-          bunx prettier --check "${files[@]}"
+          bunx prettier --write src/routes/sobre.tsx
+          git diff -- src/routes/sobre.tsx
+          exit 1
 
       # O plugin file-based do TanStack Router regenera routeTree.gen.ts no build.
       # A compilação vem antes do tsc para que novas rotas sejam tipadas pelo artefato gerado.

@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import {
-  BRAZIL_UFS,
-  CONSENT_TEXT_MARKETING,
-  PRIVACY_NOTICE_QUOTATION,
-} from "@/quotation/model";
+import { BRAZIL_UFS, CONSENT_TEXT_MARKETING, PRIVACY_NOTICE_QUOTATION } from "@/quotation/model";
 
 export interface QuoteFormValues {
   companyName: string;
@@ -27,10 +23,9 @@ const inputClass =
 type DescriptionOptions = { hint?: boolean; error?: boolean };
 
 function describedBy(id: string, options: DescriptionOptions): string | undefined {
-  const ids = [
-    options.hint ? `${id}-hint` : null,
-    options.error ? `${id}-error` : null,
-  ].filter(Boolean);
+  const ids = [options.hint ? `${id}-hint` : null, options.error ? `${id}-error` : null].filter(
+    Boolean,
+  );
   return ids.length > 0 ? ids.join(" ") : undefined;
 }
 
@@ -56,7 +51,8 @@ function Field({
         {required && (
           <>
             <span className="text-emphasis" aria-hidden="true">
-              {" "}*
+              {" "}
+              *
             </span>
             <span className="sr-only"> (obrigatório)</span>
           </>

@@ -59,7 +59,7 @@ jobs:
           fi
           bunx eslint --rule 'prettier/prettier: off' "${files[@]}"
 
-      - name: Prettier check changed files
+      - name: Prettier diagnostic changed files
         shell: bash
         run: |
           mapfile -t files < <(git diff --name-only origin/main...HEAD -- '*.ts' '*.tsx' '*.yml' '*.yaml' '*.json' '*.md' | grep -v '^src/routeTree\.gen\.ts$' || true)
@@ -67,7 +67,14 @@ jobs:
             echo "Nenhum arquivo formatável alterado."
             exit 0
           fi
-          bunx prettier --check "${files[@]}"
+          bunx prettier --write "${files[@]}"
+          if git diff --quiet -- "${files[@]}"; then
+            echo "Prettier não alterou arquivos."
+            exit 0
+          fi
+          echo "=== DIFF PRETTIER ==="
+          git diff -- "${files[@]}"
+          exit 1
 
       # O plugin file-based do TanStack Router regenera routeTree.gen.ts no build.
       # A compilação vem antes do tsc para que novas rotas sejam tipadas pelo artefato gerado.

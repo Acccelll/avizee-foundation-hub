@@ -1,6 +1,6 @@
 # AviZee — Status corrente
 
-Status: **PRE_STAGE_15_BASELINE_CONSOLIDATED**
+Status: **PRE_STAGE_15_FINAL_SYNC_RECERTIFICATION_IN_PROGRESS**
 
 Este arquivo é a ponte curta para o estado vigente do projeto. Relatórios de etapas e release candidates anteriores permanecem como histórico.
 
@@ -12,12 +12,12 @@ Fontes vigentes:
 - `docs/avizee/547-mcp-request-hardening.md` — hardening da superfície MCP;
 - `docs/avizee/549-approved-functional-decisions-pre-stage-15.md` — decisões funcionais finais aprovadas;
 - `docs/avizee/550-pre-stage-15-functional-closure-recertification.md` — recertificação funcional do PR #2;
-- `docs/avizee/551-post-lovable-recertification.md` — auditoria e recertificação das alterações pós-merge feitas pelo Lovable.
+- `docs/avizee/551-post-lovable-recertification.md` — auditoria e recertificação do primeiro bloco pós-merge feito pelo Lovable.
 
-O PR #2 foi mergeado na `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`. Depois desse merge, o Lovable aplicou correções técnicas e de segurança diretamente na `main`, levando o projeto ao commit `44e165aa006e16ba3f758759a85e5478a3df14c6`.
+O PR #3 foi aprovado e squash-mergeado na `main` no commit `cb7324918aa212edd64e5cd184457c3f703730bd`, consolidando o primeiro checkpoint pós-Lovable.
 
-Esses commits foram revisados. A migration pós-Lovable foi reconciliada para replay limpo sem perder o hardening aplicável e o commit técnico `1f852351f7655ecaca6a37e1ff1fcb7eb9d92ddc` passou integralmente no CI #223 (`31446779287`).
+Após esse merge, o Lovable aplicou um novo ajuste técnico em três commits, encerrando em `523877545fd67a13d4d2f0cfe61a26ae454277ca`. O efeito líquido adiciona um middleware cliente de autenticação tolerante à indisponibilidade da configuração pública do Supabase e passa a usá-lo nas server functions, evitando falha total das rotas públicas quando não há sessão/configuração cliente disponível.
 
-As Etapas 0–14.1 estão funcional e tecnicamente consolidadas no baseline pré-Etapa 15. A Etapa 15 ainda não foi iniciada formalmente; resta integrar o checkpoint de recertificação à `main` após revisão/aprovação do PR #3.
+Esse novo HEAD não altera layout público, branding, taxonomia ou modelo comercial, mas precisa ser recertificado antes de ser incorporado ao baseline formal das Etapas 0–14.1.
 
 Produção e operação continuam bloqueadas pelos gates externos aplicáveis. Este arquivo não autoriza deploy, publicação, DNS ou migração para produção.

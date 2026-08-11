@@ -24,7 +24,9 @@ export interface QuoteFormValues {
 const inputClass =
   "h-12 w-full rounded-[8px] border border-border bg-background px-3 text-[16px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis";
 
-function describedBy(id: string, options: { hint?: boolean; error?: boolean }): string | undefined {
+type DescriptionOptions = { hint?: boolean; error?: boolean };
+
+function describedBy(id: string, options: DescriptionOptions): string | undefined {
   const ids = [options.hint ? `${id}-hint` : null, options.error ? `${id}-error` : null].filter(
     Boolean,
   );
@@ -132,9 +134,10 @@ export function QuoteForm({
   const set = <K extends keyof typeof values>(key: K, value: (typeof values)[K]) =>
     setValues((prev) => ({ ...prev, [key]: value }));
 
-  const visibleErrors = ERROR_FIELD_ORDER.flatMap((field) =>
-    errors[field] ? [{ field, message: errors[field] }] : [],
-  );
+  const visibleErrors = ERROR_FIELD_ORDER.flatMap((field) => {
+    const message = errors[field];
+    return message ? [{ field, message }] : [];
+  });
 
   return (
     <form

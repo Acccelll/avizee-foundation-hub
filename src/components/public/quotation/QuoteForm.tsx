@@ -27,9 +27,10 @@ const inputClass =
 type DescriptionOptions = { hint?: boolean; error?: boolean };
 
 function describedBy(id: string, options: DescriptionOptions): string | undefined {
-  const ids = [options.hint ? `${id}-hint` : null, options.error ? `${id}-error` : null].filter(
-    Boolean,
-  );
+  const ids = [
+    options.hint ? `${id}-hint` : null,
+    options.error ? `${id}-error` : null,
+  ].filter(Boolean);
   return ids.length > 0 ? ids.join(" ") : undefined;
 }
 

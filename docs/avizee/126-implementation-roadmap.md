@@ -41,3 +41,19 @@ Aceite: 301 críticos funcionando, sitemap válido, alertas ativos, restauraçã
 ## Sequenciamento
 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8, com 5 podendo correr em paralelo a 3/4 se houver capacidade.
 Documentação atualizada em `/docs/avizee/` é entregável obrigatório de cada incremento.
+
+## Mapeamento aprovado pós-Etapa 14.1
+
+O detalhamento operacional aprovado em 2026-08-11 está registrado no doc. `552-approved-roadmap-stages-15-19.md`.
+
+Sem alterar o propósito deste plano original:
+
+- **Etapa 15 — Qualidade Final** materializa o Incremento 7;
+- **Etapa 16 — Readiness de Produção e Gates Externos** inicia a decomposição do Incremento 8;
+- **Etapa 17 — Release Candidate Final, Migração e UAT** consolida homologação e aceite;
+- **Etapa 18 — Cutover e Go-Live** executa a transição controlada;
+- **Etapa 19 — Hypercare, Aceite e Encerramento v1** comprova estabilidade e encerra a implantação.
+
+Sequência vigente de execução após o baseline das Etapas 0–14.1:
+
+`15 → 16 → 17 → 18 → 19`

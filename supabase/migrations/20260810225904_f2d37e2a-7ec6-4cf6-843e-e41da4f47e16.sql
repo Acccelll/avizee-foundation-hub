@@ -1,4 +1,4 @@
--- Etapa 15 — hardening de privilégios: funções internas e índice de busca
+-- Fechamento pós-merge pré-Etapa 15 — hardening de privilégios: funções internas e índice de busca
 
 -- 1) Funções operacionais internas: somente service_role
 REVOKE ALL ON FUNCTION public.claim_outbox_messages(text, integer, integer) FROM PUBLIC, anon, authenticated;

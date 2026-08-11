@@ -1,6 +1,6 @@
 # 560 — Refinamento visual aprovado com frontend-design
 
-Status: `IMPLEMENTADO_EM_BRANCH_PARA_VALIDACAO`
+Status: `IMPLEMENTADO_E_DOCUMENTADO`
 
 Origem da decisão: aprovação explícita do usuário em 2026-08-11 das propostas `AVZ-DES-01` a `AVZ-DES-08`.
 
@@ -89,4 +89,4 @@ A assinatura recorrente escolhida é o **filete de dois blocos sólidos Vinho + 
 
 ## Gate de integração
 
-A branch só pode ser integrada após CI verde e revisão do diff contra `main`. O PR é a evidência operacional desta implementação e deve registrar os checks finais antes do merge.
+A integração deste refinamento exige CI verde e revisão do diff contra `main`. O PR correspondente é a evidência operacional da implementação e dos checks finais.

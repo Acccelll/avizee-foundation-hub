@@ -275,96 +275,34 @@
   }
 }
 
-/* ---------------------------------------------------------------
- * Refinamento visual dentro da marca (sem trocar fonte nem paleta).
- * Só profundidade, atmosfera e microinterações com tokens oficiais.
- * --------------------------------------------------------------- */
-
-@keyframes avizee-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Revelação escalonada no carregamento. Use style={{ animationDelay }}. */
-@utility reveal {
-  animation: avizee-reveal var(--duration-slow) var(--ease-standard) both;
-}
-
-/* Atmosfera do hero: halos de vinho/terracota + malha discreta. */
-@utility hero-atmosphere {
+/*
+ * Assinatura visual institucional aprovada (AVZ-DES-08).
+ * Dois blocos sólidos da paleta oficial; sem gradiente, sombra ou animação decorativa.
+ */
+@utility brand-rule {
   position: relative;
-  isolation: isolate;
+  border-top: 3px solid var(--avizee-wine);
 
   &::before {
     content: "";
     position: absolute;
-    inset: -10% -20% -30%;
-    z-index: -1;
+    top: -3px;
+    left: 0;
+    width: 96px;
+    height: 3px;
+    background: var(--avizee-terracotta);
     pointer-events: none;
-    background:
-      radial-gradient(
-        60% 70% at 12% 0%,
-        color-mix(in oklab, var(--avizee-wine) 14%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        55% 65% at 92% 18%,
-        color-mix(in oklab, var(--avizee-terracotta) 16%, transparent),
-        transparent 72%
-      );
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.5;
-    background-image:
-      linear-gradient(
-        to right,
-        color-mix(in oklab, var(--avizee-black) 6%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        color-mix(in oklab, var(--avizee-black) 6%, transparent) 1px,
-        transparent 1px
-      );
-    background-size: 72px 72px;
-    mask-image: radial-gradient(70% 80% at 30% 20%, black, transparent 75%);
   }
 }
 
-/* Cartões: elevação e borda em ênfase no hover. */
-@utility card-lift {
-  transition:
-    transform var(--duration-base) var(--ease-standard),
-    box-shadow var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard);
+/*
+ * Interações visuais devem comunicar estado, não criar elevação decorativa.
+ * Mantém apenas mudança de borda, coerente com a linguagem técnica da marca.
+ */
+@utility brand-interactive {
+  transition: border-color var(--duration-base) var(--ease-standard);
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
     border-color: var(--emphasis-institutional);
   }
-}
-
-/* Filete de marca no topo de blocos institucionais. */
-@utility brand-rule {
-  border-top: 3px solid transparent;
-  border-image: linear-gradient(
-      90deg,
-      var(--avizee-wine),
-      var(--avizee-terracotta) 60%,
-      transparent
-    )
-    1;
 }

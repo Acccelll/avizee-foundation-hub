@@ -16,7 +16,7 @@ Os estados usados são:
 - `CLOSED_CONTAINED` — escopo deliberadamente contido e sem exposição pública indevida;
 - `CLOSED_DEFERRED_LAUNCH_GATE` — não é trabalho funcional pendente; depende de ação externa no fechamento de lançamento e continua bloqueando produção quando aplicável.
 
-## Matriz consolidada — estado corrente em 2026-08-10
+## Matriz consolidada — estado corrente em 2026-08-11
 
 <!-- prettier-ignore -->
 | Origem | ID / Tema | Estado corrente | Evidência / remanescente |
@@ -45,9 +45,10 @@ Os estados usados são:
 | Etapas 11–13 | DEP-T3 — storage/backup de objetos | `CLOSED_DEFERRED_LAUNCH_GATE` | requer infraestrutura/ambiente real; não é falsamente certificado pelo restore do banco |
 | Etapas 11–13 | hardening MCP/segredos/rate-limit — código | `CLOSED_IMPLEMENTED` | boundary de origem, fail-closed, higiene de `.env` e testes recertificados; hardening pós-merge revisado no doc. 551 |
 | Etapas 11–13 | MCP rate-limit distribuído — infraestrutura real | `CLOSED_DEFERRED_LAUNCH_GATE` | binding `MCP_RATE_LIMITER` continua obrigatório para habilitar MCP em produção; sem binding permanece fail-closed |
-| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md`, docs. 541/542/551 são as fontes correntes; histórico não é apagado |
+| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md` e docs. 541/542 são as fontes correntes; histórico não é apagado |
 | Ambiente conectado | verificação direta do banco Lovable/Supabase | `CLOSED_DEFERRED_LAUNCH_GATE` | nenhuma alegação de banco ao vivo verificado é feita sem evidência direta |
-| Pós-merge PR #2 | sete commits aplicados pelo Lovable até `44e165aa...` | `CLOSED_EVIDENCED` | revisados no doc. 551; migration reconciliada; commit técnico `1f852351...` integralmente verde no CI #223 (`31446779287`) |
+| Pós-merge PR #2 | sete commits aplicados pelo Lovable até `44e165aa...` | `CLOSED_EVIDENCED` | revisados no doc. 551; migration reconciliada; CI #223 e CI #228 verdes; checkpoint integrado pelo PR #3 no commit `cb732491...` |
+| Pós-merge PR #3 | ajuste de autenticação cliente do Lovable até `52387754...` | `CLOSED_EVIDENCED` | efeito líquido restrito a `src/lib/supabase-auth.middleware.ts` e `src/start.ts`; sem alteração visual; recertificado integralmente no HEAD `8c4c895c...` pelo CI #230 (`31484961340`) |
 
 ## Decisões funcionais finais
 
@@ -72,11 +73,11 @@ Por isso continuam válidos:
 
 ## Estado do fechamento
 
-O PR #2 foi aprovado e mergeado em `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
+O PR #3 foi aprovado e squash-mergeado em `main` no commit `cb7324918aa212edd64e5cd184457c3f703730bd`.
 
-Os sete commits técnicos aplicados posteriormente pelo Lovable foram revisados, a divergência de migration foi reconciliada e o baseline técnico passou integralmente no CI #223. Não resta pendência funcional ou técnica interna conhecida das Etapas 0–14.1.
+Depois desse merge, o Lovable aplicou um ajuste adicional de autenticação cliente até `523877545fd67a13d4d2f0cfe61a26ae454277ca`. O ajuste foi revisado e recertificado integralmente no CI #230.
 
-Resta somente integrar o checkpoint de recertificação do PR #3 à `main`; isso não reabre nenhuma etapa funcional.
+Não resta pendência funcional ou técnica interna conhecida das Etapas 0–14.1. Os gates externos permanecem segregados e continuam bloqueando produção quando aplicáveis.
 
 ## Status
 

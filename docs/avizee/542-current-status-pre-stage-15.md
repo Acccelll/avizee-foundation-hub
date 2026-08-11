@@ -2,12 +2,13 @@
 
 ## Fonte corrente
 
-Este documento, `541-pre-stage-15-closure-matrix.md` e `551-post-lovable-recertification.md` representam o estado vigente do fechamento das Etapas 0–14.1. Documentos anteriores de release candidate permanecem como histórico.
+Este documento e `541-pre-stage-15-closure-matrix.md` representam o estado vigente do fechamento das Etapas 0–14.1. Documentos anteriores de release candidate permanecem como histórico.
 
 ## Estado funcional
 
 - Etapa 14.1 está integrada à `main` pelo PR #1.
 - O PR #2, que fechou funcionalmente as Etapas 0–14.1, foi aprovado e mergeado em `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
+- O checkpoint pós-Lovable do PR #3 foi aprovado e squash-mergeado em `main` no commit `cb7324918aa212edd64e5cd184457c3f703730bd`.
 - A coorte pública continua limitada às 31 famílias / 97 SKUs aprovados.
 - Dados de contato, razão social, CNPJ, canal de privacidade, retenção e regra de prazo comercial foram confirmados.
 - Retenção de cotações/leads por 24 meses foi implementada.
@@ -16,19 +17,24 @@ Este documento, `541-pre-stage-15-closure-matrix.md` e `551-post-lovable-recerti
 - Páginas consultivas próprias por aplicação e busca global em Produtos + Soluções + Conteúdos publicados foram implementadas.
 - Formulário geral de Contato e mapa permanecem fora da v1 por decisão explícita.
 
-## Recertificação funcional do PR #2
+## Recertificações anteriores
 
-O fechamento funcional do PR #2 foi recertificado pelo GitHub Actions conforme `550-pre-stage-15-functional-closure-recertification.md`.
+O fechamento funcional do PR #2 foi recertificado conforme `550-pre-stage-15-functional-closure-recertification.md`.
 
-## Consolidação pós-Lovable
+O primeiro bloco pós-Lovable foi revisado no doc. 551. O commit técnico `1f852351f7655ecaca6a37e1ff1fcb7eb9d92ddc` passou no CI #223 (`31446779287`) e o HEAD documental `839ab5e53201c3bab036c23630def39c19eea461` passou no CI #228 (`31447135301`).
 
-Depois do merge, o Lovable aplicou sete commits técnicos diretamente na `main`, levando o repositório até `44e165aa006e16ba3f758759a85e5478a3df14c6`.
+## Sincronização final pós-PR #3
 
-A revisão desses commits está registrada no doc. 551. Eles abrangem tooling, correções de tipagem da busca, hardening de privilégios no Supabase e correção da leitura das facetas do catálogo. Não houve alteração de layout público, branding, taxonomia ou modelo comercial.
+Após o merge do PR #3, o Lovable aplicou três commits adicionais, encerrando em `523877545fd67a13d4d2f0cfe61a26ae454277ca`.
 
-O primeiro replay limpo do checkpoint, CI #222, revelou que a migration pós-Lovable referenciava uma função residual (`increment_schedule_attempts(uuid,text)`) ausente do schema versionado. A migration foi reconciliada para aplicar esse hardening somente quando a função existir, preservando os `REVOKE`/`GRANT` das funções canônicas.
+O efeito líquido está restrito a dois arquivos:
 
-O commit técnico corrigido `1f852351f7655ecaca6a37e1ff1fcb7eb9d92ddc` passou integralmente no CI #223 (`31446779287`), incluindo lint, Prettier, build, typecheck, replay das migrations, fixture 31/97, restore lógico, SSR e suíte integral de testes.
+- `src/lib/supabase-auth.middleware.ts` — middleware cliente que tenta anexar o token de sessão e, quando a configuração cliente do Supabase está indisponível, segue sem o cabeçalho em vez de derrubar a rota pública;
+- `src/start.ts` — troca do middleware gerado pelo novo middleware seguro.
+
+Não houve alteração de layout público, branding, taxonomia ou modelo comercial.
+
+O HEAD `8c4c895c0644c507f75f985f1f12be580754517a`, já incorporando esse ajuste e o housekeeping documental, passou integralmente no CI #230 (`31484961340`): instalação congelada, lint, Prettier, build, typecheck, replay das migrations em Supabase local limpo, fixture 31/97, restore lógico, SSR, suíte integral de testes e cleanup.
 
 Status corrente:
 
@@ -46,4 +52,4 @@ Portanto permanecem válidos:
 
 ## Próximo passo
 
-O baseline das Etapas 0–14.1 está funcional e tecnicamente consolidado. Resta recertificar o HEAD documental final do PR #3, submeter o checkpoint à revisão/merge e, somente depois, iniciar formalmente a Etapa 15.
+O baseline das Etapas 0–14.1 está funcional e tecnicamente consolidado. Não resta fechamento interno conhecido dessas etapas. Após integrar este housekeeping, a Etapa 15 pode ser iniciada formalmente em branch própria, sem dispensar os gates externos de lançamento.

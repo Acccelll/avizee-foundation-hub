@@ -24,6 +24,13 @@ export interface QuoteFormValues {
 const inputClass =
   "h-12 w-full rounded-[8px] border border-border bg-background px-3 text-[16px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis";
 
+function describedBy(id: string, options: { hint?: boolean; error?: boolean }): string | undefined {
+  const ids = [options.hint ? `${id}-hint` : null, options.error ? `${id}-error` : null].filter(
+    Boolean,
+  );
+  return ids.length > 0 ? ids.join(" ") : undefined;
+}
+
 function Field({
   label,
   id,
@@ -44,10 +51,12 @@ function Field({
       <label htmlFor={id} className="block text-[14px] font-semibold">
         {label}
         {required && (
-          <span className="text-emphasis" aria-hidden="true">
-            {" "}
-            *
-          </span>
+          <>
+            <span className="text-emphasis" aria-hidden="true">
+              {" "}*
+            </span>
+            <span className="sr-only"> (obrigatório)</span>
+          </>
         )}
       </label>
       {hint && (
@@ -64,6 +73,17 @@ function Field({
     </div>
   );
 }
+
+const ERROR_FIELD_ORDER = [
+  "companyName",
+  "contactName",
+  "contactEmail",
+  "contactPhone",
+  "city",
+  "stateUf",
+  "preferredChannel",
+  "message",
+] as const;
 
 /**
  * Dados de contato da Lista de Cotação. Minimização de dados (doc 113):
@@ -100,8 +120,21 @@ export function QuoteForm({
     openedAt.current = Date.now();
   }, []);
 
+  const firstInvalidField = ERROR_FIELD_ORDER.find((field) => Boolean(errors[field]));
+  const errorSignature = ERROR_FIELD_ORDER.filter((field) => Boolean(errors[field])).join("|");
+
+  useEffect(() => {
+    if (!firstInvalidField) return;
+    const element = document.getElementById(firstInvalidField);
+    if (element instanceof HTMLElement) element.focus();
+  }, [errorSignature, firstInvalidField]);
+
   const set = <K extends keyof typeof values>(key: K, value: (typeof values)[K]) =>
     setValues((prev) => ({ ...prev, [key]: value }));
+
+  const visibleErrors = ERROR_FIELD_ORDER.flatMap((field) =>
+    errors[field] ? [{ field, message: errors[field] }] : [],
+  );
 
   return (
     <form
@@ -112,16 +145,31 @@ export function QuoteForm({
       }}
       className="grid gap-6"
     >
+      {visibleErrors.length > 0 && (
+        <div role="alert" aria-live="assertive" className="sr-only">
+          <p>Há campos que precisam ser corrigidos antes do envio.</p>
+          <ul>
+            {visibleErrors.map(({ field, message }) => (
+              <li key={field}>{message}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Empresa" id="companyName" required error={errors["companyName"]}>
           <input
             id="companyName"
             name="organization"
             autoComplete="organization"
+            required
             className={inputClass}
             value={values.companyName}
             onChange={(e) => set("companyName", e.target.value)}
             aria-invalid={Boolean(errors["companyName"])}
+            aria-describedby={describedBy("companyName", {
+              error: Boolean(errors["companyName"]),
+            })}
           />
         </Field>
 
@@ -129,10 +177,14 @@ export function QuoteForm({
           <input
             id="contactName"
             autoComplete="name"
+            required
             className={inputClass}
             value={values.contactName}
             onChange={(e) => set("contactName", e.target.value)}
             aria-invalid={Boolean(errors["contactName"])}
+            aria-describedby={describedBy("contactName", {
+              error: Boolean(errors["contactName"]),
+            })}
           />
         </Field>
 
@@ -141,10 +193,14 @@ export function QuoteForm({
             id="contactEmail"
             type="email"
             autoComplete="email"
+            required
             className={inputClass}
             value={values.contactEmail}
             onChange={(e) => set("contactEmail", e.target.value)}
             aria-invalid={Boolean(errors["contactEmail"])}
+            aria-describedby={describedBy("contactEmail", {
+              error: Boolean(errors["contactEmail"]),
+            })}
           />
         </Field>
 
@@ -153,10 +209,14 @@ export function QuoteForm({
             id="contactPhone"
             type="tel"
             autoComplete="tel"
+            required
             className={inputClass}
             value={values.contactPhone}
             onChange={(e) => set("contactPhone", e.target.value)}
             aria-invalid={Boolean(errors["contactPhone"])}
+            aria-describedby={describedBy("contactPhone", {
+              error: Boolean(errors["contactPhone"]),
+            })}
           />
         </Field>
 
@@ -167,6 +227,8 @@ export function QuoteForm({
             className={inputClass}
             value={values.city}
             onChange={(e) => set("city", e.target.value)}
+            aria-invalid={Boolean(errors["city"])}
+            aria-describedby={describedBy("city", { error: Boolean(errors["city"]) })}
           />
         </Field>
 
@@ -176,6 +238,8 @@ export function QuoteForm({
             className={inputClass}
             value={values.stateUf}
             onChange={(e) => set("stateUf", e.target.value)}
+            aria-invalid={Boolean(errors["stateUf"])}
+            aria-describedby={describedBy("stateUf", { error: Boolean(errors["stateUf"]) })}
           >
             <option value="">Selecione</option>
             {BRAZIL_UFS.map((uf) => (
@@ -214,6 +278,7 @@ export function QuoteForm({
           className="w-full rounded-[8px] border border-border bg-background p-3 text-[16px]"
           value={values.message}
           onChange={(e) => set("message", e.target.value)}
+          aria-describedby={describedBy("message", { hint: true })}
         />
       </Field>
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-`STAGE_15_IN_PROGRESS`
+`STAGE_15_QUALITY_CERTIFIED`
 
 ## Base de entrada
 
@@ -33,7 +33,7 @@ Materializar o Incremento 7 do plano original como fechamento técnico de qualid
 
 ### SEO
 
-O helper estrutural existente já controla `robots`, Open Graph e JSON-LD, mas o baseline ainda apresentava três gaps objetivos:
+O helper estrutural existente já controlava `robots`, Open Graph e JSON-LD, mas o baseline ainda apresentava três gaps objetivos:
 
 - metadados raiz herdados do template Lovable e `lang="en"`;
 - canonical/`og:url` sem garantia de URL absoluta;
@@ -41,11 +41,11 @@ O helper estrutural existente já controla `robots`, Open Graph e JSON-LD, mas o
 
 ### Analytics
 
-A especificação do doc. 115 já define eventos permitidos e proíbe PII, porém não havia dispatcher provider-neutral com consentimento fail-closed. A Etapa 15 prepara esse contrato sem instalar ou ativar provider externo.
+A especificação do doc. 115 já definia eventos permitidos e proibia PII, porém não havia dispatcher provider-neutral com consentimento fail-closed.
 
 ### Acessibilidade
 
-A base já possui skip link, foco visível, landmarks e combobox navegável por teclado. Os gaps de fechamento identificados foram restritos a semântica não visual:
+A base já possuía skip link, foco visível, landmarks e combobox navegável por teclado. Os gaps de fechamento eram restritos a semântica não visual:
 
 - erros do formulário de cotação sem `aria-describedby` completo;
 - ausência de foco no primeiro campo inválido;
@@ -54,15 +54,17 @@ A base já possui skip link, foco visível, landmarks e combobox navegável por 
 
 ### Performance
 
-Os budgets do doc. 116 estavam definidos, mas ainda não eram gate automatizado do pipeline. A Etapa 15 passa a verificar o bundle gerado após cada build do PR.
+Os budgets do doc. 116 estavam definidos, mas ainda não eram gate automatizado do pipeline.
 
 ### Segurança
 
-O baseline já possui CSRF do TanStack, RLS, validação de entrada, hardening MCP e higiene de segredos. Faltava uma camada centralizada de headers HTTP de segurança na resposta final do servidor.
+O baseline já possuía CSRF do TanStack, RLS, validação de entrada, hardening MCP e higiene de segredos. Faltava uma camada centralizada de headers HTTP de segurança na resposta final do servidor.
 
-## Evidência esperada para saída
+## Fechamento
 
-A Etapa 15 somente poderá receber `STAGE_15_QUALITY_CERTIFIED` depois de um HEAD exato passar pelo CI completo, incluindo:
+Os cinco domínios foram implementados e validados sem alteração do layout público. As evidências específicas estão nos docs. 554 a 558 e o consolidado executivo no doc. 559.
+
+O HEAD de código `fd9de79250ebf4db6e11411072b69ca56c1c5c11` passou integralmente no CI #249 (`31499412669`), incluindo:
 
 - lint e Prettier;
 - build e typecheck;
@@ -72,6 +74,6 @@ A Etapa 15 somente poderá receber `STAGE_15_QUALITY_CERTIFIED` depois de um HEA
 - restore lógico;
 - SSR das rotas públicas;
 - testes unitários, integração, segurança e E2E;
-- regressão explícita de ausência de mudança de layout/branding/taxonomia/modelo comercial.
+- 39 arquivos de teste e 409 testes verdes.
 
-A homologação humana e os gates de produção continuam pertencendo às Etapas 16–19.
+A homologação humana e os gates de produção continuam pertencendo às Etapas 16–19. A integração da Etapa 15 na `main` ainda depende de aprovação e merge do PR #6.

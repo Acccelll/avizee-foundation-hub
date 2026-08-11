@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { contentSecurityPolicy, securityHeaders, withSecurityHeaders } from "@/lib/security-headers";
+import {
+  contentSecurityPolicy,
+  securityHeaders,
+  withSecurityHeaders,
+} from "@/lib/security-headers";
 
 describe("headers de segurança da Etapa 15", () => {
   it("define as proteções independentes de ambiente", () => {

@@ -1,6 +1,6 @@
 # AviZee — Projeto de Catálogo B2B e Site Institucional
 
-Status corrente: **PRE_STAGE_15_FINAL_SYNC_RECERTIFICATION_IN_PROGRESS**
+Status corrente: **PRE_STAGE_15_BASELINE_CONSOLIDATED**
 
 > Este arquivo aponta para o estado vigente. Relatórios de RC e etapas anteriores permanecem como histórico e não devem ser usados isoladamente como status atual.
 
@@ -10,10 +10,10 @@ Status corrente: **PRE_STAGE_15_FINAL_SYNC_RECERTIFICATION_IN_PROGRESS**
 - O fechamento integral das Etapas 0–14.1 foi aprovado e mergeado pelo PR #2 no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
 - O checkpoint pós-Lovable foi aprovado e squash-mergeado pelo PR #3 no commit `cb7324918aa212edd64e5cd184457c3f703730bd`.
 - A coorte pública continua restrita às 31 famílias / 97 SKUs aprovados; registros sem dados confiáveis permanecem contidos e não publicados.
-- O hardening interno, a retenção, o fixture canônico e o ensaio de restore lógico estão implementados e recertificados nos marcos anteriores.
+- O hardening interno, a retenção, o fixture canônico e o ensaio de restore lógico estão implementados e recertificados.
 - Páginas consultivas de Soluções e busca global foram aprovadas, implementadas e recertificadas.
 - Formulário geral de Contato e mapa permanecem fora da v1 por decisão explícita.
-- Depois do PR #3, o Lovable aplicou um ajuste adicional de autenticação cliente até `523877545fd67a13d4d2f0cfe61a26ae454277ca`; o efeito líquido está restrito ao middleware de autenticação de server functions e está em recertificação integral.
+- Depois do PR #3, o Lovable aplicou um ajuste adicional de autenticação cliente até `523877545fd67a13d4d2f0cfe61a26ae454277ca`; o efeito líquido está restrito ao middleware de autenticação de server functions e foi recertificado integralmente no HEAD `8c4c895c0644c507f75f985f1f12be580754517a` pelo CI #230 (`31484961340`).
 - Resend foi aprovado como provider transacional, mas criação de novos endereços, DNS e credenciais reais foi deliberadamente adiada para o fechamento do projeto.
 - Produção não é autorizada automaticamente por este fechamento; gates externos de lançamento continuam separados da conclusão funcional.
 
@@ -37,7 +37,7 @@ O `README.md` da raiz permanece um consolidado histórico extenso. O arquivo `ST
 
 ## Próximo bloco
 
-Concluir a recertificação integral do ajuste pós-PR #3, integrar o housekeeping final e então iniciar formalmente a Etapa 15 em branch própria. Os gates externos de lançamento continuam separados e não são dispensados pelo início da próxima etapa.
+O baseline pré-Etapa 15 está consolidado. Após integrar este housekeeping final, a Etapa 15 pode ser iniciada formalmente em branch própria. Os gates externos de lançamento continuam separados e não são dispensados pelo início da próxima etapa.
 
 ## Sobre o projeto
 

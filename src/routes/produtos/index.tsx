@@ -68,8 +68,8 @@ function CatalogoPublico() {
     <PublicShell breadcrumb={[{ label: "Produtos" }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
-          <h1 className="text-[36px] font-extrabold md:text-[44px]">Catálogo de produtos</h1>
-          <p className="mt-4 text-[18px] text-text-secondary">
+          <h1 className="text-h1 font-extrabold">Catálogo de produtos</h1>
+          <p className="mt-4 text-body-lg text-text-secondary">
             {catalog.total} {catalog.total === 1 ? "família disponível" : "famílias disponíveis"}{" "}
             nas categorias publicadas. Sem preço público: você monta a lista e a equipe AviZee
             responde com a proposta.
@@ -86,10 +86,10 @@ function CatalogoPublico() {
                 <Link
                   to="/produtos/$categorySlug"
                   params={{ categorySlug: category.slug }}
-                  className="inline-flex min-h-11 items-center rounded-full border border-border px-4 text-[15px] hover:bg-surface"
+                  className="brand-interactive inline-flex min-h-11 items-center rounded-full border border-border px-4 text-body-sm"
                 >
                   {category.name}
-                  <span className="ml-2 text-[13px] tabular-nums text-text-muted">
+                  <span className="ml-2 text-caption tabular-nums text-text-muted">
                     {category.count}
                   </span>
                 </Link>
@@ -104,7 +104,7 @@ function CatalogoPublico() {
           <section aria-label="Resultados do catálogo">
             <div
               aria-live="polite"
-              className="mb-5 flex flex-wrap items-center justify-between gap-3 text-[15px] text-text-secondary"
+              className="mb-5 flex flex-wrap items-center justify-between gap-3 text-body-sm text-text-secondary"
             >
               <p>
                 Página {catalog.page} de {catalog.pageCount} — {catalog.total}{" "}
@@ -125,7 +125,7 @@ function CatalogoPublico() {
                       aria-pressed={
                         (search.ordem ?? (search.q ? "relevance" : "category")) === option.key
                       }
-                      className={`inline-flex min-h-11 items-center rounded-[8px] border px-3 text-[14px] ${
+                      className={`inline-flex min-h-11 items-center rounded-[8px] border px-3 text-body-sm ${
                         (search.ordem ?? (search.q ? "relevance" : "category")) === option.key
                           ? "border-emphasis font-semibold text-emphasis"
                           : "border-border hover:bg-surface"

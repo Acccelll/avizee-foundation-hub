@@ -44,15 +44,15 @@ function Solucoes() {
     <PublicShell breadcrumb={[{ label: "Soluções" }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
-          <h1 className="text-[36px] font-extrabold md:text-[44px]">Soluções por necessidade</h1>
-          <p className="mt-5 text-[18px] text-text-secondary">
+          <h1 className="text-h1 font-extrabold">Soluções por necessidade</h1>
+          <p className="mt-5 text-body-lg text-text-secondary">
             As soluções organizam o catálogo pela necessidade da operação, atravessando categorias.
             Cada aplicação abaixo mostra as famílias que costumam ser necessárias naquele contexto.
           </p>
         </header>
 
         <section aria-labelledby="aplicacoes" className="mt-12">
-          <h2 id="aplicacoes" className="text-[24px] font-bold">
+          <h2 id="aplicacoes" className="text-h2 font-bold">
             Aplicações atendidas
           </h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,10 +61,10 @@ function Solucoes() {
                 <Link
                   to="/solucoes/$applicationSlug"
                   params={{ applicationSlug: application.slug }}
-                  className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
+                  className="brand-interactive flex h-full flex-col rounded-[12px] border border-border p-5"
                 >
-                  <span className="text-[18px] font-semibold">{application.name}</span>
-                  <span className="mt-3 text-[14px] text-text-muted tabular-nums">
+                  <span className="text-h4 font-semibold">{application.name}</span>
+                  <span className="mt-3 text-body-sm text-text-muted tabular-nums">
                     {application.count} famílias no catálogo
                   </span>
                 </Link>
@@ -83,9 +83,9 @@ function Solucoes() {
 
         <section
           aria-labelledby="cta-solucoes"
-          className="mt-12 flex flex-wrap items-center justify-between gap-6 rounded-[12px] border border-border bg-surface p-8"
+          className="mt-12 flex flex-wrap items-center justify-between gap-6 bg-surface p-8"
         >
-          <h2 id="cta-solucoes" className="text-[22px] font-bold">
+          <h2 id="cta-solucoes" className="text-h3 font-bold">
             Precisa de orientação técnica?
           </h2>
           <div className="flex flex-wrap gap-3">

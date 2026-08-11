@@ -19,7 +19,7 @@ function EnvironmentBanner() {
   return (
     <div
       role="status"
-      className="bg-inverse px-4 py-1.5 text-center text-[12px] text-inverse-foreground"
+      className="bg-inverse px-4 py-1.5 text-center text-caption text-inverse-foreground"
     >
       Ambiente de {ENV_LABEL[APP_ENV]} — conteúdo técnico provisório, não indexável.
     </div>
@@ -30,7 +30,7 @@ function Breadcrumb({ items }: { items: Crumb[] }) {
   if (items.length === 0) return null;
   return (
     <nav aria-label="Você está aqui" className="border-b border-border-subtle">
-      <ol className="container-avizee flex flex-wrap items-center gap-2 py-3 text-[14px] text-text-muted">
+      <ol className="container-avizee flex flex-wrap items-center gap-2 py-3 text-body-sm text-text-muted">
         <li>
           <Link to="/" className="hover:underline">
             Início
@@ -77,8 +77,8 @@ export function PublicShell({
             <img src={logo} alt="AviZee" className="h-9 w-auto" width={140} height={36} />
           </Link>
 
-          <nav aria-label="Navegação principal" className="hidden md:block">
-            <ul className="flex items-center gap-6 text-[15px] font-medium">
+          <nav aria-label="Navegação principal" className="hidden lg:block">
+            <ul className="flex items-center gap-6 text-body-sm font-medium">
               {NAV.map((item) => (
                 <li key={item.to}>
                   <Link
@@ -104,7 +104,7 @@ export function PublicShell({
             </Link>
             <Link
               to="/cotacao"
-              className="hidden h-11 items-center gap-2 rounded-[8px] bg-primary px-4 text-[15px] font-semibold text-primary-foreground hover:opacity-90 sm:inline-flex"
+              className="hidden h-11 items-center gap-2 rounded-[8px] bg-primary px-4 text-body-sm font-semibold text-primary-foreground hover:opacity-90 sm:inline-flex"
             >
               <ClipboardList aria-hidden="true" className="h-5 w-5" />
               Lista de cotação
@@ -115,7 +115,7 @@ export function PublicShell({
               aria-expanded={open}
               aria-controls="menu-mobile"
               aria-label={open ? "Fechar menu" : "Abrir menu"}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[8px] border border-border md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[8px] border border-border lg:hidden"
             >
               {open ? (
                 <X aria-hidden="true" className="h-5 w-5" />
@@ -130,7 +130,7 @@ export function PublicShell({
           <nav
             id="menu-mobile"
             aria-label="Navegação mobile"
-            className="border-t border-border-subtle md:hidden"
+            className="border-t border-border-subtle lg:hidden"
           >
             <ul className="container-avizee flex flex-col py-2">
               {[...NAV, { to: "/cotacao", label: "Lista de cotação" } as const].map((item) => (
@@ -138,7 +138,7 @@ export function PublicShell({
                   <Link
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="block py-3 text-[16px] font-medium"
+                    className="block py-3 text-body font-medium"
                   >
                     {item.label}
                   </Link>
@@ -158,16 +158,30 @@ export function PublicShell({
       <footer className="border-t border-border-subtle bg-inverse text-inverse-foreground">
         <div className="container-avizee grid gap-8 py-12 md:grid-cols-3">
           <div>
-            <p className="text-[18px] font-bold">AviZee</p>
-            <p className="mt-2 max-w-xs text-[14px] opacity-80">
+            <span
+              role="img"
+              aria-label="AviZee"
+              className="block h-9 w-[140px] bg-inverse-foreground"
+              style={{
+                WebkitMaskImage: `url(${logo})`,
+                maskImage: `url(${logo})`,
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "left center",
+                maskPosition: "left center",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+              }}
+            />
+            <p className="mt-3 max-w-xs text-body-sm opacity-80">
               Soluções técnicas para avicultura. Atendimento B2B por lista de cotação.
             </p>
           </div>
           <nav aria-label="Navegação do rodapé">
-            <p className="text-[14px] font-semibold uppercase tracking-wide opacity-70">
+            <p className="text-body-sm font-semibold uppercase tracking-wide opacity-70">
               Navegação
             </p>
-            <ul className="mt-3 space-y-2 text-[15px]">
+            <ul className="mt-3 space-y-2 text-body-sm">
               {NAV.map((item) => (
                 <li key={item.to}>
                   <Link to={item.to} className="hover:underline">
@@ -178,8 +192,8 @@ export function PublicShell({
             </ul>
           </nav>
           <nav aria-label="Documentos legais">
-            <p className="text-[14px] font-semibold uppercase tracking-wide opacity-70">Legal</p>
-            <ul className="mt-3 space-y-2 text-[15px]">
+            <p className="text-body-sm font-semibold uppercase tracking-wide opacity-70">Legal</p>
+            <ul className="mt-3 space-y-2 text-body-sm">
               <li>
                 <Link to="/politica-de-privacidade" className="hover:underline">
                   Política de privacidade
@@ -194,7 +208,7 @@ export function PublicShell({
           </nav>
         </div>
         <div className="border-t border-white/10">
-          <p className="container-avizee py-4 text-[12px] opacity-70">
+          <p className="container-avizee py-4 text-caption opacity-70">
             © {new Date().getFullYear()} AviZee. Todos os direitos reservados.
           </p>
         </div>

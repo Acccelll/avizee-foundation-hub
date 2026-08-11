@@ -51,8 +51,8 @@ function CategoriaNaoEncontrada() {
   return (
     <PublicShell breadcrumb={[{ label: "Produtos", to: "/produtos" }, { label: "Categoria" }]}>
       <div className="container-avizee max-w-2xl">
-        <h1 className="text-[32px] font-extrabold">Categoria não encontrada</h1>
-        <p className="mt-4 text-[17px] text-text-secondary">
+        <h1 className="text-h1 font-extrabold">Categoria não encontrada</h1>
+        <p className="mt-4 text-body-lg text-text-secondary">
           Essa categoria não existe ou não está publicada. Volte ao catálogo para ver as categorias
           disponíveis.
         </p>
@@ -68,14 +68,14 @@ function CategoriaPublica() {
     <PublicShell breadcrumb={[{ label: "Produtos", to: "/produtos" }, { label: category.name }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
-          <p className="text-[13px] font-semibold uppercase tracking-widest text-emphasis">
+          <p className="text-body-sm font-semibold uppercase tracking-widest text-emphasis">
             Categoria
           </p>
-          <h1 className="mt-2 text-[36px] font-extrabold md:text-[44px]">{category.name}</h1>
+          <h1 className="mt-2 text-h1 font-extrabold">{category.name}</h1>
           {category.description && (
-            <p className="mt-4 text-[18px] text-text-secondary">{category.description}</p>
+            <p className="mt-4 text-body-lg text-text-secondary">{category.description}</p>
           )}
-          <p className="mt-4 text-[16px] text-text-secondary">
+          <p className="mt-4 text-body text-text-secondary">
             {category.familyCount} famílias · {category.productCount} referências públicas.
           </p>
         </header>

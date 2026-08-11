@@ -43,8 +43,8 @@ function Contato() {
     <PublicShell breadcrumb={[{ label: "Contato" }]}>
       <div className="container-avizee">
         <header className="max-w-3xl">
-          <h1 className="text-[36px] font-extrabold md:text-[44px]">Fale com a AviZee</h1>
-          <p className="mt-5 text-[18px] text-text-secondary">
+          <h1 className="text-h1 font-extrabold">Fale com a AviZee</h1>
+          <p className="mt-5 text-body-lg text-text-secondary">
             O caminho mais rápido para um retorno técnico é montar a lista de cotação com os itens
             de interesse: a equipe recebe as referências exatas e responde com as condições.
           </p>
@@ -52,7 +52,7 @@ function Contato() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <section aria-labelledby="canais" className="space-y-6">
-            <h2 id="canais" className="text-[24px] font-bold">
+            <h2 id="canais" className="text-h2 font-bold">
               Canais de atendimento
             </h2>
             <ConfirmedDataList title="Dados de contato" fields={CONTACT_DETAILS} />
@@ -66,11 +66,11 @@ function Contato() {
           </section>
 
           <section aria-labelledby="atendimento-contato" className="space-y-6">
-            <h2 id="atendimento-contato" className="text-[24px] font-bold">
+            <h2 id="atendimento-contato" className="text-h2 font-bold">
               Como falar com a equipe agora
             </h2>
             <div className="rounded-[12px] border border-border bg-surface p-6">
-              <p className="text-[16px] text-text-secondary">
+              <p className="text-body text-text-secondary">
                 Monte a lista de cotação com as famílias e variações desejadas. Ao enviar, você
                 recebe um protocolo e a equipe confirma especificações e condições no retorno.
               </p>
@@ -98,8 +98,8 @@ function Contato() {
             )}
 
             <div className="rounded-[12px] border border-border p-6">
-              <h3 className="text-[18px] font-semibold">{NATIONAL_COVERAGE.title}</h3>
-              <p className="mt-2 text-[15px] text-text-secondary">
+              <h3 className="text-h4 font-semibold">{NATIONAL_COVERAGE.title}</h3>
+              <p className="mt-2 text-body-sm text-text-secondary">
                 {NATIONAL_COVERAGE.description}
               </p>
             </div>

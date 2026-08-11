@@ -45,39 +45,39 @@ function Sobre() {
   return (
     <PublicShell breadcrumb={[{ label: "Sobre" }]}>
       <article className="container-avizee">
-        <header className="max-w-3xl">
-          <h1 className="text-[36px] font-extrabold md:text-[44px]">Sobre a AviZee</h1>
-          <p className="mt-5 text-[18px] text-text-secondary">{POSITIONING.statement}</p>
+        <header className="brand-rule max-w-3xl pt-8">
+          <h1 className="text-h1 font-extrabold">Sobre a AviZee</h1>
+          <p className="mt-5 text-body-lg text-text-secondary">{POSITIONING.statement}</p>
         </header>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <section aria-labelledby="publicos" className="rounded-[12px] border border-border p-6">
-            <h2 id="publicos" className="text-[22px] font-bold">
+          <section aria-labelledby="publicos" className="border-t-2 border-emphasis pt-6">
+            <h2 id="publicos" className="text-h3 font-bold">
               Públicos atendidos
             </h2>
-            <ul className="mt-4 space-y-2 text-[16px] text-text-secondary">
+            <ul className="mt-4 space-y-2 text-body text-text-secondary">
               {AUDIENCES.map((audience) => (
                 <li key={audience}>{audience}</li>
               ))}
             </ul>
           </section>
 
-          <section
-            aria-labelledby="abrangencia"
-            className="rounded-[12px] border border-border p-6"
-          >
-            <h2 id="abrangencia" className="text-[22px] font-bold">
+          <section aria-labelledby="abrangencia" className="border-t-2 border-primary pt-6">
+            <h2 id="abrangencia" className="text-h3 font-bold">
               {NATIONAL_COVERAGE.title}
             </h2>
-            <p className="mt-4 text-[16px] text-text-secondary">{NATIONAL_COVERAGE.description}</p>
+            <p className="mt-4 text-body text-text-secondary">{NATIONAL_COVERAGE.description}</p>
           </section>
         </div>
 
-        <section aria-labelledby="como-atendemos" className="mt-12 max-w-3xl">
-          <h2 id="como-atendemos" className="text-[24px] font-bold">
+        <section
+          aria-labelledby="como-atendemos"
+          className="mt-12 max-w-3xl border-l-4 border-primary pl-6"
+        >
+          <h2 id="como-atendemos" className="text-h2 font-bold">
             Como atendemos
           </h2>
-          <p className="mt-4 text-[16px] text-text-secondary">
+          <p className="mt-4 text-body text-text-secondary">
             O atendimento é consultivo e B2B: identificamos a necessidade, ajudamos a definir o
             produto, a medida ou o componente adequado à aplicação apresentada e preparamos a
             cotação. O site não exibe preço nem realiza venda on-line — as condições são confirmadas
@@ -86,26 +86,24 @@ function Sobre() {
         </section>
 
         <section aria-labelledby="diferenciais-sobre" className="mt-12">
-          <h2 id="diferenciais-sobre" className="text-[24px] font-bold">
+          <h2 id="diferenciais-sobre" className="text-h2 font-bold">
             Diferenciais
           </h2>
           <ul className="mt-6 grid gap-6 md:grid-cols-3">
             {DIFFERENTIATORS.map((item) => (
-              <li key={item.id} className="rounded-[12px] border border-border p-5">
-                <h3 className="text-[18px] font-semibold">{item.title}</h3>
-                <p className="mt-2 text-[15px] text-text-secondary">{item.description}</p>
+              <li key={item.id} className="border-t-2 border-emphasis pt-5">
+                <h3 className="text-h4 font-semibold">{item.title}</h3>
+                <p className="mt-2 text-body-sm text-text-secondary">{item.description}</p>
               </li>
             ))}
           </ul>
         </section>
 
-        <section aria-labelledby="complementares" className="mt-12 max-w-3xl">
-          <h2 id="complementares" className="text-[24px] font-bold">
+        <section aria-labelledby="complementares" className="mt-12 max-w-3xl bg-surface p-6">
+          <h2 id="complementares" className="text-h2 font-bold">
             {COMPLEMENTARY_SEGMENTS.title}
           </h2>
-          <p className="mt-4 text-[16px] text-text-secondary">
-            {COMPLEMENTARY_SEGMENTS.description}
-          </p>
+          <p className="mt-4 text-body text-text-secondary">{COMPLEMENTARY_SEGMENTS.description}</p>
         </section>
 
         {!MISSION_VISION_VALUES_APPROVED && (

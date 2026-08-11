@@ -82,14 +82,14 @@ function Home() {
     <PublicShell>
       {/* 1 — Hero + proposta de valor + CTA duplo */}
       <section aria-labelledby="hero" className="container-avizee">
-        <div className="max-w-3xl">
-          <p className="text-[14px] font-semibold uppercase tracking-widest text-emphasis">
+        <div className="brand-rule max-w-3xl pt-8 md:pt-10">
+          <p className="text-body-sm font-semibold uppercase tracking-widest text-emphasis">
             {POSITIONING.eyebrow}
           </p>
-          <h1 id="hero" className="mt-3 text-[36px] font-extrabold leading-tight md:text-[48px]">
+          <h1 id="hero" className="mt-3 text-h1 font-extrabold leading-tight md:text-display">
             {POSITIONING.headline}
           </h1>
-          <p className="mt-5 text-[18px] text-text-secondary">{POSITIONING.statement}</p>
+          <p className="mt-5 text-body-lg text-text-secondary">{POSITIONING.statement}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/produtos"
@@ -119,7 +119,7 @@ function Home() {
 
       {/* 3 — As 6 categorias */}
       <section aria-labelledby="categorias" className="container-avizee mt-16">
-        <h2 id="categorias" className="text-[26px] font-bold">
+        <h2 id="categorias" className="text-h2 font-bold">
           Nossas categorias
         </h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -128,15 +128,15 @@ function Home() {
               <Link
                 to="/produtos/$categorySlug"
                 params={{ categorySlug: category.slug }}
-                className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
+                className="brand-interactive flex h-full flex-col rounded-[12px] border border-border p-5"
               >
-                <span className="text-[18px] font-semibold">{category.name}</span>
+                <span className="text-h4 font-semibold">{category.name}</span>
                 {category.description && (
-                  <span className="mt-2 line-clamp-2 text-[15px] text-text-secondary">
+                  <span className="mt-2 line-clamp-2 text-body-sm text-text-secondary">
                     {category.description}
                   </span>
                 )}
-                <span className="mt-4 text-[13px] text-text-muted tabular-nums">
+                <span className="mt-4 text-caption text-text-muted tabular-nums">
                   {category.familyCount} famílias
                 </span>
               </Link>
@@ -148,10 +148,10 @@ function Home() {
       {/* 4 — Soluções por necessidade */}
       {applications.length > 0 && (
         <section aria-labelledby="solucoes-home" className="container-avizee mt-16">
-          <h2 id="solucoes-home" className="text-[26px] font-bold">
+          <h2 id="solucoes-home" className="text-h2 font-bold">
             Soluções por necessidade
           </h2>
-          <p className="mt-2 max-w-2xl text-[16px] text-text-secondary">
+          <p className="mt-2 max-w-2xl text-body text-text-secondary">
             Encontre o que costuma ser necessário em cada aplicação da produção avícola.
           </p>
           <ul className="mt-6 flex flex-wrap gap-3">
@@ -160,10 +160,10 @@ function Home() {
                 <Link
                   to="/produtos"
                   search={{ aplicacao: application.slug }}
-                  className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-[15px] font-medium hover:border-emphasis"
+                  className="brand-interactive inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-body-sm font-medium"
                 >
                   {application.name}
-                  <span className="text-[13px] text-text-muted tabular-nums">
+                  <span className="text-caption text-text-muted tabular-nums">
                     {application.count}
                   </span>
                 </Link>
@@ -178,17 +178,17 @@ function Home() {
 
       {/* 5 — Diferenciais */}
       <section aria-labelledby="diferenciais" className="container-avizee mt-16">
-        <h2 id="diferenciais" className="text-[26px] font-bold">
+        <h2 id="diferenciais" className="text-h2 font-bold">
           Por que a AviZee
         </h2>
         <ul className="mt-6 grid gap-6 md:grid-cols-3">
           {DIFFERENTIATORS.map((item) => {
             const Icon = DIFF_ICON[item.id];
             return (
-              <li key={item.id} className="rounded-[12px] border border-border p-5">
+              <li key={item.id} className="border-t-2 border-emphasis pt-5">
                 <Icon aria-hidden="true" className="h-7 w-7 text-emphasis" />
-                <h3 className="mt-3 text-[18px] font-semibold">{item.title}</h3>
-                <p className="mt-2 text-[15px] text-text-secondary">{item.description}</p>
+                <h3 className="mt-3 text-h4 font-semibold">{item.title}</h3>
+                <p className="mt-2 text-body-sm text-text-secondary">{item.description}</p>
               </li>
             );
           })}
@@ -198,7 +198,7 @@ function Home() {
       {/* 6 — Famílias em destaque (oculto com menos de 4 famílias publicáveis) */}
       {showFeatured && (
         <section aria-labelledby="destaques" className="container-avizee mt-16">
-          <h2 id="destaques" className="text-[26px] font-bold">
+          <h2 id="destaques" className="text-h2 font-bold">
             Famílias em destaque
           </h2>
           <div className="mt-6">
@@ -209,17 +209,17 @@ function Home() {
 
       {/* 7 — Como funciona a cotação */}
       <section aria-labelledby="cotacao-home" className="container-avizee mt-16">
-        <h2 id="cotacao-home" className="text-[26px] font-bold">
+        <h2 id="cotacao-home" className="text-h2 font-bold">
           Como funciona a cotação
         </h2>
         <ol className="mt-6 grid gap-6 md:grid-cols-3">
           {QUOTATION_STEPS.map((step) => (
-            <li key={step.step} className="rounded-[12px] border border-border p-5">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-[16px] font-bold text-primary-foreground tabular-nums">
+            <li key={step.step} className="border-t border-border pt-5">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-body font-bold text-primary-foreground tabular-nums">
                 {step.step}
               </span>
-              <h3 className="mt-3 text-[18px] font-semibold">{step.title}</h3>
-              <p className="mt-2 text-[15px] text-text-secondary">{step.description}</p>
+              <h3 className="mt-3 text-h4 font-semibold">{step.title}</h3>
+              <p className="mt-2 text-body-sm text-text-secondary">{step.description}</p>
             </li>
           ))}
         </ol>
@@ -229,7 +229,7 @@ function Home() {
       {showArticles && (
         <section aria-labelledby="artigos-home" className="container-avizee mt-16">
           <div className="flex items-end justify-between">
-            <h2 id="artigos-home" className="text-[26px] font-bold">
+            <h2 id="artigos-home" className="text-h2 font-bold">
               Conteúdos recentes
             </h2>
             <Link to="/conteudos" className="font-semibold underline">
@@ -245,22 +245,21 @@ function Home() {
       )}
 
       {/* 9 — Atendimento em todo o Brasil */}
-      <section
-        aria-labelledby="atendimento"
-        className="container-avizee mt-16 rounded-[12px] border border-border bg-surface p-8"
-      >
-        <h2 id="atendimento" className="text-[24px] font-bold">
-          {NATIONAL_COVERAGE.title}
-        </h2>
-        <p className="mt-3 max-w-2xl text-[16px] text-text-secondary">
-          {NATIONAL_COVERAGE.description}
-        </p>
+      <section aria-labelledby="atendimento" className="container-avizee mt-16">
+        <div className="brand-rule bg-surface p-8">
+          <h2 id="atendimento" className="text-h3 font-bold">
+            {NATIONAL_COVERAGE.title}
+          </h2>
+          <p className="mt-3 max-w-2xl text-body text-text-secondary">
+            {NATIONAL_COVERAGE.description}
+          </p>
+        </div>
       </section>
 
       {/* 10 — CTA final */}
       <section aria-labelledby="cta-final" className="container-avizee mt-16">
-        <div className="flex flex-wrap items-center justify-between gap-6 rounded-[12px] bg-inverse p-8 text-inverse-foreground">
-          <h2 id="cta-final" className="text-[24px] font-bold">
+        <div className="flex flex-wrap items-center justify-between gap-6 bg-inverse p-8 text-inverse-foreground">
+          <h2 id="cta-final" className="text-h3 font-bold">
             Pronto para montar sua cotação?
           </h2>
           <div className="flex flex-wrap gap-3">

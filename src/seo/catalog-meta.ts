@@ -1,10 +1,10 @@
 export interface CatalogMetaSearch {
-  q?: string;
-  categoria?: string;
-  segmento?: string;
-  aplicacao?: string;
-  ordem?: string;
-  pagina?: number;
+  q?: string | undefined;
+  categoria?: string | undefined;
+  segmento?: string | undefined;
+  aplicacao?: string | undefined;
+  ordem?: string | undefined;
+  pagina?: number | undefined;
 }
 
 /** Filtros de descoberta são noindex e canonicalizam para a raiz do catálogo. */

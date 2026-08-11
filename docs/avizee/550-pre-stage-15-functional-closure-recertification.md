@@ -6,6 +6,8 @@
 > GitHub Actions: CI run #211, id `31436944133`  
 > Resultado: **SUCCESS**
 
+> **Nota de governança pós-merge:** este documento certifica o fechamento funcional incorporado pelo PR #2. Depois do merge, o Lovable aplicou commits técnicos adicionais diretamente na `main`. A revisão e recertificação desse baseline posterior estão registradas no doc. `551-post-lovable-recertification.md`. Esta nota não invalida a evidência abaixo; apenas delimita o commit que ela cobre.
+
 ## 1. Escopo certificado
 
 O run #211 certifica o conjunto funcional aprovado no fechamento das Etapas 0–14.1, incluindo as decisões finais do doc. 549:
@@ -61,9 +63,9 @@ Esses itens permanecem segregados como gates externos de homologação/lançamen
 
 ## 5. Conclusão
 
-Para fins de desenvolvimento e continuidade do roadmap, o conjunto funcional das Etapas 0–14.1 está encerrado e recertificado.
+Para fins de desenvolvimento e continuidade do roadmap, o conjunto funcional das Etapas 0–14.1 foi encerrado e recertificado neste marco.
 
-Status funcional:
+Status funcional deste marco:
 
 `PRE_STAGE_15_FUNCTIONAL_CLOSURE_CERTIFIED`
 
@@ -73,4 +75,4 @@ Status de produção/operação permanece:
 - `OPERATION_BLOCKED`;
 - `DATABASE_NOT_DIRECTLY_VERIFIED` para o ambiente conectado.
 
-A Etapa 15 somente pode ser iniciada após revisão e merge aprovado do PR #2.
+O PR #2 foi posteriormente aprovado e mergeado. O baseline pós-merge é tratado pelo doc. 551 antes do início formal da Etapa 15.

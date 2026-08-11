@@ -8,9 +8,7 @@ const BASE_PERMISSIONS_POLICY = [
 ].join(", ");
 
 export function contentSecurityPolicy(production: boolean): string {
-  const connectSources = production
-    ? "'self' https: wss:"
-    : "'self' http: https: ws: wss:";
+  const connectSources = production ? "'self' https: wss:" : "'self' http: https: ws: wss:";
 
   return [
     "default-src 'self'",

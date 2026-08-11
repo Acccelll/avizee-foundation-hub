@@ -1,6 +1,6 @@
 # AviZee — Projeto de Catálogo B2B e Site Institucional
 
-Status corrente: **PRE_STAGE_15_BASELINE_CONSOLIDATED**
+Status corrente: **STAGE_15_QUALITY_CERTIFIED**
 
 > Este arquivo aponta para o estado vigente. Relatórios de RC e etapas anteriores permanecem como histórico e não devem ser usados isoladamente como status atual.
 
@@ -10,40 +10,37 @@ Status corrente: **PRE_STAGE_15_BASELINE_CONSOLIDATED**
 - O fechamento integral das Etapas 0–14.1 foi aprovado e mergeado pelo PR #2 no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
 - O checkpoint pós-Lovable foi aprovado e squash-mergeado pelo PR #3 no commit `cb7324918aa212edd64e5cd184457c3f703730bd`.
 - O housekeeping final pré-Etapa 15 foi squash-mergeado pelo PR #4 no commit `96b9a5b5c5311ddc6b44ce402abd7b4e4f38be4d`.
+- O roadmap das Etapas 15–19 foi aprovado e integrado pelo PR #5 no commit `b34f871ef40c14e9c9d16ac521147fdb5c8a97b3`.
 - A coorte pública continua restrita às 31 famílias / 97 SKUs aprovados; registros sem dados confiáveis permanecem contidos e não publicados.
-- O hardening interno, a retenção, o fixture canônico e o ensaio de restore lógico estão implementados e recertificados.
-- Páginas consultivas de Soluções e busca global foram aprovadas, implementadas e recertificadas.
+- Páginas consultivas de Soluções e busca global permanecem implementadas e recertificadas.
 - Formulário geral de Contato e mapa permanecem fora da v1 por decisão explícita.
-- Resend foi aprovado como provider transacional, mas criação de novos endereços, DNS e credenciais reais foi deliberadamente adiada para o fechamento do projeto.
-- Produção não é autorizada automaticamente por este fechamento; gates externos de lançamento continuam separados da conclusão funcional.
-- O roadmap restante da v1 foi aprovado como Etapas 15–19; a Etapa 15 ainda não foi iniciada formalmente.
+- Resend continua aprovado como provider transacional, mas configuração real permanece gate posterior.
+- A Etapa 15 — Qualidade Final está tecnicamente certificada no PR #6, aguardando recertificação documental final e merge aprovado.
+- Produção e operação permanecem bloqueadas pelos gates externos aplicáveis.
 
 ## Fonte corrente de governança
 
-- [541-pre-stage-15-closure-matrix.md](541-pre-stage-15-closure-matrix.md) — matriz integral de fechamento.
-- [542-current-status-pre-stage-15.md](542-current-status-pre-stage-15.md) — status corrente.
-- [543-user-confirmations-2026-08-10.md](543-user-confirmations-2026-08-10.md) — decisões e dados confirmados pelo usuário.
-- [544-decision-reconciliation-pre-stage-15.md](544-decision-reconciliation-pre-stage-15.md) — reconciliação das decisões antigas.
-- [545-provider-operator-inventory.md](545-provider-operator-inventory.md) — inventário técnico de serviços externos.
-- [547-mcp-request-hardening.md](547-mcp-request-hardening.md) — boundary, origem canônica e rate-limit fail-closed do MCP.
-- [549-approved-functional-decisions-pre-stage-15.md](549-approved-functional-decisions-pre-stage-15.md) — decisões funcionais finais aprovadas.
-- [550-pre-stage-15-functional-closure-recertification.md](550-pre-stage-15-functional-closure-recertification.md) — recertificação funcional do marco do PR #2.
-- [551-post-lovable-recertification.md](551-post-lovable-recertification.md) — revisão e recertificação do primeiro bloco pós-merge feito pelo Lovable.
-- [552-approved-roadmap-stages-15-19.md](552-approved-roadmap-stages-15-19.md) — roadmap aprovado para concluir qualidade, readiness, homologação, go-live e encerramento da v1.
+- [541-pre-stage-15-closure-matrix.md](541-pre-stage-15-closure-matrix.md) — matriz integral de fechamento das Etapas 0–14.1.
+- [552-approved-roadmap-stages-15-19.md](552-approved-roadmap-stages-15-19.md) — roadmap aprovado para concluir a v1.
+- [553-stage-15-quality-final-plan.md](553-stage-15-quality-final-plan.md) — plano, baseline e fechamento da Etapa 15.
+- [554-stage-15-seo-final-validation.md](554-stage-15-seo-final-validation.md) — validação técnica de SEO.
+- [555-stage-15-analytics-readiness.md](555-stage-15-analytics-readiness.md) — readiness de Analytics consent-first.
+- [556-stage-15-accessibility-final-validation.md](556-stage-15-accessibility-final-validation.md) — validação técnica de acessibilidade.
+- [557-stage-15-performance-budget-evidence.md](557-stage-15-performance-budget-evidence.md) — evidência de performance.
+- [558-stage-15-security-final-validation.md](558-stage-15-security-final-validation.md) — validação técnica de segurança.
+- [559-stage-15-executive-report.md](559-stage-15-executive-report.md) — relatório executivo da Etapa 15.
 
 ## Governança histórica
 
-Os documentos das Etapas 11–14, incluindo release candidates e relatórios de remediação, continuam versionados para rastreabilidade. Quando houver divergência de status entre um documento histórico e os arquivos correntes acima, prevalece a fonte corrente sem apagar o registro histórico.
+Os documentos das Etapas 0–14.1, incluindo release candidates e relatórios de remediação, continuam versionados para rastreabilidade. Quando houver divergência de status entre um documento histórico e os arquivos correntes acima, prevalece `STATUS.md` e a documentação mais recente, sem apagar o registro histórico.
 
-O `README.md` da raiz permanece um consolidado histórico extenso. O arquivo `STATUS.md` na raiz e os documentos 541/542/552 são a ponte explícita para a situação corrente e a progressão futura aprovada.
+## Progressão restante
 
-## Próximo bloco
+Após o merge aprovado da Etapa 15, a sequência da v1 é:
 
-A sequência aprovada para concluir a v1 é:
+`16 — Readiness de Produção e Gates Externos → 17 — Release Candidate Final, Migração e UAT → 18 — Cutover e Go-Live → 19 — Hypercare, Aceite e Encerramento v1`.
 
-`15 — Qualidade Final → 16 — Readiness de Produção e Gates Externos → 17 — Release Candidate Final, Migração e UAT → 18 — Cutover e Go-Live → 19 — Hypercare, Aceite e Encerramento v1`.
-
-A Etapa 15 pode ser iniciada formalmente em branch própria depois da integração deste checkpoint de roadmap. Os gates externos de lançamento continuam separados e não são dispensados pelo início da próxima etapa.
+A homologação humana, ambiente produtivo, DNS/e-mail real, revisão jurídica, backups reais, cutover e operação não são antecipados pela certificação técnica da Etapa 15.
 
 ## Sobre o projeto
 

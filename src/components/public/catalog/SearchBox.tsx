@@ -25,6 +25,7 @@ export function SearchBox({
   const [items, setItems] = useState<GlobalSuggestion[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
+  const [announcement, setAnnouncement] = useState("");
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => setTerm(defaultValue), [defaultValue]);
@@ -34,6 +35,7 @@ export function SearchBox({
     if (value.length < 2) {
       setItems([]);
       setOpen(false);
+      setAnnouncement("");
       return;
     }
     let cancelled = false;
@@ -44,9 +46,20 @@ export function SearchBox({
           setItems(result.suggestions as GlobalSuggestion[]);
           setOpen(result.suggestions.length > 0);
           setActive(-1);
+          setAnnouncement(
+            result.suggestions.length === 0
+              ? "Nenhuma sugestão disponível."
+              : `${result.suggestions.length} ${
+                  result.suggestions.length === 1 ? "sugestão disponível" : "sugestões disponíveis"
+                }. Use as setas para navegar.`,
+          );
         })
         .catch(() => {
-          if (!cancelled) setItems([]);
+          if (!cancelled) {
+            setItems([]);
+            setOpen(false);
+            setAnnouncement("Não foi possível carregar sugestões. A busca continua disponível.");
+          }
         });
     }, 250);
     return () => {
@@ -142,6 +155,10 @@ export function SearchBox({
           </button>
         </div>
       </form>
+
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {announcement}
+      </p>
 
       {open && items.length > 0 && (
         <ul

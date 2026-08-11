@@ -72,23 +72,24 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const ROOT_DESCRIPTION =
+  "AviZee: equipamentos, componentes, peças de reposição e soluções para avicultura, com atendimento consultivo B2B por lista de cotação em todo o Brasil.";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "AviZee Foundation consolidates approved decisions, product catalog, and brand identity for a new B2B institutional website." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "AviZee Foundation consolidates approved decisions, product catalog, and brand identity for a new B2B institutional website." },
+      { title: "AviZee — Equipamentos e soluções para avicultura" },
+      { name: "description", content: ROOT_DESCRIPTION },
+      { name: "author", content: "AviZee" },
+      { property: "og:title", content: "AviZee — Equipamentos e soluções para avicultura" },
+      { property: "og:description", content: ROOT_DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "AviZee Foundation consolidates approved decisions, product catalog, and brand identity for a new B2B institutional website." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ff35a616-4ee9-4d28-8d5d-d6fd3a443b2a/id-preview-4e218a86--c8e7f395-662c-4430-ba1b-117d90121a0f.lovable.app-1785883712116.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ff35a616-4ee9-4d28-8d5d-d6fd3a443b2a/id-preview-4e218a86--c8e7f395-662c-4430-ba1b-117d90121a0f.lovable.app-1785883712116.png" },
+      { name: "twitter:title", content: "AviZee — Equipamentos e soluções para avicultura" },
+      { name: "twitter:description", content: ROOT_DESCRIPTION },
     ],
     links: [
       {
@@ -106,7 +107,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>

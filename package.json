@@ -17,7 +17,8 @@
     "test:security": "vitest run tests/security",
     "test:e2e": "vitest run tests/e2e",
     "test:coverage": "vitest run --coverage",
-    "test:ci": "vitest run --coverage --reporter=default"
+    "test:ci": "vitest run --coverage --reporter=default",
+    "quality:performance": "bun scripts/quality/check-performance-budget.ts"
   },
   "dependencies": {
     "@fontsource-variable/montserrat": "^5.3.0",

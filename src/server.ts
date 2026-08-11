@@ -3,6 +3,7 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { enforceMcpCanonicalOrigin, enforceMcpRateLimit } from "./lib/mcp/rate-limit.server";
+import { withSecurityHeaders } from "./lib/security-headers";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -47,22 +48,30 @@ function isH3SwallowedErrorBody(body: string): boolean {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    // O header HSTS depende somente do rótulo do ambiente. Configuração inválida
+    // continua falhando nos validadores existentes e não é mascarada aqui.
+    const production = process.env["APP_ENV"] === "production";
+
     try {
       const originResponse = enforceMcpCanonicalOrigin(request);
-      if (originResponse) return originResponse;
+      if (originResponse) return withSecurityHeaders(originResponse, production);
 
       const rateLimitResponse = await enforceMcpRateLimit(request, env);
-      if (rateLimitResponse) return rateLimitResponse;
+      if (rateLimitResponse) return withSecurityHeaders(rateLimitResponse, production);
 
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(normalized, production);
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return withSecurityHeaders(
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+        production,
+      );
     }
   },
 };

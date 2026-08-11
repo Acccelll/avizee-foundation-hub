@@ -15,9 +15,7 @@ describe("analytics consent-first", () => {
     const sink = vi.fn();
     configureAnalyticsSink(sink);
 
-    expect(await trackAnalytics("page_view", { path: "/produtos", template: "catalog" })).toBe(
-      false,
-    );
+    expect(await trackAnalytics("page_view", { path: "/produtos", template: "catalog" })).toBe(false);
     expect(sink).not.toHaveBeenCalled();
   });
 

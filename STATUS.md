@@ -1,6 +1,6 @@
 # AviZee — Status corrente
 
-Status: **PRE_STAGE_15_FINAL_SYNC_RECERTIFICATION_IN_PROGRESS**
+Status: **PRE_STAGE_15_BASELINE_CONSOLIDATED**
 
 Este arquivo é a ponte curta para o estado vigente do projeto. Relatórios de etapas e release candidates anteriores permanecem como histórico.
 
@@ -18,6 +18,8 @@ O PR #3 foi aprovado e squash-mergeado na `main` no commit `cb7324918aa212edd64e
 
 Após esse merge, o Lovable aplicou um novo ajuste técnico em três commits, encerrando em `523877545fd67a13d4d2f0cfe61a26ae454277ca`. O efeito líquido adiciona um middleware cliente de autenticação tolerante à indisponibilidade da configuração pública do Supabase e passa a usá-lo nas server functions, evitando falha total das rotas públicas quando não há sessão/configuração cliente disponível.
 
-Esse novo HEAD não altera layout público, branding, taxonomia ou modelo comercial, mas precisa ser recertificado antes de ser incorporado ao baseline formal das Etapas 0–14.1.
+Esse ajuste foi recertificado integralmente no HEAD `8c4c895c0644c507f75f985f1f12be580754517a` pelo CI #230 (`31484961340`), com lint, Prettier, build, typecheck, replay limpo das migrations, fixture 31 famílias / 97 SKUs, restore lógico, SSR e suíte integral de testes verdes.
+
+As Etapas 0–14.1 estão funcional e tecnicamente consolidadas no baseline pré-Etapa 15. Não resta fechamento interno conhecido dessas etapas. A Etapa 15 ainda não foi iniciada formalmente, mas está liberada para início em branch própria após a integração deste housekeeping.
 
 Produção e operação continuam bloqueadas pelos gates externos aplicáveis. Este arquivo não autoriza deploy, publicação, DNS ou migração para produção.

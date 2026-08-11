@@ -15,7 +15,9 @@ describe("analytics consent-first", () => {
     const sink = vi.fn();
     configureAnalyticsSink(sink);
 
-    expect(await trackAnalytics("page_view", { path: "/produtos", template: "catalog" })).toBe(false);
+    expect(
+      await trackAnalytics("page_view", { path: "/produtos", template: "catalog" }),
+    ).toBe(false);
     expect(sink).not.toHaveBeenCalled();
   });
 
@@ -24,9 +26,7 @@ describe("analytics consent-first", () => {
     configureAnalyticsSink(sink);
     setAnalyticsConsent("granted");
 
-    expect(await trackAnalytics("quotation_submitted", { protocol: "AVZ-2026-0001" })).toBe(
-      true,
-    );
+    expect(await trackAnalytics("quotation_submitted", { protocol: "AVZ-2026-0001" })).toBe(true);
     expect(sink).toHaveBeenCalledWith({
       name: "quotation_submitted",
       payload: { protocol: "AVZ-2026-0001" },

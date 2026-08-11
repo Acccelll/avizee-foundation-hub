@@ -7,6 +7,7 @@ import { FilterPanel, type CatalogSearch } from "@/components/public/catalog/Fil
 import { NoResults } from "@/components/public/catalog/NoResults";
 import { Pagination } from "@/components/public/catalog/Pagination";
 import { SearchBox } from "@/components/public/catalog/SearchBox";
+import { catalogCanonical, isCatalogFiltered } from "@/seo/catalog-meta";
 import { buildMeta } from "@/seo/meta";
 
 const ORDERS = ["relevance", "name", "category"] as const;
@@ -35,17 +36,13 @@ export const Route = createFileRoute("/produtos/")({
     return { catalog, facets, search: deps };
   },
   head: ({ loaderData }) => {
-    const filtered = Boolean(
-      loaderData?.search.q ||
-      loaderData?.search.categoria ||
-      loaderData?.search.segmento ||
-      loaderData?.search.aplicacao,
-    );
+    const search = loaderData?.search ?? {};
+    const filtered = isCatalogFiltered(search);
     return buildMeta({
       title: "Catálogo de produtos para avicultura",
       description:
         "Catálogo técnico AviZee organizado por categoria, segmento e aplicação. Consulte as famílias e monte sua lista de cotação.",
-      canonical: "/produtos",
+      canonical: catalogCanonical(search),
       noindex: filtered,
       jsonLd: filtered
         ? []

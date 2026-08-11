@@ -1,6 +1,6 @@
 # AviZee — Status corrente
 
-Status: **PRE_STAGE_15_POST_LOVABLE_RECERTIFICATION_IN_PROGRESS**
+Status: **PRE_STAGE_15_BASELINE_CONSOLIDATED**
 
 Este arquivo é a ponte curta para o estado vigente do projeto. Relatórios de etapas e release candidates anteriores permanecem como histórico.
 
@@ -16,6 +16,8 @@ Fontes vigentes:
 
 O PR #2 foi mergeado na `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`. Depois desse merge, o Lovable aplicou correções técnicas e de segurança diretamente na `main`, levando o projeto ao commit `44e165aa006e16ba3f758759a85e5478a3df14c6`.
 
-As Etapas 0–14.1 permanecem funcionalmente encerradas. O estado atual está passando por uma recertificação final para incorporar esses commits pós-merge ao baseline formal antes do início da Etapa 15.
+Esses commits foram revisados. A migration pós-Lovable foi reconciliada para replay limpo sem perder o hardening aplicável e o commit técnico `1f852351f7655ecaca6a37e1ff1fcb7eb9d92ddc` passou integralmente no CI #223 (`31446779287`).
+
+As Etapas 0–14.1 estão funcional e tecnicamente consolidadas no baseline pré-Etapa 15. A Etapa 15 ainda não foi iniciada formalmente; resta integrar o checkpoint de recertificação à `main` após revisão/aprovação do PR #3.
 
 Produção e operação continuam bloqueadas pelos gates externos aplicáveis. Este arquivo não autoriza deploy, publicação, DNS ou migração para produção.

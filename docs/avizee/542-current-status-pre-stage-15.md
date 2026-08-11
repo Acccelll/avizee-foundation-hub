@@ -16,25 +16,23 @@ Este documento, `541-pre-stage-15-closure-matrix.md` e `551-post-lovable-recerti
 - Páginas consultivas próprias por aplicação e busca global em Produtos + Soluções + Conteúdos publicados foram implementadas.
 - Formulário geral de Contato e mapa permanecem fora da v1 por decisão explícita.
 
-## Recertificação funcional anterior
+## Recertificação funcional do PR #2
 
 O fechamento funcional do PR #2 foi recertificado pelo GitHub Actions conforme `550-pre-stage-15-functional-closure-recertification.md`.
 
-Status funcional consolidado do PR #2:
-
-`PRE_STAGE_15_FUNCTIONAL_CLOSURE_CERTIFIED`
-
-## Alterações pós-merge do Lovable
+## Consolidação pós-Lovable
 
 Depois do merge, o Lovable aplicou sete commits técnicos diretamente na `main`, levando o repositório até `44e165aa006e16ba3f758759a85e5478a3df14c6`.
 
 A revisão desses commits está registrada no doc. 551. Eles abrangem tooling, correções de tipagem da busca, hardening de privilégios no Supabase e correção da leitura das facetas do catálogo. Não houve alteração de layout público, branding, taxonomia ou modelo comercial.
 
-A recertificação integral desse novo baseline está em andamento na branch `pre-stage-15-post-lovable-recertification`.
+O primeiro replay limpo do checkpoint, CI #222, revelou que a migration pós-Lovable referenciava uma função residual (`increment_schedule_attempts(uuid,text)`) ausente do schema versionado. A migration foi reconciliada para aplicar esse hardening somente quando a função existir, preservando os `REVOKE`/`GRANT` das funções canônicas.
+
+O commit técnico corrigido `1f852351f7655ecaca6a37e1ff1fcb7eb9d92ddc` passou integralmente no CI #223 (`31446779287`), incluindo lint, Prettier, build, typecheck, replay das migrations, fixture 31/97, restore lógico, SSR e suíte integral de testes.
 
 Status corrente:
 
-`PRE_STAGE_15_POST_LOVABLE_RECERTIFICATION_IN_PROGRESS`
+`PRE_STAGE_15_BASELINE_CONSOLIDATED`
 
 ## Gates de lançamento segregados
 
@@ -48,4 +46,4 @@ Portanto permanecem válidos:
 
 ## Próximo passo
 
-Concluir a recertificação integral do HEAD pós-Lovable, integrar o checkpoint de governança e só então considerar o baseline pré-Etapa 15 totalmente consolidado.
+O baseline das Etapas 0–14.1 está funcional e tecnicamente consolidado. Resta recertificar o HEAD documental final do PR #3, submeter o checkpoint à revisão/merge e, somente depois, iniciar formalmente a Etapa 15.

@@ -83,18 +83,18 @@ function ArtigoPublico() {
       ]}
     >
       <article className="container-avizee max-w-3xl">
-        <p className="text-[13px] font-semibold uppercase tracking-wide text-text-muted">
+        <p className="text-body-sm font-semibold uppercase tracking-wide text-text-muted">
           <Link to="/conteudos/categoria/$slug" params={{ slug: article.categorySlug }}>
             {article.categoryName}
           </Link>
         </p>
 
-        <h1 className="mt-3 text-[36px] font-extrabold leading-tight">{article.title}</h1>
+        <h1 className="mt-3 text-h1 font-extrabold leading-tight">{article.title}</h1>
         {article.subtitle && (
-          <p className="mt-3 text-[19px] text-text-secondary">{article.subtitle}</p>
+          <p className="mt-3 text-body-lg text-text-secondary">{article.subtitle}</p>
         )}
 
-        <div className="mt-5 flex flex-wrap items-center gap-4 text-[14px] text-text-muted">
+        <div className="mt-5 flex flex-wrap items-center gap-4 text-body-sm text-text-muted">
           {article.authorName && (
             <span>
               Por {article.authorName}
@@ -120,10 +120,10 @@ function ArtigoPublico() {
 
         {article.references.length > 0 && (
           <section aria-labelledby="referencias" className="mt-12">
-            <h2 id="referencias" className="text-[22px] font-bold">
+            <h2 id="referencias" className="text-h3 font-bold">
               Referências consultadas
             </h2>
-            <ul className="mt-4 space-y-2 text-[15px] text-text-secondary">
+            <ul className="mt-4 space-y-2 text-body-sm text-text-secondary">
               {article.references.map(
                 (
                   reference: { label: string; url: string | null; note: string | null },
@@ -152,7 +152,7 @@ function ArtigoPublico() {
 
         {article.relatedFamilies.length > 0 && (
           <section aria-labelledby="familias" className="mt-12">
-            <h2 id="familias" className="text-[22px] font-bold">
+            <h2 id="familias" className="text-h3 font-bold">
               Produtos relacionados
             </h2>
             <ul className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -168,14 +168,14 @@ function ArtigoPublico() {
                     <Link
                       to="/produtos/$categorySlug/$familySlug"
                       params={{ categorySlug: family.categorySlug, familySlug: family.slug }}
-                      className="block h-full rounded-[12px] border border-border p-4 hover:border-emphasis"
+                      className="brand-interactive block h-full rounded-[12px] border border-border p-4"
                     >
-                      <span className="text-[12px] uppercase tracking-wide text-text-muted">
+                      <span className="text-caption uppercase tracking-wide text-text-muted">
                         {family.categoryName}
                       </span>
-                      <span className="mt-1 block text-[17px] font-bold">{family.name}</span>
+                      <span className="mt-1 block text-h4 font-bold">{family.name}</span>
                       {family.summary && (
-                        <span className="mt-1 block line-clamp-2 text-[14px] text-text-secondary">
+                        <span className="mt-1 block line-clamp-2 text-body-sm text-text-secondary">
                           {family.summary}
                         </span>
                       )}
@@ -186,7 +186,7 @@ function ArtigoPublico() {
             </ul>
             <Link
               to="/cotacao"
-              className="mt-5 inline-flex h-11 items-center rounded-[8px] bg-primary px-5 text-[15px] font-semibold text-primary-foreground"
+              className="mt-5 inline-flex h-11 items-center rounded-[8px] bg-primary px-5 text-body-sm font-semibold text-primary-foreground"
             >
               Solicitar cotação
             </Link>
@@ -195,7 +195,7 @@ function ArtigoPublico() {
 
         {article.relatedArticles.length > 0 && (
           <section aria-labelledby="relacionados" className="mt-14">
-            <h2 id="relacionados" className="text-[22px] font-bold">
+            <h2 id="relacionados" className="text-h3 font-bold">
               Leia também
             </h2>
             <div className="mt-4">

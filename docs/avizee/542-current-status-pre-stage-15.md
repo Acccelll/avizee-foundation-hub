@@ -29,14 +29,16 @@ Após o merge do PR #3, o Lovable aplicou três commits adicionais, encerrando e
 
 O efeito líquido está restrito a dois arquivos:
 
-- `src/lib/supabase-auth.middleware.ts` — novo middleware cliente que tenta anexar o token de sessão e, quando a configuração cliente do Supabase está indisponível, segue sem o cabeçalho em vez de derrubar a rota pública;
+- `src/lib/supabase-auth.middleware.ts` — middleware cliente que tenta anexar o token de sessão e, quando a configuração cliente do Supabase está indisponível, segue sem o cabeçalho em vez de derrubar a rota pública;
 - `src/start.ts` — troca do middleware gerado pelo novo middleware seguro.
 
-Não houve alteração de layout público, branding, taxonomia ou modelo comercial. Como esse ajuste entrou após a última certificação, ele está sendo recertificado integralmente antes de o baseline voltar ao estado final consolidado.
+Não houve alteração de layout público, branding, taxonomia ou modelo comercial.
+
+O HEAD `8c4c895c0644c507f75f985f1f12be580754517a`, já incorporando esse ajuste e o housekeeping documental, passou integralmente no CI #230 (`31484961340`): instalação congelada, lint, Prettier, build, typecheck, replay das migrations em Supabase local limpo, fixture 31/97, restore lógico, SSR, suíte integral de testes e cleanup.
 
 Status corrente:
 
-`PRE_STAGE_15_FINAL_SYNC_RECERTIFICATION_IN_PROGRESS`
+`PRE_STAGE_15_BASELINE_CONSOLIDATED`
 
 ## Gates de lançamento segregados
 
@@ -50,4 +52,4 @@ Portanto permanecem válidos:
 
 ## Próximo passo
 
-Concluir a recertificação integral do HEAD que incorpora `52387754...`, atualizar este checkpoint para `PRE_STAGE_15_BASELINE_CONSOLIDATED` e integrar o housekeeping final. Somente então iniciar formalmente a Etapa 15 em branch própria.
+O baseline das Etapas 0–14.1 está funcional e tecnicamente consolidado. Não resta fechamento interno conhecido dessas etapas. Após integrar este housekeeping, a Etapa 15 pode ser iniciada formalmente em branch própria, sem dispensar os gates externos de lançamento.

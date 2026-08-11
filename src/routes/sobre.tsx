@@ -103,9 +103,7 @@ function Sobre() {
           <h2 id="complementares" className="text-h2 font-bold">
             {COMPLEMENTARY_SEGMENTS.title}
           </h2>
-          <p className="mt-4 text-body text-text-secondary">
-            {COMPLEMENTARY_SEGMENTS.description}
-          </p>
+          <p className="mt-4 text-body text-text-secondary">{COMPLEMENTARY_SEGMENTS.description}</p>
         </section>
 
         {!MISSION_VISION_VALUES_APPROVED && (

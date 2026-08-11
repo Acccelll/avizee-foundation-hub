@@ -24,7 +24,7 @@ Os estados usados são:
 | Etapas 2/2.1 | DECT-08 / DEP-09 — 34 SKUs sem identidade | `CLOSED_CONTAINED` | D-054 / doc. 544: permanecem fora da publicação |
 | Etapas 2/2.1 | DECT-11 — 16 SKUs sem nome público | `CLOSED_CONTAINED` | D-054 / doc. 544: permanecem fora da publicação |
 | Etapas 2/2.1 | demais decisões taxonômicas antigas | `CLOSED_USER_DECISION` / `CLOSED_CONTAINED` | reconciliação integral no doc. 544; coorte pública continua 31 famílias / 97 SKUs |
-| Etapas 3/5 | DEC-07 / DECT-12 — páginas consultivas de solução | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; `/solucoes/{aplicacao}` implementado e recertificado no fechamento funcional |
+| Etapas 3/5 | DEC-07 / DECT-12 — páginas consultivas de solução | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; `/solucoes/{aplicacao}` implementado e recertificado |
 | Etapa 2 | DEC-10 — busca global | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; Produtos + Soluções + Conteúdos publicados implementados e recertificados |
 | Etapa 4 | DEP-T1 / O-05 / O-06 — provider e destino de e-mail | `CLOSED_DEFERRED_LAUNCH_GATE` | Resend, remetente planejado, destino e Reply-To decididos; criação de caixas/subdomínio, DNS e chave real ficam para o fechamento do projeto |
 | Etapa 4 | O-08 / O-09 — usuários reais e papéis | `CLOSED_DEFERRED_LAUNCH_GATE` | regra de um administrador inicial aprovada; provisionamento da conta concreta ocorre no gate operacional |
@@ -43,11 +43,11 @@ Os estados usados são:
 | Etapas 11–13 | B11-06 — UAT humano | `CLOSED_DEFERRED_LAUNCH_GATE` | homologação/aceite final; não é substituído por CI |
 | Etapas 11–13 | B11-07 — backup real / RPO / RTO | `CLOSED_DEFERRED_LAUNCH_GATE` | restore lógico local já comprovado; DR real, RPO/RTO e backup do ambiente conectado permanecem gates de lançamento |
 | Etapas 11–13 | DEP-T3 — storage/backup de objetos | `CLOSED_DEFERRED_LAUNCH_GATE` | requer infraestrutura/ambiente real; não é falsamente certificado pelo restore do banco |
-| Etapas 11–13 | hardening MCP/segredos/rate-limit — código | `CLOSED_IMPLEMENTED` | boundary de origem, fail-closed, higiene de `.env` e testes recertificados; hardening pós-merge do Lovable revisado no doc. 551 |
+| Etapas 11–13 | hardening MCP/segredos/rate-limit — código | `CLOSED_IMPLEMENTED` | boundary de origem, fail-closed, higiene de `.env` e testes recertificados; hardening pós-merge revisado no doc. 551 |
 | Etapas 11–13 | MCP rate-limit distribuído — infraestrutura real | `CLOSED_DEFERRED_LAUNCH_GATE` | binding `MCP_RATE_LIMITER` continua obrigatório para habilitar MCP em produção; sem binding permanece fail-closed |
-| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md`, docs. 541/542 e checkpoint 551 são as fontes correntes; histórico não é apagado |
+| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md`, docs. 541/542/551 são as fontes correntes; histórico não é apagado |
 | Ambiente conectado | verificação direta do banco Lovable/Supabase | `CLOSED_DEFERRED_LAUNCH_GATE` | nenhuma alegação de banco ao vivo verificado é feita sem evidência direta |
-| Pós-merge PR #2 | sete commits aplicados pelo Lovable até `44e165aa...` | `CLOSED_REVIEWED_PENDING_RECERTIFICATION` | alterações revisadas no doc. 551; recertificação integral do HEAD final desta branch em andamento |
+| Pós-merge PR #2 | sete commits aplicados pelo Lovable até `44e165aa...` | `CLOSED_EVIDENCED` | revisados no doc. 551; migration reconciliada; commit técnico `1f852351...` integralmente verde no CI #223 (`31446779287`) |
 
 ## Decisões funcionais finais
 
@@ -72,10 +72,12 @@ Por isso continuam válidos:
 
 ## Estado do fechamento
 
-O PR #2 já foi aprovado e mergeado em `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
+O PR #2 foi aprovado e mergeado em `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
 
-Após o merge, o Lovable aplicou sete commits técnicos até `44e165aa006e16ba3f758759a85e5478a3df14c6`. Esses commits foram revisados e classificados como correções/hardening pré-Etapa 15 no doc. 551. Falta somente recertificar o HEAD final da branch de checkpoint e integrar essa consolidação documental.
+Os sete commits técnicos aplicados posteriormente pelo Lovable foram revisados, a divergência de migration foi reconciliada e o baseline técnico passou integralmente no CI #223. Não resta pendência funcional ou técnica interna conhecida das Etapas 0–14.1.
+
+Resta somente integrar o checkpoint de recertificação do PR #3 à `main`; isso não reabre nenhuma etapa funcional.
 
 ## Status
 
-`PRE_STAGE_15_POST_LOVABLE_RECERTIFICATION_IN_PROGRESS`
+`PRE_STAGE_15_BASELINE_CONSOLIDATED`

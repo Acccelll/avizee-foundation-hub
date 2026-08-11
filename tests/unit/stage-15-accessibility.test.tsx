@@ -27,12 +27,7 @@ describe("Etapa 15 — formulário de cotação acessível", () => {
 
   it("relaciona a orientação da mensagem por aria-describedby", () => {
     const html = renderToStaticMarkup(
-      <QuoteForm
-        disabled={false}
-        submitting={false}
-        errors={{}}
-        onSubmit={() => undefined}
-      />,
+      <QuoteForm disabled={false} submitting={false} errors={{}} onSubmit={() => undefined} />,
     );
 
     expect(html).toContain('id="message-hint"');

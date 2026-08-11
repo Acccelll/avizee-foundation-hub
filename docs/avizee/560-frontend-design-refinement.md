@@ -89,4 +89,4 @@ A assinatura recorrente escolhida é o **filete de dois blocos sólidos Vinho + 
 
 ## Gate de integração
 
-A integração deste refinamento exige CI verde e revisão do diff contra `main`. O PR correspondente é a evidência operacional da implementação e dos checks finais.
+A integração deste refinamento exige CI verde e revisão do diff contra `main`. O PR #7 é a evidência operacional da implementação e dos checks finais.

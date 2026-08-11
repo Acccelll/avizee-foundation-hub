@@ -48,7 +48,7 @@ Os estados usados são:
 | Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md` e docs. 541/542 são as fontes correntes; histórico não é apagado |
 | Ambiente conectado | verificação direta do banco Lovable/Supabase | `CLOSED_DEFERRED_LAUNCH_GATE` | nenhuma alegação de banco ao vivo verificado é feita sem evidência direta |
 | Pós-merge PR #2 | sete commits aplicados pelo Lovable até `44e165aa...` | `CLOSED_EVIDENCED` | revisados no doc. 551; migration reconciliada; CI #223 e CI #228 verdes; checkpoint integrado pelo PR #3 no commit `cb732491...` |
-| Pós-merge PR #3 | ajuste de autenticação cliente do Lovable até `52387754...` | `CLOSED_REVIEWED_PENDING_RECERTIFICATION` | efeito líquido restrito a `src/lib/supabase-auth.middleware.ts` e `src/start.ts`; sem alteração visual; recertificação integral do HEAD corrente em andamento |
+| Pós-merge PR #3 | ajuste de autenticação cliente do Lovable até `52387754...` | `CLOSED_EVIDENCED` | efeito líquido restrito a `src/lib/supabase-auth.middleware.ts` e `src/start.ts`; sem alteração visual; recertificado integralmente no HEAD `8c4c895c...` pelo CI #230 (`31484961340`) |
 
 ## Decisões funcionais finais
 
@@ -75,8 +75,10 @@ Por isso continuam válidos:
 
 O PR #3 foi aprovado e squash-mergeado em `main` no commit `cb7324918aa212edd64e5cd184457c3f703730bd`.
 
-Depois desse merge, o Lovable aplicou um ajuste adicional de autenticação cliente, encerrando em `523877545fd67a13d4d2f0cfe61a26ae454277ca`. O ajuste foi revisado e não reabre nenhuma decisão funcional, mas o baseline formal só volta a `CONSOLIDATED` após recertificação integral deste novo HEAD.
+Depois desse merge, o Lovable aplicou um ajuste adicional de autenticação cliente até `523877545fd67a13d4d2f0cfe61a26ae454277ca`. O ajuste foi revisado e recertificado integralmente no CI #230.
+
+Não resta pendência funcional ou técnica interna conhecida das Etapas 0–14.1. Os gates externos permanecem segregados e continuam bloqueando produção quando aplicáveis.
 
 ## Status
 
-`PRE_STAGE_15_FINAL_SYNC_RECERTIFICATION_IN_PROGRESS`
+`PRE_STAGE_15_BASELINE_CONSOLIDATED`

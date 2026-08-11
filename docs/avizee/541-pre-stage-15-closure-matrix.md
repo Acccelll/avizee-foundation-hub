@@ -24,8 +24,8 @@ Os estados usados são:
 | Etapas 2/2.1 | DECT-08 / DEP-09 — 34 SKUs sem identidade | `CLOSED_CONTAINED` | D-054 / doc. 544: permanecem fora da publicação |
 | Etapas 2/2.1 | DECT-11 — 16 SKUs sem nome público | `CLOSED_CONTAINED` | D-054 / doc. 544: permanecem fora da publicação |
 | Etapas 2/2.1 | demais decisões taxonômicas antigas | `CLOSED_USER_DECISION` / `CLOSED_CONTAINED` | reconciliação integral no doc. 544; coorte pública continua 31 famílias / 97 SKUs |
-| Etapas 3/5 | DEC-07 / DECT-12 — páginas consultivas de solução | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; `/solucoes/{aplicacao}` implementado e recertificado no CI #211 — doc. 550 |
-| Etapa 2 | DEC-10 — busca global | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; Produtos + Soluções + Conteúdos publicados implementados e recertificados no CI #211 |
+| Etapas 3/5 | DEC-07 / DECT-12 — páginas consultivas de solução | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; `/solucoes/{aplicacao}` implementado e recertificado |
+| Etapa 2 | DEC-10 — busca global | `CLOSED_IMPLEMENTED` | opção B aprovada no doc. 549; Produtos + Soluções + Conteúdos publicados implementados e recertificados |
 | Etapa 4 | DEP-T1 / O-05 / O-06 — provider e destino de e-mail | `CLOSED_DEFERRED_LAUNCH_GATE` | Resend, remetente planejado, destino e Reply-To decididos; criação de caixas/subdomínio, DNS e chave real ficam para o fechamento do projeto |
 | Etapa 4 | O-08 / O-09 — usuários reais e papéis | `CLOSED_DEFERRED_LAUNCH_GATE` | regra de um administrador inicial aprovada; provisionamento da conta concreta ocorre no gate operacional |
 | Etapa 5 | Q-08 — contato público | `CLOSED_USER_DECISION` | endereço, CEP, e-mail, telefone/WhatsApp e horário confirmados e refletidos na implementação |
@@ -34,7 +34,7 @@ Os estados usados são:
 | Etapa 5 | formulário geral de contato | `CLOSED_USER_DECISION` | opção A aprovada no doc. 549: não ativar na v1; Lista de Cotação continua fluxo comercial registrado |
 | Etapa 5 | mapa | `CLOSED_USER_DECISION` | opção A aprovada no doc. 549: não ativar na v1; nenhum mapa externo é carregado |
 | Etapa 6 / 14.1 | Central de Conteúdos | `CLOSED_IMPLEMENTED` | integrada e recertificada; relações catálogo↔conteúdo permanecem declarativas |
-| Etapa 7 | qualidade técnica do fechamento | `CLOSED_EVIDENCED` | CI #211: lint, Prettier, build, typecheck, migrations, fixture 31/97, restore lógico, SSR e suíte integral verdes — doc. 550 |
+| Etapa 7 | qualidade técnica do fechamento funcional | `CLOSED_EVIDENCED` | recertificação funcional anterior documentada no doc. 550 |
 | Etapas 11–13 | B11-05 / O-27 — credencial SMTP legada | `CLOSED_USER_DECISION` | usuário confirmou revogação/rotação; credencial antiga proibida |
 | Etapas 11–13 | B11-01 — SPF/DKIM/DMARC e e-mail real | `CLOSED_DEFERRED_LAUNCH_GATE` | decisão técnica concluída; configuração real continua obrigatória antes de envio produtivo |
 | Etapas 11–13 | B11-02 / DEP-T5 — retenção de cotações/leads | `CLOSED_IMPLEMENTED` | política de 24 meses, RPC, worker e testes implementados |
@@ -43,11 +43,11 @@ Os estados usados são:
 | Etapas 11–13 | B11-06 — UAT humano | `CLOSED_DEFERRED_LAUNCH_GATE` | homologação/aceite final; não é substituído por CI |
 | Etapas 11–13 | B11-07 — backup real / RPO / RTO | `CLOSED_DEFERRED_LAUNCH_GATE` | restore lógico local já comprovado; DR real, RPO/RTO e backup do ambiente conectado permanecem gates de lançamento |
 | Etapas 11–13 | DEP-T3 — storage/backup de objetos | `CLOSED_DEFERRED_LAUNCH_GATE` | requer infraestrutura/ambiente real; não é falsamente certificado pelo restore do banco |
-| Etapas 11–13 | hardening MCP/segredos/rate-limit — código | `CLOSED_IMPLEMENTED` | boundary de origem, fail-closed, higiene de `.env` e testes recertificados |
+| Etapas 11–13 | hardening MCP/segredos/rate-limit — código | `CLOSED_IMPLEMENTED` | boundary de origem, fail-closed, higiene de `.env` e testes recertificados; hardening pós-merge revisado no doc. 551 |
 | Etapas 11–13 | MCP rate-limit distribuído — infraestrutura real | `CLOSED_DEFERRED_LAUNCH_GATE` | binding `MCP_RATE_LIMITER` continua obrigatório para habilitar MCP em produção; sem binding permanece fail-closed |
-| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md`, `docs/avizee/README.md` e docs. 541/542 são a fonte corrente; histórico não é apagado |
-| Ambiente conectado | verificação direta do banco Lovable/Supabase | `CLOSED_DEFERRED_LAUNCH_GATE` | conector atual não oferece a permissão necessária; nenhuma alegação de banco ao vivo verificado é feita |
-| CI | recertificação do bloco funcional final | `CLOSED_EVIDENCED` | CI run #211, commit funcional `946b91a4...`, conclusão `success` — doc. 550 |
+| Governança | documentos históricos divergentes | `CLOSED_CONTAINED` | `STATUS.md`, docs. 541/542/551 são as fontes correntes; histórico não é apagado |
+| Ambiente conectado | verificação direta do banco Lovable/Supabase | `CLOSED_DEFERRED_LAUNCH_GATE` | nenhuma alegação de banco ao vivo verificado é feita sem evidência direta |
+| Pós-merge PR #2 | sete commits aplicados pelo Lovable até `44e165aa...` | `CLOSED_EVIDENCED` | revisados no doc. 551; migration reconciliada; commit técnico `1f852351...` integralmente verde no CI #223 (`31446779287`) |
 
 ## Decisões funcionais finais
 
@@ -72,14 +72,12 @@ Por isso continuam válidos:
 
 ## Estado do fechamento
 
-As Etapas 0–14.1 estão funcionalmente encerradas. Resta apenas o rito do PR #2:
+O PR #2 foi aprovado e mergeado em `main` no commit `41579eac0d853201bdd10868d9df81402d8ffeab`.
 
-1. validar o HEAD documental final no CI;
-2. revisar o diff integral;
-3. retirar o PR de draft quando consistente;
-4. merge somente após aprovação explícita do usuário;
-5. somente depois iniciar a Etapa 15.
+Os sete commits técnicos aplicados posteriormente pelo Lovable foram revisados, a divergência de migration foi reconciliada e o baseline técnico passou integralmente no CI #223. Não resta pendência funcional ou técnica interna conhecida das Etapas 0–14.1.
+
+Resta somente integrar o checkpoint de recertificação do PR #3 à `main`; isso não reabre nenhuma etapa funcional.
 
 ## Status
 
-`PRE_STAGE_15_FUNCTIONAL_CLOSURE_CERTIFIED`
+`PRE_STAGE_15_BASELINE_CONSOLIDATED`

@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { buildMeta } from "@/seo/meta";
-import { signInAdmin } from "@/auth/sign-in.client";
+import { signInAdmin } from "@/auth/sign-in-admin";
 
 export const Route = createFileRoute("/admin/login")({
   ssr: false,

@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { buildMeta } from "@/seo/meta";
-import { supabase } from "@/integrations/supabase/client";
+import { signInAdmin } from "@/auth/sign-in.client";
 
 export const Route = createFileRoute("/admin/login")({
   ssr: false,
@@ -20,18 +20,28 @@ function Login() {
     setPending(true);
     setError(null);
     const form = new FormData(event.currentTarget);
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email: String(form.get("email") ?? ""),
-      password: String(form.get("password") ?? ""),
-    });
-    setPending(false);
-    if (authError) {
+    const email = String(form.get("email") ?? "");
+    const password = String(form.get("password") ?? "");
+
+    let result: Awaited<ReturnType<typeof signInAdmin>> = "INVALID";
+    try {
+      result = await signInAdmin(email, password);
+    } finally {
+      setPending(false);
+    }
+
+    if (result === "INVALID") {
       // Mensagem genérica: não revela se o e-mail existe.
       setError("Credenciais inválidas ou acesso temporariamente bloqueado.");
       return;
     }
+    if (result === "OK_RELOAD") {
+      window.location.assign("/admin");
+      return;
+    }
     navigate({ to: "/admin", replace: true });
   }
+
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-surface px-4">

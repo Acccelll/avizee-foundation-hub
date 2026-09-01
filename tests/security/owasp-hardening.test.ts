@@ -3,22 +3,25 @@ import path from "node:path";
 
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
-import {
-  getServerConfig,
-  resetServerConfigCache,
-} from "@/lib/env.server";
+import { getServerConfig, resetServerConfigCache } from "@/lib/env.server";
 import { contentSecurityPolicy } from "@/lib/security-headers";
-import {
-  readinessBody,
-  type ComponentCheck,
-} from "@/observability/health";
-import {
-  createTestUser,
-  deleteTestUsers,
-  type TestUser,
-} from "../helpers/db";
+import { readinessBody, type ComponentCheck } from "@/observability/health";
+import { createTestUser, deleteTestUsers, type TestUser } from "../helpers/db";
 
 const ORIGINAL_ENV = { ...process.env };
+
+type RpcResult = {
+  data: unknown;
+  error: { message: string } | null;
+};
+
+type RpcClient = {
+  rpc(name: string, args?: Record<string, unknown>): PromiseLike<RpcResult>;
+};
+
+function asRpcClient(user: TestUser): RpcClient {
+  return user.client as unknown as RpcClient;
+}
 
 function strictProductionEnv() {
   vi.stubEnv("APP_ENV", "production");
@@ -47,11 +50,7 @@ describe("OWASP hardening — configuração e exposição", () => {
   });
 
   it("usa nonce na CSP de produção e não libera script inline irrestrito", () => {
-    const factory = contentSecurityPolicy as unknown as (
-      production: boolean,
-      nonce?: string,
-    ) => string;
-    const csp = factory(true, "test-nonce");
+    const csp = contentSecurityPolicy(true, "test-nonce");
 
     expect(csp).toContain("'nonce-test-nonce'");
     expect(csp).not.toContain("script-src 'self' 'unsafe-inline'");
@@ -99,7 +98,7 @@ describe("OWASP hardening — helpers editoriais", () => {
   }, 60_000);
 
   it("usuário autenticado não consegue sondar a permissão editorial de outro UUID", async () => {
-    const result = await (comercial.client as any).rpc("can_publish_content", {
+    const result = await asRpcClient(comercial).rpc("can_publish_content", {
       _user_id: editor.id,
     });
 
@@ -107,7 +106,7 @@ describe("OWASP hardening — helpers editoriais", () => {
   });
 
   it("helper sem argumento continua avaliando somente o próprio usuário", async () => {
-    const result = await (editor.client as any).rpc("can_publish_content");
+    const result = await asRpcClient(editor).rpc("can_publish_content");
 
     expect(result.error).toBeNull();
     expect(result.data).toBe(true);

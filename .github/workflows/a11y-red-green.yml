@@ -1,0 +1,25 @@
+name: Accessibility Red Green
+
+on:
+  push:
+    branches:
+      - fix/accessibility-wcag22-aa
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Run accessibility regression tests
+        run: bunx vitest run tests/unit/accessibility-regressions.test.ts

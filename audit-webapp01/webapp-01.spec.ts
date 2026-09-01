@@ -36,5 +36,5 @@ test("selecionar uma variação e depois adicionar persiste a referência na lis
 
   await page.goto("/cotacao");
   await page.waitForLoadState("networkidle");
-  await expect(page.getByText("AG011", { exact: true })).toBeVisible();
+  await expect(page.getByRole("rowheader", { name: "AG011", exact: true })).toBeVisible();
 });

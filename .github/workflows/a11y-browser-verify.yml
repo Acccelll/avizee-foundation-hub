@@ -1,0 +1,100 @@
+name: Accessibility Browser Verification
+
+on:
+  push:
+    branches:
+      - fix/accessibility-wcag22-aa
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      APP_ENV: test
+      VITE_APP_ENV: test
+      VITE_APP_VERSION: accessibility-postfix
+      APP_PUBLIC_URL: http://127.0.0.1:8080
+      VITE_APP_PUBLIC_URL: http://127.0.0.1:8080
+      E2E_BASE_URL: http://127.0.0.1:8080
+      QUOTATION_HASH_SALT: ci-only-quotation-hash-salt-0000000000000000
+      CONTENT_SCHEDULER_SECRET: ci-only-content-scheduler-secret-000000000000
+      RETENTION_WORKER_SECRET: ci-only-retention-worker-secret-0000000000000
+      EMAIL_PROVIDER: log
+      STORAGE_PROVIDER: local
+      CAPTCHA_PROVIDER: "null"
+      SUPABASE_URL: https://example.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: ci-publishable-key
+      SUPABASE_SERVICE_ROLE_KEY: ci-service-role-key
+      VITE_SUPABASE_URL: https://example.supabase.co
+      VITE_SUPABASE_PUBLISHABLE_KEY: ci-publishable-key
+      VITE_SUPABASE_PROJECT_ID: ci
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install project dependencies
+        run: bun install --frozen-lockfile
+      - name: Install temporary browser tooling
+        run: npm install --no-save @playwright/test@latest @axe-core/playwright@latest
+      - name: Install Chromium
+        run: npx playwright install chromium
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v3
+        with:
+          version: latest
+      - name: Start local Supabase and apply migrations
+        run: supabase start
+      - name: Export local Supabase environment
+        shell: bash
+        run: |
+          supabase status -o env > /tmp/supabase.env
+          set -a
+          source /tmp/supabase.env
+          set +a
+          {
+            echo "SUPABASE_URL=$API_URL"
+            echo "SUPABASE_PUBLISHABLE_KEY=$ANON_KEY"
+            echo "SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY"
+            echo "VITE_SUPABASE_URL=$API_URL"
+            echo "VITE_SUPABASE_PUBLISHABLE_KEY=$ANON_KEY"
+            echo "VITE_SUPABASE_PROJECT_ID=local"
+          } >> "$GITHUB_ENV"
+      - name: Seed approved catalog fixture
+        run: bun scripts/ops/canonical-import.ts ci-seed
+      - name: Start application test server
+        shell: bash
+        run: |
+          nohup bunx vite dev --host 127.0.0.1 --port 8080 > /tmp/avizee-a11y-postfix.log 2>&1 &
+          echo $! > /tmp/avizee-a11y-postfix.pid
+          for attempt in $(seq 1 60); do
+            if curl --silent --fail http://127.0.0.1:8080/api/public/health > /tmp/health.json; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/avizee-a11y-postfix.log
+          exit 1
+      - name: Run axe and keyboard verification
+        run: node .github/audit/a11y-postfix.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-postfix
+          path: audit-results/accessibility-postfix
+          retention-days: 7
+      - name: Cleanup
+        if: always()
+        shell: bash
+        run: |
+          if [ -f /tmp/avizee-a11y-postfix.pid ]; then
+            kill "$(cat /tmp/avizee-a11y-postfix.pid)" 2>/dev/null || true
+          fi
+          supabase stop --no-backup 2>/dev/null || true

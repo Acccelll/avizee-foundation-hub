@@ -14,6 +14,13 @@ describe("regressões de acessibilidade WCAG 2.2 AA", () => {
     expect(filterPanel).toContain('aria-current={active ? "true" : undefined}');
   });
 
+  it("não usa aria-pressed nos links de ordenação do catálogo", () => {
+    const catalogRoute = source("src/routes/produtos/index.tsx");
+
+    expect(catalogRoute).not.toContain("aria-pressed={");
+    expect(catalogRoute).toContain('aria-current={');
+  });
+
   it("mantém opções do combobox sem controles interativos aninhados", () => {
     const searchBox = source("src/components/public/catalog/SearchBox.tsx");
 

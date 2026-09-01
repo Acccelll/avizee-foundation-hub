@@ -6,14 +6,17 @@ on:
       - fix/owasp-security-hardening-20260901
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   refresh:
+    if: github.event.head_commit.message != 'fix: aplicar lockfile sem vulnerabilidades conhecidas'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
@@ -21,15 +24,15 @@ jobs:
       - name: Apply audit fixes
         run: bun audit fix
       - name: Verify audit
-        run: bun audit | tee audit-after.txt
-      - name: Capture dependency diff
-        run: git diff -- package.json bun.lock | tee dependency-diff.patch
-      - uses: actions/upload-artifact@v4
-        with:
-          name: owasp-dependency-refresh
-          path: |
-            package.json
-            bun.lock
-            audit-after.txt
-            dependency-diff.patch
-          retention-days: 3
+        run: bun audit
+      - name: Commit lockfile and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/owasp-dependency-refresh.yml
+          git add bun.lock
+          git diff --cached --exit-code && { echo "Nenhuma alteração para aplicar"; exit 1; } || true
+          git commit -m "fix: aplicar lockfile sem vulnerabilidades conhecidas"
+          git push origin HEAD:${GITHUB_REF_NAME}

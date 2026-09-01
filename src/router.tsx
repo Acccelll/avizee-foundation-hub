@@ -13,13 +13,14 @@ const getSSROptions = createIsomorphicFn().server(() => {
 
 export const getRouter = () => {
   const queryClient = new QueryClient();
+  const ssr = getSSROptions();
 
   const router = createRouter({
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
-    ssr: getSSROptions(),
+    ...(ssr ? { ssr } : {}),
   });
 
   return router;

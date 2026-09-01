@@ -1,0 +1,89 @@
+name: OWASP runtime CSP verification
+
+on:
+  push:
+    branches:
+      - fix/owasp-security-hardening-20260901
+
+permissions:
+  contents: read
+
+jobs:
+  csp-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      APP_ENV: production
+      VITE_APP_ENV: production
+      VITE_APP_VERSION: owasp-runtime
+      APP_PUBLIC_URL: https://avizee.example
+      VITE_APP_PUBLIC_URL: https://avizee.example
+      SUPABASE_AUTH_RATE_LIMIT_VERIFIED: "true"
+      QUOTATION_HASH_SALT: ci-only-quotation-hash-salt-0000000000000000
+      EMAIL_PROVIDER: log
+      STORAGE_PROVIDER: local
+      CAPTCHA_PROVIDER: "null"
+      SUPABASE_URL: https://example.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: ci-publishable-key
+      SUPABASE_SERVICE_ROLE_KEY: ci-service-role-key
+      VITE_SUPABASE_URL: https://example.supabase.co
+      VITE_SUPABASE_PUBLISHABLE_KEY: ci-publishable-key
+      VITE_SUPABASE_PROJECT_ID: ci
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Start production-mode SSR server
+        shell: bash
+        run: |
+          nohup bunx vite dev --host 127.0.0.1 --port 8081 > /tmp/owasp-csp-runtime.log 2>&1 &
+          echo $! > /tmp/owasp-csp-runtime.pid
+          for attempt in $(seq 1 60); do
+            status="$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:8081/owasp-runtime-csp-probe || true)"
+            if [ "$status" != "000" ]; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/owasp-csp-runtime.log
+          exit 1
+      - name: Verify nonce-bound CSP at runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --silent --show-error \
+            --dump-header /tmp/owasp-csp.headers \
+            --output /tmp/owasp-csp.html \
+            http://127.0.0.1:8081/owasp-runtime-csp-probe
+
+          csp="$(tr -d '\r' < /tmp/owasp-csp.headers | grep -i '^content-security-policy:' | head -n 1 | sed 's/^[^:]*:[[:space:]]*//')"
+          if [ -z "$csp" ]; then
+            echo "CSP ausente no documento SSR de produção."
+            exit 1
+          fi
+          if printf '%s' "$csp" | grep -Fq "script-src 'self' 'unsafe-inline'"; then
+            echo "script-src ainda permite unsafe-inline em produção."
+            exit 1
+          fi
+
+          nonce="$(printf '%s' "$csp" | sed -n "s/.*script-src[^;]*'nonce-\([^']*\)'.*/\1/p")"
+          if [ -z "$nonce" ]; then
+            echo "Nonce não encontrado no script-src da CSP."
+            exit 1
+          fi
+          if ! grep -Fq "nonce=\"$nonce\"" /tmp/owasp-csp.html; then
+            echo "O nonce da CSP não foi propagado aos scripts SSR."
+            exit 1
+          fi
+
+          echo "Runtime CSP nonce verificado: header e HTML usam o mesmo nonce."
+      - name: Cleanup
+        if: always()
+        shell: bash
+        run: |
+          if [ -f /tmp/owasp-csp-runtime.pid ]; then
+            kill "$(cat /tmp/owasp-csp-runtime.pid)" 2>/dev/null || true
+          fi

@@ -50,11 +50,35 @@ const submitSchema = z.object({
     .optional(),
 });
 
+const STRICT_IP_ENVS = new Set(["preview", "staging", "production"]);
+const MISSING_TRUSTED_CLIENT_IP = "missing-trusted-client-ip";
+
+/**
+ * Identidade de rede usada exclusivamente para antiabuso.
+ * Em Cloudflare, `cf-connecting-ip` é preenchido pela borda e é a fonte de
+ * confiança adotada pelo projeto. Nunca usamos X-Forwarded-For como identidade,
+ * pois o cliente pode influenciá-lo fora de uma cadeia de proxy confiável.
+ *
+ * Em ambientes estritos, a ausência do header falha fechado: todas as
+ * requisições sem identidade confiável compartilham o mesmo bucket em vez de
+ * desativar silenciosamente o rate limit do banco.
+ */
+export function trustedClientIp(request: Request | undefined): string | null {
+  const cloudflareIp = request?.headers.get("cf-connecting-ip")?.trim();
+  if (cloudflareIp) return cloudflareIp;
+
+  const appEnv = process.env["APP_ENV"] ?? "development";
+  if (STRICT_IP_ENVS.has(appEnv)) return MISSING_TRUSTED_CLIENT_IP;
+
+  const localProxyIp = request?.headers.get("x-real-ip")?.trim();
+  return localProxyIp || null;
+}
+
 export const sendQuotation = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => submitSchema.parse(input))
   .handler(async ({ data }) => {
     const request = getRequest();
-    const ip = request?.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
+    const ip = trustedClientIp(request);
     const userAgent = request?.headers.get("user-agent") ?? null;
     return submitQuotation(data, { ip, userAgent });
   });

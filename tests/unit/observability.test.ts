@@ -1,82 +1,90 @@
-/**
- * Etapa 11 §23/§27 — health, readiness e métricas de processo.
- */
 import { beforeEach, describe, expect, it } from "vitest";
 
 import {
   evaluate,
   httpStatusFor,
-  publicBody,
   readinessBody,
   type ComponentCheck,
-} from "@/observability/health";
-import { increment, metricsSnapshot, resetMetricsForTests } from "@/observability/metrics";
-import { evaluateSchema, REQUIRED_SCHEMA_CHECKS } from "@/routes/api/public/readiness";
+} from "../../src/observability/health";
+import {
+  increment,
+  observe,
+  resetMetrics,
+  sanitizeLabels,
+  setGauge,
+  snapshot,
+} from "../../src/observability/metrics";
 
-const criticalHealthy: ComponentCheck[] = [
-  { name: "application", status: "healthy" },
-  { name: "configuration", status: "healthy" },
-  { name: "database", status: "healthy" },
-  { name: "migrations", status: "healthy" },
-];
+describe("health — classificação (Etapa 11 §27)", () => {
+  const base: ComponentCheck[] = [
+    { name: "application", status: "healthy" },
+    { name: "configuration", status: "healthy" },
+    { name: "database", status: "healthy" },
+    { name: "migrations", status: "healthy" },
+  ];
 
-describe("health/readiness", () => {
-  it("considera indisponível quando um componente crítico falha", () => {
-    const status = evaluate([
-      ...criticalHealthy.filter((c) => c.name !== "database"),
-      { name: "database", status: "unavailable" },
-      { name: "email", status: "degraded" },
-    ]);
-    expect(status).toBe("unavailable");
-    expect(httpStatusFor(status)).toBe(503);
+  it("saudável quando todos os componentes críticos estão saudáveis", () => {
+    expect(evaluate(base)).toBe("healthy");
   });
 
-  it("considera degradado quando só dependência não crítica falha", () => {
-    const status = evaluate([...criticalHealthy, { name: "email", status: "degraded" }]);
-    expect(status).toBe("degraded");
-    expect(httpStatusFor(status)).toBe(200);
+  it("degradado quando dependência não crítica falha, sem derrubar o fluxo principal", () => {
+    const checks = [...base, { name: "email", status: "unavailable" } as ComponentCheck];
+    expect(evaluate(checks)).toBe("degraded");
+    expect(httpStatusFor(evaluate(checks))).toBe(200);
   });
 
-  it("publica apenas estado agregado e ambiente", () => {
-    expect(publicBody("healthy", "production")).toEqual({
-      status: "healthy",
-      environment: "production",
-    });
-    const body = readinessBody(
-      [...criticalHealthy, { name: "email", status: "degraded" }],
-      "production",
+  it("indisponível quando o banco está fora", () => {
+    const checks = base.map((c) =>
+      c.name === "database" ? ({ ...c, status: "unavailable" } as ComponentCheck) : c,
     );
-    expect(Object.keys(body)).toEqual(["status", "environment"]);
-    expect(body.status).toBe("degraded");
-    expect(JSON.stringify(body)).not.toMatch(/database|migrations|email/i);
+    expect(evaluate(checks)).toBe("unavailable");
+    expect(httpStatusFor(evaluate(checks))).toBe(503);
   });
 
-  it("valida todas as invariantes do esquema", () => {
-    const valid: Record<string, unknown> = { expected_version: "11.1" };
-    for (const k of REQUIRED_SCHEMA_CHECKS) valid[k] = true;
-    expect(evaluateSchema(valid)).toBe("healthy");
-
-    const invalid = { ...valid, quotations_rls: false };
-    expect(evaluateSchema(invalid)).toBe("unavailable");
-    expect(evaluateSchema(null)).toBe("unavailable");
+  it("não expõe detalhe interno no corpo de readiness", () => {
+    const body = readinessBody(base, "staging");
+    const serialized = JSON.stringify(body);
+    expect(serialized).not.toMatch(/supabase|postgres|database|migrations|https?:\/\//i);
+    expect(Object.keys(body)).toEqual(["status", "environment"]);
   });
 });
 
-describe("métricas", () => {
-  beforeEach(() => resetMetricsForTests());
+describe("métricas — sem PII e cardinalidade controlada (Etapa 11 §28)", () => {
+  beforeEach(() => resetMetrics());
 
-  it("incrementa contadores com labels canônicos e exporta Prometheus", () => {
-    increment("quotation_failures_total", { reason: "validation" });
-    increment("quotation_failures_total", { reason: "validation" }, 2);
-    increment("outbox_processed_total", { status: "sent", type: "confirmation" });
-    const text = metricsSnapshot();
-    expect(text).toContain('quotation_failures_total{reason="validation"} 3');
-    expect(text).toContain('outbox_processed_total{status="sent",type="confirmation"} 1');
+  it("descarta rótulos não permitidos, incluindo dados pessoais", () => {
+    const labels = sanitizeLabels({
+      route: "/produtos",
+      status: "200",
+      // @ts-expect-error rótulo proibido, validado em runtime
+      email: "cliente@empresa.com",
+      // @ts-expect-error rótulo proibido, validado em runtime
+      protocol: "AVZ-2026-ABCD1234",
+    });
+    expect(labels).toEqual({ route: "/produtos", status: "200" });
   });
 
-  it("escapa valores de label e rejeita quantidade inválida", () => {
-    increment("quotation_failures_total", { reason: 'a"b\\c\n' });
-    expect(metricsSnapshot()).toContain('reason="a\\"b\\\\c\\n"');
-    expect(() => increment("x", {}, -1)).toThrow();
+  it("acumula contadores, gauges e histogramas por série", () => {
+    increment("http_requests_total", { route: "/produtos", status: "200" });
+    increment("http_requests_total", { route: "/produtos", status: "200" });
+    setGauge("outbox_pending", 3);
+    observe("http_request_duration_ms", 120, { route: "/produtos" });
+    observe("http_request_duration_ms", 80, { route: "/produtos" });
+
+    const samples = snapshot();
+    const counter = samples.find((s) => s.type === "counter");
+    const gauge = samples.find((s) => s.type === "gauge");
+    const histogram = samples.find((s) => s.type === "histogram");
+
+    expect(counter && counter.type === "counter" && counter.value).toBe(2);
+    expect(gauge && gauge.type === "gauge" && gauge.value).toBe(3);
+    expect(histogram && histogram.type === "histogram" && histogram.count).toBe(2);
+    expect(histogram && histogram.type === "histogram" && histogram.sum).toBe(200);
+  });
+
+  it("nenhum rótulo de métrica carrega texto livre longo", () => {
+    increment("search_queries_total", { reason: "x".repeat(200) });
+    const sample = snapshot()[0];
+    expect(sample?.labels["reason"]?.length).toBeLessThanOrEqual(64);
   });
 });

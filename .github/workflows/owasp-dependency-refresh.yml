@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   refresh:
-    if: github.event.head_commit.message != 'fix: aplicar lockfile sem vulnerabilidades conhecidas'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -33,6 +32,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm .github/workflows/owasp-dependency-refresh.yml
           git add bun.lock
-          git diff --cached --exit-code && { echo "Nenhuma alteração para aplicar"; exit 1; } || true
           git commit -m "fix: aplicar lockfile sem vulnerabilidades conhecidas"
           git push origin HEAD:${GITHUB_REF_NAME}

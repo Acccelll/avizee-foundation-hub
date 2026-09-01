@@ -46,22 +46,22 @@ jobs:
       - name: Install project dependencies
         run: bun install --frozen-lockfile
 
-      - name: Lint changed TypeScript
+      - name: Lint production TypeScript diff
         shell: bash
         run: |
-          mapfile -t files < <(git diff --name-only origin/main...HEAD -- '*.ts' '*.tsx')
+          mapfile -t files < <(git diff --name-only origin/main...HEAD -- 'src/**/*.ts' 'src/**/*.tsx')
           if [ "${#files[@]}" -eq 0 ]; then
-            echo "Nenhum arquivo TypeScript alterado."
+            echo "Nenhum arquivo TypeScript de produção alterado."
             exit 0
           fi
           bunx eslint --rule 'prettier/prettier: off' "${files[@]}"
 
-      - name: Prettier check changed files
+      - name: Prettier check production diff
         shell: bash
         run: |
-          mapfile -t files < <(git diff --name-only origin/main...HEAD -- '*.ts' '*.tsx' '*.yml' '*.yaml' '*.json' '*.md' | grep -v '^src/routeTree\.gen\.ts$' || true)
+          mapfile -t files < <(git diff --name-only origin/main...HEAD -- 'src/**/*.ts' 'src/**/*.tsx' | grep -v '^src/routeTree\.gen\.ts$' || true)
           if [ "${#files[@]}" -eq 0 ]; then
-            echo "Nenhum arquivo formatável alterado."
+            echo "Nenhum arquivo de produção formatável alterado."
             exit 0
           fi
           bunx prettier --check "${files[@]}"

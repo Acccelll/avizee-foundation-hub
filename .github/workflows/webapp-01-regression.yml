@@ -1,0 +1,116 @@
+name: WEBAPP-01 Regression
+
+on:
+  push:
+    branches:
+      - fix/webapp-01-quotation-flow
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      APP_ENV: test
+      VITE_APP_ENV: test
+      VITE_APP_VERSION: webapp-01-regression
+      APP_PUBLIC_URL: http://127.0.0.1:8080
+      VITE_APP_PUBLIC_URL: http://127.0.0.1:8080
+      E2E_BASE_URL: http://127.0.0.1:8080
+      QUOTATION_HASH_SALT: audit-only-quotation-hash-salt-0000000000000000
+      CONTENT_SCHEDULER_SECRET: audit-only-content-scheduler-secret-000000000000
+      RETENTION_WORKER_SECRET: audit-only-retention-worker-secret-0000000000000
+      EMAIL_PROVIDER: log
+      STORAGE_PROVIDER: local
+      CAPTCHA_PROVIDER: "null"
+      SUPABASE_URL: https://example.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: audit-publishable-key
+      SUPABASE_SERVICE_ROLE_KEY: audit-service-role-key
+      VITE_SUPABASE_URL: https://example.supabase.co
+      VITE_SUPABASE_PUBLISHABLE_KEY: audit-publishable-key
+      VITE_SUPABASE_PROJECT_ID: audit
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install project dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v3
+        with:
+          version: latest
+
+      - name: Start isolated Supabase
+        run: supabase start
+
+      - name: Export local Supabase environment
+        shell: bash
+        run: |
+          supabase status -o env > /tmp/supabase.env
+          set -a
+          source /tmp/supabase.env
+          set +a
+          : "${API_URL:?API_URL ausente}"
+          : "${ANON_KEY:?ANON_KEY ausente}"
+          : "${SERVICE_ROLE_KEY:?SERVICE_ROLE_KEY ausente}"
+          {
+            echo "SUPABASE_URL=$API_URL"
+            echo "SUPABASE_PUBLISHABLE_KEY=$ANON_KEY"
+            echo "SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY"
+            echo "VITE_SUPABASE_URL=$API_URL"
+            echo "VITE_SUPABASE_PUBLISHABLE_KEY=$ANON_KEY"
+            echo "VITE_SUPABASE_PROJECT_ID=local-webapp01"
+          } >> "$GITHUB_ENV"
+
+      - name: Seed approved catalog fixture
+        run: bun scripts/ops/canonical-import.ts ci-seed
+
+      - name: Start application
+        shell: bash
+        run: |
+          mkdir -p audit-results
+          nohup bunx vite dev --host 127.0.0.1 --port 8080 > audit-results/app-server.log 2>&1 &
+          echo $! > /tmp/avizee-webapp01.pid
+          for attempt in $(seq 1 60); do
+            if curl --silent --fail http://127.0.0.1:8080/api/public/health > audit-results/health.json; then
+              cat audit-results/health.json
+              exit 0
+            fi
+            sleep 1
+          done
+          cat audit-results/app-server.log
+          exit 1
+
+      - name: Install Playwright in runner only
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Run WEBAPP-01 regression
+        run: npx playwright test --config=playwright.webapp01.config.ts
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: webapp-01-regression-evidence
+          path: audit-results/
+          retention-days: 3
+
+      - name: Cleanup isolated services
+        if: always()
+        shell: bash
+        run: |
+          if [ -f /tmp/avizee-webapp01.pid ]; then
+            kill "$(cat /tmp/avizee-webapp01.pid)" 2>/dev/null || true
+          fi
+          supabase stop --no-backup 2>/dev/null || true

@@ -183,7 +183,13 @@ function FamiliaPublica() {
             são exibidos no site.
           </p>
           <div className="mt-6">
-            <VariationTable variations={family.variations} preselected={sku} />
+            <VariationTable
+              variations={family.variations}
+              preselected={sku}
+              familyName={family.name}
+              familySlug={family.slug}
+              categorySlug={family.categorySlug}
+            />
           </div>
         </section>
 

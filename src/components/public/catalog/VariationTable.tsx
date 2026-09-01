@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import type { FamilyVariation } from "@/catalog/public/read.server";
+import { useQuoteList } from "@/quotation/cart";
 
 /**
  * Tabela de variações da família. SKU em Montserrat com `tabular-nums`
@@ -10,11 +11,18 @@ import type { FamilyVariation } from "@/catalog/public/read.server";
 export function VariationTable({
   variations,
   preselected,
+  familyName,
+  familySlug,
+  categorySlug,
 }: {
   variations: FamilyVariation[];
   preselected?: string | undefined;
+  familyName: string;
+  familySlug: string;
+  categorySlug: string;
 }) {
   const [selected, setSelected] = useState<string | null>(preselected ?? null);
+  const quote = useQuoteList();
 
   const hasMeasure = variations.some((v) => v.measure);
   const hasCapacity = variations.some((v) => v.capacity);
@@ -56,7 +64,29 @@ export function VariationTable({
         </thead>
         <tbody>
           {variations.map((variation) => {
-            const active = selected === variation.sku;
+            const selectedHere = selected === variation.sku;
+            const inList = quote.has(variation.id);
+            const active = selectedHere || inList;
+
+            const handleAction = () => {
+              if (inList) return;
+
+              if (!selectedHere) {
+                setSelected(variation.sku);
+                return;
+              }
+
+              quote.add({
+                productId: variation.id,
+                sku: variation.sku,
+                name: variation.name,
+                familyName,
+                familySlug,
+                categorySlug,
+                variation: variation.variationLabel,
+              });
+            };
+
             return (
               <tr
                 key={variation.id}
@@ -84,7 +114,7 @@ export function VariationTable({
                 <td className="px-4 py-3 text-right">
                   <button
                     type="button"
-                    onClick={() => setSelected(active ? null : variation.sku)}
+                    onClick={handleAction}
                     aria-pressed={active}
                     className={`inline-flex min-h-11 items-center rounded-[8px] border px-4 text-[14px] font-semibold ${
                       active
@@ -92,7 +122,7 @@ export function VariationTable({
                         : "border-border hover:bg-surface"
                     }`}
                   >
-                    {active ? "Selecionada" : "Selecionar"}
+                    {inList ? "Na lista" : selectedHere ? "Adicionar à lista" : "Selecionar"}
                   </button>
                 </td>
               </tr>

@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { contentSecurityPolicy } from "../lib/security-headers";
 
 function NotFoundComponent() {
   return (
@@ -76,6 +77,14 @@ const ROOT_DESCRIPTION =
   "AviZee: equipamentos, componentes, peças de reposição e soluções para avicultura, com atendimento consultivo B2B por lista de cotação em todo o Brasil.";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  // O nonce é gerado pelo router por render SSR e o próprio TanStack o aplica
+  // aos scripts de hidratação. O wrapper global preserva esta CSP específica.
+  headers: ({ ssr }) => {
+    const production = process.env["APP_ENV"] === "production";
+    return {
+      "Content-Security-Policy": contentSecurityPolicy(production, ssr?.nonce),
+    };
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },

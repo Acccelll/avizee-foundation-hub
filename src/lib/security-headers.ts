@@ -7,8 +7,13 @@ const BASE_PERMISSIONS_POLICY = [
   "interest-cohort=()",
 ].join(", ");
 
-export function contentSecurityPolicy(production: boolean): string {
+export function contentSecurityPolicy(production: boolean, nonce?: string): string {
   const connectSources = production ? "'self' https: wss:" : "'self' http: https: ws: wss:";
+  const scriptSources = production
+    ? nonce
+      ? `'self' 'nonce-${nonce}'`
+      : "'self'"
+    : "'self' 'unsafe-inline'";
 
   return [
     "default-src 'self'",
@@ -16,7 +21,7 @@ export function contentSecurityPolicy(production: boolean): string {
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    "script-src 'self' 'unsafe-inline'",
+    `script-src ${scriptSources}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
     "font-src 'self' data:",
@@ -26,9 +31,9 @@ export function contentSecurityPolicy(production: boolean): string {
   ].join("; ");
 }
 
-export function securityHeaders(production: boolean): Headers {
+export function securityHeaders(production: boolean, nonce?: string): Headers {
   const headers = new Headers({
-    "Content-Security-Policy": contentSecurityPolicy(production),
+    "Content-Security-Policy": contentSecurityPolicy(production, nonce),
     "Cross-Origin-Opener-Policy": "same-origin",
     "Permissions-Policy": BASE_PERMISSIONS_POLICY,
     "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -44,10 +49,14 @@ export function securityHeaders(production: boolean): Headers {
   return headers;
 }
 
-/** Aplica headers sem descartar status, body ou headers já produzidos pela rota. */
+/**
+ * Aplica headers sem descartar status, body ou headers já produzidos pela rota.
+ * A CSP nonce-aware do documento SSR tem precedência sobre o fallback global.
+ */
 export function withSecurityHeaders(response: Response, production: boolean): Response {
   const headers = new Headers(response.headers);
   for (const [name, value] of securityHeaders(production)) {
+    if (name.toLowerCase() === "content-security-policy" && headers.has(name)) continue;
     headers.set(name, value);
   }
 

@@ -117,24 +117,26 @@ function CatalogoPublico() {
                     { key: "name", label: "Por nome" },
                     { key: "relevance", label: "Por relevância" },
                   ] as const
-                ).map((option) => (
-                  <li key={option.key}>
-                    <Link
-                      to="/produtos"
-                      search={{ ...search, ordem: option.key, pagina: undefined }}
-                      aria-pressed={
-                        (search.ordem ?? (search.q ? "relevance" : "category")) === option.key
-                      }
-                      className={`inline-flex min-h-11 items-center rounded-[8px] border px-3 text-body-sm ${
-                        (search.ordem ?? (search.q ? "relevance" : "category")) === option.key
-                          ? "border-emphasis font-semibold text-emphasis"
-                          : "border-border hover:bg-surface"
-                      }`}
-                    >
-                      {option.label}
-                    </Link>
-                  </li>
-                ))}
+                ).map((option) => {
+                  const activeOrder =
+                    (search.ordem ?? (search.q ? "relevance" : "category")) === option.key;
+                  return (
+                    <li key={option.key}>
+                      <Link
+                        to="/produtos"
+                        search={{ ...search, ordem: option.key, pagina: undefined }}
+                        aria-current={activeOrder ? "true" : undefined}
+                        className={`inline-flex min-h-11 items-center rounded-[8px] border px-3 text-body-sm ${
+                          activeOrder
+                            ? "border-emphasis font-semibold text-emphasis"
+                            : "border-border hover:bg-surface"
+                        }`}
+                      >
+                        {option.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 

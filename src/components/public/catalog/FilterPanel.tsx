@@ -45,7 +45,7 @@ function FacetGroup({
               <Link
                 to="/produtos"
                 search={toggle(search, dimension, option.slug)}
-                aria-pressed={active}
+                aria-current={active ? "true" : undefined}
                 className={`flex min-h-11 items-center justify-between gap-3 rounded-[8px] px-3 py-2 text-[15px] hover:bg-surface ${
                   active ? "bg-surface font-semibold text-emphasis" : "text-text-secondary"
                 }`}

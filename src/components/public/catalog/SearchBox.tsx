@@ -173,22 +173,19 @@ export function SearchBox({
               id={`${listId}-${index}`}
               role="option"
               aria-selected={index === active}
+              onMouseEnter={() => setActive(index)}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => choose(item)}
+              className={`flex w-full min-h-11 cursor-pointer items-center justify-between gap-3 px-4 py-2 text-left text-[15px] ${
+                index === active ? "bg-surface" : ""
+              }`}
             >
-              <button
-                type="button"
-                onMouseEnter={() => setActive(index)}
-                onClick={() => choose(item)}
-                className={`flex w-full min-h-11 items-center justify-between gap-3 px-4 py-2 text-left text-[15px] ${
-                  index === active ? "bg-surface" : ""
-                }`}
-              >
-                <span className={item.kind === "sku" ? "font-semibold tabular-nums" : ""}>
-                  {item.label}
-                </span>
-                {item.sublabel && (
-                  <span className="text-[13px] text-text-muted">{item.sublabel}</span>
-                )}
-              </button>
+              <span className={item.kind === "sku" ? "font-semibold tabular-nums" : ""}>
+                {item.label}
+              </span>
+              {item.sublabel && (
+                <span className="text-[13px] text-text-muted">{item.sublabel}</span>
+              )}
             </li>
           ))}
         </ul>

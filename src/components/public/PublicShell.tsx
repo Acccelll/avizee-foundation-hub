@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Search, ClipboardList } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import logo from "@/assets/brand/avizee-logo-colorido.svg";
 import { APP_ENV, ENV_LABEL, IS_INDEXABLE } from "@/lib/env";
@@ -63,6 +63,17 @@ export function PublicShell({
   breadcrumb?: Crumb[];
 }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">

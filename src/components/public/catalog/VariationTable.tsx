@@ -22,6 +22,7 @@ export function VariationTable({
   categorySlug: string;
 }) {
   const [selected, setSelected] = useState<string | null>(preselected ?? null);
+  const [quoteAnnouncement, setQuoteAnnouncement] = useState("");
   const quote = useQuoteList();
 
   const hasMeasure = variations.some((v) => v.measure);
@@ -76,7 +77,7 @@ export function VariationTable({
                 return;
               }
 
-              quote.add({
+              const result = quote.add({
                 productId: variation.id,
                 sku: variation.sku,
                 name: variation.name,
@@ -85,6 +86,12 @@ export function VariationTable({
                 categorySlug,
                 variation: variation.variationLabel,
               });
+
+              setQuoteAnnouncement(
+                result === "full"
+                  ? "A lista de cotação atingiu o limite de itens."
+                  : `${variation.sku} adicionado à lista de cotação.`,
+              );
             };
 
             return (
@@ -130,6 +137,10 @@ export function VariationTable({
           })}
         </tbody>
       </table>
+
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {quoteAnnouncement}
+      </p>
 
       <p
         role="note"

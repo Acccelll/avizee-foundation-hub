@@ -74,10 +74,7 @@ describe("OWASP hardening — configuração e exposição", () => {
   });
 
   it("não confia em X-Forwarded-For como identidade de segurança da cotação", () => {
-    const source = fs.readFileSync(
-      path.resolve("src/quotation/quotation.functions.ts"),
-      "utf8",
-    );
+    const source = fs.readFileSync(path.resolve("src/quotation/quotation.functions.ts"), "utf8");
 
     expect(source).toContain("cf-connecting-ip");
     expect(source).not.toContain('headers.get("x-forwarded-for")');

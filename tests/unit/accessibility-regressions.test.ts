@@ -18,7 +18,7 @@ describe("regressões de acessibilidade WCAG 2.2 AA", () => {
     const catalogRoute = source("src/routes/produtos/index.tsx");
 
     expect(catalogRoute).not.toContain("aria-pressed={");
-    expect(catalogRoute).toContain('aria-current={');
+    expect(catalogRoute).toContain("aria-current={");
   });
 
   it("mantém opções do combobox sem controles interativos aninhados", () => {

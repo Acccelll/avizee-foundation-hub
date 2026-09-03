@@ -313,3 +313,8 @@
     border-color: var(--emphasis-institutional);
   }
 }
+
+/* O rail é o único caso restante do primitive Sidebar que vinha com transition-all. */
+[data-sidebar="rail"] {
+  transition-property: transform, background-color !important;
+}

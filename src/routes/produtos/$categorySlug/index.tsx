@@ -7,11 +7,13 @@ import { buildMeta } from "@/seo/meta";
 
 export const Route = createFileRoute("/produtos/$categorySlug/")({
   loader: async ({ params }) => {
-    const category = await fetchCategory({ data: { slug: params.categorySlug } });
+    const [category, catalog] = await Promise.all([
+      fetchCategory({ data: { slug: params.categorySlug } }),
+      fetchCatalog({
+        data: { categoria: params.categorySlug, ordem: "name", pagina: 1 },
+      }),
+    ]);
     if (!category) throw notFound();
-    const catalog = await fetchCatalog({
-      data: { categoria: params.categorySlug, ordem: "name", pagina: 1 },
-    });
     return { category, catalog };
   },
   head: ({ loaderData, params }) => {

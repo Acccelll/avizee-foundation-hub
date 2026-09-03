@@ -29,6 +29,7 @@ afterEach(() => {
   vi.resetModules();
 });
 
+// prettier-ignore
 describe("regressões aprovadas do seo-audit — Rodada 2", () => {
   it("mantém title e description da família dentro do contrato SEO", async () => {
     productionEnv();

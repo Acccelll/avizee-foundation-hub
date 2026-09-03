@@ -8,6 +8,47 @@ import { PublicShell } from "@/components/public/PublicShell";
 import { VariationTable } from "@/components/public/catalog/VariationTable";
 import { buildMeta } from "@/seo/meta";
 
+const FAMILY_META_TITLE_MAX = 51;
+const FAMILY_META_DESCRIPTION_MIN = 140;
+const FAMILY_META_DESCRIPTION_MAX = 160;
+
+function normalizeSeoText(value: string): string {
+  return value.trim().replace(/\s+/g, " ");
+}
+
+function truncateSeoText(value: string, maxLength: number, preferredMin = 0): string {
+  const normalized = normalizeSeoText(value);
+  if (normalized.length <= maxLength) return normalized;
+
+  const candidate = normalized.slice(0, maxLength - 1);
+  const wordBoundary = candidate.lastIndexOf(" ");
+  const cutoff = wordBoundary >= preferredMin ? wordBoundary : maxLength - 1;
+  return `${candidate.slice(0, cutoff).trimEnd()}…`;
+}
+
+function familySeoTitle(name: string): string {
+  return truncateSeoText(name, FAMILY_META_TITLE_MAX, 35);
+}
+
+function familySeoDescription(family: {
+  name: string;
+  categoryName: string;
+  summary: string | null;
+}): string {
+  const summary = family.summary ? normalizeSeoText(family.summary) : "";
+  if (summary.length >= FAMILY_META_DESCRIPTION_MIN) {
+    return truncateSeoText(summary, FAMILY_META_DESCRIPTION_MAX, FAMILY_META_DESCRIPTION_MIN);
+  }
+
+  const generated = `${family.name}: consulte variações, referências e especificações técnicas de ${family.categoryName.toLowerCase()} para avicultura e monte sua lista de cotação. Atendimento consultivo B2B da AviZee em todo o Brasil.`;
+  const expanded =
+    generated.length >= FAMILY_META_DESCRIPTION_MIN
+      ? generated
+      : `${generated} Consulte condições e especificações com nossa equipe.`;
+
+  return truncateSeoText(expanded, FAMILY_META_DESCRIPTION_MAX, FAMILY_META_DESCRIPTION_MIN);
+}
+
 export const Route = createFileRoute("/produtos/$categorySlug/$familySlug")({
   validateSearch: (search: Record<string, unknown>): { sku?: string } => {
     const sku = typeof search["sku"] === "string" ? search["sku"].trim().slice(0, 40) : "";
@@ -26,12 +67,9 @@ export const Route = createFileRoute("/produtos/$categorySlug/$familySlug")({
   head: ({ loaderData, params }) => {
     if (!loaderData) return buildMeta({ title: "Produto não encontrado", noindex: true });
     const { family } = loaderData;
-    const description =
-      family.summary ??
-      `${family.name}: ${family.variations.length} variações públicas no catálogo técnico AviZee. Consulte referências e monte sua lista de cotação.`;
     return buildMeta({
-      title: `${family.name} | ${family.categoryName}`,
-      description: description.slice(0, 158),
+      title: familySeoTitle(family.name),
+      description: familySeoDescription(family),
       canonical: `/produtos/${params.categorySlug}/${params.familySlug}`,
       jsonLd: [
         {

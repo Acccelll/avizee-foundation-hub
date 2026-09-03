@@ -34,12 +34,17 @@ export const Route = createFileRoute("/conteudos/")({
     return { list, categories, search: deps };
   },
   head: ({ loaderData }) => {
-    const filtered = Boolean(loaderData?.search.q || loaderData?.search.categoria);
+    const search = loaderData?.search ?? {};
+    const filtered = Boolean(search.q || search.categoria);
+    const canonical =
+      !filtered && search.pagina && search.pagina > 1
+        ? `/conteudos?pagina=${Math.floor(search.pagina)}`
+        : "/conteudos";
     return buildMeta({
       title: "Central de Conteúdos técnicos para avicultura",
       description:
         "Guias, boas práticas, manejo e manutenção de equipamentos: conteúdo técnico AviZee organizado em sete categorias editoriais.",
-      canonical: "/conteudos",
+      canonical,
       noindex: filtered,
     });
   },

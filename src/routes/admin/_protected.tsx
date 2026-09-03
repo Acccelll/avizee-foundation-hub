@@ -8,6 +8,7 @@ import type { SessionUser } from "@/auth/contract";
 export const Route = createFileRoute("/admin/_protected")({
   // A sessão vive no cliente; a autorização real é sempre reverificada no servidor.
   ssr: false,
+  headers: () => ({ "X-Robots-Tag": "noindex, nofollow" }),
   beforeLoad: async (): Promise<{ user: SessionUser }> => {
     const { data, error } = await supabase.auth.getUser();
     if (error || !data.user) throw redirect({ to: "/admin/login" });

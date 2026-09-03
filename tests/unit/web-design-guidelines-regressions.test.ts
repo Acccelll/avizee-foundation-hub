@@ -92,15 +92,18 @@ describe("regressões aprovadas do web-design-guidelines — Rodada 3", () => {
     expect(styles).toContain("scroll-margin-top: var(--spacing-20)");
   });
 
-  it("não usa transition-all nos primitives reutilizáveis auditados", () => {
+  it("limita transition-all nos primitives reutilizáveis auditados", () => {
     for (const path of [
       "src/components/ui/tabs.tsx",
       "src/components/ui/progress.tsx",
       "src/components/ui/accordion.tsx",
       "src/components/ui/input-otp.tsx",
-      "src/components/ui/sidebar.tsx",
     ]) {
       expect(source(path), path).not.toContain("transition-all");
     }
+
+    const styles = source("src/styles.css");
+    expect(styles).toContain('[data-sidebar="rail"]');
+    expect(styles).toContain("transition-property: transform, background-color !important");
   });
 });

@@ -8,6 +8,15 @@ const SITE_NAME = "AviZee";
 const DEFAULT_TITLE = "AviZee — Soluções para avicultura";
 const DEFAULT_DESCRIPTION =
   "Equipamentos, insumos e soluções técnicas para avicultura. Monte sua lista de cotação e fale com a equipe AviZee.";
+const JSON_LD_URL_KEYS = new Set([
+  "@id",
+  "item",
+  "url",
+  "image",
+  "logo",
+  "contentUrl",
+  "thumbnailUrl",
+]);
 
 export interface MetaInput {
   title?: string;
@@ -23,6 +32,25 @@ export interface MetaInput {
 
 type MetaTag = Record<string, string>;
 type ScriptTag = { type: string; children: string };
+
+function absolutizeJsonLdUrls(value: unknown, key?: string): unknown {
+  if (typeof value === "string") {
+    if (!key || !JSON_LD_URL_KEYS.has(key) || !value.startsWith("/")) return value;
+    return toAbsolutePublicUrl(value) ?? value;
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry) => absolutizeJsonLdUrls(entry));
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([entryKey, entryValue]) => [
+        entryKey,
+        absolutizeJsonLdUrls(entryValue, entryKey),
+      ]),
+    );
+  }
+  return value;
+}
 
 export function buildMeta(input: MetaInput = {}): {
   meta: MetaTag[];
@@ -81,7 +109,7 @@ export function buildMeta(input: MetaInput = {}): {
 
   const scripts: ScriptTag[] = (input.jsonLd ?? []).map((block) => ({
     type: "application/ld+json",
-    children: JSON.stringify(block),
+    children: JSON.stringify(absolutizeJsonLdUrls(block)),
   }));
 
   return { meta, links, scripts };

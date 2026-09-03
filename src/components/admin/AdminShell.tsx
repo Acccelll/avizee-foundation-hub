@@ -3,7 +3,6 @@ import { LogOut } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { APP_ENV, ENV_LABEL } from "@/lib/env";
-import { supabase } from "@/integrations/supabase/client";
 import type { SessionUser } from "@/auth/contract";
 import type { Permission } from "@/permissions/model";
 
@@ -71,6 +70,7 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
   const navigate = useNavigate();
 
   async function handleLogout() {
+    const { supabase } = await import("@/integrations/supabase/client");
     await supabase.auth.signOut();
     navigate({ to: "/admin/login", replace: true });
   }
@@ -92,7 +92,7 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex h-10 items-center gap-2 rounded-[8px] border border-white/30 px-3 font-semibold"
+              className="inline-flex h-10 items-center gap-2 rounded-[8px] border border-inverse-border px-3 font-semibold"
             >
               <LogOut aria-hidden="true" className="h-4 w-4" />
               Sair

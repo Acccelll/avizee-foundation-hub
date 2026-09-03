@@ -271,7 +271,7 @@ function Home() {
             </Link>
             <Link
               to="/contato"
-              className="inline-flex h-12 items-center rounded-[8px] border border-white/30 px-6 font-semibold hover:bg-white/10"
+              className="inline-flex h-12 items-center rounded-[8px] border border-inverse-border px-6 font-semibold hover:bg-inverse-hover"
             >
               {CTA.talk}
             </Link>

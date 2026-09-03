@@ -6,7 +6,13 @@ import { signInAdmin } from "@/auth/sign-in-admin";
 
 export const Route = createFileRoute("/admin/login")({
   ssr: false,
-  head: () => buildMeta({ title: "Acesso administrativo", description: "Área restrita AviZee." }),
+  headers: () => ({ "X-Robots-Tag": "noindex, nofollow" }),
+  head: () =>
+    buildMeta({
+      title: "Acesso administrativo",
+      description: "Área restrita AviZee.",
+      noindex: true,
+    }),
   component: Login,
 });
 
@@ -41,7 +47,6 @@ function Login() {
     }
     navigate({ to: "/admin", replace: true });
   }
-
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-surface px-4">

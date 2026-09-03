@@ -21,6 +21,8 @@ export function ArticleCard({ article }: { article: ArticleCardData }) {
           <img
             src={article.cover.url}
             alt={article.cover.alt}
+            width={960}
+            height={540}
             loading="lazy"
             className="h-full w-full object-cover"
           />

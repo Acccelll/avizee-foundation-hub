@@ -5,6 +5,7 @@ import { PublicShell } from "@/components/public/PublicShell";
 import { ArticleBlocks } from "@/components/public/content/ArticleBlocks";
 import { ArticleGrid, formatArticleDate } from "@/components/public/content/ArticleCard";
 import { fetchArticle } from "@/content/public/public.functions";
+import { fallbackToOriginalImage, responsiveImageProps } from "@/lib/responsive-image";
 import { buildMeta } from "@/seo/meta";
 
 export const Route = createFileRoute("/conteudos/$articleSlug")({
@@ -73,6 +74,12 @@ export const Route = createFileRoute("/conteudos/$articleSlug")({
 function ArtigoPublico() {
   const { article } = Route.useLoaderData();
   const published = formatArticleDate(article.publishedAt);
+  const coverProps = article.cover
+    ? responsiveImageProps(article.cover.url, {
+        widths: [480, 640, 768, 960, 1200],
+        sizes: "(min-width: 768px) 768px, 100vw",
+      })
+    : {};
 
   return (
     <PublicShell
@@ -111,10 +118,13 @@ function ArtigoPublico() {
         {article.cover && (
           <img
             src={article.cover.url}
+            srcSet={coverProps.srcSet}
+            sizes={coverProps.sizes}
             alt={article.cover.alt}
             width={1200}
             height={675}
             fetchPriority="high"
+            onError={(event) => fallbackToOriginalImage(event, article.cover!.url)}
             className="mt-8 w-full rounded-[12px] border border-border-subtle"
           />
         )}

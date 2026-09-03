@@ -2,10 +2,11 @@
  * Configuração de servidor com validação fail-fast.
  * Nenhum segredo é exposto ao bundle do cliente (§23 da Etapa 5).
  *
- * Etapa 11.1:
+ * Etapa 11.1 + hardening OWASP:
  *  §11 — `QUOTATION_HASH_SALT` obrigatório fora de desenvolvimento (sem fallback fixo);
  *  §13 — `APP_ENV` é a fonte canônica de ambiente; `VITE_APP_ENV` é derivado/validado;
- *  §14 — `APP_PUBLIC_URL` absoluta, sem barra final, HTTPS fora de desenvolvimento.
+ *  §14 — `APP_PUBLIC_URL` absoluta, sem barra final, HTTPS fora de desenvolvimento;
+ *  SEC-01 — produção só inicia após confirmação explícita de rate limit no Supabase Auth.
  */
 import { z } from "zod";
 
@@ -19,11 +20,15 @@ export const APP_ENVIRONMENTS = [
 ] as const;
 export type AppEnv = (typeof APP_ENVIRONMENTS)[number];
 
+const verifiedBoolean = z
+  .enum(["true", "false"])
+  .default("false")
+  .transform((value) => value === "true");
+
 const schema = z.object({
   APP_ENV: z.enum(APP_ENVIRONMENTS).default("development"),
   APP_PUBLIC_URL: z.string().trim().optional(),
-  AUTH_SESSION_TTL_MINUTES: z.coerce.number().int().positive().default(480),
-  AUTH_MAX_ATTEMPTS: z.coerce.number().int().positive().default(5),
+  SUPABASE_AUTH_RATE_LIMIT_VERIFIED: verifiedBoolean,
   QUOTATION_HASH_SALT: z
     .string()
     .trim()
@@ -114,6 +119,15 @@ export function getServerConfig(): ServerConfig {
   }
   if (cfg.APP_ENV === "production" && !normalized.startsWith("https://")) {
     throw new Error("Configuração inválida. Variáveis com problema: APP_PUBLIC_URL");
+  }
+
+  // SEC-01 — o limite de tentativas pertence ao Supabase Auth, não ao app.
+  // Como a configuração remota não é verificável pelo runtime, produção exige
+  // uma confirmação operacional explícita em vez de presumir proteção inexistente.
+  if (cfg.APP_ENV === "production" && !cfg.SUPABASE_AUTH_RATE_LIMIT_VERIFIED) {
+    throw new Error(
+      "Configuração ausente: SUPABASE_AUTH_RATE_LIMIT_VERIFIED precisa ser true após verificar os limites do Supabase Auth.",
+    );
   }
 
   cached = { ...cfg, APP_PUBLIC_URL: normalized } as ServerConfig;

@@ -58,6 +58,7 @@ describe("Server Config Security", () => {
     vi.stubEnv("APP_ENV", "production");
     vi.stubEnv("APP_PUBLIC_URL", "https://avizee.example");
     vi.stubEnv("QUOTATION_HASH_SALT", "production-salt-with-more-than-thirty-two-characters");
+    vi.stubEnv("SUPABASE_AUTH_RATE_LIMIT_VERIFIED", "true");
     resetServerConfigCache();
 
     expect(getServerConfig().QUOTATION_HASH_SALT).not.toBe(DEV_ONLY_QUOTATION_SALT);

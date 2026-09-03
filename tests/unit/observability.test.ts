@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import {
   evaluate,
@@ -44,8 +44,8 @@ describe("health — classificação (Etapa 11 §27)", () => {
   it("não expõe detalhe interno no corpo de readiness", () => {
     const body = readinessBody(base, "staging");
     const serialized = JSON.stringify(body);
-    expect(serialized).not.toMatch(/supabase|postgres|https?:\/\//i);
-    expect(Object.keys(body)).toEqual(["status", "environment", "checks"]);
+    expect(serialized).not.toMatch(/supabase|postgres|database|migrations|https?:\/\//i);
+    expect(Object.keys(body)).toEqual(["status", "environment"]);
   });
 });
 

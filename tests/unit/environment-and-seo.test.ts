@@ -81,6 +81,7 @@ describe("salt antiabuso (§11)", () => {
       APP_ENV: "production",
       QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001-xx",
       APP_PUBLIC_URL: "https://exemplo.invalid",
+      SUPABASE_AUTH_RATE_LIMIT_VERIFIED: "true",
     });
     expect(getServerConfig().QUOTATION_HASH_SALT).not.toBe(DEV_ONLY_QUOTATION_SALT);
   });
@@ -106,6 +107,7 @@ describe("URL pública canônica (§14)", () => {
       APP_ENV: "production",
       QUOTATION_HASH_SALT: "salt-de-homologacao-forte-0001-xx",
       APP_PUBLIC_URL: "http://exemplo.invalid",
+      SUPABASE_AUTH_RATE_LIMIT_VERIFIED: "true",
     });
     expect(() => getServerConfig()).toThrow(/APP_PUBLIC_URL/);
   });

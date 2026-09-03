@@ -47,12 +47,15 @@ export function publicBody(status: OverallStatus, environment: string) {
   return { status, environment };
 }
 
-/** Corpo de readiness: nomes de componentes e estado, sem detalhe interno. */
+/**
+ * Readiness público deliberadamente agregado. O servidor continua calculando
+ * os componentes internamente para decidir o status HTTP, mas não publica quais
+ * dependências específicas estão degradadas ou indisponíveis.
+ */
 export function readinessBody(checks: ComponentCheck[], environment: string) {
   return {
     status: evaluate(checks),
     environment,
-    checks: Object.fromEntries(checks.map((c) => [c.name, c.status])),
   };
 }
 

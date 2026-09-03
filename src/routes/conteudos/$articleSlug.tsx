@@ -125,7 +125,7 @@ function ArtigoPublico() {
             height={675}
             fetchPriority="high"
             onError={(event) => fallbackToOriginalImage(event, article.cover!.url)}
-            className="mt-8 w-full rounded-[12px] border border-border-subtle"
+            className="mt-8 w-full rounded-lg border border-border-subtle"
           />
         )}
 
@@ -181,7 +181,7 @@ function ArtigoPublico() {
                     <Link
                       to="/produtos/$categorySlug/$familySlug"
                       params={{ categorySlug: family.categorySlug, familySlug: family.slug }}
-                      className="brand-interactive block h-full rounded-[12px] border border-border p-4"
+                      className="brand-interactive block h-full rounded-lg border border-border p-4"
                     >
                       <span className="text-caption uppercase tracking-wide text-text-muted">
                         {family.categoryName}
@@ -199,7 +199,7 @@ function ArtigoPublico() {
             </ul>
             <Link
               to="/cotacao"
-              className="mt-5 inline-flex h-11 items-center rounded-[8px] bg-primary px-5 text-body-sm font-semibold text-primary-foreground"
+              className="mt-5 inline-flex h-11 items-center rounded-md bg-primary px-5 text-body-sm font-semibold text-primary-foreground"
             >
               Solicitar cotação
             </Link>

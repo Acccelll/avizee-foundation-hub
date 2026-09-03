@@ -14,7 +14,11 @@ function titleContent(result: HeadResult): string | undefined {
   return result.meta?.find((entry) => typeof entry["title"] === "string")?.["title"];
 }
 
-async function productionEnv() {
+function canonicalHref(result: HeadResult): string | undefined {
+  return result.links?.find((entry) => entry["rel"] === "canonical")?.["href"];
+}
+
+function productionEnv() {
   vi.resetModules();
   vi.stubEnv("VITE_APP_ENV", "production");
   vi.stubEnv("VITE_APP_PUBLIC_URL", "https://avizee.com.br");
@@ -27,7 +31,7 @@ afterEach(() => {
 
 describe("regressões aprovadas do seo-audit — Rodada 2", () => {
   it("mantém title e description da família dentro do contrato SEO", async () => {
-    await productionEnv();
+    productionEnv();
     const { Route } = await import("@/routes/produtos/$categorySlug/$familySlug");
     const head = Route.options.head as (context: unknown) => HeadResult;
 
@@ -57,7 +61,7 @@ describe("regressões aprovadas do seo-audit — Rodada 2", () => {
   });
 
   it("marca o login administrativo como noindex", async () => {
-    await productionEnv();
+    productionEnv();
     const { Route } = await import("@/routes/admin/login");
     const head = Route.options.head as (context: unknown) => HeadResult;
 
@@ -66,7 +70,7 @@ describe("regressões aprovadas do seo-audit — Rodada 2", () => {
   });
 
   it("protege toda a árvore administrativa autenticada com X-Robots-Tag", async () => {
-    await productionEnv();
+    productionEnv();
     const { Route } = await import("@/routes/admin/_protected");
     const headers = Route.options.headers as
       | ((context: unknown) => Record<string, string>)
@@ -78,30 +82,27 @@ describe("regressões aprovadas do seo-audit — Rodada 2", () => {
   });
 
   it("usa canonical próprio na paginação limpa da Central de Conteúdos", async () => {
-    await productionEnv();
+    productionEnv();
     const { Route } = await import("@/routes/conteudos/index");
     const head = Route.options.head as (context: unknown) => HeadResult;
 
     const result = head({ loaderData: { search: { pagina: 2 } } });
-    const canonical = result.links?.find((entry) => entry["rel"] === "canonical")?.["href"];
-
-    expect(canonical).toBe("https://avizee.com.br/conteudos?pagina=2");
+    expect(canonicalHref(result)).toBe("https://avizee.com.br/conteudos?pagina=2");
   });
 
   it("mantém filtros editoriais noindex e canonicalizados para a Central", async () => {
-    await productionEnv();
+    productionEnv();
     const { Route } = await import("@/routes/conteudos/index");
     const head = Route.options.head as (context: unknown) => HeadResult;
 
     const result = head({ loaderData: { search: { q: "vacinação", pagina: 2 } } });
-    const canonical = result.links?.find((entry) => entry["rel"] === "canonical")?.["href"];
 
     expect(metaContent(result, "robots")).toBe("noindex, follow");
-    expect(canonical).toBe("https://avizee.com.br/conteudos");
+    expect(canonicalHref(result)).toBe("https://avizee.com.br/conteudos");
   });
 
   it("absolutiza URLs estruturais dentro do JSON-LD", async () => {
-    await productionEnv();
+    productionEnv();
     const { buildMeta } = await import("@/seo/meta");
 
     const result = buildMeta({

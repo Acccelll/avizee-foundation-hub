@@ -118,7 +118,7 @@ export function SearchBox({
           submit(term);
         }}
       >
-        <label htmlFor={inputId} className="mb-2 block text-[14px] font-semibold">
+        <label htmlFor={inputId} className="mb-2 block text-body-sm font-semibold">
           Buscar no site
         </label>
         <div className="flex gap-2">
@@ -152,11 +152,11 @@ export function SearchBox({
             aria-autocomplete="list"
             aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
             placeholder="Produto, aplicação, conteúdo ou referência (ex.: AG011)…"
-            className="h-12 w-full rounded-[8px] border border-border bg-background px-4 text-[16px] placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis"
+            className="h-12 w-full rounded-md border border-border bg-background px-4 text-body placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis"
           />
           <button
             type="submit"
-            className="inline-flex h-12 min-w-12 items-center justify-center gap-2 rounded-[8px] bg-primary px-4 font-semibold text-primary-foreground hover:opacity-90"
+            className="inline-flex h-12 min-w-12 items-center justify-center gap-2 rounded-md bg-primary px-4 font-semibold text-primary-foreground hover:opacity-90"
           >
             <Search aria-hidden="true" className="h-5 w-5" />
             <span className="sr-only sm:not-sr-only">Buscar</span>
@@ -173,7 +173,7 @@ export function SearchBox({
           id={listId}
           role="listbox"
           aria-label="Sugestões de busca"
-          className="absolute z-40 mt-2 w-full overflow-hidden rounded-[8px] border border-border bg-background shadow-lg"
+          className="absolute z-40 mt-2 w-full overflow-hidden rounded-md border border-border bg-background shadow-lg"
         >
           {items.map((item, index) => (
             <li

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ImageOff } from "lucide-react";
 
 import type { FamilyCard as FamilyCardData } from "@/catalog/public/read.server";
+import { fallbackToOriginalImage, responsiveImageProps } from "@/lib/responsive-image";
 
 /**
  * Cartão de família (Etapa 7). Nunca exibe preço, marca de terceiro
@@ -11,6 +12,10 @@ import type { FamilyCard as FamilyCardData } from "@/catalog/public/read.server"
 export function FamilyCard({ family }: { family: FamilyCardData }) {
   const variacoes =
     family.variationCount === 1 ? "1 variação" : `${family.variationCount} variações`;
+  const imageProps = responsiveImageProps(family.image.url, {
+    widths: [320, 480, 640, 800],
+    sizes: "(min-width: 1024px) 384px, (min-width: 768px) 50vw, 100vw",
+  });
 
   return (
     <article className="brand-interactive relative flex h-full flex-col overflow-hidden rounded-[12px] border border-border bg-background">
@@ -23,10 +28,13 @@ export function FamilyCard({ family }: { family: FamilyCardData }) {
         ) : (
           <img
             src={family.image.url}
+            srcSet={imageProps.srcSet}
+            sizes={imageProps.sizes}
             alt={family.image.alt}
             width={800}
             height={600}
             loading="lazy"
+            onError={(event) => fallbackToOriginalImage(event, family.image.url)}
             className="h-full w-full object-cover"
           />
         )}

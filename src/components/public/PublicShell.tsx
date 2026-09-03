@@ -218,7 +218,7 @@ export function PublicShell({
             </ul>
           </nav>
         </div>
-        <div className="border-t border-white/10">
+        <div className="border-t border-inverse-divider">
           <p className="container-avizee py-4 text-caption opacity-70">
             © {new Date().getFullYear()} AviZee. Todos os direitos reservados.
           </p>

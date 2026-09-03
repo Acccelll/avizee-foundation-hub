@@ -1,10 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  fetchCatalog,
-  fetchCategory,
-  fetchFacets,
-} from "@/catalog/public/public.functions";
+import { fetchCatalog, fetchCategory, fetchFacets } from "@/catalog/public/public.functions";
 import {
   fetchArticles,
   fetchContentCategories,
@@ -77,7 +73,12 @@ describe("loaders públicos sem waterfalls evitáveis", () => {
   });
 
   it("/produtos/$categorySlug inicia catálogo sem aguardar categoria", async () => {
-    const category = deferred<{ name: string; description: null; familyCount: number; productCount: number }>();
+    const category = deferred<{
+      name: string;
+      description: null;
+      familyCount: number;
+      productCount: number;
+    }>();
     vi.mocked(fetchCategory).mockReturnValue(category.promise as never);
 
     const loader = ProductCategoryRoute.options.loader as (ctx: unknown) => Promise<unknown>;
@@ -97,7 +98,12 @@ describe("loaders públicos sem waterfalls evitáveis", () => {
   });
 
   it("/conteudos/categoria/$slug inicia listagens sem aguardar categoria", async () => {
-    const category = deferred<{ slug: string; name: string; description: null; articleCount: number }>();
+    const category = deferred<{
+      slug: string;
+      name: string;
+      description: null;
+      articleCount: number;
+    }>();
     vi.mocked(fetchContentCategory).mockReturnValue(category.promise as never);
 
     const loader = ContentCategoryRoute.options.loader as (ctx: unknown) => Promise<unknown>;

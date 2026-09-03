@@ -22,8 +22,9 @@ export const Route = createFileRoute("/busca")({
   }),
   loaderDeps: ({ search }) => ({ q: search.q }),
   loader: async ({ deps }) => {
-    const facets = await fetchFacets();
+    const facetsPromise = fetchFacets();
     if (!deps.q) {
+      const facets = await facetsPromise;
       return {
         q: "",
         catalog: null,
@@ -37,9 +38,13 @@ export const Route = createFileRoute("/busca")({
       deps.q.length >= 2
         ? fetchArticles({ data: { q: deps.q, pagina: 1 } })
         : Promise.resolve({ items: [], total: 0, page: 1, pageSize: 9, pageCount: 1 });
+    const catalogPromise = fetchCatalog({
+      data: { q: deps.q, ordem: "relevance", pagina: 1 },
+    });
 
-    const [catalog, content] = await Promise.all([
-      fetchCatalog({ data: { q: deps.q, ordem: "relevance", pagina: 1 } }),
+    const [facets, catalog, content] = await Promise.all([
+      facetsPromise,
+      catalogPromise,
       contentPromise,
     ]);
 

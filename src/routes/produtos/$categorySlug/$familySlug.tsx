@@ -37,11 +37,7 @@ function familySeoDescription(family: {
 }): string {
   const summary = family.summary ? normalizeSeoText(family.summary) : "";
   if (summary.length >= FAMILY_META_DESCRIPTION_MIN) {
-    return truncateSeoText(
-      summary,
-      FAMILY_META_DESCRIPTION_MAX,
-      FAMILY_META_DESCRIPTION_MIN,
-    );
+    return truncateSeoText(summary, FAMILY_META_DESCRIPTION_MAX, FAMILY_META_DESCRIPTION_MIN);
   }
 
   const generated = `${family.name}: consulte variações, referências e especificações técnicas de ${family.categoryName.toLowerCase()} para avicultura e monte sua lista de cotação. Atendimento consultivo B2B da AviZee em todo o Brasil.`;
@@ -50,11 +46,7 @@ function familySeoDescription(family: {
       ? generated
       : `${generated} Consulte condições e especificações com nossa equipe.`;
 
-  return truncateSeoText(
-    expanded,
-    FAMILY_META_DESCRIPTION_MAX,
-    FAMILY_META_DESCRIPTION_MIN,
-  );
+  return truncateSeoText(expanded, FAMILY_META_DESCRIPTION_MAX, FAMILY_META_DESCRIPTION_MIN);
 }
 
 export const Route = createFileRoute("/produtos/$categorySlug/$familySlug")({

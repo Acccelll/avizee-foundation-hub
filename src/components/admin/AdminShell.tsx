@@ -3,7 +3,6 @@ import { LogOut } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { APP_ENV, ENV_LABEL } from "@/lib/env";
-import { supabase } from "@/integrations/supabase/client";
 import type { SessionUser } from "@/auth/contract";
 import type { Permission } from "@/permissions/model";
 
@@ -71,6 +70,7 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
   const navigate = useNavigate();
 
   async function handleLogout() {
+    const { supabase } = await import("@/integrations/supabase/client");
     await supabase.auth.signOut();
     navigate({ to: "/admin/login", replace: true });
   }
@@ -92,7 +92,7 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex h-10 items-center gap-2 rounded-[8px] border border-white/30 px-3 font-semibold"
+              className="inline-flex h-10 items-center gap-2 rounded-md border border-inverse-border px-3 font-semibold"
             >
               <LogOut aria-hidden="true" className="h-4 w-4" />
               Sair
@@ -118,9 +118,9 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
                       {allowed ? (
                         <Link
                           to={item.to}
-                          className="block rounded-[8px] px-3 py-2 hover:bg-surface-alt"
+                          className="block rounded-md px-3 py-2 hover:bg-surface-alt"
                           activeProps={{
-                            className: "block rounded-[8px] px-3 py-2 bg-surface-alt font-semibold",
+                            className: "block rounded-md px-3 py-2 bg-surface-alt font-semibold",
                           }}
                         >
                           {item.label}
@@ -128,7 +128,7 @@ export function AdminShell({ user, children }: { user: SessionUser; children: Re
                       ) : (
                         <span
                           aria-disabled="true"
-                          className="block cursor-not-allowed rounded-[8px] px-3 py-2 text-text-muted"
+                          className="block cursor-not-allowed rounded-md px-3 py-2 text-text-muted"
                         >
                           {item.label}
                           {item.enabled ? " · sem permissão" : " · em breve"}

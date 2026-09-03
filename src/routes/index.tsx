@@ -93,13 +93,13 @@ function Home() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/produtos"
-              className="inline-flex h-12 items-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90"
+              className="inline-flex h-12 items-center rounded-md bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90"
             >
               {CTA.catalog}
             </Link>
             <Link
               to="/cotacao"
-              className="inline-flex h-12 items-center rounded-[8px] border border-border px-6 font-semibold hover:bg-surface"
+              className="inline-flex h-12 items-center rounded-md border border-border px-6 font-semibold hover:bg-surface"
             >
               {CTA.quote}
             </Link>
@@ -128,7 +128,7 @@ function Home() {
               <Link
                 to="/produtos/$categorySlug"
                 params={{ categorySlug: category.slug }}
-                className="brand-interactive flex h-full flex-col rounded-[12px] border border-border p-5"
+                className="brand-interactive flex h-full flex-col rounded-lg border border-border p-5"
               >
                 <span className="text-h4 font-semibold">{category.name}</span>
                 {category.description && (
@@ -265,13 +265,13 @@ function Home() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/cotacao"
-              className="inline-flex h-12 items-center rounded-[8px] bg-background px-6 font-semibold text-text-primary hover:opacity-90"
+              className="inline-flex h-12 items-center rounded-md bg-background px-6 font-semibold text-text-primary hover:opacity-90"
             >
               {CTA.quote}
             </Link>
             <Link
               to="/contato"
-              className="inline-flex h-12 items-center rounded-[8px] border border-white/30 px-6 font-semibold hover:bg-white/10"
+              className="inline-flex h-12 items-center rounded-md border border-inverse-border px-6 font-semibold hover:bg-inverse-hover"
             >
               {CTA.talk}
             </Link>

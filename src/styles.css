@@ -47,12 +47,15 @@
   --color-border: var(--border-default);
   --color-border-subtle: var(--border-subtle);
   --color-input: var(--border-default);
+  --color-inverse-border: hsl(0 0% 100% / 0.3);
+  --color-inverse-divider: hsl(0 0% 100% / 0.1);
 
   /* ---- interaction ---- */
   --color-primary: var(--action-primary);
   --color-primary-foreground: var(--action-primary-text);
   --color-emphasis: var(--emphasis-institutional);
   --color-ring: var(--focus-ring);
+  --color-inverse-hover: hsl(0 0% 100% / 0.1);
 
   /* ---- feedback (D-056) ---- */
   --color-error: var(--feedback-error);
@@ -236,13 +239,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  html {
+    scroll-behavior: auto;
+  }
+
+  [class*="animate-"] {
+    animation: none !important;
+  }
+
+  [class*="transition"] {
+    transition-duration: 0ms !important;
   }
 }
 

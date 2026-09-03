@@ -19,7 +19,7 @@ export interface QuoteFormValues {
 }
 
 const inputClass =
-  "h-12 w-full rounded-[8px] border border-border bg-background px-3 text-[16px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis";
+  "h-12 w-full rounded-md border border-border bg-background px-3 text-body focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis";
 
 type DescriptionOptions = { hint?: boolean; error?: boolean };
 
@@ -47,7 +47,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-[14px] font-semibold">
+      <label htmlFor={id} className="block text-body-sm font-semibold">
         {label}
         {required && (
           <>
@@ -283,7 +283,7 @@ export function QuoteForm({
           name="message"
           rows={4}
           maxLength={2000}
-          className="w-full rounded-[8px] border border-border bg-background p-3 text-[16px]"
+          className="w-full rounded-md border border-border bg-background p-3 text-body"
           value={values.message}
           onChange={(e) => set("message", e.target.value)}
           aria-describedby={describedBy("message", { hint: true })}
@@ -303,8 +303,8 @@ export function QuoteForm({
         />
       </div>
 
-      <fieldset className="grid gap-3 rounded-[8px] border border-border p-4">
-        <legend className="px-1 text-[14px] font-semibold">Privacidade</legend>
+      <fieldset className="grid gap-3 rounded-md border border-border p-4">
+        <legend className="px-1 text-body-sm font-semibold">Privacidade</legend>
         {/* §6 — aviso de privacidade: informa a finalidade, não pede
             consentimento para o tratamento necessário à resposta. */}
         <p className="text-[15px]">{PRIVACY_NOTICE_QUOTATION}</p>
@@ -325,7 +325,7 @@ export function QuoteForm({
           type="submit"
           disabled={disabled || submitting}
           aria-busy={submitting}
-          className="relative inline-flex h-12 items-center justify-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="relative inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           <span className={submitting ? "invisible" : undefined}>Enviar lista de cotação</span>
           {submitting && (
@@ -335,7 +335,7 @@ export function QuoteForm({
             </span>
           )}
         </button>
-        <p className="text-[14px] text-text-muted">
+        <p className="text-body-sm text-text-muted">
           Nenhum pagamento é solicitado. Você recebe um protocolo de acompanhamento.
         </p>
       </div>

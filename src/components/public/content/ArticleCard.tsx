@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Clock, FileText } from "lucide-react";
 
 import type { ArticleCardData } from "@/content/public/read.server";
+import { fallbackToOriginalImage, responsiveImageProps } from "@/lib/responsive-image";
 
 export function formatArticleDate(value: string | null): string | null {
   if (!value) return null;
@@ -13,29 +14,38 @@ export function formatArticleDate(value: string | null): string | null {
 /** Cartão de artigo da Central de Conteúdos. Sem preço e sem marca (R-03/R-05). */
 export function ArticleCard({ article }: { article: ArticleCardData }) {
   const published = formatArticleDate(article.publishedAt);
+  const coverProps = article.cover
+    ? responsiveImageProps(article.cover.url, {
+        widths: [320, 480, 640, 960],
+        sizes: "(min-width: 1024px) 384px, (min-width: 640px) 50vw, 100vw",
+      })
+    : {};
 
   return (
-    <article className="relative flex h-full flex-col overflow-hidden rounded-[12px] border border-border bg-background transition hover:border-emphasis">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-lg border border-border bg-background transition hover:border-emphasis">
       <div className="relative aspect-16/9 bg-surface">
         {article.cover ? (
           <img
             src={article.cover.url}
+            srcSet={coverProps.srcSet}
+            sizes={coverProps.sizes}
             alt={article.cover.alt}
             width={960}
             height={540}
             loading="lazy"
+            onError={(event) => fallbackToOriginalImage(event, article.cover!.url)}
             className="h-full w-full object-cover"
           />
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-2 text-text-muted">
             <FileText aria-hidden="true" className="h-8 w-8" />
-            <span className="px-4 text-center text-[12px]">Imagem em atualização</span>
+            <span className="px-4 text-center text-caption">Imagem em atualização</span>
           </div>
         )}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <p className="text-[12px] font-semibold uppercase tracking-wide text-text-muted">
+        <p className="text-caption font-semibold uppercase tracking-wide text-text-muted">
           {article.categoryName}
         </p>
 

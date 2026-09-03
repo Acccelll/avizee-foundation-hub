@@ -2,7 +2,6 @@ import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { AdminShell } from "@/components/admin/AdminShell";
 import { getAdminSession } from "@/auth/session.functions";
-import { supabase } from "@/integrations/supabase/client";
 import type { SessionUser } from "@/auth/contract";
 
 export const Route = createFileRoute("/admin/_protected")({
@@ -10,6 +9,7 @@ export const Route = createFileRoute("/admin/_protected")({
   ssr: false,
   headers: () => ({ "X-Robots-Tag": "noindex, nofollow" }),
   beforeLoad: async (): Promise<{ user: SessionUser }> => {
+    const { supabase } = await import("@/integrations/supabase/client");
     const { data, error } = await supabase.auth.getUser();
     if (error || !data.user) throw redirect({ to: "/admin/login" });
 

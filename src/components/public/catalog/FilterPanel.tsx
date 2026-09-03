@@ -46,7 +46,7 @@ function FacetGroup({
                 to="/produtos"
                 search={toggle(search, dimension, option.slug)}
                 aria-current={active ? "true" : undefined}
-                className={`flex min-h-11 items-center justify-between gap-3 rounded-[8px] px-3 py-2 text-[15px] hover:bg-surface ${
+                className={`flex min-h-11 items-center justify-between gap-3 rounded-md px-3 py-2 text-[15px] hover:bg-surface ${
                   active ? "bg-surface font-semibold text-emphasis" : "text-text-secondary"
                 }`}
               >
@@ -72,14 +72,14 @@ export function FilterPanel({ facets, search }: { facets: CatalogFacets; search:
   return (
     <aside aria-labelledby="filtros-titulo" className="space-y-5">
       <div className="flex items-center justify-between gap-3">
-        <h2 id="filtros-titulo" className="text-[16px] font-bold">
+        <h2 id="filtros-titulo" className="text-body font-bold">
           Filtros
         </h2>
         {hasFilters && (
           <Link
             to="/produtos"
             search={{ q: search.q }}
-            className="inline-flex min-h-11 items-center gap-1 text-[14px] font-semibold text-emphasis hover:underline"
+            className="inline-flex min-h-11 items-center gap-1 text-body-sm font-semibold text-emphasis hover:underline"
           >
             <X aria-hidden="true" className="h-4 w-4" />
             Limpar filtros

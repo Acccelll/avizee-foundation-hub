@@ -6,6 +6,7 @@ import { fetchArticlesForFamily, type ArticleCardData } from "@/content/public/p
 import { ArticleCard } from "@/components/public/content/ArticleCard";
 import { PublicShell } from "@/components/public/PublicShell";
 import { VariationTable } from "@/components/public/catalog/VariationTable";
+import { fallbackToOriginalImage, responsiveImageProps } from "@/lib/responsive-image";
 import { buildMeta } from "@/seo/meta";
 
 const FAMILY_META_TITLE_MAX = 51;
@@ -126,7 +127,7 @@ function FamiliaNaoEncontrada() {
         </p>
         <Link
           to="/produtos"
-          className="mt-6 inline-flex h-12 items-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground"
+          className="mt-6 inline-flex h-12 items-center rounded-md bg-primary px-6 font-semibold text-primary-foreground"
         >
           Ir para o catálogo
         </Link>
@@ -138,6 +139,10 @@ function FamiliaNaoEncontrada() {
 function FamiliaPublica() {
   const { family, articles } = Route.useLoaderData();
   const { sku } = Route.useSearch();
+  const imageProps = responsiveImageProps(family.image.url, {
+    widths: [320, 480, 640, 800, 1200],
+    sizes: "(min-width: 1024px) 420px, 100vw",
+  });
 
   return (
     <PublicShell
@@ -149,7 +154,7 @@ function FamiliaPublica() {
     >
       <div className="container-avizee">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,420px)_1fr]">
-          <div className="overflow-hidden rounded-[12px] border border-border bg-surface">
+          <div className="overflow-hidden rounded-lg border border-border bg-surface">
             <div className="aspect-4/3">
               {family.image.is_placeholder ? (
                 <div className="flex h-full flex-col items-center justify-center gap-3 text-text-muted">
@@ -159,10 +164,13 @@ function FamiliaPublica() {
               ) : (
                 <img
                   src={family.image.url}
+                  srcSet={imageProps.srcSet}
+                  sizes={imageProps.sizes}
                   alt={family.image.alt}
                   width={800}
                   height={600}
                   fetchPriority="high"
+                  onError={(event) => fallbackToOriginalImage(event, family.image.url)}
                   className="h-full w-full object-cover"
                 />
               )}
@@ -208,7 +216,7 @@ function FamiliaPublica() {
 
             <Link
               to="/cotacao"
-              className="mt-8 inline-flex h-12 items-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90"
+              className="mt-8 inline-flex h-12 items-center rounded-md bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90"
             >
               Solicitar cotação desta família
             </Link>
@@ -252,7 +260,7 @@ function FamiliaPublica() {
                     <Link
                       to="/produtos/$categorySlug/$familySlug"
                       params={{ categorySlug: item.categorySlug, familySlug: item.slug }}
-                      className="brand-interactive flex h-full flex-col rounded-[12px] border border-border p-4"
+                      className="brand-interactive flex h-full flex-col rounded-lg border border-border p-4"
                     >
                       <span className="text-body font-semibold">{item.name}</span>
                       <span className="mt-2 text-body-sm text-text-muted tabular-nums">

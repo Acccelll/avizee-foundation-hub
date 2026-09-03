@@ -112,6 +112,9 @@ function ArtigoPublico() {
           <img
             src={article.cover.url}
             alt={article.cover.alt}
+            width={1200}
+            height={675}
+            fetchPriority="high"
             className="mt-8 w-full rounded-[12px] border border-border-subtle"
           />
         )}

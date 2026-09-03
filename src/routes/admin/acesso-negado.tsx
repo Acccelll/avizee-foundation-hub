@@ -4,7 +4,13 @@ import { buildMeta } from "@/seo/meta";
 
 export const Route = createFileRoute("/admin/acesso-negado")({
   ssr: false,
-  head: () => buildMeta({ title: "Acesso negado", description: "Área restrita AviZee." }),
+  headers: () => ({ "X-Robots-Tag": "noindex, nofollow" }),
+  head: () =>
+    buildMeta({
+      title: "Acesso negado",
+      description: "Área restrita AviZee.",
+      noindex: true,
+    }),
   component: Denied,
 });
 

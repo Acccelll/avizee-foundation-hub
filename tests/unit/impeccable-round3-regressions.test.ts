@@ -2,6 +2,8 @@ import { readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
+import { responsiveImageProps } from "@/lib/responsive-image";
+
 function source(path: string): string {
   return readFileSync(path, "utf8");
 }
@@ -67,15 +69,29 @@ describe("regressões aprovadas do impeccable — Rodada 3", () => {
       expect(file).toContain("responsiveImageProps");
       expect(file).toContain("srcSet");
       expect(file).toContain("sizes");
+      expect(file).toContain("fallbackToOriginalImage");
     }
   });
 
-  it("propaga dimensões reais já disponíveis na view pública de famílias", () => {
-    const catalogRead = source("src/catalog/public/read.server.ts");
+  it("gera variantes apenas para URLs públicas Supabase e preserva fallback para demais origens", () => {
+    const publicUrl =
+      "https://example.supabase.co/storage/v1/object/public/public-media/families/demo.webp";
+    const responsive = responsiveImageProps(publicUrl, {
+      widths: [320, 640],
+      sizes: "100vw",
+    });
 
-    expect(catalogRead).toContain("width: number | null");
-    expect(catalogRead).toContain("height: number | null");
-    expect(catalogRead).toContain('select("family_id, url, alt_text, width, height, sort_order")');
+    expect(responsive.srcSet).toContain("/storage/v1/render/image/public/public-media/");
+    expect(responsive.srcSet).toContain("width=320");
+    expect(responsive.srcSet).toContain("320w");
+    expect(responsive.srcSet).toContain("640w");
+    expect(responsive.sizes).toBe("100vw");
+    expect(
+      responsiveImageProps("https://cdn.example.com/image.webp", {
+        widths: [320, 640],
+        sizes: "100vw",
+      }),
+    ).toEqual({});
   });
 
   it("mantém o cliente Supabase de navegador apenas em imports dinâmicos", () => {

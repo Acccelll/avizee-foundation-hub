@@ -62,9 +62,9 @@ export function fallbackToOriginalImage(
   source: string,
 ): void {
   const image = event.currentTarget;
-  if (image.dataset.responsiveFallback === "true") return;
+  if (image.dataset["responsiveFallback"] === "true") return;
 
-  image.dataset.responsiveFallback = "true";
+  image.dataset["responsiveFallback"] = "true";
   image.srcset = "";
   image.removeAttribute("sizes");
   if (image.src !== source) image.src = source;

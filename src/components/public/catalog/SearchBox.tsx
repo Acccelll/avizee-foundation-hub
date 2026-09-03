@@ -27,8 +27,15 @@ export function SearchBox({
   const [active, setActive] = useState(-1);
   const [announcement, setAnnouncement] = useState("");
   const boxRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => setTerm(defaultValue), [defaultValue]);
+
+  useEffect(() => {
+    if (!autoFocusOnMount || typeof window === "undefined") return;
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
+    inputRef.current?.focus();
+  }, [autoFocusOnMount]);
 
   useEffect(() => {
     const value = term.trim();
@@ -116,11 +123,12 @@ export function SearchBox({
         </label>
         <div className="flex gap-2">
           <input
+            ref={inputRef}
             id={inputId}
             name="q"
             type="search"
             value={term}
-            autoFocus={autoFocusOnMount}
+            autoComplete="off"
             onChange={(event) => setTerm(event.target.value)}
             onKeyDown={(event) => {
               if (!open || items.length === 0) return;
@@ -143,7 +151,7 @@ export function SearchBox({
             aria-controls={listId}
             aria-autocomplete="list"
             aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
-            placeholder="Produto, aplicação, conteúdo ou referência (ex.: AG011)"
+            placeholder="Produto, aplicação, conteúdo ou referência (ex.: AG011)…"
             className="h-12 w-full rounded-[8px] border border-border bg-background px-4 text-[16px] placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emphasis"
           />
           <button

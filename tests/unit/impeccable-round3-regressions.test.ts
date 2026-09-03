@@ -20,6 +20,9 @@ describe("regressões aprovadas do impeccable — Rodada 3", () => {
 
   it("substitui valores equivalentes pelos tokens tipográficos e de raio existentes", () => {
     const expectations: Record<string, string[]> = {
+      "src/components/admin/AdminShell.tsx": ["rounded-[8px]"],
+      "src/components/public/PublicShell.tsx": ["rounded-[8px]"],
+      "src/components/public/catalog/FamilyCard.tsx": ["rounded-[12px]"],
       "src/components/public/catalog/FilterPanel.tsx": [
         "rounded-[8px]",
         "text-[14px]",
@@ -36,6 +39,9 @@ describe("regressões aprovadas do impeccable — Rodada 3", () => {
         "text-[14px]",
         "text-[16px]",
       ],
+      "src/routes/index.tsx": ["rounded-[8px]", "rounded-[12px]"],
+      "src/routes/conteudos/$articleSlug.tsx": ["rounded-[8px]", "rounded-[12px]"],
+      "src/routes/produtos/$categorySlug/$familySlug.tsx": ["rounded-[8px]", "rounded-[12px]"],
     };
 
     for (const [path, forbidden] of Object.entries(expectations)) {

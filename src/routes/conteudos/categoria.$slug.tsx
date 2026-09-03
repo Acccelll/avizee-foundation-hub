@@ -11,12 +11,12 @@ import { buildMeta } from "@/seo/meta";
 
 export const Route = createFileRoute("/conteudos/categoria/$slug")({
   loader: async ({ params }) => {
-    const category = await fetchContentCategory({ data: { slug: params.slug } });
-    if (!category) throw notFound();
-    const [list, categories] = await Promise.all([
+    const [category, list, categories] = await Promise.all([
+      fetchContentCategory({ data: { slug: params.slug } }),
       fetchArticles({ data: { categoria: params.slug } }),
       fetchContentCategories(),
     ]);
+    if (!category) throw notFound();
     return { category, list, categories };
   },
   head: ({ loaderData }) => {

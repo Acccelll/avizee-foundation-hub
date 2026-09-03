@@ -1,3 +1,4 @@
+import { LoaderCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { BRAZIL_UFS, CONSENT_TEXT_MARKETING, PRIVACY_NOTICE_QUOTATION } from "@/quotation/model";
@@ -176,6 +177,7 @@ export function QuoteForm({
         <Field label="Nome do contato" id="contactName" required error={errors["contactName"]}>
           <input
             id="contactName"
+            name="contactName"
             autoComplete="name"
             required
             className={inputClass}
@@ -191,6 +193,7 @@ export function QuoteForm({
         <Field label="E-mail" id="contactEmail" required error={errors["contactEmail"]}>
           <input
             id="contactEmail"
+            name="contactEmail"
             type="email"
             autoComplete="email"
             required
@@ -207,6 +210,7 @@ export function QuoteForm({
         <Field label="Telefone" id="contactPhone" required error={errors["contactPhone"]}>
           <input
             id="contactPhone"
+            name="contactPhone"
             type="tel"
             autoComplete="tel"
             required
@@ -223,6 +227,7 @@ export function QuoteForm({
         <Field label="Cidade" id="city" error={errors["city"]}>
           <input
             id="city"
+            name="city"
             autoComplete="address-level2"
             className={inputClass}
             value={values.city}
@@ -235,6 +240,7 @@ export function QuoteForm({
         <Field label="UF" id="stateUf" error={errors["stateUf"]}>
           <select
             id="stateUf"
+            name="stateUf"
             className={inputClass}
             value={values.stateUf}
             onChange={(e) => set("stateUf", e.target.value)}
@@ -253,6 +259,7 @@ export function QuoteForm({
         <Field label="Canal preferido de retorno" id="preferredChannel">
           <select
             id="preferredChannel"
+            name="preferredChannel"
             className={inputClass}
             value={values.preferredChannel}
             onChange={(e) =>
@@ -273,6 +280,7 @@ export function QuoteForm({
       >
         <textarea
           id="message"
+          name="message"
           rows={4}
           maxLength={2000}
           className="w-full rounded-[8px] border border-border bg-background p-3 text-[16px]"
@@ -302,6 +310,7 @@ export function QuoteForm({
         <p className="text-[15px]">{PRIVACY_NOTICE_QUOTATION}</p>
         <label className="flex items-start gap-3 text-[15px]">
           <input
+            name="consentMarketing"
             type="checkbox"
             className="mt-1 h-5 w-5"
             checked={values.consentMarketing}
@@ -315,9 +324,16 @@ export function QuoteForm({
         <button
           type="submit"
           disabled={disabled || submitting}
-          className="inline-flex h-12 items-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          aria-busy={submitting}
+          className="relative inline-flex h-12 items-center justify-center rounded-[8px] bg-primary px-6 font-semibold text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {submitting ? "Enviando..." : "Enviar lista de cotação"}
+          <span className={submitting ? "invisible" : undefined}>Enviar lista de cotação</span>
+          {submitting && (
+            <span className="absolute inset-0 inline-flex items-center justify-center gap-2">
+              <LoaderCircle aria-hidden="true" className="h-4 w-4 animate-spin" />
+              Enviando…
+            </span>
+          )}
         </button>
         <p className="text-[14px] text-text-muted">
           Nenhum pagamento é solicitado. Você recebe um protocolo de acompanhamento.

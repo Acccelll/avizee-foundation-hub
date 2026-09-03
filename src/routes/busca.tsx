@@ -22,8 +22,9 @@ export const Route = createFileRoute("/busca")({
   }),
   loaderDeps: ({ search }) => ({ q: search.q }),
   loader: async ({ deps }) => {
-    const facets = await fetchFacets();
+    const facetsPromise = fetchFacets();
     if (!deps.q) {
+      const facets = await facetsPromise;
       return {
         q: "",
         catalog: null,
@@ -38,7 +39,8 @@ export const Route = createFileRoute("/busca")({
         ? fetchArticles({ data: { q: deps.q, pagina: 1 } })
         : Promise.resolve({ items: [], total: 0, page: 1, pageSize: 9, pageCount: 1 });
 
-    const [catalog, content] = await Promise.all([
+    const [facets, catalog, content] = await Promise.all([
+      facetsPromise,
       fetchCatalog({ data: { q: deps.q, ordem: "relevance", pagina: 1 } }),
       contentPromise,
     ]);
@@ -147,20 +149,22 @@ function BuscaPublica() {
                       Soluções
                     </h2>
                     <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      {solutions.map((application: { slug: string; name: string; count: number }) => (
-                        <li key={application.slug}>
-                          <Link
-                            to="/solucoes/$applicationSlug"
-                            params={{ applicationSlug: application.slug }}
-                            className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
-                          >
-                            <span className="text-[18px] font-semibold">{application.name}</span>
-                            <span className="mt-3 text-[14px] text-text-muted tabular-nums">
-                              {application.count} famílias no catálogo
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
+                      {solutions.map(
+                        (application: { slug: string; name: string; count: number }) => (
+                          <li key={application.slug}>
+                            <Link
+                              to="/solucoes/$applicationSlug"
+                              params={{ applicationSlug: application.slug }}
+                              className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
+                            >
+                              <span className="text-[18px] font-semibold">{application.name}</span>
+                              <span className="mt-3 text-[14px] text-text-muted tabular-nums">
+                                {application.count} famílias no catálogo
+                              </span>
+                            </Link>
+                          </li>
+                        ),
+                      )}
                     </ul>
                   </section>
                 )}

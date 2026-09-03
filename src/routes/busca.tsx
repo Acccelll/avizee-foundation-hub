@@ -149,20 +149,22 @@ function BuscaPublica() {
                       Soluções
                     </h2>
                     <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      {solutions.map((application: { slug: string; name: string; count: number }) => (
-                        <li key={application.slug}>
-                          <Link
-                            to="/solucoes/$applicationSlug"
-                            params={{ applicationSlug: application.slug }}
-                            className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
-                          >
-                            <span className="text-[18px] font-semibold">{application.name}</span>
-                            <span className="mt-3 text-[14px] text-text-muted tabular-nums">
-                              {application.count} famílias no catálogo
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
+                      {solutions.map(
+                        (application: { slug: string; name: string; count: number }) => (
+                          <li key={application.slug}>
+                            <Link
+                              to="/solucoes/$applicationSlug"
+                              params={{ applicationSlug: application.slug }}
+                              className="flex h-full flex-col rounded-[12px] border border-border p-5 hover:border-emphasis"
+                            >
+                              <span className="text-[18px] font-semibold">{application.name}</span>
+                              <span className="mt-3 text-[14px] text-text-muted tabular-nums">
+                                {application.count} famílias no catálogo
+                              </span>
+                            </Link>
+                          </li>
+                        ),
+                      )}
                     </ul>
                   </section>
                 )}

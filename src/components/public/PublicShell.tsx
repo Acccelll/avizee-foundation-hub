@@ -109,13 +109,13 @@ export function PublicShell({
               to="/busca"
               search={{ q: "" }}
               aria-label="Buscar no site"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[8px] border border-border hover:bg-surface"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border hover:bg-surface"
             >
               <Search aria-hidden="true" className="h-5 w-5" />
             </Link>
             <Link
               to="/cotacao"
-              className="hidden h-11 items-center gap-2 rounded-[8px] bg-primary px-4 text-body-sm font-semibold text-primary-foreground hover:opacity-90 sm:inline-flex"
+              className="hidden h-11 items-center gap-2 rounded-md bg-primary px-4 text-body-sm font-semibold text-primary-foreground hover:opacity-90 sm:inline-flex"
             >
               <ClipboardList aria-hidden="true" className="h-5 w-5" />
               Lista de cotação
@@ -126,7 +126,7 @@ export function PublicShell({
               aria-expanded={open}
               aria-controls="menu-mobile"
               aria-label={open ? "Fechar menu" : "Abrir menu"}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[8px] border border-border lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border lg:hidden"
             >
               {open ? (
                 <X aria-hidden="true" className="h-5 w-5" />

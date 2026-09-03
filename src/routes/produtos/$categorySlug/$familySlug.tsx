@@ -6,6 +6,7 @@ import { fetchArticlesForFamily, type ArticleCardData } from "@/content/public/p
 import { ArticleCard } from "@/components/public/content/ArticleCard";
 import { PublicShell } from "@/components/public/PublicShell";
 import { VariationTable } from "@/components/public/catalog/VariationTable";
+import { fallbackToOriginalImage, responsiveImageProps } from "@/lib/responsive-image";
 import { buildMeta } from "@/seo/meta";
 
 const FAMILY_META_TITLE_MAX = 51;
@@ -138,6 +139,10 @@ function FamiliaNaoEncontrada() {
 function FamiliaPublica() {
   const { family, articles } = Route.useLoaderData();
   const { sku } = Route.useSearch();
+  const imageProps = responsiveImageProps(family.image.url, {
+    widths: [320, 480, 640, 800, 1200],
+    sizes: "(min-width: 1024px) 420px, 100vw",
+  });
 
   return (
     <PublicShell
@@ -159,10 +164,13 @@ function FamiliaPublica() {
               ) : (
                 <img
                   src={family.image.url}
+                  srcSet={imageProps.srcSet}
+                  sizes={imageProps.sizes}
                   alt={family.image.alt}
                   width={800}
                   height={600}
                   fetchPriority="high"
+                  onError={(event) => fallbackToOriginalImage(event, family.image.url)}
                   className="h-full w-full object-cover"
                 />
               )}

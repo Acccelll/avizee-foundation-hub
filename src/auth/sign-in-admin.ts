@@ -7,7 +7,6 @@
  * se estourar, autenticamos direto na API de token e persistimos a sessão
  * no mesmo formato que o SDK espera.
  */
-import { supabase } from "@/integrations/supabase/client";
 
 const TIMEOUT_MS = 8000;
 
@@ -50,6 +49,7 @@ async function fallbackSignIn(email: string, password: string): Promise<boolean>
 export type SignInResult = "OK" | "OK_RELOAD" | "INVALID";
 
 export async function signInAdmin(email: string, password: string): Promise<SignInResult> {
+  const { supabase } = await import("@/integrations/supabase/client");
   const attempt = supabase.auth
     .signInWithPassword({ email, password })
     .then((result) => (result.error ? "INVALID" : "OK"))

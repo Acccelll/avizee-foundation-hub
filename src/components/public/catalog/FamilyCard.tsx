@@ -18,7 +18,7 @@ export function FamilyCard({ family }: { family: FamilyCardData }) {
   });
 
   return (
-    <article className="brand-interactive relative flex h-full flex-col overflow-hidden rounded-[12px] border border-border bg-background">
+    <article className="brand-interactive relative flex h-full flex-col overflow-hidden rounded-lg border border-border bg-background">
       <div className="relative aspect-4/3 bg-surface">
         {family.image.is_placeholder ? (
           <div className="flex h-full flex-col items-center justify-center gap-2 text-text-muted">

@@ -24,6 +24,8 @@ export function FamilyCard({ family }: { family: FamilyCardData }) {
           <img
             src={family.image.url}
             alt={family.image.alt}
+            width={800}
+            height={600}
             loading="lazy"
             className="h-full w-full object-cover"
           />

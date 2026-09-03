@@ -160,6 +160,9 @@ function FamiliaPublica() {
                 <img
                   src={family.image.url}
                   alt={family.image.alt}
+                  width={800}
+                  height={600}
+                  fetchPriority="high"
                   className="h-full w-full object-cover"
                 />
               )}

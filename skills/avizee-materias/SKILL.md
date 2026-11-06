@@ -45,9 +45,10 @@ Quando o conector do ERP AviZee estiver disponível:
 
 1. `avizee_listar_categorias` e `avizee_listar_familias` para pegar categorias e famílias válidas (use só slugs retornados; nunca invente slug de família).
 2. `avizee_buscar_materias` com a palavra-chave principal, para checar duplicidade antes de redigir.
-3. Após a aprovação, `avizee_salvar_materia` com o pacote completo (matéria, post do Instagram, fontes e notas de verificação).
-4. Se a ferramenta devolver erros de validação, corrija. Se a correção mudar o sentido do texto, mostre ao usuário e peça nova aprovação; ajustes puramente de formato não precisam.
-5. `avizee_publicar_materia` informando o revisor que aprovou. Devolva ao usuário o endereço público da matéria.
-6. Instagram: se a conta estiver conectada no ERP e o usuário quiser postar, `avizee_publicar_instagram` com a imagem que ele indicar. O Instagram não aceita post sem imagem. Sem conta conectada ou sem imagem, entregue a legenda pronta para postagem manual.
+3. `avizee_salvar_materia` com o pacote completo (matéria, post do Instagram, fontes só com nome e notas de verificação com os links). Isso cria ou atualiza um **rascunho** e não publica nada. Use o `materia_id` devolvido nas próximas chamadas e `avizee_obter_materia` para conferir o que está salvo.
+4. Apresente ao usuário a versão salva e peça aprovação. Se ele pedir ajustes, salve de novo (a aprovação anterior deixa de valer) e apresente outra vez.
+5. Com a aprovação explícita, `avizee_publicar_materia` com `aprovado_por_nome` (quem aprovou) e `confirmacao_usuario` (a frase literal em que o usuário aprovou). A ferramenta registra a aprovação e publica no site. Devolva ao usuário o endereço público.
+6. Se a ferramenta devolver erro de validação do site, corrija com `avizee_salvar_materia`; se a correção mudar o sentido do texto, peça nova aprovação.
+7. Instagram: se o usuário quiser postar e houver conta conectada no ERP, `avizee_publicar_instagram` com a `imagem_url` (https pública) que ele indicar e `confirmacao_usuario`. O Instagram não aceita post sem imagem. Sem conta conectada ou sem imagem, entregue a legenda pronta para postagem manual.
 
 Se as ferramentas tiverem nomes diferentes destes, use as equivalentes que o conector oferecer. Se o conector não estiver conectado, use a entrega manual.

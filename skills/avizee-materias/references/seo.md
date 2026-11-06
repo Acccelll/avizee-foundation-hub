@@ -11,13 +11,13 @@ O objetivo é que a matéria apareça quando um profissional da avicultura pesqu
 
 ## Campos
 
-| Campo | Regra |
-|---|---|
-| Título (`title`) | Palavra-chave principal perto do início. 50–70 caracteres. Máximo técnico 200. |
-| Título SEO (`seoTitle`) | Até 60 caracteres. Pode ser mais curto que o título. Não incluir "AviZee" (o site acrescenta). Máx. técnico 120. |
-| Descrição SEO (`seoDescription`) | 140–160 caracteres, com a palavra-chave e um benefício claro para o leitor. Máx. técnico 200. |
-| Slug | Minúsculas, sem acento, hifens, 3–6 palavras, sem datas ou artigos. Ex.: `temperatura-ideal-pinteiro`. |
-| Resumo (`excerpt`) | Responde a pergunta em 1–2 frases. Mín. 40, ideal 140–300, máx. 600 caracteres. |
+| Campo                            | Regra                                                                                                            |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Título (`title`)                 | Palavra-chave principal perto do início. 50–70 caracteres. Máximo técnico 200.                                   |
+| Título SEO (`seoTitle`)          | Até 60 caracteres. Pode ser mais curto que o título. Não incluir "AviZee" (o site acrescenta). Máx. técnico 120. |
+| Descrição SEO (`seoDescription`) | 140–160 caracteres, com a palavra-chave e um benefício claro para o leitor. Máx. técnico 200.                    |
+| Slug                             | Minúsculas, sem acento, hifens, 3–6 palavras, sem datas ou artigos. Ex.: `temperatura-ideal-pinteiro`.           |
+| Resumo (`excerpt`)               | Responde a pergunta em 1–2 frases. Mín. 40, ideal 140–300, máx. 600 caracteres.                                  |
 
 ## Corpo
 

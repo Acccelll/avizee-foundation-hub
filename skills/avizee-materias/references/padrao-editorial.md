@@ -35,12 +35,12 @@ Extensão-alvo: **900 a 1.600 palavras**. Notícias e mercado podem ter 500 a 90
 
 ## O que dizer e o que evitar
 
-| Use | Evite |
-|---|---|
-| solicitar cotação, Lista de Cotação | comprar, carrinho, finalizar compra |
-| especificação, aplicação, família, variação | "o melhor do mercado", superlativos sem fonte |
-| disponibilidade sob consulta | pronta-entrega, em estoque, entrega rápida |
-| condições confirmadas na cotação | preço, a partir de R$, desconto, promoção, parcelamento, frete grátis |
-| orientação do médico-veterinário responsável | dose recomendada, "aplique X ml" como instrução |
+| Use                                          | Evite                                                                 |
+| -------------------------------------------- | --------------------------------------------------------------------- |
+| solicitar cotação, Lista de Cotação          | comprar, carrinho, finalizar compra                                   |
+| especificação, aplicação, família, variação  | "o melhor do mercado", superlativos sem fonte                         |
+| disponibilidade sob consulta                 | pronta-entrega, em estoque, entrega rápida                            |
+| condições confirmadas na cotação             | preço, a partir de R$, desconto, promoção, parcelamento, frete grátis |
+| orientação do médico-veterinário responsável | dose recomendada, "aplique X ml" como instrução                       |
 
 Diferenciais da AviZee (variedade especializada, atendimento ágil, atendimento consultivo) só aparecem no fechamento e com moderação. Nunca: "maior estoque", "entrega rápida", "garantia de resultado", "representante oficial".

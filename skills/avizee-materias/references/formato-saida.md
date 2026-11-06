@@ -1,6 +1,6 @@
-# Formato de saída (entrega manual)
+# Formato do pacote
 
-Sem o conector do ERP, entregue o pacote nesta ordem, para a equipe colar no ERP.
+Use este formato para apresentar a matéria na revisão com o usuário e, sem o conector do ERP, para a entrega final.
 
 ```
 ## Pauta
@@ -33,9 +33,9 @@ Fonte: <nome>
 
 Sugestão de arte: <descrição em uma linha> · Texto da arte: <até 8 palavras>
 
-## Notas ao revisor (internas, não publicar)
+## Notas de verificação (internas, não publicar)
 - <Fonte> — <título do documento>, <ano>, <link> — sustenta: <trecho/seção>
-- Pontos que pedem atenção na revisão:
+- Pontos que pedem atenção do usuário na revisão:
 ```
 
-Depois do pacote, mostre a matéria também em texto corrido legível, para leitura rápida antes de colar.
+Depois do pacote, mostre a matéria também em texto corrido legível, para leitura rápida, e termine pedindo aprovação ou ajustes.

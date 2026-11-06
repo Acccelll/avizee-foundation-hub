@@ -1,6 +1,6 @@
-# Checklist antes de entregar
+# Checklist antes da revisão
 
-Marque cada item. Se algum falhar, corrija antes de entregar ou enviar.
+Marque cada item. Se algum falhar, corrija antes de apresentar ao usuário.
 
 ## Conteúdo
 
@@ -33,5 +33,5 @@ Marque cada item. Se algum falhar, corrija antes de entregar ou enviar.
 - [ ] Categoria é um dos slugs de `categorias.md`.
 - [ ] `familySlug` só se veio do catálogo real.
 - [ ] Post do Instagram no formato exato: Título / Texto / `Fonte: nome`, sem link.
-- [ ] Fontes públicas só com o nome; links apenas nas notas ao revisor.
-- [ ] Notas ao revisor apontam os pontos que mais precisam de verificação.
+- [ ] Fontes públicas só com o nome; links apenas nas notas de verificação.
+- [ ] Notas de verificação apontam os pontos que mais precisam de atenção do usuário na revisão.

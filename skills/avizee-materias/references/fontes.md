@@ -29,4 +29,4 @@ Fontes: Embrapa Suínos e Aves; ABPA
 
 Use o nome institucional reconhecível, sem siglas obscuras e sem o título do documento. Para artigo científico, use o nome da revista ou da instituição dos autores.
 
-**Interno (notas ao revisor):** liste nome, título do documento, ano e link de cada fonte, e qual trecho da matéria cada uma sustenta. Isso não é publicado.
+**Interno (notas de verificação):** liste nome, título do documento, ano e link de cada fonte, e qual trecho da matéria cada uma sustenta. Elas são mostradas ao usuário na revisão e guardadas como nota interna; nunca são publicadas.

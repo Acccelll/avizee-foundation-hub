@@ -19,7 +19,7 @@ Texto puro em todos os campos: sem Markdown, sem HTML, sem emoji. Negrito e link
 
 ## Requisitos para publicar
 
-Uma matéria só pode ser publicada com: categoria, autor, resumo com 40+ caracteres, pelo menos um bloco e data de publicação. A revisão técnica é obrigatória.
+Uma matéria só pode ser publicada com: categoria, autor, resumo com 40+ caracteres, pelo menos um bloco e data de publicação. A aprovação do usuário na conversa (revisão técnica) é obrigatória.
 
 ## Exemplo
 

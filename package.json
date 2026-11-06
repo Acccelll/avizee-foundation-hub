@@ -52,10 +52,10 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@supabase/supabase-js": "^2.111.0",
     "@tailwindcss/vite": "^4.2.1",
-    "@tanstack/react-query": "^5.101.1",
-    "@tanstack/react-router": "^1.170.18",
-    "@tanstack/react-start": "^1.168.32",
-    "@tanstack/router-plugin": "^1.168.23",
+    "@tanstack/react-query": "^5.106.1",
+    "@tanstack/react-router": "1.170.42",
+    "@tanstack/react-start": "1.168.61",
+    "@tanstack/router-plugin": "1.168.43",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -75,7 +75,7 @@
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
-    "zod": "^3.25.76"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
@@ -84,7 +84,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.2.0",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.12",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
@@ -95,7 +95,13 @@
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "^8.1.5",
-    "vitest": "^4.1.10"
+    "vite": "^8.3.6",
+    "vitest": "^4.1.12"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@hono/node-server": "^2.1.6",
+    "seroval": "^1.6.12",
+    "minimatch": "11.0.4"
   }
 }

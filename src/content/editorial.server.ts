@@ -233,7 +233,7 @@ async function syncReferences(
   if (rows.length > 0) await auth.admin.from("content_references").insert(rows);
 }
 
-async function assertPublicationReady(auth: Authorized, article: Row) {
+export async function assertPublicationReady(auth: Authorized, article: Row) {
   const parsed = blocksSchema.safeParse(article["blocks"] ?? []);
   const blocks = parsed.success ? parsed.data : [];
   const issues = checkContentCompliance({

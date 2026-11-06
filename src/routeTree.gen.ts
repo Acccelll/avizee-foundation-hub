@@ -54,6 +54,8 @@ import { Route as AdminProtectedConteudosArticleIdRouteImport } from './routes/a
 import { Route as AdminProtectedConteudosAutoresRouteImport } from './routes/admin/_protected/conteudos_.autores'
 import { Route as AdminProtectedCotacoesQuotationIdRouteImport } from './routes/admin/_protected/cotacoes_.$quotationId'
 import { Route as AdminProtectedImportacaoJobIdRouteImport } from './routes/admin/_protected/importacao_.$jobId'
+import { Route as ApiInternalErpMateriasRouteImport } from './routes/api/internal/erp/materias'
+import { Route as ApiInternalErpReferenciasRouteImport } from './routes/api/internal/erp/referencias'
 import { Route as AdminProtectedCatalogoFamiliasFamilyIdRouteImport } from './routes/admin/_protected/catalogo/familias_.$familyId'
 import { Route as AdminProtectedCatalogoSkusProductIdRouteImport } from './routes/admin/_protected/catalogo/skus_.$productId'
 
@@ -298,6 +300,17 @@ const AdminProtectedImportacaoJobIdRoute =
     path: '/importacao/$jobId',
     getParentRoute: () => AdminProtectedRoute,
   } as any)
+const ApiInternalErpMateriasRoute = ApiInternalErpMateriasRouteImport.update({
+  id: '/api/internal/erp/materias',
+  path: '/api/internal/erp/materias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInternalErpReferenciasRoute =
+  ApiInternalErpReferenciasRouteImport.update({
+    id: '/api/internal/erp/referencias',
+    path: '/api/internal/erp/referencias',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminProtectedCatalogoFamiliasFamilyIdRoute =
   AdminProtectedCatalogoFamiliasFamilyIdRouteImport.update({
     id: '/catalogo/familias_/$familyId',
@@ -357,6 +370,8 @@ export interface FileRoutesByFullPath {
   '/admin/conteudos/autores': typeof AdminProtectedConteudosAutoresRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
+  '/api/internal/erp/materias': typeof ApiInternalErpMateriasRoute
+  '/api/internal/erp/referencias': typeof ApiInternalErpReferenciasRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
@@ -405,6 +420,8 @@ export interface FileRoutesByTo {
   '/admin/conteudos/autores': typeof AdminProtectedConteudosAutoresRoute
   '/admin/cotacoes/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/importacao/$jobId': typeof AdminProtectedImportacaoJobIdRoute
+  '/api/internal/erp/materias': typeof ApiInternalErpMateriasRoute
+  '/api/internal/erp/referencias': typeof ApiInternalErpReferenciasRoute
   '/admin/catalogo/familias/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   '/admin/catalogo/skus/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
@@ -455,6 +472,8 @@ export interface FileRoutesById {
   '/admin/_protected/conteudos_/autores': typeof AdminProtectedConteudosAutoresRoute
   '/admin/_protected/cotacoes_/$quotationId': typeof AdminProtectedCotacoesQuotationIdRoute
   '/admin/_protected/importacao_/$jobId': typeof AdminProtectedImportacaoJobIdRoute
+  '/api/internal/erp/materias': typeof ApiInternalErpMateriasRoute
+  '/api/internal/erp/referencias': typeof ApiInternalErpReferenciasRoute
   '/admin/_protected/catalogo/familias_/$familyId': typeof AdminProtectedCatalogoFamiliasFamilyIdRoute
   '/admin/_protected/catalogo/skus_/$productId': typeof AdminProtectedCatalogoSkusProductIdRoute
 }
@@ -506,6 +525,8 @@ export interface FileRouteTypes {
     | '/admin/conteudos/autores'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
+    | '/api/internal/erp/materias'
+    | '/api/internal/erp/referencias'
     | '/admin/catalogo/familias/$familyId'
     | '/admin/catalogo/skus/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -554,6 +575,8 @@ export interface FileRouteTypes {
     | '/admin/conteudos/autores'
     | '/admin/cotacoes/$quotationId'
     | '/admin/importacao/$jobId'
+    | '/api/internal/erp/materias'
+    | '/api/internal/erp/referencias'
     | '/admin/catalogo/familias/$familyId'
     | '/admin/catalogo/skus/$productId'
   id:
@@ -603,6 +626,8 @@ export interface FileRouteTypes {
     | '/admin/_protected/conteudos_/autores'
     | '/admin/_protected/cotacoes_/$quotationId'
     | '/admin/_protected/importacao_/$jobId'
+    | '/api/internal/erp/materias'
+    | '/api/internal/erp/referencias'
     | '/admin/_protected/catalogo/familias_/$familyId'
     | '/admin/_protected/catalogo/skus_/$productId'
   fileRoutesById: FileRoutesById
@@ -638,6 +663,8 @@ export interface RootRouteChildren {
   ConteudosCategoriaSlugRoute: typeof ConteudosCategoriaSlugRoute
   ProdutosCategorySlugFamilySlugRoute: typeof ProdutosCategorySlugFamilySlugRoute
   ProdutosCategorySlugIndexRoute: typeof ProdutosCategorySlugIndexRoute
+  ApiInternalErpMateriasRoute: typeof ApiInternalErpMateriasRoute
+  ApiInternalErpReferenciasRoute: typeof ApiInternalErpReferenciasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -957,6 +984,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProtectedImportacaoJobIdRouteImport
       parentRoute: typeof AdminProtectedRoute
     }
+    '/api/internal/erp/materias': {
+      id: '/api/internal/erp/materias'
+      path: '/api/internal/erp/materias'
+      fullPath: '/api/internal/erp/materias'
+      preLoaderRoute: typeof ApiInternalErpMateriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/internal/erp/referencias': {
+      id: '/api/internal/erp/referencias'
+      path: '/api/internal/erp/referencias'
+      fullPath: '/api/internal/erp/referencias'
+      preLoaderRoute: typeof ApiInternalErpReferenciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/_protected/catalogo/familias_/$familyId': {
       id: '/admin/_protected/catalogo/familias_/$familyId'
       path: '/catalogo/familias/$familyId'
@@ -1053,6 +1094,8 @@ const rootRouteChildren: RootRouteChildren = {
   ConteudosCategoriaSlugRoute: ConteudosCategoriaSlugRoute,
   ProdutosCategorySlugFamilySlugRoute: ProdutosCategorySlugFamilySlugRoute,
   ProdutosCategorySlugIndexRoute: ProdutosCategorySlugIndexRoute,
+  ApiInternalErpMateriasRoute: ApiInternalErpMateriasRoute,
+  ApiInternalErpReferenciasRoute: ApiInternalErpReferenciasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

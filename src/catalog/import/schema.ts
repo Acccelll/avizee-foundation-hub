@@ -47,7 +47,7 @@ export const importRowSchema = z.object({
     .trim()
     .transform((v) => ["sim", "true", "1"].includes(v.toLowerCase()))
     .optional()
-    .default("nao"),
+    .default(false),
   codigo_original: optionalText,
   marca_interna: optionalText,
   observacao_interna: optionalText,
